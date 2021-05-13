@@ -9,8 +9,7 @@
 \maketitle
 \end{frame}
 \section{Instructor}
-\begin{frame}{Your professor}
-\framesubtitle{Brief bio}
+\begin{frame}{Your professor}{Brief bio}
 \begin{itemize}
     \item Ron Cytron
     \begin{itemize}
@@ -31,8 +30,7 @@
 \end{frame}
 
 \section{Background}
-\begin{frame}{Curiosity}
-\framesubtitle{And I had a lot of help $\ldots$}
+\begin{frame}{Curiosity}{And I had a lot of help $\ldots$}
 \begin{itemize}
     \item Walter Buhro -- student in CSE 131 but also physics major
     \item Nathan Mester -- we studied this material over a summer
@@ -46,13 +44,15 @@
     
 \end{frame}
 
-\begin{frame}{Quantum Computing}
-\framesubtitle{Inherently multidisciplinary}
+\begin{frame}{Quantum Computing}{Inherently multidisciplinary}
 \begin{tabular}{cc}
 \begin{tikzpicture}[scale=0.6]
 %  \begin{scope}
+    \fill<1>[color=BrickRed]   ( 90:1.2) circle (2);
     \draw[color=BrickRed]   ( 90:1.2) circle (2);
+    \fill<2>[color=OliveGreen] (210:1.2) circle (2);
     \draw[color=OliveGreen] (210:1.2) circle (2);
+    \fill<3>[color=NavyBlue]  (330:1.2) circle (2);
     \draw[color=NavyBlue]  (330:1.2) circle (2);
 %  \end{scope}
   \node<1-> at ( 90:2)    {Physics};
@@ -70,18 +70,63 @@
 
 \end{minipage}
 \end{tabular}
+
+\bigskip
+
 \only<4>{
 
 \bigskip
 
 Quantum Computing combines all of these disciplines}
-\only<1>{\textcolor{BrickRed}{We study physics so as to understand and believe in quantum behavior}}
-\only<2>{\textcolor{OliveGreen}{Quantum values and gates can be represented using linear algebra}}
-\only<3>{\textcolor{NavyBlue}{Computer science lets us reason about the problems we can solve}}
+\only<1>{\ColorR{We study physics so as to understand and believe in quantum behavior}}
+\only<2>{\ColorG{Quantum values and gates can be represented using linear algebra}}
+\only<3>{\ColorB{Computer science lets us reason about the problems we can solve}}
 \end{frame}
 
+\begin{frame}{Prerequisites}
+\begin{description}
+    \item[Linear and Matrix Algebra] We use this heavily.  You must be familiar with row and column vectors, matrix multiplication, linear systems of equations.
+    
+    Example:  Math 309
+    \item[Probability] Quantum computations are inherently probabilistic.  You need to have some background in probability, but it doesn't have to be extensive.
+    
+    Example:  ESE 326 or Math 3200
+    \item[Circuits]  We will specify quantum computations using circuit diagrams.  Some familiarity with Boolean algebra and circuit elements depicting Boolean operations is needed.
+    
+    Example:  CSE 132 or CSE 260M
+\end{description}
+\end{frame}
 \begin{frame}{Goals}
 \begin{itemize}
-    \item 
+    \item Understand and be able to construct quantum circuits to solve a problem.
+    \item Sufficient background to take quantum information courses in ESE.
+    \item Sufficient background to take foundational courses in Math.
 \end{itemize}
+\end{frame}
+
+\section{Computation}
+
+\begin{frame}{Computer scientists are cuckoos}{We steal ideas from other disciplines to compute things}
+
+We can compute things using
+\begin{itemize}
+    \item Steam
+    \item Semiconductor physics
+    \item Water
+    \item DNA
+    \item \alert{Gravity}
+    \item Quantum effects
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Using gravity to compute square roots}{We steal ideas from other disciplines to compute things}
+\only<1->{How can we use gravity to compute square roots?}
+
+\only<2->{We know
+\begin{eqnarray*}
+\ColorR{d} & = & \frac{1}{2} a \ColorG{t}^{2} \\
+\ColorG{t} & = & \sqrt{\frac{2\ColorR{d}}{a}}
+\end{eqnarray*}}
+\only<3->{To compute $\sqrt{n}$, we just need to drop a ball from height $\ColorR{d}=\frac{an}{2}$ and measure the time for the ball to hit the ground.}
 \end{frame}
