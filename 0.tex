@@ -107,18 +107,43 @@ Quantum Computing combines all of these disciplines}
 
 \section{Computation}
 
-\begin{frame}{Computer scientists are cuckoos}{We steal ideas from other disciplines to compute things}
+\def\rcolpic#1{%
+\begin{tikzpicture}[overlay]
+      \node (steam) at (0.5,-2.5) {
+        \includegraphics[width=1.3\textwidth]{0/#1}};
+    \end{tikzpicture}
+}
+\begin{frame}{Computer scientists are (like) cuckoos}{We steal ideas from other disciplines to compute things}
 
-We can compute things using
+\begin{columns}
+\begin{column}{0.7\textwidth}
+ We can realize computations using
 \begin{itemize}
-    \item Steam
-    \item Semiconductor physics
-    \item Gears, sprockets, and springs
-    \item Water
-    \item DNA
-    \item \alert{Gravity}
-    \item Quantum effects
+    \item<1->Steam
+    \item<2-> Semiconductor physics
+    \item<3-> Gears, sprockets, and springs
+    \item<4-> Water
+    \item<5-> DNA
+    \item<5-> Gravity
+    \item<5-> Quantum effects
 \end{itemize}
+\end{column}
+\begin{column}{0.3\textwidth}
+    \only<1>{%
+        \rcolpic{steam.jpeg}
+    }
+    \only<2>{%
+        \rcolpic{transistor.jpeg}
+    }
+    \only<3>{%
+        \rcolpic{digicomp.jpeg}
+    }
+    \only<4>{%
+        \rcolpic{water.jpeg}
+    }
+\end{column}
+\end{columns}
+
     
 \end{frame}
 
@@ -151,26 +176,62 @@ n & = & 81 \\
 Takes 9 seconds to drop}
 \end{frame}
 
-\begin{frame}{Using DNA to Solve Traveling Salesperson}{By ligation and electopheresis}
+\begin{frame}{Using DNA to solve Traveling Salesperson}{{\tiny \url{https://www.jyi.org/2005-september/2005/9/7/fear-not-traveling-salesmen-dna-computing-is-here-to-save-the-day}}}
     
 \begin{columns}
     \begin{column}{0.5\textwidth}
         \begin{itemize}
-            \item Each city is represented by a strand of DNA, with a unique first and last part.
-            \item For each edge in the graph, it is possible that the strand of one city will ligate to the strand of the other city, thus extending the path
+            \item<1-> Each city is represented by a strand of DNA, with a unique first and last part.
+            \item<2-> The strand of one city can ligate to the strand of an adjacent city, thus extending the path
+            \item<3-> These strands of DNA can be sorted by length using \href{https://en.wikipedia.org/wiki/Gel_electrophoresis}{electrophoresis}, with the shortest acceptable strand encoding the solution.
         \end{itemize}
  
     \end{column}
     \begin{column}{0.5\textwidth}  %%<--- here
      \begin{center}
-        \includegraphics[width=\textwidth]{0/map.jpeg}
+        \vskip -2.5em
+        \includegraphics[width=0.9\textwidth]{0/map.jpeg}
      \end{center}
+     \only<1->{
+        \begin{tabular}{lcl}
+            San Diego & = & \texttt{TTG AAA} \\
+            Atlanta   & = & \texttt{TTT CTC}
+        \end{tabular}
+     }
+     \only<2->{
+     
+        \medskip
+        
+        Possible ligation:
+        
+        \begin{tabular}{lll}
+            \texttt{TTG} & \texttt{AAA} \\
+               &  \texttt{TTT} & \texttt{CTC}
+        \end{tabular}
+     }
+     
+     \only<3->{
+        Diagram of electrophoresis
+     }
     \end{column}
 \end{columns}
 
-\bigskip
+\end{frame}
 
-These strands of DNA can be sorted by length using electropheresis, with the shortest acceptable strand encoding the solution.
+\begin{frame}{Quantum effect}{Warning:  This material may be mind blowing}
+\begin{itemize}
+    \item Small particles such as electrons and photons live a very strange existence.
+    \item We lack experience or even adequate language language to understand or express how they behave.
+    \item However, \href{https://en.wikipedia.org/wiki/Quantum_mechanics}{quantum mechanics} has been extraordinarily successful in predicting the outcomes of quantum events.
+    \item Einstein did not (want to) believe that his own theories were complete concerning their behavior.\LinkArrow{https://en.wikipedia.org/wiki/Bohr-Einstein_debates}
+\end{itemize}
+\only<2->{
+\begin{description}
+    \item[Einstein:]  God does not play dice with the universe.
+    \item[Bohr:] Don't tell God what to do with God's dice!
+\end{description}}
 
-{\tiny \url{https://www.jyi.org/2005-september/2005/9/7/fear-not-traveling-salesmen-dna-computing-is-here-to-save-the-day}}
+\only<3->{\alert{
+We can use quantum effect to compute interesting results.   In this course we look at various problems and develop solutions based on quantum effects.}}
+
 \end{frame}
