@@ -10,8 +10,12 @@
 \definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 \def\LinkArrow#1{%
-\mbox{$\,$\href{#1}{\fbox{$\Rightarrow$}}}$\,$}
+\mbox{$\,$\href{#1}{\mbox{\vrule width 0pt height 0ex depth 0pt$\mapsto$}}}$\,$}
+\def\True{\mbox{\texttt{True}}}
+\def\False{\mbox{\texttt{False}}}
+\def\Zero{\mbox{$0$}}
+\def\One{\mbox{$1$}}
 
 \begin{document}
-\include{0}
+\include{1}
 \end{document}
