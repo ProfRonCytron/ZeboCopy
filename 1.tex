@@ -1,7 +1,7 @@
 \lecture[1]{Background}{lec:background}
 
 \title{Background}
-\subtitle{Review this material}
+\subtitle{What you need to know}
 
 \date{\today}
 
@@ -11,7 +11,7 @@
 
 \section{Classical Logic}
 
-\begin{frame}{Overview}
+\begin{frame}{Overview of classical logic}
 \begin{itemize}
     \item You should be familiar with \href{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra} but we will review it here.
     \item The two constants
@@ -29,7 +29,7 @@
 
 \section{Complex arithmetic}
 
-\begin{frame}{Overview}
+\begin{frame}{Overview of complex arithmetic}
 \begin{itemize}
     \item Complex arithmetic is especially convenient for quantum computing.
     \item We will use both forms:
@@ -45,5 +45,18 @@
 
 \section{Linear algebra}
 
+\begin{frame}{Overview of linear algebra}{Quantum systems are linear!}
+\begin{itemize}
+    \item While much of our world behaves nonlinearly, quantum systems can surprisingly be captured using linear algebra.
+    \item Vectors and matrices can represent states and gates.  
+    \begin{itemize}
+        \item The state of a quantum system is most often described as a column vector, called a \href{https://en.wikipedia.org/wiki/Bra-ket_notation}{ket}.
+         \item The effect of a quantum gate can be described as a square matrix, which maps in input ket to an output ket.
+    \end{itemize}
+    \item This is convenient but not efficient in the number of quantum bits.
+    \item The composition of states and gates is computed using \href{https://en.wikipedia.org/wiki/Tensor}{tensor arithmetic}.
+\end{itemize}
+    
+\end{frame}
 
 
