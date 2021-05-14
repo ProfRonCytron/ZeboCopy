@@ -114,7 +114,24 @@ Any of the 16 possible functions can be written as:
 \[
 f(x,y) = \Not{x}\Not{y}\,r_{00} +\Not{x}y \,r_{01} + x\Not{y}\, r_{10} +xy \,r_{11} 
 \]
-For any $x,y$, exactly one of the above conjunctions involving $x$ and $y$ is true.  Thus, the above expression remains the same if $+$ is replaced by $\oplus$. 
+For any $x,y$, exactly one of the above conjunctions involving $x$ and $y$ is true.  Thus, the above expression remains the same if $+$ is replaced by $\oplus$.  Based on the above, we see that universality is achieved using the three operators $\wedge$, $\vee$, $\neg$.
+\end{frame}
+
+
+
+\begin{frame}{Can we do better?}{Nand is a single, universal gate.}
+We define Nand as the not-of-and of two inputs:
+\[
+\mbox{Nand($x$,$y$)} = \Not{xy}
+\]
+From this we can define:
+\begin{eqnarray*}
+\Not{x} & = & \Nand{x}{1} \\
+\And{x}{y} & = & \Not{\Nand{x}{y}} \\
+\Or{x}{y} & = & \Nand{\Not{x}}{\Not{y}}
+\end{eqnarray*}
+\MedSkip{}
+We thus achieve universality with a single gate.
 \end{frame}
 
 \section{Complex arithmetic}
