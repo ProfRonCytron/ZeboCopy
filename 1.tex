@@ -23,8 +23,90 @@
     \item Classical logic use \emph{bits} that are either \True{} or \False{}.
     \item Quantum logic uses \emph{qubits} that can be in a \emph{superposition} of \Zero{} and \One{}.
 \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Boolean functions of one input}
+There are only two possible Boolean functions with just one input:
+\begin{itemize}
+    \item $f(a) = a$, the identify function
+    \item $f(a) = \Not{a}$
+\end{itemize}
+The second function returns the \emph{complement} of the input value.  The operator is typically pronounced \emph{not}, and it is sometimes written $\neg a$.  In this class we will use the clearer \Not{a}.
+
+The truth table for this function is simple:
+\begin{center}
+\begin{tabular}{c|c}
+$a$  & \Not{a} \\
+\hline
+\Zero{} & \One{} \\
+\One{} & \Zero{} \\
+\end{tabular}
+\end{center}
+    
+\end{frame}
+
+\def\BTable#1#2#3#4#5{%
+\begin{center}
+\begin{tabular}{cc|c}
+$a$ & $b$ & \ensuremath{#1} \\
+\hline
+\Zero{} & \Zero{} & \ensuremath{#2} \\
+\Zero{} & \One{} & \ensuremath{#3} \\
+\One{} & \Zero{} & \ensuremath{#4} \\
+\One{} & \One{} & \ensuremath{#5} \\
+\end{tabular}
+\end{center}
+}
+\begin{frame}{Boolean functions of two inputs}
+For two inputs $a$ and $b$, we generally have:
+\BTable{f(a,b)}{f(0,0)}{f(0,1)}{f(1,0)}{f(1,1)}
+With four possible results, each \Zero{} or \One{}, there are $2^4$ possible tables and so 16 possible boolean functions of two inputs.
+\BigSkip{}
+Some of those functions should be familiar.
 
     
+\end{frame}
+
+\begin{frame}{Conjunction and Disjunction}
+
+\begin{columns}
+\begin{column}{0.4\textwidth}
+Conjunction
+
+\BTable{a\wedge b}{0}{0}{0}{1}
+
+The \emph{and} function is \True{} when both of its inputs are \True{}.
+
+\only<2->{
+We sometimes juxtapose inputs to imply conjunction:
+\[a\wedge b = ab\]}
+\end{column}
+\begin{column}{0.4\textwidth}
+Disjunction
+
+\BTable{a\vee b}{0}{1}{1}{1}
+
+The \emph{or} function is \True{} when either input is true, or both inputs are \True{}.
+
+\only<2->{
+We sometimes use $+$ as the operator for disjunction:
+\[a\wedge b = a + b \]}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Exclusive or}{This operation is prevalent in quantum computations.}
+
+\BTable{\Xor{a}{b}}{0}{1}{1}{0}
+
+Exclusive-or is what we usually mean in natural language when we say \emph{or}:
+\MedSkip{}
+\begin{quote}
+    I am going to the gym or I am going to sleep.
+\end{quote}
+We mean we will do one or the other, but not both.
 \end{frame}
 
 \section{Complex arithmetic}
