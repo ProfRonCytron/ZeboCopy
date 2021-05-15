@@ -151,7 +151,7 @@ From this we can define:
 \end{eqnarray*}
 \MedSkip{}
 \only<3>{
-This follows from DeMorgan's law:
+This follows from one of \href{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}{De~Morgan's laws}:
 \[
 \Not{uw} = \Or{\Not{u}}{\Not{w}}
 \]
@@ -175,6 +175,22 @@ We thus achieve universality with a single gate.
     \item Complex values allow us to express the magnitude of a wave as well as its phase.  This is helpful for understanding interference.
     \item We could defer using complex arithmetic in this course, but it is wise to embrace it from the start.
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Complex Numbers}
+    
+    \begin{tikzpicture}
+  \draw[<->] (-2, 0) -- (2, 0) node[right] {real};
+  \draw[<->] (0, -2) -- (0, 2) node[above] {imaginary};
+  \draw[->] (0, 0) -- (1, 1) ;
+  \draw[fill=black]
+        (1,1) circle (2pt);
+  \node at (1.3,1.3) {$a+bi$};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{From Cartesian to polar coordinates}
     
 \end{frame}
 
