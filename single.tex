@@ -16,7 +16,7 @@
 \def\Zero{\mbox{$0$}}
 \def\One{\mbox{$1$}}
 \def\Not#1{%
-\ensuremath{\overline{#1}}}
+\ensuremath{\Overline{#1}}}
 \def\Xor#1#2{\ensuremath{#1\oplus #2}}
 \def\Nand#1#2{%
 \ensuremath{\mbox{Nand}(#1,#2)}}
@@ -34,6 +34,16 @@
 
 \medskip
 
+}
+\newcommand{\tolstrut}{%
+  \vrule height\dimexpr\fontcharht\font`\A+.1ex\relax width 0pt\relax
+}
+
+%%\DeclareRobustCommand{\Overline}[1]{%
+%%  \ensuremath{\overline{\mbox{\tolstrut#1}}}%
+%% }
+\DeclareRobustCommand{\Overline}[1]{%
+  \ensuremath{\overline{\raisebox{0pt}[1.2\height]{#1}}}%
 }
 
 \begin{document}
