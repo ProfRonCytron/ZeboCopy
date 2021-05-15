@@ -146,10 +146,19 @@ From this we can define:
 \begin{eqnarray*}
 \Not{x} & = & \Nand{x}{1} \\
 \And{x}{y} & = & \Not{\Nand{x}{y}} \\
-\Or{x}{y} & = & \Nand{\Not{x}}{\Not{y}}
+\only<3->{
+\Or{x}{y} & = & \Nand{\Not{x}}{\Not{y}}}
 \end{eqnarray*}
 \MedSkip{}
+\only<3>{
+This follows from DeMorgan's law:
+\[
+\Not{uw} = \Or{\Not{u}}{\Not{w}}
+\]
+}
+\only<4->{
 We thus achieve universality with a single gate.
+}
 }
 \end{frame}
 
