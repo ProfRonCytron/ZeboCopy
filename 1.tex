@@ -198,19 +198,50 @@ We thus achieve universality with a single gate.
 Quantum computing borrows notation from physics in using \href{https://en.wikipedia.org/wiki/Paul_Dirac}{Paul Dirac}'s \href{https://en.wikipedia.org/wiki/Bra-ket_notation}{bra-ket} notation.
 \TwoColumns{%
 \begin{itemize}
-\item<1-> We typically represent a state using a column vector.
+\item<1-> We typically represent a quantum state using a column vector.
+
+
 \item<2-> Dirac calls such a vector a \emph{ket}, using this syntax that looks strange, but will soon become useful.
+
 \end{itemize}
 }{
 \[
 \only<2->{\ket{\psi} = }
 \begin{pmatrix}
-0.5\\ i \\ 3i+5 \\ \sqrt{2}
+0.5\\ i \\ 5+3i \\ \sqrt{2}
 
 \end{pmatrix}
 \]
     
 }
+\only<1-2>{
+\Remark{%
+We will soon define and study the meaning of a vector's components, but for now it's just math.}
+}
+\only<3->{\BigSkip{} The \emph{bra} of a ket is its conjugate transpose, and \VV{}.
+\[
+\bra{\psi} =
+\begin{pmatrix}
+0.5 & -i & 5-3i &  \sqrt{2}
+\end{pmatrix}
+\]
+}
+\end{frame}
+
+\begin{frame}{Inner Products}
+The complete bra-ket of a state is the inner product of its bra with its ket, which computes the magnitude of the state, squared:
+\begin{eqnarray*}
+\braket{\psi}{\psi} & = &
+\begin{pmatrix}
+0.5 & -i & 5-3i &  \sqrt{2}
+\end{pmatrix}
+\times\begin{pmatrix}
+0.5\\ i \\ 5+3i \\ \sqrt{2}
+\end{pmatrix}
+\\
+ & = & 0.5^{2} + -i^{2} + 25-9i^{2} + 2 
+\end{eqnarray*}
+    
 \end{frame}
 
 
