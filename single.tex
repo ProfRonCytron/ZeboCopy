@@ -2,6 +2,7 @@
 \usetheme[lily]{PaloAlto}
 \usecolortheme{dolphin}
 \usepackage{tikz}
+\usetikzlibrary{quantikz}
 \usepackage{xcolor}
 \logo{\includegraphics[height=2cm]{logo.pdf}}
 \def\ColorR#1{\textcolor{BrickRed}{#1}}
@@ -44,6 +45,17 @@
 %% }
 \DeclareRobustCommand{\Overline}[1]{%
   \ensuremath{\overline{\raisebox{0pt}[1.2\height]{#1}}}%
+}
+
+\long\def\TwoColumns#1#2{%
+\begin{columns}
+\begin{column}{0.5\textwidth}
+#1
+\end{column}
+\begin{column}{0.5\textwidth}
+#2
+\end{column}
+\end{columns}
 }
 
 \begin{document}
