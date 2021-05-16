@@ -194,27 +194,27 @@ We can thus achieve universality with only a Nand gate.
     \adjustbox{valign=t}{%
     \begin{tikzpicture}[scale=0.7]
   \only<1->{
-  \draw[<->] (-1, 0) -- (2.5, 0) node[right] {real};
+  \draw[<->] (-1, 0) -- (2.5, 0) node[right] {
+  \only<1>{real ($\Re$)}\only<2->{$\Re$}};
   
   \draw (1, 4pt) -- (1, -4pt) node[below] {$a$} ;
 
   }
   
   \visible<2->{
-  \draw[<->] (0, -2.5) -- (0, 2.5) node[above] {imaginary};
+  \draw[<->] (0, -2.5) -- (0, 2.5) node[above] {\only<2>{imaginary ($\Im$)}\only<3->{$\Im$}};
   
   \draw (-4pt, 2) -- (4pt, 2) node[left] {$b\ $} ;
   
   }
   \only<3->{
   \draw[->] (0, 0) -- (1, 2) ;
-  \draw[fill=black]
-        (1.05,2.05) circle (2pt) node[above right] {$z=a+bi$} ;
+  \TZPoint{1.05,2.05}{$z=a+bi$}{above right}
+  
   }
   \only<4->{
   \draw[->] (0, 0) -- (1, -2) ;
-  \draw[fill=black]
-        (1.05,-2.05) circle (2pt) node[below right] {$\Conj{z}=a-bi$} ;
+  \TZPoint{1.05,-2.05}{$\Conj{z}=a-bi$}{below right}
   }
 \end{tikzpicture}}
 }
@@ -226,11 +226,54 @@ We can thus achieve universality with only a Nand gate.
 \end{frame}
 
 \begin{frame}{The complex unit circle}{All points on the circle have unit length.}
+
+\TwoColumns{%
+ \begin{itemize}
+     \item<1-> The unit circle has radius~$1$.
+     \item<2-> On the real axis, the circle has intercepts at~\only<2->{$+1$} \only<3->{and~$-1$.}
+     \item<4-> On the imaginary axis, the circle has intercepts at~\only<4->{$+i$} \only<5->{and~$-i$.}
+ \end{itemize}
+ }{%
+ \adjustbox{valign=t}{\begin{tikzpicture}[scale=1.3]
+    \UnitComplexCircle{}
+    \only<2->{\TZPoint{1,0}{$+1$}{above right}}
+   \only<4->{\TZPoint{0,1}{$i$}{above right}}
+   \visible<3->{\TZPoint{-1,0}{$-1$}{above left}}
+   \only<5->{\TZPoint{0,-1}{$-i$}{below right}}
+    
+ \end{tikzpicture}}
+ }
+ \only<5->{
+ \BigSkip{}
+ We typically express angles in radians in quantum computing, so the circle has $2\pi$ radians.  We proceed around the circle counterclockwise, beginning at point~$+1$.}
+
 \end{frame}
 
 
 \begin{frame}{From Cartesian to polar coordinates}
+\TwoColumns{
+\begin{itemize}
+    \item<1-> A complex number $z$ as shown to the right is at the Cartesian coordinate
+    \[z=r(\cos{\theta}+i\sin{\theta})\]
+    \item<2-> From \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}, we can write this as
+    \[ z = \Polar{r}{\theta} \]
     
+\end{itemize}
+    
+ }{%
+  \adjustbox{valign=t}{\begin{tikzpicture}[scale=1.5]
+    \UnitComplexCircle{}
+    \draw[->,ultra thick] (1,0) arc (0:45:1) coordinate (z) ;
+    \draw[thick] (0,0) -- (z) ;
+    \TZText{0.5,0}{$\theta$}{above}
+    \TZText{z}{$z$}{above right}
+    \TZText{0.35,0.35}{$r$}{above}
+    \TZPoint{1,0}{$(r,0)$}{below right}
+ \end{tikzpicture}}
+ }
+ \only<3->{
+\BigSkip{}The complex number \Polar{r}{\theta} can thus be found by starting at $(r,0)$ and walking counterclockwise around a circle of radius $r$,
+traversing a distance of $\theta$ radians along the circle.}
 \end{frame}
 
 \section{Linear algebra}

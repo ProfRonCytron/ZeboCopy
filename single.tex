@@ -71,6 +71,19 @@
 \def\VV{\textit{vice versa}}
 \def\QZero{\ket{0}}
 \def\QOne{\ket{1}}
+\def\TZPoint#1#2#3{%
+\draw[fill=black] (#1) circle (2pt) node[#3] {#2} ;}
+\def\UnitComplexCircle{%
+\draw [<->] (-1.5, 0) -- (1.5, 0)  node[right] {$\Re{}$} ;
+   \draw [<->] (0,-1.5) -- (0, 1.5) node[above] {$\Im{}$} ;
+
+   \draw (0, 0) circle (1) ;
+   }
+\def\TZText#1#2#3{%
+  \draw (#1) node [#3] {#2};
+}
+\def\Exp#1{\ensuremath{e^{#1}}}
+\def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{i\relax#2}}}
 \begin{document}
 \include{1}
 \end{document}
