@@ -22,6 +22,7 @@
     \item We will review functions over those values.
     \item Classical logic use \emph{bits} that are either \True{} or \False{}.
     \item Quantum logic uses \emph{qubits} that can be in a \emph{superposition} of \Zero{} and \One{}.
+    \item We will study how to implement classical logic using quantum gates.
 \end{itemize}
     
 \end{frame}
@@ -33,7 +34,7 @@ There are only two possible Boolean functions with just one input:
     \item $f(x) = x$, the identify function
     \item $f(x) = \Not{x}$
 \end{itemize}
-The second function returns the \emph{complement} of the input value.  The operator is typically pronounced \emph{not}, and it is sometimes written $\neg x$.  In this class we will use the clearer \Not{x}.
+The second function returns the \emph{complement} of the input value.  The operator is typically pronounced \emph{not}, and it is sometimes written $\neg x$.  In this class we prefer \Not{x}.
 
 The truth table for this function is simple:
 \begin{center}
@@ -44,6 +45,7 @@ $x$  & \Not{x} \\
 \One{} & \Zero{} \\
 \end{tabular}
 \end{center}
+\Remark{This function is \emph{reversible} and is in fact its own inverse.}
     
 \end{frame}
 
@@ -69,30 +71,30 @@ Some of those functions should be familiar.
 
 \begin{frame}{Conjunction and Disjunction}
 
-\begin{columns}
-\begin{column}{0.4\textwidth}
+\TwoColumns{
 Conjunction
 
 \BTable{x\wedge y}{0}{0}{0}{1}
 
 The \emph{and} function is \True{} when both of its inputs are \True{}.
 
-\only<2->{
+\only<2>{
 We sometimes juxtapose inputs to imply conjunction:
 \[x\wedge y = xy\]}
-\end{column}
-\begin{column}{0.4\textwidth}
+}{
 Disjunction
 
 \BTable{x\vee y}{0}{1}{1}{1}
 
-The \emph{or} function is \True{} when either input is true, or both inputs are \True{}.
+The \emph{or} function is \True{} when either input is \True{}.
 
-\only<2->{
+\only<2>{
 We sometimes use $+$ as the operator for disjunction:
 \[x\vee y = x + y \]}
-\end{column}
-\end{columns}
+}
+\only<3>{
+\Remark{These functions are \emph{not} reversible.  Even if we are given one of the inputs, the other input cannot necessarily be deduced from the output.}
+}
 \end{frame}
 
 \begin{frame}{Exclusive or}{This operation is prevalent in quantum computations.}
@@ -105,18 +107,19 @@ Exclusive-or is what we usually mean in natural language when we say \emph{or}:
     I am going to the gym or I am going to sleep.
 \end{quote}
 We mean we will do one or the other, but not both.
+\Remark{
+Given the output of this function and one of the inputs, we can infer the value of the other input:
+$\Xor{(\Xor{x}{y})}{x} = y$
+}
 \end{frame}
 
 \begin{frame}{Universality}{What operators are needed at a minimum?}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-Consider the function:
-\end{column}
-\begin{column}{0.5\textwidth}
+\TwoColumns{
+Consider again a general Boolean function of two inputs:
+}{
 \mbox{}\vskip -3em\mbox{}
 \BTable{f(x,y)}{r_{00}}{r_{01}}{r_{10}}{r_{11}}
-\end{column}
-\end{columns}
+}
 \MedSkip{}
 Any of the 16 possible functions can be written as:
 \[
@@ -129,7 +132,7 @@ Based on the above, we see that universality is achieved using the three operato
 
 
 
-\begin{frame}{Can we do better?}{Nand is a single, universal gate.}
+\begin{frame}{Can we do better?}{Nand is a universal gate all by itself.}
 \begin{columns}
 \begin{column}{0.6\textwidth}
 We define Nand as the not-of-and-of its two inputs:
@@ -142,7 +145,7 @@ We define Nand as the not-of-and-of its two inputs:
 \end{column}
 \end{columns}
 \only<2->{
-From this we can define:
+From this, we can compute the three operations that provide universality:
 \begin{eqnarray*}
 \Not{x} & = & \Nand{x}{1} \\
 \And{x}{y} & = & \Not{\Nand{x}{y}} \\
@@ -151,13 +154,13 @@ From this we can define:
 \end{eqnarray*}
 \MedSkip{}
 \only<3>{
-This follows from one of \href{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}{De~Morgan's laws}:
+The last one follows from one of \href{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}{De~Morgan's laws}:
 \[
 \Not{uw} = \Or{\Not{u}}{\Not{w}}
 \]
 }
 \only<4->{
-We thus achieve universality with a single gate.
+We can thus achieve universality with only a Nand gate.
 }
 }
 \end{frame}
