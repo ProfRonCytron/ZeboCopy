@@ -177,16 +177,53 @@ We thus achieve universality with a single gate.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Complex Numbers}
-    
-    \begin{tikzpicture}
-  \draw[<->] (-2, 0) -- (2, 0) node[right] {real};
-  \draw[<->] (0, -2) -- (0, 2) node[above] {imaginary};
-  \draw[->] (0, 0) -- (1, 1) ;
+\begin{frame}{Complex Numbers}{Cartesian coordinates}
+  
+  \TwoColumns{%
+  \begin{itemize}
+     \item Each complex number $z$ has a \only<1->{\emph{real}} \only<2->{\emph{and an imaginary}} component.
+     \item<3-> Point $z$ is expressed in the usual notation, with $i=\sqrt{-1}$
+     \item<4-> The \emph{conjugate} \Conj{z} of $z$ is obtained by negating its imaginary part.
+     
+  \end{itemize}
+  }{%}
+    \adjustbox{valign=t}{%
+    \begin{tikzpicture}[scale=0.7]
+  \only<1->{
+  \draw[<->] (-2, 0) -- (2.5, 0) node[right] {real};
+  
+  \draw[->] (0, 0) -- (1, 0) node[below] {$a$} ;
+
+  }
+  
+  \visible<2->{
+  \draw[<->] (0, -2) -- (0, 2.5) node[above] {imaginary};
+  
+  \draw[->] (0, 0) -- (0, 2) node[left] {$b$} ;
+  
+  }
+  \only<3->{
+  \draw[->] (0, 0) -- (1, 2) ;
   \draw[fill=black]
-        (1,1) circle (2pt);
-  \node at (1.3,1.3) {$a+bi$};
-\end{tikzpicture}
+        (1.05,2.05) circle (2pt) node[above right] {$z=a+bi$} ;
+  }
+  \only<4->{
+  \draw[->] (0, 0) -- (1, -2) ;
+  \draw[fill=black]
+        (1.05,-2.05) circle (2pt) node[below right] {$\Conj{z}=a-bi$} ;
+  }
+\end{tikzpicture}}
+}
+\only<4->{\BigSkip{}The \emph{magnitude} of $z$ is given by $\Mag{z} =  \sqrt{a^{2}+b^{2}}$.}\only<5->{  We thus obtain:
+\[
+ \Mag{z}^{2}  =  z\Conj{z} = \Conj{z}z
+\]
+}
+
+
+\end{frame}
+
+\begin{frame}{The complex unit circle}{All points on the circle have unit length.}
 \end{frame}
 
 

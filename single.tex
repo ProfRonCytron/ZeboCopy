@@ -2,6 +2,7 @@
 \usetheme[lily]{PaloAlto}
 \usecolortheme{dolphin}
 \usepackage{tikz}
+\usepackage{adjustbox}
 \usetikzlibrary{quantikz}
 \usepackage{xcolor}
 \logo{\includegraphics[height=2cm]{logo.pdf}}
@@ -25,6 +26,12 @@
 \ensuremath{#1 \wedge #2}}
 \def\Or#1#2{%
 \ensuremath{#1 \vee #2}}
+\def\Conj#1{%
+\ensuremath{#1^{\star}}}
+\def\Mag#1{%
+\ensuremath{|\,#1\,|}}
+
+
 \def\BigSkip{%
 
 \bigskip
