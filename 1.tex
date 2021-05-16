@@ -146,6 +146,7 @@ We define Nand as the not-of-and-of its two inputs:
 \end{columns}
 \only<2->{
 From this, we can compute the three operations that provide universality:
+\mbox{}\vskip -3em\mbox{}
 \begin{eqnarray*}
 \Not{x} & = & \Nand{x}{1} \\
 \And{x}{y} & = & \Not{\Nand{x}{y}} \\
@@ -193,14 +194,14 @@ We can thus achieve universality with only a Nand gate.
     \adjustbox{valign=t}{%
     \begin{tikzpicture}[scale=0.7]
   \only<1->{
-  \draw[<->] (-2, 0) -- (2.5, 0) node[right] {real};
+  \draw[<->] (-1, 0) -- (2.5, 0) node[right] {real};
   
   \draw (1, 4pt) -- (1, -4pt) node[below] {$a$} ;
 
   }
   
   \visible<2->{
-  \draw[<->] (0, -2) -- (0, 2.5) node[above] {imaginary};
+  \draw[<->] (0, -2.5) -- (0, 2.5) node[above] {imaginary};
   
   \draw (-4pt, 2) -- (4pt, 2) node[left] {$b\ $} ;
   
