@@ -68,6 +68,8 @@
 \begin{block}{Remark}
 #1
 \end{block}}
+\long\def\Example#1{%
+\begin{example} #1\end{example}}
 \def\VV{\textit{vice versa}}
 \def\QZero{\ket{0}}
 \def\QOne{\ket{1}}
@@ -84,10 +86,25 @@
 }
 \def\Exp#1{\ensuremath{e^{#1}}}
 \def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{i\relax#2}}}
+%%
+%% #1 -- lower left x
+%% #2 -- lower left y
+%% #3 -- upper right x
+%% #4 -- upper right y
+%% #5 -- num lines
+\def\PFilter#1#2#3#4#5{
 
+    \draw (#1,#2) -- (#3,#2) -- (#3,#4) -- (#1,#4) -- (#1,#2);
+    \foreach \i in {1,...,#5}
+    {
+        \pgfmathparse{#1 + (#3-#1) / #5 * \i}
+        \edef\PFilterInc{\pgfmathresult}
+        \draw (\PFilterInc, #2) -- (\PFilterInc, #4);
+    }
+}
 \author{Ron K.~Cytron}
 \institute{Washington University\\Saint Louis, Missouri}
 \setbeamertemplate{footline}[frame number]
 \begin{document}
-\include{1}
+\include{2}
 \end{document}
