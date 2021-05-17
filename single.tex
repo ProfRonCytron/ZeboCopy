@@ -43,12 +43,24 @@
 \medskip
 
 }
+\def\SmallSkip{%
+
+\smallskip
+
+}
 \newcommand{\tolstrut}{%
   \vrule height\dimexpr\fontcharht\font`\A+.1ex\relax width 0pt\relax
 }
 
 \DeclareRobustCommand{\Overline}[1]{%
   \ensuremath{\overline{\raisebox{0pt}[1.2\height]{#1}}}%
+}
+\newenvironment{TIKZP}[1][scale=1.0]{%
+\adjustbox{valign=t}\bgroup
+\begin{tikzpicture}[#1]
+}{%
+\end{tikzpicture}
+\egroup
 }
 
 \long\def\TwoUnequalColumns#1#2#3#4{%
@@ -103,9 +115,26 @@
     }
 }
 \def\Vskip#1{\mbox{}\vskip #1\mbox{}}
+\def\Hskip#1{\mbox{}\hskip #1\mbox{}}
 \author{Ron K.~Cytron}
 \institute{Washington University\\Saint Louis, Missouri}
 \setbeamertemplate{footline}[frame number]
+%% #1 -- lecture number
+%% #2 -- lecture title
+%% #3 -- lecture subtitle
+%% #4 -- lecture label
+\def\SetTitle#1#2#3#4{%
+\lecture[#1]{#2}{lec:#4}
+
+\title{#2}
+\subtitle{#3}
+\date{\today}
+
+\begin{frame}\maketitle\end{frame}
+}
+
+
+
 \begin{document}
-\include{0}
+\include{2}
 \end{document}
