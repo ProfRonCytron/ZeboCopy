@@ -73,7 +73,13 @@
   \node<1-> at ( 90:2)    {Physics};
   \node<2-> at ( 210:2)   {Math};
   \node<3-> at ( 330:2)  {CS};
-  \node<4-> [font=\Large] {QC};
+  \only<4>{
+    \clip   ( 90:1.2) circle (2);
+    \clip   (210:1.2) circle (2);
+    \clip   (330:1.2) circle (2);
+    \fill[color=Goldenrod] (0,0) circle(2);
+    \node [font = \Large] at (0,0) {QC};
+  }
 \end{tikzpicture}}
 }{%
 
@@ -108,8 +114,19 @@ Quantum Computing combines all of these disciplines}
 \begin{frame}{Goals}
 \begin{itemize}
     \item Understand and be able to construct quantum circuits to solve a problem.
-    \item Sufficient background to take quantum information courses in ESE.
-    \item Sufficient background to take foundational courses in Math.
+    \item Develop quantum circuits of your own and execute them on a real quantum device.
+    \item Obtain sufficient background to study
+    \begin{description}
+        \item[ESE] 
+        \begin{itemize}
+            \item Quantum mechanics for engineers
+            \item Quantum optics
+            \item Quantum information systems
+            \item Quantum communication
+        \end{itemize}
+        \item [Math] Mathematics of quantum theory
+        \item[Physics] Quantum mechanics
+    \end{description} 
 \end{itemize}
 \end{frame}
 
@@ -194,9 +211,10 @@ Takes 9 seconds to drop}
     \begin{column}{0.5\textwidth}  %%<--- here
      \begin{center}
         \vskip -2.5em
-        \includegraphics[width=0.9\textwidth]{0/map.jpeg}
+        \includegraphics[width=0.7\textwidth]{0/map.jpeg}
      \end{center}
      \only<1->{
+        \Vskip{-2em}
         \begin{tabular}{lcl}
             San Diego & = & \texttt{TTG AAA} \\
             Atlanta   & = & \texttt{TTT CTC}
@@ -213,7 +231,18 @@ Takes 9 seconds to drop}
      }
      
      \only<3->{
-        Diagram of electrophoresis
+        \MedSkip{}\begin{tikzpicture}[scale=0.7]
+              \draw (0,0) rectangle(5,1);
+              \node at (0,0.5) [left] {$-$};
+              \node at (5,0.5) [right] {$+$};
+              \draw[->] (0,-0.25) -- (5,-0.25);
+              \fill[color=black!100!white] (1,0) rectangle(1.5,1);
+              \fill[color=black!80!white] (2,0) rectangle(2.35,1);
+              \fill[color=black!60!white] (3,0) rectangle(3.3,1);
+              \fill[color=black!40!white] (3.5,0) rectangle(3.7,1);
+              \fill[color=black!22!white] (4,0) rectangle(4.1,1);
+              \fill[color=black!15!white] (4.5,0) rectangle (4.55,1);
+        \end{tikzpicture}
      }
     \end{column}
 \end{columns}
@@ -258,7 +287,9 @@ We can use quantum effect to compute interesting results.   In this course we lo
     \only<5->{
     \item[Entanglement:]  When two quantum bits are \emph{entangled}, their measurement outcomes are correlated, even if those outcomes are random.
     
-    This is the most strange and useful property of quantum systems.  We will show that there is no information shared by such quantum bits that explains how they behave this way.
+    This is the most strange and useful property of quantum systems.  
+    
+    We will show that there is no information shared by such quantum bits that explains that behavior.
     \Example{We can entangle two quantum bits so that they randomly both measure either \True{} or \False{}, even if they are separated by light years from each other.}
     
     }
