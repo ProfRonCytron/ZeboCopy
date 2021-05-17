@@ -47,9 +47,6 @@
   \vrule height\dimexpr\fontcharht\font`\A+.1ex\relax width 0pt\relax
 }
 
-%%\DeclareRobustCommand{\Overline}[1]{%
-%%  \ensuremath{\overline{\mbox{\tolstrut#1}}}%
-%% }
 \DeclareRobustCommand{\Overline}[1]{%
   \ensuremath{\overline{\raisebox{0pt}[1.2\height]{#1}}}%
 }
@@ -88,8 +85,8 @@
 \def\Exp#1{\ensuremath{e^{#1}}}
 \def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{i\relax#2}}}
 
-\author{Ron Kaplan Cytron}
-\institute{Washington University}
+\author{Ron K.~Cytron}
+\institute{Washington University\\Saint Louis, Missouri}
 \setbeamertemplate{footline}[frame number]
 \begin{document}
 \include{1}
