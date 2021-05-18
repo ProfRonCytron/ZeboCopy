@@ -63,14 +63,99 @@ Here, two balls enter, one from the top, and one from the left
     
 \end{frame}
 
-\begin{frame}{Reversible classical gates}{From page 12 of \Kaye{}.}
+\section{Reversible gates}
+\begin{frame}{Not and And}{From page 12 of \Kaye{}.}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> The \emph{not} gate is reversible and is in fact its own inverse.
+    \item<2-> Is \And{a}{b} reversible if we know $a$?  \only<3->{No.} \only<3>{If $a=0$, $b$ could be either $0$ or $1$.}
+    \item<4-> We need a copy of both inputs to create a reversible \emph{and} gate.
+\end{itemize}
+ 
+}{%
 
-\begin{GateBox}{3}{2}{2}
+
+\begin{center}
+\only<1>{
+\begin{GateBox}[scale=0.5]{2}{1}{1}
+\BoxLabel{Not}
+\Input{0}{$a$}
+\Output{0}{\Overline{a}}
+\end{GateBox}}
+
+\only<2-3>{\begin{GateBox}{2.5}{1}{2}
+\BoxLabel{Copy $a$/And}
+\Input{0}{$a$}
+\Input{1}{$b$}
+\Output{0}{$a$}
+\Output{1}{\And{a}{b}}
+\end{GateBox}}
+
+
+\only<4>{\begin{GateBox}{2.5}{1}{3}
+\BoxLabel{Reversible?}
+\Input{0}{$a$}
+\Input{1}{$b$}
+\Output{0}{$a$}
+\Output{1}{$b$}
+\Output{2}{\And{a}{b}}
+\end{GateBox}}
+
+\only<5>{\begin{GateBox}{2.5}{1.5}{3}
+\BoxLabel{\mbox{\stackbox[c]{Reversible\\ And}}}
+\Input{0}{$a$}
+\Input{1}{$b$}
+\Input{2}{\Zero{}}
+\Output{0}{$a$}
+\Output{1}{$b$}
+\Output{2}{\And{a}{b}}
+\end{GateBox}}
+\end{center}
+}
+\MedSkip{}
+   \only<4>{
+    However, this box must generate energy to produce the third output.  To conserve energy, a reversible box must have the same number of inputs as outputs.}
+
+\only<5>{This box enables reversal of the computation and it accepts an \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancilla} bit as a third input.}
+
+\OnlyRemark{5}{The circuit elements involved in quantum computations must be \emph{reversible} and must contain the same number of inputs as outputs.}
+\end{frame}
+
+\begin{frame}{Common form for quantum computing}{Uses exclusive-or}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> The signals $a$ and $b$ are copied to their respective outputs.
+    \item<2-> The bottom output is computed as: 
+    \only<2->{
+    \Vskip{-2em}\begin{description}
+        \item[$c=0$] The output is \And{a}{b}.
+        \item[$c=1$] The output is \Nand{a}{b}.
+    \end{description}}
+    \item<3-> The gate is known in quantum computing as the \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tofolli Gate}.
+\end{itemize}
+}{%
+\begin{center}
+\begin{GateBox}{2.5}{1.5}{3}
+\only<1-2>{\BoxLabel{\mbox{f(a,b)=\And{a}{b}}}}
+\only<3-4>{\BoxLabel{Tofolli Gate}}
+\only<5->{\BoxLabel{\mbox{\stackbox[c]{Tofolli Gate\\ CCNOT}}}}
 
 \Input{0}{$a$}
 \Input{1}{$b$}
-\Output{0}{hello}
-\Output{1}{there}
+\Input{2}{$c$}
+\Output{0}{$a$}
+\Output{1}{$b$}
+\only<1-3>{\Output{2}{\Xor{c}{(\And{a}{b})}}}
+\only<4->{\Output{2}{\Xor{(\And{a}{b})}{c}}}
 \end{GateBox}
+\end{center}
+\only<4->{\MedSkip{}
+An alternative view of this gate:
+\begin{itemize}
+    \item When $a$ and $b$ are both \True{}, the incoming signal $c$ is complemented on output.
+    \item<5-> It is thus also called a controlled-controlled-Not gate, or CCNOT.
+\end{itemize}
+}
+}
     
 \end{frame}

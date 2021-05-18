@@ -76,6 +76,9 @@
 \long\def\TwoColumns#1#2{%
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{#1}{#2}%
 }
+\long\def\OnlyRemark#1#2{%
+\only<#1>{\Remark{#2}}}
+
 \long\def\Remark#1{%
 \begin{block}{Remark}
 #1
@@ -157,6 +160,9 @@
    \pgfmathsetmacro{\Xtwo}{\Width + \Wlen}
    \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}
    \draw[->] (\Xone,\MyY) -- (\Xtwo,\MyY) node[right] {##2};
+}
+\def\BoxLabel##1{%
+\node[draw, fit={(0,0) (\Width,\Height)}, inner sep=0pt, label=center:##1] (A) {};
 }
 \begin{TIKZP}[#1]
    \draw (0,0) rectangle(#2,#3);
