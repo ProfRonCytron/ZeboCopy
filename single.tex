@@ -109,8 +109,8 @@
     \draw (#1,#2) -- (#3,#2) -- (#3,#4) -- (#1,#4) -- cycle;
     \foreach \i in {1,...,#5}
     {
-        \pgfmathparse{#1 + (#3-#1) / #5 * \i}
-        \edef\PFilterInc{\pgfmathresult}
+        \pgfmathsetmacro{\PFilterInc}{#1 + (#3-#1) / #5 * \i}
+        % \edef\PFilterInc{\pgfmathresult}
         \draw (\PFilterInc, #2) -- (\PFilterInc, #4);
     }
 }
@@ -124,15 +124,45 @@
 %% #3 -- lecture subtitle
 %% #4 -- lecture label
 \def\SetTitle#1#2#3#4{%
-\lecture[#1]{#2}{lec:#4}
-
-\title{#2}
-\subtitle{#3}
-\date{\today}
-
-\begin{frame}\maketitle\end{frame}
+   \lecture[#1]{#2}{lec:#4}%
+   \title{#2}%
+   \subtitle{#3}%
+   \date{\today}%
+   \begin{frame}\maketitle\end{frame}%
 }
+\def\Kaye{\href{https://dl.acm.org/doi/10.5555/1206629}{Kaye}}
+\def\MikeIke{\href{https://dl.acm.org/doi/10.5555/1972505}{Nielson~and~Chuang}}
 
+%% #1 -- options
+%% #2 -- width
+%% #3 -- height
+%% #4 -- signals
+\newenvironment{GateBox}[4][scale=1.0]{%
+\edef\Signals{#4}
+\edef\Height{#3}
+\edef\Width{#2}
+\pgfmathsetmacro{\Max}{\Signals}
+\pgfmathsetmacro{\Vsep}{\Height / \Max}
+\pgfmathsetmacro{\Wlen}{\Width / 5}
+\def\CalcY##1{%
+0}
+\def\Input##1##2{%
+   \pgfmathsetmacro{\Xone}{-\Wlen}
+   \pgfmathsetmacro{\Xtwo}{0}
+   \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}
+   \draw[->] (\Xone,\MyY) node[left] {##2} -- (\Xtwo,\MyY);
+}
+\def\Output##1##2{%
+   \pgfmathsetmacro{\Xone}{\Width}
+   \pgfmathsetmacro{\Xtwo}{\Width + \Wlen}
+   \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}
+   \draw[->] (\Xone,\MyY) -- (\Xtwo,\MyY) node[right] {##2};
+}
+\begin{TIKZP}[#1]
+   \draw (0,0) rectangle(#2,#3);
+}{%
+\end{TIKZP}
+}
 
 
 \begin{document}
