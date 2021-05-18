@@ -121,7 +121,7 @@ Here, two balls enter, one from the top, and one from the left
 \OnlyRemark{5}{The circuit elements involved in quantum computations must be \emph{reversible} and must contain the same number of inputs as outputs.}
 \end{frame}
 
-\begin{frame}{Common reversible gate used in quantum computing}{Uses the third input to greater advantage}
+\begin{frame}{The Toffoli / CCNOT gate}{Uses the third input to greater advantage}
 \TwoColumns{%
 \begin{itemize}
     \item<1-> The signals $a$ and $b$ are copied to their respective outputs.
@@ -157,6 +157,44 @@ An alternative view of this gate:
     \item<5-> It is thus also called a controlled-controlled-Not gate, or CCNOT.
 \end{itemize}
 }
+}
+    
+\end{frame}
+
+\begin{frame}{Generally reversible computation}{From \Kaye{} page 14}
+I need help with this
+    
+\end{frame}
+
+\begin{frame}{CNOT gate}{Two-bit version of CCNOT}
+\TwoColumns{%
+
+\begin{itemize}
+    \item $c$ controls whether the bottom output is a copy of $a$ or its complement.
+    \item The computation is reversible because
+    \[ \Xor{a}{(\Xor{c}{a})} = c \]
+    so we can recover $c$.
+\end{itemize}
+}{%
+\begin{GateBox}{2.5}{1.5}{2}
+\BoxLabel{CNOT}
+
+\Input{0}{$a$}
+\Input{1}{$c$}
+\Output{0}{$a$}
+\Output{1}{\Xor{c}{a}}
+\end{GateBox}
+\begin{center}
+\begin{tabular}{cc||cc}
+\multicolumn{2}{c}{Inputs} &
+\multicolumn{2}{c}{Outputs} \\
+$a$ & $c$  & $a$ & \Xor{c}{a} \\ \hline
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 1 & 0
+\end{tabular}
+\end{center}
 }
     
 \end{frame}
