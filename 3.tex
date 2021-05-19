@@ -84,7 +84,7 @@ Here, we can easily find an input that matches a given output, but we cannot hop
 }
 \end{frame}
 
-\section{Factoring}
+\section{Hard problems}
 
 \begin{frame}{Famous problem for quantum computing}{Given integer $n$, find integers $p$ and $q$ such that $pq=n$}
 \TwoColumns{%
@@ -105,4 +105,35 @@ As we will study, a quantum computer can solve this problem in polynomial time.
     
 \end{itemize}
 }
+\end{frame}
+
+\begin{frame}{Needle in an unstructured haystack}{The complexity of unstructured search}
+\TwoColumns{%
+\begin{itemize}
+    \item Consider a Boolean-valued function $f(x)$ over domain \Domain{D}, $\Mag{\Domain{D}}=2^{n}$.
+    \item For one special element $\SpecialX{x}\in\Domain{D}$, $f(\SpecialX{x})=\True$.
+    \item For all $x \not= \SpecialX{x}\ f(x)=\False{}$.
+    \item<3-> For analysis, let $N=2^{n}$, and we assume \Domain{D} has no structure to guide a search.
+\end{itemize}
+
+}{%
+\only<2>{%
+Some examples:
+\begin{itemize}
+    \item $n$ two-position switches
+    \item A \href{https://en.wikipedia.org/wiki/Combination_lock\#Single-dial_locks}{combination lock} with a dial of integers $1\ldots 2^{n/3}$.
+\end{itemize}}%
+\only<4->{%
+How much time does it take to find \SpecialX{x}?
+\begin{itemize}
+    \item Classically the best we can do is $\Theta(N)$, average- and worst-case.
+    \item If we use $p$ processors, this becomes $\Theta(N/p)$, but unless $p$ scales with $N$, the complexity is unimproved.
+    \item As we will study, \href{https://en.wikipedia.org/wiki/Grover\%27s_algorithm}{Grover's algorithm} offers a quantum computing solution taking $\Theta(\sqrt{N})$ time.
+\end{itemize}}
+}
+\OnlyRemark{5}{Think about how you would achieve such a bound looking for something.  The quantum world is strange but offers the promise of greater computing power.}
+\end{frame}
+
+\begin{frame}{The discrete log problem}{Key exchange protocol for \texttt{https}}
+    
 \end{frame}
