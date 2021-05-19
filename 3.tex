@@ -1,0 +1,69 @@
+\SetTitle{3}{Overview of computatonal complexity}{No energy lost or gained}{reverse}
+
+\section{Overview}
+
+\begin{frame}{Modeling computation}{Turing machines and complexity classes}
+\begin{itemize}
+    \item A \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing machine}~(TM) is a simple conceptual device that formalizes the state-to-state nature of computation.
+    \item Nobody really builds such a machine, but we say that anything that is computable can be computed on a TM.   
+    \only<2>{
+    \SmallSkip{}
+    Well some people do build such machines:
+    \begin{itemize}
+        \item \href{https://www.youtube.com/watch?v=E3keLeMwfHY}{Using 35mm film}
+        \item \href{https://www.youtube.com/watch?v=5_Hj5x6OWTM}{One with a connection to Washington University.}
+    \end{itemize}}
+    \item<3-> Here we can think of computation as a program we write. \only<3>{We have to make sure the language we use is clear about how many steps a given statement takes.}
+    \item<4-> We can then talk about the number of steps it takes to solve a problem of some size~$n$.  You should already be familiar with \href{https://en.wikipedia.org/wiki/Asymptotic_computational_complexity}{asymptotic notation to express complexity}, especially the time an algorithm or problem takes.
+\end{itemize}
+
+\OnlyRemark{5}{We will use asymptotic complexity to describe the time and area needed for computation on a quantum computer.}
+    
+\end{frame}
+
+\begin{frame}{What input provides a certain output?}{A common problem to consider}
+
+\TwoColumns{%
+\begin{center}
+
+\only<1-3>{
+\begin{GateBox}{2.5}{1}{1}
+\BoxLabel{$f(x)$}
+\Input{0}{$x$}
+\Output{0}{$y$}
+
+\end{GateBox}
+}
+\only<4-5>{
+\begin{GateBox}{2.5}{1}{1}
+\BoxLabel{$f(x)=2x+5$}
+\Input{0}{?}
+\Output{0}{105}
+
+\end{GateBox}
+}
+
+\end{center}
+\SmallSkip{}
+\begin{itemize}
+    \item What input value for $x$ produces a $y$ of interest?
+    \item If we have the inverse of f we could compute $x=f^{-1}(y)$, but not all functions are invertible.
+    \item Also some functions are invertible, but may take a long time to compute $x$.
+    
+\end{itemize}
+}{
+
+Consider the function $f(x)=2x+5$.  We can use algebra to compute $x=50$ when $f(x)=105$.
+
+}
+\end{frame}
+
+\section{Factoring}
+
+\begin{frame}{Famous problem for quantum computing}{Factoring a number that is the product of two large primes}
+A common problem related to cryptography is: given an integer $n$, compute integers $p$ and $q$ such that $pq=n$.  Computing $n$ from $p$ and $q$ is easy, but computing $p$ and $q$ from $n$ is \emph{apparently} hard.
+
+We don't know yet the true difficulty of this problem, but the best solutions on classical computers must try an exponential number of possibilties for $p$ and $q$.
+
+As we will study, a quantum computer can solve this problem in polynomial time.
+\end{frame}

@@ -167,7 +167,7 @@
    \draw[->] (\Xone,\MyY) -- (\Xtwo,\MyY) node[right] {##2};
 }
 \def\BoxLabel##1{%
-\node[draw, fit={(0,0) (\Width,\Height)}, inner sep=0pt, label=center:##1] (A) {};
+\node[draw, fit={(0,0) (\Width,\Height)}, inner sep=0pt, label=center:\mbox{##1}] (A) {};
 }
 \begin{TIKZP}[#1]
    \draw (0,0) rectangle(#2,#3);
@@ -179,5 +179,5 @@
 %% test
 %%
 \begin{document}
-\include{2}
+\include{3}
 \end{document}
