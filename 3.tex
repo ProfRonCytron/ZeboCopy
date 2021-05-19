@@ -149,7 +149,7 @@ for integers $x, y, g, p$.  Typically $p$ is a very large prime.}
 \begin{itemize}
     \item<2-> Consider $g=3$ and $p=17$
     \item<4-> Suppose $y=13$, what is $x$?
-    \item<5-> $x=4$ works.
+    \item<5-> $x=4$ works
 \end{itemize}
 }
 }{%
@@ -164,5 +164,19 @@ for integers $x, y, g, p$.  Typically $p$ is a very large prime.}
     \item Computing $x$ given $y$ is considered difficult classically.
 \end{itemize}
 }
+\OnlyRemark{6}{%
+The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete logarithm} problem.
+}
+    
+\end{frame}
+
+\begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log.}
+
+\begin{ProtocolDialog}{x}{y}
+\Both{Hi everybody, the world knows $g=3$ and $p=17$.}
+\Alice{hi Bob}
+\Bob{Hi Alice}
+    
+\end{ProtocolDialog}
     
 \end{frame}

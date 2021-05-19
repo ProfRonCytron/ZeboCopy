@@ -139,6 +139,15 @@
 \def\Kaye{\href{https://dl.acm.org/doi/10.5555/1206629}{Kaye}}
 \def\MikeIke{\href{https://dl.acm.org/doi/10.5555/1972505}{Nielson~and~Chuang}}
 
+\newcounter{ProtocolDialogStep}
+\newenvironment{ProtocolDialog}[2]{%
+\def\Incr{\stepcounter{ProtocolDialogStep}}
+\def\Both##1{\Incr{}\begin{center}\arabic{ProtocolDialogStep}. ##1\end{center}}%
+\def\Alice##1{\Incr{}\TwoColumns{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
+\def\Bob##1{\Incr{}\TwoColumns{\relax}{\arabic{ProtocolDialogStep}. ##1}}%
+\setcounter{ProtocolDialogStep}{0}
+}{%
+}
 %% #1 -- options
 %% #2 -- width
 %% #3 -- height
