@@ -172,11 +172,17 @@ The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/
 
 \begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log.}
 
-\begin{ProtocolDialog}{x}{y}
-\Both{Hi everybody, the world knows $g=3$ and $p=17$.}
-\Alice{hi Bob}
-\Bob{Hi Alice}
-    
+\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
+\All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}
+\All{Compute $5^{x}\bmod 23$}{I compute $A=5^{a}\bmod 23$.}{I compute $B=5^{b}\bmod 23$.}
+\All{}{I publish $A=17$.}{I publish $B=18$.}
+\All{Everybody hears:}{$B=18$}{$A=17$.}
+\All{}{I compute $B^{a}\bmod 23$.}{I compute $A^{b}\bmod 23$.}
+\All{}{I obtain 6.}{I obtain 6.}
+\All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}
 \end{ProtocolDialog}
+\OnlyRemark{2}{%
+It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known classical algorithm for efficiently computing $a$ given $A$ and $B$.  Alice and Bob share the key but nobody else can compute it efficiently unless they know $a$ or $b$.
+}
     
 \end{frame}

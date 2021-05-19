@@ -76,6 +76,16 @@
 \begin{column}{#2}#4\end{column}%
 \end{columns}%
 }
+\long\def\ThreeUnequalColumns#1#2#3#4#5#6{%
+\begin{columns}%
+\begin{column}{#1}#4\end{column}%
+\begin{column}{#2}#5\end{column}%
+\begin{column}{#3}#6\end{column}%
+\end{columns}%
+}
+\long\def\ThreeColumns#1#2#3{%
+\ThreeUnequalColumns{0.33\textwidth}{0.33\textwidth}{0.33\textwidth}{#1}{#2}{#3}%
+}
 \long\def\TwoColumns#1#2{%
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{#1}{#2}%
 }
@@ -140,13 +150,18 @@
 \def\MikeIke{\href{https://dl.acm.org/doi/10.5555/1972505}{Nielson~and~Chuang}}
 
 \newcounter{ProtocolDialogStep}
-\newenvironment{ProtocolDialog}[2]{%
+\newenvironment{ProtocolDialog}[3]{%
 \def\Incr{\stepcounter{ProtocolDialogStep}}
-\def\Both##1{\Incr{}\begin{center}\arabic{ProtocolDialogStep}. \fbox{##1}\end{center}}%
-\def\Alice##1{\Incr{}\TwoColumns{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
-\def\Bob##1{\Incr{}\TwoColumns{\relax}{\arabic{ProtocolDialogStep}. ##1}}%
+\def\Ref##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{\relax}{\relax}}%
+\def\Alice##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
+\def\All##1##2##3{%
+\Incr{}
+\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{##2}{##3}
+}
+\def\Bob##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\relax}{
+\arabic{ProtocolDialogStep}. ##1}}%
 \setcounter{ProtocolDialogStep}{0}%
-\TwoColumns{\textbf{Alice}}{\textbf{Bob}}
+\ThreeUnequalColumns{#1}{#2}{#3}{\textbf{Ref}}{\textbf{Alice}}{\textbf{Bob}}
 }{%
 }
 %% #1 -- options
