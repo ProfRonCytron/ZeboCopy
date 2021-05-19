@@ -21,12 +21,12 @@
     
 \end{frame}
 
-\begin{frame}{What input provides a certain output?}{A common problem to consider}
+\begin{frame}{What input provides a given output?}{A common problem to consider}
 
 \TwoColumns{%
 \begin{center}
 
-\only<1-3>{
+\only<1-2,5->{
 \begin{GateBox}{2.5}{1}{1}
 \BoxLabel{$f(x)$}
 \Input{0}{$x$}
@@ -34,7 +34,7 @@
 
 \end{GateBox}
 }
-\only<4-5>{
+\only<3-4>{
 \begin{GateBox}{2.5}{1}{1}
 \BoxLabel{$f(x)=2x+5$}
 \Input{0}{?}
@@ -46,14 +46,40 @@
 \end{center}
 \SmallSkip{}
 \begin{itemize}
-    \item What input value for $x$ produces a $y$ of interest?
-    \item If we have the inverse of f we could compute $x=f^{-1}(y)$, but not all functions are invertible.
-    \item Also some functions are invertible, but may take a long time to compute $x$.
+    \item<1-> What input value for $x$ produces a $y$ of interest?
+    \item<2-> If we have the inverse of f we could compute $x=f^{-1}(y)$
+    \item<5-> Not all functions are invertible.
+    \item<6-> Some functions may take a long time to find (an) $x\ |\ f(x)=y$.
     
 \end{itemize}
 }{
+\only<3-4>{%
+\begin{itemize}
+    \item<3-> Consider the function \[ f(x)=2x+5\]
+    \item<4> We can use algebra to compute $x=50$ when $f(x)=105$.
+\end{itemize}
+}%
+\only<5>{
+\begin{itemize}
+\item The function
+\[ f(x)=x^{2} \] is \emph{not} invertible, because each output has two possible inputs.  
+\item
+Here, we can easily find an input that matches a given output, but we cannot hope to create a function $f^{-1}(y)$.
+\end{itemize}
+}
+\only<6>{
+\begin{itemize}
+\item Examples if this include 
+\begin{itemize}
+    \item \href{https://en.wikipedia.org/wiki/Bitcoin}{Bitcoin}
+    \item \href{https://en.wikipedia.org/wiki/SHA-1}{SHA-1}
+    \item \href{https://en.wikipedia.org/wiki/MD5}{MD5}
+    \item and other similar hash functions
+\end{itemize}
 
-Consider the function $f(x)=2x+5$.  We can use algebra to compute $x=50$ when $f(x)=105$.
+\item A famous problem for quantum computing is shown next.
+\end{itemize}
+}
 
 }
 \end{frame}
