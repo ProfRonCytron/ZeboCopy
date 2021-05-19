@@ -67,8 +67,9 @@ Here, two balls enter, one from the top, and one from the left
 \begin{frame}{Not and And}{From page 12 of \Kaye{}.}
 \TwoColumns{%
 \begin{itemize}
-    \item<1-> The \emph{not} gate is reversible and is in fact its own inverse.
-    \item<2-> Is \And{a}{b} reversible if we know $a$?  \only<3->{No.} \only<3>{If $a=0$, $b$ could be either $0$ or $1$.}
+    \only<1>{
+    \item The \emph{not} gate is reversible and is in fact its own inverse.}
+    \item<2-> Is \And{a}{b} reversible if we know $a$?  \only<3->{\alert<3>{No}.} \only<3>{If $a=0$, $b$ could be either $0$ or $1$.}
     \item<4-> We need a copy of both inputs to create a reversible \emph{and} gate.
 \end{itemize}
  
@@ -84,7 +85,7 @@ Here, two balls enter, one from the top, and one from the left
 \end{GateBox}}
 
 \only<2-3>{\begin{GateBox}{2.5}{1}{2}
-\BoxLabel{Copy $a$/And}
+\BoxLabel{Reversible?}
 \Input{0}{$a$}
 \Input{1}{$b$}
 \Output{0}{$a$}
@@ -170,20 +171,20 @@ I need help with this
 \TwoColumns{%
 
 \begin{itemize}
-    \item We can say $c$ controls whether the bottom output is a copy of $a$ or its complement.
-    \item Or we can say $a$ controls whether the bottom output is a copy of $c$ or its complement.
-    \item The computation is reversible because
-    \[ \Xor{a}{(\Xor{c}{a})} = c \]
-    so we can recover $c$.
+    \item We can say $c$ controls whether the bottom output is $a$ or its complement.
+    \item<2-> We prefer to say $a$ controls whether the bottom output is $c$ or its complement. This is \CNOT{a}{c}.
+    \item<3-> The computation is reversible because
+    $\Xor{a}{(\Xor{c}{a})} = c $.  \only<3>{We can thus recover $c$.}
+    \item<4-> Here you see the quantum circuit symbol for \CNOT{a}{c}:  $a$ conditionally complements $c$.
 \end{itemize}
 }{%
-\begin{GateBox}{2.5}{1.5}{2}
+\begin{GateBox}{2}{1}{2}
 \BoxLabel{CNOT}
 
 \Input{0}{$a$}
 \Input{1}{$c$}
 \Output{0}{$a$}
-\Output{1}{\Xor{c}{a}}
+\Output{1}{\Xor{a}{c}}
 \end{GateBox}
 \begin{center}
 \begin{tabular}{cc||cc}
@@ -196,6 +197,14 @@ $a$ & $c$  & $a$ & \Xor{c}{a} \\ \hline
 1 & 1 & 1 & 0
 \end{tabular}
 \end{center}
+
+\only<4->{
+\begin{center}
+\begin{quantikz}
+\lstick{$a$} & \ctrl{1} & \qw & \rstick{$a$}\\ 
+\lstick{$c$} & \targ{}  & \qw & \rstick{\Xor{a}{c}}
+\end{quantikz}
+\end{center}
 }
-    
+}
 \end{frame}
