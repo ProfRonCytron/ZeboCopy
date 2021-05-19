@@ -112,7 +112,7 @@ As we will study, a quantum computer can solve this problem in polynomial time.
 \begin{itemize}
     \item Consider a Boolean-valued function $f(x)$ over domain \Domain{D}, $\Mag{\Domain{D}}=2^{n}$.
     \item For one special element $\SpecialX{x}\in\Domain{D}$, $f(\SpecialX{x})=\True$.
-    \item For all $x \not= \SpecialX{x}\ f(x)=\False{}$.
+    \item $\Forall{x \not= \SpecialX{x}}{f(x)=\False{}}$.
     \item<3-> For analysis, let $N=2^{n}$, and we assume \Domain{D} has no structure to guide a search.
 \end{itemize}
 
@@ -126,14 +126,43 @@ Some examples:
 \only<4->{%
 How much time does it take to find \SpecialX{x}?
 \begin{itemize}
-    \item Classically the best we can do is $\Theta(N)$, average- and worst-case.
-    \item If we use $p$ processors, this becomes $\Theta(N/p)$, but unless $p$ scales with $N$, the complexity is unimproved.
-    \item As we will study, \href{https://en.wikipedia.org/wiki/Grover\%27s_algorithm}{Grover's algorithm} offers a quantum computing solution taking $\Theta(\sqrt{N})$ time.
+    \item<4-> Classically the best we can do is $\Theta(N)$, average- and worst-case.
+    \item<5-> If we use $p$ processors, this becomes $\Theta(N/p)$, but unless $p$ scales with $N$, the complexity is unimproved.
+    \item<6-> As we will study, \href{https://en.wikipedia.org/wiki/Grover\%27s_algorithm}{Grover's algorithm} offers a quantum computing solution taking $\Theta(\sqrt{N})$ time.
 \end{itemize}}
 }
-\OnlyRemark{5}{Think about how you would achieve such a bound looking for something.  The quantum world is strange but offers the promise of greater computing power.}
+\OnlyRemark{7}{Consider how \emph{you} would achieve such a bound looking for something.  The quantum world is strange but offers the promise of greater computing power.}
 \end{frame}
 
-\begin{frame}{The discrete log problem}{Key exchange protocol for \texttt{https}}
+\begin{frame}{The discrete log problem}{\href{https://en.wikipedia.org/wiki/Diffie\%E2\%80\%93Hellman_key_exchange}{Key exchange protocol} for \href{https://en.wikipedia.org/wiki/HTTPS}{\texttt{https}}}
+\TwoColumns{%
+Consider the function
+\only<1-2>{
+\[ y = g^{x} \bmod p \]
+}%
+\only<3->{
+\[ y = 3^{x} \bmod 17 \]
+}%
+\visible<1-2>{%
+for integers $x, y, g, p$.  Typically $p$ is a very large prime.}
+\only<2->{
+\begin{itemize}
+    \item<2-> Consider $g=3$ and $p=17$
+    \item<4-> Suppose $y=13$, what is $x$?
+    \item<5-> $x=4$ works.
+\end{itemize}
+}
+}{%
+\begin{itemize}
+    \item Who knows what?
+    \begin{itemize}
+    \item The world knows $g$ and $p$.
+    \item $x$ is private
+    \item $y$ is public
+    \end{itemize}
+    \item Computing $y$ from $x$ is easy and efficient.
+    \item Computing $x$ given $y$ is considered difficult classically.
+\end{itemize}
+}
     
 \end{frame}
