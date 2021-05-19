@@ -1,4 +1,4 @@
-\SetTitle{3}{Overview of computatonal complexity}{No energy lost or gained}{reverse}
+\SetTitle{3}{Overview of computational complexity}{No energy lost or gained}{reverse}
 
 \section{Overview}
 
@@ -47,7 +47,7 @@
 \SmallSkip{}
 \begin{itemize}
     \item<1-> What input value for $x$ produces a $y$ of interest?
-    \item<2-> If we have the inverse of f we could compute $x=f^{-1}(y)$
+    \item<2-> Given the inverse of $f$, we could compute $x=f^{-1}(y)$
     \item<5-> Not all functions are invertible.
     \item<6-> Some functions may take a long time to find (an) $x\ |\ f(x)=y$.
     
@@ -69,7 +69,7 @@ Here, we can easily find an input that matches a given output, but we cannot hop
 }
 \only<6>{
 \begin{itemize}
-\item Examples if this include 
+\item Examples of this include 
 \begin{itemize}
     \item \href{https://en.wikipedia.org/wiki/Bitcoin}{Bitcoin}
     \item \href{https://en.wikipedia.org/wiki/SHA-1}{SHA-1}
@@ -86,15 +86,15 @@ Here, we can easily find an input that matches a given output, but we cannot hop
 
 \section{Hard problems}
 
-\begin{frame}{Famous problem for quantum computing}{Given integer $n$, find integers $p$ and $q$ such that $pq=n$}
+\begin{frame}{Famous problem for quantum computing}{Given an integer $n$, find integers $p$ and $q$ such that $pq=n$}
 \TwoColumns{%
 
 \begin{itemize}
     \item We don't know yet the true difficulty of this problem.
-    \item There is currently no polynomial-time algorithm for solving this problem.
+    \item Classically, there is no polynomial-time algorithm for solving this problem.
 \item<5->
 As we will study, a quantum computer can solve this problem in polynomial time.
-\item<6>{Do you see a 3 digit number embedded in each of the factors?}
+\item<6>{Do you see a 3-digit number embedded in each of the factors?}
 \end{itemize}
 }{
 \begin{itemize}
@@ -126,7 +126,7 @@ Some examples:
 \only<4->{%
 How much time does it take to find \SpecialX{x}?
 \begin{itemize}
-    \item<4-> Classically the best we can do is $\Theta(N)$, average- and worst-case.
+    \item<4-> Classically, the best we can do is $\Theta(N)$, average- and worst-case.
     \item<5-> If we use $p$ processors, this becomes $\Theta(N/p)$, but unless $p$ scales with $N$, the complexity is unimproved.
     \item<6-> As we will study, \href{https://en.wikipedia.org/wiki/Grover\%27s_algorithm}{Grover's algorithm} offers a quantum computing solution taking $\Theta(\sqrt{N})$ time.
 \end{itemize}}
@@ -182,7 +182,7 @@ The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/
 \All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}
 \end{ProtocolDialog}
 \OnlyRemark{2}{%
-It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key but nobody else can compute it efficiently unless they know $a$ or $b$.
+It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key and nobody else can compute it efficiently unless they know $a$ or $b$.
 }
     
 \end{frame}
