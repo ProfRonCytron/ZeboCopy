@@ -142,10 +142,11 @@
 \newcounter{ProtocolDialogStep}
 \newenvironment{ProtocolDialog}[2]{%
 \def\Incr{\stepcounter{ProtocolDialogStep}}
-\def\Both##1{\Incr{}\begin{center}\arabic{ProtocolDialogStep}. ##1\end{center}}%
+\def\Both##1{\Incr{}\begin{center}\arabic{ProtocolDialogStep}. \fbox{##1}\end{center}}%
 \def\Alice##1{\Incr{}\TwoColumns{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
 \def\Bob##1{\Incr{}\TwoColumns{\relax}{\arabic{ProtocolDialogStep}. ##1}}%
-\setcounter{ProtocolDialogStep}{0}
+\setcounter{ProtocolDialogStep}{0}%
+\TwoColumns{\textbf{Alice}}{\textbf{Bob}}
 }{%
 }
 %% #1 -- options
