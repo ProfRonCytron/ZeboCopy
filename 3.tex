@@ -86,10 +86,23 @@ Here, we can easily find an input that matches a given output, but we cannot hop
 
 \section{Factoring}
 
-\begin{frame}{Famous problem for quantum computing}{Factoring a number that is the product of two large primes}
-A common problem related to cryptography is: given an integer $n$, compute integers $p$ and $q$ such that $pq=n$.  Computing $n$ from $p$ and $q$ is easy, but computing $p$ and $q$ from $n$ is \emph{apparently} hard.
+\begin{frame}{Famous problem for quantum computing}{Given integer $n$, find integers $p$ and $q$ such that $pq=n$}
+\TwoColumns{%
 
-We don't know yet the true difficulty of this problem, but the best solutions on classical computers must try an exponential number of possibilties for $p$ and $q$.
-
+\begin{itemize}
+    \item We don't know yet the true difficulty of this problem.
+    \item There is currently no polynomial-time algorithm for solving this problem.
+\item<5->
 As we will study, a quantum computer can solve this problem in polynomial time.
+\item<6>{Do you see a 3 digit number embedded in each of the factors?}
+\end{itemize}
+}{
+\begin{itemize}
+    \item Can you factor 21 easily into its two prime factors?  \only<2->{$21=7\times 3$}
+    \item<3-> How about \[329716591508669867994509609\]
+    \item<4-> It is the product of the \href{https://en.wikipedia.org/wiki/Pell_number\#Primes_and_squares}{Pell prime} \[1746860020068409\]
+    and the \href{https://en.wikipedia.org/wiki/Wieferich_prime}{Wieferich prime} \[188748146801\]
+    
+\end{itemize}
+}
 \end{frame}
