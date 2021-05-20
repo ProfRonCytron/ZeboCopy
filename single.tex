@@ -5,7 +5,10 @@
 \usepackage{adjustbox}
 \usetikzlibrary{quantikz}
 \usepackage{xcolor}
-\logo{\includegraphics[height=2cm]{logo.pdf}}
+\logo{%
+\stackbox[c][c]{\includegraphics[height=1.15cm]{logo.pdf}\\[-3pt]{\textcopyright~2021}\\{Ron K. Cytron}}}
+
+% \logo{\includegraphics[height=2.5cm]{logo.pdf}}
 \def\ColorR#1{\textcolor{BrickRed}{#1}}
 \def\ColorG#1{\textcolor{OliveGreen}{#1}}
 \def\ColorB#1{\textcolor{NavyBlue}{#1}}
@@ -133,8 +136,10 @@
 \def\Vskip#1{\mbox{}\vskip #1\mbox{}}
 \def\Hskip#1{\mbox{}\hskip #1\mbox{}}
 \author{Ron K.~Cytron}
-\institute{Washington University\\Saint Louis, Missouri}
-\setbeamertemplate{footline}[frame number]
+\institute{Washington University\\Saint Louis, Missouri\\[2em] \textcopyright~2021 All rights reserved by the author}
+\setbeamertemplate{footline}[frame number]{}
+%\setbeamertemplate{footline}[text line]{%
+%  \parbox{\linewidth}{\vspace*{-8pt}\textcopyright~2021\hfill\insertshortauthor\hfill\insertpagenumber}}
 %% #1 -- lecture number
 %% #2 -- lecture title
 %% #3 -- lecture subtitle
