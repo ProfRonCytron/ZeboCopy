@@ -97,22 +97,18 @@
     \item<3-> Half of the light passes through.
     \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, behind the first one, rotated \Degrees{90}.
     \item<5-> No light passes through.  We should expect this.
-    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} in back of the other two filters.
-    \item<7> Still no light passes through.
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
 \visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
-\visible<2,4,6>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2,4>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<3-4>{%
 \foreach \x in {-1, -0.75,...,1} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 }
-\visible<4,6>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
-
-\visible<6>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 }
@@ -133,7 +129,7 @@
 }
 \visible<2>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
 \draw[->,thick] (0,0) -- (0,1) ;
-\draw[->,thick] (0,0) -- (-1,0) ;
+\draw[->,thick] (0,0) -- (-1,0);
 }
 \visible<3>{\begin{scope}[draw=Sepia,rotate=70]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
 \draw[->,thick] (0,0) -- (0,1);
@@ -144,6 +140,35 @@
 \end{center}
 }
     
+\end{frame}
+
+\begin{frame}{And now a surprise}{A filter can actually cause light to emerge.}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\begin{itemize}
+    \item<1-> Start with unpolarized light
+    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<3-> Half of the light passes through.
+    \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, behind the first one, rotated \Degrees{90}.
+    \item<5-> No light passes through.  We should expect this.
+    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} in back of the other two filters.
+    \item<7> Still no light passes through.  It was all absorbed by the second filter.
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\visible<2,4,6>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3-4>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\visible<4,6>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+
+\visible<6>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
 \end{frame}
 
 \begin{frame}{Double-slit experiment}
