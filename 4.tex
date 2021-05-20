@@ -87,6 +87,8 @@
 }
 \end{frame}
 
+
+
 \begin{frame}{Orthogonal filters}{They can eliminate all of the light.}
 \TwoColumns{%
 \begin{itemize}
@@ -94,7 +96,7 @@
     \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
     \item<3-> Half of the light passes through.
     \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, behind the first one, rotated \Degrees{90}.
-    \item<5-> No light passes through.  We probably expected this.
+    \item<5-> No light passes through.  We should expect this.
     \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} in back of the other two filters.
     \item<7> Still no light passes through.
 \end{itemize}
@@ -114,6 +116,34 @@
 \end{TIKZP}
 \end{center}
 }
+\end{frame}
+
+\begin{frame}{How much light passes through two filters?}{Getting quantitative}
+\TwoUnequalColumns{.70\textwidth}{.30\textwidth}{%
+\begin{itemize}
+    \item<1-> When the filters align, so the angle between them is~\Degrees{0}, there is no change in the light passed through the second filter.
+    \item<2-> When the filters are orthogonal, so the angle between them is~\Degrees{90}, no light passes through the second filter.
+    \item<3-> If you experiment with various angles and measure the fraction of light that enters the first filter and passes through the second, you will see that it is related to $\cos^{2}\theta$, where $\theta$ is the angle between the filters' relative orientations.\LinkArrow{https://en.wikipedia.org/wiki/Polarizer\#Malus's_law_and_other_properties}
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1-3>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (0,1) ;
+}
+\visible<2>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (0,1) ;
+\draw[->,thick] (0,0) -- (-1,0) ;
+}
+\visible<3>{\begin{scope}[draw=Sepia,rotate=70]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (0,1);
+\draw[->,thick] (0,0) -- (160:1);
+\draw (0,0) node[above left] {$\theta$};
+}
+\end{TIKZP}
+\end{center}
+}
+    
 \end{frame}
 
 \begin{frame}{Double-slit experiment}
