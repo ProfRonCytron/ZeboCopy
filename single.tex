@@ -41,6 +41,7 @@
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
+\def\Degrees#1{\ensuremath{#1^{\circ}}}
 
 \def\BigSkip{%
 
@@ -133,6 +134,11 @@
         \draw (\PFilterInc, #2) -- (\PFilterInc, #4);
     }
 }
+\def\RadiantArrows#1#2{%
+\foreach \p in {0, #1,...,360} {
+   \draw[#2] (0,0)  -- (\p:1) ;
+}
+}
 \def\Vskip#1{\mbox{}\vskip #1\mbox{}}
 \def\Hskip#1{\mbox{}\hskip #1\mbox{}}
 \author{Ron K.~Cytron}
@@ -207,5 +213,5 @@
 %% test
 %%
 \begin{document}
-\include{0}
+\include{4}
 \end{document}

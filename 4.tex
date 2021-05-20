@@ -1,1 +1,122 @@
-\SetTitle{4}{Physics in support of quantum effects}{physics}
+\SetTitle{4}{Physics in support of quantum effects}{So you become a believer}{physics}
+
+\section{Superposition}
+
+\begin{frame}{Polarized light}{Experiments you can do!}
+\begin{itemize}
+    \item The experiments described here can be carried out using any polarizing filter.
+    \item Examples include
+    \begin{description}
+        \item[sunglassees] These are polarized to cut down on reflected light from surfaces such as water.  That reflected light is typically polarized in horizontally, so these sunglasses admit only vertically polarized light.
+        \item[computer screen]  If you are watching these slides on an \href{https://en.wikipedia.org/wiki/Liquid-crystal_display}{LCD computer screen}, then the light reaching your eyeballs is (most likely linearly) polarized.
+    \end{description}
+    \item You can thus do these experiments with your computer screen and a pair of sunglasses, if both are linearly polarized.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A bad theory for polarization}{Based on the classical world}
+\TwoColumns{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> Light is a collection of waves, each due to one \href{https://en.wikipedia.org/wiki/Photon}{photon}.
+    \item<2-> Unpolarized light might then be many photons, each with an arbitrary angle of polarization.
+    \item<3-> What happens the photons strike a filter, as shown here?
+    \item<4-> Only those waves polarized vertically, or nearly so, would pass through. 
+\end{itemize}
+}{%
+\only<2->{%
+\Vskip{-3em}\begin{center}
+\begin{TIKZP}
+\RadiantArrows{22.5}{->,color=BrickRed,thick}
+\end{TIKZP}
+\end{center}
+}%
+\only<3->{%
+\begin{center}
+\begin{TIKZP}[overlay]
+\PFilter{-1}{0.0}{1}{2.5}{20}
+\end{TIKZP}
+\end{center}
+}%
+\only<4->{%
+\begin{center}
+\begin{TIKZP}[scale=0.5]
+
+  \draw[<->,thick,color=BrickRed] (0,-1) -- (0,1);
+
+\end{TIKZP}
+\end{center}
+}
+}
+\OnlyRemark{5}{If this is true, we should see a very small fraction of the light passing through. But we see $\frac{1}{2}$ of the light passing through.  How can this be?}
+\end{frame}
+
+\begin{frame}{Polarizing filters in succession}{Observations about this experiment}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> Start with unpolarized light
+    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<3-> Half of the light passes through.
+    \item<4-> Impose a second \textcolor{OliveGreen}{identical filter}.
+    \item<5-> No light is filtered out this time.
+    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45}.
+    \item<7> Half of the available light passes through, which is $\frac{1}{4}$ of the original light.
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\visible<2>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3-4,5,6>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\visible<4>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+
+\visible<6>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<7>{%
+\foreach \x in {-1, -0.5,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\end{TIKZP}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Orthogonal filters}{With an unexpected result}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> Start with unpolarized light
+    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<3-> Half of the light passes through.
+    \item<4-> Impose a second \textcolor{OliveGreen}{identical filter}.
+    \item<5-> No light is filtered out this time.
+    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45}.
+    \item<7> Half of the available light passes through, which is $\frac{1}{4}$ of the original light.
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\visible<2>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3-4,5,6>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\visible<4>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+
+\visible<6>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<7>{%
+\foreach \x in {-1, -0.5,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\end{TIKZP}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Double-slit experiment}
+\end{frame}
