@@ -198,10 +198,10 @@
 
 \begin{itemize}
     \item The energy in a wave is a function of its amplitude.
-    \item The energy to push against media to create a wave of amplitude $A$ is computed using hooks law: \[  F = -k\times x \] where $x$ is the displacement.
-    \item To achieve amplitude $A$ we must push continually from $0$ to $A$, so that the total energy is 
+    \item The energy to push a spring distance $x$ is: \[  F = -k\times x \] for some constant $k$ (\href{https://en.wikipedia.org/wiki/Hooke\%27s_law}{Hooke's law}).
+    \item To achieve amplitude $d$ we must push continually from $0$ to $d$, so that the total energy is 
     \[
-    \int_{0}^{A} kx \, dx = k\frac{A^{2}}{2}
+    \int_{0}^{d} kx \, dx = k\frac{d^{2}}{2}
     \]
 \end{itemize}
 }{%
@@ -209,7 +209,7 @@
 \begin{TIKZP}
 \draw (0,0) sin(1,1) cos (2,0) sin(3,-1) cos (4,0);
 \draw[->] (1,0) -- (1,1);
-\draw (1.2,0.2) node[above] {$A$};
+\draw (1.2,0.2) node[above] {$d$};
 \end{TIKZP}
 \end{center}
 }
