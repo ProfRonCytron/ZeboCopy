@@ -150,7 +150,7 @@
     \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, behind the first one, rotated \Degrees{90}.
     \item<5-> No light passes through.  We should expect this.
     \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} sandwiched \emph{between} the \textcolor{NavyBlue}{first} and \textcolor{OliveGreen}{second} filters.
-    \item<7> Some light passes through and is polarized according to the \textcolor{NavyBlue}{last} filter.
+    \item<7> Some light passes through and is polarized according to the \textcolor{NavyBlue}{last} filter. \ToDo{clip the arrows}
 \end{itemize}
 }{%
 \begin{center}
@@ -191,4 +191,26 @@
 \end{frame}
 
 \begin{frame}{Double-slit experiment}
+\end{frame}
+
+\begin{frame}{The energy of a wave}{This is related to the probability of seeing a given outcome.}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+
+\begin{itemize}
+    \item The energy in a wave is a function of its amplitude.
+    \item The energy to push against media to create a wave of amplitude $A$ is computed using hooks law: \[  F = -k\times x \] where $x$ is the displacement.
+    \item To achieve amplitude $A$ we must push continually from $0$ to $A$, so that the total energy is 
+    \[
+    \int_{0}^{A} kx \, dx = k\frac{A^{2}}{2}
+    \]
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\draw (0,0) sin(1,1) cos (2,0) sin(3,-1) cos (4,0);
+\draw[->] (1,0) -- (1,1);
+\draw (1.2,0.2) node[above] {$A$};
+\end{TIKZP}
+\end{center}
+}
 \end{frame}
