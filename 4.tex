@@ -1,19 +1,28 @@
-\SetTitle{4}{Physics in support of quantum effects}{So you become a believer}{physics}
+\SetTitle{4}{The physics}{Becoming a believer}{physics}
 
-\section{Superposition}
-
-\subsection{Polarized light}
-\begin{frame}{Polarized light}{Experiments you can do!}
+\section{Overview}
+\begin{frame}{Overview}{What will we study here?}
 \begin{itemize}
-    \item The experiments described here can be carried out using any polarizing filter.
+    \item We have some experience with polarized light, so we begin by investigating some theories about how a succession of polarizing filters behaves.  This will serve as our introduction to \href{https://en.wikipedia.org/wiki/Quantum_superposition}{superposition}.
+    \item We must look at the classic \href{https://en.wikipedia.org/wiki/Double-slit_experiment}{double-slit} experiment which involves both superposition and \href{https://en.wikipedia.org/wiki/Wave_interference}{wave interference}.
+    \item We return to polarized light by playing some \href{http://play.quantumgame.io/}{quantum games} (new site \href{https://lab.quantumflytrap.com/lab}{here}).
+\end{itemize}
+    
+\end{frame}
+\section{Polarized light}
+
+\begin{frame}{Polarized light}{Experiments you can do with commonly found polarizing filters}
+\begin{itemize}
+    \item The experiments described here can be carried out using \href{https://en.wikipedia.org/wiki/Polarizer}{polarizers}.
     \item Examples include
     \begin{description}
-        \item[sunglasses] These are polarized to cut down on reflected light from surfaces such as water.  Reflected light is typically polarized horizontally, so these sunglasses admit only vertically polarized light.
+        \item[sunglasses] These are polarized to diminish reflected light from surfaces such as water.  Such light is typically polarized horizontally, so these sunglasses admit only vertically polarized light.
         \item[computer screen]  If you are watching these slides on an \href{https://en.wikipedia.org/wiki/Liquid-crystal_display}{LCD computer screen}, the light reaching your eyeballs is (most likely) linearly polarized.
     \end{description}
-    \item You can thus do these experiments with your computer screen and a pair of sunglasses, if both are linearly polarized.
-    \item In the slides that follow, light is emitted from the screen and heading toward you.    Each successive filter is placed in front of the previous one.
+    \item You can thus do these experiments with your computer screen and two pairs of polarizing sunglasses.
+    
 \end{itemize}
+\OnlyRemark{2}{In the slides that follow, light is emitted from the screen and heading toward you.    Each successive filter is placed in front of the previous one.}
 \end{frame}
 
 \begin{frame}{A bad theory for polarization}{Based on the classical world}
@@ -225,7 +234,7 @@
 \visible<6->{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<6-7>{%
 \begin{scope}[rotate=90]
-\foreach \x in {-0.5,0, ...,0.5} {
+\foreach \x in {-0.5,0.5} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 \end{scope}
@@ -235,6 +244,9 @@
 \end{center}
 }
 \end{frame}
+
+\section{Double-slit experiment}
+
 \begin{frame}{Double-slit experiment}
 \end{frame}
 
@@ -242,10 +254,10 @@
 \SineWave{#1}
 \draw[->] (1,0) -- (1,#1) node[right] {x};
 }
-\begin{frame}{The energy of a wave}{This is related to the probability of seeing a given outcome.}
+\begin{frame}{The intensity of a wave}{This is related to the probability of seeing a given outcome.}
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
-    \item<1-> The energy in a wave is a function of its amplitude~$d$.
+    \item<1-> The \href{https://en.wikipedia.org/wiki/Intensity_(physics)}{intensity of a wave} is a function of its amplitude~$d$.
     \item<2-> The force to push a spring distance $x$ is: \[  F = k\times x \] for some constant $k$ (\href{https://en.wikipedia.org/wiki/Hooke\%27s_law}{Hooke's law}).
     \item<3-> We have to keep pushing~$x$ to achieve the amplitude~$d$.
     \item<6> Thus the energy is proportional to the \emph{square} of the amplitude.
@@ -277,3 +289,5 @@
     \]}
 }
 \end{frame}
+
+\section{Quantum games}
