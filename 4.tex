@@ -238,24 +238,42 @@
 \begin{frame}{Double-slit experiment}
 \end{frame}
 
+\def\GrowingWave#1{%
+\SineWave{#1}
+\draw[->] (1,0) -- (1,#1) node[right] {x};
+}
 \begin{frame}{The energy of a wave}{This is related to the probability of seeing a given outcome.}
-\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
-
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
-    \item The energy in a wave is a function of its amplitude.
-    \item The energy to push a spring distance $x$ is: \[  F = -k\times x \] for some constant $k$ (\href{https://en.wikipedia.org/wiki/Hooke\%27s_law}{Hooke's law}).
-    \item To achieve amplitude $d$ we must push continually from $0$ to $d$, so that the total energy is 
-    \[
-    \int_{0}^{d} kx \, dx = k\frac{d^{2}}{2}
-    \]
+    \item<1-> The energy in a wave is a function of its amplitude~$d$.
+    \item<2-> The force to push a spring distance $x$ is: \[  F = k\times x \] for some constant $k$ (\href{https://en.wikipedia.org/wiki/Hooke\%27s_law}{Hooke's law}).
+    \item<3-> We have to keep pushing~$x$ to achieve the amplitude~$d$.
+    \item<6> Thus the energy is proportional to the \emph{square} of the amplitude.
+ 
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
-\draw (0,0) sin(1,1) cos (2,0) sin(3,-1) cos (4,0);
+\visible<1>{
+\SineWave{1.0}
 \draw[->] (1,0) -- (1,1);
+\draw (1.2,0.2) node[above] {$d$};}
+\visible<2>{
+\GrowingWave{0.25}}
+\visible<3>{
+\GrowingWave{0.50}}
+\visible<4>{
+\GrowingWave{0.75}}
+\visible<5>{
+\GrowingWave{1.0}
 \draw (1.2,0.2) node[above] {$d$};
+}
+
 \end{TIKZP}
 \end{center}
+   \only<5->{ To achieve amplitude $d$ we must push continually from $0$ to $d$, so that the total energy is 
+    \[
+    \int_{0}^{d} kx \, dx = k\frac{d^{2}}{2}
+    \]}
 }
 \end{frame}
