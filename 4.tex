@@ -151,7 +151,7 @@
     \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, in front the first one, rotated \Degrees{90}.
     \item<5-> You see no light, like previously.
     \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} sandwiched \emph{between} the \textcolor{NavyBlue}{first} and \textcolor{OliveGreen}{second} filters.
-    \item<7> You now see some light passing through and is polarized according to the \textcolor{NavyBlue}{last} filter. \ToDo{clip the arrows}
+    \item<7> You now see some light passing through and is polarized according to the \textcolor{OliveGreen}{last} filter.
 \end{itemize}
 }{%
 \begin{center}
@@ -166,8 +166,8 @@
 \visible<6,7>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<4,6,7>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<7>{%
-\begin{scope}
-\foreach \x in {-1, -0.5,...,1} {
+\begin{scope}[rotate=90]
+\foreach \x in {-0.5,0, ...,0.5} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 \end{scope}
@@ -191,6 +191,50 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Reinterpretation of the surprise}{We have to analyze the effects of each filter in turn.}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\begin{itemize}
+    \item<1-> Start with unpolarized light
+    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<3-> You see half the light passing through.
+.
+    \item<4-> The \textcolor{orange}{another filter} at \Degrees{45} sandwiched is next.
+    \item<5-> Its angle will cause $\cos^2(\pi/4)=1/2$ of the light to pass through.
+        \item<6-> Add the final filter \textcolor{OliveGreen}{identical filter}, rotated \Degrees{90}.
+    \item<6-> Its angle with the previous filter is also \Degrees{45}, so that the light is cut down by another factor of 2.
+    
+    \item<7> You thus see $1/4$ of the original light, polarized according to the \textcolor{OliveGreen}{last} filter.
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\visible<2->{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2-3>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\visible<4->{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4-5>{%
+\begin{scope}[rotate=45]
+\foreach \x in {-0.5,-0.25,...,0.5} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+\end{scope}}
+\visible<6->{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<6-7>{%
+\begin{scope}[rotate=90]
+\foreach \x in {-0.5,0, ...,0.5} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+\end{scope}
+}
+
+\end{TIKZP}
+\end{center}
+}
+\end{frame}
 \begin{frame}{Double-slit experiment}
 \end{frame}
 
