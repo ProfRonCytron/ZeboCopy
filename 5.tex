@@ -26,11 +26,25 @@
 
 \end{frame}
 \begin{frame}{test}{test}
-\begin{TIKZP}
+\TwoColumns{%
+}{%
+\begin{center}
+\begin{TIKZP}[scale=0.75]
     \LightSource{}
     \Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
     \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
-    \Shift{6}{0}{\Measurement{}}
+    \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
+    \Shift{2}{-4}{\RotateAroundCenter{-45}{\Mirror}}
+    \Shift{6}{0}{\Measurement[color=orange]{}}
+    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
+    \Shift{6}{-4}{\Measurement[color=OliveGreen]{}}
+    \visible<2->{\draw[thick,color=orange] (2.5,0.5) -- (6,0.5);}
+    \visible<3->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \visible<4->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
+    \draw[thick,color=red] (1,0.5) -- ++(1.5,0);
+
 \end{TIKZP}
+\end{center}
+}
     
 \end{frame}
