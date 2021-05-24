@@ -1,4 +1,4 @@
-\SetTitle{5}{Single qubit systems}{How do we characterize a single qubit?}{singlequbit}
+\SetTitle{5}{Single qubit systems}{How do we characterize quantum systems?}{singlequbit}
 
 \section{Overiew}
 
@@ -39,11 +39,14 @@ Mathematically, we will model that behavior using orthogonal basis vectors.}
 
 \visible<2->{
 \begin{TIKZP}
+    \draw[->,thick,color=red] (0,0.5) -- ++(0.5,0) -- ++(0,-0.5);
     \RotateAroundCenter{-45}{\Mirror{}}
 \end{TIKZP}}
 
 \visible<3->{
 \begin{TIKZP}
+    \draw[->,thick,color=red] (0,0.5) -- ++(0.5,0) -- ++(0,-0.5);
+    \draw[->,thick,color=red] (0.5,0.5) -- (1.0,0.5);
     \RotateAroundCenter{-45}{\BeamSplitter{}}
 \end{TIKZP}}
 \end{center}
