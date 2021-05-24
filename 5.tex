@@ -21,17 +21,16 @@
 \begin{TIKZP}
     \LightSource{}
     \Shift{1}{1}{\Mirror{}}
-    \Shift{1}{0}{\BeamSplitter[rotate=45]{}}
+    \Shift{1}{0}{\RotateAroundCenter{45}{\BeamSplitter{}}}
 \end{TIKZP}
 
 \end{frame}
 \begin{frame}{test}{test}
 \begin{TIKZP}
-    \Shift{-2}{-0.5}{%
-    \LightSource{}}
-    \BeamSplitter[rotate=-45]{}
-    \Shift{2}{0}{
-    \BeamSplitter[rotate=-45]}
+    \LightSource{}
+    \Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+    \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
+    \Shift{6}{0}{\Measurement{}}
 \end{TIKZP}
     
 \end{frame}
