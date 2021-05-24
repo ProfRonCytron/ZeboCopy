@@ -192,6 +192,8 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 }
 \end{frame}
 
+\section{Quantum systems}
+
 \begin{frame}{Modeling quantum systems}{We shall typically use qubits.}
 \begin{itemize}
     \item<1-> Generally, a quantum element could be in a superposition of $d$ mutually orthogonal measurement outcomes.
@@ -204,3 +206,151 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
     \item<6-> As with classical computing bits, larger quantum systems are implemented with multiple (2-state) qubits. An n-qubit system is computationally equivalent to a $2^{n}$-valued qudit system. A proof follows from equivalence of basis vectors.
 \end{itemize}
 \end{frame}
+
+\begin{frame}{A single-qubit system revisited}{Measurement outcomes}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\begin{itemize}
+    \item<1-> Let \ket{0} and \ket{1} represent horizontal and vertical polarization, respectively.  
+    \item<2-> A photon that passes through a horizontal filter is in state \ket{0}.
+    \item<3-> And a photon that passes through a vertical filter is in state \ket{1}.
+\end{itemize}
+
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1-4>{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<2>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+\OnlyRemark{4}{Passing through a filter constitutes a \emph{measurement}, so that the photon will be observed to be \ket{0} or \ket{1} due to the filter.  In one case the photon passes through;  in the other case, its energy is absorbed by the filter.}
+\end{frame}
+
+\begin{frame}{Preparation of state}{Polarizing filters create a known starting state.}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\begin{itemize}
+    \item<1> If we begin with a source of unpolarized light.
+    \item<2-> Then a horizontal filter is a source of photons that are all in state \ket{0}.
+    \item<3-> Similarly, a vertical filter acts a source of photons in state \ket{1}.
+\end{itemize}
+
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\visible<2>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (-1,\x) -- (1,\x);
+}
+}
+\visible<3>{%
+\foreach \x in {-1, -0.75,...,1} {
+\draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
+}
+}
+\visible<2-3>{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<2>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+\OnlyRemark{4}{We say in such cases that a photon has been \emph{prepared} in state~\ket{0} or~\ket{1}, depending on the filter.}
+\end{frame}
+
+\begin{frame}{What about an arbitrarily polarized photon?}{How do we represent its state?}
+\Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{itemize}
+    \item<1-> If the photon has been prepared at angle $\theta$ with the horizontal axis
+    \item<2-> then its state is
+    \[ \cos{\theta}\ket{0} + \sin{\theta}\ket{1} \]
+    \item<3-> The measurement outcomes and their liklihoods are:
+    \begin{description}
+        \item[\ket{0}] with probability $\cos^{2}\theta$
+        \item[\ket{1}] with probability $\sin^{2}\theta$
+    \end{description}
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}
+\visible<1->{\draw[->,color=BrickRed] (0,0) -- (70:1);
+\draw[color=BrickRed] (0.2,0) node[above right] {$\theta$};
+}
+\visible<1->{
+\draw[->, thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->, thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\end{TIKZP}
+\begin{itemize}
+    \item<4-> This matches photons prepared when $\theta=\Degrees{0}$ or $\theta=\Degrees{90}$.
+    \item<5-> With $\cos^{2}\theta+\sin^{2}\theta=1$, every photon is measured as \ket{0} or \ket{1}.
+    \item<6-> When $\theta=\Degrees{45}$, $\cos^{2}\theta = \sin^{2}\theta = \frac{1}{2
+    }$
+\end{itemize}
+\end{center}
+}
+\OnlyRemark{7}{Unpolarized light behaves as if $\theta=\Degrees{45}$. The photons measure half \ket{0} and half \ket{1}.}
+\end{frame}
+
+\begin{frame}{Wave amplitudes and probabilities}{One is the square of the other.}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> Recall the state of a photon prepared to be polarized with angle~$\theta$:
+    \[ \cos\theta\ket{0} + \sin\theta\ket{1} \]
+    \item<2-> More generally a single qubit is specified as
+    \[ \alpha\ket{0} + \beta\ket{1} = \SQB{\alpha}{\beta} \]
+    subject to $\Prob{\alpha} + \Prob{\beta} = 1$
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<1-> The wave amplitudes can be positive or negative.  Here they are real-valued but in general they are complex-valued.
+    \item<3-> For real-valued coefficients, $\Prob{a} = a^{2}$
+    \item<3-> For complex-valued coefficients
+    $\Prob{a} = \Conj{a}a$
+\end{itemize}
+}
+    
+\end{frame}
+
+\def\MZ{%
+\LightSource{}
+\Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\Shift{2}{-2}{\RotateAroundCenter{-45}{\Mirror{}}}
+\Shift{6}{0}{\RotateAroundCenter{-45}{\Mirror{}}}
+\Shift{6}{-2}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\Shift{8}{-2}{\Measurement[color=orange]{}}
+\Shift{6}{-4}{\RotateAroundCenter{-90}{\Measurement[color=NavyBlue]{}}}
+}
+\begin{frame}{Why complex-valued coefficients?}{They represent phase.}
+\begin{itemize}
+    \item Some sources defer the use of complex values for wave amplitudes, but they are essential for quantum computing.
+    \item We can demonstrate their usefulness with a simple photon diagram like the ones we have seen before.
+\end{itemize}
+
+\begin{center}
+\begin{TIKZP}[scale=0.7]
+\MZ{}
+\end{TIKZP}
+\end{center}
+\end{frame}
+
+\begin{frame}{hold}
+\begin{TIKZP}
+
+\visible<5>{\begin{scope}[draw=Sepia,rotate=-20]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (1,0);
+\draw[->,thick] (0,0) -- (70:1);
+\draw (0.2,0) node[above right] {$\theta$};
+}
+
+\end{TIKZP}
+\end{frame}
+
+
+

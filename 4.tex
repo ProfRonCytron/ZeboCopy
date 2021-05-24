@@ -134,17 +134,16 @@
 }{%
 \begin{center}
 \begin{TIKZP}
-\visible<1-3>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
-\draw[->,thick] (0,0) -- (0,1) ;
+\visible<1-3>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (1,0) ;
 }
-\visible<2>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
-\draw[->,thick] (0,0) -- (0,1) ;
-\draw[->,thick] (0,0) -- (-1,0);
-}
-\visible<3>{\begin{scope}[draw=Sepia,rotate=70]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\visible<2>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (1,0) ;
 \draw[->,thick] (0,0) -- (0,1);
-\draw[->,thick] (0,0) -- (160:1);
-\draw (0,0) node[above left] {$\theta$};
+}
+\visible<3>{\begin{scope}[draw=Sepia,rotate=-20]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\draw[->,thick] (0,0) -- (70:1);
+\draw (0.2,0) node[above right] {$\theta$};
 }
 \end{TIKZP}
 \end{center}
