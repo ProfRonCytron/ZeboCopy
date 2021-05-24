@@ -48,7 +48,7 @@ Mathematically, we will model that behavior using orthogonal basis vectors.}
 \end{center}
 }
 \OnlyRemark{4}{%
-The beam splitter places a photon into a \emph{superposition} of two paths.  In a picture denoting those paths, you must keep in mind that there is only \emph{one} photon depicted, but that photon is in a superposition of locations.
+The beam splitter places a photon into a \emph{superposition} of two paths.  In pictures that show possible paths, remember that there is only \emph{one} photon depicted.
 }
 
 \end{frame}
@@ -84,34 +84,45 @@ These outcomes are mutually exclusive because there is just one photon.  It can 
 
 \begin{frame}{Naming the two possible paths}{We use the \emph{ket} notation defined previously.}
 \begin{itemize}
-    \item With two possible paths, we have a binary system that resembles a 1-bit classical system.
-    \item However, a single bit is either one way or the other, and we cannot express superpositions.
+    \item<1-> With two possible paths, we have a binary system that resembles a 1-bit classical system.
+    \item<2-> However, a single bit is either one way or the other, and we cannot express superpositions.
     
 \end{itemize}
 \TwoColumns{%
 \begin{itemize}
-    \item Let $\QZero{} = \PZero{}$ be \textcolor{orange}{one path}.
-    \item Let $\QOne{} = \POne{}$ be \textcolor{NavyBlue}{the other}.
-    \item We can verify these are orthogonal:
+    \item<3-> Let \textcolor{orange}{$\QZero{} = \PZero{}$} be \textcolor{orange}{one path}.
+    \item<3-> Let \textcolor{NavyBlue}{$\QOne{} = \POne{}$} be \textcolor{NavyBlue}{the other}.
+    \item<4-> We can verify these are orthogonal:
     \begin{itemize}
         \item $\braket{0}{1} = 0$
         \item $\braket{1}{0} = 0$
     \end{itemize}
 \end{itemize}
 }{%
+\visible<5->{%
 A superposition of paths is then
 \[
-\alpha\ket{0} + \beta\ket{1} = \SQB{\alpha}{\beta}
+\alpha\textcolor{orange}{\ket{0}} + \beta\textcolor{NavyBlue}{\ket{1}} = \SQB{\alpha}{\beta}
 \]
-where $\alpha$ and $\beta$ denote the nature of the presence of \ket{0} and \ket{1}, respectively.
-
-We require $\Mag{\alpha}^{2}+\Mag{\beta}^{2} = 1$.
-
+where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but it's more involved.
+}
 }
 \end{frame}
 
-\begin{frame}{An example for $d=3$}{This photon is measured in one of three places}
+\begin{frame}{Three orthogonal states}{This photon is measured in one of three places.}
 \TwoColumns{%
+\begin{itemize}
+    \item<1-> Here we see two beam splitters.  The photon arrives a the first one and with equal probability it
+    \begin{itemize}
+        \item<2-> passes through or
+        \item<3-> reflects downward.
+    \end{itemize}
+    \item<4-> At the second beam splitter, it either 
+    \begin{itemize}
+        \item<5-> passes through, or
+        \item<6-> reflects downward.
+    \end{itemize}
+\end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}[scale=0.75]
@@ -123,28 +134,70 @@ We require $\Mag{\alpha}^{2}+\Mag{\beta}^{2} = 1$.
     \Shift{6}{0}{\Measurement[color=orange]{}}
     \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
     \Shift{6}{-4}{\Measurement[color=OliveGreen]{}}
-    \visible<2->{\draw[thick,color=orange] (2.5,0.5) -- (6,0.5);}
-    \visible<3->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
-    \visible<4->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
+    \visible<2->{\draw[thick,color=orange] (2.5,0.5) -- (4.5,0.5);}
+    \visible<5->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
+    \visible<6->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \visible<3->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
+    \draw[thick,color=red] (1,0.5) -- ++(1.5,0);
+
+\end{TIKZP}
+\end{center}
+\only<3>{\textcolor{OliveGreen}{There is thus a 50\% chance of hitting the bottom measuring device.}
+}
+\only<5>{\textcolor{orange}{There is a 25\% chance of hitting the top measuring device.}}
+\only<6>{\textcolor{NavyBlue}{There is a 25\% chance of hitting the middle measuring device.}}
+}
+    
+\end{frame}
+
+\begin{frame}{Naming the three possible paths}{We can add one more basis vector.}
+\TwoColumns{%
+
+    \visible<1,4->{\textcolor{orange}{$\QZero{} = \begin{pmatrix}1\\ 0\\ 0\end{pmatrix}$}}
+    \visible<2,4->{\textcolor{NavyBlue}{$\QOne{} = \begin{pmatrix}0 \\ 1\\ 0\end{pmatrix}$}}
+    \visible<3,4->{\textcolor{OliveGreen}{$\ket{2} = \begin{pmatrix}0 \\ 0\\ 1\end{pmatrix}$}}
+    
+\begin{itemize}
+    \item<4-> We can verify $\Forall{i\not=j}{\braket{i}{j}=0}$ so these are mutually orthogonal basis vectors.
+    \item<5> A superposition is then
+    \[
+    \alpha\textcolor{orange}{\ket{0}} +
+    \beta\textcolor{NavyBlue}{\ket{1}} +
+    \gamma\textcolor{OliveGreen}{\ket{2}} = \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix}
+    \]
+\end{itemize}
+
+}{%
+\begin{center}
+\begin{TIKZP}[scale=0.75]
+    \LightSource{}
+    \Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+    \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
+    \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
+    \Shift{2}{-4}{\RotateAroundCenter{-45}{\Mirror}}
+    \Shift{6}{0}{\Measurement[color=orange]{}}
+    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
+    \Shift{6}{-4}{\Measurement[color=OliveGreen]{}}
+    \visible<1->{\draw[thick,color=orange] (2.5,0.5) -- (4.5,0.5);}
+    \visible<1->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
+    \visible<2->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \visible<3->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
     \draw[thick,color=red] (1,0.5) -- ++(1.5,0);
 
 \end{TIKZP}
 \end{center}
 }
-    
 \end{frame}
 
-\begin{frame}{holding}
+\begin{frame}{Modeling quantum systems}{We shall typically use qubits.}
 \begin{itemize}
- \item For example, a single photon that goes through beam splitters as shown here will be measured in one of three places.
-    \item The abstraction representing the state of such an element is generally a \emph{qudit}.
-    \item The measurement is measured to be in 
-    \item In a quantum systems, the possible measurements for a single The outcomes of a quantum measurement form a mutually orthogonal set of quantum states.
-    \item If there are $d>2$ possible outcomes, we represent a quantum state by a $d$-valued 
-    \href{https://en.wiktionary.org/wiki/qudit}{qudit}.  For example, an electron that has $d$ possible excited states 
-    \item If $d=3$ the qudit is sometimes called
+    \item Generally, a quantum element could be in a superposition of $d$ mutually orthogonal measurement outcomes.
+    \item If there are $d>2$ such outcomes, we represent a quantum state by a $d$-valued 
+    \href{https://en.wiktionary.org/wiki/qudit}{qudit}. 
+    If $d=3$ the qudit is sometimes called
     a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.
-    \item More commonly, in quantum computing we consider quantum states with only two outcomes.
-    
-    \end{itemize}
+    \item Quantum computing focuses on \emph{qubits}, each having two possible measurement outcomes.
+    \item In the \href{https://en.wikipedia.org/wiki/Qubit\#Qubit_states}{standard basis}, those are always $\QZero{}=\PZero{}$ and $\QOne{} = \POne{}$.
+    \item As with classical computing bits, larger quantum systems are implemented with multiple (2-state) qubits. An n-qubit system is computationally equivalent to a $2^{n}$-valued qudit system. A proof follows from equivalence of basis vectors.
+\end{itemize}
 \end{frame}
