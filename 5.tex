@@ -1,31 +1,91 @@
 \SetTitle{5}{Single qubit systems}{How do we characterize a single qubit?}{singlequbit}
 
 \section{Overiew}
-\begin{frame}{Qubits and beyond}{How many outcomes can we see?}
+
+\begin{frame}{Orthogonality}{A set of mutually exclusive outcomes}
 \begin{itemize}
     \item A quantum computing system contains elements, such as electrons, ions, or photons, whose quantum behavior can be influenced to achieve computation.
     \item When measured, each quantum element will be in one of a mutually orthogonal set of $d$~states.
-    \item For example, a single photon that goes through beam splitters as shown here will be measured in one of three places.
-    \item The abstraction representing the state of such an element is generally a \emph{qudit}.
-    \item The measurement is measured to be in 
-    \item In a quantum systems, the possible measurements for a single The outcomes of a quantum measurement form a mutually orthogonal set of quantum states.
-    \item If there are $d>2$ possible outcomes, we represent a quantum state by a $d$-valued 
-    \href{https://en.wiktionary.org/wiki/qudit}{qudit}.  For example, an electron that has $d$ possible excited states 
-    \item If $d=3$ the qudit is sometimes called
-    a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.
-    \item More commonly, in quantum computing we consider quantum states with only two outcomes.  
     
 \end{itemize}
+\OnlyRemark{2}{In a physical system, the outcomes will be physically exclusive, so that only one of the~$d$ outcomes can ever occur.
+
+Mathematically, we will model that behavior using orthogonal basis vectors.}
 \end{frame}
-\begin{frame}{test}{test}
+
+
+\begin{frame}{Quantum game components}{From \href{http://play.quantumgame.io/}{Play Quantum games}}
+
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+
+\begin{itemize}
+
+    \item<1-> This is an ideal light source that emits exactly one photon at a time.  We are interested in the path(s) a single photon can take.
+    \item<2-> The mirror reflects a photon at a \Degrees{90} angle.
+    \item<3-> With equal probability, yet utter unpredictability, a beam splitter takes a photon and either
+    \begin{itemize} 
+       \item allows the photon to continue undisturbed, or
+       \item reflects the photon like a mirror.
+    \end{itemize}
+\end{itemize}
+
+}{%
+\Vskip{-3em}\begin{center}
+\visible<1->{
 \begin{TIKZP}
     \LightSource{}
-    \Shift{1}{1}{\Mirror{}}
-    \Shift{1}{0}{\RotateAroundCenter{45}{\BeamSplitter{}}}
-\end{TIKZP}
+\end{TIKZP}}
+
+\visible<2->{
+\begin{TIKZP}
+    \RotateAroundCenter{-45}{\Mirror{}}
+\end{TIKZP}}
+
+\visible<3->{
+\begin{TIKZP}
+    \RotateAroundCenter{-45}{\BeamSplitter{}}
+\end{TIKZP}}
+\end{center}
+}
+\OnlyRemark{4}{%
+The beam splitter places a photon into a \emph{superposition} of two paths.  In a picture denoting those paths, you must keep in mind that there is only \emph{one} photon depicted, but that photon is in a superposition of locations.
+}
 
 \end{frame}
-\begin{frame}{test}{test}
+
+\begin{frame}{A photon in superposition}{There are two possible paths.}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> The light source emits a single photon.
+    \item<2,4-> \textcolor{orange}{In the path shown here, the beam splitter does not reflect the photon.}
+    \item<3,4-> \textcolor{NavyBlue}{In the path shown here, the photon is reflected by the beam splitter and again by the mirror.}
+\end{itemize}
+}{%
+\begin{center}
+\begin{TIKZP}[scale=0.75]
+    \LightSource{}
+    \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
+    \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
+    \Shift{6}{0}{\Measurement[color=orange]{}}
+    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
+    \visible<2,4->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
+    \visible<3->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    
+    \draw[thick,color=red] (1,0.5) -- ++(3.5,0);
+
+\end{TIKZP}
+\end{center}
+
+}
+\OnlyRemark{4}{%
+These outcomes are mutually exclusive because there is just one photon.  It can only be measured in one of the two places.   Until it is measured, it is in a \emph{superposition} of the two possible paths.
+}
+\end{frame}
+
+\begin{frame}{Naming the two possible paths}{We use the \emph{ket} notation defined previously.}
+\end{frame}
+
+\begin{frame}{An example for $d=3$}{This photon is measured in one of three places}
 \TwoColumns{%
 }{%
 \begin{center}
@@ -47,4 +107,19 @@
 \end{center}
 }
     
+\end{frame}
+
+\begin{frame}{holding}
+\begin{itemize}
+ \item For example, a single photon that goes through beam splitters as shown here will be measured in one of three places.
+    \item The abstraction representing the state of such an element is generally a \emph{qudit}.
+    \item The measurement is measured to be in 
+    \item In a quantum systems, the possible measurements for a single The outcomes of a quantum measurement form a mutually orthogonal set of quantum states.
+    \item If there are $d>2$ possible outcomes, we represent a quantum state by a $d$-valued 
+    \href{https://en.wiktionary.org/wiki/qudit}{qudit}.  For example, an electron that has $d$ possible excited states 
+    \item If $d=3$ the qudit is sometimes called
+    a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.
+    \item More commonly, in quantum computing we consider quantum states with only two outcomes.
+    
+    \end{itemize}
 \end{frame}
