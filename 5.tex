@@ -21,8 +21,8 @@ Mathematically, we will model that behavior using orthogonal basis vectors.}
 \begin{itemize}
 
     \item<1-> This is an ideal light source that emits exactly one photon at a time.  We are interested in the path(s) a single photon can take.
-    \item<2-> The mirror reflects a photon at a \Degrees{90} angle.
-    \item<3-> With equal probability, yet utter unpredictability, a beam splitter takes a photon and either
+    \item<2-> This mirror reflects a photon at a \Degrees{90} angle.
+    \item<3-> With equal probability, \alert{yet utter unpredictability}, a beam splitter takes a photon and either
     \begin{itemize} 
        \item allows the photon to continue undisturbed, or
        \item reflects the photon like a mirror.
@@ -83,6 +83,31 @@ These outcomes are mutually exclusive because there is just one photon.  It can 
 \end{frame}
 
 \begin{frame}{Naming the two possible paths}{We use the \emph{ket} notation defined previously.}
+\begin{itemize}
+    \item With two possible paths, we have a binary system that resembles a 1-bit classical system.
+    \item However, a single bit is either one way or the other, and we cannot express superpositions.
+    
+\end{itemize}
+\TwoColumns{%
+\begin{itemize}
+    \item Let $\QZero{} = \PZero{}$ be \textcolor{orange}{one path}.
+    \item Let $\QOne{} = \POne{}$ be \textcolor{NavyBlue}{the other}.
+    \item We can verify these are orthogonal:
+    \begin{itemize}
+        \item $\braket{0}{1} = 0$
+        \item $\braket{1}{0} = 0$
+    \end{itemize}
+\end{itemize}
+}{%
+A superposition of paths is then
+\[
+\alpha\ket{0} + \beta\ket{1} = \SQB{\alpha}{\beta}
+\]
+where $\alpha$ and $\beta$ denote the nature of the presence of \ket{0} and \ket{1}, respectively.
+
+We require $\Mag{\alpha}^{2}+\Mag{\beta}^{2} = 1$.
+
+}
 \end{frame}
 
 \begin{frame}{An example for $d=3$}{This photon is measured in one of three places}
