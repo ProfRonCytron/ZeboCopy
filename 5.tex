@@ -13,6 +13,7 @@
 Mathematically, we will model that behavior using orthogonal basis vectors.}
 \end{frame}
 
+\section{Quantum games}
 
 \begin{frame}{Quantum game components}{From \href{http://play.quantumgame.io/}{Play Quantum games}}
 
@@ -89,14 +90,13 @@ These outcomes are mutually exclusive because there is just one photon.  It can 
     
 \end{itemize}
 \TwoColumns{%
-\begin{itemize}
+\Vskip{-2em}\begin{itemize}
     \item<3-> Let \textcolor{orange}{$\QZero{} = \PZero{}$} be \textcolor{orange}{one path}.
     \item<3-> Let \textcolor{NavyBlue}{$\QOne{} = \POne{}$} be \textcolor{NavyBlue}{the other}.
     \item<4-> We can verify these are orthogonal:
-    \begin{itemize}
-        \item $\braket{0}{1} = 0$
-        \item $\braket{1}{0} = 0$
-    \end{itemize}
+    \[
+        \braket{0}{1} = \braket{1}{0} =  0
+    \]
 \end{itemize}
 }{%
 \visible<5->{%
@@ -104,7 +104,7 @@ A superposition of paths is then
 \[
 \alpha\textcolor{orange}{\ket{0}} + \beta\textcolor{NavyBlue}{\ket{1}} = \SQB{\alpha}{\beta}
 \]
-where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but it's more involved.
+where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but there is more to say.
 }
 }
 \end{frame}
@@ -191,13 +191,13 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 
 \begin{frame}{Modeling quantum systems}{We shall typically use qubits.}
 \begin{itemize}
-    \item Generally, a quantum element could be in a superposition of $d$ mutually orthogonal measurement outcomes.
-    \item If there are $d>2$ such outcomes, we represent a quantum state by a $d$-valued 
+    \item<1-> Generally, a quantum element could be in a superposition of $d$ mutually orthogonal measurement outcomes.
+    \item<2-> If there are $d>2$ such outcomes, we represent a quantum state by a $d$-valued 
     \href{https://en.wiktionary.org/wiki/qudit}{qudit}. 
-    If $d=3$ the qudit is sometimes called
-    a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.
-    \item Quantum computing focuses on \emph{qubits}, each having two possible measurement outcomes.
-    \item In the \href{https://en.wikipedia.org/wiki/Qubit\#Qubit_states}{standard basis}, those are always $\QZero{}=\PZero{}$ and $\QOne{} = \POne{}$.
-    \item As with classical computing bits, larger quantum systems are implemented with multiple (2-state) qubits. An n-qubit system is computationally equivalent to a $2^{n}$-valued qudit system. A proof follows from equivalence of basis vectors.
+    \visible<3->{If $d=3$ the qudit is sometimes called
+    a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.}
+    \item<4-> Quantum computing focuses on \emph{qubits}, each having two possible measurement outcomes.
+    \item<5-> In the \href{https://en.wikipedia.org/wiki/Qubit\#Qubit_states}{standard basis}, those are always $\QZero{}=\PZero{}$ and $\QOne{} = \POne{}$.
+    \item<6-> As with classical computing bits, larger quantum systems are implemented with multiple (2-state) qubits. An n-qubit system is computationally equivalent to a $2^{n}$-valued qudit system. A proof follows from equivalence of basis vectors.
 \end{itemize}
 \end{frame}
