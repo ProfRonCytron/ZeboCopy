@@ -42,6 +42,7 @@
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
+\def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
 
 \def\BigSkip{%
 
@@ -137,10 +138,55 @@
         \draw (\PFilterInc, #2) -- (\PFilterInc, #4);
     }
 }
-\def\RadiantArrows#1#2{%
+%% #1 - x
+%% #2 - y
+%% #3 - degrees
+%% #4 - options
+%% #5 - radius
+\def\RadiantArrowsR#1#2#3{%
 \foreach \p in {0, #1,...,360} {
-   \draw[#2] (0,0)  -- (\p:1) ;
+   \draw[#2] (0,0)  -- (\p:#3) ;
 }
+}
+\def\RadiantArrows#1#2{%
+   \RadiantArrowsR{#1}{#2}{1}
+}
+\def\SquareOutline{%
+\draw[color=gray] (0,0) rectangle (1,1);
+}
+\newcommand\LightSource[1][scale=1.0]{%
+\begin{scope}[#1]
+\SquareOutline{}
+\fill (0,0.375) rectangle (0.5, 0.625);
+\begin{scope}[shift={(0.75,0.5)}]
+    \RadiantArrowsR{22.5}{color=red}{0.25}
+\end{scope}
+\end{scope}
+}
+\def\TRectangle#1#2#3#4#5#6{%
+\begin{scope}[#6]
+\draw [fill=#5] (#1,#2) rectangle (#3,#4);
+\end{scope}
+}
+%% #1 -- llx
+%% #2 -- lly
+%% #3 -- urx
+%% #4 -- ury
+%% #5 -- angle
+\newcommand\Mirror[1][rotate=0]{%
+\begin{scope}[#1]
+   \SquareOutline{}
+   \TRectangle{0}{.4375}{1}{.5625}{black}{rotate=0}
+\end{scope}
+}
+\newcommand\BeamSplitter[1][rotate=0]{%
+\begin{scope}[#1]
+    \SquareOutline{}
+    \TRectangle{0}{.375}{1}{.625}{SkyBlue}{rotate=0}
+\end{scope}
+}
+\def\Shift#1#2#3{%
+\begin{scope}[shift={(#1,#2)}] #3\end{scope}
 }
 \def\Vskip#1{\mbox{}\vskip #1\mbox{}}
 \def\Hskip#1{\mbox{}\hskip #1\mbox{}}
@@ -212,9 +258,10 @@
 \end{TIKZP}
 }
 
+
 %%
 %% test
 %%
 \begin{document}
-\include{4}
+\include{5}
 \end{document}

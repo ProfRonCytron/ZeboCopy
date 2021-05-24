@@ -1,0 +1,37 @@
+\SetTitle{5}{Single qubit systems}{How do we characterize a single qubit?}{singlequbit}
+
+\section{Overiew}
+\begin{frame}{Qubits and beyond}{How many outcomes can we see?}
+\begin{itemize}
+    \item A quantum computing system contains elements, such as electrons, ions, or photons, whose quantum behavior can be influenced to achieve computation.
+    \item When measured, each quantum element will be in one of a mutually orthogonal set of $d$~states.
+    \item For example, a single photon that goes through beam splitters as shown here will be measured in one of three places.
+    \item The abstraction representing the state of such an element is generally a \emph{qudit}.
+    \item The measurement is measured to be in 
+    \item In a quantum systems, the possible measurements for a single The outcomes of a quantum measurement form a mutually orthogonal set of quantum states.
+    \item If there are $d>2$ possible outcomes, we represent a quantum state by a $d$-valued 
+    \href{https://en.wiktionary.org/wiki/qudit}{qudit}.  For example, an electron that has $d$ possible excited states 
+    \item If $d=3$ the qudit is sometimes called
+    a \href{https://en.wikipedia.org/wiki/Qutrit}{qutrit}.
+    \item More commonly, in quantum computing we consider quantum states with only two outcomes.  
+    
+\end{itemize}
+\end{frame}
+\begin{frame}{test}{test}
+\begin{TIKZP}
+    \LightSource{}
+    \Shift{1}{1}{\Mirror{}}
+    \Shift{1}{0}{\BeamSplitter[rotate=45]{}}
+\end{TIKZP}
+
+\end{frame}
+\begin{frame}{test}{test}
+\begin{TIKZP}
+    \Shift{-2}{-0.5}{%
+    \LightSource{}}
+    \BeamSplitter[rotate=-45]{}
+    \Shift{2}{0}{
+    \BeamSplitter[rotate=-45]}
+\end{TIKZP}
+    
+\end{frame}
