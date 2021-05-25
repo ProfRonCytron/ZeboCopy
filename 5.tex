@@ -23,10 +23,10 @@ Mathematically, we will model that behavior using orthogonal basis vectors.}
 
     \item<1-> This is an ideal light source that emits exactly one photon at a time.  We are interested in the path(s) a single photon can take.
     \item<2-> This mirror reflects a photon at a \Degrees{90} angle.
-    \item<3-> With equal probability, \alert{yet utter unpredictability}, a beam splitter takes a photon and either
+    \item<3-> With equal probability, \alert<3>{yet utter unpredictability}, a beam splitter takes a photon and either
     \begin{itemize} 
        \item allows the photon to continue undisturbed, or
-       \item reflects the photon like a mirror.
+       \item reflects the photon like a mirror \alert<3>{($+$ more)}.
     \end{itemize}
 \end{itemize}
 
@@ -330,17 +330,14 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{frame}{Why complex-valued coefficients?}{They represent phase.}
 \begin{itemize}
     \item Some sources defer the use of complex values for wave amplitudes, but they are essential for quantum computing.
-    \item We can demonstrate their usefulness with a simple photon diagram like the ones we have seen before, but this one has a surprise.
+    \item To that end, we study here the \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferometer}{Mach--Zehnder interferometer}. It looks like a photon should be able to reach either measuring device.
 \end{itemize}
 
 \Vskip{-4em}\TwoUnequalColumns{0.50\textwidth}{0.50\textwidth}{%
 \begin{itemize}
-    \item 
-This is the famous \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferometer}{Mach--Zehnder interferometer}.  Based on what we've seen so far, a photon should be able to reach either measuring device.
+  \item Surprisingly, \emph{every} photon is measured only by the \textcolor{orange}{device on the right}.
 
-  \item Surprisingly, only the \textcolor{orange}{device on the right} can ever receive a photon.
-
-\item The explanation requires understanding phase and interference.
+\item The explanation requires understanding phase and interference.   \item Mathematically this is easiest with complex arithmetic.
 \end{itemize}
 }{%
 \begin{center}
@@ -356,16 +353,30 @@ This is the famous \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferomet
 }
 \end{frame}
 
-\begin{frame}{hold}
-\begin{TIKZP}
-
-\visible<5>{\begin{scope}[draw=Sepia,rotate=-20]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
-\draw[->,thick] (0,0) -- (1,0);
-\draw[->,thick] (0,0) -- (70:1);
-\draw (0.2,0) node[above right] {$\theta$};
+\begin{frame}{The beam splitter, revisited}{It does more than we thought it did.}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item<1-> The beam splitter places a photon in a superposition of two subsequent paths.
+    \item<2-> If the photon passes through the beam splitter, there is no change at all for the photon.   \visible<3->{It's as if the beam splitter is not there.}
+    \item<4-> However, if the beam splitter is reflected, some delay is experienced causing the wave nature of the photon to be \emph{shifted}.
+    
+    \SmallSkip{}
+    The amount of shift depends on properties of~the splitter, such as its size and material.
+\end{itemize}
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=2.0]
+    \draw[thick,color=red] (0,0.5) -- ++(0.5,0);
+    \visible<1,4->{\draw[->,thick,color=red] (0,0.5) -- ++(0.5,0) -- ++(0,-0.5);}
+    \visible<1-3>{\draw[->,thick,color=red] (0.5,0.5) -- (1.0,0.5);}
+    \visible<1-2,4->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\end{TIKZP}
+\end{center}
+\visible<5>{%
+When reflected, we assume here that the photon experiences a delay of $\frac{\pi}{2}$ radians compared with passing through the beam splitter.
+}
 }
 
-\end{TIKZP}
 \end{frame}
 
 
