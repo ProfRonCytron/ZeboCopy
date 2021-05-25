@@ -107,7 +107,7 @@ A superposition of paths is then
 \[
 \alpha\textcolor{orange}{\ket{0}} + \beta\textcolor{NavyBlue}{\ket{1}} = \SQB{\alpha}{\beta}
 \]
-where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but there is more to say.
+where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but there is more to say about that later.
 }
 }
 \end{frame}
@@ -233,7 +233,7 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{frame}{Preparation of state}{Polarizing filters create a known starting state.}
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
 \begin{itemize}
-    \item<1> If we begin with a source of unpolarized light.
+    \item<1-> If we begin with a source of unpolarized light.
     \item<2-> Then a horizontal filter is a source of photons that are all in state \ket{0}.
     \item<3-> Similarly, a vertical filter acts a source of photons in state \ket{1}.
 \end{itemize}
@@ -543,6 +543,7 @@ Each wave amplitude must therefore be of the form
          + \visible<10>{\bbeta{}}\right)}
     \end{eqnarray*}}
 }{%
+\only<1-10>{%
 \Vskip{-4em}
 \begin{center}
 \begin{TIKZP}[scale=2.5]
@@ -557,5 +558,29 @@ Each wave amplitude must therefore be of the form
 \only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{orange}{photon traveling east} and \visible<4->{\textcolor{NavyBlue}{photon traveling south}}}
 \only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{ and \bbeta{} bending to the right to reflect.}}
 \only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} bending down to reflect} \only<10>{ and \bbeta{} continuing down.}}
+}%
+\only<11->{%
+We can model the effect of the beam splitter using the following matrix algebra:
+\[
+\SQB{\ralphap{}}{\bbetap{}} = 
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & i \\
+i & 1
+\end{pmatrix} \SQB{\ralpha}{\bbeta}
+\]
+and we view the beam splitter as represented mathematically as
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & i \\
+i & 1
+\end{pmatrix}
+\]
 }
+}
+\end{frame}
+
+\begin{frame}{Applying the beam splitter to our example}{Matrix multiplication models the cumulative effect of gates.}
+    
 \end{frame}
