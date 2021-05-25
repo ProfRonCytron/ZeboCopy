@@ -540,7 +540,7 @@ Each wave amplitude must therefore be of the form
      \ralphap{} & = & \frac{1}{\sqrt{2}}\left(\visible<6->{\ralpha{}}
         + \visible<7->{i\bbeta{}}\right) \\
     \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{i\ralpha{}}
-         + \visible<10>{\bbeta{}}\right)}
+         + \visible<10->{\bbeta{}}\right)}
     \end{eqnarray*}}
 }{%
 \only<1-10>{%
@@ -582,5 +582,19 @@ i & 1
 \end{frame}
 
 \begin{frame}{Applying the beam splitter to our example}{Matrix multiplication models the cumulative effect of gates.}
+
+\TwoColumns{%
+}{%
+\begin{center}
+    \begin{TIKZP}[scale=0.7]
+        \MZ{}
+        \draw[color=red] (1,0.5) -- (2.5,0.5);
+        \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+        \draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+        \draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+        \draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
+    \end{TIKZP}
+\end{center}
+}
     
 \end{frame}
