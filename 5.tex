@@ -330,14 +330,30 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{frame}{Why complex-valued coefficients?}{They represent phase.}
 \begin{itemize}
     \item Some sources defer the use of complex values for wave amplitudes, but they are essential for quantum computing.
-    \item We can demonstrate their usefulness with a simple photon diagram like the ones we have seen before.
+    \item We can demonstrate their usefulness with a simple photon diagram like the ones we have seen before, but this one has a surprise.
 \end{itemize}
 
+\Vskip{-4em}\TwoUnequalColumns{0.50\textwidth}{0.50\textwidth}{%
+\begin{itemize}
+    \item 
+This is the famous \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferometer}{Mach--Zehnder interferometer}.  Based on what we've seen so far, a photon should be able to reach either measuring device.
+
+  \item Surprisingly, only the \textcolor{orange}{device on the right} can ever receive a photon.
+
+\item The explanation requires understanding phase and interference.
+\end{itemize}
+}{%
 \begin{center}
 \begin{TIKZP}[scale=0.7]
 \MZ{}
+\draw[color=red] (1,0.5) -- (2.5,0.5);
+\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
 \end{TIKZP}
 \end{center}
+}
 \end{frame}
 
 \begin{frame}{hold}
