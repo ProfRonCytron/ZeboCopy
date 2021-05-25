@@ -127,10 +127,15 @@
 
    \draw (0, 0) circle (1) ;
    }
+   \def\TZPEast{\TZPoint{1,0}{$+1$}{above right}}
+   \def\TZPNorth{\TZPoint{0,1}{$i$}{above right}}
+   \def\TZPWest{\TZPoint{-1,0}{$-1$}{above left}}
+   \def\TZPSouth{\TZPoint{0,-1}{$-i$}{below right}}
 \def\TZText#1#2#3{%
   \draw (#1) node [#3] {#2};
 }
 \def\Exp#1{\ensuremath{e^{#1}}}
+\def\ExpPhase#1{\Exp{i #1}}
 \def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{i\relax#2}}}
 %%
 %% #1 -- lower left x

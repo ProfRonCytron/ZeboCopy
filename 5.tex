@@ -429,22 +429,133 @@ We will soon look at how to model this behavior mathematically.}
 \begin{frame}{Show the quantum eraser here?}{Not sure.}
 \end{frame}
 
-\begin{frame}{Modeling the beam splitter}{Our first quantum gate}
-
-\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{frame}{Accounting for a phase shift of $\pi/2$ radians}{We use complex numbers.}
+\Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{itemize}
-    \item Suppose the beam splitter is presented with a photon in superposition
+    \item Recall the complex unit circle.  
+    \item Suppose we begin with an amplitude $\alpha$, which already may embody a phase shift.
+    \item<2-> $\ExpPhase{0}\alpha = 1\times \alpha$ represents no (further) phase shift.
+    \item<3-> The shift of $\alpha$ by $\theta$ radians is then $\ExpPhase{\theta}\alpha$.
+   
+    
+\end{itemize}
+\OnlyRemark{4}{The shift of an amplitude by $\pi/2$ radians is effected through multiplication by $\ExpPhase{\pi/2} = i$.}
+}{%
+\begin{center}
+    \begin{TIKZP}
+        \UnitComplexCircle{}
+        \visible<4->{\TZPNorth{}
+        \draw[->,ultra thick] (0,0) -- (0,1);}
+        \visible<2->{\TZPEast{}}
+        \visible<3>{\draw[->,thick] (1,0) arc (0:45:1) coordinate (z) ;
+    \draw[thick] (0,0) -- (z) ;
+    \draw (0.3,0) node[above right] {$\theta$};}
+        \visible<4->{\TZPSouth{}
+        \TZPWest{}}
+    \end{TIKZP}
+\end{center}
+}
+\end{frame}
+\begin{frame}{Properties of phase shifts}{Complex math helps here too.}
+\Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{itemize}
+    \item<1-> A phase shift has no effect on the wave's magnitude:
+    \[
+    \Forall{\theta}{%
+    \Mag{\ExpPhase{\theta}\alpha} = \Mag{\ExpPhase{\theta}} \times \Mag{\alpha} 
+    = 1 \times \Mag{\alpha} = \Mag{\alpha}
+    }
+    \]
+    \item<2-> A shift of $\alpha$ by $\theta$ radians followed
+    by a shift of $\phi$ radians is given by
+    \[
+       \ExpPhase{\phi}\left(\ExpPhase{\theta}\alpha\right) = \ExpPhase{(\theta+\phi)}\alpha
+    \]
+    which walks counter-clockwise around the unit circle $\theta$ and then $\phi$ radians.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{TIKZP}
+        \UnitComplexCircle{}
+        \TZPNorth{}\TZPSouth{}\TZPEast{}\TZPWest{}
+        \visible<1->{
+            \draw[->,thick] (1,0) arc (0:45:1) coordinate (z) ;
+            \draw[thick] (0,0) -- (z) ;
+            \draw (0.3,0) node[above right] {$\theta$};
+        }
+        \visible<2->{
+            \draw[->,thick] (1,0) arc (0:135:1) coordinate (z) ;
+            \draw[thick] (0,0) -- (z) ;
+            \draw (0,0.2) node[above left] {$\phi$};
+        }
+    \end{TIKZP}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Creating an equal superposition}{We can determine much about the amplitude from the desired probability.}
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item<1-> We begin with a ground state such as \ket{0}.
+    \item<2-> From \ket{0}, we wish to create an equal superposition of \ket{0} and \ket{1}.
+    \item<3-> We know we want the probability of measuring either outcome to be $\frac{1}{2}$.
+    \item<4-> From this we know the magnitude of the associated wave amplitudes must be $\frac{1}{\sqrt{2}}$.
+    \item<5-> We are thus seeking the state
+    \[ \alpha\ket{0} + \beta\ket{1} \]
+    subject to $\Mag{\alpha} = \Mag{\beta} = \frac{1}{\sqrt{2}}$
 \end{itemize}
 }{%
 \Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=2.0]
+    \draw[thick,color=red] (0,0.5) -- ++(0.5,0);
+    \visible<1->{\draw[->,thick,color=red] (0,0.5) -- ++(0.5,0) -- ++(0,-0.5);}
+    \visible<1->{\draw[->,thick,color=red] (0.5,0.5) -- (1.0,0.5);}
+    \visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\end{TIKZP}
+\end{center}
+\visible<6->{
+\BigSkip{}
+Each wave amplitude must therefore be of the form
+\[\frac{1}{\sqrt{2}}\ExpPhase{\theta} \]
+}
+}
+\end{frame}
+\begin{frame}{Modeling the beam splitter}{Our first quantum gate}
+
+\def\ralpha{\ensuremath{\textcolor{red}{\alpha}}}
+\def\bbeta{\ensuremath{\textcolor{brown}{\beta}}}
+\def\ralphap{\ensuremath{\textcolor{orange}{\alpha'}}}
+\def\bbetap{\ensuremath{\textcolor{NavyBlue}{\beta'}}}
+\Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\visible<1->{Suppose the beam splitter is presented with a photon in superposition
+    \[\ket{\psi}=
+    \visible<1->{\ralpha\textcolor{red}{\ket{0}}}
+    \visible<2->{+ \bbeta\textcolor{brown}{\ket{1}}
+    = \SQB{\ralpha}{\bbeta}
+    }
+    \]}
+    \visible<5->{%
+    \begin{eqnarray*}
+     \ket{\psi'} & = & \SQB{\ralphap{}}{\bbetap{}} \\
+     \ralphap{} & = & \frac{1}{\sqrt{2}}\left(\visible<6->{\ralpha{}}
+        + \visible<7->{i\bbeta{}}\right) \\
+    \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{i\ralpha{}}
+         + \visible<10>{\bbeta{}}\right)}
+    \end{eqnarray*}}
+}{%
+\Vskip{-4em}
+\begin{center}
 \begin{TIKZP}[scale=2.5]
     \visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
-    \visible<1,5->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$}  -- node[midway,below]  {\ket{0}} ++(0.5,0);}
-    \visible<2,5->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
-    \visible<4,5->{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5);}
-    \visible<3,5->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5);}
+    \visible<1->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$}  -- node[midway,below]  {\ket{0}} ++(0.5,0);}
+    \visible<2->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
+    \visible<3->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
+    \visible<4->{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
     
 \end{TIKZP}
 \end{center}
+\only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{orange}{photon traveling east} and \visible<4->{\textcolor{NavyBlue}{photon traveling south}}}
+\only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{ and \bbeta{} bending to the right to reflect.}}
+\only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} bending down to reflect} \only<10>{ and \bbeta{} continuing down.}}
 }
 \end{frame}
