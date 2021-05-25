@@ -520,12 +520,23 @@ Each wave amplitude must therefore be of the form
 }
 }
 \end{frame}
+\def\BSG{%
+\ensuremath{\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & i \\
+i & 1
+\end{pmatrix}}}
+
+\section{Quantum gates}
+
 \begin{frame}{Modeling the beam splitter}{Our first quantum gate}
 
 \def\ralpha{\ensuremath{\textcolor{red}{\alpha}}}
 \def\bbeta{\ensuremath{\textcolor{brown}{\beta}}}
 \def\ralphap{\ensuremath{\textcolor{orange}{\alpha'}}}
 \def\bbetap{\ensuremath{\textcolor{NavyBlue}{\beta'}}}
+
+
 \Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \visible<1->{Suppose the beam splitter is presented with a photon in superposition
     \[\ket{\psi}=
@@ -563,19 +574,11 @@ Each wave amplitude must therefore be of the form
 We can model the effect of the beam splitter using the following matrix algebra:
 \[
 \SQB{\ralphap{}}{\bbetap{}} = 
-\frac{1}{\sqrt{2}}
-\begin{pmatrix}
-1 & i \\
-i & 1
-\end{pmatrix} \SQB{\ralpha}{\bbeta}
+\BSG{} \SQB{\ralpha}{\bbeta}
 \]
 and we view the beam splitter as represented mathematically by
 \[
-\frac{1}{\sqrt{2}}
-\begin{pmatrix}
-1 & i \\
-i & 1
-\end{pmatrix}
+\BSG{}
 \]
 }
 }
@@ -583,18 +586,59 @@ i & 1
 
 \begin{frame}{Applying the beam splitter to our example}{Matrix multiplication models the cumulative effect of gates.}
 
-\TwoColumns{%
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-2em}\begin{itemize}
+    \only<1-2>{
+    \item We begin with the photon in state \SQB{1}{0}.}
+    \only<2-3>{\item At the first beam splitter we obtain the state
+    \[ \BSG{} \SQB{1}{0} = \frac{1}{\sqrt{2}} \SQB{1}{i}
+    \]}
+    \only<3-4>{\item The mirrors flip the sense of two paths with respect to the second beam splitter.  We therefore apply a gate to swap the two components and obtain
+    \[
+    \PauliX{} \RootTwo{}\SQB{1}{i} = \RootTwo{}\SQB{i}{1}
+    \]}
+    \only<4-5>{\item The final beam splitter produces
+    \[
+    \BSG{}\RootTwo{}\SQB{i}{1} = \frac{1}{2}\SQB{2i}{i^{2}+1} = \SQB{i}{0}
+    \]}
+    \only<5>{\item The interference canceled the bottom component.    
+    \alert{This explains why the bottom device never measures any photons in this setup.}
+    \item
+    We can also see the top component is rotated by $\pi/2$ radians.  The superpositions that are measured \textcolor{orange}{by this device} each experienced one beam-splitter bend.}
+\end{itemize}
 }{%
 \begin{center}
-    \begin{TIKZP}[scale=0.7]
+    \Vskip{-3em}\begin{TIKZP}[scale=0.5]
         \MZ{}
+        \visible<2>{\Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter[ultra thick]{}}}}
+        \visible<4>{\Shift{6}{-2}{\RotateAroundCenter{-45}{\BeamSplitter[ultra thick]{}}}}
         \draw[color=red] (1,0.5) -- (2.5,0.5);
+        \draw<1>[ultra thick,color=red] (1,0.5) -- (2.5,0.5);
         \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
         \draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
         \draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
         \draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
     \end{TIKZP}
+    \begin{TIKZP}[scale=1.5]
+    \visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+    \visible<1->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$}  -- node[midway,below]  {\ket{0}} ++(0.5,0);}
+    \visible<1->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
+    \visible<1->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
+    \visible<1->{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
+    
+\end{TIKZP}
 \end{center}
 }
+    
+\end{frame}
+
+\section{Summary}
+\begin{frame}{Summary}{What have we learned?}
+\begin{itemize}
+    \item We express superpositions using wave amplitudes that are complex numbers.
+    \item Complex numbers allow us to capture both the magnitude of the wave as well as its phase.
+    \item We can model the effects of a quantum gate using a square matrix.
+    \item Such matrices have other properties we will soon study.
+\end{itemize}
     
 \end{frame}
