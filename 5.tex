@@ -298,6 +298,8 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \OnlyRemark{7}{Unpolarized light behaves as if $\theta=\Degrees{45}$. The photons measure half \ket{0} and half \ket{1}.}
 \end{frame}
 
+\section{Waves}
+
 \begin{frame}{Wave amplitudes and probabilities}{One is the square of the other.}
 \TwoColumns{%
 \begin{itemize}
@@ -337,7 +339,7 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{itemize}
   \item Surprisingly, \emph{every} photon is measured only by the \textcolor{orange}{device on the right}.
 
-\item The explanation requires understanding phase and interference.   \item Mathematically this is easiest with complex arithmetic.
+\item The explanation requires understanding \emph{phase} and \emph{interference}.   \item Mathematically this is easiest with complex arithmetic.
 \end{itemize}
 }{%
 \begin{center}
@@ -420,7 +422,29 @@ When reflected, we assume here that the photon experiences a delay of $\frac{\pi
 \end{center}
 \only<5->{
 Physics experiments have confirmed this behavior.
-We next look at how to model this behavior mathematically.}
+We will soon look at how to model this behavior mathematically.}
 }
 \end{frame}
 
+\begin{frame}{Show the quantum eraser here?}{Not sure.}
+\end{frame}
+
+\begin{frame}{Modeling the beam splitter}{Our first quantum gate}
+
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{itemize}
+    \item Suppose the beam splitter is presented with a photon in superposition
+\end{itemize}
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=2.5]
+\visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+    \visible<1,5->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$} node[midway,above] {\ket{0}} -- ++(0.5,0);}
+    \visible<2,5->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
+    \visible<4,5-{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5);}
+    \visible<3,5->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5);}
+    
+\end{TIKZP}
+\end{center}
+}
+\end{frame}
