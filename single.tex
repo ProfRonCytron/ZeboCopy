@@ -40,12 +40,15 @@
 \def\CCNOT#1#2#3{%
 \ensuremath{\mbox{CNOT}(#1,#2,#3)}}
 \long\def\ToDo#1{\smash{\textcolor{YellowOrange}{#1}}}
+\def\Inverse#1{\ensuremath{{#1}^{-1}}}
+\def\Quote#1{``#1''}
+\def\Identity{\mbox{\bfseries{\textrm{I}}}}
+\def\Implies#1#2{\ensuremath{#1 \rightarrow #2}}
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
 \def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
-
 \def\BigSkip{%
 
 \bigskip
@@ -83,6 +86,10 @@
 \end{tikzpicture}
 \egroup
 }
+\long\def\Definition#1{%
+\begin{block}{Definition}
+#1
+\end{block}}
 
 \long\def\TwoUnequalColumns#1#2#3#4{%
 \begin{columns}%

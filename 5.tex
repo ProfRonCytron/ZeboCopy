@@ -637,13 +637,50 @@ and we view the beam splitter as represented mathematically as
     
 \end{frame}
 
+\begin{frame}{Quantum gates as matrices}{What properties must they have?}
+
+\begin{itemize}
+    \item Recall that the quantum state of a single qubit can be represented by the ket
+    $\SQB{\alpha}{\beta}$, where $\alpha$ and $\beta$ are complex numbers.  We require $\Prob{\alpha}+\Prob{\beta}=1$.  Such vectors are called \href{https://en.wikipedia.org/wiki/Unit_vector}{unit vectors}.
+    \item A matrix can represent the action of a quantum gate, but it must have the following properties:
+    \begin{itemize}
+        \item It must be \href{https://en.wikipedia.org/wiki/Reversible_computing}{reversible}. We have already studied this property.
+        \item It must be \emph{length-preserving}.  If $U$ is such a matrix, then $\Implies{\Mag{\alpha}=1}{\Mag{U\alpha}=1}$. Informally, no \Quote{probability} is gained or lost by application of $U$.
+    \end{itemize}
+     
+\end{itemize}
+    The matrices we seek are \href{https://en.wikipedia.org/wiki/Unitary_matrix}{unitary}.   We next investigate their definition and properties.
+\end{frame}
+
+\begin{frame}{Unitary matrix}{Definition and properties \LinkArrow{https://en.wikipedia.org/wiki/Unitary_matrix}}
+
+\Definition{%
+$U$ is a unitary matrix iff $U\Conj{U}=\Conj{U}U=\Identity$}
+\begin{center}Equivalent conditions\end{center}
+
+\TwoColumns{%
+
+\begin{itemize}
+    \item $U$ is unitary
+    \item \Conj{U} is unitary
+    \item $U$ is invertible with $\Inverse{U}=\Conj{U}$
+    \item The columns of $U$ form an \href{https://en.wikipedia.org/wiki/Orthonormal_basis}{orthonormal basis}; so do the rows.
+\end{itemize}
+}{%
+\begin{itemize}
+    \item $U$ is a \href{https://en.wikipedia.org/wiki/Normal_matrix}{normal matrix} whose eigenvalues lie on the (real) unit circle.
+\end{itemize}
+}
+
+\end{frame}
+
 \section{Summary}
 \begin{frame}{Summary}{What have we learned?}
 \begin{itemize}
     \item A quantum state is represented by a column vector called a \emph{ket}.  The standard computational basis for a single qubit uses $\ket{0}=\PZero{}$ and $\ket{1}=\POne{}$.
     \item Superpositions are expressed as linear combinations of basis states.  
     \item The wave amplitude on each basis state is a complex number, which expresses both magnitude and phase.
-    \item We model a quantum gate using a square matrix.  For a single qubit, such matrices are $2\times 2$.
+    \item We model a quantum gate using a unitary matrix.  For a single qubit, such matrices are $2\times 2$.
     \item The effect of a gate on a quantum state is computed using matrix multiplication.
 \end{itemize}
 \OnlyRemark{1}{Matrices that represent quantum gates have other properties that we will study soon.}
