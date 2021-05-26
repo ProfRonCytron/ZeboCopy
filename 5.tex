@@ -288,14 +288,14 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 }
 \end{TIKZP}
 \begin{itemize}
-    \item<4-> This matches photons prepared when $\theta=\Degrees{0}$ or $\theta=\Degrees{90}$.
+    \item<4-> This matches photons prepared at $\theta=\Degrees{0}$ or $\theta=\Degrees{90}$.
     \item<5-> With $\cos^{2}\theta+\sin^{2}\theta=1$, every photon is measured as \ket{0} or \ket{1}.
     \item<6-> When $\theta=\Degrees{45}$, $\cos^{2}\theta = \sin^{2}\theta = \frac{1}{2
     }$
 \end{itemize}
 \end{center}
 }
-\OnlyRemark{7}{Unpolarized light behaves as if $\theta=\Degrees{45}$. The photons measure half \ket{0} and half \ket{1}.}
+\OnlyRemark{7}{Unpolarized photons' measurements are uniformly distributed in any basis.}
 \end{frame}
 
 \section{Waves}
@@ -332,7 +332,7 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{frame}{Why complex-valued coefficients?}{They represent phase.}
 \begin{itemize}
     \item Some sources defer the use of complex values for wave amplitudes, but they are essential for quantum computing.
-    \item To that end, we study here the \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferometer}{Mach--Zehnder interferometer}. It looks like a photon should be able to reach either measuring device.
+    \item To that end, we study here the \href{https://en.wikipedia.org/wiki/Mach-Zehnder_interferometer}{Mach--Zehnder interferometer}. Apparently a photon can reach either measuring device.
 \end{itemize}
 
 \Vskip{-4em}\TwoUnequalColumns{0.50\textwidth}{0.50\textwidth}{%
@@ -433,13 +433,12 @@ We will soon look at how to model this behavior mathematically.}
 \Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{itemize}
     \item Recall the complex unit circle.  
-    \item Suppose we begin with an amplitude $\alpha$, which already may embody a phase shift.
+    \item Suppose we begin with an amplitude $\alpha$, which already has an arbitrary phase shift.
     \item<2-> $\ExpPhase{0}\alpha = 1\times \alpha$ represents no (further) phase shift.
     \item<3-> The shift of $\alpha$ by $\theta$ radians is then $\ExpPhase{\theta}\alpha$.
    
     
 \end{itemize}
-\OnlyRemark{4}{The shift of an amplitude by $\pi/2$ radians is effected through multiplication by $\ExpPhase{\pi/2} = i$.}
 }{%
 \begin{center}
     \begin{TIKZP}
@@ -455,6 +454,7 @@ We will soon look at how to model this behavior mathematically.}
     \end{TIKZP}
 \end{center}
 }
+\OnlyRemark{4}{The shift of an amplitude by $\pi/2$ radians is effected through multiplication by $\ExpPhase{\pi/2} = i$.}
 \end{frame}
 \begin{frame}{Properties of phase shifts}{Complex math helps here too.}
 \Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
@@ -567,8 +567,8 @@ i & 1
 \end{TIKZP}
 \end{center}
 \only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{orange}{photon traveling east} and \visible<4->{\textcolor{NavyBlue}{photon traveling south}}}
-\only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{ and \bbeta{} bending to the right to reflect.}}
-\only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} bending down to reflect} \only<10>{ and \bbeta{} continuing down.}}
+\only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{and \bbeta{} reflecting to the right.}}
+\only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} reflecting down} \only<10>{and \bbeta{} continuing down.}}
 }%
 \only<11->{%
 We can model the effect of the beam splitter using the following matrix algebra:
