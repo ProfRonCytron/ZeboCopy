@@ -50,7 +50,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 \end{frame}
 
 \def\Bloch#1#2{%
-\cos{\frac{#1}{2}}\ket{0} + \Polar{}{#2}\sin{\frac{#1}{2}}\ket{1}}
+\cos{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{OrangeRed}{#2}}\sin{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{1}}
 \begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit.}
 \begin{itemize}
    \item We start with three real parameters:
@@ -74,8 +74,8 @@ We next examine a more concise and visually compelling definition of a qubit.
 \begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far.}
 \[ \Bloch{\theta}{\phi} \]
 \begin{itemize}
-    \item The parameter $\theta$ balances wave amplitude between \ket{0} and \ket{1}.
-    \item We recall it's the relative phase between \ket{0} and \ket{1} that matters.  The relative phase difference is placed on \ket{1}, using a walk of $\phi$ radians counterclockwise around the complex unit circle, starting at 0~radians.
+    \item The parameter \textcolor{NavyBlue}{$\theta$} balances wave amplitude between \ket{0} and \ket{1}.
+    \item We recall it's the relative phase between \ket{0} and \ket{1} that matters.  The relative phase difference is placed on \ket{1}, using a walk of \textcolor{OrangeRed}{$\phi$} radians counterclockwise around the complex unit circle, starting at 0~radians.
     \item Recalling our beam splitter, the state of a photon is
     \begin{itemize}
         \item Initially $\Bloch{0}{0} = \SQB{1}{0}$
