@@ -1,0 +1,56 @@
+\SetTitle{6}{A single qubit}{Representation}{introqsys}
+
+\section{Overview}
+\begin{frame}{Overview}{What we will cover}
+    
+\end{frame}
+
+\begin{frame}{State space}{Definition}
+\Postulate{State Space}{The state of a quantum system is a unit vector in a complex \href{https://en.wikipedia.org/wiki/Hilbert_space}{Hilbert space}}
+\begin{itemize}
+    \item We need a Hilbert space, rather than the simpler \href{https://en.wikipedia.org/wiki/Euclidean_space}{Euclidean space}, because we use complex numbers to represent state.
+    \item We have used two dimensions to specify a single qubit, one each for $\alpha$ and $\beta$: $\ket{\psi}=\SQB{\alpha}{\beta}$, where
+    $\Prob{\alpha}+\Prob{\beta}=1$.
+  
+    \item The state of an $n$-qubit system is a unit column vector (ket)  of $\TwoToThe{n}$ complex numbers.
+\end{itemize}
+\OnlyRemark{1}{%
+We next examine a more concise and visually compelling definition of a qubit.
+}
+\end{frame}
+
+\begin{frame}{Coordinates for a qubit}{Cartesian and polar}
+\Vskip{-5em}\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\ColHead{Cartesian}
+\begin{itemize}
+    \item $\ket{\psi}=\alpha\ket{0} + \beta\ket{1}$ with $\Mag{\alpha}+\Mag{\beta}=1$.
+    \item Letting
+    \begin{itemize}
+        \item $\alpha=\Complex{a_{0}}{b_{0}}$
+        \item $\beta=\Complex{a_{1}}{b_{1}}$
+    \end{itemize}
+    \item This requires \alert{four real parameters}
+\end{itemize}
+}{%
+\ColHead{Polar}
+\begin{itemize}
+    \item Write $\alpha = r_{a}\left(\cos\theta_{a}+i\, sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
+    \item Write $\beta = r_{b}\left(\cos\theta_{b}+i\, sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
+    \item Then \begin{eqnarray*} \ket{\psi} & = & \Polar{r_{a}}{\theta_{a}}\ket{0} + \Polar{r_{b}}{\theta_{b}}\ket{1} \\
+    & = & \visible<1>{\Exp{i \theta_{a}}}\left( \alert<4>{r_{0}}\ket{0} + \Polar{\alert<4>{r_{1}}}{
+    \only<1-2>{(\theta_{b}-\theta_{a})}
+    \only<3->{\alert<4>{\phi}}
+    }\ket{1} \right)
+    \end{eqnarray*}
+    \item<2-> Discard $\Exp{i \theta_{a}}$ as a global phase
+    \item<3-> Let $\phi=\theta_{b}-\theta_{a}$
+    \item<4-> So we need just \alert{three real parameters}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Can we do better?}{How much information do we need to specify a single qubit?}
+
+
+    
+\end{frame}
