@@ -34,8 +34,8 @@ We next examine a more concise and visually compelling definition of a qubit.
 }{%
 \ColHead{Polar}
 \begin{itemize}
-    \item Write $\alpha = r_{a}\left(\cos\theta_{a}+i\, sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
-    \item Write $\beta = r_{b}\left(\cos\theta_{b}+i\, sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
+    \item Write $\alpha = r_{a}\left(\cos\theta_{a}+i\, \sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
+    \item Write $\beta = r_{b}\left(\cos\theta_{b}+i\, \sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
     \item Then \begin{eqnarray*} \ket{\psi} & = & \Polar{r_{a}}{\theta_{a}}\ket{0} + \Polar{r_{b}}{\theta_{b}}\ket{1} \\
     & = & \visible<1>{\Exp{i \theta_{a}}}\left( \alert<4>{r_{a}}\ket{0} + \Polar{\alert<4>{r_{b}}}{
     \only<1-2>{(\theta_{b}-\theta_{a})}
@@ -57,13 +57,17 @@ We next examine a more concise and visually compelling definition of a qubit.
    \item We require $r_{a}^{2}+r_{b}^{2}=1$.  We can show $\Implies{x^{2}\leq 1}{-1 \leq x \leq 1}$.
    \item<2-> We therefore substitute for $r_{a}$ and $r_{b}$ as follows:
    \[
-     r_{a} = \cos\frac{\theta}{2}, 
-     r_{b} = \sin\frac{\theta}{2} \]
+     r_{a} = \cos{\frac{\theta}{2}}, 
+     r_{b} = \sin{\frac{\theta}{2}} \]
    The use of $\theta/2$ is arbitrary for now but will work out well later.
    \item<3-> We can thus characterize $\ket{\psi}$ using only \alert{two (angular) real parameters}:
    \[ \ket{\psi} = \cos{\frac{\theta}{2}}\ket{0} + \Polar{}{\phi}\sin{\frac{\theta}{2}}\ket{1}
    \]
 \end{itemize}
 
+    
+\end{frame}
+
+\begin{frame}{The Bloch Sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
     
 \end{frame}
