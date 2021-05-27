@@ -126,14 +126,18 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{frame}
 
 \begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half.}
-\TwoColumns{%
-\[ \ket{\psi} = \Bloch{\theta}{\phi} \]
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
-  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}
+  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  \only<2>{Actually the choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.}
   \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$
+  \item<4> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$, but in the formula, it appears to matter.
+  
+  However, with $0$ as the coefficient on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
+  \ExpPhase{(-\textcolor{OrangeRed}{\phi})} on \ket{\psi}.
 \end{itemize}
 }{%
-\Vskip{-3em}\begin{BlochSphere}[scale=2.5]{60}{115}
+\[ \ket{\psi} = \Bloch{\theta}{\phi} \]
+\begin{BlochSphere}[scale=1.5]{60}{115}
     
     \BlochSpherePhiTheta{}
     \visible<2->{\TZPoint{0,0,1}{$\ket{0}$}{right}}
@@ -141,6 +145,23 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{BlochSphere}
 }
 \end{frame}
+
+\begin{frame}{Navigating the Bloch Sphere}{Other points of interest}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+  \item<2-> 
+\end{itemize}
+}{%
+\[ \ket{\psi} = \Bloch{\theta}{\phi} \]
+\begin{BlochSphere}[scale=1.5]{60}{115}
+    
+    \BlochSpherePhiTheta{}
+    \visible<2->{\TZPoint{1,0,0}{$\ket{+x}$}{right}}
+    \visible<3->{\TZPoint{-1,0,0}{$\ket{-x}$}{right}}
+\end{BlochSphere}
+}
+\end{frame}
+
 \begin{frame}{test}{test}
 
 \begin{BlochSphere}[scale=2.5]{0}{0}
