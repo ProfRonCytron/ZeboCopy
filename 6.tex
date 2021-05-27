@@ -129,7 +129,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
   \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  \only<2>{Actually the choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.}
-  \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$
+  \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$.
   \item<4> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$, but in the formula, it appears to matter.
   
   However, with $0$ as the coefficient on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
@@ -142,22 +142,36 @@ A more general interpretation of the sphere ascribes meaning to interior points.
     \BlochSpherePhiTheta{}
     \visible<2->{\TZPoint{0,0,1}{$\ket{0}$}{right}}
     \visible<3->{\TZPoint{0,0,-1}{$\ket{1}$}{right}}
+    
 \end{BlochSphere}
 }
 \end{frame}
 
 \begin{frame}{Navigating the Bloch Sphere}{Other points of interest}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\begin{itemize}
-  \item<2-> 
-\end{itemize}
+\Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{center}
+    \begin{tabular}{ccc}
+        State & \textcolor{OrangeRed}{$\phi$} & \textcolor{NavyBlue}{$\theta$} \\
+        \visible<2->{\ket{+x} & $0$ & $\pi/2$ \\}
+        \visible<3->{\ket{-x} & $0$ & $-\pi/2$ \\}
+        \visible<5->{\ket{+y} & $\pi/2$ & $\pi/2$ \\}
+        \visible<6->{\ket{-y} & $-\pi/2$ & $\pi/2$ \\}
+    \end{tabular}
+\end{center}
+\only<4>{States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  Using the formula they are:
+\begin{eqnarray*} \ket{+} & = & \frac{1}{\sqrt{2}} \SQB{1}{1} \\
+\ket{-} & = & \frac{1}{\sqrt{2}} \SQB{1}{-1}
+\end{eqnarray*}
+}
 }{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
 \begin{BlochSphere}[scale=1.5]{60}{115}
     
     \BlochSpherePhiTheta{}
-    \visible<2->{\TZPoint{1,0,0}{$\ket{+x}$}{right}}
-    \visible<3->{\TZPoint{-1,0,0}{$\ket{-x}$}{right}}
+    \visible<2-3>{\TZPoint{1,0,0}{$\ket{+x}$}{right}}
+    \visible<3>{\TZPoint{-1,0,0}{$\ket{-x}$}{right}}
+    \visible<5-6>{\TZPoint{0,1,0}{$\ket{+y}$}{above}}
+    \visible<6>{\TZPoint{0,-1,0}{$\ket{-y}$}{right}}
 \end{BlochSphere}
 }
 \end{frame}
