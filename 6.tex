@@ -91,6 +91,11 @@ We next examine a more concise and visually compelling definition of a qubit.
     \TZPoint{0,0,1}{\ket{0}}{above right}
     \TZPoint{0,0,-1}{\ket{1}}{below right}
     
+    \tdplotsetrotatedcoords{0}{0}{0};
+    \draw[tdplot_rotated_coords, orange, ultra thick] (1.0,0,0) arc (0:45:1.0) node(phi) {};
+    \draw[tdplot_rotated_coords,->,orange,ultra thick] (0,0,0) -- (phi);
+    \draw[orange] (0.5,0.2,0) node {$\phi$};
+    \TZPoint{phi}{X}{}
 \end{BlochSphere}
     
 \end{frame}
