@@ -86,5 +86,26 @@ We next examine a more concise and visually compelling definition of a qubit.
 \end{frame}
 
 \begin{frame}{The Bloch Sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
+
+\begin{BlochSphere}[scale=2.5]
+    \TZPoint{0,0,1}{\ket{0}}{above right}
+    \TZPoint{0,0,-1}{\ket{1}}{below right}
+    
+\end{BlochSphere}
+    
+\end{frame}
+
+\begin{frame}{test}{test}
+
+\begin{BlochSphere}[scale=2.5]
+    \coordinate (P) at ({1/sqrt(3)},{1/sqrt(3)},{1/sqrt(3)});
+    \draw[thick, -stealth] (0,0,0) -- (P) node[right] {$P$};
+        
+    \draw[thin, dashed] (P) --++ (0,0,{-1/sqrt(3)});
+    \draw[thin, dashed] ({1/sqrt(3)},{1/sqrt(3)},0) --++(0,{-1/sqrt(3)},0);
+    \draw[thin, dashed] ({1/sqrt(3)},{1/sqrt(3)},0) --++({-1/sqrt(3)},0,0);
+        
+    \draw[fill = lightgray!50] (P) circle (0.5pt);
+\end{BlochSphere}
     
 \end{frame}
