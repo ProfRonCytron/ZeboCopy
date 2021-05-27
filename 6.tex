@@ -50,7 +50,8 @@ We next examine a more concise and visually compelling definition of a qubit.
 \end{frame}
 
 \def\Bloch#1#2{%
-\cos{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{OrangeRed}{#2}}\sin{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{1}}
+\ensuremath{%
+\cos{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{OrangeRed}{#2}}\sin{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{1}}}
 \begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit.}
 \begin{itemize}
    \item We start with three real parameters:
@@ -85,24 +86,64 @@ We next examine a more concise and visually compelling definition of a qubit.
     
 \end{frame}
 
+\def\BlochSpherePhiTheta{%
+\tdplotsetrotatedcoords{0}{0}{0};
+    \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
+    \draw[tdplot_rotated_coords,thick,OrangeRed] (0.3,0,0) arc (0:115:0.3);
+    \draw[tdplot_rotated_coords,OrangeRed,thick,dashed] (0,0,0) -- (phi);
+    \draw[OrangeRed] (0.4,0.4,0) node {$\phi$};
+    
+    \tdplotsetrotatedcoords{25}{-90}{0};
+    \path[tdplot_rotated_coords] (1,0,0) arc (0:45:1) node(theta) {};
+    \draw[tdplot_rotated_coords,thick,NavyBlue] (0.4,0,0) arc (0:45:0.4);
+    \draw[tdplot_rotated_coords,NavyBlue,thick] (0,0,0) -- (theta);
+    \draw[NavyBlue] (-0.4,0,0.3) node {$\theta$};
+    
+    \TZPoint{theta}{\ket{\psi}}{above right}
+}
+\def\PhiTheta#1#2{%
+\mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
 \begin{frame}{The Bloch Sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
+\TwoColumns{%
+\[ \ket{\psi} = \Bloch{\theta}{\phi} \]
+\begin{itemize}
 
-\begin{BlochSphere}[scale=2.5]
-    \TZPoint{0,0,1}{\ket{0}}{above right}
-    \TZPoint{0,0,-1}{\ket{1}}{below right}
+\item \ket{\psi} is located 
+\begin{itemize}
+    \item  \textcolor{OrangeRed}{$\phi$} radians off the $x$~axis and 
+    \item \textcolor{NavyBlue}{$\theta$} radians off the $z$~axis.
+\end{itemize}
+\item We locate states on the unit sphere, but the distance from the center of the sphere has no meaning here.  
+
+A more general interpretation of the sphere ascribes meaning to interior points.
+\end{itemize}
+}{%
+\Vskip{-3em}\begin{BlochSphere}[scale=2.5]{60}{115}
     
-    \tdplotsetrotatedcoords{0}{0}{0};
-    \draw[tdplot_rotated_coords, orange, ultra thick] (1.0,0,0) arc (0:45:1.0) node(phi) {};
-    \draw[tdplot_rotated_coords,->,orange,ultra thick] (0,0,0) -- (phi);
-    \draw[orange] (0.5,0.2,0) node {$\phi$};
-    \TZPoint{phi}{X}{}
+    \BlochSpherePhiTheta{}
 \end{BlochSphere}
-    
+}
 \end{frame}
 
+\begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half.}
+\TwoColumns{%
+\[ \ket{\psi} = \Bloch{\theta}{\phi} \]
+\begin{itemize}
+  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}
+  \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$
+\end{itemize}
+}{%
+\Vskip{-3em}\begin{BlochSphere}[scale=2.5]{60}{115}
+    
+    \BlochSpherePhiTheta{}
+    \visible<2->{\TZPoint{0,0,1}{$\ket{0}$}{right}}
+    \visible<3->{\TZPoint{0,0,-1}{$\ket{1}$}{right}}
+\end{BlochSphere}
+}
+\end{frame}
 \begin{frame}{test}{test}
 
-\begin{BlochSphere}[scale=2.5]
+\begin{BlochSphere}[scale=2.5]{0}{0}
     \coordinate (P) at ({1/sqrt(3)},{1/sqrt(3)},{1/sqrt(3)});
     \draw[thick, -stealth] (0,0,0) -- (P) node[right] {$P$};
         
@@ -111,6 +152,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \draw[thin, dashed] ({1/sqrt(3)},{1/sqrt(3)},0) --++({-1/sqrt(3)},0,0);
         
     \draw[fill = lightgray!50] (P) circle (0.5pt);
+    
 \end{BlochSphere}
     
 \end{frame}
