@@ -375,7 +375,7 @@ rotates a state  by $\pi$ radians around the x~axis.
 \PauliY{} = \YMatrix{}
 \]
 \begin{itemize}
-    \item<1-> This transformation exchanges the amplitudes and rotates the components $\pi$ radians from each other: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} \mapsto  \SQB{-i\beta}{i\alpha} \]
+    \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} \mapsto  \SQB{-i\beta}{i\alpha} = -i\SQB{\beta}{-\alpha} \]
     \item<2-> The two unaffected states are \ket{+y} and \ket{-y} (exercise).
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
@@ -388,6 +388,9 @@ rotates a state  by $\pi$ radians around the x~axis.
     \end{BlochSphere}
 \end{center}
 \PauliY{} generally
-rotates a state  by $\pi$ radians around the y~axis.
+rotates a state  by $\pi$ radians around the y~axis.  This gate also maps $\ket{+} \mapsto \ket{-}$ and \VV{}.
 }
+\end{frame}
+
+\begin{frame}{Properties of Pauli gates}{These should be apparent from our study so far.}
 \end{frame}
