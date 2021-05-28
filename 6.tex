@@ -316,13 +316,19 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
-    \item This matrix transforms a state as follows \[ \SQB{\alpha}{\beta} \mapsto  \SQB{\alpha}{-\beta} \]
+    \item This matrix transforms a state as follows \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\alpha}{-\beta} \]
+    \item However
+    \begin{itemize}
+       \item $\ApplyGate{\PauliZ}{\left(\ket{0}=\SQB{1}{0}\right)} = \ket{0}$
+       \item $\ApplyGate{\PauliZ}{\left(\ket{1}=\SQB{0}{1}\right)} = -\ket{1}\equiv \ket{1}$
+    \end{itemize}
+    \item \PauliZ{} does transform all other states, as shown on the right.
 \end{itemize}
 }{%
 \[
 \PauliZ{} = \SQBG{\relax}{1}{0}{0}{-1}
 \]
-The effect is only seen for states off the z axis, for example:
+\PauliZ{} affects all states off the z axis, for example:
 \begin{eqnarray*}
 \ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
 \ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
