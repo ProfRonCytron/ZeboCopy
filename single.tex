@@ -43,15 +43,22 @@
 \def\CCNOT#1#2#3{%
 \ensuremath{\mbox{CNOT}(#1,#2,#3)}}
 \long\def\ToDo#1{\smash{\textcolor{YellowOrange}{#1}}}
+\def\ApplyGate#1#2{%
+\ensuremath{#1\,#2}}
 \def\Inverse#1{\ensuremath{{#1}^{-1}}}
 \def\Quote#1{``#1''}
 \def\NamedGate#1{%
 \mbox{\bfseries{\textrm{#1}}}}
 \def\Identity{\NamedGate{I}}
 \def\Hadamard{\NamedGate{H}}
-\def\HMatrix{%
+\def\PauliX{\NamedGate{X}}
+\def\PauliY{\NamedGate{Y}}
+\def\PauliZ{\NamedGate{Z}}
+\def\SQBG#1#2#3#4#5{%
 \ensuremath{%
-\frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}}}
+#1 \begin{pmatrix} #2 & #3 \\ #4 & #5\end{pmatrix}}}
+\def\HMatrix{%
+\SQBG{\frac{1}{\sqrt{2}}}{1}{1}{1}{-1}}
 \def\Implies#1#2{\ensuremath{#1 \rightarrow #2}}
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}

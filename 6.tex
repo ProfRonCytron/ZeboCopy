@@ -232,8 +232,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{itemize}
     \item Typically, our computations begin and end (with measurements) in the standard basis.
     \item We often create a uniform superposition of the standard basis states, \ket{+} or \ket{-}, which together form the \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Hadamard_gate}{Hadamard} basis in quantum computing.
-    \item<2-> How?  We need a transformation (unitary matrix) \Hadamard{} that sends $\ket{0}\mapsto \ket{+}$ and $\ket{1}\mapsto \ket{-}$.
-    \item<3-> From linear algebra, the columns of \Hadamard{} are transformed versions of \textcolor<4->{NavyBlue}{\ket{0}} and \textcolor<5->{OliveGreen}{\ket{1}}.
+    \item<1-> How?  We need a transformation (unitary matrix) \Hadamard{} that sends $\ket{0}\mapsto \ket{+}$ and $\ket{1}\mapsto \ket{-}$.
+    \item<3-> From linear algebra, the columns of \Hadamard{} are the transformed versions of \textcolor<4->{NavyBlue}{\ket{0}} and \textcolor<5->{OliveGreen}{\ket{1}}.
     \item<6-> Because it is symmetric and its entries are real, \mbox{\Hadamard{} = \Conj{\Hadamard{}}}  $\rightarrow$ \Hadamard{} is also its own inverse.
     
 \end{itemize}
@@ -259,7 +259,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{frame}{Physics and the Bloch sphere}{Models electron spin in space}
 \Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{%
 \begin{itemize}
-\item The labeled axes on the Bloch sphere are often used in physics to model spin in each of the three physical dimensions.
+\item The labeled axes on the Bloch sphere are often used in physics to model spin in each of the three physical dimensions:
 \begin{description}
 \item[z axis] spin up or down
 \item[x axis] spin in or out
@@ -297,18 +297,36 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{center}
 }
 \end{frame}
-\begin{frame}{test}{test}
 
-\begin{BlochSphere}[scale=2.5]{0}{0}
-    \coordinate (P) at ({1/sqrt(3)},{1/sqrt(3)},{1/sqrt(3)});
-    \draw[thick, -stealth] (0,0,0) -- (P) node[right] {$P$};
-        
-    \draw[thin, dashed] (P) --++ (0,0,{-1/sqrt(3)});
-    \draw[thin, dashed] ({1/sqrt(3)},{1/sqrt(3)},0) --++(0,{-1/sqrt(3)},0);
-    \draw[thin, dashed] ({1/sqrt(3)},{1/sqrt(3)},0) --++({-1/sqrt(3)},0,0);
-        
-    \draw[fill = lightgray!50] (P) circle (0.5pt);
-    
-\end{BlochSphere}
+\section{The Pauli matrices}
+
+\begin{frame}{Overview of the Pauli matrices}{We use these as gates in quantum computation.}
+
+\begin{itemize}
+    \item There are three \href{https://en.wikipedia.org/wiki/Pauli_matrices}{Pauli matrices} that are named for the three axes of the Bloch sphere.
+    \item Each matrix has the property of rotating a state by $\pi$ radians about its associated axis.
+    \item Each gate is its own inverse.
+    \item We will develop a universality argument:  any quantum gate can be realized using a linear combination of the Pauli matrices.
+    \item The gates we study here are quantum gates.  There are equivalently named \emph{measurement} gates we study later.  They are nonunitary and thus different from the ones we study here.
+\end{itemize}
     
 \end{frame}
+
+\begin{frame}{Pauli \PauliZ{}}{A gate that changes the sign of \ket{1}}
+
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{itemize}
+    \item 
+\end{itemize}
+}{%
+\[
+\PauliZ{} = \SQBG{\relax}{1}{0}{0}{-1}
+\]
+The effect is only seen for states off the z axis, for example:
+\begin{eqnarray*}
+\ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
+\ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
+\end{eqnarray*}
+}
+\end{frame}
+
