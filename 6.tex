@@ -10,11 +10,11 @@
 \begin{frame}{State space}{Definition}
 \Postulate{State Space}{The state of a quantum system is a unit vector in a complex \href{https://en.wikipedia.org/wiki/Hilbert_space}{Hilbert space}}
 \begin{itemize}
-    \item We need a Hilbert space, rather than the simpler \href{https://en.wikipedia.org/wiki/Euclidean_space}{Euclidean space}, because we use complex numbers to represent state.
+    \item We need a Hilbert space, rather than the simpler \href{https://en.wikipedia.org/wiki/Euclidean_space}{Euclidean space}, because we use complex values to represent state.
     \item We have used two dimensions to specify a single qubit, one each for $\alpha$ and $\beta$: $\ket{\psi}=\SQB{\alpha}{\beta}$, where
     $\Prob{\alpha}+\Prob{\beta}=1$.
   
-    \item The state of an $n$-qubit system is a unit column vector (ket)  of $\TwoToThe{n}$ complex numbers.
+    \item The state of an $n$-qubit system is a unit column vector (ket)  of $\TwoToThe{n}$ complex values.
 \end{itemize}
 \OnlyRemark{1}{%
 We next examine a more concise and visually compelling definition of a qubit.
@@ -224,6 +224,35 @@ A more general interpretation of the sphere ascribes meaning to interior points.
     \visible<5-6>{\TZPoint{0,1,0}{$\ket{+y}$}{above}}
     \visible<6>{\TZPoint{0,-1,0}{$\ket{-y}$}{right}}
 \end{BlochSphere}
+}
+\end{frame}
+
+\begin{frame}{Switching between bases}{We consider here the standard and Hadamard bases.}
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{itemize}
+    \item Typically, our computations begin and end (with measurements) in the standard basis.
+    \item We often create a uniform superposition of the standard basis states, \ket{+} or \ket{-}, which together form the \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Hadamard_gate}{Hadamard} basis in quantum computing.
+    \item<2-> How?  We need a transformation (unitary matrix) \Hadamard{} that sends $\ket{0}\mapsto \ket{+}$ and $\ket{1}\mapsto \ket{-}$.
+    \item<3-> From linear algebra, the columns of \Hadamard{} are transformed versions of \textcolor<4->{NavyBlue}{\ket{0}} and \textcolor<5->{OliveGreen}{\ket{1}}.
+    \item<6-> \Hadamard{} is also its own inverse.
+    
+\end{itemize}
+}{%
+\visible<2->{%
+\begin{eqnarray*}
+    \SQB{1}{0} & \mapsto & \textcolor<3->{NavyBlue}{\frac{1}{\sqrt{2}}\SQB{1}{1}} \\
+    \SQB{0}{1} & \mapsto & \textcolor<3->{OliveGreen}{\frac{1}{\sqrt{2}}\SQB{1}{-1}}
+    \end{eqnarray*}}
+\visible<4->{%
+\[
+\Hadamard{} = \HMatrix{}
+\]
+\begin{TIKZP}[overlay]
+  \draw[white] (0,0) circle(1pt);  % anchor
+  \draw<4-5>[NavyBlue,thick] (2.25,0.7) ellipse(0.3 and 0.6);
+  \draw<5>[OliveGreen,thick] (3, 0.7) ellipse (0.3 and 0.6);
+\end{TIKZP}
+}
 }
 \end{frame}
 
