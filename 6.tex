@@ -201,7 +201,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
         \visible<6->{\Sket{-y} & $-\pi/2$ & $\pi/2$ \\}%
     \end{tabular}
 \end{center}
-\only<4>{\Vskip{-5em}States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  Using the formula they are:
+\only<4>{\Vskip{-5em}States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  They are more familiar as:
 \begin{eqnarray*} \ket{+} & = & \frac{1}{\sqrt{2}} \SQB{1}{1} \\
 \ket{-} & = & \frac{1}{\sqrt{2}} \SQB{1}{-1}
 \end{eqnarray*}
@@ -225,6 +225,20 @@ The axes on the Bloch Sphere are often used in physics to model spin in each of 
 \end{frame}
 
 \begin{frame}{What other bases are there?}{Quite a few}
+\Definition{Two points on the Bloch Sphere are \emph{antipodal} if they determine a line that passes through the center of the sphere.}
+\TwoColumns{%
+\begin{itemize}
+    \item Every pair of antipodal points determines an orthogonal basis for a the quantum state of a single qubit.
+    \item The proof is left as an exercise.
+    \item We can express any state using any basis (linear algebra).
+\end{itemize}
+}{%
+\begin{center}
+\begin{BlochSphere}[scale=1.5]{60}{115}
+    \BlochSpherePhiTheta{}
+\end{BlochSphere}
+\end{center}
+}
 \end{frame}
 \begin{frame}{test}{test}
 
