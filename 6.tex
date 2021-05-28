@@ -105,7 +105,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \draw[tdplot_rotated_coords,NavyBlue,thick] (0,0,0) -- (theta);
     \draw[NavyBlue] (-0.4,0,0.3) node {$\theta$};
     
-    \TZPoint{theta}{\ket{\psi}}{above right}
+    
 }
 \def\PhiTheta#1#2{%
 \mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
@@ -127,6 +127,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \Vskip{-3em}\begin{BlochSphere}[scale=2.5]{60}{115}
     
     \BlochSpherePhiTheta{}
+    \TZPoint{theta}{\ket{\psi}}{above right}
 \end{BlochSphere}
 }
 \end{frame}
