@@ -315,24 +315,63 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{frame}{Pauli \PauliZ{}}{A gate that changes the sign of \ket{1}}
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\[
+\PauliZ{} = \SQBG{\relax}{1}{0}{0}{-1}
+\]
 \begin{itemize}
-    \item This matrix transforms a state as follows \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\alpha}{-\beta} \]
-    \item However
+    \item<1-> This matrix transforms a state as follows: \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\alpha}{-\beta} \]
+    \item<2-> However, two states are unaffected by \PauliZ{}:
     \begin{itemize}
        \item $\ApplyGate{\PauliZ}{\left(\ket{0}=\SQB{1}{0}\right)} = \ket{0}$
        \item $\ApplyGate{\PauliZ}{\left(\ket{1}=\SQB{0}{1}\right)} = -\ket{1}\equiv \ket{1}$
     \end{itemize}
-    \item \PauliZ{} does transform all other states, as shown on the right.
 \end{itemize}
 }{%
-\[
-\PauliZ{} = \SQBG{\relax}{1}{0}{0}{-1}
-\]
-\PauliZ{} affects all states off the z axis, for example:
+\Vskip{-4em}\begin{center}
+    \begin{BlochSphere}[scale=1]{60}{115}
+    \BlochSpherePhiTheta{}
+    \draw (0,0,1) node[right] {\ket{0}};
+    \draw (0,0,-1) node[below] {\ket{1}};
+    \end{BlochSphere}
+\end{center}
+\visible<3>{%
+\Vskip{-2em}\PauliZ{} affects all states off the z axis, for example
 \begin{eqnarray*}
 \ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
 \ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
 \end{eqnarray*}
-}
+rotating them by $\pi$ radians around the z~axis.
+}}
 \end{frame}
 
+\begin{frame}{Pauli \PauliX{}}{Also called the \NamedGate{NOT} gate}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\[
+\PauliZ{} = \SQBG{\relax}{0}{1}{1}{0}
+\]
+\begin{itemize}
+    \item<1-> This transformation exchanged the amplitudes: \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\beta}{\alpha} \]
+    \item<2-> However, two states are unaffected by \PauliZ{}:
+    \begin{itemize}
+       \item $\ApplyGate{\PauliZ}{\left(\ket{0}=\SQB{1}{0}\right)} = \ket{0}$
+       \item $\ApplyGate{\PauliZ}{\left(\ket{1}=\SQB{0}{1}\right)} = -\ket{1}\equiv \ket{1}$
+    \end{itemize}
+\end{itemize}
+}{%
+\Vskip{-4em}\begin{center}
+    \begin{BlochSphere}[scale=1]{60}{115}
+    \BlochSpherePhiTheta{}
+    \draw (0,0,1) node[right] {\ket{0}};
+    \draw (0,0,-1) node[below] {\ket{1}};
+    \end{BlochSphere}
+\end{center}
+\visible<3>{%
+\Vskip{-2em}\PauliZ{} affects all states off the z axis, for example
+\begin{eqnarray*}
+\ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
+\ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
+\end{eqnarray*}
+rotating them by $\pi$ radians around the z~axis.
+}}
+\end{frame}
