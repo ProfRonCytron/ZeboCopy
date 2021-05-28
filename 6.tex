@@ -188,7 +188,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \ket{\hbox to 4ex{\hfil\ensuremath{#1}\hfil}}}%
 \begin{frame}{Navigating the Bloch Sphere}{Other points of interest}
 
-\Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{center}
     \begin{tabular}{ccc}
         State & \textcolor{OrangeRed}{$\phi$} & \textcolor{NavyBlue}{$\theta$} \\
@@ -206,9 +206,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \ket{-} & = & \frac{1}{\sqrt{2}} \SQB{1}{-1}
 \end{eqnarray*}
 }%
-\only<7->{%
-The axes on the Bloch Sphere are often used in physics to model spin in each of the three physical dimensions.  In quantum computing we almost exclusively use the standard basis of \ket{0} and \ket{1}.
-}
+
 }{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
 \begin{BlochSphere}[scale=1.5]{60}{115}
@@ -224,13 +222,38 @@ The axes on the Bloch Sphere are often used in physics to model spin in each of 
 }
 \end{frame}
 
+\begin{frame}{Physics and the Bloch Sphere}{Models electron spin in space}
+\Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{%
+\begin{itemize}
+\item The labeled axes on the Bloch Sphere are often used in physics to model spin in each of the three physical dimensions.
+\begin{description}
+\item[z axis] spin up or down
+\item[x axis] spin in or out
+\item[y axis] spin left or right
+\end{description}
+\item In quantum computing we almost always use the standard basis of \ket{0} and \ket{1} (the z axis).
+\item The named axes are mutually orthogonal (exercise).
+\item While we can characterize two of the dimensions using only real values (the z--x plane, where $\textcolor{OrangeRed}{\phi}=0$), we require complex values to admit a third mutually orthogonal dimension (y).
+
+\end{itemize}
+}{%
+\begin{center}
+    \begin{BlochSphere}[scale=1]{60}{115}
+    
+    \BlochSpherePhiTheta{}
+    \end{BlochSphere}
+\end{center}
+}
+
+\end{frame}
+
 \begin{frame}{What other bases are there?}{Quite a few}
 \Definition{Two points on the Bloch Sphere are \emph{antipodal} if they determine a line that passes through the center of the sphere.}
 \TwoColumns{%
 \begin{itemize}
     \item Every pair of antipodal points determines an orthogonal basis for a the quantum state of a single qubit.
     \item The proof is left as an exercise.
-    \item We can express any state using any basis (linear algebra).
+    \item Using linear algebra, we can express any state \ket{\psi} in any basis.
 \end{itemize}
 }{%
 \begin{center}

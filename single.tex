@@ -45,7 +45,9 @@
 \long\def\ToDo#1{\smash{\textcolor{YellowOrange}{#1}}}
 \def\Inverse#1{\ensuremath{{#1}^{-1}}}
 \def\Quote#1{``#1''}
-\def\Identity{\mbox{\bfseries{\textrm{I}}}}
+\def\NamedGate#1{%
+\mbox{\bfseries{\textrm{#1}}}}
+\def\Identity{\NamedGate{I}}
 \def\Implies#1#2{\ensuremath{#1 \rightarrow #2}}
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
