@@ -316,7 +316,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \[
-\PauliZ{} = \SQBG{\relax}{1}{0}{0}{-1}
+\PauliZ{} = \ZMatrix{}
 \]
 \begin{itemize}
     \item<1-> This matrix transforms a state as follows: \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\alpha}{-\beta} \]
@@ -330,8 +330,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \Vskip{-4em}\begin{center}
     \begin{BlochSphere}[scale=1]{60}{115}
     \BlochSpherePhiTheta{}
-    \draw (0,0,1) node[right] {\ket{0}};
-    \draw (0,0,-1) node[below] {\ket{1}};
+     \TZPoint{0,0,1}{\ket{0}}{right}
+     \TZPoint{0,0,-1}{\ket{1}}{below}
     \end{BlochSphere}
 \end{center}
 \visible<3>{%
@@ -348,30 +348,46 @@ rotating them by $\pi$ radians around the z~axis.
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \[
-\PauliZ{} = \SQBG{\relax}{0}{1}{1}{0}
+\PauliX{} = \XMatrix{}
 \]
 \begin{itemize}
-    \item<1-> This transformation exchanged the amplitudes: \[ \ApplyGate{\PauliZ}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\beta}{\alpha} \]
-    \item<2-> However, two states are unaffected by \PauliZ{}:
-    \begin{itemize}
-       \item $\ApplyGate{\PauliZ}{\left(\ket{0}=\SQB{1}{0}\right)} = \ket{0}$
-       \item $\ApplyGate{\PauliZ}{\left(\ket{1}=\SQB{0}{1}\right)} = -\ket{1}\equiv \ket{1}$
-    \end{itemize}
+    \item<1-> This transformation exchanges the amplitudes: \[ \ApplyGate{\PauliX}{\SQB{\alpha}{\beta}} \mapsto  \SQB{\beta}{\alpha} \]
+    \item<2-> The two unaffected states are \ket{+x} and \ket{-x} (exercise).
+    \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
-\Vskip{-4em}\begin{center}
+\begin{center}
     \begin{BlochSphere}[scale=1]{60}{115}
     \BlochSpherePhiTheta{}
-    \draw (0,0,1) node[right] {\ket{0}};
-    \draw (0,0,-1) node[below] {\ket{1}};
+    \TZPoint{1,0,0}{\ket{x}}{left}
+    \TZPoint{-1,0,0}{\ket{-x}}{right}
     \end{BlochSphere}
 \end{center}
-\visible<3>{%
-\Vskip{-2em}\PauliZ{} affects all states off the z axis, for example
-\begin{eqnarray*}
-\ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
-\ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
-\end{eqnarray*}
-rotating them by $\pi$ radians around the z~axis.
-}}
+\PauliX{} generally
+rotates a state  by $\pi$ radians around the x~axis.
+}
+\end{frame}
+
+\begin{frame}{Pauli \PauliY{}}{Exchanges amplitudes and imposes phase}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\[
+\PauliY{} = \YMatrix{}
+\]
+\begin{itemize}
+    \item<1-> This transformation exchanges the amplitudes and rotates the components $\pi$ radians from each other: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} \mapsto  \SQB{-i\beta}{i\alpha} \]
+    \item<2-> The two unaffected states are \ket{+y} and \ket{-y} (exercise).
+    \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{BlochSphere}[scale=1]{60}{115}
+    \BlochSpherePhiTheta{}
+    \TZPoint{0,1,0}{\ket{y}}{above}
+    \TZPoint{0,-1,0}{\ket{-y}}{left}
+    \end{BlochSphere}
+\end{center}
+\PauliY{} generally
+rotates a state  by $\pi$ radians around the y~axis.
+}
 \end{frame}
