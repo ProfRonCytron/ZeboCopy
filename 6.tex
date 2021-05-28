@@ -5,6 +5,8 @@
     
 \end{frame}
 
+\section{Efficient characterization}
+
 \begin{frame}{State space}{Definition}
 \Postulate{State Space}{The state of a quantum system is a unit vector in a complex \href{https://en.wikipedia.org/wiki/Hilbert_space}{Hilbert space}}
 \begin{itemize}
@@ -52,6 +54,9 @@ We next examine a more concise and visually compelling definition of a qubit.
 \def\Bloch#1#2{%
 \ensuremath{%
 \cos{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{OrangeRed}{#2}}\sin{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{1}}}
+
+\section{Bloch sphere}
+
 \begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit.}
 \begin{itemize}
    \item We start with three real parameters:
@@ -109,7 +114,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 }
 \def\PhiTheta#1#2{%
 \mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
-\begin{frame}{The Bloch Sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
+\begin{frame}{The Bloch sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
 \TwoColumns{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
 \begin{itemize}
@@ -186,7 +191,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 
 \def\Sket#1{%
 \ket{\hbox to 4ex{\hfil\ensuremath{#1}\hfil}}}%
-\begin{frame}{Navigating the Bloch Sphere}{Other points of interest}
+\begin{frame}{Navigating the Bloch sphere}{Other points of interest}
 
 \Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{center}
@@ -222,10 +227,10 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
-\begin{frame}{Physics and the Bloch Sphere}{Models electron spin in space}
+\begin{frame}{Physics and the Bloch sphere}{Models electron spin in space}
 \Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{%
 \begin{itemize}
-\item The labeled axes on the Bloch Sphere are often used in physics to model spin in each of the three physical dimensions.
+\item The labeled axes on the Bloch sphere are often used in physics to model spin in each of the three physical dimensions.
 \begin{description}
 \item[z axis] spin up or down
 \item[x axis] spin in or out
@@ -248,7 +253,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{frame}
 
 \begin{frame}{What other bases are there?}{Quite a few}
-\Definition{Two points on the Bloch Sphere are \emph{antipodal} if they determine a line that passes through the center of the sphere.}
+\Definition{Two points on the Bloch sphere are \emph{antipodal} if they determine a line that passes through the center of the sphere.}
 \TwoColumns{%
 \begin{itemize}
     \item Every pair of antipodal points determines an orthogonal basis for a the quantum state of a single qubit.
