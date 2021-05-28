@@ -75,15 +75,21 @@ We next examine a more concise and visually compelling definition of a qubit.
 \begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far.}
 \[ \Bloch{\theta}{\phi} \]
 \begin{itemize}
-    \item The parameter \textcolor{NavyBlue}{$\theta$} balances wave amplitude between \ket{0} and \ket{1}.
-    \item We recall it's the relative phase between \ket{0} and \ket{1} that matters.  The relative phase difference is placed on \ket{1}, using a walk of \textcolor{OrangeRed}{$\phi$} radians counterclockwise around the complex unit circle, starting at 0~radians.
-    \item Recalling our beam splitter, the state of a photon is
-    \begin{itemize}
-        \item Initially $\Bloch{0}{0} = \SQB{1}{0}$
-        \item After one beam splitter \[ \Bloch{\pi/2}{\pi/2} = \frac{1}{\sqrt{2}} \SQB{1}{i} \]
-    \end{itemize} 
+    \item The parameter \textcolor{NavyBlue}{$\theta$} trades wave amplitude between \ket{0} and \ket{1}.
+    \item Only the relative phase between \ket{0} and \ket{1} matters for interactions.  
+    \item This formulation ascribes the phase difference to \ket{1}, using a walk of \textcolor{OrangeRed}{$\phi$} radians counterclockwise around the complex unit circle, starting at 0~radians.
+    \item This formulation of state makes clear that while only two real-valued parameters are needed, the number of states is \href{https://en.wikipedia.org/wiki/Uncountable_set}{uncountably infinite}.
+    
 \end{itemize}
     
+\end{frame}
+
+\begin{frame}{Recall the beam splitter}{We characterize two of its states using our new formula.}
+\[ \Bloch{\theta}{\phi} \]
+    \begin{itemize}
+        \item The state of the photon was initially $\Bloch{0}{0} = \SQB{1}{0}$
+        \item After one beam splitter we obtained \[ \Bloch{\pi/2}{\pi/2} = \frac{1}{\sqrt{2}} \SQB{1}{i} \]
+    \end{itemize} 
 \end{frame}
 
 \def\BlochSpherePhiTheta{%
@@ -113,7 +119,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \item  \textcolor{OrangeRed}{$\phi$} radians off the $x$~axis and 
     \item \textcolor{NavyBlue}{$\theta$} radians off the $z$~axis.
 \end{itemize}
-\item We locate states on the unit sphere, but the distance from the center of the sphere has no meaning here.  
+\item We locate states \emph{on} the unit sphere, but the distance from the center of the sphere has no meaning here.  
 
 A more general interpretation of the sphere ascribes meaning to interior points.
 \end{itemize}
@@ -196,6 +202,9 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{eqnarray*} \ket{+} & = & \frac{1}{\sqrt{2}} \SQB{1}{1} \\
 \ket{-} & = & \frac{1}{\sqrt{2}} \SQB{1}{-1}
 \end{eqnarray*}
+}%
+\only<7->{%
+The axes on the Bloch Sphere are often used in physics to model spin in each of the three physical dimensions.  In quantum computing we almost exclusively use the standard basis of \ket{0} and \ket{1}.
 }
 }{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
@@ -212,6 +221,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
+\begin{frame}{What other bases are there?}{Quite a few}
+\end{frame}
 \begin{frame}{test}{test}
 
 \begin{BlochSphere}[scale=2.5]{0}{0}
