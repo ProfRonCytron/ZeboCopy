@@ -126,14 +126,43 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{frame}
 
 \begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half.}
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{itemize}
+  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  The choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.
+  \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$.
+  \item<4-> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$, but the formula might make you think otherwise.
+\end{itemize}
+}{%
+\only<1-4>{%
+\[ \ket{\psi} = \Bloch{\theta}{\phi} \]}
+\only<5>{%
+\[ \ket{\psi} =  \ExpPhase{\textcolor{OrangeRed}{\phi}} \ket{1} \]
+}%
+\only<1-4>{%
+\begin{BlochSphere}[scale=1.5]{60}{115}
+    
+    \BlochSpherePhiTheta{}
+    \visible<2->{\TZPoint{0,0,1}{$\ket{0}$}{right}}
+    \visible<3->{\TZPoint{0,0,-1}{$\ket{1}$}{right}}
+    
+\end{BlochSphere}}%
+\only<5>{%
+\begin{itemize}
+\item However, with $0$ as the amplitude on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
+  \ExpPhase{(-\textcolor{OrangeRed}{\phi})} on \ket{\psi}.
+\item Global phases can be ignored as they do not affect measurements or interactions.
+\end{itemize}
+}
+}
+\end{frame}
+
+\begin{frame}{The computational basis}{Measurement outcomes are related to proximity to the north or south pole.}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
-  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  \only<2>{Actually the choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.}
-  \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$.
-  \item<4> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$, but in the formula, it appears to matter.
-  
-  However, with $0$ as the coefficient on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
-  \ExpPhase{(-\textcolor{OrangeRed}{\phi})} on \ket{\psi}.
+  \item<1-> The north and south poles, \ket{0} and \ket{1}, respectively, are our \emph{standard} or \emph{computational basis}.
+   All other points on the sphere are superpositions of that basis.
+   \item<2-> The probability of measuring \ket{0} or \ket{1} is related to how close the state is to the north or south pole, respectively, which is represented by $\textcolor{NavyBlue}{\theta}$.
+   \item<3-> The probability of measuring \ket{0} is $\cos^{2}(\textcolor{NavyBlue}{\theta}/2)$.  At the equator, we are equally likely to measure \ket{0} or \ket{1}.
 \end{itemize}
 }{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
@@ -147,18 +176,23 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
+
+
 \begin{frame}{Navigating the Bloch Sphere}{Other points of interest}
 \Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{center}
     \begin{tabular}{ccc}
         State & \textcolor{OrangeRed}{$\phi$} & \textcolor{NavyBlue}{$\theta$} \\
+        \visible<1->{\ket{0} & $0$ & $0$ \\}
+        \visible<1->{\ket{1} & $0$ & $\pi$ \\}
         \visible<2->{\ket{+x} & $0$ & $\pi/2$ \\}
         \visible<3->{\ket{-x} & $0$ & $-\pi/2$ \\}
+        \only<3-4>{\ket{-x} & $\pi$ & $\pi/2$ \\}
         \visible<5->{\ket{+y} & $\pi/2$ & $\pi/2$ \\}
         \visible<6->{\ket{-y} & $-\pi/2$ & $\pi/2$ \\}
     \end{tabular}
 \end{center}
-\only<4>{States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  Using the formula they are:
+\only<4>{\Vskip{-4em}States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  Using the formula they are:
 \begin{eqnarray*} \ket{+} & = & \frac{1}{\sqrt{2}} \SQB{1}{1} \\
 \ket{-} & = & \frac{1}{\sqrt{2}} \SQB{1}{-1}
 \end{eqnarray*}
@@ -168,6 +202,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{BlochSphere}[scale=1.5]{60}{115}
     
     \BlochSpherePhiTheta{}
+    \visible<1>{\TZPoint{0,0,1}{$\ket{0}$}{right}}
+    \visible<1>{\TZPoint{0,0,-1}{$\ket{1}$}{right}}
     \visible<2-3>{\TZPoint{1,0,0}{$\ket{+x}$}{right}}
     \visible<3>{\TZPoint{-1,0,0}{$\ket{-x}$}{right}}
     \visible<5-6>{\TZPoint{0,1,0}{$\ket{+y}$}{above}}
