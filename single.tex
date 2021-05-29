@@ -152,8 +152,9 @@
 \def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
 \def\SQB#1#2{%
 \ensuremath{\begin{pmatrix} #1 \\ #2\end{pmatrix}}}
+\def\TZPointDiam{2pt}
 \def\TZPoint#1#2#3{%
-\draw[fill=black] (#1) circle (2pt) node[#3] {#2} ;}
+\draw[fill=black] (#1) circle (\TZPointDiam) node[#3] {#2} ;}
 \def\UnitComplexCircle{%
 \draw [<->] (-1.5, 0) -- (1.5, 0)  node[right] {$\Re{}$} ;
    \draw [<->] (0,-1.5) -- (0, 1.5) node[above] {$\Im{}$} ;
@@ -327,13 +328,12 @@
 \end{TIKZP}
 }
 \newenvironment{BlochSphere}[3][scale=1.0]{
-    \bgroup
-    \def\TZPoint##1##2##3{%
-        \draw[fill=black] (##1) circle (0.7pt) node[##3] {##2} ;}
+    \bgroup%
+    \def\TZPointDiam{0.7pt}%
     \def\ShowAxes{%
     \draw[dashed, tdplot_rotated_coords, black] (1,0,0) node {{\Large\bf x}} (0,1,0) node {{\Large\bf y}} (0,0,1) node {{\Large\bf z}};
-    }
-    \tdplotsetmaincoords{#2}{#3}
+    }%
+    \tdplotsetmaincoords{#2}{#3}%
     \begin{tikzpicture}[tdplot_main_coords, #1]
         
         
@@ -376,5 +376,5 @@
 %% test
 %%
 \begin{document}
-\include{6}
+\include{1}
 \end{document}
