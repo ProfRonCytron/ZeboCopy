@@ -266,7 +266,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \item[y axis] spin left or right
 \end{description}
 \item In quantum computing we almost always use the standard basis of \ket{0} and \ket{1} (the z axis).
-\item The named axes are mutually orthogonal (exercise).
+\item The named axes are mutually orthogonal. \Exercise{Orthogonal Axes}{Prove orthogonality of the x, y, and z axes}.
 \item While we can characterize two of the dimensions using only real values (the z--x plane, where $\textcolor{OrangeRed}{\phi}=0$), we require complex values to admit a third mutually orthogonal dimension (y).
 
 \end{itemize}
@@ -285,8 +285,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \Definition{Two points on the Bloch sphere are \emph{antipodal} if they determine a line that passes through the center of the sphere.}
 \TwoColumns{%
 \begin{itemize}
-    \item Every pair of antipodal points determines an orthogonal basis for a the quantum state of a single qubit.
-    \item The proof is left as an exercise.
+    \item Every pair of antipodal points determines an orthogonal basis for a the quantum state of a single qubit. \Exercise{Antipodal points determine a basis}{Prove that antipodal points on the Bloch sphere are orthogonal.}
     \item Using linear algebra, we can express any state \ket{\psi} in any basis. \LinkArrow{https://www.youtube.com/watch?v=P2LTAUO1TdA}
 \end{itemize}
 }{%
@@ -356,7 +355,7 @@ rotating them by $\pi$ radians around the z~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes: \[ \ApplyGate{\PauliX}{\SQB{\alpha}{\beta}} =  \SQB{\beta}{\alpha} \]
-    \item<2-> The two unaffected states are \ket{+x} and \ket{-x} (exercise).
+    \item<2-> The two unaffected states are \ket{+x} and \ket{-x}. \Exercise{unaffected points}{Show that X doesn't affect +x or -x.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
@@ -380,7 +379,7 @@ rotates a state  by $\pi$ radians around the x~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-i\beta}{i\alpha} = -i\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
-    \item<2-> The two unaffected states are \ket{+y} and \ket{-y} (exercise).
+    \item<2-> The two unaffected states are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Show that Paul Y doesn't affect +y or -y.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
