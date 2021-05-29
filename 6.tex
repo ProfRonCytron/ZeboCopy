@@ -298,6 +298,10 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
+\begin{frame}{Antipodal points are orthogonal}{Leave as exercise?}
+\ToDo{include or not?}
+\end{frame}
+
 \section{The Pauli matrices}
 
 \begin{frame}{Overview of the Pauli matrices}{We use these as gates in quantum computation.}
@@ -307,7 +311,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
     \item Each matrix has the property of rotating a state by $\pi$ radians about its associated axis.
     \item Each gate is its own inverse.
     \item We will develop a universality argument:  any quantum gate can be realized using a linear combination of the Pauli matrices.
-    \item The gates we study here are quantum gates, used in the middle of a quantum circuit.  There are equivalently named \emph{measurement} gates, used near the end, that we study later.  They model collapse under measurement, are nonunitary, and are thus different from the ones we study here.
+    \item The gates we study here are quantum gates, used in the middle of a quantum circuit.  We can also think of these gates as \emph{measurement operators} but we study that later.
 \end{itemize}
     
 \end{frame}
@@ -394,4 +398,15 @@ rotates a state  by $\pi$ radians around the y~axis.
 \end{frame}
 
 \begin{frame}{Properties of Pauli gates}{These should be apparent from our study so far.}
+\begin{itemize}
+    \item Each matrix is \href{https://en.wikipedia.org/wiki/Involutory_matrix}{involutory} (its own inverse).
+    \item These relations can be verified by computing the appropriate products:
+    \begin{center}
+    { \setlength{\tabcolsep}{3pt}%
+    \begin{tabular}{rcrl@{\hspace{3em}}rcrl@{\hspace{3em}}rcrl} \setlength{\tabcolsep}{1pt}
+        \PauliX{}\PauliY{} & = & $i$ &\PauliZ{} & \PauliZ{}\PauliX{} & = & $i$ &\PauliY{} & \PauliY{}\PauliZ{} & = & $i$ &\PauliX{} \\
+        \PauliY{}\PauliX{} & = & $-i$ &\PauliZ{} &  \PauliX{}\PauliZ{} & = & $-i$ &\PauliY{} & \PauliZ{}\PauliY{} & = & $-i$ &\PauliX{}
+    \end{tabular}}
+    \end{center}
+\end{itemize}
 \end{frame}
