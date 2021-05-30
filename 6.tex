@@ -434,9 +434,10 @@ $\PauliZ{}=\ZMatrix{}$
 \begin{frame}{A useful theorem for expressing rotations}{A matrix extension of \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}.}
 
 
-\Vskip{-3em}\begin{theorem}
+\Vskip{-3em}
+\only<1,6>{\begin{theorem}
 \[  A^{2}=\Identity{} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
-\end{theorem}
+\end{theorem}}
 \TwoColumns{%
 Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor series}:
 \begin{align*}
@@ -465,8 +466,8 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
   \Bluify{\TermA{3}} \\[0.5em] & + 
   \Redify{\TermI{4}} + 
   \Bluify{\TermA{5}}\\[1em]}%
-\only<5>{%
-  = {} & I\left[ \Redify{1} + 
+\only<5-6>{%
+  = {} & \Identity{}\left[ \Redify{1} + 
    \Redify{\TermF{2}} - 
   + \Redify{\TermF{4}} - \cdots\right]
   \\[0.5em] &
@@ -474,8 +475,14 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
   \Bluify{\TermF{1}}
   - \Bluify{\TermF{3}} 
    + 
-  \Bluify{\TermF{5}} - \cdots\right]
+  \Bluify{\TermF{5}} - \cdots\right]\,A\\[1em]
   }%
+\only<6>{%
+= {} & \Identity{}\left[ \Redify{\cos(\theta)} \right]
+  \\[0.5em] &
+  + i\,\left[
+  \Bluify{\sin(\theta)}\right]\,A~\QED{}
+}
 \end{align*}
 }
 
