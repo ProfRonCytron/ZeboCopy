@@ -2,7 +2,13 @@
 
 \section{Overview}
 \begin{frame}{Overview}{What we will cover}
-    
+\begin{itemize}
+    \item We develop an efficient representation for a single quantum bit (qubit), parameterized by two real values.
+    \item We introduce the Bloch sphere: a compelling visualization of a single qubit.
+    \item We introduce the Hadamard gate that transforms \ket{0} into a uniform superposition of \ket{0} and \ket{1}.
+    \item We introduce the \emph{Pauli} gates and their associated unitary matrices.
+    \item We develop a general approach to rotating a qubit around each axis of the Bloch sphere.
+\end{itemize}
 \end{frame}
 
 \section{Efficient characterization}
@@ -417,3 +423,38 @@ $\PauliZ{}=\ZMatrix{}$
     \item Each Pauli matrix rotates all states by $\pi$ radians about its associated axis, except the two states at the intercept of its axis with the unit Bloch sphere.  The eigenvectors are therefore those intercepts.
 \end{itemize}
 \end{frame}
+
+{%
+\def\Redify#1{\textcolor{RedOrange}{#1}}%
+\def\Bluify#1{\textcolor{NavyBlue}{#1}}%
+\def\Term#1{\frac{i^{#1}\theta^{#1}A^{#1}}{#1!}}%
+\def\TermA#1{\frac{i\theta^{#1}A}{#1!}}%
+\def\TermI#1{\frac{\theta^{#1}\Identity{}}{#1!}}%
+\begin{frame}{Proof of a useful theorem}{This concerns exponentiation of $e$ to the power of a matrix.}
+
+
+\begin{theorem}
+\[  A^{2}=\Identity{} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
+\end{theorem}
+\TwoColumns{%
+Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor series}:
+\begin{align*}
+\Exp{x} = & 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots \\
+\Redify{\cos(x)} = & \Redify{1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} +  \cdots} \\ 
+\Bluify{\sin(x)} = & \Bluify{\frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots}
+\end{align*}
+}{%
+\Vskip{-3em}\begin{align*}
+\ExpPhase{\theta A}  = {} &
+\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]
+  = {} & \Identity{} + 
+  \TermA{1} - 
+  \TermI{2} - 
+  \TermA{3} \\[0.5em] & + 
+  \TermI{4} + 
+  \TermA{5}
+\end{align*}
+}
+
+\end{frame}
+}
