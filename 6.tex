@@ -23,7 +23,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 \Vskip{-5em}\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
 \ColHead{Cartesian}
 \begin{itemize}
-    \item $\ket{\psi}=\alpha\ket{0} + \beta\ket{1}$ with $\Mag{\alpha}+\Mag{\beta}=1$.
+    \item $\ket{\psi}=\alpha\ket{0} + \beta\ket{1}$ with $\Mag{\alpha}^2+\Mag{\beta}^2=1$.
     \item Letting
     \begin{itemize}
         \item $\alpha=\Complex{a_{0}}{b_{0}}$
@@ -55,7 +55,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 \begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit.}
 \begin{itemize}
    \item We start with three real parameters:
-   \( \ket{\psi}= r_{a}\left( \ket{0} + r_{b}\Exp{\phi}\ket{1}\right) \)
+   \( \ket{\psi}= r_{a}\left( \ket{0} + r_{b}\Exp{i \phi}\ket{1}\right) \)
    \item We have not yet accounted for the unit nature of \ket{\psi}.   
    \item We require $r_{a}^{2}+r_{b}^{2}=1$ which implies \And{r_{a}^{2} \leq 1}{r_{b}^{2} \leq 1}. 
    \item We can show $\Implies{x^{2}\leq 1}{-1 \leq x \leq 1}$.
