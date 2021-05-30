@@ -445,16 +445,27 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 \end{align*}
 }{%
 \Vskip{-3em}\begin{align*}
-\ExpPhase{\theta A}  = {} &
-\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]
-  = {} & \Identity{} + 
+\ExpPhase{\theta A}
+\only<1-2>{
+= {} &
+\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]}
+\only<2-3>{
+  = {} & 1\,\Identity{} + 
   \TermA{1} - 
   \TermI{2} - 
   \TermA{3} \\[0.5em] & + 
   \TermI{4} + 
-  \TermA{5}
+  \TermA{5}}
+\only<4>{
+  = {} & \Redify{1\,\Identity{}} + 
+  \Bluify{\TermA{1}} - 
+  \Redify{\TermI{2}} - 
+  \Bluify{\TermA{3}} \\[0.5em] & + 
+  \Redify{\TermI{4}} + 
+  \Bluify{\TermA{5}}}
 \end{align*}
 }
+
 
 \end{frame}
 }
