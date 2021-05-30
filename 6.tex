@@ -430,10 +430,11 @@ $\PauliZ{}=\ZMatrix{}$
 \def\Term#1{\frac{i^{#1}\theta^{#1}A^{#1}}{#1!}}%
 \def\TermA#1{\frac{i\theta^{#1}A}{#1!}}%
 \def\TermI#1{\frac{\theta^{#1}\Identity{}}{#1!}}%
-\begin{frame}{Proof of a useful theorem}{This concerns exponentiation of $e$ to the power of a matrix.}
+\def\TermF#1{\frac{\theta^{#1}}{#1!}}%
+\begin{frame}{A useful theorem for expressing rotations}{A matrix extension of \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}.}
 
 
-\begin{theorem}
+\Vskip{-3em}\begin{theorem}
 \[  A^{2}=\Identity{} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
 \end{theorem}
 \TwoColumns{%
@@ -446,23 +447,35 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 }{%
 \Vskip{-3em}\begin{align*}
 \ExpPhase{\theta A}
-\only<1-2>{
+\only<1-2>{%
 = {} &
-\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]}
-\only<2-3>{
+\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]
+}%
+\only<2-3>{%
   = {} & 1\,\Identity{} + 
   \TermA{1} - 
   \TermI{2} - 
   \TermA{3} \\[0.5em] & + 
   \TermI{4} + 
-  \TermA{5}}
-\only<4>{
+  \TermA{5} \\[1em]}%
+\only<4-5>{%
   = {} & \Redify{1\,\Identity{}} + 
   \Bluify{\TermA{1}} - 
   \Redify{\TermI{2}} - 
   \Bluify{\TermA{3}} \\[0.5em] & + 
   \Redify{\TermI{4}} + 
-  \Bluify{\TermA{5}}}
+  \Bluify{\TermA{5}}\\[1em]}%
+\only<5>{%
+  = {} & I\left[ \Redify{1} + 
+   \Redify{\TermF{}{2}} - 
+  + \Redify{\TermF{4}} - \cdots\right] + 
+  \\[0.5em] &
+  i\,\left[
+  \Bluify{\TermF{1}}
+  - \Bluify{\TermF{3}} 
+   + 
+  \Bluify{\TermF{5}}\right]
+  }%
 \end{align*}
 }
 
