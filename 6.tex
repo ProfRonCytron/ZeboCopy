@@ -435,29 +435,35 @@ $\PauliZ{}=\ZMatrix{}$
 
 
 \Vskip{-3em}
-\only<1,6>{\begin{theorem}
-\[  A^{2}=\Identity{} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
-\end{theorem}}
+\only<1-6>{%\begin{theorem}
+\[  \alert<2>{A^{2}=\Identity{}} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
+%\end{theorem}
+}
 \TwoColumns{%
 Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor series}:
 \begin{align*}
 \Exp{x} = & 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots \\
 \Redify{\cos(x)} = & \Redify{1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} +  \cdots} \\ 
 \Bluify{\sin(x)} = & \Bluify{\frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots}
+\only<2>{%
+\\ i^{2} = & -1 \\
+   i^{3} = & - i \\
+   i^{4} = & \ 1
+}
 \end{align*}
 }{%
-\Vskip{-3em}\begin{align*}
+\Vskip{-4em}\begin{align*}
 \ExpPhase{\theta A}
 \only<1-2>{%
 = {} &
-\Identity{} + \Term{1} + \Term{2} + \Term{3} \\[0.5em] & + \Term{4} + \Term{5} + \cdots \\[1em]
+\Identity{} + \Term{1} + \alert<2>{\Term{2}} + \Term{3} \\[0.5em] & + \alert<2>{\Term{4}} + \Term{5} + \cdots \\[1em]
 }%
 \only<2-3>{%
   = {} & 1\,\Identity{} + 
   \TermA{1} - 
-  \TermI{2} - 
+  \alert<2>{\TermI{2}} - 
   \TermA{3} \\[0.5em] & + 
-  \TermI{4} + 
+  \alert<2>{\TermI{4}} + 
   \TermA{5} \\[1em]}%
 \only<4-5>{%
   = {} & \Redify{1\,\Identity{}} + 
@@ -481,11 +487,10 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 = {} & \Identity{}\left[ \Redify{\cos(\theta)} \right]
   \\[0.5em] &
   + i\,\left[
-  \Bluify{\sin(\theta)}\right]\,A~\QED{}
+  \Bluify{\sin(\theta)}\right]\,A
 }
 \end{align*}
 }
-
-
+\QED{}
 \end{frame}
 }
