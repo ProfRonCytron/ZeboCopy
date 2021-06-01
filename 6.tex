@@ -494,3 +494,14 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 \QED{}
 \end{frame}
 }
+\begin{frame}{Arbitrary rotations}{The Pauli matrices rotate by $\pi$ radians;  how can we rotate by $\theta$ radians?}
+We can use the extended Euler formula to express rotation about the Bloch x, y, or z axes:
+\begin{align*}
+R_{x}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliX{}}\\[0.7em]
+R_{y}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliY{}}\\[0.7em]
+R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}
+\end{align*}
+where the matrices in the exponents are the Pauli matrices.
+
+When $\theta=\pi$, $\cos(\pi/2)=0$ and $\sin(\pi/2)=1$, blah blah blah
+\end{frame}
