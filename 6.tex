@@ -512,9 +512,19 @@ When $\theta=\pi$, $\cos(-\pi/2)=0$ and $\sin(-\pi/2)=-1$ $\rightarrow$ $R_a(\pi
 \begin{frame}{Matrix formulation of rotating gates}{We use the matrix form of Euler's formula.}
 
 \begin{align*}
-R_{x}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliX{}}  \visible<2-3>{= \EulerP{\PauliX{}}}
-   \visible<3>{= \SQBG{\relax}{\cos\left(\frac{\theta}{2}\right)}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\cos\left(\frac{\theta}{2}\right)}}\\[0.7em]
-R_{y}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliY{}}\visible<2-3>{= \EulerP{\PauliY{}}}\\[0.7em]
-R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}} \visible<2-3>{= \EulerP{\PauliZ{}}}
+R_{x}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliX{}}%
+\visible<2-3>{= \EulerP{\PauliX{}}}%
+\visible<3>{= \SQBG{\relax}{\cos\left(\frac{\theta}{2}\right)}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\cos\left(\frac{\theta}{2}\right)}}\\[0.7em]
+%
+%
+R_{y}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliY{}}%
+\visible<2-3>{= \EulerP{\PauliY{}}}
+\visible<3>{= \SQBG{\relax}{\cos\left(\frac{\theta}{2}\right)}{-\sin\left(\frac{\theta}{2}\right)}{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}}\\[0.7em]
+%
+%
+R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
+\visible<2-3>{= \EulerP{\PauliZ{}}}%
+\visible<3>{= \SQBG{\relax}{\ExpNegPhase{\frac{\theta}{2}}}{0}{0}{\ExpPhase{\frac{\theta}{2}}}
+\equiv \SQBG{\relax}{1}{0}{0}{\ExpPhase{\theta}}}
 \end{align*}
 \end{frame}
