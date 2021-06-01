@@ -505,3 +505,16 @@ where the matrices in the exponents are the Pauli matrices.
 
 When $\theta=\pi$, $\cos(-\pi/2)=0$ and $\sin(-\pi/2)=-1$ $\rightarrow$ $R_a(\pi) = -i\ A \equiv A$, matching the Pauli gates in terms of their rotation by $\pi$ radians about their respective axes.
 \end{frame}
+
+\def\EulerP#1{%
+\ComplexDiff{\cos\left(\frac{\theta}{2}\right)\Identity}{\sin\left(\frac{\theta}{2}\right)#1}}
+
+\begin{frame}{Matrix formulation of rotating gates}{We use the matrix form of Euler's formula.}
+
+\begin{align*}
+R_{x}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliX{}}  \visible<2-3>{= \EulerP{\PauliX{}}}
+   \visible<3>{= \SQBG{\relax}{\cos\left(\frac{\theta}{2}\right)}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\ImaginaryM{\sin\left(\frac{\theta}{2}\right)}}{\cos\left(\frac{\theta}{2}\right)}}\\[0.7em]
+R_{y}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliY{}}\visible<2-3>{= \EulerP{\PauliY{}}}\\[0.7em]
+R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}} \visible<2-3>{= \EulerP{\PauliZ{}}}
+\end{align*}
+\end{frame}
