@@ -178,26 +178,24 @@ We can thus achieve universality with only a Nand gate.
   \end{itemize}
   }{%
     \begin{TIKZP}[scale=0.7]
-  \only<1->{
   \draw[<->] (-1, 0) -- (2.5, 0) node[right] {
-  \only<1>{real ($\Re$)}\only<2->{$\Re$}};
+    $\Re$ 
+  };
   
   \draw (1, 4pt) -- (1, -4pt) node[below] {$a$} ;
-
-  }
   
   \visible<2->{
-  \draw[<->] (0, -2.5) -- (0, 2.5) node[above] {\only<2>{imaginary ($\Im$)}\only<3->{$\Im$}};
+  \draw[<->] (0, -2.5) -- (0, 2.5) node[above] {$\Im$};
   
   \draw (-4pt, 2) -- (4pt, 2) node[left] {$b\ $} ;
   
   }
-  \only<3->{
+  \visible<3->{
   \draw[->] (0, 0) -- (1, 2) ;
   \TZPoint{1.05,2.05}{$z=a+bi$}{above right}
   
   }
-  \only<4->{
+  \visible<4->{
   \draw[->] (0, 0) -- (1, -2) ;
   \TZPoint{1.05,-2.05}{$\Conj{z}=a-bi$}{below right}
   }
@@ -270,9 +268,6 @@ Magnitude
     
 \end{frame}
 
-\begin{frame}{Complex exponentiation by a matrix}
-\end{frame}
-
 \section{Linear algebra}
 
 \begin{frame}{Overview of linear algebra}{Quantum systems are linear!}
@@ -302,7 +297,7 @@ Quantum computing borrows notation from physics in using \href{https://en.wikipe
 \end{itemize}
 }{
 \[
-\only<2->{\ket{\psi} = }
+\visible<2->{\ket{\psi} = }
 \begin{pmatrix}
 0.5\\ i \\ 5+3i \\ \sqrt{2}
 
@@ -338,12 +333,13 @@ The complete bra-ket of a state is the inner product of its bra with its ket, wh
 \end{frame}
 
 \begin{frame}{Outer products}
+
+\ToDo{finish this}
 \end{frame}
 
 \begin{frame}{Unit vectors}
-\end{frame}
 
-\begin{frame}{Local and global phase}{State equivalence up to a global phase}
+\ToDo{finish this}
 \end{frame}
 
 
