@@ -344,7 +344,36 @@ The complete bra-ket of a state is the inner product of its bra with its ket, wh
 \end{frame}
 
 \begin{frame}{Outer products}
-
+If we instead multiply a ket-bra pair, we obtain an outer product.
+This is helpful if we know how we want an operator to behave but don't know how to construct the matrix. Consider we want to build a NOT gate (Pauli X)
+\begin{itemize}
+    \item We want the following behavior:
+    \item \ket{0} maps to \ket{1}
+    \item \ket{1} maps to \ket{0}
+\end{itemize}
+Using outer products gives
+\[\ket{0}\bra{1} + \ket{1}\bra{0} = 
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1
+\end{pmatrix}
++
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0
+\end{pmatrix}
+= 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+= \PauliX{}
+\]
+We can also prove a more general argument that uses outer products to construct any $n$-qubit operator.
 \ToDo{finish this}
 \end{frame}
 
