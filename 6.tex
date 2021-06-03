@@ -194,22 +194,25 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
-
+{%
 \def\Sket#1{%
 \ket{\hbox to 4ex{\hfil\ensuremath{#1}\hfil}}}%
+\def\R#1{\mbox{\textcolor{OrangeRed}{#1}}}%
+\def\B#1{\mbox{\textcolor{NavyBlue}{#1}}}%
 \begin{frame}{Navigating the Bloch sphere}{Other points of interest}
+
 
 \Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{center}
     \begin{tabular}{ccc}
         State & \textcolor{OrangeRed}{$\phi$} & \textcolor{NavyBlue}{$\theta$} \\
-        \visible<1->{\Sket{0} & $0$ & $0$ \\}%
-        \visible<1->{\Sket{1} & $0$ & $\pi$ \\}%
-        \visible<2->{\Sket{+x} & $0$ & $\pi/2$ \\}%
-        \visible<3->{\Sket{-x} & $0$ & $-\pi/2$ \\}%
-        \only<3-4>{\Sket{-x} & $\pi$ & $\pi/2$ \\}%
-        \visible<5->{\Sket{+y} & $\pi/2$ & $\pi/2$ \\}%
-        \visible<6->{\Sket{-y} & $-\pi/2$ & $\pi/2$ \\}%
+        \visible<1->{\Sket{0} & \R{$0$} & \B{$0$} \\}%
+        \visible<1->{\Sket{1} & \R{$0$} & \B{$\pi$} \\}%
+        \visible<2->{\Sket{+x} & \R{$0$} & \B{$\pi/2$} \\}%
+        \visible<3->{\Sket{-x} & \R{$0$} & \B{$-\pi/2$} \\}%
+        \only<3-4>{\Sket{-x} & \R{$\pi$} & \B{$\pi/2$} \\}%
+        \visible<5->{\Sket{+y} & \R{$\pi/2$} & \B{$\pi/2$} \\}%
+        \visible<6->{\Sket{-y} & \R{$-\pi/2$} & \B{$\pi/2$} \\}%
     \end{tabular}
 \end{center}
 \only<4>{\Vskip{-5em}States \ket{+x} and \ket{-x} are also called \ket{+} and \ket{-}, respectively.  They are more familiar as:
@@ -233,6 +236,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \Exercise{y}{What are +y and -y, expressed in the standard basis?}
 \end{frame}
+}
 
 \begin{frame}{Switching between bases}{We consider here the standard and Hadamard bases.}
 \TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
