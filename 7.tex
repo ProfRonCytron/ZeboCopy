@@ -17,3 +17,22 @@
 \end{itemize}
     
 \end{frame}
+
+\begin{frame}{The classical EV bomb}{Based on our previous interferometer}
+
+\TwoUnequalColumns{0.5\hsize}{0.5\hsize}{%
+}{%}
+\begin{TIKZP}[scale=0.7]
+\MZ{}
+\draw[color=red] (1,0.5) -- (2.5,0.5);
+\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
+\Shift{4}{-2}{\EVBomb{}}
+\EVBoom{}
+\end{TIKZP}
+}
+\end{frame}
+
+
