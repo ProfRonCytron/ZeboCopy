@@ -220,6 +220,22 @@
 \end{scope}
 \end{scope}
 }
+\newcommand\EVBomb[1][scale=1.0]{%
+\begin{scope}[#1]
+\fill (0.5,0.5) circle(0.5);
+\end{scope}%
+}
+\newcommand\EVBoom[1][scale=1.0]{%
+\begin{scope}[#1]
+\fill[white] (0.5,0.5) circle(0.5);
+\draw[red,thick] (0.5,0.5) circle(0.5);
+\clip (0,0) rectangle(1,1);
+\begin{scope}
+\node[scale=0.35,xshift=28pt,yshift=28pt,starburst,draw,red,fill=orange,line width=1.5pt]
+{BOOM!};
+\end{scope}
+\end{scope}
+}
 \newcommand\Measurement[1][scale=1.0]{%
 \begin{scope}[#1]
 \draw[color=white] (0,0) rectangle(1,1);
@@ -254,6 +270,15 @@
     \SquareOutline{}
     \TRectangle{0}{.375}{1}{.625}{SkyBlue}{rotate=0}
 \end{scope}
+}
+\def\MZ{%
+\LightSource{}
+\Shift{2}{0}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\Shift{2}{-2}{\RotateAroundCenter{-45}{\Mirror{}}}
+\Shift{6}{0}{\RotateAroundCenter{-45}{\Mirror{}}}
+\Shift{6}{-2}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
+\Shift{8}{-2}{\Measurement[color=orange]{}}
+\Shift{6}{-4}{\RotateAroundCenter{-90}{\Measurement[color=NavyBlue]{}}}
 }
 \def\Shift#1#2#3{%
 \begin{scope}[shift={(#1,#2)}] #3\end{scope}
@@ -382,5 +407,5 @@
 %% test
 %%
 \begin{document}
-\include{6}
+\include{7}
 \end{document}

@@ -4,3 +4,5 @@
 *.snm
 *.toc
 *.out
+/*.pdf
+/exercises/*.pdf
