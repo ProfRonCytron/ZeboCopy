@@ -96,26 +96,37 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
     
 \end{frame}
 
+\begin{frame}{Troubling questions}{Quantum is strange}
+\end{frame}
+
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
 \TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \begin{itemize}
-    \item We modify our bomb slightly so that it sits behind a polarizing filter.
-    \item If the photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
-    \item If the photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
+    \item<1-> The bomb is attached to a polarizing filter.
+    \item<2-> If the photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
+    \item<3-> If the photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
 \end{itemize}
 }{%
 \begin{TIKZP}[scale=0.8]
-\MZ{}
-\draw[color=red] (1,0.5) -- (2.5,0.5);
-\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\only<1>{\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);}
-\only<2->{\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\only<4>{\draw[ultra thick,color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw<2->[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
-\visible<2-3,5->{\Shift{4}{-4}{\EVBomb{}}}
-\visible<3->{\draw[white] (4.5,-1.5) node {{\tiny\bf Bomb!}};}
+%%
+%% Bounding box
+\draw[white] (0,1) rectangle ++(6,-4);
+%%
+\visible<2->{\LightSource{}}
+\draw<2>[color=red] (1,0.5) -- ++(5,0);
+\draw<3->[color=red] (1,0.5) -- ++(3,0);
+%\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+\Shift{4}{-2}{\EVBomb{}}
+\draw[white] (4.5,-1.5) node {{\tiny\bf Bomb!}};
+\Shift{4}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
+\draw[color=brown] (4.5,0) -- ++(0,-1);
+\draw<3>[ultra thick,color=brown] (4.5,0) -- ++(0,-1);
+\visible<3>{\Shift{4}{-2}{\EVBoom{}}}
 \end{TIKZP}
+
+\only<4>{%
+If we send unpolarized light, then we expect half the photons to trigger an explosion.
+}
 }
 
 \end{frame}
