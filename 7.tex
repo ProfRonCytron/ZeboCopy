@@ -41,7 +41,7 @@
     \begin{center}
     \begin{tabular}{lc}
        What & How often? \\\hline
-       Explosion & 50\% \\
+       \alert<8>{Explosion} & \alert<8>{50\%} \\
        \textcolor{orange}{Orange device} & 25\% \\
        \textcolor{NavyBlue}{Blue device} & 25\%
      \end{tabular}
@@ -117,6 +117,8 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \end{TIKZP}%
 }
 \end{frame}
+
+
 \begin{frame}{Two explanations for this behavior}{Physics is not certain how this really works.}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \Vskip{-2em}Physics offers (at least) the following explanations.  \only<1-2>{This explanation was \href{https://www.newscientist.com/letter/mg20627650-200-quantum-dogma/}{dogma} for many years.}  \only<2>{This explanation explains well what we see, but has \href{https://www.quantamagazine.org/why-the-many-worlds-interpretation-of-quantum-mechanics-has-many-problems-20181018/}{its own issues}.}
@@ -144,7 +146,7 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \end{frame}
 
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
-\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
+\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-4>{\begin{itemize}
     \item<1-> The bomb and a polarizing filter are a single package.  The package is either present, or not.
     \item<2-> If a photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
@@ -153,17 +155,26 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \only<5-8>{%
 \begin{itemize}
     \item<5-> What happens if we send a photon rotated $\theta$ degrees from horizontal (\ket{0})?
-    \item<6-> The state of such a photon is
+    \item<6-> Recall the state of the photon is
     \[ \cos\theta\ket{0} + \sin\theta\ket{1} \]
     \item<7-> The probability of the photon causing explosion is then $\sin^{2}\theta$.
     \item<8-> We can choose $\theta > 0$ such that $0 < \sin^{2}\theta < \epsilon$ for any
     $\epsilon>0$ of interest to us.
 \end{itemize}
 }
-\only<9->{%
+\only<9-10>{%
 \begin{itemize}
-    \item Blah
-\end{itemize}
+    \item<9-> Key to this algorithm's success is knowing that \emph{if} a photon passes through the filter, then it is in state~\ket{0}, horiziontally polarized, no matter its state prior to the filter.
+    \item<10-> If there is no bomb package, then the state of the photon is preserved, rotated from its prevous state (horizontal, \ket{0})  by $\theta$ radians.
+\end{itemize}}
+\only<11->{%
+\begin{enumerate}
+    \item<11-> Begin with a photon in state \ket{0}.
+    \item<12-> Rotate by $\theta$ radians.
+    \item<13-> The photon enters the box.
+    \item<14-> Repeat the above two steps until $n$ rotations have been achieved.
+    \item<15-> Measure after $n$ rotations.
+\end{enumerate}
 }
 }{%
 \Vskip{-2em}\begin{center}
@@ -174,21 +185,40 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 %%
 \Shift{0}{-1}{%
 \begin{scope}
-\fill<1>[yellow] (2.5,-2.5) rectangle (4.5,1.5);
-\visible<2,5->{\HPolarizedLightSource{}}
+\fill<1,13->[yellow] (2.5,-2.5) rectangle (4.5,1.5);
+\visible<2,5-12>{\HPolarizedLightSource{}}
 \visible<3>{\VPolarizedLightSource{}}
 \visible<4>{\LightSource{}}
-\draw<2>[color=red] (1,0.5) -- ++(5,0);
-\draw<3->[color=red] (1,0.5) -- ++(3,0);
+\draw<2,9>[color=red] (1,0.5) -- ++(5,0);
+\draw<3-10>[color=red] (1,0.5) -- ++(3,0);
+\draw<12>[color=red] (1,0.5) -- ++(1,0);
+\draw<13->[color=red] (2, 0.5) -- ++(3,0);
+\visible<14->{%
+\Shift{5}{0}{\Qif{}}
+\draw[->,NavyBlue,thick] (5.5,1) node[left] {no} -- ++(0,1.0) -- ++(-3.5,0) -- ++(0,-1);
+\draw (5.5,0.5) node {$n$?};
+\draw[->,OliveGreen,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
+}
+\visible<15>{%
+\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=OliveGreen]}}
+}
 %\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+\visible<1-9>{
 \Shift{3}{-2}{\EVBomb{}}
 \draw[white] (3.5,-1.5) node {{\tiny\bf Bomb!}};
 \Shift{3}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
 \draw[thick, color=brown] (3.5,0) -- ++(0,-1);
 \draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
-\visible<3>{\Shift{3}{-2}{\EVBoom{}}}
+\visible<3>{\Shift{3}{-2}{\EVBoom{}}}}
 \end{scope}}
-\visible<5->{\Shift{1.5}{-1}{\RotateTheta{}}}
+\visible<5-10,12->{\Shift{1.5}{-1}{\RotateTheta{}}}
+\visible<9>{
+\Shift{4}{-1}{\HPolar{}}
+}
+\visible<10>{%
+\draw[red] (4,-0.5) -- ++(0.5,0);
+\Shift{4}{-1}{\RotateAroundCenter{10}{\HPolar{}}}
+}
 \end{TIKZP}
 \end{center}
 \only<4>{%
@@ -197,6 +227,10 @@ If we send unpolarized light, then we expect half the photons to trigger an expl
 \only<8>{%
 We can thus make the probability of explosion arbitrarily small.
 }
-}
 
+}
+\only<15>{%
+\MedSkip{}
+We will arrange things so that after $n$ rotations we either will see \ket{0} if the bomb package is there, or \ket{1} if it is absent.  And each time through the package, we will have a predictably low chance of blowing up.
+}
 \end{frame}
