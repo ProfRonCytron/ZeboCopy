@@ -119,7 +119,7 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \end{frame}
 \begin{frame}{Two explanations for this behavior}{Physics is not certain how this really works.}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\Vskip{-2em}Physics offers at least the following explanations of this.  \only<1-2>{This explanation was \href{https://www.newscientist.com/letter/mg20627650-200-quantum-dogma/}{dogma} for many years.}  \only<2>{This explanation explains well what we see, but has \href{https://www.quantamagazine.org/why-the-many-worlds-interpretation-of-quantum-mechanics-has-many-problems-20181018/}{its own issues}.}
+\Vskip{-2em}Physics offers (at least) the following explanations.  \only<1-2>{This explanation was \href{https://www.newscientist.com/letter/mg20627650-200-quantum-dogma/}{dogma} for many years.}  \only<2>{This explanation explains well what we see, but has \href{https://www.quantamagazine.org/why-the-many-worlds-interpretation-of-quantum-mechanics-has-many-problems-20181018/}{its own issues}.}
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=0.4]
@@ -146,28 +146,35 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
 \TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \begin{itemize}
-    \item<1-> The bomb is attached to a polarizing filter.
-    \item<2-> If the photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
-    \item<3-> If the photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
+    \item<1-> The bomb and a polarizing filter are a single package.  The package is either present, or not.
+    \item<2-> If a photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
+    \item<3-> If a photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
 \end{itemize}
 }{%
+\Vskip{-2em}\begin{center}
 \begin{TIKZP}[scale=0.8]
 %%
 %% Bounding box
-\draw[white] (0,1) rectangle ++(6,-4);
+\draw[gray] (0,1) rectangle ++(6,-4.5);
 %%
-\visible<2->{\LightSource{}}
+\Shift{0}{-1}{%
+\begin{scope}
+\fill<1>[yellow] (2.5,-2.5) rectangle (4.5,1.5);
+\visible<2>{\HPolarizedLightSource{}}
+\visible<3>{\VPolarizedLightSource{}}
+\visible<4>{\LightSource{}}
 \draw<2>[color=red] (1,0.5) -- ++(5,0);
 \draw<3->[color=red] (1,0.5) -- ++(3,0);
 %\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\Shift{4}{-2}{\EVBomb{}}
-\draw[white] (4.5,-1.5) node {{\tiny\bf Bomb!}};
-\Shift{4}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
-\draw[color=brown] (4.5,0) -- ++(0,-1);
-\draw<3>[ultra thick,color=brown] (4.5,0) -- ++(0,-1);
-\visible<3>{\Shift{4}{-2}{\EVBoom{}}}
+\Shift{3}{-2}{\EVBomb{}}
+\draw[white] (3.5,-1.5) node {{\tiny\bf Bomb!}};
+\Shift{3}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
+\draw[thick, color=brown] (3.5,0) -- ++(0,-1);
+\draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
+\visible<3>{\Shift{3}{-2}{\EVBoom{}}}
+\end{scope}}
 \end{TIKZP}
-
+\end{center}
 \only<4>{%
 If we send unpolarized light, then we expect half the photons to trigger an explosion.
 }
