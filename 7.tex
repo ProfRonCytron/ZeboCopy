@@ -145,11 +145,26 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
 \TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
-\begin{itemize}
+\only<1-4>{\begin{itemize}
     \item<1-> The bomb and a polarizing filter are a single package.  The package is either present, or not.
     \item<2-> If a photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
     \item<3-> If a photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
+\end{itemize}}
+\only<5-8>{%
+\begin{itemize}
+    \item<5-> What happens if we send a photon rotated $\theta$ degrees from horizontal (\ket{0})?
+    \item<6-> The state of such a photon is
+    \[ \cos\theta\ket{0} + \sin\theta\ket{1} \]
+    \item<7-> The probability of the photon causing explosion is then $\sin^{2}\theta$.
+    \item<8-> We can choose $\theta > 0$ such that $0 < \sin^{2}\theta < \epsilon$ for any
+    $\epsilon>0$ of interest to us.
 \end{itemize}
+}
+\only<9->{%
+\begin{itemize}
+    \item Blah
+\end{itemize}
+}
 }{%
 \Vskip{-2em}\begin{center}
 \begin{TIKZP}[scale=0.8]
@@ -160,7 +175,7 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \Shift{0}{-1}{%
 \begin{scope}
 \fill<1>[yellow] (2.5,-2.5) rectangle (4.5,1.5);
-\visible<2>{\HPolarizedLightSource{}}
+\visible<2,5->{\HPolarizedLightSource{}}
 \visible<3>{\VPolarizedLightSource{}}
 \visible<4>{\LightSource{}}
 \draw<2>[color=red] (1,0.5) -- ++(5,0);
@@ -173,10 +188,14 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
 \visible<3>{\Shift{3}{-2}{\EVBoom{}}}
 \end{scope}}
+\visible<5->{\Shift{1.5}{-1}{\RotateTheta{}}}
 \end{TIKZP}
 \end{center}
 \only<4>{%
 If we send unpolarized light, then we expect half the photons to trigger an explosion.
+}
+\only<8>{%
+We can thus make the probability of explosion arbitrarily small.
 }
 }
 
