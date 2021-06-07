@@ -197,9 +197,9 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
 \Shift{5}{0}{\Qif{}}
 \draw[->,NavyBlue,thick] (5.5,1) node[left] {no} -- ++(0,1.0) -- ++(-3.5,0) -- ++(0,-1);
 \draw (5.5,0.5) node {$n$?};
-\draw[->,OliveGreen,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
 }
 \visible<15>{%
+\draw[->,OliveGreen,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
 \Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=OliveGreen]}}
 }
 %\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
@@ -231,6 +231,6 @@ We can thus make the probability of explosion arbitrarily small.
 }
 \only<15>{%
 \MedSkip{}
-We will arrange things so that after $n$ rotations we either will see \ket{0} if the bomb package is there, or \ket{1} if it is absent.  And each time through the package, we will have a predictably low chance of blowing up.
+We will properly determine $\theta$ so that after $n$ rotations we either will see \ket{0} if the bomb package is there, or \ket{1} if it is absent.  And each time through the package, we will have a predictably low (though always positive) chance of blowing up.
 }
 \end{frame}
