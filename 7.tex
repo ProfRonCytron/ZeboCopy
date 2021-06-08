@@ -378,3 +378,49 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \alert{Each pass, the bomb explodes with probability $\sin^{2}\theta$.}}
 }
 \end{frame}
+
+\begin{frame}{Achieving rotation}{The Bloch sphere and the physical rotation of a polarizing filter}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+With no bomb present
+\begin{itemize}
+    \item<1-> The polarization of the photon rotates from
+    \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}}
+    to \begin{tikzpicture} \VPolar{}\end{tikzpicture}
+    \item<2-> A physical rotation of $\pi/2$ radians.
+    \item<3-> A state change from \ket{0} (horizontal) to \ket{1} (vertical).
+    \item<4-> On the Bloch sphere, the same rotation is $\pi$ radians, from the north to south poles.
+    \item<5-> To accomplish the rotation on the Bloch sphere in $n$ steps, each step must rotate by
+    $\theta=\pi/n$ radians.
+\end{itemize}
+}{%
+\only<1-2>{%
+\begin{center}
+\begin{TIKZP}
+\RotateAroundCenter{90}{\begin{scope}[draw=OrangeRed]\PFilter{0}{0}{1}{1}{20}\end{scope}}
+\end{TIKZP}\hbox to 3em{\hss}%
+\begin{TIKZP}
+\RotateAroundCenter{0}{\begin{scope}[draw=NavyBlue]\PFilter{0}{0}{1}{1}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+\only<2>{%
+\begin{center}
+\begin{TIKZP}
+\draw (0.5,0.5) circle (0.5);
+\draw[->,OrangeRed] (0.5,0.5) -- ++(0.5,0);
+\draw[->,NavyBlue] (0.5,0.5) -- ++(0,0.5);
+\draw[->,thick] (1.0,0.5) arc(0:90:0.5) node[above] {$\pi/2$ radians};
+\end{TIKZP}
+\end{center}
+}
+\only<4->{%
+\Vskip{-2em}%
+\begin{BlochSphere}[scale=1.2]{60}{115}
+
+\draw (0,0,1) node[above right] {\ket{0}};
+\draw (0,0,-1) node[below right] {\ket{1}};
+\end{BlochSphere}
+}%
+}
+    
+\end{frame}
