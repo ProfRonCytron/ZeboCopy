@@ -18,6 +18,8 @@
     
 \end{frame}
 
+\section{Classical version}
+
 \begin{frame}{The classical EV bomb}{Based on our previous interferometer}
 
 \Vskip{-3em}\TwoUnequalColumns{0.5\hsize}{0.5\hsize}{%
@@ -145,6 +147,8 @@ If we ever see a photon at the \textcolor{NavyBlue}{blue sensor} we know the bom
   
 \end{frame}
 
+\section{Better version}
+
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-4>{\begin{itemize}
@@ -262,5 +266,115 @@ We can thus make the probability of explosion arbitrarily small.
 \only<17>{%
 \MedSkip{}
 We will properly determine $\theta$ so that after $n$ rotations we either will see \ket{0} if the bomb package is there, or \ket{1} if it is absent.  And each time through the package, we will have a predictably low (though always \href{https://www.youtube.com/watch?v=KX5jNnDMfxA}{positive}) chance of blowing up.
+}
+\end{frame}
+
+\begin{frame}{How much rotation?}{We need to go from horizontal to vertical if there is no bomb package.}
+\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
+\only<1-10>{%
+No Bomb:
+\begin{itemize}
+    \item<1-> Photon starts in state \ket{0}
+    \item<2-> Rotation by $\theta$
+    \item<3-> Passes through empty box
+    \item<4-> Presented again for rotation
+    \item<5-> Rotated again by $\theta$
+    \item<6-> Through box
+    \item<7-> Total of $n$ passes
+    \item<8-> Photon ends in state \ket{1}
+    \item<9-> Measured as state \ket{1}
+\end{itemize}}
+\only<11->{%
+Bomb !
+\begin{itemize}
+    \item<11-> Photon starts in state \ket{0}
+    \item<12-> Rotation by $\theta$, as before
+    \item<13-> If the photon passes through, it is reset to \ket{0} and there is no explosion.
+    \item<14-> Presented for rotation by $\theta$
+    \item<15-> Same result as before: no accumulated rotation
+    \item<17-> Measurement yields \ket{0} after any number of passes
+\end{itemize}
+}
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=0.9]
+%%
+%% Bounding box
+\path (0,1) rectangle ++(6,-4.5);
+%%
+\Shift{0}{-1}{%
+\begin{scope}
+\visible<1-10>{\fill[yellow] (3,-2) rectangle ++(1,3);}
+\visible<11->{
+\Shift{3}{-2}{\EVBomb{}}
+\draw[white] (3.5,-1.5) node {{\tiny\bf Bomb!}};
+\Shift{3}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
+\draw[thick, color=brown] (3.5,0) -- ++(0,-1);
+\draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
+}
+\visible<1->{\Shift{1.5}{0}{\RotateTheta{}}}
+\visible<1->{%
+\Shift{5}{0}{\Qif{}}
+\draw[->,NavyBlue,thick] (5.5,1) node[left] {no} -- ++(0,1.0) -- ++(-3.5,0) -- ++(0,-1);
+\draw (5.5,0.5) node {$n$?};
+}
+\visible<1->{%
+\draw[->,OliveGreen,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
+}
+\visible<1,11>{%
+   \HPolarizedLightSource{}
+   \draw[color=red] (1,0.5) -- ++(0.5,0);
+}
+\visible<2,12,15,18>{%
+\Shift{2}{0}{\RotateAroundCenter{10}{\HPolar{}}}
+}
+\visible<3>{%
+\Shift{3.5}{0}{\RotateAroundCenter{10}{\HPolar{}}}
+\draw[red] (4,0.5) -- ++(1,0);
+}
+\visible<4>{%
+\Shift{1.25}{1}{\RotateAroundCenter{10}{\HPolar{}}}
+}
+\visible<5>{%
+\Shift{2.1}{0}{\RotateAroundCenter{45}{\HPolar{}}}
+}
+\visible<6>{%
+\Shift{3.5}{0}{\RotateAroundCenter{45}{\HPolar{}}}
+\draw[red] (4,0.5) -- ++(1,0);
+}
+\visible<7>{%
+\Shift{1.25}{1}{\RotateAroundCenter{45}{\HPolar{}}}
+}
+\visible<8>{%
+\Shift{2}{0}{\VPolar{}}
+\draw[red] (3,0.5) -- ++(2,0);
+}
+\visible<9>{%
+\Shift{4.5}{-1}{\VPolar{}}
+\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=OliveGreen]}}
+}
+\visible<10>{%
+\draw[red] (2.5,0.5) -- ++(2.5,0);
+}
+\visible<13,16>{%
+\Shift{4}{0}{\HPolar{}}
+}
+\visible<14>{%
+\Shift{1}{1}{\HPolar{}}
+}
+\visible<17>{%
+\Shift{4.5}{-1}{\HPolar{}}
+\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=OliveGreen]}}}
+\visible<11-17>{%
+\draw[thin, red] (2.5,0.5) -- ++(2.5,0);
+}
+\visible<18>{\Shift{3}{-2}{\EVBoom{}}}
+\end{scope}}
+\end{TIKZP}
+\end{center}
+\only<10>{%
+On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1}) in $n$ steps, so each step is a rotation of $\theta=\pi/n$ radians.}
+\only<18>{%
+\alert{Each pass, the bomb explodes with probability $\sin^{2}\theta$.}}
 }
 \end{frame}
