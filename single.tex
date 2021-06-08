@@ -251,6 +251,14 @@
 \fill (0.90,0.5) circle (0.05);
 \end{scope}
 }
+\def\VPolar{%
+\begin{scope}[color=red]
+\draw[thick] (0.6,0.375) -- ++(0,.250)
+             ++(0.1,-.250) -- ++(0,.250)
+             ++(0.1,-.250) -- ++(0,.250);
+\fill (0.95,0.5) circle (0.05);
+\end{scope}
+}
 \newcommand\HPolarizedLightSource[1][scale=1.0]{%
 \begin{scope}[#1]
 \SquareOutline{}
@@ -262,12 +270,7 @@
 \begin{scope}[#1]
 \SquareOutline{}
 \PhotonGun{}
-\begin{scope}[color=red]
-\draw[thick] (0.6,0.375) -- ++(0,.250)
-             ++(0.1,-.250) -- ++(0,.250)
-             ++(0.1,-.250) -- ++(0,.250);
-\fill (0.95,0.5) circle (0.05);
-\end{scope}
+\VPolar{}
 \end{scope}
 }
 \newcommand\EVBomb[1][scale=1.0]{%
