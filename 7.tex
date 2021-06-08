@@ -381,6 +381,7 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 
 \begin{frame}{Achieving rotation with no bomb prewsent}{The Bloch sphere and the physical rotation of a polarizing filter}
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<1-5>{%
 \begin{itemize}
     \item<1-> The polarization of the photon rotates from
     \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}} \ket{0}
@@ -391,6 +392,21 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
     \item<5-> To achieve complete rotation in $n$ steps, each step rotates by
     $\theta=\pi/n$ radians.
 \end{itemize}
+}%
+\only<6->{%
+\begin{itemize}
+    \item<6-> We seek to rotate by $\theta=\pi/n$ radians.
+    \item <7->The resulting matrix is thus:
+    \[
+    \SQBG{\relax}{\cos\left(\pi/2n\right)}{-\sin\left(\pi/2n\right)}{\sin\left(\pi/2n\right)}{\cos\left(\pi/2n\right)}
+    \]
+    \item<8-> When there is a bomb present, rotation is always performed on $\ket{0}=\PZero{}$.  
+    \item<9-> The state seen by the bomb's filter is thus:
+    \[
+        \cos(\pi/2n)\ket{0} + \sin(\pi/2n)\ket{1}
+    \]
+\end{itemize}
+}
 }{%
 \only<1-2>{%
 \begin{center}
@@ -420,6 +436,14 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \draw (0,0,-1) node[below right] {\ket{1}};
 \end{BlochSphere}
 }%
+\only<5->{%
+Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
+\SmallSkip{}
+\SQBG{\relax}{\cos\left(\theta/2\right)}{-\sin\left(\theta/2\right)}{\sin\left(\theta/2\right)}{\cos\left(\theta/2\right)}
+}
 }
     
+\end{frame}
+
+\begin{frame}{State analysis}{How likely are we to blow up?}
 \end{frame}
