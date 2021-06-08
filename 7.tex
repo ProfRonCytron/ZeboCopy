@@ -379,17 +379,16 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 }
 \end{frame}
 
-\begin{frame}{Achieving rotation}{The Bloch sphere and the physical rotation of a polarizing filter}
+\begin{frame}{Achieving rotation with no bomb prewsent}{The Bloch sphere and the physical rotation of a polarizing filter}
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
-With no bomb present
 \begin{itemize}
     \item<1-> The polarization of the photon rotates from
-    \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}}
-    to \begin{tikzpicture} \VPolar{}\end{tikzpicture}
-    \item<2-> A physical rotation of $\pi/2$ radians.
-    \item<3-> A state change from \ket{0} (horizontal) to \ket{1} (vertical).
-    \item<4-> On the Bloch sphere, the same rotation is $\pi$ radians, from the north to south poles.
-    \item<5-> To accomplish the rotation on the Bloch sphere in $n$ steps, each step must rotate by
+    \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}} \ket{0}
+    to \begin{tikzpicture} \VPolar{}\end{tikzpicture} \ket{1}.
+    \item<2-> That's a physical filter rotation of $\pi/2$ radians.
+    \item<3-> On the Bloch sphere, \ket{0} and \ket{1} are the north and south poles, respectively.
+    \item<4-> Logical rotation from \ket{0} to \ket{1} takes $\pi$ radians on the Bloch sphere, let's say about the $y$ axis.
+    \item<5-> To achieve complete rotation in $n$ steps, each step rotates by
     $\theta=\pi/n$ radians.
 \end{itemize}
 }{%
@@ -413,10 +412,10 @@ With no bomb present
 \end{TIKZP}
 \end{center}
 }
-\only<4->{%
-\Vskip{-2em}%
+\only<3->{%
+\Vskip{-1em}%
 \begin{BlochSphere}[scale=1.2]{60}{115}
-
+\BlochSpherePhiTheta{}
 \draw (0,0,1) node[above right] {\ket{0}};
 \draw (0,0,-1) node[below right] {\ket{1}};
 \end{BlochSphere}
