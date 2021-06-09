@@ -481,6 +481,18 @@ Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
 \section{Implementation}
 
 \begin{frame}{Implementation}{Translating the idea into a qiskit program}
+\begin{itemize}
+    \item The flow of this algorithm involves iteration, with $n$ passes through the $\theta$-rotation gate.
+    \item We cannot iterate on a quantum device, but we can generate a quantum circuit that contains the $n$ gates we need.
+    \item We write the code using python and qiskit, so we can use loops in python to synthesize the circuit we need.
+    \item That circuit can then be emulated or sent to a quantum device.
+    \item Randomly we either include or exclude the bomb package.
+    \item We then run the circuit to get the following outputs:
+    \begin{itemize}
+        \item Did we blow up on the way?
+        \item Do we measure \ket{0} or \ket{1} for the photon at the end?
+    \end{itemize}
+\end{itemize}
 
 
 
