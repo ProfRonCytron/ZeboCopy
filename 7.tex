@@ -269,6 +269,8 @@ We will properly determine $\theta$ so that after $n$ rotations we either will s
 }
 \end{frame}
 
+\section{Analysis}
+
 \begin{frame}{How much rotation?}{We need to go from horizontal to vertical if there is no bomb package.}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-10>{%
@@ -377,4 +379,121 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \only<18>{%
 \alert{Each pass, the bomb explodes with probability $\sin^{2}\theta$.}}
 }
+\end{frame}
+
+\begin{frame}{Achieving rotation with no bomb present}{The Bloch sphere and the physical rotation of a polarizing filter}
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> The polarization of the photon rotates from
+    \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}} \ket{0}
+    to \begin{tikzpicture} \VPolar{}\end{tikzpicture} \ket{1}.
+    \item<2-> That's a physical filter rotation of $\pi/2$ radians.
+    \item<3-> On the Bloch sphere, \ket{0} and \ket{1} are the north and south poles, respectively.
+    \item<4-> Logical rotation from \ket{0} to \ket{1} takes $\pi$ radians on the Bloch sphere, let's say about the $y$ axis.
+    \item<5-> To achieve complete rotation in $n$ steps, each step rotates by
+    $\theta=\pi/n$ radians.
+\end{itemize}
+}%
+\only<6->{%
+\begin{itemize}
+    \item<6-> We seek to rotate by $\theta=\pi/n$ radians.
+    \item <7->The resulting matrix is thus:
+    \[
+    \SQBG{\relax}{\cos\left(\pi/2n\right)}{-\sin\left(\pi/2n\right)}{\sin\left(\pi/2n\right)}{\cos\left(\pi/2n\right)}
+    \]
+    \item<8-> When there is a bomb present, rotation is always performed on $\ket{0}=\PZero{}$.  
+    \item<9-> The state seen by the bomb's filter is thus:
+    \[
+        \cos(\pi/2n)\ket{0} + \sin(\pi/2n)\ket{1}
+    \]
+\end{itemize}
+}
+}{%
+\only<1-2>{%
+\begin{center}
+\begin{TIKZP}
+\RotateAroundCenter{90}{\begin{scope}[draw=OrangeRed]\PFilter{0}{0}{1}{1}{20}\end{scope}}
+\end{TIKZP}\hbox to 3em{\hss}%
+\begin{TIKZP}
+\RotateAroundCenter{0}{\begin{scope}[draw=NavyBlue]\PFilter{0}{0}{1}{1}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+\only<2>{%
+\begin{center}
+\begin{TIKZP}
+\draw (0.5,0.5) circle (0.5);
+\draw[->,OrangeRed] (0.5,0.5) -- ++(0.5,0);
+\draw[->,NavyBlue] (0.5,0.5) -- ++(0,0.5);
+\draw[->,thick] (1.0,0.5) arc(0:90:0.5) node[above] {$\pi/2$ radians};
+\end{TIKZP}
+\end{center}
+}
+\only<3->{%
+\Vskip{-1em}%
+\begin{BlochSphere}[scale=1.2]{60}{115}
+\BlochSpherePhiTheta{}
+\draw (0,0,1) node[above right] {\ket{0}};
+\draw (0,0,-1) node[below right] {\ket{1}};
+\end{BlochSphere}
+}%
+\only<5->{%
+Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
+\SmallSkip{}
+\SQBG{\relax}{\cos\left(\theta/2\right)}{-\sin\left(\theta/2\right)}{\sin\left(\theta/2\right)}{\cos\left(\theta/2\right)}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Analysis of this algorithm}{How likely are we to blow up with a bomb present and $n$ rotations?}
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> The parameter $n$ determines how many rotations we perform to go from \ket{0} to \ket{1} when no bomb is present.
+    \item<2-> Larger $n$ decreases our probability of blowing up, but $\ldots$
+    \item<3-> Larger $n$ also means we have to approach the bomb more often, so how do we win here?
+\end{itemize}}
+\only<4->{
+\TwoColumns{%
+\begin{itemize}
+    \item<4-> Photon's state after rotation:
+    \[
+        \cos(\pi/2n)\ket{0} + \sin(\pi/2n)\ket{1}
+    \]
+    \item<4-> Each approach to the bomb blows up with probability \alert<6>{$\sin^{2}(\pi/2n)$}.
+    \item<7-> The probability of at least one explosion in $n$ tries is therefore no more than
+    \[
+        \textcolor<8>{OrangeRed}{n}\left(\frac{\pi}{2\textcolor<8>{NavyBlue}{n}}\right)^{\textcolor<8>{NavyBlue}{2}} \visible<9->{= \frac{\pi^2}{4n}} \visible<10->{\leq \alert<11>{\frac{2.5}{n}}}
+    \]
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<5-> For an angle $x\geq 0$ in radians
+   \[  \sin x \leq x\mbox{, so }\alert<6>{\sin^{2}x \leq x^{2}} \]
+   \item<6-> The chance of blowing up on each try is no more than
+   \[ {\left(\frac{\pi}{2n}\right)}^{2} \]
+  \item<8-> \only<8-10>{While the chance of some explosion grows \textcolor<8>{OrangeRed}{linearly with $n$}, the chance of a single explosion grows as \textcolor<8>{NavyBlue}{$1/n^2$}.} \only<11>{\alert{The chance of an explosion can be made \emph{arbitrarily small}.}}
+\end{itemize}
+}}
+\end{frame}
+
+\section{Implementation}
+
+\begin{frame}{Implementation}{Translating the idea into a qiskit program}
+\begin{itemize}
+    \item The flow of this algorithm involves iteration, with $n$ passes through the $\theta$-rotation gate.
+    \item We cannot iterate on a quantum device, but we can generate a quantum circuit that contains the $n$ gates we need.
+    \item We write the code using python and qiskit, so we can use loops in python to synthesize the circuit we need.
+    \item That circuit can then be emulated or sent to a quantum device.
+    \item Randomly we either include or exclude the bomb package.
+    \item We then run the circuit to get the following outputs:
+    \begin{itemize}
+        \item Did we blow up on the way?
+        \item Do we measure \ket{0} or \ket{1} for the photon at the end?
+    \end{itemize}
+\end{itemize}
+
+
+
 \end{frame}

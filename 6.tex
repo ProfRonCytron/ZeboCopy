@@ -103,23 +103,6 @@ We next examine a more concise and visually compelling definition of a qubit.
     \end{itemize} 
 \end{frame}
 
-\def\BlochSpherePhiTheta{%
-\tdplotsetrotatedcoords{0}{0}{0};
-    \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
-    \draw[tdplot_rotated_coords,thick,OrangeRed] (0.3,0,0) arc (0:115:0.3);
-    \draw[tdplot_rotated_coords,OrangeRed,thick,dashed] (0,0,0) -- (phi);
-    \draw[OrangeRed] (0.4,0.4,0) node {$\phi$};
-    
-    \tdplotsetrotatedcoords{25}{-90}{0};
-    \path[tdplot_rotated_coords] (1,0,0) arc (0:45:1) node(theta) {};
-    \draw[tdplot_rotated_coords,thick,NavyBlue] (0.4,0,0) arc (0:45:0.4);
-    \draw[tdplot_rotated_coords,NavyBlue,thick] (0,0,0) -- (theta);
-    \draw[NavyBlue] (-0.4,0,0.3) node {$\theta$};
-    
-    
-}
-\def\PhiTheta#1#2{%
-\mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
 \begin{frame}{The Bloch sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
 \TwoColumns{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]

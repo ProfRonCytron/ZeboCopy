@@ -65,7 +65,7 @@
 \SQBG{\relax}{1}{0}{0}{-1}}
 \def\YMatrix{%
 \SQBG{\relax}{0}{-i}{i}{0}}
-\def\Implies#1#2{\ensuremath{#1 \rightarrow #2}}
+\def\Implies#1#2{\ensuremath{#1 \rightarrow\ #2}}
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
@@ -248,7 +248,7 @@
 \draw[thick] (0.5,0.4) -- ++(0.35,0)
              ++(-0.35,0.1) -- ++(0.35,0)
              ++(-0.35,0.1) -- ++(0.35,0);
-\fill (0.90,0.5) circle (0.05);
+% \fill (0.90,0.5) circle (0.05);
 \end{scope}
 }
 \def\VPolar{%
@@ -256,7 +256,7 @@
 \draw[thick] (0.6,0.375) -- ++(0,.250)
              ++(0.1,-.250) -- ++(0,.250)
              ++(0.1,-.250) -- ++(0,.250);
-\fill (0.95,0.5) circle (0.05);
+% \fill (0.95,0.5) circle (0.05);
 \end{scope}
 }
 \newcommand\HPolarizedLightSource[1][scale=1.0]{%
@@ -410,8 +410,25 @@
 }{%
 \end{TIKZP}
 }
+\def\PhiTheta#1#2{%
+\mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
 \newenvironment{BlochSphere}[3][scale=1.0]{
     \bgroup%
+    \def\BlochSpherePhiTheta{%
+    \tdplotsetrotatedcoords{0}{0}{0};
+        \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
+        \draw[tdplot_rotated_coords,thick,OrangeRed] (0.3,0,0) arc (0:115:0.3);
+        \draw[tdplot_rotated_coords,OrangeRed,thick,dashed] (0,0,0) -- (phi);
+        \draw[OrangeRed] (0.4,0.4,0) node {$\phi$};
+        
+        \tdplotsetrotatedcoords{25}{-90}{0};
+        \path[tdplot_rotated_coords] (1,0,0) arc (0:45:1) node(theta) {};
+        \draw[tdplot_rotated_coords,thick,NavyBlue] (0.4,0,0) arc (0:45:0.4);
+        \draw[tdplot_rotated_coords,NavyBlue,thick] (0,0,0) -- (theta);
+        \draw[NavyBlue] (-0.4,0,0.3) node {$\theta$};
+        
+        
+    }
     \def\TZPointDiam{0.7pt}%
     \def\ShowAxes{%
     \draw[dashed, tdplot_rotated_coords, black] (1,0,0) node {{\Large\bf x}} (0,1,0) node {{\Large\bf y}} (0,0,1) node {{\Large\bf z}};
