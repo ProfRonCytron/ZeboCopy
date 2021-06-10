@@ -331,8 +331,11 @@ A more general interpretation of the sphere ascribes meaning to interior points.
      \TZPoint{0,0,-1}{\ket{1}}{below}
     \end{BlochSphere}
 \end{center}
+\only<2>{%
+\Vskip{-2.5em}Such states are called eigenstates (or \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvectors}) of \PauliZ{}.  A matrix transforms an eigenstate into a multiple $\lambda$ of itself;  $\lambda$ is called an eigenvalue of the matrix.  Here, $\PauliZ{}\ket{0} = +1\ket{0}$ and $\PauliZ{}\ket{1}=-1\ket{1}$.
+}
 \visible<3>{%
-\Vskip{-2em}\PauliZ{} affects all states off the z axis, for example
+\Vskip{-2em}\PauliZ{} affects all other states, off the z axis, for example
 \begin{eqnarray*}
 \ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
 \ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
@@ -349,7 +352,7 @@ rotating them by $\pi$ radians around the z~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes: \[ \ApplyGate{\PauliX}{\SQB{\alpha}{\beta}} =  \SQB{\beta}{\alpha} \]
-    \item<2-> The two unaffected states are \ket{+x} and \ket{-x}. \Exercise{unaffected points}{Show that X doesn't affect +x or -x.}
+    \item<2-> The two eigenstates are \ket{+x} and \ket{-x}. \Exercise{unaffected points}{Show that X doesn't affect +x or -x.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
@@ -373,7 +376,7 @@ rotates a state  by $\pi$ radians around the x~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-i\beta}{i\alpha} = -i\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
-    \item<2-> The two unaffected states are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
+    \item<2-> The two eigenstates are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
