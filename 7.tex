@@ -271,6 +271,17 @@ We will properly determine $\theta$ so that after $n$ rotations we either will s
 
 \section{Analysis}
 
+{%
+\def\ShowPhoton#1{%
+\tdplotsetrotatedcoords{90}{90}{90};
+\path[dashed, tdplot_rotated_coords, red] (1,0,0) arc (0:#1:1) node(end) {};
+\draw[tdplot_rotated_coords,thick,red,->] (0,0,0) -- (end);
+{%
+\def\TZPointDiam{1.5pt}
+\TZPoint{end}{\relax}{above}
+}
+\tdplotsetrotatedcoords{0}{0}{0};
+}
 \begin{frame}{How much rotation?}{We need to go from horizontal to vertical if there is no bomb package.}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-10>{%
@@ -374,12 +385,33 @@ Bomb!
 \end{scope}}
 \end{TIKZP}
 \end{center}
+\only<1-9>{%
+\Vskip{-4em}\begin{center}
+\begin{BlochSphere}[scale=0.9]{60}{115}
+\draw (0,0,1) node[above left] {\ket{0}};
+\draw (0,0,-1) node[below left] {\ket{1}};
+\only<1>{%
+\ShowPhoton{90}
+}
+\only<2-4>{%
+\ShowPhoton{135}
+}
+\only<5-7>{%
+\ShowPhoton{170}
+}
+\only<8-9>{%
+\ShowPhoton{270}
+}
+\end{BlochSphere}
+\end{center}
+}
 \only<10>{%
 On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1}) in $n$ steps, so each step is a rotation of $\theta=\pi/n$ radians.}
 \only<18>{%
 \alert{Each pass, the bomb explodes with probability $\sin^{2}\theta$.}}
 }
-\end{frame}
+\end{frame}%
+}
 
 \begin{frame}{Achieving rotation with no bomb present}{The Bloch sphere and the physical rotation of a polarizing filter}
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
