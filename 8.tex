@@ -12,4 +12,61 @@
 \end{frame}
 
 \begin{frame}{A system of two qubits}{We start here, and generalization will be easy.}
+\begin{itemize}
+    \item Consider two qubits, one in state \QState{a} and the other in state \QState{b}.
+    \item We say the system of the two qubits is in state
+    \[
+       \QState{a}\QState{b} = \ket{\psi_{a}\psi_{b}} = \TensProd{\QState{a}}{\QState{b}}
+    \]
+    \item The first two expressions are interchangeable names for the system. The last expressions tells us how to compute the state:  it is the \href{https://en.wikipedia.org/wiki/Tensor_product}{tensor product} of the individual states.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tensor product of two states}{We must keep track of the combinations separately.}
+\TwoColumns{%
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> Suppose
+    \begin{align*}
+        \QState{a} = & \alpha_{a}\ket{0} + \beta_{a}\ket{1} \\
+        \QState{b} = & \alpha_{b}\ket{0} + \beta_{b}\ket{1}
+    \end{align*}
+    \item<2-> Measuring \QState{a} will yield \ket{0} or \ket{1}.
+    \item<3-> Measuring \QState{b} will yield \ket{0} or \ket{1}.
+    \item<4-> This does not capture the joint probability of outcomes.
+    \item<5-> This does the job, with wave amplitudes computed as follows.
+\end{itemize}}
+\only<6-11>{%
+\begin{itemize}
+    \item<7-> The wave amplitude of \ket{00}.
+    \item<8-> The wave amplitude of \ket{01}.
+    \item<9-> The wave amplitude of \ket{10}.
+    \item<10-> The wave amplitude of \ket{11}.
+\end{itemize}
+}
+\only<12->{%
+\begin{itemize}
+    \item State $\ket{00} = \TensProd{\ket{0}}{\ket{0}}$ is the outcome of measuring \ket{0} for both \QState{a} and \QState{b}.
+\end{itemize}
+}
+}{%
+\visible<4->{%
+    \begin{align*}
+    \TensProd{\QState{a}}{\QState{b}} = & \TensProd{\SQB{\alpha_{a}}{\beta_{a}}}{\SQB{\alpha_{b}}{\beta_{b}} } \\[2em]
+    \only<4>{\not= & \DQB{\alpha_{a}}{\beta_{a}}{\alpha_{b}}{\beta_{b}}%
+    }
+    \only<5->{= & \DQB{\alert<7>{\alpha_{a}\,\alpha_{b}}}{\alert<8>{\alpha_{a}\,\beta_{b}}}{\alert<9>{\beta_{a}\,\alpha_{b}}}{\alert<10>{\alpha_{b}\,\beta_{b}}}%
+    }
+    \end{align*}}
+}
+\only<11->{%
+The resulting state is
+\[
+\alpha_{a}\,\alpha_{b}\ket{00}
++\alpha_{a}\,\beta_{b}\ket{01}
++\beta_{a}\,\alpha_{a}\ket{10}
++\beta_{a}\,\beta_{b}\ket{11}
+\]
+}
 \end{frame}
