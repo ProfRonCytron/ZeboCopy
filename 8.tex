@@ -47,7 +47,12 @@
 }
 \only<12->{%
 \begin{itemize}
-    \item State $\ket{00} = \TensProd{\ket{0}}{\ket{0}}$ is the outcome of measuring \ket{0} for both \QState{a} and \QState{b}.
+    \item<12-> State $\ket{00} = \TensProd{\ket{0}}{\ket{0}}$ is the outcome of measuring $\QState{a}=$\ket{0} and $\QState{b}=\ket{0}$.
+    \item<13-> The probability of that outcome is
+    \[
+    \Prob{\alpha_{a}\,\alpha_{b}} = \Prob{\alpha_{a}}\,\Prob{\alpha_{b}}
+    \]
+    \item<14-> This is the joint probability of $\QState{a}=\ket{0}$ and $\QState{b}=\ket{0}$.
 \end{itemize}
 }
 }{%
@@ -56,14 +61,15 @@
     \TensProd{\QState{a}}{\QState{b}} = & \TensProd{\SQB{\alpha_{a}}{\beta_{a}}}{\SQB{\alpha_{b}}{\beta_{b}} } \\[2em]
     \only<4>{\not= & \DQB{\alpha_{a}}{\beta_{a}}{\alpha_{b}}{\beta_{b}}%
     }
-    \only<5->{= & \DQB{\alert<7>{\alpha_{a}\,\alpha_{b}}}{\alert<8>{\alpha_{a}\,\beta_{b}}}{\alert<9>{\beta_{a}\,\alpha_{b}}}{\alert<10>{\alpha_{b}\,\beta_{b}}}%
+    \only<5->{= & \DQB{\alert<7,12->{\alpha_{a}\,\alpha_{b}}}{\alert<8>{\alpha_{a}\,\beta_{b}}}{\alert<9>{\beta_{a}\,\alpha_{b}}}{\alert<10>{\alpha_{b}\,\beta_{b}}}%
     }
     \end{align*}}
 }
 \only<11->{%
+\MedSkip{}
 The resulting state is
 \[
-\alpha_{a}\,\alpha_{b}\ket{00}
+\alert<12->{\alpha_{a}\,\alpha_{b}}\ket{00}
 +\alpha_{a}\,\beta_{b}\ket{01}
 +\beta_{a}\,\alpha_{a}\ket{10}
 +\beta_{a}\,\beta_{b}\ket{11}
