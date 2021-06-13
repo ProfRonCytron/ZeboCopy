@@ -331,13 +331,16 @@ A more general interpretation of the sphere ascribes meaning to interior points.
      \TZPoint{0,0,-1}{\ket{1}}{below}
     \end{BlochSphere}
 \end{center}
-\visible<3>{%
-\Vskip{-2em}\PauliZ{} affects all states off the z axis, for example
+\only<2>{%
+\Vskip{-2.5em}Such states are called eigenstates (or \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvectors}) of \PauliZ{}.  A matrix transforms an eigenstate into a multiple $\lambda$ of itself;  $\lambda$ is called an eigenvalue of the matrix.  Here, $\PauliZ{}\ket{0} = +1\ket{0}$ and $\PauliZ{}\ket{1}=-1\ket{1}$.
+}
+\only<3>{%
+\Vskip{-2em}\PauliZ{} affects all other states, off the z axis, for example
 \begin{eqnarray*}
 \ApplyGate{\PauliZ}{\ket{+}} & = & \ket{-} \\
 \ApplyGate{\PauliZ}{\ket{-}}  & = & \ket{+}
 \end{eqnarray*}
-rotating them by $\pi$ radians around the z~axis.
+rotations of $\pi$ radians around the z~axis.
 }}
 \end{frame}
 
@@ -349,7 +352,7 @@ rotating them by $\pi$ radians around the z~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes: \[ \ApplyGate{\PauliX}{\SQB{\alpha}{\beta}} =  \SQB{\beta}{\alpha} \]
-    \item<2-> The two unaffected states are \ket{+x} and \ket{-x}. \Exercise{unaffected points}{Show that X doesn't affect +x or -x.}
+    \item<2-> The two eigenstates are \ket{+x} and \ket{-x}. \Exercise{unaffected points}{Show that X doesn't affect +x or -x.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
@@ -373,7 +376,7 @@ rotates a state  by $\pi$ radians around the x~axis.
 \]
 \begin{itemize}
     \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-i\beta}{i\alpha} = -i\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
-    \item<2-> The two unaffected states are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
+    \item<2-> The two eigenstates are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
@@ -407,7 +410,7 @@ $\PauliZ{}=\ZMatrix{}$
     \end{tabular}}
     \end{center}
     \item Each matrix has \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvalues} $\pm 1$.
-    \item Each Pauli matrix rotates all states by $\pi$ radians about its associated axis, except the two states at the intercept of its axis with the unit Bloch sphere.  The eigenvectors are therefore those intercepts.
+    \item Each Pauli matrix rotates all states by $\pi$ radians about its associated axis, except the two states at the intercept of its axis with the unit Bloch sphere.  The eigenstates are therefore those intercepts.
 \end{itemize}
 \end{frame}
 
@@ -478,7 +481,7 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 }
 \end{align*}
 }
-\QED{}
+\visible<6>{\QED{}}
 \end{frame}
 }
 \begin{frame}{Arbitrary rotations}{The Pauli matrices rotate by $\pi$ radians;  how can we rotate by $\theta$ radians?}
@@ -522,9 +525,9 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \begin{itemize}
     \item Two real parameters suffice for specifying the state of a single quantum bit.
     \item The Bloch sphere is a convenient visualization of a single qubit's state.
-    \item We have studied three gates of interest so far:
+    \item We have studied four gates of interest so far:
     \begin{itemize}
-        \item The Hadamard gate creates a uniform superposition of \ket{0} and \ket{1} given the input \ket{1}.
+        \item The Hadamard gate creates a uniform superposition of \ket{0} and \ket{1} given the input \ket{0}.
         \item The \PauliX{}, \PauliY{}, and \PauliZ{} gates rotate state by $\pi$ radians about their respective axes.
     \end{itemize}
     \item There are matrices that describe arbitrary rotations about the Bloch axes. 
