@@ -198,12 +198,12 @@ Computing the tensor product two matrices is similar to computing the tensor pro
 \begin{frame}{Another example}{We can create the uniform superposition of two qubits using Hadamard gates.}
 \TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
-\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \qw\\
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<4>{\QState{1}}}  & \qw\\
 \lstick{\QZero{}} &   \gate{H}    &  \qw
 \end{quantikz}}
 }{%
 \Vskip{-3em}\begin{align*} 
-\alert<1->{\QState{0}}= &\ket{00} 
+\alert<1-3>{\QState{0}}= &\ket{00} 
 \visible<2->{=  \TensProd{\PZero}{\PZero}}
 \visible<3->{= \DQB{1}{0}{0}{0} }\\
 \visible<4->{%
@@ -225,7 +225,7 @@ Computing the tensor product two matrices is similar to computing the tensor pro
 \begin{frame}{General superposition of $n$ qubits}{The idea extends to any number of qubits.}
 \TwoUnequalColumns{0.25\textwidth}{0.75\textwidth}{%
 \adjustbox{scale=0.9,valign=t}{\begin{quantikz}
-\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \meter{\textcolor<5-6>{red}{0/1}} \\
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-3>{\QState{1}}}  & \meter{\textcolor<5-6>{red}{0/1}} \\
 \lstick{\QZero{}} &   \gate{H}    &  \meter{\textcolor<5-6>{red}{0/1}} \\
 \lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
 \lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
