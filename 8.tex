@@ -195,5 +195,54 @@ Computing the tensor product two matrices is similar to computing the tensor pro
 
 \end{frame}
 
-\begin{frame}{Another example}{We can create the superposition of any number of inputs using Hadamard gates.}
+\begin{frame}{Another example}{We can create the uniform superposition of two qubits using Hadamard gates.}
+\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \qw\\
+\lstick{\QZero{}} &   \gate{H}    &  \qw
+\end{quantikz}}
+}{%
+\Vskip{-3em}\begin{align*} 
+\alert<1->{\QState{0}}= &\ket{00} 
+\visible<2->{=  \TensProd{\PZero}{\PZero}}
+\visible<3->{= \DQB{1}{0}{0}{0} }\\
+\visible<4->{%
+\alert<4->{\QState{1}} = & (\TensProd{\Hadamard{}}{\Hadamard{}})\,\DQB{1}{0}{0}{0} 
+\visible<5->{= \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}
+    \begin{pmatrix*}[r]
+      1 & 1 & 1 & 1 \\
+      1 & -1 & 1 & -1 \\
+      1 & 1 & -1 & -1 \\
+      1 & -1 & -1 & 1
+    \end{pmatrix*}\DQB{1}{0}{0}{0}} \\
+   \visible<6->{ = & \frac{1}{2}\DQB{1}{1}{1}{1}}
+   \visible<7->{= \frac{\ket{00}+\ket{01}+\ket{10}+\ket{11}}{2}
+   }}
+\end{align*}
+}
+\end{frame}
+
+\begin{frame}{General superposition of $n$ qubits}{The idea extends to any number of qubits.}
+\TwoUnequalColumns{0.25\textwidth}{0.75\textwidth}{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \qw\\
+\lstick{\QZero{}} &   \gate{H}    &  \qw \\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$} \\
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \qw
+\end{quantikz}}
+}{%
+\Vskip{-3em}\begin{align*} 
+\alert<1>{\QState{0}} = & \ket{0^{n}} \\
+\visible<2->{\alert<2->{\QState{1}} = & \TensSupProd{\Hadamard{}}{n}\ket{0^{n}}\\
+\visible<3->{= & \frac{1}{\sqrt{2^{n}}}\ket{1^{n}}}
+}
+\end{align*}
+\Vskip{-2em}\begin{itemize}
+\item<1-> There are $n$ inputs, each \ket{0}.
+\item<2-> We apply an $n$-way Hadamard, which can be realized by a separate Hadamard on each input.
+\item<3-> The result is the uniform superposition of all $n$-bit basis vectors.  If we regard each of those vectors as the encoding of an integer in $\left[0, 2^{n}\right)$, then we can think of the result as the uniform superposition of all $2^{n}$ values.
+\end{itemize}
+}
 \end{frame}
