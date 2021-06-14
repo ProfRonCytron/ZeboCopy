@@ -1,6 +1,7 @@
 \documentclass[aspectratio=169,t,13pt,usenames,dvipsnames]{beamer}
 \usetheme[lily]{PaloAlto}
 \usecolortheme{dolphin}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{tikz-3dplot}
@@ -56,7 +57,7 @@
 \def\PauliZ{\NamedGate{Z}}
 \def\SQBG#1#2#3#4#5{%
 \ensuremath{%
-#1 \begin{pmatrix} #2 & #3 \\ #4 & #5\end{pmatrix}}}
+#1 \begin{pmatrix*}[r] #2 & #3 \\ #4 & #5\end{pmatrix*}}}
 \def\HMatrix{%
 \SQBG{\frac{1}{\sqrt{2}}}{1}{1}{1}{-1}}
 \def\XMatrix{%
@@ -151,16 +152,17 @@
 \def\QState#1{\ket{\QName{#1}}}
 \def\QName#1{\ensuremath{\psi_{#1}}}
 \def\TensProd#1#2{\ensuremath{#1\otimes #2}}
+\def\TensSupProd#1#2{\ensuremath{#1^{\otimes #2}}}
 \def\PZero{\SQB{1}{0}}
 \def\POne{\SQB{0}{1}}
 \def\PHad{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{1}}
 \def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
 \def\DQB#1#2#3#4{%
-\ensuremath{\begin{pmatrix} #1 \\ #2 \\ #3 \\ #4\end{pmatrix}}}
+\ensuremath{\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
 \def\QQB#1#2#3#4#5#6#7#8{%
-\ensuremath{\begin{pmatrix} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8\end{pmatrix}}}
+\ensuremath{\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8\end{pmatrix*}}}
 \def\SQB#1#2{%
-\ensuremath{\begin{pmatrix} #1 \\ #2\end{pmatrix}}}
+\ensuremath{\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
 \def\TZPointDiam{2pt}
 \def\TZPoint#1#2#3{%
 \draw[fill=black] (#1) circle (\TZPointDiam) node[#3] {#2} ;}
@@ -181,6 +183,7 @@
 \def\Exp#1{\ensuremath{e^{#1}}}
 \def\ExpPhase#1{\Exp{i\,#1}}
 \def\ExpNegPhase#1{\Exp{-i\,#1}}
+\def\PhaseLabel#1{\phase{\fbox{#1}}}
 \def\ColHead#1{\begin{center}\bf #1\end{center}}
 \def\Complex#1#2{\ComplexGen{#1}{#2}{+}}
 \def\ComplexDiff#1#2{\ComplexGen{#1}{#2}{-}}
