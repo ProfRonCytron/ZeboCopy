@@ -5,7 +5,8 @@
 \begin{itemize}
     \item We can build larger quantum systems by using multiple qubits.
     \item The mathematics of \href{https://en.wikipedia.org/wiki/Tensor}{tensors} allows us to reason about multi-qubit systems.
-    \item Unless these qubits are entangled, the resulting systems gain no computational power beyond parallelism over a classical computing system.
+    \item If $k$ qubits are separate and do not interact, they can be visualized as $k$ Bloch spheres, and they can be simulated efficiently using a classical computer.
+    \item On the other hand, if some qubits are \href{https://en.wikipedia.org/wiki/Quantum_entanglement}{entangled}, then we cannot treat them independently.  Simulating them classically can take exponential time.
     \item Entanglement is a strange but powerful concept in quantum mechanics that can provide significant computational advantages.
 \end{itemize}
     
@@ -14,7 +15,7 @@
 \begin{frame}{A system of two qubits}{We start here, and generalization will be easy.}
 \begin{itemize}
     \item Consider two qubits, one in state \QState{a} and the other in state \QState{b}.
-    \item We say the system of the two qubits is in state
+    \item We say the system of those two qubits is in state
     \[
        \QState{a}\QState{b} = \ket{\psi_{a}\psi_{b}} = \TensProd{\QState{a}}{\QState{b}}
     \]
@@ -70,7 +71,7 @@ We compute each entry in turn:
 \only<15->{%
 \begin{itemize}
     \item Each of the other coefficients is the amplitude on the basis vector for the related measurements.
-    \item And the square of the magnitude of an amplitude\textbf{} is the joint probability of seeing the two outcomes.
+    \item And the square of the magnitude of an amplitude is the joint probability of seeing the two outcomes.
 \end{itemize}
 }
 }{%
@@ -93,4 +94,168 @@ The resulting state is
 +\beta_{a}\,\beta_{b}\ket{11}
 \]
 }
+\end{frame}
+
+\begin{frame}{Properties of tensor products}{There are more, but these are important for quantum computing.}
+\begin{itemize}
+    \item If $a \in \Co{}$ and $v$ and $w$ are quantum states, then
+    \[ 
+       \TensProd{(av)}{w} = \TensProd{v}{(aw)} = a\,(\TensProd{v}{w})
+    \]
+    \item Tensor products distribute over superpositions.  If $v_{1}$, $v_{2}$, and $w$ are quantum states, then
+    \begin{align*}
+       \TensProd{(v_{1}+v_{2})}{w} = & \TensProd{v_{1}}{w} + \TensProd{v_{2}}{w} \\
+       \TensProd{w}{(v_{1}+v_{2})} = & \TensProd{w}{v_{1}} + \TensProd{w}{v_{2}}
+    \end{align*}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Now three qubits}{Each new qubit is incorporated by tensor product.}
+
+\Vskip{-3em}\TwoColumns{%
+\only<1-10>{%
+\begin{itemize}
+    \item<1-> A system of $k$ qubits is characterized by the tensor product of those qubits' states.
+    \item<2-> Consider for example a 3~qubit system comprised of the states
+    \begin{align*}
+    \QState{a} = \PZero{} &
+    \QState{b} = \POne{} \\
+    \QState{c} = & \PHad{}
+    \end{align*}
+\end{itemize}
+\only<3-10>{%
+
+How do we compute \ket{\QName{a}\QName{b}\QName{c}}?}}%
+\only<11>{%
+We can describe a quantum state using a column vector, but when that is sparse, it may be more clear to write it out in terms of its basis states:
+\[
+\frac{\ket{010} + \ket{011}}{\sqrt{2}}
+\]
+Counting down a column $(0, 1, 2, \ldots)$, we include the binary encoding of each index whose entry is non-zero.
+}
+}{%
+\only<3->{%
+\begin{align*}
+    & \TensProd{\TensProd{\PZero{}}{\POne{}}}{\PHad{}} \\
+    = & \TensProd{\DQB{\alert<3-4>{0}}{\alert<5-6>{1}}{\alert<7-8>{0}}{\alert<9-10>{0}}}{\frac{1}{\sqrt{2}}\SQB{\alert<3,5,7,9>{1}}{\alert<4,6,8,10>{1}}}
+    = \frac{1}{\sqrt{2}}\QQB{%
+    \alert<3>{0}}{%
+    \alert<4>{0}}{%
+    \alert<5>{1}}{%
+    \alert<6>{1}}{%
+    \alert<7>{0}}{%
+    \alert<8>{0}}{%
+    \alert<9>{0}}{%
+    \alert<10>{0}}
+\end{align*}}
+}
+    
+\end{frame}
+
+
+\begin{frame}{From states to gates}{We can use tensor products of matrices to reason about systems of gates.}
+Computing the tensor product two matrices is similar to computing the tensor product of two vectors.  It is demonstrated by the example of 
+\[
+\TensProd{\PauliZ{}}{\Hadamard{}} = %
+\TensProd{%
+   \SQBG{\relax}{%
+   \alert<1-4>{1}}{%
+   \alert<5-8>{0}}{%
+   \alert<9-12>{0}}{%
+   \alert<13-16>{-1}}}{%
+   \SQBG{\frac{1}{\sqrt{2}}}{%
+   \alert<1,5,9,13>{1}}{%
+   \alert<2,6,10,14>{1}}{%
+   \alert<3,7,11,15>{1}}{%
+   \alert<4,8,12,16>{-1}}}
+   = \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
+   \visible<1-4,17->{ \alert<1>{1} &  \alert<2>{1} }& \visible<5-8,17->{\alert<5>{0} & \alert<6>{0} }\\
+     \visible<1-4,17->{\alert<3>{1} & \alert<4>{-1} }& \visible<5-8,17->{\alert<7>{0} & \alert<8>{0} }\\
+     \visible<9-12,17->{\alert<9>{0} &  \alert<10>{0}} & \visible<13-16,17->{\alert<13>{-1} & \alert<14>{-1}} \\
+     \visible<9-12,17->{\alert<11>{0} &  \alert<12>{0} }& \visible<13-16,17->{\alert<15>{-1} & \alert<16>{1}}
+   \end{pmatrix*}
+\]
+\only<18-19>{%
+\begin{itemize}
+\item<18-> This gate can then be applied to any two-qubit state. 
+\item<19-> If that state is \TensProd{\QState{a}}{\QState{b}}, then the result will be as if \PauliZ{} and \Hadamard{} acted separately on each input.
+\[
+(\TensProd{\PauliZ{}}{\Hadamard{}})\,\ket{\QName{a}\QName{b}} = \TensProd{(\PauliZ{}\QState{a})}{(\Hadamard{}\QState{b})}
+\]
+\end{itemize}
+}%
+\only<20>{%
+\begin{itemize}
+
+\item Why compute the tensor product of the two gates, if the result can be computed separately?
+
+\item There are some two-qubit states that cannot be written as any \TensProd{\QState{a}}{\QState{b}}.  Such entangled states require using the gates' tensor product.
+\end{itemize}}
+
+\end{frame}
+
+\begin{frame}{Another example}{We can create the uniform superposition of two qubits using Hadamard gates.}
+\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<4>{\QState{1}}}  & \qw\\
+\lstick{\QZero{}} &   \gate{H}    &  \qw
+\end{quantikz}}
+}{%
+\Vskip{-3em}\begin{align*} 
+\alert<1-3>{\QState{0}}= &\ket{00} 
+\visible<2->{=  \TensProd{\PZero}{\PZero}}
+\visible<3->{= \DQB{1}{0}{0}{0} }\\
+\visible<4->{%
+\alert<4->{\QState{1}} = & (\TensProd{\Hadamard{}}{\Hadamard{}})\,\DQB{1}{0}{0}{0} 
+\visible<5->{= \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2}}
+    \begin{pmatrix*}[r]
+      1 & 1 & 1 & 1 \\
+      1 & -1 & 1 & -1 \\
+      1 & 1 & -1 & -1 \\
+      1 & -1 & -1 & 1
+    \end{pmatrix*}\DQB{1}{0}{0}{0}} \\
+   \visible<6->{ = & \frac{1}{2}\DQB{1}{1}{1}{1}}
+   \visible<7->{= \frac{\ket{00}+\ket{01}+\ket{10}+\ket{11}}{2}
+   }}
+\end{align*}
+}
+\end{frame}
+
+\begin{frame}{General superposition of $n$ qubits}{The idea extends to any number of qubits.}
+\TwoUnequalColumns{0.25\textwidth}{0.75\textwidth}{%
+\adjustbox{scale=0.9,valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-3>{\QState{1}}}  & \meter{\textcolor<5-6>{red}{0/1}} \\
+\lstick{\QZero{}} &   \gate{H}    &  \meter{\textcolor<5-6>{red}{0/1}} \\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$}\\
+\lstick{$\bullet$} & \mbox{$\bullet$} & \mbox{$\bullet$} \\
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2>{\QState{1}}}  & \meter{\textcolor<5-6>{red}{0/1}}
+\end{quantikz}}
+}{%
+\only<1-4>{%
+\Vskip{-3em}\begin{align*} 
+\alert<1>{\QState{0}} = & \ket{0^{n}} \\
+\visible<2->{\alert<2->{\QState{1}} = & \TensSupProd{\Hadamard{}}{n}\ket{0^{n}}\\
+\visible<3->{= & \frac{1}{\sqrt{2^{n}}}\sum_{\AllBits{x}{n}} \ket{x}
+\visible<4->{=\frac{1}{\sqrt{2^{n}}} \sum_{j=0}^{2^{n}-1} \ket{j}}
+}}
+\end{align*}
+\Vskip{-2em}\begin{itemize}
+\item<1-> There are $n$ inputs, each \ket{0}.
+\item<2-> A Hadamard gate is applied to each input.
+\item<3-> The result is the uniform superposition of all possible $n$-bit vectors.  
+\item<4-> Interpreted as integers base-2, the result is also the uniform superposition of $2^{n}$ values.
+\end{itemize}
+}%
+\only<5-6>{%
+\begin{itemize}
+   \item<5->On \alert<5>{measurement} of the $n$ qubits, each outcome is equally likely to be \Zero{} or \One{}.
+   \item<6-> Taken as an $n$-bit string, each of the possible $2^n$ outcomes is therefore also likely.
+\end{itemize}
+}
+}
+\end{frame}
+
+\begin{frame}{Entangling two qubits}{With Hadamard and CNOT}
 \end{frame}
