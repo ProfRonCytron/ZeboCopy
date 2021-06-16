@@ -266,20 +266,47 @@ Computing the tensor product two matrices is similar to computing the tensor pro
 
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
-\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<4>{\QState{1}}} & \ctrl{1}\slice{\alert<6>{\QState{2}}} & \meter{\textcolor<7-8>{red}{0/1}}\\
-\lstick{\QZero{}} &   \qw    &  \targ{}  & \meter{\textcolor<7-8>{red}{0/1}}
-\end{quantikz}}
+\lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-5>{\QState{1}}} & \ctrl{1}\slice{\alert<7-8>{\QState{2}}} & \meter{\textcolor<8->{red}{0/1}}\\
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \meter{\textcolor<8->{red}{0/1}}
+\end{quantikz}}%
+\only<5>{%
+
+We can do this because the qubits are acting independently at this point.  This state can be factored into the tensor product of two states.
+}
 }{%
-\begin{itemize}
-    \item<1-> As before, our initial state is $\ket{00}=\DQB{1}{0}{0}{0}$
-    \item<2-> To compute the state here, we must tensor the \Hadamard{} and \Identity{} gates, obtaining
-    $\begin{pmatrix*}[r]
+\only<1-7>{%
+\Vskip{-2.5em}\begin{itemize}
+    \item<1-> As before, our initial state $\QState{0}=\ket{00}=\DQB{1}{0}{0}{0}$
+    \only<2-3>{%
+    \item<2-> To compute the state here, we can tensor the \Hadamard{} and \Identity{} gates, obtaining
+    $\RootTwo{}\begin{pmatrix*}[r]
         1 & 0 & 1 & 0 \\
         0 & 1 & 0 & 1 \\
         1 & 0 & -1 & 0 \\
         0 & 1 & 0 & -1
     \end{pmatrix*}$
-    \item<3-> Applying those gates to \QState{0} yields $\QState{1}=\DQB{1}{0}{1}{0}$
+    \item<3-> Applying those gates to \QState{0} yields $\QState{1}=\RootTwo{}\DQB{1}{0}{1}{0}$}
+    \only<4-5>{%
+    \item It's easier to compute \QState{1} as follows:
+   \begin{align*}
+       \TensProd{\Hadamard{}\ket{0}}{\Identity{}\ket{0}}
+     = & \TensProd{\HMatrix{}\PZero{}}{\PZero} \\
+     = & \RootTwo{}\DQB{1}{0}{1}{0}
+    \end{align*}}
+    \only<6-7>{%
+        \item<6-> $\QState{1} = \RootTwo{}\DQB{1}{0}{1}{0}$
+        \item<7-> $\QState{2} = \CNOTMatrix{}\RootTwo\DQB{1}{0}{1}{0} = \RootTwo{}\DQB{1}{0}{0}{1}$
+    }
+    \end{itemize}}
+    \only<8->{%
+    \[\QState{2} =  \RootTwo{}\DQB{1}{0}{0}{1}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}\]
+    }
+}
+\only<8->{%
+\begin{itemize}
+\item<8-> In this state, we have a 50\% chance of seeing \ket{0} at each sensor, and a 50\% chance of seeing \ket{1} at each sensor.
+\item<9-> The two measurements are absolutely correlated, \alert<10>{no matter in which order the measurements are taken}, and \alert<11>{no matter the distance between the sensors}.
+\item<12->  The two outcomes are also uniformly random but completely unpredictable.
 \end{itemize}
 }
 \end{frame}

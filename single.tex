@@ -41,6 +41,13 @@
 \ensuremath{\Mag{#1}^{2}}}
 \def\CNOT#1#2{%
 \ensuremath{\mbox{CNOT}(#1,#2)}}
+\def\CNOTMatrix{%
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0\end{pmatrix*}%
+}
 \def\CCNOT#1#2#3{%
 \ensuremath{\mbox{CNOT}(#1,#2,#3)}}
 \long\def\ToDo#1{\smash{\textcolor{YellowOrange}{#1}}}
@@ -59,7 +66,7 @@
 \ensuremath{%
 #1 \begin{pmatrix*}[r] #2 & #3 \\ #4 & #5\end{pmatrix*}}}
 \def\HMatrix{%
-\SQBG{\frac{1}{\sqrt{2}}}{1}{1}{1}{-1}}
+\SQBG{\RootTwo{}}{1}{1}{1}{-1}}
 \def\XMatrix{%
 \SQBG{\relax}{0}{1}{1}{0}}
 \def\ZMatrix{%
@@ -72,6 +79,7 @@
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
+\def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
 \def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
 \def\BigSkip{%
 
