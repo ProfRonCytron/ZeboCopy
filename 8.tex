@@ -314,13 +314,13 @@ We can do this because the qubits are acting independently at this point.  This 
 \begin{frame}{The Bell state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$}{Our first entangled state}
 \Vskip{-3.5em}\begin{itemize}
     \item<1-> The behavior of this state is an incredible consequence of quantum theory.
-    \item<2-> Einstein regarded that theory as incomplete: he felt that there must be an explanation, such as hidden variables, for spooky action at a distance.
-    \item<3-> This state is \emph{entangled}, meaning that it cannot be expressed as the tensor product of two two-qubit states.
+    \item<2-> While physics confirms quantum behavior experimentally, there is no explanation yet for \emph{why}.
+    \item<3-> This state is \emph{entangled}, meaning that it cannot be expressed as the tensor product of two single-qubit states.
 \end{itemize}
 \only<3->{%
 \SmallSkip{}
 \TwoUnequalColumns{0.58\textwidth}{0.42\textwidth}{%
-\visible<3->{Proof by contradiction:}
+\visible<3->{Proof (by contradiction):}
 \visible<4->{Suppose there exist
     \[
     \SQB{a}{b} \mbox{ and } \SQB{c}{d}\ |\ \RootTwo{}\TensProd{\SQB{a}{b}}{\SQB{c}{d}} = \RootTwo{}\DQB{\textcolor<6>{OrangeRed}{1}}{\textcolor<6>{NavyBlue}{0}}{\textcolor<7>{OrangeRed}{0}}{\textcolor<7>{NavyBlue}{1}}
@@ -335,5 +335,58 @@ We can do this because the qubits are acting independently at this point.  This 
 \end{align*}
 \visible<10->{which is a contradiction $\square$}
 }}
+    
+\end{frame}
+
+\begin{frame}{How entangled are the qubits?}{Their experience with CNOT cannot be undone unless they are physically proximate again.}
+
+\TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{\QState{0}} &  \gate{H}\slice{\QState{1}} & \ctrl{1}\slice{\QState{2}} & \meter{0/1}\\
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \meter{0/1}
+\end{quantikz}}%
+}{%
+\begin{itemize}
+    \item The qubits' entanglement persists in any basis.
+    \item No action taken on them separately can disentangle them.
+    \item If they were brought back together and run through a \NamedGate{CNOT} gate again, then they would disentangle.  \NamedGate{CNOT} is its own inverse.
+\end{itemize}
+}
+\MedSkip{}
+Entanglement defies classical physics and logic and affords advantages for games and computations.
+    
+\end{frame}
+
+\begin{frame}{Pondering entanglement}{Einstein regarded quantum theory as incomplete.}
+
+\begin{itemize}
+    \item<1-> Upon measurement, our entangled qubits collapse unpredictably to the same value, instantaneously, even if they are separated by light years.
+    \item<2-> Einstein regarded this \textit{spukhafte Fernwirkung} (spooky action at a distance) as evidence that quantum theory is incomplete.
+    \item<3-> For example, local hidden variables would explain how qubits manage to provide the same measurement after entanglement.
+    \item<6-> We shall soon rule out local hidden variables.
+    \item<7-> Perhaps there are global hidden variables, but how would we prove this?
+\end{itemize}
+\only<3-7>{%
+\begin{center}
+\begin{TIKZP}
+    \draw (0,0)  -| ++(1,1) 
+    node[pos=0.25,below] {$q_0$} 
+    -| (0,0);
+    \draw<3,5-> (1.5,0)  -| ++(1,1) 
+    node[pos=0.25,below] {$q_1$} 
+    -| (1.5,0);
+    \draw<4> (0.5,0)  -| ++(1,1) 
+    node[pos=0.25,below] {$q_1$} 
+    -| (0.5,0);
+    \fill<4>[red] (0.5,0) rectangle ++(0.5, 1);
+    \path<4> (0.75,1) node[above] {\NamedGate{CNOT}};
+    \fill<5->[red] (0,0) rectangle ++(1,1);
+    \fill<5->[red] (1.5,0) rectangle ++(1,1);
+\end{TIKZP}
+\end{center}
+}
+\only<8->{%
+\MedSkip{}
+Gravitational attraction exists at arbitrary distances, but we seem OK with that.  Is it so strange that the fate of two qubits is influenced as theory predicts by their \NamedGate{CNOT} experience?}
     
 \end{frame}
