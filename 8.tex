@@ -310,3 +310,30 @@ We can do this because the qubits are acting independently at this point.  This 
 \end{itemize}
 }
 \end{frame}
+
+\begin{frame}{The Bell state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$}{Our first entangled state}
+\Vskip{-3.5em}\begin{itemize}
+    \item<1-> The behavior of this state is an incredible consequence of quantum theory.
+    \item<2-> Einstein regarded that theory as incomplete: he felt that there must be an explanation, such as hidden variables, for spooky action at a distance.
+    \item<3-> This state is \emph{entangled}, meaning that it cannot be expressed as the tensor product of two two-qubit states.
+\end{itemize}
+\only<3->{%
+\SmallSkip{}
+\TwoUnequalColumns{0.58\textwidth}{0.42\textwidth}{%
+\visible<3->{Proof by contradiction:}
+\visible<4->{Suppose there exist
+    \[
+    \SQB{a}{b} \mbox{ and } \SQB{c}{d}\ |\ \RootTwo{}\TensProd{\SQB{a}{b}}{\SQB{c}{d}} = \RootTwo{}\DQB{\textcolor<6>{OrangeRed}{1}}{\textcolor<6>{NavyBlue}{0}}{\textcolor<7>{OrangeRed}{0}}{\textcolor<7>{NavyBlue}{1}}
+    \]}
+}{%
+\visible<5->{Then}
+\begin{align*}
+    \visible<6->{\textcolor<6>{OrangeRed}{ac} = & 1 & \textcolor<6>{NavyBlue}{ad} =& 0 }\\
+    \visible<7->{\visible<8->{\times} \textcolor<7>{NavyBlue}{bd} = & 1 & \visible<8->{\times} \textcolor<7>{OrangeRed}{bc} =& 0 }\\
+    \visible<8->{---- & -- & ---- & --} \\
+    \visible<9->{abcd = & 1 & abcd =& 0}
+\end{align*}
+\visible<10->{which is a contradiction $\square$}
+}}
+    
+\end{frame}
