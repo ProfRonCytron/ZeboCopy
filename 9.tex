@@ -1,4 +1,4 @@
-\SetTitle{8}{Beyond one qubit}{Composite quantum systems}{multqubits}
+\SetTitle{9}{Beyond one qubit}{Composite quantum systems}{multqubits}
 
 \begin{frame}{Overview}
 
@@ -384,7 +384,7 @@ Entanglement defies classical physics and logic and affords advantages for games
     \fill<5->[red] (11.5,0) rectangle ++(1,1);
     \draw<5-> (11.5,0)  -| ++(1,1) 
     node[pos=0.25,below] {$q_1$};
-    \path (6,0) node[above] {$\longleftarrow\ $light years of separation$\ \longrightarrow$};
+    \path<5-> (6,0) node[above] {$\longleftarrow\ $light years of separation$\ \longrightarrow$};
 \end{TIKZP}
 \end{center}
 }
@@ -392,4 +392,20 @@ Entanglement defies classical physics and logic and affords advantages for games
 \MedSkip{}
 Gravitational attraction exists at arbitrary distances, but we seem OK with that.  Is it so strange that entanglement affects the fate of two qubits no matter their distance?}
     
+\end{frame}
+
+\begin{frame}{No cloning theorem}{We will be able to teleport a quantum state but never copy it.}
+
+\begin{itemize}
+    \item<1-> Let's consider what it would take to clone an arbitrary quantum state 
+    $\QState{a}=\SQB{\alpha}{\beta}$.
+    \item<2-> This would create $\QState{b}=\SQB{\alpha}{\beta}$.
+    \item<3-> The resulting system would be the
+    state 
+    \[
+     \ket{\QName{a}\QName{b}} = \TensProd{\SQB{\alpha}{\beta}}{\SQB{\alpha}{\beta}} = \DQB{\alpha^{2}}{\alpha\beta}{\alpha\beta}{\beta^{2}}
+    \]
+    \item<4> We will show this is not possible.
+\end{itemize}
+
 \end{frame}
