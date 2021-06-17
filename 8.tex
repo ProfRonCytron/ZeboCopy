@@ -372,7 +372,7 @@ Entanglement defies classical physics and logic and affords advantages for games
     \draw (0,0)  -| ++(1,1) 
     node[pos=0.25,below] {$q_0$} 
     -| (0,0);
-    \draw<3,5-> (1.5,0)  -| ++(1,1) 
+    \draw<3> (1.5,0)  -| ++(1,1) 
     node[pos=0.25,below] {$q_1$} 
     -| (1.5,0);
     \draw<4> (0.5,0)  -| ++(1,1) 
@@ -381,7 +381,10 @@ Entanglement defies classical physics and logic and affords advantages for games
     \fill<4>[red] (0.5,0) rectangle ++(0.5, 1);
     \path<4> (0.75,1) node[above] {\NamedGate{CNOT}};
     \fill<5->[red] (0,0) rectangle ++(1,1);
-    \fill<5->[red] (1.5,0) rectangle ++(1,1);
+    \fill<5->[red] (11.5,0) rectangle ++(1,1);
+    \draw<5-> (11.5,0)  -| ++(1,1) 
+    node[pos=0.25,below] {$q_1$};
+    \path (6,0) node[above] {$\longleftarrow\ $light years of separation$\ \longrightarrow$};
 \end{TIKZP}
 \end{center}
 }
