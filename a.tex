@@ -1,0 +1,33 @@
+\begin{frame}{No cloning theorem}
+
+\TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
+\adjustbox{scale=0.9,valign=t}{%
+\begin{quantikz}
+& \lstick{\QState{a}}\slice{\alert<3>{\QState{0}}} &  \gate[wires=6]{U}\slice{\alert<4>{\QState{1}}} &  \qw\rstick{\QState{a}}\\
+\lstick[wires=5]{$n-1$} & \lstick{\QZero{}} &   & \qw\rstick{\QState{a}}  \\
+& \lstick{\QZero{}} &   & \qw\rstick[wires=4]{$f(\QState{a})$}  \\
+& \lstick{$\bullet$} &   & \qw  \\
+& \lstick{$\bullet$} &   & \qw  \\
+& \lstick{\QZero{}} &   & \qw 
+\end{quantikz}%
+}
+}{%
+\only<1-4>{%}\
+For $n\geq 2$
+\begin{itemize}
+    \item<1-> The input is \QState{a} and \ket{0} for each of the other $n-1$ qubits, which can be used for any purpose by $U$.
+    \item<2-> The output preserves \QState{a} on the top qubit, clones it onto the next qubit, and leaves the other $n-2$ qubits in a state that is some function of \QState{a}.
+    \item<3-> $\QState{0} =  \ket{\QName{a}\,0^{n-1}}$
+    \item<4-> $\QState{1}=\TensProd{\QState{a}}{\TensProd{\QState{a}}{f(\QState{a})}}$
+\end{itemize}}
+\only<5->{%
+If $U$ can do the following
+\begin{itemize}
+    \item $U(\TensProd{\ket{0}}{\ket{0^{n-1}}})= \TensProd{\ket{00}}{f(\ket{0})}$
+    \item $U(\TensProd{\ket{1}}{\ket{0^{n-1}}})= \TensProd{\ket{11}}{f(\ket{1})}$
+\end{itemize}
+then when presented with state $\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
+}
+}
+    
+\end{frame}
