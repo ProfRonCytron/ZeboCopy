@@ -1,15 +1,15 @@
 \begin{frame}{No cloning theorem}
 
 \TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
-For $n\geq 2$
+\alert<3>{For $n\geq 2$}
 \adjustbox{scale=0.9,valign=t}{%
 \begin{quantikz}
 & \lstick{\alert<2>{\alert<2>{\QState{a}}}}\slice{\alert<8>{\QState{0}}} &  \gate[wires=6]{U}\slice{\alert<9>{\QState{1}}} &  \qw\rstick{\alert<5>{\QState{a}}}\\
-\lstick[wires=5]{\alert<3-4>{$n-1$}} & \lstick{\QZero{}} &   & \qw\rstick{\alert<6>{\QState{a}}}  \\
-& \lstick{\QZero{}} &   & \qw\rstick[wires=4]{\alert<7>{$f(\QState{a})$}}  \\
-& \lstick{$\bullet$} &   & \qw  \\
-& \lstick{$\bullet$} &   & \qw  \\
-& \lstick{\QZero{}} &   & \qw 
+\lstick[wires=5]{\alert<3>{$n-1$}} & \lstick{\alert<3>{\QZero{}}} &   & \qw\rstick{\alert<3,6>{\QState{a}}}  \\
+& \lstick{\alert<4>{\QZero{}}} &   & \qw\rstick[wires=4]{\alert<7>{$f(\QState{a})$}}  \\
+& \lstick{\alert<4>{$\bullet$}} &   & \qw  \\
+& \lstick{\alert<4>{$\bullet$}} &   & \qw  \\
+& \lstick{\alert<4>{\QZero{}}} &   & \qw 
 \end{quantikz}%
 }
 }{%
