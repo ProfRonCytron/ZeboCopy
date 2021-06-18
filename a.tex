@@ -1,33 +1,51 @@
 \begin{frame}{No cloning theorem}
 
 \TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
+For $n\geq 2$
 \adjustbox{scale=0.9,valign=t}{%
 \begin{quantikz}
-& \lstick{\QState{a}}\slice{\alert<3>{\QState{0}}} &  \gate[wires=6]{U}\slice{\alert<4>{\QState{1}}} &  \qw\rstick{\QState{a}}\\
-\lstick[wires=5]{$n-1$} & \lstick{\QZero{}} &   & \qw\rstick{\QState{a}}  \\
-& \lstick{\QZero{}} &   & \qw\rstick[wires=4]{$f(\QState{a})$}  \\
+& \lstick{\alert<2>{\alert<2>{\QState{a}}}}\slice{\alert<8>{\QState{0}}} &  \gate[wires=6]{U}\slice{\alert<9>{\QState{1}}} &  \qw\rstick{\alert<5>{\QState{a}}}\\
+\lstick[wires=5]{\alert<3-4>{$n-1$}} & \lstick{\QZero{}} &   & \qw\rstick{\alert<6>{\QState{a}}}  \\
+& \lstick{\QZero{}} &   & \qw\rstick[wires=4]{\alert<7>{$f(\QState{a})$}}  \\
 & \lstick{$\bullet$} &   & \qw  \\
 & \lstick{$\bullet$} &   & \qw  \\
 & \lstick{\QZero{}} &   & \qw 
 \end{quantikz}%
 }
 }{%
-\only<1-4>{%}\
-For $n\geq 2$
-\begin{itemize}
-    \item<1-> The input is \QState{a} and \ket{0} for each of the other $n-1$ qubits, which can be used for any purpose by $U$.
-    \item<2-> The output preserves \QState{a} on the top qubit, clones it onto the next qubit, and leaves the other $n-2$ qubits in a state that is some function of \QState{a}.
-    \item<3-> $\QState{0} =  \ket{\QName{a}\,0^{n-1}}$
-    \item<4-> $\QState{1}=\TensProd{\QState{a}}{\TensProd{\QState{a}}{f(\QState{a})}}$
+\only<1-4>{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> We seek to prove that \emph{no} circuit can accomplish cloning.
+    We therefore formulate a parameterized proof using $n$, the number of inputs (and outputs) to a hypothetical gate $U$.
+    \item<2-> The top input is \QState{a}, the state we wish to clone.
+    \item<3-> We need at least one extra qubit to receive the putative clone.
+    \item<4-> The rest of the qubits are ancillary qubits, or \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancillas}.   These are offered to $U$ as working storage, with no restrictions on their use.  Providing no information, they can be initialized to \ket{0}.
 \end{itemize}}
-\only<5->{%
+\only<5-7>{%
+\Vskip{-3em}\begin{itemize}
+    \item<5-> For output, the top qubit remains \QState{a}.
+    \item<6-> The next qubit is the clone, so it is also in state \QState{a}.
+    \item<7-> The rest of the qubits are in a state computed by $U$ as some arbitrary function of its input \QState{a}. 
+\end{itemize}
+}
+\only<8-12>{%
+\Vskip{-3em}\begin{itemize}
+    \item<8-> $\QState{0} =  \ket{\QName{a}\,0^{n-1}}$
+    \item<9-> $\QState{1}=\TensProd{\QState{a}}{\TensProd{\QState{a}}{f(\QState{a})}}$
+\end{itemize}}
+\only<10->{%
 If $U$ can do the following
 \begin{itemize}
     \item $U(\TensProd{\ket{0}}{\ket{0^{n-1}}})= \TensProd{\ket{00}}{f(\ket{0})}$
     \item $U(\TensProd{\ket{1}}{\ket{0^{n-1}}})= \TensProd{\ket{11}}{f(\ket{1})}$
 \end{itemize}
+\only<10>{%
+\alert{It must be able to clone \ket{0} and \ket{1} faithfully.}}
+\only<11->{%}
 then when presented with state $\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 }
 }
+}
+
     
 \end{frame}
