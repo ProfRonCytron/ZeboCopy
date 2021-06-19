@@ -34,6 +34,58 @@ These constraints will take us from 8 parameters to only 3.}
     
 \end{frame}
 
+\begin{frame}{Some theoretical results}{From \Kaye{}}
+\end{frame}
+
 \begin{frame}{Universality via Pauli gates}
     
+\end{frame}
+
+\begin{frame}{The U3 gate}{Theorem statement}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U3(\theta, \phi, \lambda) = 
+    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+    \]
+    \end{theorem}
+    For example, the Hadamard gate \HMatrix{} is $U3(\pi/2, 0, \pi)$, which yields
+    \[
+    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
+    \]
+
+\end{frame}
+
+\begin{frame}{Proof}{We use the constraints}
+\TwoColumns{%
+$U = \SQBG{\relax}{a}{b}{c}{d}$ so
+$\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
+\SmallSkip{}
+The columns of $U$ are \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
+\begin{align*}
+    \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
+    \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
+\end{align*}
+The columns of \Conj{U} are orthonormal:
+\begin{align*}
+    \Prob{a} + \Prob{b} = & 1 \\
+    \Prob{c} + \Prob{d} = & 1
+\end{align*}
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=0.5]
+\UnitComplexCircle{}
+\end{TIKZP}
+\end{center}
+Because $\Mag{a}\leq 1$, $a$ is some point on or in the unit
+complex circle.
+\begin{itemize}
+    \item Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
+    \item We can then scale it by $\cos(\theta/2)$ to obtain any point on or in the circle.
+    \item We thus obtain
+    \[
+    a = \ExpPhase{\phi_{a}}\cos(\theta/2)
+    \]
+\end{itemize}
+}
 \end{frame}
