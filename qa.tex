@@ -1,0 +1,54 @@
+\SetTitle{qa}{Quantum advantage}{How powerful are quantum computers?}{qapower}
+
+\begin{frame}{Overview}{What do we know so far and what will we learn later?}
+\only<1-4>{%
+Our studies so far have taught us the following:
+\begin{itemize}[<+->]
+  \item With $n$ qubits we can create the superposition of $2^n$ inputs.
+  \item We can realize any classical Boolean function using quantum circuit elements, so we can also create the superposition of $2^n$ function outputs.
+  \item There are games that we cannot win classically but can win all the time using quantum computation.
+  \item There are games that can be won with probability $p$ classically but can be won with greater probability using quantum computation.
+\end{itemize}
+}%
+\only<5->{%
+Our upcoming studies will teach us the following:
+\begin{itemize}[<+->]
+  \item<5-> There are problems such as \href{https://en.wikipedia.org/wiki/Deutsch-Jozsa_algorithm}{Deutsch--Joza} where we can get an exact solution in polynomial time on a quantum computer that would take exponential time on a classical computer.  
+  \item<6-> A quantum computer can factor numbers using \href{https://en.wikipedia.org/wiki/Shor's_algorithm}{Shor's algorithm}, which is thought to be a hard problem.  If that problem is as hard as we suspect, then we achieve exponential speedup on an interesting problem using a quantum computer.
+  \item<7-> Any unstructured search problem with $N=2^n$ possible choices can be solved in $O(\sqrt{N})$ time by \href{https://en.wikipedia.org/wiki/Grover's_algorithm}{Grover's algorithm} on a quantum computer. While this is remarkable, it is not exponentially faster than the best classical search time, $O(N)$.
+\end{itemize}
+}%
+
+
+    
+\end{frame}
+
+\begin{frame}{Reasons for skepticism}{Devices and problems}
+
+\begin{itemize}[<+->]
+    \item Will quantum computers of reasonable size and fidelity be possible?
+    \begin{itemize}
+        \item This seems to be an engineering problem.
+        \item \href{https://en.wikipedia.org/wiki/Moore's_law}{Moore's ``law''} predicted a steep curve for scaling of classical computational power.
+        \item When I was in college, 300 MB of storage weighed 50 pounds.
+        \item There are continually \href{https://www.google.com/search?q=quantum+computing+advances&rlz=1C5CHFA_enUS706US706&oq=quantum+computing+advances&ie=UTF-8}{press releases} concerning advances in technology.
+    \end{itemize}
+    \item For what kinds of problems will quantum computers provide significant speedup over classical computers?
+    \begin{itemize}
+        \item  \href{https://en.wikipedia.org/wiki/Molecular_modelling}{Molecular modeling} predicts the shape and possible activity of a molecule.  \href{https://venturebeat.com/2019/07/14/ibm-research-explains-how-quantum-computing-works-and-could-be-the-the-supercomputer-of-the-future/}{Here} is a discussion of modeling the caffeine molecule efficiently.
+        \item There is hope of modeling \href{https://www.newscientist.com/article/2253089-google-performed-the-first-quantum-simulation-of-a-chemical-reaction/}{chemical reactions} efficiently.
+    \end{itemize}
+\end{itemize}
+\OnlyRemark{9}{%
+Before useful devices emerge, computer science can ask questions related to the complexity of problems when solved on a quantum computer.}
+    
+\end{frame}
+
+\begin{frame}{Complexity classes}{For quantum problems}
+
+\begin{description}[<+->]
+  \item[P] blah
+  \item[Q] blah
+\end{description}
+    
+\end{frame}
