@@ -35,6 +35,9 @@
 \ensuremath{#1 \vee #2}}
 \def\Conj#1{%
 \ensuremath{#1^{\star}}}
+\def\Star#1{%
+\Conj{#1}}
+\def\EmptyString{\ensuremath{\lambda}}
 \def\Mag#1{%
 \ensuremath{|\,#1\,|}}
 \def\Prob#1{%
@@ -76,6 +79,7 @@
 \def\Co#1{\mathbb{C}}
 \def\Implies#1#2{\ensuremath{#1 \rightarrow\ #2}}
 \def\Domain#1{\ensuremath{\mathcal{#1}}}
+\def\CompClass#1{\Domain{#1}}
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
@@ -165,6 +169,8 @@
 \def\POne{\SQB{0}{1}}
 \def\PHad{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{1}}
 \def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
+\def\Intersect#1#2{\ensuremath{#1 \cap #2}}
+\def\Union#1#2{\ensuremath{#1 \cup #2}}
 \def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
 \def\AllBits#1#2{\ensuremath{#1\in \Set{0,1}^{#2}}}
 \def\DQB#1#2#3#4{%

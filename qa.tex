@@ -44,11 +44,54 @@ Before useful devices emerge, computer science can ask questions related to the 
     
 \end{frame}
 
-\begin{frame}{Complexity classes}{For quantum problems}
+\begin{frame}{Time Complexity}{A review}
+\begin{itemize}[<+->]
+    \item In \href{https://en.wikipedia.org/wiki/Formal_language}{formal language theory}, $\Sigma$ is the alphabet of discourse. For example, it may be the Latin alphabet (a--z), or a binary alphabet ($0$ and $1$).  It is a finite set of symbols that allows us to have a conversation.  We assume $\Sigma\not=\emptyset$.
+    \item $\Star{\Sigma}$ is the infinite set of all strings that consist of symbols drawn from $\Sigma$.  That set includes the empty string $\EmptyString$, which has length $0$, all strings of length $1$, all strings of length $2$, and so on.  Each string in $\Star{\Sigma}$ is finite.
+    \item In complexity theory, we may be interested in how much time an algorithm needs to compute a result as a function of the size of its input.
+    \item Many algorithms begin with phrases such as ``Given a graph with an even number of vertices, $\ldots$''.  What do such algorithms do with inputs that do not characterize a graph with an even number of vertices?
+    \item \href{https://en.wikipedia.org/wiki/Promise_problem}{Promise problems} are a convenient way to focus analysis only on instances of a problem that have the desired properties.
+\end{itemize}
 
-\begin{description}[<+->]
-  \item[P] blah
-  \item[Q] blah
-\end{description}
+\end{frame}
+\begin{frame}{Promise problems}{A handy framework for studying complexity of quantum algorithms}
+
+\begin{itemize}[<+->]
+    \item A promise problem is a pair $A=(A_{yes}, A_{no})$.
+    \begin{itemize}
+        \item $A_{yes} \subseteq \Star{\Sigma}$ and $A_{no} \subseteq \Star{\Sigma}$ for an alphabet of discourse $\Sigma$.
+        \item $\Intersect{A_{yes}}{A_{no}}=\emptyset$
+    \end{itemize}
+    \item An algorithm under consideration must answer \emph{yes} for every string in $A_{yes}$ and it must answer \emph{no} for every string in $A_{no}$.
+    
+    \item It may be computationally difficult or impossible to determine if $x \in \Union{A_{yes}}{A_{no}}$, but the \emph{promise} is that $x$ is in one of those sets.
+    \begin{itemize}
+        \item Given a \href{https://en.wikipedia.org/wiki/Hamiltonian_path}{Hamiltonian} graph, $\ldots$
+        \item Given a program that \href{https://en.wikipedia.org/wiki/Halting_problem}{halts}, $\ldots$
+    \end{itemize}
+    \item An algorithm has no obligation concerning any string $x\not\in \Union{A_{yes}}{A_{no}}$.
+    \begin{itemize}
+        \item It may run forever without providing an answer.
+        \item It may provide an answer immediately without consuming the input.
+    \end{itemize}
+    \item A \href{https://en.wikipedia.org/wiki/Complexity_class}{complexity class} is then a set of promise problems that have similar, desired properties.
+\end{itemize}
+\Exercise{promiseprobs}{Explain why neither of the two sets should be finite}
+    
+\end{frame}
+\begin{frame}{Complexity classes}{Using promise problems}
+\only<1>{
+These classes are typically described using \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing Machines}.  It's equivalent and more intuitive to say ``computer program'' as long as that program is written in a \href{https://en.wikipedia.org/wiki/Turing_completeness}{Turing-complete} programming language such as python.}%
+Each class below is stated in terms of a promise problem
+$A=(A_{yes},A_{no})$.
+\begin{itemize}[<+->]
+    \item[\CompClass{P}] contains $A$ if and only if there exists a polynomial-time program $M$ that accepts every string in $A_{yes}$ and rejects every string in $A_{no}$.
+    \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  Each element of $\Union{A_{yes}}{A_{no}}$ is of the form $(x,y)$ where
+    \begin{description}
+        \item[x] is properly identified by some program $M$ as belonging either to $A_{yes}$ or $A_{no}$ when accompanied by a valid $y$.
+        \item[y] is a proof of membership.  For $(x,y)\in A_{no}$ we allow $y=\EmptyString{}$ (no proof).  For all $(x,y)\in A_{yes}$, we require that there exists a polynomial $p$ such that $\Mag{y} \leq p(\Mag{x})$ and $y$ must prove $(x,y)\in A_{yes}$ in (deterministic) polynomial time.
+    \end{description}
+    
+\end{itemize}
     
 \end{frame}
