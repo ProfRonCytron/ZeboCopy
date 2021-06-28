@@ -79,19 +79,38 @@ Before useful devices emerge, computer science can ask questions related to the 
 \Exercise{promiseprobs}{Explain why neither of the two sets should be finite}
     
 \end{frame}
-\begin{frame}{Complexity classes}{Using promise problems}
-\only<1>{
-These classes are typically described using \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing Machines}.  It's equivalent and more intuitive to say ``computer program'' as long as that program is written in a \href{https://en.wikipedia.org/wiki/Turing_completeness}{Turing-complete} programming language such as python.}%
-Each class below is stated in terms of a promise problem
-$A=(A_{yes},A_{no})$.
-\begin{itemize}[<+->]
-    \item[\CompClass{P}] contains $A$ if and only if there exists a polynomial-time program $M$ that accepts every string in $A_{yes}$ and rejects every string in $A_{no}$.
-    \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  Each element of $\Union{A_{yes}}{A_{no}}$ is of the form $(x,y)$ where
-    \begin{description}
+\begin{frame}{Complexity class \CompClass{P}}{Using promise problems}
+These classes are typically described using \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing Machines}.  It's equivalent and more intuitive to say ``computer program'' as long as that program is written in a \href{https://en.wikipedia.org/wiki/Turing_completeness}{Turing-complete} programming language such as python.
+\begin{itemize}
+    \item[\CompClass{P}] contains $A=(A_{yes},A_{no})$ if and only if there exists a polynomial-time program $M$ that accepts every string in $A_{yes}$ and rejects every string in $A_{no}$.
+\end{itemize}
+As an example, given a positive odd number, is that number prime?
+\begin{itemize}
+    \item We are promised that the input is a positive odd number.
+    \item Assuming division takes constant time, given an input $n$ we can try every integer $i$ in the open interval $(1,n$) and see if $i$ divides evenly into $n$ in time~$\Theta(n)$.  If none do, then
+    $n\in A_{yes}$ and otherwise $n\in A_{no}$.
+\end{itemize}
+This problem is therefore in \CompClass{P}, and remains in \CompClass{P} if division takes $O(n)$ time.
+\end{frame}
+\begin{frame}{The complexity class \CompClass{NP}}{Using promise problems}
+
+\begin{itemize}
+    \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  For a promise problem $A\in\CompClass{NP}$, each element of $\Union{A_{yes}}{A_{no}}$ is of the form $(x,y)$ where
+    \begin{itemize}
         \item[x] is properly identified by some program $M$ as belonging either to $A_{yes}$ or $A_{no}$ when accompanied by a valid $y$.
         \item[y] is a proof of membership.  For $(x,y)\in A_{no}$ we allow $y=\EmptyString{}$ (no proof).  For all $(x,y)\in A_{yes}$, we require that there exists a polynomial $p$ such that $\Mag{y} \leq p(\Mag{x})$ and $y$ must prove $(x,y)\in A_{yes}$ in (deterministic) polynomial time.
-    \end{description}
+    \end{itemize}
     
 \end{itemize}
+\end{frame}
+\begin{frame}{Traveling SalesPerson (TSP) is in \CompClass{NP}}{Example}
+As an example, given a positive-weighted graph of $n$ cities, is there a \emph{tour} of all the cities with cost no greater than $L$?  A tour starts and ends at the same city and includes all other cities exactly once.
+
+This problem can be solved by program $M$ that tries every possible sequence of edges in the provided graph.
+\begin{itemize}
+    \item If $M$ finds a suitable tour, then it determines $(x,y)\in A_{yes}$ where $y$ is the listing of edges that achieves the tour.  The veracity of $y$ can be checked to make sure that every city is visited once and that the edges' weights sum to a value not exceeding $L$.
+    \item If $M$ finds no acceptable tour, then it determines $(x,\EmptyString{}) \in A_{no}$.  No proof is necessary, but $M$ properly determined membership in $A_{no}$.
+\end{itemize}
+Therefore $\mbox{TSP}\in \CompClass{NP}$.
     
 \end{frame}
