@@ -140,7 +140,8 @@ This problem is therefore in \CompClass{P}.
     \begin{itemize}
         \item There exists a polynomial $p$ such that \[\Mag{M(x)} \leq p(\Mag{x})\]
         so that the length of the proof is bounded by a polynomial.
-        \item  The proof $y=M(x)$ must be verifiable in (deterministic) polynomial time.  We are obligated to say how this is done.
+        \item  The problem of verifying proofs ($y=M(x)\rightarrow x\in A_{yes}$)must be in \CompClass{P}.  Also, any  ``proof'' of $x\in A_{yes}$ when really $x\in A_{no}$ must similarly be found faulty.
+        We are obligated to say how this is done.
     \end{itemize}
     
 \end{itemize}
@@ -150,7 +151,7 @@ As an example, given a graph of $n$ cities with positive edge weights, is there 
 
 This problem can be solved by program $y=M(x)$ that tries every possible sequence of edges in the provided graph $x$.
 \begin{itemize}
-    \item If $M$ finds a suitable tour, then it determines $x\in A_{yes}$ and returns $y$ as a listing of edges that achieves the tour.  The veracity of $y$ can be checked to ensure the tour properly visits all cities and that the edges' weights sum to a value not exceeding $L$.
+    \item If $M$ finds a suitable tour, then it determines $x\in A_{yes}$ and returns $y$ as a listing of edges that achieves the tour.  The veracity of $y$ can be efficiently checked to ensure the tour properly visits all cities and that the edges' weights sum to a value not exceeding $L$.
     \item If $M$ finds no acceptable tour, then it determines $x \in A_{no}$.  No proof is necessary, and $M$ returns $\EmptyString{}$.
 \end{itemize}
 Therefore $\mbox{TSP}\in \CompClass{NP}$.
