@@ -1,5 +1,7 @@
 \SetTitle{qa}{Quantum advantage}{How powerful are quantum computers?}{qapower}
 
+\section{Overview}
+
 \begin{frame}{Overview}{What do we know so far and what will we learn later?}
 \only<1-4>{%
 Our studies so far have taught us the following:
@@ -44,17 +46,46 @@ Before useful devices emerge, computer science can ask questions related to the 
     
 \end{frame}
 
+\section{Complexity}
+
 \begin{frame}{Time Complexity}{A review}
 \begin{itemize}[<+->]
     \item In \href{https://en.wikipedia.org/wiki/Formal_language}{formal language theory}, $\Sigma$ is the alphabet of discourse. For example, it may be the Latin alphabet (a--z), or a binary alphabet ($0$ and $1$).  It is a finite set of symbols that allows us to have a conversation.  We assume $\Sigma\not=\emptyset$.
     \item $\Star{\Sigma}$ is the infinite set of all strings that consist of symbols drawn from $\Sigma$.  That set includes the empty string $\EmptyString$, which has length $0$, all strings of length $1$, all strings of length $2$, and so on.  Each string in $\Star{\Sigma}$ is finite.
-    \item In complexity theory, we may be interested in how much time an algorithm needs to compute a result as a function of the size of its input.
+    \item In complexity theory, we may be interested in how much time an algorithm needs to compute a result as a function of the size of its input
+    \item Complexity classes are typically described using \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing Machines (TM)}.  It's equivalent and more intuitive to say ``computer program'' as long as that program is written in a \href{https://en.wikipedia.org/wiki/Turing_completeness}{Turing-complete} programming language such as python.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Computer programs as a machine model}{We must account carefully.}
+
+\begin{itemize}[<+->]
+   \item The TM model is clear concerning a single step of the TM.
+   \item If we use a program as a model for executing an algorithm, instead of a TM, then we must be account carefully.
+   \item For example, the phrase \texttt{A[i]} may mean one of the following:
+   \begin{description}
+        \item[array index]  A constant number of operations turns \texttt{i} into an address, and we assume memory reads take constant time.
+        \item[hash lookup]  A hash function is applied to $i$ to compute an array index. The time taken by such functions is expected to be constant, but may take $\omega(1)$ time for a hash table with $n$ entries.
+        \item[list traversal]  A linked list of $n$ items may require traversal by this operation, in which case its expected and worst time is $\Theta(n)$.
+   \end{description}
+\end{itemize}
+\visible<7>{%
+In this course we are generally concerned with times that are either polynomial or superpolynomial, so the simplifications imposed here should work fine.}
+
+\end{frame}
+
+
+\begin{frame}{Promise problems}{Overview}
+    \begin{itemize}[<+->]
     \item Many algorithms begin with phrases such as ``Given a graph with an even number of vertices, $\ldots$''.  What do such algorithms do with inputs that do not characterize a graph with an even number of vertices?
     \item \href{https://en.wikipedia.org/wiki/Promise_problem}{Promise problems} are a convenient way to focus analysis only on instances of a problem that have the desired properties.
+    \item We \emph{promise} to provide an instance of a problem that respects the conditions of the promise.
+    \item The algorithm is required to respond ``yes'' or ``no'' to such instances.
+    \item The algorithm has no requirement concerning its response, if any, for other instances.
 \end{itemize}
 
 \end{frame}
-\begin{frame}{Promise problems}{A handy framework for studying complexity of quantum algorithms}
+\begin{frame}{Promise problems}{Definition}
 
 \begin{itemize}[<+->]
     \item A promise problem is a pair $A=(A_{yes}, A_{no})$.
@@ -66,13 +97,13 @@ Before useful devices emerge, computer science can ask questions related to the 
     
     \item It may be computationally difficult or impossible to determine if $x \in \Union{A_{yes}}{A_{no}}$, but the \emph{promise} is that $x$ is in one of those sets.
     \begin{itemize}
-        \item Given a \href{https://en.wikipedia.org/wiki/Hamiltonian_path}{Hamiltonian} graph, $\ldots$
-        \item Given a program that \href{https://en.wikipedia.org/wiki/Halting_problem}{halts}, $\ldots$
+        \item Given a \href{https://en.wikipedia.org/wiki/Hamiltonian_path}{Hamiltonian} graph, $\ldots$  This is an \href{https://en.wikipedia.org/wiki/NP-completeness}{NP-Complete} problem.
+        \item Given a program that \href{https://en.wikipedia.org/wiki/Halting_problem}{halts}, $\ldots$  This is an \href{https://en.wikipedia.org/wiki/Undecidable_problem}{undecidable problem}.
     \end{itemize}
     \item An algorithm has no obligation concerning any string $x\not\in \Union{A_{yes}}{A_{no}}$.
     \begin{itemize}
         \item It may run forever without providing an answer.
-        \item It may provide an answer immediately without consuming the input.
+        \item It may provide an answer immediately without examining the input.
     \end{itemize}
     \item A \href{https://en.wikipedia.org/wiki/Complexity_class}{complexity class} is then a set of promise problems that have similar, desired properties.
 \end{itemize}
@@ -80,25 +111,35 @@ Before useful devices emerge, computer science can ask questions related to the 
     
 \end{frame}
 \begin{frame}{Complexity class \CompClass{P}}{Using promise problems}
-These classes are typically described using \href{https://en.wikipedia.org/wiki/Turing_machine}{Turing Machines}.  It's equivalent and more intuitive to say ``computer program'' as long as that program is written in a \href{https://en.wikipedia.org/wiki/Turing_completeness}{Turing-complete} programming language such as python.
+
 \begin{itemize}
-    \item[\CompClass{P}] contains $A=(A_{yes},A_{no})$ if and only if there exists a polynomial-time program $M$ that accepts every string in $A_{yes}$ and rejects every string in $A_{no}$.
+    \item[\CompClass{P}] contains $A=(A_{yes},A_{no})$ if and only if there exists a \href{https://en.wikipedia.org/wiki/Time_complexity\#Polynomial_time}{polynomial-time} program $M$ that accepts every string in $A_{yes}$ and rejects every string in $A_{no}$.  Let's say $M(x)$ returns \True{} or \False{} to accept or reject $x$, respectively.
 \end{itemize}
-As an example, given a positive odd number, is that number prime?
+As an example, given a positive odd number greater than $2$, is that number prime?
 \begin{itemize}
-    \item We are promised that the input is a positive odd number.
-    \item Assuming division takes constant time, given an input $n$ we can try every integer $i$ in the open interval $(1,n$) and see if $i$ divides evenly into $n$ in time~$\Theta(n)$.  If none do, then
+    \item We are promised that the input is a positive odd integer that is at least $3$.
+    \item Given such an input $n$,\textbf{} program $M(n)$ can try every integer $i$ in the open interval $(1,n$) and see if $i$ divides evenly into $n$.  If none do, then
     $n\in A_{yes}$ and otherwise $n\in A_{no}$.
+    \item If the promise is broken, $M$ could run indefinitely, return \True{}, or return \False{}.
 \end{itemize}
-This problem is therefore in \CompClass{P}, and remains in \CompClass{P} if division takes $O(n)$ time.
+$M$ can do this work in polynomial time, as long as each division operation also takes time polynomial in $n$.
+This problem is therefore in \CompClass{P}.
 \end{frame}
 \begin{frame}{The complexity class \CompClass{NP}}{Using promise problems}
 
 \begin{itemize}
-    \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  For a promise problem $A\in\CompClass{NP}$, each element of $\Union{A_{yes}}{A_{no}}$ is of the form $(x,y)$ where
+    \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  
+    
+    We therefore require that $M(x)$ returns a string $y$, and not just \True{} or \False{}.
     \begin{itemize}
-        \item[x] is properly identified by some program $M$ as belonging either to $A_{yes}$ or $A_{no}$ when accompanied by a valid $y$.
-        \item[y] is a proof of membership.  For $(x,y)\in A_{no}$ we allow $y=\EmptyString{}$ (no proof).  For all $(x,y)\in A_{yes}$, we require that there exists a polynomial $p$ such that $\Mag{y} \leq p(\Mag{x})$ and $y$ must prove $(x,y)\in A_{yes}$ in (deterministic) polynomial time.
+        \item If $M$ accepts $x$, then $y=M(x)$ is the proof that $x$ should be accepted.  
+        \item If $M$ rejects $x$, then $y=M(x)=\EmptyString$, as no proof is required.
+    \end{itemize}
+    \MedSkip{}
+    For all $x \in A_{yes}$ we require the following:
+    \begin{itemize}
+        \item There exists a polynomial $p$ such that \[\Mag{M(x)} \leq p(\Mag{x})\] 
+        \item  $y$ must prove $x\in A_{yes}$ in (deterministic) polynomial time.
     \end{itemize}
     
 \end{itemize}
@@ -106,10 +147,10 @@ This problem is therefore in \CompClass{P}, and remains in \CompClass{P} if divi
 \begin{frame}{Traveling SalesPerson (TSP) is in \CompClass{NP}}{Example}
 As an example, given a positive-weighted graph of $n$ cities, is there a \emph{tour} of all the cities with cost no greater than $L$?  A tour starts and ends at the same city and includes all other cities exactly once.
 
-This problem can be solved by program $M$ that tries every possible sequence of edges in the provided graph.
+This problem can be solved by program $y=M(x)$ that tries every possible sequence of edges in the provided graph $x$.
 \begin{itemize}
-    \item If $M$ finds a suitable tour, then it determines $(x,y)\in A_{yes}$ where $y$ is the listing of edges that achieves the tour.  The veracity of $y$ can be checked to make sure that every city is visited once and that the edges' weights sum to a value not exceeding $L$.
-    \item If $M$ finds no acceptable tour, then it determines $(x,\EmptyString{}) \in A_{no}$.  No proof is necessary, but $M$ properly determined membership in $A_{no}$.
+    \item If $M$ finds a suitable tour, then it determines $x\in A_{yes}$ and returns $y$ as a listing of edges that achieves the tour.  The veracity of $y$ can be checked to ensure the tour properly visits all cities and that the edges' weights sum to a value not exceeding $L$.
+    \item If $M$ finds no acceptable tour, then it determines $x \in A_{no}$.  No proof is necessary, and $M$ returns $\EmptyString{}$.
 \end{itemize}
 Therefore $\mbox{TSP}\in \CompClass{NP}$.
     
