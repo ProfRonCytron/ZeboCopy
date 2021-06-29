@@ -130,16 +130,17 @@ This problem is therefore in \CompClass{P}.
 \begin{itemize}
     \item[\CompClass{NP}] is the class of promise problems with polynomially long proofs of membership that are verifiable in (deterministic) polynomial time. \LinkArrow{http://www.wisdom.weizmann.ac.il/~oded/PSX/prpr-r.pdf}  
     
-    We therefore require that $M(x)$ returns a string $y$, and not just \True{} or \False{}.
+    For any promise problem in \CompClass{NP}, its $M(x)$ returns a string $y$, and not just \True{} or \False{}.
     \begin{itemize}
-        \item If $M$ accepts $x$, then $y=M(x)$ is the proof that $x$ should be accepted.  
-        \item If $M$ rejects $x$, then $y=M(x)=\EmptyString$, as no proof is required.
+        \item If $M$ accepts $x$, then $x\in A_{yes}$ and $y=M(x)$ is a proof of that.  
+        \item If $M$ rejects $x$, then $x\in A_{no}$ and $y=M(x)=\EmptyString$, as no proof is required.
     \end{itemize}
     \MedSkip{}
-    For all $x \in A_{yes}$ we require the following:
+    For all $x \in A_{yes}$ we require the following of the program $M$:
     \begin{itemize}
-        \item There exists a polynomial $p$ such that \[\Mag{M(x)} \leq p(\Mag{x})\] 
-        \item  $y$ must prove $x\in A_{yes}$ in (deterministic) polynomial time.
+        \item There exists a polynomial $p$ such that \[\Mag{M(x)} \leq p(\Mag{x})\]
+        so that the length of the proof is bounded by a polynomial.
+        \item  The proof $y=M(x)$ must be verifiable in (deterministic) polynomial time.  We are obligated to say how this is done.
     \end{itemize}
     
 \end{itemize}
