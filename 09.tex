@@ -365,6 +365,8 @@ Entanglement defies classical physics and logic and affords advantages for games
     
 \end{frame}
 
+\section{EPR paradox}
+
 \begin{frame}{Pondering entanglement}{Einstein regarded quantum theory as incomplete.}
 
 \begin{itemize}
@@ -399,6 +401,50 @@ Entanglement defies classical physics and logic and affords advantages for games
 \only<8->{%
 \MedSkip{}
 Gravitational attraction exists at arbitrary distances, but we seem OK with that.  Is it so strange that entanglement affects the fate of two qubits no matter their distance?}
+    
+\end{frame}
+
+\begin{frame}{EPR ``paradox' \LinkArrow{https://en.wikipedia.org/wiki/EPR_paradox}}{More on Einstein's disbelief}
+\begin{itemize}[<+->]
+    \item Einstein and others held that the Bell states were paradoxical, in that they violate one or both of the dogmatic concepts stated below.
+    \item Their conclusion was that quantum theory was \emph{incomplete}, meaning there must be an as-yet unreached and deeper level of understanding of how quantum mechanics works.  \href{https://en.wikipedia.org/wiki/Hidden-variable_theory}{Hidden variables} could bridge the gap.
+\end{itemize}
+\begin{description}
+  \item[realism]  Objects have characteristics whether we measure them or not.  My pencil has a certain weight whether I weigh it or not.
+  \item[locality] A measurement made in one system cannot instantaneously affect a measurement made in a different system.
+\end{description}
+\only<3>{%
+Bell's predictions have been substantiated repeatedly by experiments, and we will see that \href{https://en.wikipedia.org/wiki/Hidden-variable_theory}{hidden variables} cannot explain quantum behavior.}
+\end{frame}
+
+\begin{frame}{Illustrating the ``paradox''}{Using a Bell state}
+
+\Vskip{-5em}\TwoColumns{%
+\begin{itemize}[<+->]
+    \item Consider the state
+    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{OrangeRed}{0}\textcolor<3->{NavyBlue}{1}}-\ket{\textcolor<2->{OrangeRed}{1}\textcolor<3->{NavyBlue}{0}}\right)
+    \]
+    \item \textcolor{OrangeRed}{Alice gets the first qubit.}
+    \item \textcolor{NavyBlue}{Bob gets the second qubit.}
+    \item Recalling
+    \begin{align*}
+        \ket{+}= & \RootTwo{}\SQB{1}{1} \\
+        \ket{-}= & \RootTwo{}\SQB{1}{-1}
+    \end{align*}
+    
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<5->  We can show
+    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{OrangeRed}{+}\textcolor<3->{NavyBlue}{-}}-\ket{\textcolor<2->{OrangeRed}{-}\textcolor<3->{NavyBlue}{+}}\right)
+    \]
+    \item<6-> Alice can choose to measure her qubit in the computational (\PauliZ{}) basis or in the \PauliX{} basis.  Let's assume she sees \ket{0} in the former case and \ket{+} in the latter case.
+    \item<7-> That choice causes Bob, light years away, to obtain state \ket{1} or \ket{-} for his qubit, but those are entirely different states.
+\end{itemize}
+}
+\MedSkip{}
+\only<8->{\alert{%
+This violates belief in locality and realism.}}
     
 \end{frame}
 
