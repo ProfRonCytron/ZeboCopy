@@ -34,28 +34,6 @@ These constraints will take us from 8 parameters to only 3.}
     
 \end{frame}
 
-\begin{frame}{Some theoretical results}{From \Kaye{}}
-\end{frame}
-
-\begin{frame}{Universality via Pauli gates}
-    
-\end{frame}
-
-\begin{frame}{The U3 gate}{Theorem statement}
-\begin{theorem}
-   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
-    \[
-    U3(\theta, \phi, \lambda) = 
-    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
-    \]
-    \end{theorem}
-    For example, the Hadamard gate \HMatrix{} is $U3(\pi/2, 0, \pi)$, which yields
-    \[
-    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
-    \]
-
-\end{frame}
-
 \begin{frame}{Proof}{We use the constraints}
 \TwoColumns{%
 $U = \SQBG{\relax}{a}{b}{c}{d}$ so
@@ -89,3 +67,26 @@ complex circle.
 \end{itemize}
 }
 \end{frame}
+
+\begin{frame}{Some theoretical results}{From \Kaye{}}
+\end{frame}
+
+\begin{frame}{Universality via Pauli gates}
+    
+\end{frame}
+
+\begin{frame}{The U3 gate}{Theorem statement}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U3(\theta, \phi, \lambda) = 
+    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+    \]
+    \end{theorem}
+    For example, the Hadamard gate \HMatrix{} is $U3(\pi/2, 0, \pi)$, which yields
+    \[
+    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
+    \]
+
+\end{frame}
+
