@@ -6,3 +6,4 @@
 *.out
 /*.pdf
 /exercises/*.pdf
+.ipynb_checkpoints
