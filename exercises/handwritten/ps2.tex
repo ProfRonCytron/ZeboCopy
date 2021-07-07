@@ -13,13 +13,38 @@
 
 \maketitle
 
-\noindent \textbf{Note:} The first Qiskit assignment ideas
+\noindent \textbf{Note:} Pauli matrix type questions
 
 \begin{enumerate}[font=\bfseries]
-    \item Setup with IBM Q and run simple circuit
-    \item Bloch sphere visualization
-    \item Build pauli gates from u3
-    \item to-do...
+    \item Given $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$,
+    \begin{enumerate}
+        \item What is the state of $\ket{\psi_0} = \mathbf{X}\mathbf{Y}\mathbf{Z}\ket{\psi}$?
+        \item Describe the above operation as rotations on the Bloch sphere.
+        \item What is the state of $\ket{\psi_1} = \mathbf{Z}\mathbf{Y}\mathbf{X}\ket{\psi}$?
+        \item Does $\ket{\psi_0} = \ket{\psi_1}$?
+        \item Is the probability of measuring $\ket{0}$ when we measure $\ket{\psi_0}$ equal to the probability of measuring $\ket{0}$ when we measure $\ket{\psi_1}$?
+    \end{enumerate}
+    \item Give a unitary matrix that when applied to $\ket{0}$ (in the standard basis) results in a $\frac{3}{4}$ chance of measuring $\ket{1}$ in the $\mathbf{Y}$ basis. 
+    \item Consider $\ket{\psi} = \mathbf{X}^a\mathbf{Y}^b\mathbf{Z}^c\ket{0}$.
+    \begin{enumerate}
+        \item If $a,c$ are even and $b$ is odd, what is the probability of observing $\ket{0}$ when we measure $\ket{\psi}$?
+        \item If $a,b,c$ are all even what is the chance of measuring $\ket{1}$ in the $\mathbf{X}$ basis?
+    \end{enumerate}
+    \item If we begin at $\ket{0}$ on the Bloch sphere and can use any of the Pauli gates, how many unique locations can we travel to on the Bloch sphere?
+    \item If we now also allow the use of the Hadamard gate, how many unique locations can we travel to on the Bloch sphere?
+    \item Recall two points on the Bloch sphere are antipodal if they determine a line that passes through the center of the sphere. Recall that in polar coordinates, a quantum state $\ket{\psi}$ can be specified on the Bloch sphere using two coordinates, $\theta$ and $\phi$:
+    \[\ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
+    + e^{i\phi}\sin(\frac{\theta}{2})\ket{1}\]
+    \begin{enumerate}
+        \item All points on the Bloch sphere denote unique quantum states except which two points?
+        \item The number of quantum states on the Bloch sphere is \emph{countably} infinite or \emph{uncountably} infinite?
+        \item Given a state $\ket{\psi}$ defined as above, define its antipodal state $\ket{\psi'}$
+        \item Prove that $\ket{\psi}$ and $\ket{\psi'}$ are orthogonal by showing their inner product is 0.
+    \end{enumerate}
+    \item Your friend, Albert Einstein, has challenged you to a quantum game. The game is played as follows: First, Einstein gives you some state $\ket{\psi}$ and tells you where it is located on the Bloch sphere. You then can apply any quantum gates you wish to $\ket{\psi}$. Before you make a measurement you tell Einstein what state you expect to observe. If you are right Einstein gives you \$100. If you are wrong Einstein zaps you with his many-worlds invention. Do you agree to play Einstein's game? Why or why not?
+    \item Consider the quantum states
+        \[\ket{+y} = \frac{1}{\sqrt{2}}\ket{0} + \frac{i}{\sqrt{2}}\ket{1}\]
+        Need to finish, but similar to Hadamard question on a previous hw assignment but instead of ZX use ZY 
 \end{enumerate}
 
 

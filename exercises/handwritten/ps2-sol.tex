@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Problem Set 2 Solutions}
+\author{CSE 468}
+\date{May 2021}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Note:} Pauli matrix type questions
+
+\begin{enumerate}[font=\bfseries]
+    \item 
+    \begin{enumerate}
+        \item \[ \mathbf{X}\mathbf{Y}\mathbf{Z}\ket{\psi} = 
+                \begin{pmatrix} 
+                0 & 1 \\
+                1 & 0
+                \end{pmatrix} 
+                \begin{pmatrix} 
+                0 & -i \\
+                i & 0
+                \end{pmatrix} 
+                 \begin{pmatrix} 
+                1 & 0 \\
+                0 & -1
+                \end{pmatrix} 
+                 \begin{pmatrix} 
+                \alpha \\ \beta
+                \end{pmatrix} 
+                =
+                i
+                \begin{pmatrix} 
+                \alpha \\ \beta
+                \end{pmatrix} 
+                \]
+        \item Rotation of $\pi$ radians about the z axis, rotation of $\pi$ radians about the y axis, and a rotation of $\pi$ radians about the x axis
+        \item \[ \mathbf{X}\mathbf{Y}\mathbf{Z}\ket{\psi} = 
+                \begin{pmatrix} 
+                1 & 0 \\
+                0 & -1
+                \end{pmatrix} 
+                \begin{pmatrix} 
+                0 & -i \\
+                i & 0
+                \end{pmatrix} 
+                 \begin{pmatrix} 
+                0 & 1 \\
+                1 & 0
+                \end{pmatrix} 
+                 \begin{pmatrix} 
+                \alpha \\ \beta
+                \end{pmatrix} 
+                =
+                -i
+                \begin{pmatrix} 
+                \alpha \\ \beta
+                \end{pmatrix} 
+                \]
+        \item No.
+        \item Yes.
+    \end{enumerate}
+    
+    \item \[R_y(\theta) = \begin{pmatrix} \cos{\theta/2} & -\sin{\theta/2} \\
+        \sin{\theta/2} & \cos{\theta/2}
+        \end{pmatrix}\]
+        \[\cos^2{\theta} = \frac{1}{4}, \theta = \frac{\pi}{3}\]
+        \[\begin{pmatrix} 
+        \frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+        \frac{1}{2} & \frac{\sqrt{3}}{2}
+            \end{pmatrix}
+        \]
+    \item Recall Pauli matrices are involutory.
+        \begin{enumerate}
+            \item If $a,c$ are even then $\mathbf{X}^a\mathbf{Y}^b\mathbf{Z}^c\ket{0}$ becomes $\mathbf{Y}\ket{0}$ and so the probability of measuring $\ket{0}$ is 0. 
+            \item Whole equation acts as a single identity gate and so the probability of measuring $\ket{1}$ in the $\mathbf{X}$ basis is 100\%.
+        \end{enumerate}
+    \item 2 unique locations
+    \item 6 unique locations
+    \item To-do
+    \item Agree to play. Recall antipodal points on the Bloch sphere determine a basis. Apply the appropriate quantum gate to rotate into this antipodal basis and then you will know with 100\% confidence the state you will observe.
+    \item 
+\end{enumerate}
+
+
+
+\end{document}
