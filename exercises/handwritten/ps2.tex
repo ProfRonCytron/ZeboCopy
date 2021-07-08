@@ -24,7 +24,7 @@
         \item Does $\ket{\psi_0} = \ket{\psi_1}$?
         \item Is the probability of measuring $\ket{0}$ when we measure $\ket{\psi_0}$ equal to the probability of measuring $\ket{0}$ when we measure $\ket{\psi_1}$?
     \end{enumerate}
-    \item Give a unitary matrix that when applied to $\ket{0}$ (in the standard basis) results in a $\frac{3}{4}$ chance of measuring $\ket{1}$ in the $\mathbf{Y}$ basis. 
+    \item Give a unitary matrix $U$ that when we apply the operation $\mathbf{Y}U\ket{0}$ results in a $\frac{3}{4}$ chance of measuring $\ket{1}$. 
     \item Consider $\ket{\psi} = \mathbf{X}^a\mathbf{Y}^b\mathbf{Z}^c\ket{0}$.
     \begin{enumerate}
         \item If $a,c$ are even and $b$ is odd, what is the probability of observing $\ket{0}$ when we measure $\ket{\psi}$?
@@ -41,17 +41,18 @@
         \item Given a state $\ket{\psi}$ defined as above, define its antipodal state $\ket{\psi'}$
         \item Prove that $\ket{\psi}$ and $\ket{\psi'}$ are orthogonal by showing their inner product is 0.
     \end{enumerate}
-    \item Your friend, Albert Einstein, has challenged you to a quantum game. The game is played as follows: First, Einstein gives you some state $\ket{\psi}$ and tells you where it is located on the Bloch sphere. You then can apply any quantum gates you wish to $\ket{\psi}$. Before you make a measurement you tell Einstein what state you expect to observe. If you are right Einstein gives you \$100. If you are wrong Einstein zaps you with his many-worlds invention. Do you agree to play Einstein's game? Why or why not?
+    \item Your friend, Albert Einstein, has challenged you to a quantum game. The game is played as follows: First, Einstein gives you some state $\ket{\psi}$ and tells you where it is located on the Bloch sphere by telling you $\theta$ and $\phi$. You then can apply any quantum gates you wish to $\ket{\psi}$. Before you make a measurement you tell Einstein what state you expect to observe. If you are right Einstein gives you \$100. If you are wrong Einstein zaps you with his many-worlds invention. Do you agree to play Einstein's game? Why or why not?
     \item Consider the quantum states
         \[\ket{+y} = \frac{1}{\sqrt{2}}\ket{0} + \frac{i}{\sqrt{2}}\ket{1}\]
         and
-        \[\ket{-y} = \frac{-i}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}\]
+        \[\ket{-y} = \frac{1}{\sqrt{2}}\ket{0} - \frac{i}{\sqrt{2}}\ket{1}\]
         What quantum gate (unitary matrix) $U$ produces those states given the input qubits $\ket{0}$ and $\ket{1}$, respectively?
         \begin{enumerate}
             \item Define $U$.
             \item Prove $U$ is unitary.
             \item Write $U$ as the outer product of $\ket{0}$, $\ket{1}$, $\ket{+y}$, and $\ket{-y}$.
-            \item More generally, what do the columns of such as 2 × 2 matrix represent with respect to their inputs in the standard basis ($\ket{0}$ and $\ket{1}$)?
+            \item Show that $\ket{+y}$ and $\ket{-y}$ are eigenstates of the Pauli $\mathbf{Y}$ gate.
+            \item More generally, what do the columns of such as 2 × 2 matrix (such as $U$) represent with respect to their inputs in the standard basis ($\ket{0}$ and $\ket{1}$)?
         \end{enumerate}
 \end{enumerate}
 
