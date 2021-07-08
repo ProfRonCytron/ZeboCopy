@@ -85,7 +85,32 @@
     \item 6 unique locations
     \item To-do
     \item Agree to play. Recall antipodal points on the Bloch sphere determine a basis. Apply the appropriate quantum gate to rotate into this antipodal basis and then you will know with 100\% confidence the state you will observe.
-    \item 
+    \item Note there are likely multiple solutions. I have listed one for now.
+        \begin{enumerate}
+            \item \[U = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                        1 & -i \\
+                        i & -1
+                        \end{pmatrix}\]
+            \item Show $UU^* = U^*U = \mathbf{I}$. Note $U = U^*$ in this case.
+                \[UU^* = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                        1 & -i \\
+                        i & -1
+                        \end{pmatrix}
+                        \frac{1}{\sqrt{2}}\begin{pmatrix}
+                        1 & -i \\
+                        i & -1
+                        \end{pmatrix}
+                        =
+                        \begin{pmatrix}
+                        1 & 0 \\
+                        0 & 1
+                        \end{pmatrix}
+                        = \mathbf{I}
+                        \]
+                Other direction follows identically.
+            \item \[U = \ket{0}\bra{+y} + \ket{1}\bra{-y}\]
+            \item Left column represents transformation of $\ket{0}$. Right column represents transformation of $\ket{1}$.
+        \end{enumerate}
 \end{enumerate}
 
 
