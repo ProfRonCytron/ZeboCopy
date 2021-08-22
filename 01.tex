@@ -84,7 +84,7 @@ We sometimes use $+$ as the operator for disjunction:
 \[x\vee y = x + y \]}
 }
 \only<3>{
-\Remark{These functions are \emph{not} reversible.  Even if we are given one of the inputs, the other input cannot necessarily be deduced from the output.}
+\Remark{These functions are \emph{not} reversible.  Even if we are given one of the inputs, the other input cannot be deduced from the output.}
 }
 \end{frame}
 
@@ -99,12 +99,12 @@ Exclusive-or is what we usually mean in natural language when we say \emph{or}:
 \end{quote}
 We mean we will do one or the other, but not both.
 \Remark{
-Given the output of this function and one of the inputs, we can infer the value of the other input:
+Given the output of this function and one of the inputs, we can deduce the value of the other input:
 $\Xor{(\Xor{x}{y})}{x} = y$
 }
 \end{frame}
 
-\begin{frame}{Universality}{What operators are needed at a minimum?}
+\begin{frame}{Universality}{Theoretically, what operators are needed at a minimum?}
 \TwoColumns{
 Consider again a general Boolean function of two inputs:
 }{
@@ -263,14 +263,14 @@ traversing a distance of $\theta$ radians along the circle.}
 \TwoColumns{%
 Multiplication and Conjugation
 \begin{itemize}
-    \item How to multiply $z_{1}z_{2}$?
+    \item Given $z_{1}=\Polar{r_{1}}{\theta_{1}}$ and $z_{2}=\Polar{r_{2}}{\theta_{2}}$
     \item<2-> $z_{1}z_{2} = \Polar{r_{1}}{\theta_1}\Polar{r_{2}}{\theta_2}$
     \item<2-> $z_1z_2 = \Polar{r_{1}r_{2}}{(\theta_1+\theta_2)}$
-    \item<3-> How do we find $\Conj{z}$?
-    \item<4-> $\Conj{z} = \overline{\Polar{r}{\theta}}$
-    \item<4-> $\Conj{z} = \overline{r(\cos{\theta}+i\sin{\theta})}$
+    \item<3-> Given $a=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
+    \item<4-> $\Conj{z} = \Conj{(\Polar{r}{\theta})}$
+    \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+i\sin{\theta})}$
     \item<4-> $\Conj{z} = r(\cos{\theta}-i\sin{\theta})$
-    \item<4-> $\Conj{z} = r(\cos{-\theta}+i\sin{-\theta})$
+    \item<4-> $\Conj{z} = r(\cos(-\theta)+i\sin(-\theta))$
     \item<4-> $\Conj{z} = \Polar{r}{(-\theta)}$
 \end{itemize}
 }{
@@ -290,6 +290,10 @@ Magnitude
          \item The effect of a quantum gate can be described as a square matrix, which maps in input ket to an output ket.
     \end{itemize}
     \item This is convenient but not efficient in the number of quantum bits.
+    \begin{itemize}
+        \item A vector representing $k$ quantum bits has length $2^{k}$.
+        \item A matrix describing a $k$-bit quantum gate has $2^{k} \times 2^{k}$ entries.
+    \end{itemize}
     \item The composition of states and gates is computed using \href{https://en.wikipedia.org/wiki/Tensor}{tensor arithmetic}.
 \end{itemize}
     

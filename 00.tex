@@ -63,6 +63,11 @@
         \item \MikeIke{} is a much larger reference text.
     \end{itemize}
     \item[Videos] TBA
+    \item[Web sites]
+    \begin{itemize}
+        \item \href{https://quantumatlas.umd.edu/}{UMD}
+        \item \href{https://quantumatlas.umd.edu/gallery/MeasuringPolarization}{Measuring photons with polarizing filters}
+    \end{itemize}
     
 \end{description}
 \end{frame}
@@ -190,7 +195,7 @@ Quantum Computing combines all of these disciplines}
   \includegraphics[width=0.15\textwidth]{00/fallingball.jpeg}
   };
 
-\end{tikzpicture}}
+\end{tikzpicture}}%
 \only<1->{How can we use gravity to compute square roots?}
 
 \only<2-3>{We know from physics}
@@ -304,10 +309,14 @@ We can use quantum effects to compute interesting results.   In this course, we 
     This is the most strange and useful property of quantum systems.  
     
     We will show that there is no information shared by such quantum bits that explains that behavior.
-    \Example{We can entangle two quantum bits so that they randomly both measure either \True{} or \False{}, even if they are separated by light years from each other.}
+    
     
     }
 \end{description}
+\only<6>{\Example{We can entangle two quantum bits so that they randomly both measure either \True{} or \False{}, even if they are separated by light years from each other.}}
+
+\only<7>{
+\MedSkip{}Why do we care?  Harnessing these quantum effects allows us to solve some interesting problems in mere seconds that would take billions of years to solve on a classical computer.}
     
 \end{frame}
 
@@ -322,4 +331,38 @@ We can use quantum effects to compute interesting results.   In this course, we 
     \item Academic integrity
     \item How to get help
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Course outline}{Subject to change}
+\Vskip{-4em}\TwoColumns{%
+\begin{enumerate}
+    \item Introduction and Background
+    \item Reversible computations
+    \item Computational complexity
+    \item The physics
+    \item Quantum systems
+    \item Single qubit
+    \item Elitzur--Vaidman bomb
+    \item Universal quantum gates
+    \item Beyond one qubit
+    \item No-cloning theorem
+    
+\end{enumerate}
+}{%
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item Quantum teleportation
+    \item Quantum advantage
+    \item Deutsch's problem
+    \item Phase kickback trick
+    \item Deutsch--Joza problem
+    \item Simon's problem
+    \item Bernstein--Vazirani problem
+    \item Phase estimation
+    \item Quantum Fourier
+    \item Shor's algorithm
+    \item Grover's algorithm
+\end{enumerate}
+}
+    
 \end{frame}
