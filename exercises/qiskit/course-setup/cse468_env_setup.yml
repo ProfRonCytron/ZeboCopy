@@ -1,0 +1,13 @@
+name: cse468
+channels:
+  - defaults
+dependencies:
+  - python==3.7
+  - numpy==1.19.2
+  - ipython==7.19.0
+  - jupyter==1.0.0
+  - pip==20.3.3
+  - pip:
+    - qiskit==0.29.0
+    - otter-grader==3.0.3
+    - pylatexenc==2.4
