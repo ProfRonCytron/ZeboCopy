@@ -30,13 +30,13 @@
 \TwoColumns{%
 \only<1-5>{%
 \begin{itemize}
-    \item<1-> Suppose
+    \item<1-> Consider two quantum states:
     \begin{align*}
-        \QState{a} = & \alpha_{a}\ket{0} + \beta_{a}\ket{1} \\
-        \QState{b} = & \alpha_{b}\ket{0} + \beta_{b}\ket{1}
+        \QState{x} = & \alpha_{x}\ket{0} + \beta_{x}\ket{1} \\
+        \QState{y} = & \alpha_{y}\ket{0} + \beta_{y}\ket{1}
     \end{align*}
-    \item<2-> Measuring \QState{a} will yield \ket{0} or \ket{1}.
-    \item<3-> Measuring \QState{b} will yield \ket{0} or \ket{1}.
+    \item<2-> Measuring \QState{x} will yield \ket{0} or \ket{1}.
+    \item<3-> Measuring \QState{y} will yield \ket{0} or \ket{1}.
     \item<4-> This does not capture the joint probability of outcomes.
     \item<5-> This does the job, with wave amplitudes computed as follows.
 \end{itemize}}
@@ -51,23 +51,23 @@ We compute each entry in turn:
 }
 \only<11>{%
 \Vskip{-3em}\begin{align*}
-& \alpha_{a}\,\alpha_{b}\DQB{1}{0}{0}{0}
+& \alpha_{x}\,\alpha_{y}\DQB{1}{0}{0}{0}
 + 
-\alpha_{a}\,\beta_{b}\DQB{0}{1}{0}{0} \\[1em]
+\alpha_{x}\,\beta_{y}\DQB{0}{1}{0}{0} \\[1em]
 + \ &
-\beta_{a}\,\alpha_{b}\DQB{0}{0}{1}{0}
+\beta_{x}\,\alpha_{y}\DQB{0}{0}{1}{0}
 + 
-\beta_{a}\,\beta_{b}\DQB{0}{0}{0}{1}
+\beta_{x}\,\beta_{y}\DQB{0}{0}{0}{1}
 \end{align*}
 }
 \only<12-14>{%
 \begin{itemize}
-    \item<12-> State $\ket{00} = \TensProd{\ket{0}}{\ket{0}}$ is the outcome of measuring $\QState{a}=$\ket{0} and $\QState{b}=\ket{0}$.
+    \item<12-> State $\ket{00} = \TensProd{\ket{0}}{\ket{0}}$ is the outcome of measuring $\QState{x}=$\ket{0} and $\QState{y}=\ket{0}$.
     \item<13-> The probability of that outcome is
     \[
-    \Prob{\alpha_{a}\,\alpha_{b}} = \Prob{\alpha_{a}}\,\Prob{\alpha_{b}}
+    \Prob{\alpha_{x}\,\alpha_{y}} = \Prob{\alpha_{x}}\,\Prob{\alpha_{y}}
     \]
-    \item<14-> This is the joint probability of $\QState{a}=\ket{0}$ and $\QState{b}=\ket{0}$.
+    \item<14-> This is the joint probability of $\QState{x}=\ket{0}$ and $\QState{y}=\ket{0}$.
 \end{itemize}
 }
 \only<15->{%
@@ -79,10 +79,10 @@ We compute each entry in turn:
 }{%
 \visible<4->{%
     \begin{align*}
-    \TensProd{\QState{a}}{\QState{b}} = & \TensProd{\SQB{\alert<7,8>{\alpha_{a}}}{\alert<9,10>{\beta_{a}}}}{\SQB{\alert<7,9>{\alpha_{b}}}{\alert<8,10>{\beta_{b}}} } \\[2em]
-    \only<4>{\not= & \DQB{\alpha_{a}}{\beta_{a}}{\alpha_{b}}{\beta_{b}}%
+    \TensProd{\QState{x}}{\QState{y}} = & \TensProd{\SQB{\alert<7,8>{\alpha_{x}}}{\alert<9,10>{\beta_{x}}}}{\SQB{\alert<7,9>{\alpha_{y}}}{\alert<8,10>{\beta_{y}}} } \\[2em]
+    \only<4>{\not= & \DQB{\alpha_{x}}{\beta_{x}}{\alpha_{y}}{\beta_{y}}%
     }
-    \only<5->{= & \DQB{\alert<7,12-14>{\alpha_{a}\,\alpha_{b}}}{\alert<8>{\alpha_{a}\,\beta_{b}}}{\alert<9>{\beta_{a}\,\alpha_{b}}}{\alert<10>{\beta_{a}\,\beta_{b}}}%
+    \only<5->{= & \DQB{\alert<7,12-14>{\alpha_{x}\,\alpha_{y}}}{\alert<8>{\alpha_{x}\,\beta_{y}}}{\alert<9>{\beta_{x}\,\alpha_{y}}}{\alert<10>{\beta_{x}\,\beta_{y}}}%
     }
     \end{align*}}
 }
@@ -90,10 +90,10 @@ We compute each entry in turn:
 \MedSkip{}
 The resulting state is
 \[
-\alert<12-14>{\alpha_{a}\,\alpha_{b}}\ket{00}
-+\alpha_{a}\,\beta_{b}\ket{01}
-+\beta_{a}\,\alpha_{b}\ket{10}
-+\beta_{a}\,\beta_{b}\ket{11}
+\alert<12-14>{\alpha_{x}\,\alpha_{y}}\ket{00}
++\alpha_{x}\,\beta_{y}\ket{01}
++\beta_{x}\,\alpha_{y}\ket{10}
++\beta_{x}\,\beta_{y}\ket{11}
 \]
 }
 \end{frame}
@@ -121,14 +121,14 @@ The resulting state is
     \item<1-> A system of $k$ qubits is characterized by the tensor product of those qubits' states.
     \item<2-> Consider for example a 3~qubit system comprised of the states
     \begin{align*}
-    \QState{a} = \PZero{} &
-    \QState{b} = \POne{} \\
-    \QState{c} = & \PHad{}
+    \QState{x} = \PZero{} &
+    \QState{y} = \POne{} \\
+    \QState{z} = & \PHad{}
     \end{align*}
 \end{itemize}
 \only<3-10>{%
 
-How do we compute \ket{\QName{a}\QName{b}\QName{c}}?}}%
+How do we compute \ket{\QName{x}\QName{y}\QName{z}}?}}%
 \only<11>{%
 We can describe a quantum state using a column vector, but when that is sparse, it may be more clear to write it out in terms of its basis states:
 \[
