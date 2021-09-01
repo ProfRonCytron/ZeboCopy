@@ -1,4 +1,4 @@
-\SetTitle{8}{Universal quantum gates}{Several approaches, culminating in the u3 gate}{08}
+\SetTitle{8}{Universal quantum gates}{Several approaches, culminating in the qiskit U gate}{08}
 
 \begin{frame}{Universality}{Some initial thoughts}
 
@@ -6,7 +6,7 @@
     \item We captured the essence of a single qubit using two real rotational parameters $\phi$ and $\theta$.  Those parameters describe points on the unit sphere, each point corresponding to a quantum state.
     \item A quantum gate is a mapping from states to states.
     \item Because such gates must have inverses, the mapping established by such gates must be \href{https://en.wikipedia.org/wiki/Bijection}{bijective}.
-    \item We can think of a gate as a permutation of states, or points on the Bloch sphere.
+    \item We can think of a gate as a permutation of states, or points, on the Bloch sphere.
     \item How many parameters does it take to characterize an arbitrary single-qubit quantum gate?
 \end{itemize}
 
@@ -34,21 +34,46 @@ These constraints will take us from 8 parameters to only 3.}
     
 \end{frame}
 
-\begin{frame}{Proof}{We use the constraints}
+
+
+\begin{frame}{Some theoretical results}{From \Kaye{}}
+\end{frame}
+
+\begin{frame}{Universality via Pauli gates}
+    
+\end{frame}
+
+\begin{frame}{The Qiskit U gate}{Theorem statement}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U(\theta, \phi, \lambda) = 
+    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+    \] where
+    $0 \leq \theta,\phi,\lambda < 2\pi$
+    \end{theorem}
+    For example, the Hadamard gate \HMatrix{} is $U(\pi/2, 0, \pi)$, which yields
+    \[
+    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
+    \]
+
+\end{frame}
+
+\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$.}
 \TwoColumns{%
 $U = \SQBG{\relax}{a}{b}{c}{d}$ so
 $\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
-\SmallSkip{}
-The columns of $U$ are \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
+
+\MedSkip{}
+Because $U$ is unitary:
+\begin{itemize}
+\item Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
 \begin{align*}
     \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
     \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
 \end{align*}
-The columns of \Conj{U} are orthonormal:
-\begin{align*}
-    \Prob{a} + \Prob{b} = & 1 \\
-    \Prob{c} + \Prob{d} = & 1
-\end{align*}
+\item $\Implies{\Prob{a} + \Prob{c} = 1}{\Mag{a} \leq 1}$
+\end{itemize}
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=0.5]
@@ -68,25 +93,40 @@ complex circle.
 }
 \end{frame}
 
-\begin{frame}{Some theoretical results}{From \Kaye{}}
-\end{frame}
-
-\begin{frame}{Universality via Pauli gates}
-    
-\end{frame}
-
-\begin{frame}{The U3 gate}{Theorem statement}
-\begin{theorem}
-   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$.}
+\TwoColumns{%
+$U = \SQBG{\relax}{a}{b}{c}{d}$ so
+$\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
+\MedSkip{}
+Because $U$ is unitary:
+\begin{itemize}
+\item Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
+\begin{align*}
+    \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
+    \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
+\end{align*}
+\item Each row of $U$ (column of \Conj{U}) is orthonormal:
+\begin{align*}
+    \Prob{a} + \Prob{b} = & 1 \\
+    \Prob{c} + \Prob{d} = & 1
+\end{align*}
+\end{itemize}
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=0.5]
+\UnitComplexCircle{}
+\end{TIKZP}
+\end{center}
+Because $\Mag{a}\leq 1$, $a$ is some point on or in the unit
+complex circle.
+\begin{itemize}
+    \item Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
+    \item We can then scale it by $\cos(\theta/2)$ to obtain any point on or in the circle.
+    \item We thus obtain
     \[
-    U3(\theta, \phi, \lambda) = 
-    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+    a = \ExpPhase{\phi_{a}}\cos(\theta/2)
     \]
-    \end{theorem}
-    For example, the Hadamard gate \HMatrix{} is $U3(\pi/2, 0, \pi)$, which yields
-    \[
-    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
-    \]
-
+\end{itemize}
+}
 \end{frame}
 
