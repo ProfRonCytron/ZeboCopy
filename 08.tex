@@ -167,6 +167,25 @@ The value of $\theta$ must be arbitrary, so we can only get $0$ when
 \ExpPhase{(\phi_{b}-\phi_{a})} &= - \ExpPhase{(\phi_{d}-\phi_{c})} \\
  & = \ExpPhase{\pi}\,\ExpPhase{(\phi_{d}-\phi_{c})} \\
  & = \ExpPhase{(\phi_{d}-\phi_{c}+\pi)} \\
- 
+ \textcolor{Brown}{\phi_{d}} &= \phi_{b}+\phi_{c}-\phi_{a} -\pi \\
+ &= \phi_{b}+\phi_{c}-\phi_{a} -\pi + 2\pi \\
+ &= (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
 \end{align*}
+We next eliminate $\phi_{d}$ in favor of the other phases.
+\end{frame}
+
+\begin{frame}{Proof (continued)}{Now 4 parameters, but soon only 3}
+\Vskip{-3em}\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
+    \[
+    \phi_{d} = (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
+    \]
+    \begin{align*}
+    U&= 
+    \SQBG{\phantom{\ExpPhase{\phi_a}}}{\textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}} \\
+    &= \SQBG{\ExpPhase{\phi_a}}{\textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}}
+    \end{align*}
+    
 \end{frame}
