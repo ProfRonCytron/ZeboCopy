@@ -59,7 +59,7 @@ These constraints will take us from 8 parameters to only 3.}
 
 \end{frame}
 
-\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$.}
+\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$ with complex entries.}
 \TwoColumns{%
 $U = \SQBG{\relax}{a}{b}{c}{d}$ so
 $\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
@@ -67,66 +67,72 @@ $\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
 \MedSkip{}
 Because $U$ is unitary:
 \begin{itemize}
-\item Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
+\item<1-> Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
 \begin{align*}
     \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
     \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
 \end{align*}
-\item $\Implies{\Prob{a} + \Prob{c} = 1}{\Mag{a} \leq 1}$
+\item<2-> $\Implies{\Prob{a} + \Prob{c} = 1}{\Mag{a} \leq 1}$
 \end{itemize}
+\visible<5>{%
+\alert<5>{%
+We use $\theta/2$ to accommodate $0\leq \theta < 2\pi$}}
 }{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}[scale=0.5]
+\Vskip{-5em}\begin{center}
+\begin{TIKZP}[scale=0.45]
 \UnitComplexCircle{}
 \end{TIKZP}
 \end{center}
+\visible<3->{%
 Because $\Mag{a}\leq 1$, $a$ is some point on or in the unit
 complex circle.
 \begin{itemize}
-    \item Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
-    \item We can then scale it by $\cos(\theta/2)$ to obtain any point on or in the circle.
-    \item We thus obtain
+    \item<4-> Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
+    \item<5-> We can then scale it by \alert<5>{$\cos(\theta/2)$} to obtain any point on or in the circle.
+    \item<6-> We thus obtain
     \[
     a = \ExpPhase{\phi_{a}}\cos(\theta/2)
     \]
-\end{itemize}
+\end{itemize}}
 }
 \end{frame}
 
-\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$.}
+\begin{frame}{Proof (continued)}{The other entries follow from the requirement that each row and column is \href{https://en.wikipedia.org/wiki/Unit_vector}{normal}.}
+\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\ExpPhase{\phi_{a}}\cos(\theta/2)}{\visible<4->{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\visible<6->{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\visible<7->{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
 \TwoColumns{%
-$U = \SQBG{\relax}{a}{b}{c}{d}$ so
-$\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
-\MedSkip{}
-Because $U$ is unitary:
 \begin{itemize}
-\item Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
-\begin{align*}
-    \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
-    \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
-\end{align*}
-\item Each row of $U$ (column of \Conj{U}) is orthonormal:
-\begin{align*}
-    \Prob{a} + \Prob{b} = & 1 \\
-    \Prob{c} + \Prob{d} = & 1
-\end{align*}
+    \item<2-> Each row of $U$ is orthonormal, so 
+    $\Prob{a}+\Prob{b}=1$
+    \item<3-> $\Prob{b}=\sin^{2}(\theta/2)$
+    \item<4-> We can let $b=\ExpPhase{\phi_{b}}\sin(\theta/2)$
+    \item<5-> $\Prob{a}+\Prob{c}=1$
+    \item<6-> We can let $c=\ExpPhase{\phi_{c}}\sin(\theta/2)$
+    \item<7-> Same for $d$
 \end{itemize}
 }{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}[scale=0.5]
-\UnitComplexCircle{}
-\end{TIKZP}
-\end{center}
-Because $\Mag{a}\leq 1$, $a$ is some point on or in the unit
-complex circle.
 \begin{itemize}
-    \item Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
-    \item We can then scale it by $\cos(\theta/2)$ to obtain any point on or in the circle.
-    \item We thus obtain
-    \[
-    a = \ExpPhase{\phi_{a}}\cos(\theta/2)
-    \]
+    \item<3-> $\Mag{\ExpPhase{\theta}}=1$ for all $\theta$
+    \item<4-> Yields the correct magnitude with an arbitrary phase $\phi_{b}$
+    \item<5-> $c$ and $d$ follow in the same way
+    \item<7-> We now have 5 parameters instead of 8
 \end{itemize}
 }
 \end{frame}
 
+\begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns.}
+\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\ExpPhase{\phi_{a}}\cos(\theta/2)}{\ExpPhase{\phi_{b}}\sin(\theta/2)}{\ExpPhase{\phi_{c}}\sin(\theta/2)}{\ExpPhase{\phi_{d}}\cos(\theta/2)}
+    \]
+    
+\TwoColumns{%
+\begin{itemize}
+    \item The columns of $U$ are orthogonal
+    \item 
+\end{itemize}
+}{%
+}
+\end{frame}
