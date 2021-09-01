@@ -123,16 +123,50 @@ complex circle.
 \end{frame}
 
 \begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns.}
-\[
+\Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\ExpPhase{\phi_{a}}\cos(\theta/2)}{\ExpPhase{\phi_{b}}\sin(\theta/2)}{\ExpPhase{\phi_{c}}\sin(\theta/2)}{\ExpPhase{\phi_{d}}\cos(\theta/2)}
+    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     
 \TwoColumns{%
 \begin{itemize}
-    \item The columns of $U$ are orthogonal
-    \item 
+    \item<1-> The columns of $U$ are orthogonal
+    \item<2-> $\CQB{\Conj{\textcolor{OrangeRed}{a}}}{\Conj{\textcolor{OliveGreen}{c}}} \SQB{\textcolor{NavyBlue}{b}}{\textcolor{Brown}{d}}=\Conj{\textcolor{OrangeRed}{a}}\textcolor{NavyBlue}{b} + \Conj{\textcolor{OliveGreen}{c}}\textcolor{Brown}{d}=0$
 \end{itemize}
 }{%
+\begin{itemize}
+        \item<3-> Let's plug in the matrix values
+        \item<4-> Recall the conjugate of $\ExpPhase{x}$ is $\ExpNegPhase{x}$
+\end{itemize}
 }
+\visible<4->{%
+\MedSkip{}\[
+\textcolor{OrangeRed}{\ExpNegPhase{\phi_a}\cos(\theta/2)}\,\textcolor{NavyBlue}{\ExpPhase{\phi_b}\sin(\theta/2)}
++
+\textcolor{OliveGreen}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{Brown}{\ExpPhase{\phi_d}\sin(\theta/2)}
+= 0 \]}%
+\visible<5->{\[
+\cos(\theta/2)\sin(\theta/2)\left[
+\ExpPhase{(\phi_{b}-\phi_{a})} +
+\ExpPhase{(\phi_{d}-\phi_{c})} \right]=0
+\]}%
+\visible<6->{%
+The value of $\theta$ must be arbitrary, so we can only get $0$ when
+\[
+\ExpPhase{(\phi_{b}-\phi_{a})} = - \ExpPhase{(\phi_{d}-\phi_{c})}
+\]}
+\end{frame}
+\begin{frame}{Proof (continued)}{We can now relate the phases.}
+
+\Vskip{-3em}\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
+    
+\begin{align*}
+\ExpPhase{(\phi_{b}-\phi_{a})} &= - \ExpPhase{(\phi_{d}-\phi_{c})} \\
+ & = \ExpPhase{\pi}\,\ExpPhase{(\phi_{d}-\phi_{c})} \\
+ & = \ExpPhase{(\phi_{d}-\phi_{c}+\pi)} \\
+ 
+\end{align*}
 \end{frame}
