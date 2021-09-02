@@ -8,3 +8,4 @@
 /exercises/*.pdf
 /exercises/qiskit/course-setup/*.pdf
 .ipynb_checkpoints
+**/.DS_Store
