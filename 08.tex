@@ -192,15 +192,15 @@ We next eliminate $\phi_{d}$ in favor of the other phases.
     \textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{%
     \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}} \\[1.5em]}
     \visible<3->{
-    &= \SQBG{%
-    \ExpPhase{\phi_a}}{%
+    &\only<3-4>{=}\only<5->{\equiv} \SQBG{%
+    \visible<3-4>{\ExpPhase{\phi_a}}}{%
     \textcolor{Black}{\cos(\theta/2)}}{%
     \textcolor{Black}{\ExpPhase{(\phi_{b}-\phi_{a})}\sin(\theta/2)}}{%
     \textcolor{Black}{\ExpPhase{(\phi_{c}-\phi_{a})}\sin(\theta/2)}}{%
     \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}}
     \end{align*}
-\OnlyRemark{4}{
-The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore be ignored.}
+\visible<4->{
+The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore be \visible<5->{ignored.}}
     
 \end{frame}
 \begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters.}
@@ -210,31 +210,54 @@ The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore
 U = \SQBG{%
     \relax}{%
     \textcolor{Black}{\cos(\theta/2)}}{%
-    \textcolor{Black}{\ExpPhase{(\phi_{b}-\phi_{a})}\sin(\theta/2)}}{%
-    \textcolor{Black}{\ExpPhase{(\phi_{c}-\phi_{a})}\sin(\theta/2)}}{%
+    \ExpPhase{(\textcolor<2->{NavyBlue}{\phi_{b}-\phi_{a}-\pi}+\pi)}\sin(\theta/2)}{%
+    \ExpPhase{\textcolor<2->{OrangeRed}{(\phi_{c}-\phi_{a})}}\sin(\theta/2)}{%
     \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}
     \]
 \TwoColumns{%
 
+\Vskip{-3.5em}\begin{align*}
+     \visible<2->{\mbox{Let } \Phii &= \textcolor<2>{OrangeRed}{\phi_{c}-\phi_{a}} \\
+     \mbox{Let } \Lambdaa &= \textcolor{NavyBlue}{\phi_{b}-\phi_{a}-\pi}}
+\end{align*}
+\Vskip{-3em}
+\only<5>{%
 \begin{align*}
-     \visible<2->{\mbox{Let } \Phii &= \phi_{c}-\phi_{a} \\
-     \mbox{Let } \Lambdaa &= \phi_{b}-\phi_{a}-\pi \\[1em]}
      \visible<5->{%
      b' &= \ExpPhase{(\Lambdaa+\pi)}\sin(\theta/2) \\
      &= \ExpPhase{\pi}\ExpPhase{\Lambdaa}\sin(\theta/2) \\
      &= -\ExpPhase{\Lambdaa}\sin(\theta/2)}
-\end{align*}
-}{%
+\end{align*}}
+\only<6->{%
 \begin{align*}
-\visible<3->{%
-U &= \SQBG{}{%
-\only<3>{a'}}{%
-b'}{%
-\only<3>{c'}}{%
-d'}\\[1.5em]}
-\visible<4->{a' &= \cos(\theta/2) \\
-    c' &= \ExpPhase{\theta}\sin(\theta/2)}
+    d' &= \ExpPhase{(\phi_{b}+\pi+\phi_{c}-2\phi_{a})}\cos(\theta/2) \\
+       &= \ExpPhase{(\Lambdaa+\Phii+2\pi)}\cos(\theta/2) \\
+       &= \ExpPhase{(\Lambdaa+\Phii)}\cos(\theta/2)
 \end{align*}
 }
+}{%
+\visible<3->{%
+\[
+U = \SQBG{}{%
+\only<3>{a'}%
+\only<4->{\cos(\theta/2)}}{%
+\only<3-4>{b'}%
+\only<5->{-\ExpPhase{\Lambdaa}\sin(\theta/2)}}{%
+\only<3>{c'}
+\only<4->{\ExpPhase{\Phii}\sin(\theta/2)}}{%
+\only<3-5>{d'}%
+\only<6->{\ExpPhase{(\Lambdaa+\Phii)}\cos(\theta/2)}}
+\]}
+\only<4-5>{
+\begin{align*}
+a' &= \cos(\theta/2) \\
+    c' &= \ExpPhase{\Phii}\sin(\theta/2)
+\end{align*}}%
+\only<7->{%
+
+We need just these three parameters to determine a quantum gate: $\theta, \Phii, \Lambdaa$. \QED{}
+}
+}
+
     
 \end{frame}
