@@ -183,9 +183,58 @@ We next eliminate $\phi_{d}$ in favor of the other phases.
     \phi_{d} = (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
     \]
     \begin{align*}
+    \visible<2->{
     U&= 
-    \SQBG{\phantom{\ExpPhase{\phi_a}}}{\textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}} \\
-    &= \SQBG{\ExpPhase{\phi_a}}{\textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}}
+\SQBG{%
+    \phantom{\ExpPhase{\phi_a}}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}} \\[1.5em]}
+    \visible<3->{
+    &= \SQBG{%
+    \ExpPhase{\phi_a}}{%
+    \textcolor{Black}{\cos(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{b}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{c}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}}
     \end{align*}
+\OnlyRemark{4}{
+The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore be ignored.}
+    
+\end{frame}
+\begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters.}
+\def\Phii{\textcolor{OrangeRed}{\phi}}
+\def\Lambdaa{\textcolor{NavyBlue}{\lambda}}
+\[
+U = \SQBG{%
+    \relax}{%
+    \textcolor{Black}{\cos(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{b}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{c}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}
+    \]
+\TwoColumns{%
+
+\begin{align*}
+     \visible<2->{\mbox{Let } \Phii &= \phi_{c}-\phi_{a} \\
+     \mbox{Let } \Lambdaa &= \phi_{b}-\phi_{a}-\pi \\[1em]}
+     \visible<5->{%
+     b' &= \ExpPhase{(\Lambdaa+\pi)}\sin(\theta/2) \\
+     &= \ExpPhase{\pi}\ExpPhase{\Lambdaa}\sin(\theta/2) \\
+     &= -\ExpPhase{\Lambdaa}\sin(\theta/2)}
+\end{align*}
+}{%
+\begin{align*}
+\visible<3->{%
+U &= \SQBG{}{%
+\only<3>{a'}}{%
+b'}{%
+\only<3>{c'}}{%
+d'}\\[1.5em]}
+\visible<4->{a' &= \cos(\theta/2) \\
+    c' &= \ExpPhase{\theta}\sin(\theta/2)}
+\end{align*}
+}
     
 \end{frame}
