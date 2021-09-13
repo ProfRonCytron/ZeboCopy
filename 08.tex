@@ -253,6 +253,24 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
     
 \end{frame}
 
+\begin{frame}{Importance of this result}{The qiskit \NamedGate{U} gate}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U(\theta, \phi, \lambda) = 
+    \SQBG{\relax}{\cos(\theta/2)}{-\ExpPhase{\lambda}\sin(\theta/2)}{\ExpPhase{\phi}\sin(\theta/2)}{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+    \] where
+    $0 \leq \theta,\phi,\lambda < 2\pi$
+    \end{theorem}
+\begin{itemize}[<+->]
+   \item A qubit has a given probability of measuring \QZero{} or \QOne{}, based on its amplitude.   The \NamedGate{U} gate affects such measurements of that qubit using the parameter~$\theta$. 
+   \item The qiskit environment offers the \href{https://qiskit.org/documentation/stubs/qiskit.circuit.library.UGate.html}{\NamedGate{U}} gate, which is compiled into the necessary actions on a quantum device to realize the gate.
+\end{itemize}
+
+
+    
+\end{frame}
+
 \begin{frame}{Some theoretical results}{From \Kaye{}}
 \end{frame}
 
