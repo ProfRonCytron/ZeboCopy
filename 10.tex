@@ -1,15 +1,45 @@
 \SetTitle{10}{Teleportation}{Sending a qubit state requires a phone call}{10}
 
 \begin{frame}{Overview}
-    \begin{itemize}
+    \begin{itemize}[<+->]
         \item We will show how to use entangled states to send an arbitrary qubit state from Alice to Bob.
         \item Amazingly, there are no wires or other communication fabric between Alice and Bob.  The state is truly teleported from one location to another.
-        \item In view of the no-cloning theorem, we should not be surprised that Alice will no longer have the state.
+        \item Recalling the no-cloning theorem, we should not be surprised that Alice will no longer have the state.
         \item Alice and Bob can be arbitrarily far apart, but actions involving entanglement take effect immediately.
         \item However, it turns out Alice has to communicate two (classical) bits of information to Bob for him to truly obtain Alice's state at his location.  That information cannot travel faster than the speed of light.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Frame Title}
-    
+\begin{frame}{Quantum teleportation}{Sending a quantum state from Alice to Bob}
+
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+  \QState{x}&\qw\slice{\alert<1>{\QState{1}}} &  \ctrl{1}\slice{\alert<2>{\QState{2}}} &  \gate{H}\slice{\alert<3>{\QState{3}}}& \meter{} &\cw \rstick{\ket{x}}\\
+\lstick[wires=2]{\stackbox{EPR\\pair}}
+&\lstick{\QState{A}} & \targ{} & \qw & \meter{} & \cw \rstick{\ket{y}}\\[2.7em]
+& \lstick{\QState{B}} & \qw & \qw & \qw& \qw
+\end{quantikz}}
+
+\only<1>{%
+\MedSkip{}
+Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
+
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1} & \qw  \rstick{\QState{A}}\\
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \qw  \rstick{\QState{B}}
+\end{quantikz}}
+
+}
+}{%
+\Vskip{-3em}
+\[
+    \QState{x}=\alpha_{x}\ket{0}+\beta_{x}\ket{1}=\SQB{\alpha_{x}}{\beta_{x}}
+    \]
+    \begin{itemize}
+    \item Alice wants to send \QState{x} to Bob.
+    \item Alice and Bob share $\ket{\QName{A}\QName{B}}=\RootTwo{}\DQB{1}{0}{0}{1}$.
+    \item Alice and Bob separate, with Alice keeping \QState{x} and \QState{A}, and Bob taking \QState{B} with him.
+\end{itemize}
+}
 \end{frame}
