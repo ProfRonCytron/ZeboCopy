@@ -503,7 +503,7 @@ But then $\NamedGate{CNOT}\left(\TensProd{\SQB{\alpha}{\beta}}{\PZero{}}\right) 
     
 \end{frame}
 
-\begin{frame}{No cloning theorem}{It is impossible to construct a unitary gate that clones a qubit.}
+\begin{frame}{No cloning theorem}{It is impossible to construct a unitary gate that clones an arbitrary qubit.}
 
 \TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
 \Vskip{-2.2em}\alert<3>{For $n\geq 2$}
@@ -586,6 +586,18 @@ U(\ket{+}) =
 }
 }
 
+    
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}[<+->]
+  \item Reasoning mathematically about multiple qubit systems requires tensor products of input states and gates.
+  \item Some states are pure, in that they can be expressed as the tensor product of single-qubit states.
+  \item Others are entangled, and no  tensor-factoring of such states is possible.
+  \item We cannot hope in general to clone an arbitrary, unknown quantum state.
+  \item This has serious implications for fault tolerance.  Classically we can use redundancy to overcome faults, but in quantum computing we cannot duplicate an unknown state.
+\end{itemize}
     
 \end{frame}
 \frame{Assignment ps3}
