@@ -28,7 +28,7 @@
 \visible<2->{%
     \ket{\QName{A}\QName{B}}&=\RootTwo{}\DQB{1}{0}{0}{1}}
 \end{align*}}
-\only<5-6>{%
+\only<5-8>{%
 {\scriptsize
 \Vskip{-2em}\begin{align*}
     \QState{1} &=\RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
@@ -59,11 +59,22 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
     &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
 \end{align*}
 }
-\only<6-9>{%
-\[
-\TensProd{\NamedGate{CNOT}}{\Identity} = 
-\TensProd{\CNOTMatrix}{\IMatrix}
-\]
+\only<6-8>{%
+\Vskip{-4em}\begin{align*}
+\TensProd{\NamedGate{CNOT}}{\Identity} & = 
+\TensProd{\CNOTMatrix}{\IMatrix} \\
+\visible<7>{%
+&= \begin{pmatrix*}[r]
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0
+\end{pmatrix*}}
+\end{align*}
 }
 }
 \end{frame}
