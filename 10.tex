@@ -13,15 +13,15 @@
 \begin{frame}{Quantum teleportation}{Sending a quantum state from Alice to Bob}
 
 \TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
-\Vskip{-2em}\adjustbox{scale=0.8,valign=t}{%
+\Vskip{-2em}\adjustbox{scale=0.7,valign=t}{%
 \begin{quantikz}
-  \QState{x}&\qw\slice{\alert<4-5>{\QState{1}}} &  \ctrl{1}\slice{\alert<6-9>{\QState{2}}} &  \gate{H}\slice{\alert<10>{\QState{3}}}& \meter{} &\cw \rstick{\ket{x}}\\
+  \QState{x}&\qw\slice{\alert<4-5>{\QState{1}}} &  \ctrl{1}\slice{\alert<6-9>{\QState{2}}} &  \gate{H}\slice{\alert<10-12>{\QState{3}}}& \meter{} &\cw \rstick{\ket{x}}\\
 \lstick[wires=2]{\stackbox{EPR\\pair}}
 &\lstick{\QState{A}} & \targ{} & \qw & \meter{} & \cw \rstick{\ket{y}}\\[2.7em]
 & \lstick{\QState{B}} & \qw & \qw & \qw& \qw
 \end{quantikz}}
 \only<1-4>{%
-\Vskip{-2em}
+\Vskip{-1.5em}
 \begin{align*}
 \visible<1->{%
     \QState{x} &=\SQB{\alpha_{x}}{\beta_{x}} \\}
@@ -29,9 +29,21 @@
     \ket{\QName{A}\QName{B}}&=\RootTwo{}\DQB{1}{0}{0}{1}}
 \end{align*}}
 \only<5-8>{%
-{\scriptsize
-\Vskip{-2em}\begin{align*}
-    \QState{1} &=\RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
+{\small
+\Vskip{-1.15em}\begin{align*}
+    \alert<5>{\QState{1}} &=\RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
+\end{align*}}
+}
+\only<9-11>{%
+{\small
+\Vskip{-1.15em}\begin{align*}
+    \alert<9>{\QState{2}} &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\alpha_y}{\alpha_y}{0}
+\end{align*}}
+}
+\only<12-13>{%
+{\small
+\Vskip{-1.15em}\begin{align*}
+    \alert<12>{\QState{3}} &= \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
 \end{align*}}
 }
 
@@ -59,7 +71,7 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
     &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
 \end{align*}
 }
-\only<6-8>{%
+\only<6-7>{%
 \Vskip{-4em}\begin{align*}
 \TensProd{\NamedGate{CNOT}}{\Identity} & = 
 \TensProd{\CNOTMatrix}{\IMatrix} \\
@@ -75,6 +87,67 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0
 \end{pmatrix*}}
 \end{align*}
+}
+\only<8>{%
+\Vskip{-4em}{\scriptsize\begin{align*}
+\TensProd{\NamedGate{CNOT}}{\Identity} & = 
+ \begin{pmatrix*}[r]
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0
+\end{pmatrix*}
+\end{align*}}
+}
+\only<8>{%
+{\scriptsize
+\Vskip{-1.5em}\begin{align*}
+    \QState{2} &=\left(\TensProd{\NamedGate{CNOT}}{\Identity}\right)\QState{1} = \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\alpha_y}{\alpha_y}{0}
+\end{align*}}
+}
+\only<9-10>{%
+{\small
+\Vskip{-4em}\begin{align*}
+\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}  = 
+\TensProd{\TensProd{\HMatrix}{\IMatrix}}{\IMatrix} \\[1.2em]
+\visible<10>{%
+= \RootTwo{}\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 & -1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & -1
+\end{pmatrix*}}
+\end{align*}}
+}
+\only<11>{%
+{\scriptsize
+\Vskip{-4em}\begin{align*}
+\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}  = 
+ \RootTwo{}\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 & -1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & -1
+\end{pmatrix*}
+\end{align*}}
+}
+\only<11>{%
+{\scriptsize
+\Vskip{-2.5em}\begin{align*}
+    \QState{3} &=\left(\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}\right)\QState{2} = \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
+\end{align*}}
 }
 }
 \end{frame}
