@@ -47,13 +47,14 @@
 \end{align*}}
 }
 \only<14->{%
-Suppose Alice measures
+If Alice measures, Bob applies
 \begin{description}
-  \item<14->[\ket{00}] \relax
-  \item<15->[\ket{01}] \relax
-  \item<16->[\ket{10}] \relax
-  \item<17->[\ket{11}] \relax
+  \item<14->[\ket{xy}=\ket{00}] nothing
+  \item<15->[\ket{xy}=\ket{01}]  \PauliX{}
+  \item<16->[\ket{xy}=\ket{10}]  \PauliZ{}
+  \item<17->[\ket{xy}=\ket{11}] \PauliX{} then \PauliZ{}
 \end{description}
+so that Bob has \QState{x}
 }
 
 }{%
@@ -158,15 +159,24 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
     \QState{3} &=\left(\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}\right)\QState{2} = \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
 \end{align*}}
 }
-\only<13->{%
-\Vskip{-5em}\begin{align*}
-    \QState{3} = \frac{1}{2}\ [\\ + & \alpha_{x}\ket{\alert<14>{00}0}  + \alpha_{y}\ket{\alert<14>{00}1} \\ + & \alpha_{y}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} \\
-     + &\alpha_{x}\ket{\alert<16>{10}0}  -\alpha_{y}\ket{\alert<16>{10}1} \\ - & \alpha_{y}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}\\
+\only<12>{%
+Recall Alice had
+\[
+\QState{x} = \alpha_{x}\ket{0} + \alpha_{y}\ket{1}
+\]
+so we must have \[ \Prob{\alpha_{x}} + \Prob{\alpha_{y}} = 1 \]
+}
+\only<13-17>{%
+\Vskip{-5.5em}\begin{align*}
+    \QState{3} = \visible<13>{\frac{1}{2}}\ [\\ \visible<13,14>{+ & \alpha_{x}\ket{\alert<14>{00}0}  + \alpha_{y}\ket{\alert<14>{00}1}} \\
+    \visible<13,15>{+ & \alpha_{y}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} }\\
+     \visible<13,16>{+ &\alpha_{x}\ket{\alert<16>{10}0}  -\alpha_{y}\ket{\alert<16>{10}1} }\\ 
+     \visible<13,17>{- & \alpha_{y}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}}\\
     ]
 \end{align*}
 }
-\only<14-18>{
-\Vskip{-3em}}
+\only<14-17>{
+\Vskip{-4em}}
 \only<14>{%
 \begin{align*}
 \QState{B} & = \alpha_{x}\ket{0} + \alpha_{y}\ket{1} \\
@@ -194,6 +204,15 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 \PauliZ{}\PauliX{}\QState{B} & = \alpha_{x}\ket{0}+ \alpha_{y}\ket{1}\\
 & = \QState{x}
 \end{align*}
+}
+\only<18>{%
+\begin{itemize}
+    \item If Alice can tell Bob her measurements for
+\ket{xy} then Bob knows what transformations, if any to apply to his qubit to obtain Alice's \QState{x}.
+\item This takes classical communication from Alice to Bob.
+\item Note Alice's loss of her \QState{x} when she measures \ket{x} as \ket{0} or \ket{1}.
+\item Teleportation is instantaneous across any distance, but Bob needs two classical bits of information from Alice to realize \QState{x}.
+\end{itemize}
 }
 }
 \end{frame}
