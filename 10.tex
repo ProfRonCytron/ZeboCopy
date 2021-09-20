@@ -1,5 +1,6 @@
 \SetTitle{10}{Teleportation}{Sending a qubit state requires a phone call}{10}
 
+\section*{Overview}
 \begin{frame}{Overview}
     \begin{itemize}[<+->]
         \item We will show how to use entangled states to send an arbitrary qubit state from Alice to Bob.
@@ -10,14 +11,23 @@
     \end{itemize}
 \end{frame}
 
+\section*{Partial Measurement}
+
+\begin{frame}{Partial measurements}{What happens when some bits are measured, but not all?}
+    
+\end{frame}
+
+
+\section*{Teleportation}
+
 \begin{frame}{Quantum teleportation}{Sending a quantum state from Alice to Bob}
 
 \TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
 \Vskip{-2em}\adjustbox{scale=0.7,valign=t}{%
 \begin{quantikz}
-  \QState{x}&\qw\slice{\alert<4-5>{\QState{1}}} &  \ctrl{1}\slice{\alert<6-9>{\QState{2}}} &  \gate{H}\slice{\alert<10-12>{\QState{3}}}& \meter{} &\cw \rstick{\ket{x}}\\
+  \QState{x}&\qw\slice{\alert<4-5>{\QState{1}}} &  \ctrl{1}\slice{\alert<6-9>{\QState{2}}} &  \gate{H}\slice{\alert<10-12>{\QState{3}}}& \meter{} &\cw \rstick{\textcolor{Blue}{\ket{x}}}\\
 \lstick[wires=2]{\stackbox{EPR\\pair}}
-&\lstick{\QState{A}} & \targ{} & \qw & \meter{} & \cw \rstick{\ket{y}}\\[2.7em]
+&\lstick{\QState{A}} & \targ{} & \qw & \meter{} & \cw \rstick{\textcolor{Blue}{\ket{y}}}\\[2.7em]
 & \lstick{\QState{B}} & \qw & \qw & \qw& \qw
 \end{quantikz}}
 \only<1-4>{%
@@ -47,7 +57,7 @@
 \end{align*}}
 }
 \only<14->{%
-If Alice measures, Bob applies
+If \textcolor{Blue}{Alice measures}, Bob applies
 \begin{description}
   \item<14->[\ket{xy}=\ket{00}] nothing
   \item<15->[\ket{xy}=\ket{01}]  \PauliX{}
