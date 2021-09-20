@@ -46,6 +46,15 @@
     \alert<12>{\QState{3}} &= \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
 \end{align*}}
 }
+\only<14->{%
+Suppose Alice measures
+\begin{description}
+  \item<14->[\ket{00}] \relax
+  \item<15->[\ket{01}] \relax
+  \item<16->[\ket{10}] \relax
+  \item<17->[\ket{11}] \relax
+\end{description}
+}
 
 }{%
 
@@ -148,6 +157,43 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 \Vskip{-2.5em}\begin{align*}
     \QState{3} &=\left(\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}\right)\QState{2} = \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
 \end{align*}}
+}
+\only<13->{%
+\Vskip{-5em}\begin{align*}
+    \QState{3} = \frac{1}{2}\ [\\ + & \alpha_{x}\ket{\alert<14>{00}0}  + \alpha_{y}\ket{\alert<14>{00}1} \\ + & \alpha_{y}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} \\
+     + &\alpha_{x}\ket{\alert<16>{10}0}  -\alpha_{y}\ket{\alert<16>{10}1} \\ - & \alpha_{y}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}\\
+    ]
+\end{align*}
+}
+\only<14-18>{
+\Vskip{-3em}}
+\only<14>{%
+\begin{align*}
+\QState{B} & = \alpha_{x}\ket{0} + \alpha_{y}\ket{1} \\
+& = \QState{x}
+\end{align*}
+}
+\only<15>{%
+\begin{align*}
+\QState{B}  & = \alpha_{y}\ket{0} + \alpha_{x}\ket{1} \\
+\PauliX{}\QState{B} & = \alpha_{x}\ket{0} + \alpha_{y}\ket{1} \\
+ & = \QState{x}
+\end{align*}
+}
+\only<16>{%
+\begin{align*}
+\QState{B}  & = \alpha_{x}\ket{0} - \alpha_{y}\ket{1} \\
+\PauliZ{}\QState{B} & = \alpha_{x}\ket{0}+\alpha_{y}\ket{1}\\
+& = \QState{x}
+\end{align*}
+}
+\only<17>{%
+\begin{align*}
+\QState{B}  & = -\alpha_{y}\ket{0} + \alpha_{x}\ket{1} \\
+\PauliX{}\QState{B} & = \alpha_{x}\ket{0}-\alpha_{y}\ket{1}\\
+\PauliZ{}\PauliX{}\QState{B} & = \alpha_{x}\ket{0}+ \alpha_{y}\ket{1}\\
+& = \QState{x}
+\end{align*}
 }
 }
 \end{frame}
