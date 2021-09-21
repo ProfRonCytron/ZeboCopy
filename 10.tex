@@ -88,19 +88,19 @@
 \only<5-8>{%
 {\small
 \Vskip{-1.15em}\begin{align*}
-    \alert<5>{\QState{1}} &=\RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
+    \alert<5>{\QState{1}} &=\RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\beta_x}{0}{0}{\beta_x}
 \end{align*}}
 }
 \only<9-11>{%
 {\small
 \Vskip{-1.15em}\begin{align*}
-    \alert<9>{\QState{2}} &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\alpha_y}{\alpha_y}{0}
+    \alert<9>{\QState{2}} &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\beta_x}{\beta_x}{0}
 \end{align*}}
 }
 \only<12-13>{%
 {\small
 \Vskip{-1.15em}\begin{align*}
-    \alert<12>{\QState{3}} &= \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
+    \alert<12>{\QState{3}} &= \frac{1}{2}\QQB{\alpha_x}{\beta_x}{\beta_x}{\alpha_x}{\alpha_x}{-\beta_x}{-\beta_x}{\alpha_x}
 \end{align*}}
 }
 \only<14->{%
@@ -134,8 +134,8 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 }}
 \only<4-5>{%
 \Vskip{-5em}\begin{align*}
-    \QState{1} &= \TensProd{\SQB{\alpha_x}{\alpha_y}}{\RootTwo{\DQB{1}{0}{0}{1}}} \\
-    &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\alpha_y}{0}{0}{\alpha_y}
+    \QState{1} &= \TensProd{\SQB{\alpha_x}{\beta_x}}{\RootTwo{\DQB{1}{0}{0}{1}}} \\
+    &= \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{\beta_x}{0}{0}{\beta_x}
 \end{align*}
 }
 \only<6-7>{%
@@ -173,7 +173,7 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 \only<8>{%
 {\scriptsize
 \Vskip{-1.5em}\begin{align*}
-    \QState{2} &=\left(\TensProd{\NamedGate{CNOT}}{\Identity}\right)\QState{1} = \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\alpha_y}{\alpha_y}{0}
+    \QState{2} &=\left(\TensProd{\NamedGate{CNOT}}{\Identity}\right)\QState{1} = \RootTwo{}\QQB{\alpha_x}{0}{0}{\alpha_x}{0}{\beta_x}{\beta_x}{0}
 \end{align*}}
 }
 \only<9-10>{%
@@ -213,22 +213,22 @@ Recall we create \ket{\QName{A}\QName{B}} as an EPR pair:
 \only<11>{%
 {\scriptsize
 \Vskip{-2.5em}\begin{align*}
-    \QState{3} &=\left(\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}\right)\QState{2} = \frac{1}{2}\QQB{\alpha_x}{\alpha_y}{\alpha_y}{\alpha_x}{\alpha_x}{-\alpha_y}{-\alpha_y}{\alpha_x}
+    \QState{3} &=\left(\TensProd{\TensProd{\Hadamard}{\Identity}}{\Identity}\right)\QState{2} = \frac{1}{2}\QQB{\alpha_x}{\beta_x}{\beta_x}{\alpha_x}{\alpha_x}{-\beta_x}{-\beta_x}{\alpha_x}
 \end{align*}}
 }
 \only<12>{%
 Recall Alice had
 \[
-\QState{x} = \alpha_{x}\ket{0} + \alpha_{y}\ket{1}
+\QState{x} = \alpha_{x}\ket{0} + \beta_{x}\ket{1}
 \]
-so we must have \[ \Prob{\alpha_{x}} + \Prob{\alpha_{y}} = 1 \]
+so we must have \[ \Prob{\alpha_{x}} + \Prob{\beta{x}} = 1 \]
 }
 \only<13-17>{%
 \Vskip{-5.5em}\begin{align*}
-    \QState{3} = \visible<13>{\frac{1}{2}}\ [\\ \visible<13,14>{+ & \alpha_{x}\ket{\alert<14>{00}0}  + \alpha_{y}\ket{\alert<14>{00}1}} \\
-    \visible<13,15>{+ & \alpha_{y}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} }\\
-     \visible<13,16>{+ &\alpha_{x}\ket{\alert<16>{10}0}  -\alpha_{y}\ket{\alert<16>{10}1} }\\ 
-     \visible<13,17>{- & \alpha_{y}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}}\\
+    \QState{3} = \visible<13>{\frac{1}{2}}\ [\\ \visible<13,14>{+ & \alpha_{x}\ket{\alert<14>{00}0}  + \beta_{x}\ket{\alert<14>{00}1}} \\
+    \visible<13,15>{+ & \beta_{x}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} }\\
+     \visible<13,16>{+ &\alpha_{x}\ket{\alert<16>{10}0}  -\beta_{x}\ket{\alert<16>{10}1} }\\ 
+     \visible<13,17>{- & \beta_{x}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}}\\
     ]
 \end{align*}
 }
@@ -236,29 +236,29 @@ so we must have \[ \Prob{\alpha_{x}} + \Prob{\alpha_{y}} = 1 \]
 \Vskip{-4em}}
 \only<14>{%
 \begin{align*}
-\QState{B} & = \alpha_{x}\ket{0} + \alpha_{y}\ket{1} \\
+\QState{B} & = \alpha_{x}\ket{0} + \beta_{x}\ket{1} \\
 & = \QState{x}
 \end{align*}
 }
 \only<15>{%
 \begin{align*}
-\QState{B}  & = \alpha_{y}\ket{0} + \alpha_{x}\ket{1} \\
-\PauliX{}\QState{B} & = \alpha_{x}\ket{0} + \alpha_{y}\ket{1} \\
+\QState{B}  & = \beta_{x}\ket{0} + \alpha_{x}\ket{1} \\
+\PauliX{}\QState{B} & = \alpha_{x}\ket{0} + \beta_{x}\ket{1} \\
  & = \QState{x}
 \end{align*}
 }
 \only<16>{%
 \begin{align*}
-\QState{B}  & = \alpha_{x}\ket{0} - \alpha_{y}\ket{1} \\
-\PauliZ{}\QState{B} & = \alpha_{x}\ket{0}+\alpha_{y}\ket{1}\\
+\QState{B}  & = \alpha_{x}\ket{0} - \beta_{x}\ket{1} \\
+\PauliZ{}\QState{B} & = \alpha_{x}\ket{0}+\beta_{x}\ket{1}\\
 & = \QState{x}
 \end{align*}
 }
 \only<17>{%
 \begin{align*}
-\QState{B}  & = -\alpha_{y}\ket{0} + \alpha_{x}\ket{1} \\
-\PauliX{}\QState{B} & = \alpha_{x}\ket{0}-\alpha_{y}\ket{1}\\
-\PauliZ{}\PauliX{}\QState{B} & = \alpha_{x}\ket{0}+ \alpha_{y}\ket{1}\\
+\QState{B}  & = -\beta_{x}\ket{0} + \alpha_{x}\ket{1} \\
+\PauliX{}\QState{B} & = \alpha_{x}\ket{0}-\beta_{x}\ket{1}\\
+\PauliZ{}\PauliX{}\QState{B} & = \alpha_{x}\ket{0}+ \beta_{x}\ket{1}\\
 & = \QState{x}
 \end{align*}
 }
