@@ -104,13 +104,15 @@
 \end{align*}}
 }
 \only<14->{%
-If \textcolor{Blue}{Alice measures}, Bob applies
-\begin{description}
-  \item<14->[\ket{xy}=\ket{00}] nothing
-  \item<15->[\ket{xy}=\ket{01}]  \PauliX{}
-  \item<16->[\ket{xy}=\ket{10}]  \PauliZ{}
-  \item<17->[\ket{xy}=\ket{11}] \PauliX{} then \PauliZ{}
-\end{description}
+\begin{center}
+\begin{tabular}{r|l}
+\multicolumn{1}{c}{Alice measures} & \multicolumn{1}{c}{Bob applies} \\
+  \visible<14->{\ket{xy}=\ket{00} & nothing} \\
+  \visible<15->{\ket{xy}=\ket{01}  & \PauliX{}} \\
+  \visible<16->{\ket{xy}=\ket{10} & \PauliZ{}} \\
+  \visible<17->{\ket{xy}=\ket{11} & \PauliX{} then \PauliZ{}}
+\end{tabular}
+\end{center}
 so that Bob has \QState{x}
 }
 
