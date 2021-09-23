@@ -67,6 +67,47 @@
 
 \section*{Teleportation}
 
+\begin{frame}{Harnessing entanglement}{Achieving teleportation}
+\Vskip{-3.5em}\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\only<1-2>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\
+\lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
+\end{quantikz}}}%
+\only<3>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\[2em]
+\lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
+\end{quantikz}}}%
+\only<4->{%
+\adjustbox{valign=t,scale=0.95}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \gate{U}\slice{\QState{2}} & \qw  \rstick{\QState{A}}\\[2em]
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \qw & \qw  \rstick{\QState{B}}
+\end{quantikz}}}%
+}{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> We create the Bell state 
+    \[\QState{1} = \RootTwo{}\DQB{1}{0}{0}{1} \]
+    \item<2-> Alice takes the top qubit and Bob takes the bottom one.
+    \item<3-> They then separate, let's say by a very large distance.
+\end{itemize}
+}%
+\only<4->{%
+\begin{itemize}
+    \item<4-> Alice effects a change to her qubit, represented here by \NamedGate{U}.
+    \item<5-> Recall generally
+    \[U = \UGate{} \]
+\end{itemize}%
+}
+}
+\only<6->{%
+\TensProd{\NamedGate{U}}{\NamedGate{I}}
+}
+
+
+\end{frame}
+
 \begin{frame}{Quantum teleportation}{Sending a quantum state from Alice to Bob}
 
 \TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%

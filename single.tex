@@ -518,6 +518,17 @@
 \long\def\Exercise#1#2{%
 \relax}
 \def\QED{\begin{flushright}\ensuremath{\square}\end{flushright}}
+\def\UGateA{%
+\cos(\theta/2)}
+\def\UGateB{%
+-\ExpPhase{\lambda}\sin(\theta/2)}
+\def\UGateC{%
+\ExpPhase{\phi}\sin(\theta/2)}
+\def\UGateD{%
+\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}
+\def\UGate{%
+\SQBG{\relax}{\UGateA{}}{\UGateA{}}{\UGateA{}}{\UGateA{}}}%
+
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
 %%
