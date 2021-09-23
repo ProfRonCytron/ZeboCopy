@@ -90,9 +90,11 @@
 
 \BigSkip{}
 {\small\setlength{\tabcolsep}{2pt}
-\begin{tabular}{rrlcrl}
+\begin{tabular}{r@{\mbox{ }}rlcrl}
 \QState{A} & \multicolumn{5}{l}{\QState{B}} \\
-\ket{0} & \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1}
+\ket{0} & \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} \\
+\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
+   $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1}
 \end{tabular}}
 }
 }{%
