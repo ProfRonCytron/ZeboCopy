@@ -107,10 +107,10 @@
 \begin{center}
 \begin{tabular}{r|l}
 \multicolumn{1}{c}{Alice measures} & \multicolumn{1}{c}{Bob applies} \\
-  \visible<14->{\ket{xy}=\ket{00} & nothing} \\
-  \visible<15->{\ket{xy}=\ket{01}  & \PauliX{}} \\
-  \visible<16->{\ket{xy}=\ket{10} & \PauliZ{}} \\
-  \visible<17->{\ket{xy}=\ket{11} & \PauliX{} then \PauliZ{}}
+  \visible<14->{\ket{xy}=\ket{00} & \only<14>{?}\only<15->{nothing}} \\
+  \visible<16->{\ket{xy}=\ket{01}  & \only<16>{?}\only<17->{\PauliX{}}} \\
+  \visible<18->{\ket{xy}=\ket{10} & \only<18>{?}\only<19->{\PauliZ{}} }\\
+  \visible<20->{\ket{xy}=\ket{11} & \only<20>{?}\only<21->{\PauliX{} then \PauliZ{}}}
 \end{tabular}
 \end{center}
 so that Bob has \QState{x}
@@ -225,46 +225,49 @@ Recall Alice had
 \]
 so we must have \[ \Prob{\alpha_{x}} + \Prob{\beta{x}} = 1 \]
 }
-\only<13-17>{%
+\only<13-21>{%
 \Vskip{-5.5em}\begin{align*}
-    \QState{3} = \visible<13>{\frac{1}{2}}\ [\\ \visible<13,14>{+ & \alpha_{x}\ket{\alert<14>{00}0}  + \beta_{x}\ket{\alert<14>{00}1}} \\
-    \visible<13,15>{+ & \beta_{x}\ket{\alert<15>{01}0} + \alpha_{x}\ket{\alert<15>{01}1} }\\
-     \visible<13,16>{+ &\alpha_{x}\ket{\alert<16>{10}0}  -\beta_{x}\ket{\alert<16>{10}1} }\\ 
-     \visible<13,17>{- & \beta_{x}\ket{\alert<17>{11}0} + \alpha_{x}\ket{\alert<17>{11}1}}\\
+    \QState{3} = \visible<13>{\frac{1}{2}}\ [\\ \visible<13,14-15>{+ & \alpha_{x}\ket{\alert<14-15>{00}0}  + \beta_{x}\ket{\alert<14-15>{00}1}} \\
+    \visible<13,16-17>{+ & \beta_{x}\ket{\alert<16-17>{01}0} + \alpha_{x}\ket{\alert<16-17>{01}1} }\\
+     \visible<13,18-19>{+ &\alpha_{x}\ket{\alert<18-19>{10}0}  -\beta_{x}\ket{\alert<18-19>{10}1} }\\ 
+     \visible<13,20-21>{- & \beta_{x}\ket{\alert<20-21>{11}0} + \alpha_{x}\ket{\alert<20-21>{11}1}}\\
     ]
 \end{align*}
 }
-\only<14-17>{
+\only<14-21>{
 \Vskip{-4em}}
-\only<14>{%
+\only<14-15>{%
 \begin{align*}
 \QState{B} & = \alpha_{x}\ket{0} + \beta_{x}\ket{1} \\
-& = \QState{x}
+\visible<15>{& = \QState{x}}
 \end{align*}
 }
-\only<15>{%
+\only<16-17>{%
 \begin{align*}
 \QState{B}  & = \beta_{x}\ket{0} + \alpha_{x}\ket{1} \\
+\visible<17>{
 \PauliX{}\QState{B} & = \alpha_{x}\ket{0} + \beta_{x}\ket{1} \\
- & = \QState{x}
+ & = \QState{x}}
 \end{align*}
 }
-\only<16>{%
+\only<18-19>{%
 \begin{align*}
 \QState{B}  & = \alpha_{x}\ket{0} - \beta_{x}\ket{1} \\
+\visible<19>{
 \PauliZ{}\QState{B} & = \alpha_{x}\ket{0}+\beta_{x}\ket{1}\\
-& = \QState{x}
+& = \QState{x}}
 \end{align*}
 }
-\only<17>{%
+\only<20-21>{%
 \begin{align*}
 \QState{B}  & = -\beta_{x}\ket{0} + \alpha_{x}\ket{1} \\
+\visible<21>{
 \PauliX{}\QState{B} & = \alpha_{x}\ket{0}-\beta_{x}\ket{1}\\
 \PauliZ{}\PauliX{}\QState{B} & = \alpha_{x}\ket{0}+ \beta_{x}\ket{1}\\
-& = \QState{x}
+& = \QState{x}}
 \end{align*}
 }
-\only<18>{%
+\only<22>{%
 \begin{itemize}
     \item If Alice can tell Bob her measurements for
 \ket{xy} then Bob knows what transformations, if any to apply to his qubit to obtain Alice's \QState{x}.
