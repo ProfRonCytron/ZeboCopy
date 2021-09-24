@@ -22,8 +22,8 @@
   +  \alpha_{1} \ket{001}
   +  \alpha_{2} \ket{010}
   +  \alpha_{3} \ket{011} }\\
-  +  & \alpha_{4} \ket{100}
-  +  \alpha_{5} \ket{101}
+  +  & \alpha_{4} \ket{\alert<6->{10}0}
+  +  \alpha_{5} \ket{\alert<6->{10}1}
  \visible<1-5>{ +  \alpha_{6} \ket{110}
   +  \alpha_{7} \ket{111}}
     \end{align*}
@@ -31,7 +31,7 @@
     \item What happens if we measure the first two qubits? 
     \item We obtain \ket{00}, \ket{01}, \ket{10}, or \ket{11} for those qubits.
     \item What about the third qubit?  We must view its probability now as conditional on the outcome of the other two qubits.
-    \item Suppose the first two bits measure \ket{10}, then six of the 8 eight terms must vanish, and we must renormalize the system using $\alert{k}=\Prob{\alpha_4} + \Prob{\alpha_5}$. 
+    \item Suppose the first two bits measure \ket{\alert{10}}, all but two terms vanish to~$0$, and we must renormalize the system using $\alert{k}=\Prob{\alpha_4} + \Prob{\alpha_5}$. 
 \end{itemize}
 
     
@@ -67,6 +67,19 @@
 
 \section*{Teleportation}
 
+\begin{frame}{The idea}{Use an entangled pair of qubits}
+
+\begin{itemize}
+    \item The premise is that Alice has some state \QState{A} that she wants to send to distant Bob as \QState{B}.
+    \item We know from the No Cloning Theorem that Alice cannot copy an arbitrary quantum state for herself, let alone make a copy to give to Bob.
+    \item So she could physically ship her qubit to Bob via UPS.~\footnote{Unitary Photon Service}
+    \item Entanglement links the fate of two quantum bits.  Maybe we can use that property to \emph{teleport} a quantum state from Alice to Bob.
+    \item Because cloning is not possible, we expect that Alice will lose her qubit's state in sending it to Bob.
+    \item If we use entanglement, the information is sent possibly faster than the speed of light.  So there may be a catch somewhere.
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}{Harnessing entanglement}{Achieving teleportation}
 \Vskip{-3.5em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \only<1-2>{%
@@ -84,17 +97,17 @@
 \lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \gate{U}\slice{\QState{2}} & \qw  \rstick{\QState{A}}\\[2em]
 \lstick{\QZero{}} &   \qw    &  \targ{}  & \qw & \qw  \rstick{\QState{B}}
 \end{quantikz}}}%
-\only<4-10>{
+\only<4-8>{
 \Vskip{4em}}%
-\only<11->{%
+\only<9->{%
 
 \BigSkip{}
 {\small\setlength{\tabcolsep}{2pt}
 \begin{tabular}{r@{\mbox{ }}rlcrl}
 \QState{A} & \multicolumn{5}{l}{\QState{B}} \\
-\ket{0} & \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} \\
-\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
-   $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1}
+\visible<9->{\ket{0}}\visible<11->{& \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} \\}
+\visible<12->{\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
+   $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1}}
 \end{tabular}}
 }
 }{%
