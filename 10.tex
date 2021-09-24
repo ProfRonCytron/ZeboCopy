@@ -174,6 +174,48 @@
 
 \end{frame}
 
+\begin{frame}{Making sense of the result}{Based on Alice's collapsed state}
+
+{\setlength{\tabcolsep}{2pt}
+\begin{center}
+\begin{tabular}{r@{\hbox to 4ex{\hss}}rlcrll}
+\QState{A} & \multicolumn{5}{l}{\QState{B}} &  \\
+\ket{0} & \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
+\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
+   $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1} & 
+\end{tabular}
+\end{center}}
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> If Bob measures \QState{B}, then the probability of seeing \ket{0} depends on the measured value of \QState{A}.
+    \item<2-> There is thus no information communicated from Alice to Bob.  The outcome of \QState{A} doesn't matter \emph{only when} $\theta=\frac{\pi}{2}$, but then Bob's outcomes are equally likely.
+    \item<3-> For Bob to know the state of \QState{B}, Alice must send her measured result to Bob.  That information cannot travel faster than the speed of light.
+\end{itemize}}%
+\only<4-5>{%
+\begin{itemize}
+    \item<4-> Since Alice arranged for the effect of \NamedGate{U} to achieve \QState{A}, let's assume she intended to send Bob
+    $ \alert{\QState{\relax}} = \UGateA{}\ket{0} + \UGateB{}\ket{1}$.  If Bob hears that $\QState{A}=\ket{0}$, he does nothing to his qubit as $\QState{B}=\QState{\relax}$.
+    \item<5-> What must Bob do to realize \QState{\relax} for \QState{B} if Alice tells him she saw \ket{1} for \QState{A}?  We begin by ignoring phase.
+\end{itemize}
+}%
+\only<7->{%
+{\setlength{\tabcolsep}{2pt}%
+\begin{center}
+\begin{tabular}{r@{$\ =\ $}rl@{$\ +\ $}rl}
+    \QState{B}& $\sin(\theta/2)$ & \ket{0}  
+   & $\ExpPhase{\lambda}\cos(\theta/2)$ &\ket{1} \\
+   \NamedGate{X}\QState{B}&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
+   & $\sin(\theta/2)$ &\ket{1}
+\end{tabular}
+\end{center}}
+
+\begin{itemize}
+    \item<8-> We need to change the sign of the second term.
+\end{itemize}
+}
+
+\end{frame}
+
 \begin{frame}{Quantum teleportation}{Sending a quantum state from Alice to Bob}
 
 \TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
