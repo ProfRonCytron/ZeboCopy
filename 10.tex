@@ -180,7 +180,7 @@
 \begin{center}
 \begin{tabular}{r@{\hbox to 4ex{\hss}}rlcrll}
 \QState{A} & \multicolumn{5}{l}{\QState{B}} &  \\
-\ket{0} & \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
+\ket{0} & \textcolor<8>{NavyBlue}{\UGateA{}}& \ket{0} & $+$ &  \textcolor<9>{Green}{\UGateB{}} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
 \ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1} & 
 \end{tabular}
@@ -204,13 +204,20 @@
 \begin{tabular}{r@{$\ =\ $}rl@{$\ +\ $}rl}
     \QState{B}& $\sin(\theta/2)$ & \ket{0}  
    & $\ExpPhase{\lambda}\cos(\theta/2)$ &\ket{1} \\
-   \NamedGate{X}\QState{B}&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
-   & $\sin(\theta/2)$ &\ket{1}
+   \NamedGate{X}\QState{B}&\textcolor<8>{NavyBlue}{$\ExpPhase{\lambda}\cos(\theta/2)$}  & \ket{0}  
+   & \textcolor<9>{Green}{$\sin(\theta/2)$} &\ket{1} \\
+   &\textcolor<8>{NavyBlue}{$\cos(\theta/2)$}  & \ket{0}  
+   & \textcolor<9>{Green}{$\ExpNegPhase{\lambda}\sin(\theta/2)$} &\ket{1}
 \end{tabular}
 \end{center}}
 
 \begin{itemize}
-    \item<8-> We need to change the sign of the second term.
+    \item<7-> We need to exchange the amplitudes.
+    \item<8-> The probability of outcome \ket{0} now matches \QState{\relax}.
+    \begin{itemize}
+        \item $\Prob{\ExpPhase{\lambda}\cos(\theta/2)} = 1\times\Prob{\cos(\theta/2)} = \Prob{\cos(\theta/2)}$
+    \end{itemize}
+    \item<9-> Similarly, the probability of outcome \ket{1} matches \QState{\relax}
 \end{itemize}
 }
 
