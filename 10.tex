@@ -15,7 +15,7 @@
 
 \begin{frame}{Partial measurements}{What happens when some bits are measured, but not all?}
 \begin{itemize}[<+->]
-    \item Consider 3-qubit quantum system
+    \item Consider the 3-qubit quantum system
     \begin{align*}
   \visible<6->{\alert{k} \times }\QState{\relax}
    = & \visible<1-5>{\alpha_{0} \ket{000}
@@ -30,8 +30,8 @@
     \item We must have $\sum_{i=0}^{7} \Prob{\alpha_{i}} = 1$
     \item What happens if we measure the first two qubits? 
     \item We obtain \ket{00}, \ket{01}, \ket{10}, or \ket{11} for those qubits.
-    \item What about the third qubit?  We must view its probability now as conditional on the outcome of the other two qubits.
-    \item Suppose the first two bits measure \ket{\alert{10}}, all but two terms vanish to~$0$, and we must renormalize the system using $\alert{k}=\sqrt{\Prob{\alpha_4} + \Prob{\alpha_5}}$. 
+    \item What about the third qubit? Now we must view its probability as conditional on the outcome of the other two qubits.
+    \item Suppose the first two bits measure \ket{\alert{10}}. All but two terms vanish to~$0$, and we must renormalize the system using $\alert{k}=\sqrt{\Prob{\alpha_4} + \Prob{\alpha_5}}$. 
 \end{itemize}
 
     
@@ -217,7 +217,7 @@
     \begin{itemize}
         \item $\Prob{\ExpPhase{\lambda}\cos(\theta/2)} = 1\times\Prob{\cos(\theta/2)} = \Prob{\cos(\theta/2)}$
     \end{itemize}
-    \item<9-> Similarly, the probability of outcome \ket{1} matches \QState{\relax}
+    \item<9-> Similarly, the probability of outcome \ket{1} matches \QState{\relax}.
 \end{itemize}
 }
 
@@ -426,7 +426,7 @@ so we must have \[ \Prob{\alpha_{x}} + \Prob{\beta{x}} = 1 \]
 \only<22>{%
 \begin{itemize}
     \item If Alice can tell Bob her measurements for
-\ket{xy} then Bob knows what transformations, if any to apply to his qubit to obtain Alice's \QState{x}.
+\ket{xy} then Bob knows what transformations, if any, to apply to his qubit to obtain Alice's \QState{x}.
 \item This takes classical communication from Alice to Bob.
 \item Note Alice's loss of her \QState{x} when she measures \ket{x} as \ket{0} or \ket{1}.
 \item Teleportation is instantaneous across any distance, but Bob needs two classical bits of information from Alice to realize \QState{x}.
