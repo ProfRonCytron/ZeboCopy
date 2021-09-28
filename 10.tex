@@ -7,7 +7,7 @@
         \item Amazingly, there are no wires or other communication fabric between Alice and Bob.  The state is truly teleported from one location to another.
         \item Recalling the no-cloning theorem, we should not be surprised that Alice will no longer have the state.
         \item Alice and Bob can be arbitrarily far apart, but actions involving entanglement take effect immediately.
-        \item However, it turns out Alice has to communicate two (classical) bits of information to Bob for him to truly obtain Alice's state at his location.  That information cannot travel faster than the speed of light.
+        \item However, it turns out Alice has to communicate some (classical) bits of information to Bob for him to truly obtain Alice's state at his location.  That information cannot travel faster than the speed of light.
     \end{itemize}
 \end{frame}
 
@@ -17,7 +17,7 @@
 \begin{itemize}[<+->]
     \item Consider the 3-qubit quantum system
     \begin{align*}
-  \visible<6->{\alert{k} \times }\QState{\relax}
+  \visible<6->{\alert{k} \times }\QState{\alt<6->{p}{\relax}}
    = & \visible<1-5>{\alpha_{0} \ket{000}
   +  \alpha_{1} \ket{001}
   +  \alpha_{2} \ket{010}
@@ -38,7 +38,6 @@
 \end{frame}
 
 \begin{frame}{Partial measurement}{Example}
-Ron note:  go slower in developing the renormalization
 \Vskip{-4em}\begin{align*}
   \QState{\relax}
    = & \alpha_{0} \ket{000}
@@ -48,19 +47,38 @@ Ron note:  go slower in developing the renormalization
   +  & \alpha_{4} \ket{100}
   +  \alpha_{5} \ket{101}
   +  \alpha_{6} \ket{110}
-  +  \alpha_{7} \ket{111} \\
-  \Prob{\alpha_{4}} & =0.250 \\
-       \Prob{\alpha_{5}} & = 0.125
+  +  \alpha_{7} \ket{111}
     \end{align*}
-\Vskip{-3em}\begin{itemize}
-   \item The sum of the other amplitudes' probabilities is~$0.625$.
-   \item A partial measurement of the first two qubits as \ket{10} collapses the system into the state
-   \[
-   \frac{\alpha_{4}\ket{100} + \alpha_{5}\ket{101}}{\sqrt{0.375}}
-   \]
-   \item We subsequently measure \ket{100} with probability $\frac{250}{375}=\frac{2}{3}$ and \ket{101} with probability $\frac{1}{3}$
-   \item As in the system before partial measurement, we are still twice as likely to see~\ket{100} as~\ket{101}.
-\end{itemize}
+\Vskip{-3em}\TwoColumns{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> As usual, each coefficient~$\alpha_i$ is a complex value.
+    \item<2-> For this example, we assume the magnitudes of~$\alpha_4$ and~$\alpha_5$ are as shown.
+    \item<3-> The sum of all other amplitudes is then as shown.
+\end{itemize}}%
+\only<4->{%
+\begin{itemize}
+    \item<4->  A partial measurement of the first two qubits as \ket{10} collapses the system into the shown state.
+    \item<5-> We subsequently measure \ket{100} with probability $\frac{250}{375}=\frac{2}{3}$ and \ket{101} with probability $\frac{1}{3}$
+   \item<5-> As in the system before partial measurement, we are still twice as likely to see~\ket{100} as~\ket{101}.
+\end{itemize}}%
+}{%
+
+\Vskip{-3em}\begin{align*}
+\visible<2->{%
+\Prob{\alpha_{4}} & =0.250 \\
+       \Prob{\alpha_{5}} & = 0.125 \\}
+\visible<3->{%
+\sum_{i\in \Set{0,1,2,3,6,7}} \Prob{\alpha_{i}} &= 0.625 \\
+}
+\visible<4->{%
+\alert{k}\times \QState{p} &= \alpha_{4}\ket{100} + \alpha_{5}\ket{101} \\
+\alert{k} &= \sqrt{0.375} \\
+}
+\visible<5->{%
+\QState{p} &= \frac{\alpha_{4}\ket{100} +\alpha_{5}\ket{101}}{\sqrt{0.375}}
+}
+\end{align*}}
     
 \end{frame}
 
