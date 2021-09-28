@@ -92,7 +92,7 @@
     \item We know from the No Cloning Theorem that Alice cannot copy an arbitrary quantum state for herself, let alone make a copy to give to Bob.
     \item What could we do to send a quantum state?
     \begin{itemize}
-    \item So she could physically ship her qubit to Bob via UPS.~\footnote{Unitary Photon Service}
+    \item She could physically ship her qubit to Bob via UPS.~\footnote{\visible<4->{Unitary Photon Service}}
     \item Entanglement links the fate of two quantum bits.  Maybe we can use that property to \emph{teleport} a quantum state from Alice to Bob.
     \item Because cloning is not possible, we expect that Alice will lose her qubit's state in sending it to Bob.
     \end{itemize}
@@ -123,7 +123,7 @@
 \BigSkip{}
 {\small\setlength{\tabcolsep}{2pt}
 \begin{tabular}{r@{\mbox{ }}rlcrl}
-\QState{A} & \multicolumn{5}{l}{\QState{B}} \\
+\QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} \\
 \visible<9->{\ket{0}}\visible<11->{& \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} \\}
 \visible<12->{\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1}}
@@ -143,7 +143,7 @@
 \begin{itemize}
     \item<4-> Alice effects a change to her qubit, represented here by \NamedGate{U}.
     \item<5-> Recall generally
-    \[U = \UGate{} \]
+    \[\NamedGate{U} = \UGate{} \]
 \end{itemize}}%
 \only<7-8>{%
 \Vskip{-3em}\begin{align*}
@@ -157,10 +157,10 @@
     \item<9-> Suppose she sees \alt<9-11>{\ket{0}}{\ket{1}}.
     \item<10-> Then the system collapses as shown.
     \item<11-> Bob's state is then
-    \alt<11>{\[ \UGateA{}\ket{0} + \UGateB{}\ket{1} \]}{%
+    \alt<11>{\[ \RootTwo{}\left(\UGateA{}\ket{0} + \UGateB{}\ket{1}\right) \]}{%
     \begin{align*}
-    & = \UGateC{}\ket{0} + \UGateD{}\ket{1} \\
-   & =  \ExpPhase{\phi}\left( \sin(\theta/2)\ket{0}
+    & = \frac{\UGateC{}\ket{0} + \UGateD{}\ket{1}}{\sqrt{2}} \\
+   & =  \frac{\ExpPhase{\phi}}{\sqrt{2}}\left( \sin(\theta/2)\ket{0}
    + \ExpPhase{\lambda}\cos(\theta/2)\right) 
     \end{align*}
     }
