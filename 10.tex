@@ -200,7 +200,7 @@
 {\setlength{\tabcolsep}{2pt}
 \begin{center}
 \begin{tabular}{r@{\hbox to 4ex{\hss}}rlcrll}
-\QState{A} & \multicolumn{5}{l}{\QState{B}} &  \\
+\QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} &  \\
 \ket{0} & \textcolor<8>{NavyBlue}{\UGateA{}}& \ket{0} & $+$ &  \textcolor<9>{Green}{\UGateB{}} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
 \ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1} & 
@@ -209,37 +209,50 @@
 \only<1-3>{%
 \begin{itemize}
     \item<1-> If Bob measures \QState{B}, then the probability of seeing \ket{0} depends on the measured value of \QState{A}.
+    \only<1>{%
+    \begin{itemize}
+        \item If Alice sees \ket{0}, then Bob sees \ket{0} with probability $\Prob{\cos(\theta/2)}$.
+        \item Otherwise Bob sees \ket{0} with probability $\Prob{\sin(\theta/2)}$
+    \end{itemize}
+    }
     \item<2-> There is thus no information communicated from Alice to Bob.  The outcome of \QState{A} doesn't matter \emph{only when} $\theta=\frac{\pi}{2}$, but then Bob's outcomes are equally likely.
     \item<3-> For Bob to know the state of \QState{B}, Alice must send her measured result to Bob.  That information cannot travel faster than the speed of light.
 \end{itemize}}%
 \only<4-5>{%
 \begin{itemize}
-    \item<4-> Since Alice arranged for the effect of \NamedGate{U} to achieve \QState{A}, let's assume she intended to send Bob
-    $ \alert{\QState{\relax}} = \UGateA{}\ket{0} + \UGateB{}\ket{1}$.  If Bob hears that $\QState{A}=\ket{0}$, he does nothing to his qubit as $\QState{B}=\QState{\relax}$.
+    \item<4-> Since Alice arranged for the effect of \NamedGate{U} to achieve \QState{A}, let's assume \WLOG{} that she intended to send Bob
+    $ \alert{\QState{\relax}} = \UGateA{}\ket{0} + \UGateB{}\ket{1}$.  If Bob learns that $\QState{A}=\ket{0}$, he does nothing to his qubit as $\QState{B}=\QState{\relax}$.
     \item<5-> What must Bob do to realize \QState{\relax} for \QState{B} if Alice tells him she saw \ket{1} for \QState{A}?  We begin by ignoring phase.
 \end{itemize}
 }%
-\only<7->{%
+\only<6->{%
 {\setlength{\tabcolsep}{2pt}%
 \begin{center}
 \begin{tabular}{r@{$\ =\ $}rl@{$\ +\ $}rl}
-    \QState{B}& $\sin(\theta/2)$ & \ket{0}  
+    $\sqrt{2}\QState{B}$& $\sin(\theta/2)$ & \ket{0}  
    & $\ExpPhase{\lambda}\cos(\theta/2)$ &\ket{1} \\
-   \NamedGate{X}\QState{B}&\textcolor<8>{NavyBlue}{$\ExpPhase{\lambda}\cos(\theta/2)$}  & \ket{0}  
-   & \textcolor<9>{Green}{$\sin(\theta/2)$} &\ket{1} \\
+  \visible<7->{ $\textcolor<7>{OrangeRed}{\NamedGate{Z}}\textcolor<7>{NavyBlue}{\NamedGate{X}}\sqrt{2}\QState{B}$&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
+   & $-\sin(\theta/2)$ &\ket{1} \\
    &\textcolor<8>{NavyBlue}{$\cos(\theta/2)$}  & \ket{0}  
-   & \textcolor<9>{Green}{$\ExpNegPhase{\lambda}\sin(\theta/2)$} &\ket{1}
+   & \textcolor<9>{Green}{$-\textcolor<10>{purple}{\ExpNegPhase{\lambda}}\sin(\theta/2)$} &\ket{1}}
 \end{tabular}
 \end{center}}
 
+\only<6-9>{%
 \begin{itemize}
-    \item<7-> We need to exchange the amplitudes.
-    \item<8-> The probability of outcome \ket{0} now matches \QState{\relax}.
+    \item<6-> Bob's qubit's state if $\QState{A}=\ket{1}$
+    \item<7-> We need to \textcolor<7>{NavyBlue}{exchange the amplitudes} and \textcolor<7>{OrangeRed}{negate the second term}.
+    \item<8-> Bob now has the the same probability of measuring \ket{0} for his qubit as \QState{\relax}.
     \begin{itemize}
-        \item $\Prob{\ExpPhase{\lambda}\cos(\theta/2)} = 1\times\Prob{\cos(\theta/2)} = \Prob{\cos(\theta/2)}$
+    \item<9-> And similarly for measuring \ket{1}
     \end{itemize}
-    \item<9-> Similarly, the probability of outcome \ket{1} matches \QState{\relax}.
+\end{itemize}}
+\only<10->{%
+\begin{itemize}
+    \item<10-> Note however that the \textcolor<10>{purple}{phase} does not match \QState{\relax}.
+    \item<11->There is no unitary gate that can conjugate that phase without knowing $\lambda$.
 \end{itemize}
+}
 }
 
 \end{frame}
