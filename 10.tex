@@ -254,6 +254,22 @@
 \end{itemize}
 }
 }
+\end{frame}
+
+\begin{frame}{Summary so far}{Using only an EPR pair}
+
+\begin{itemize}[<+->]
+    \item Alice and Bob begin with the state $\RootTwo{}\left(\ket{00}+\ket{11}\right)$.
+    \item Alice and Bob can then separate.
+    \item Alice can develop a state on her quantum bit, characterized by some unitary gate \NamedGate{U}.  We assume Alice does not know the parameters of \NamedGate{U}.
+    \begin{itemize}
+        \item Otherwise, she could just phone those to Bob and he could create the state himself.
+    \end{itemize}
+    \item Alice measures her qubit with outcome \ket{0} or \ket{1}.
+    \item If tells Bob the outcome, then he can apply a gate to his qubit (or not) so that the probabilities of his measuring \ket{0} and \ket{1} match Alice's before she performed her measurement.
+    \item However, we cannot communicate phase information reliably using this scheme.
+    \item We can truly teleport if we include another qubit in the picture.
+\end{itemize}
 
 \end{frame}
 
@@ -467,4 +483,18 @@ so we must have \[ \Prob{\alpha_{x}} + \Prob{\beta{x}} = 1 \]
 \end{itemize}
 }
 }
+\end{frame}
+
+\begin{frame}{Summary}{Teleportation}
+
+\begin{itemize}
+    \item Alice has a qubit whose state \QState{A} she wants to send to Bob.
+    \item Alice and Bob share an EPR pair, and Bob expects eventually to have \QState{A} on his qubit of the pair.
+    \item With the appropriate quantum circuit, Alice measures her qubit with state \QState{A} and also measures her qubit of the EPR pair.
+    \item After she sends those results to Bob, he can reconstruct the state of Alice's qubit prior to measurement.
+    \item In this process, Alice loses her qubit \QState{A}.
+    \item The effect on entanglement happens immediately regardless of distance.
+    \item The transformations Bob must apply to his qubit depend on Alice's measurements, which cannot travel faster than the speed of light.
+\end{itemize}
+    
 \end{frame}
