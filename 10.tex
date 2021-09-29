@@ -14,23 +14,23 @@
 \section*{Partial Measurement}
 
 \begin{frame}{Partial measurements}{What happens when some bits are measured, but not all?}
-\begin{itemize}[<+->]
+\Vskip{-3em}\begin{itemize}[<+->]
     \item Consider the 3-qubit quantum system
     \begin{align*}
   \visible<6->{\alert{k} \times }\QState{\alt<6->{p}{\relax}}
-   = & \visible<1-5>{\alpha_{0} \ket{000}
-  +  \alpha_{1} \ket{001}
-  +  \alpha_{2} \ket{010}
-  +  \alpha_{3} \ket{011} }\\
-  +  & \alpha_{4} \ket{\alert<6->{10}0}
-  +  \alpha_{5} \ket{\alert<6->{10}1}
- \visible<1-5>{ +  \alpha_{6} \ket{110}
-  +  \alpha_{7} \ket{111}}
+   = & \visible<1-5>{\alpha_{0} \ket{\alert<3>{00}0}
+  +  \alpha_{1} \ket{\alert<3>{00}1}
+  +  \alpha_{2} \ket{\alert<3>{01}0}
+  +  \alpha_{3} \ket{\alert<3>{01}1} }\\
+  +  & \alpha_{4} \ket{\alert<3,6->{10}0}
+  +  \alpha_{5} \ket{\alert<3,6->{10}1}
+ \visible<1-5>{ +  \alpha_{6} \ket{\alert<3>{11}0}
+  +  \alpha_{7} \ket{\alert<3>{11}1}}
     \end{align*}
     \item We must have $\sum_{i=0}^{7} \Prob{\alpha_{i}} = 1$
-    \item What happens if we measure the first two qubits? 
+    \item What happens if we perform a \emph{partial measurement} of the system by measuring the \alert<3>{left two qubits}? 
     \item We obtain \ket{00}, \ket{01}, \ket{10}, or \ket{11} for those qubits.
-    \item What about the third qubit? Now we must view its probability as conditional on the outcome of the other two qubits.
+    \item What about the third qubit? We must scale the remaining wave amplitudes appropriately.
     \item Suppose the first two bits measure \ket{\alert{10}}. All but two terms vanish to~$0$, and we must renormalize the system using $\alert{k}=\sqrt{\Prob{\alpha_4} + \Prob{\alpha_5}}$. 
 \end{itemize}
 
@@ -101,7 +101,7 @@
 
 \end{frame}
 
-\begin{frame}{Harnessing entanglement}{Achieving teleportation}
+\begin{frame}{Harnessing entanglement}{Achieving teleportation, almost}
 \Vskip{-3.5em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \only<1-2>{%
 \adjustbox{valign=t}{\begin{quantikz}
