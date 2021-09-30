@@ -2,6 +2,26 @@
 
 \section{Overview}
 
+\begin{frame}{Overview}{What will we study here?}
+\begin{itemize}
+    \item We characterize the state of a quantum system.
+    \item Each state is a unit vector of complex numbers, one for each possible measurement outcome of the system.
+    \item Each complex number is a \emph{wave amplitude}, which determines
+    \begin{itemize}
+        \item the probability of measuring the associated outcome
+        \item how the state is affected by quantum gates
+    \end{itemize}
+    \item We initially investigate these ideas using photons and optical components.
+    \item The \href{https://lab.quantumflytrap.com/lab}{quantum games} website is a useful and fun way to explore these ideas.
+    \begin{itemize}
+        \item A simpler antecedent of that website is \href{http://play.quantumgame.io/}{here}.
+    \end{itemize}
+    
+    
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}{Orthogonality}{A set of mutually exclusive outcomes}
 \begin{itemize}
     \item A quantum computing system contains elements, such as electrons, ions, or photons, whose quantum behavior can be influenced to achieve computation.
@@ -361,14 +381,14 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \end{frame}
 
 \begin{frame}{The beam splitter, revisited}{It does more than we thought it did.}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
     \item<1-> The beam splitter places a photon in a superposition of two subsequent paths.
-    \item<2-> If the photon passes through the beam splitter, there is no change at all for the photon.   \visible<3->{It's as if the beam splitter is not there.}
-    \item<4-> However, if the beam splitter is reflected, some delay is experienced causing the wave nature of the photon to be \emph{shifted}.
+    \item<2-> If the photon passes through the beam splitter, there is no change at all for the photon.   \visible<3->{It's as if the beam splitter is absent.}
+    \item<4-> However, if the beam splitter reflects the photon, its \emph{phase} is affected: some delay is experienced causing the wave nature of the photon to be \emph{shifted}.
     
     \SmallSkip{}
-    The amount of shift depends on properties of~the splitter, such as its size and material.
+    The amount of phase shift depends on properties of~the splitter, such as its size and material.
 \end{itemize}
 }{%
 \Vskip{-4em}\begin{center}
