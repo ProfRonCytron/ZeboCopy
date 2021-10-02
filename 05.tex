@@ -2,6 +2,26 @@
 
 \section{Overview}
 
+\begin{frame}{Overview}{What will we study here?}
+\begin{itemize}
+    \item We characterize the state of a quantum system.
+    \item Each state is a unit vector of complex numbers, one for each possible measurement outcome of the system.
+    \item Each complex number is a \emph{wave amplitude}, which determines
+    \begin{itemize}
+        \item the probability of measuring the associated outcome
+        \item how the state is affected by quantum gates
+    \end{itemize}
+    \item We initially investigate these ideas using photons and optical components.
+    \item The \href{https://lab.quantumflytrap.com/lab}{quantum games} website is a useful and fun way to explore these ideas.
+    \begin{itemize}
+        \item A simpler antecedent of that website is \href{http://play.quantumgame.io/}{here}.
+    \end{itemize}
+    
+    
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}{Orthogonality}{A set of mutually exclusive outcomes}
 \begin{itemize}
     \item A quantum computing system contains elements, such as electrons, ions, or photons, whose quantum behavior can be influenced to achieve computation.
@@ -361,15 +381,27 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \end{frame}
 
 \begin{frame}{The beam splitter, revisited}{It does more than we thought it did.}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-5>{%
 \begin{itemize}
     \item<1-> The beam splitter places a photon in a superposition of two subsequent paths.
-    \item<2-> If the photon passes through the beam splitter, there is no change at all for the photon.   \visible<3->{It's as if the beam splitter is not there.}
-    \item<4-> However, if the beam splitter is reflected, some delay is experienced causing the wave nature of the photon to be \emph{shifted}.
+    \item<2-> If the photon passes through the beam splitter, there is no change at all for the photon.   \visible<3->{It's as if the beam splitter is absent.}
+    \item<4-> However, if the beam splitter reflects the photon, its \emph{phase} is affected: some delay is experienced causing the wave nature of the photon to be \emph{shifted}.
     
     \SmallSkip{}
-    The amount of shift depends on properties of~the splitter, such as its size and material.
-\end{itemize}
+    The amount of phase shift depends on properties of~the splitter, such as its size and material.
+\end{itemize}}%
+\only<6->{%
+\begin{TIKZP}
+\node at (0,0)
+    {\includegraphics[width=0.9\textwidth]{05/phaseshift.png}};
+\node at (-1.6,2.0) { \textcolor{blue}{not reflected}};
+\node at (1.7,2.0)  { \textcolor{purple}{reflected}};
+\end{TIKZP}
+\begin{center}
+{\small Thanks to Rick Roesler for this plot}
+\end{center}
+}
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=2.0]
@@ -379,8 +411,8 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
     \visible<1-2,4->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
 \end{TIKZP}
 \end{center}
-\visible<5>{%
-When reflected, we assume here that the photon experiences a delay of $\frac{\pi}{2}$ radians compared with one passing through the beam splitter.
+\visible<5->{%
+When reflected, we assume here that the photon experiences \textcolor<6->{purple}{a delay of $\frac{\pi}{2}$ radians} compared with \textcolor<6->{blue}{one passing through the beam splitter}.
 }
 }
 
@@ -405,9 +437,9 @@ When reflected, we assume here that the photon experiences a delay of $\frac{\pi
 \MZ{}
 \draw[color=red] (1,0.5) -- (2.5,0.5);
 \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\draw<2>[ultra thick,color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
+\draw<2>[ultra thick,color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-3.5);
 \draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
-\draw<3>[ultra thick,color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+\draw<3>[ultra thick,color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0) -- ++(0,-1.5);
 \draw<1,5->[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
 \draw<1-4>[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
 \end{TIKZP}
@@ -579,8 +611,8 @@ i & 1
 \end{TIKZP}
 \end{center}
 \only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{orange}{photon traveling east} and \visible<4->{\textcolor{NavyBlue}{photon traveling south}}}
-\only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{and \bbeta{} reflecting to the right.}}
-\only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} reflecting down} \only<10>{and \bbeta{} continuing down.}}
+\only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{and \bbeta{} reflecting to the right with a $\frac{\pi}{2}$ phase shift.}}
+\only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} reflecting down with a $\frac{\pi}{2}$ phase shift} \only<10>{and \bbeta{} continuing down.}}
 }%
 \only<11->{%
 We can model the effect of the beam splitter using the following matrix algebra:

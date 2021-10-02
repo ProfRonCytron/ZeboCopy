@@ -91,10 +91,10 @@ Here, we can easily find an input that matches a given output, but we cannot hop
 
 \begin{itemize}
     \item We don't know yet the true difficulty of this problem.
-    \item Classically, there is no polynomial-time algorithm for solving this problem.
+    \item Classically, there is as yet no polynomial-time algorithm for solving this problem.
 \item<5->
-As we will study, a quantum computer can solve this problem in polynomial time.
-\item<6>{Do you see a 3-digit number embedded in each of the factors?}
+As we will study, \alert{a quantum computer can solve this problem in polynomial time}.
+\item<6> \emph{Aside}: do you see a familiar (to my class) 3-digit number embedded in each of the factors?
 \end{itemize}
 }{
 \begin{itemize}
@@ -122,6 +122,10 @@ Some examples:
 \begin{itemize}
     \item $n$ two-position switches
     \item A \href{https://en.wikipedia.org/wiki/Combination_lock\#Single-dial_locks}{combination lock} with a dial of integers $1\ldots 2^{n/3}$.
+    \begin{itemize}
+        \item The input consists of three integers, each  a position on the dial.
+        \item The total number of combinations is then $\left(2^\frac{n}{3}\right)^3=2^{n}$.
+    \end{itemize}
 \end{itemize}}%
 \only<4->{%
 How much time does it take to find \SpecialX{x}?
@@ -172,7 +176,7 @@ The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/
 
 \begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log.}
 
-\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
+\Vskip{-3em}\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
 \All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}
 \All{Compute $5^{x}\bmod 23$}{I compute $A=5^{a}\bmod 23$.}{I compute $B=5^{b}\bmod 23$.}
 \All{}{I publish $A=17$.}{I publish $B=18$.}
@@ -182,7 +186,24 @@ The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/
 \All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}
 \end{ProtocolDialog}
 \OnlyRemark{2}{%
-It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key and nobody else can compute it efficiently unless they know $a$ or $b$.
+It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key and nobody else can compute it efficiently unless they know $a$ or $b$---unless they have a sufficiently large quantum computer.
 }
+    
+\end{frame}
+
+\begin{frame}{Summary}{And why should you study quantum computing?}
+
+\begin{itemize}
+    \item Computer scientists view problems and their algorithmic solutions through the lens of computational complexity.
+    \item We have seen some problems here for which there are (as yet) no efficient algorithms for solving those problems on a classical computer.
+    \item We will study quantum computing approaches to solving those problems efficiently.
+    \item So$\ldots$why study quantum computing?
+    \begin{itemize}
+        \item Quantum mechanics allows us to reason about the behavior of small particles.
+        \item Such behavior can be leveraged to compute useful information.
+        \item We have examples of problems that appear to be very difficult on a classical computer but which have efficient solutions on a quantum computer.
+    \end{itemize}
+\end{itemize}
+
     
 \end{frame}

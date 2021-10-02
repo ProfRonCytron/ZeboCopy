@@ -1,4 +1,4 @@
-\SetTitle{10}{Teleportation}{Sending a qubit state requires a phone call}{10}
+\SetTitle{10}{Teleportation}{Sending a qubit's state requires a phone call}{10}
 
 \section*{Overview}
 \begin{frame}{Overview}
@@ -7,30 +7,30 @@
         \item Amazingly, there are no wires or other communication fabric between Alice and Bob.  The state is truly teleported from one location to another.
         \item Recalling the no-cloning theorem, we should not be surprised that Alice will no longer have the state.
         \item Alice and Bob can be arbitrarily far apart, but actions involving entanglement take effect immediately.
-        \item However, it turns out Alice has to communicate two (classical) bits of information to Bob for him to truly obtain Alice's state at his location.  That information cannot travel faster than the speed of light.
+        \item However, it turns out Alice has to communicate some (classical) bits of information to Bob for him to truly obtain Alice's state at his location.  That information cannot travel faster than the speed of light.
     \end{itemize}
 \end{frame}
 
 \section*{Partial Measurement}
 
 \begin{frame}{Partial measurements}{What happens when some bits are measured, but not all?}
-\begin{itemize}[<+->]
+\Vskip{-3em}\begin{itemize}[<+->]
     \item Consider the 3-qubit quantum system
     \begin{align*}
-  \visible<6->{\alert{k} \times }\QState{\relax}
-   = & \visible<1-5>{\alpha_{0} \ket{000}
-  +  \alpha_{1} \ket{001}
-  +  \alpha_{2} \ket{010}
-  +  \alpha_{3} \ket{011} }\\
-  +  & \alpha_{4} \ket{\alert<6->{10}0}
-  +  \alpha_{5} \ket{\alert<6->{10}1}
- \visible<1-5>{ +  \alpha_{6} \ket{110}
-  +  \alpha_{7} \ket{111}}
+  \visible<6->{\alert{k} \times }\QState{\alt<6->{p}{\relax}}
+   = & \visible<1-5>{\alpha_{0} \ket{\alert<3>{00}0}
+  +  \alpha_{1} \ket{\alert<3>{00}1}
+  +  \alpha_{2} \ket{\alert<3>{01}0}
+  +  \alpha_{3} \ket{\alert<3>{01}1} }\\
+  +  & \alpha_{4} \ket{\alert<3,6->{10}0}
+  +  \alpha_{5} \ket{\alert<3,6->{10}1}
+ \visible<1-5>{ +  \alpha_{6} \ket{\alert<3>{11}0}
+  +  \alpha_{7} \ket{\alert<3>{11}1}}
     \end{align*}
     \item We must have $\sum_{i=0}^{7} \Prob{\alpha_{i}} = 1$
-    \item What happens if we measure the first two qubits? 
+    \item What happens if we perform a \emph{partial measurement} of the system by measuring the \alert<3>{left two qubits}? 
     \item We obtain \ket{00}, \ket{01}, \ket{10}, or \ket{11} for those qubits.
-    \item What about the third qubit? Now we must view its probability as conditional on the outcome of the other two qubits.
+    \item What about the third qubit? We must scale the remaining wave amplitudes appropriately.
     \item Suppose the first two bits measure \ket{\alert{10}}. All but two terms vanish to~$0$, and we must renormalize the system using $\alert{k}=\sqrt{\Prob{\alpha_4} + \Prob{\alpha_5}}$. 
 \end{itemize}
 
@@ -38,7 +38,6 @@
 \end{frame}
 
 \begin{frame}{Partial measurement}{Example}
-
 \Vskip{-4em}\begin{align*}
   \QState{\relax}
    = & \alpha_{0} \ket{000}
@@ -48,19 +47,38 @@
   +  & \alpha_{4} \ket{100}
   +  \alpha_{5} \ket{101}
   +  \alpha_{6} \ket{110}
-  +  \alpha_{7} \ket{111} \\
-  \Prob{\alpha_{4}} & =0.250 \\
-       \Prob{\alpha_{5}} & = 0.125
+  +  \alpha_{7} \ket{111}
     \end{align*}
-\Vskip{-3em}\begin{itemize}
-   \item The sum of the other amplitudes' probabilities is~$0.625$.
-   \item A partial measurement of the first two qubits as \ket{10} collapses the system into the state
-   \[
-   \frac{\alpha_{4}\ket{100} + \alpha_{5}\ket{101}}{\sqrt{0.375}}
-   \]
-   \item We subsequently measure \ket{100} with probability $\frac{250}{375}=\frac{2}{3}$ and \ket{101} with probability $\frac{1}{3}$
-   \item As in the system before partial measurement, we are still twice as likely to see~\ket{100} as~\ket{101}.
-\end{itemize}
+\Vskip{-3em}\TwoColumns{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> As usual, each coefficient~$\alpha_i$ is a complex value.
+    \item<2-> For this example, we assume the magnitudes of~$\alpha_4$ and~$\alpha_5$ are as shown.
+    \item<3-> The sum of all other amplitudes is then as shown.
+\end{itemize}}%
+\only<4->{%
+\begin{itemize}
+    \item<4->  A partial measurement of the first two qubits as \ket{10} collapses the system into the shown state.
+    \item<5-> We subsequently measure \ket{100} with probability $\frac{250}{375}=\frac{2}{3}$ and \ket{101} with probability $\frac{1}{3}$
+   \item<5-> As in the system before partial measurement, we are still twice as likely to see~\ket{100} as~\ket{101}.
+\end{itemize}}%
+}{%
+
+\Vskip{-3em}\begin{align*}
+\visible<2->{%
+\Prob{\alpha_{4}} & =0.250 \\
+       \Prob{\alpha_{5}} & = 0.125 \\}
+\visible<3->{%
+\sum_{i\in \Set{0,1,2,3,6,7}} \Prob{\alpha_{i}} &= 0.625 \\
+}
+\visible<4->{%
+\alert{k}\times \QState{p} &= \alpha_{4}\ket{100} + \alpha_{5}\ket{101} \\
+\alert{k} &= \sqrt{0.375} \\
+}
+\visible<5->{%
+\QState{p} &= \frac{\alpha_{4}\ket{100} +\alpha_{5}\ket{101}}{\sqrt{0.375}}
+}
+\end{align*}}
     
 \end{frame}
 
@@ -72,15 +90,18 @@
 \begin{itemize}[<+->]
     \item The premise is that Alice has some state \QState{A} that she wants to send to distant Bob as \QState{B}.
     \item We know from the No Cloning Theorem that Alice cannot copy an arbitrary quantum state for herself, let alone make a copy to give to Bob.
-    \item So she could physically ship her qubit to Bob via UPS.~\footnote{Unitary Photon Service}
+    \item What could we do to send a quantum state?
+    \begin{itemize}
+    \item She could physically ship her qubit to Bob via UPS.~\footnote{\visible<4->{Unitary Photon Service}}
     \item Entanglement links the fate of two quantum bits.  Maybe we can use that property to \emph{teleport} a quantum state from Alice to Bob.
     \item Because cloning is not possible, we expect that Alice will lose her qubit's state in sending it to Bob.
+    \end{itemize}
     \item If we use entanglement, the information is sent possibly faster than the speed of light.  So there may be a catch somewhere.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Harnessing entanglement}{Achieving teleportation}
+\begin{frame}{Harnessing entanglement}{Achieving teleportation, almost}
 \Vskip{-3.5em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \only<1-2>{%
 \adjustbox{valign=t}{\begin{quantikz}
@@ -102,7 +123,7 @@
 \BigSkip{}
 {\small\setlength{\tabcolsep}{2pt}
 \begin{tabular}{r@{\mbox{ }}rlcrl}
-\QState{A} & \multicolumn{5}{l}{\QState{B}} \\
+\QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} \\
 \visible<9->{\ket{0}}\visible<11->{& \UGateA{}& \ket{0} & $+$ &  \UGateB{} & \ket{1} \\}
 \visible<12->{\ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1}}
@@ -122,7 +143,7 @@
 \begin{itemize}
     \item<4-> Alice effects a change to her qubit, represented here by \NamedGate{U}.
     \item<5-> Recall generally
-    \[U = \UGate{} \]
+    \[\NamedGate{U} = \UGate{} \]
 \end{itemize}}%
 \only<7-8>{%
 \Vskip{-3em}\begin{align*}
@@ -136,10 +157,10 @@
     \item<9-> Suppose she sees \alt<9-11>{\ket{0}}{\ket{1}}.
     \item<10-> Then the system collapses as shown.
     \item<11-> Bob's state is then
-    \alt<11>{\[ \UGateA{}\ket{0} + \UGateB{}\ket{1} \]}{%
+    \alt<11>{\[ \RootTwo{}\left(\UGateA{}\ket{0} + \UGateB{}\ket{1}\right) \]}{%
     \begin{align*}
-    & = \UGateC{}\ket{0} + \UGateD{}\ket{1} \\
-   & =  \ExpPhase{\phi}\left( \sin(\theta/2)\ket{0}
+    &  \frac{\UGateC{}\ket{0} + \UGateD{}\ket{1}}{\sqrt{2}} \\
+   & =  \frac{\ExpPhase{\phi}}{\sqrt{2}}\left( \sin(\theta/2)\ket{0}
    + \ExpPhase{\lambda}\cos(\theta/2)\right) 
     \end{align*}
     }
@@ -179,7 +200,7 @@
 {\setlength{\tabcolsep}{2pt}
 \begin{center}
 \begin{tabular}{r@{\hbox to 4ex{\hss}}rlcrll}
-\QState{A} & \multicolumn{5}{l}{\QState{B}} &  \\
+\QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} &  \\
 \ket{0} & \textcolor<8>{NavyBlue}{\UGateA{}}& \ket{0} & $+$ &  \textcolor<9>{Green}{\UGateB{}} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
 \ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1} & 
@@ -188,38 +209,67 @@
 \only<1-3>{%
 \begin{itemize}
     \item<1-> If Bob measures \QState{B}, then the probability of seeing \ket{0} depends on the measured value of \QState{A}.
+    \only<1>{%
+    \begin{itemize}
+        \item If Alice sees \ket{0}, then Bob sees \ket{0} with probability $\Prob{\cos(\theta/2)}$.
+        \item Otherwise Bob sees \ket{0} with probability $\Prob{\sin(\theta/2)}$
+    \end{itemize}
+    }
     \item<2-> There is thus no information communicated from Alice to Bob.  The outcome of \QState{A} doesn't matter \emph{only when} $\theta=\frac{\pi}{2}$, but then Bob's outcomes are equally likely.
     \item<3-> For Bob to know the state of \QState{B}, Alice must send her measured result to Bob.  That information cannot travel faster than the speed of light.
 \end{itemize}}%
 \only<4-5>{%
 \begin{itemize}
-    \item<4-> Since Alice arranged for the effect of \NamedGate{U} to achieve \QState{A}, let's assume she intended to send Bob
-    $ \alert{\QState{\relax}} = \UGateA{}\ket{0} + \UGateB{}\ket{1}$.  If Bob hears that $\QState{A}=\ket{0}$, he does nothing to his qubit as $\QState{B}=\QState{\relax}$.
+    \item<4-> Since Alice arranged for the effect of \NamedGate{U} to achieve \QState{A}, let's assume \WLOG{} that she intended to send Bob
+    $ \alert{\QState{\relax}} = \UGateA{}\ket{0} + \UGateB{}\ket{1}$.  If Bob learns that $\QState{A}=\ket{0}$, he does nothing to his qubit as $\QState{B}=\QState{\relax}$.
     \item<5-> What must Bob do to realize \QState{\relax} for \QState{B} if Alice tells him she saw \ket{1} for \QState{A}?  We begin by ignoring phase.
 \end{itemize}
 }%
-\only<7->{%
+\only<6->{%
 {\setlength{\tabcolsep}{2pt}%
 \begin{center}
 \begin{tabular}{r@{$\ =\ $}rl@{$\ +\ $}rl}
-    \QState{B}& $\sin(\theta/2)$ & \ket{0}  
+    $\sqrt{2}\QState{B}$& $\sin(\theta/2)$ & \ket{0}  
    & $\ExpPhase{\lambda}\cos(\theta/2)$ &\ket{1} \\
-   \NamedGate{X}\QState{B}&\textcolor<8>{NavyBlue}{$\ExpPhase{\lambda}\cos(\theta/2)$}  & \ket{0}  
-   & \textcolor<9>{Green}{$\sin(\theta/2)$} &\ket{1} \\
+  \visible<7->{ $\textcolor<7>{OrangeRed}{\NamedGate{Z}}\textcolor<7>{NavyBlue}{\NamedGate{X}}\sqrt{2}\QState{B}$&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
+   & $-\sin(\theta/2)$ &\ket{1} \\
    &\textcolor<8>{NavyBlue}{$\cos(\theta/2)$}  & \ket{0}  
-   & \textcolor<9>{Green}{$\ExpNegPhase{\lambda}\sin(\theta/2)$} &\ket{1}
+   & \textcolor<9>{Green}{$-\textcolor<10>{purple}{\ExpNegPhase{\lambda}}\sin(\theta/2)$} &\ket{1}}
 \end{tabular}
 \end{center}}
 
+\only<6-9>{%
 \begin{itemize}
-    \item<7-> We need to exchange the amplitudes.
-    \item<8-> The probability of outcome \ket{0} now matches \QState{\relax}.
+    \item<6-> Bob's qubit's state if $\QState{A}=\ket{1}$
+    \item<7-> We need to \textcolor<7>{NavyBlue}{exchange the amplitudes} and \textcolor<7>{OrangeRed}{negate the second term}.
+    \item<8-> Bob now has the the same probability of measuring \ket{0} for his qubit as \QState{\relax}.
     \begin{itemize}
-        \item $\Prob{\ExpPhase{\lambda}\cos(\theta/2)} = 1\times\Prob{\cos(\theta/2)} = \Prob{\cos(\theta/2)}$
+    \item<9-> And similarly for measuring \ket{1}
     \end{itemize}
-    \item<9-> Similarly, the probability of outcome \ket{1} matches \QState{\relax}.
+\end{itemize}}
+\only<10->{%
+\begin{itemize}
+    \item<10-> Note however that the \textcolor<10>{purple}{phase} does not match \QState{\relax}.
+    \item<11->There is no unitary gate that can conjugate that phase without knowing $\lambda$.
 \end{itemize}
 }
+}
+\end{frame}
+
+\begin{frame}{Summary so far}{Using only an EPR pair}
+
+\begin{itemize}[<+->]
+    \item Alice and Bob begin with the state $\RootTwo{}\left(\ket{00}+\ket{11}\right)$.
+    \item Alice and Bob can then separate.
+    \item Alice can develop a state on her quantum bit, characterized by some unitary gate \NamedGate{U}.  We assume Alice does not know the parameters of \NamedGate{U}.
+    \begin{itemize}
+        \item Otherwise, she could just phone those to Bob and he could create the state himself.
+    \end{itemize}
+    \item Alice measures her qubit with outcome \ket{0} or \ket{1}.
+    \item If tells Bob the outcome, then he can apply a gate to his qubit (or not) so that the probabilities of his measuring \ket{0} and \ket{1} match Alice's before she performed her measurement.
+    \item However, we cannot communicate phase information reliably using this scheme.
+    \item We can truly teleport if we include another qubit in the picture.
+\end{itemize}
 
 \end{frame}
 
@@ -433,4 +483,18 @@ so we must have \[ \Prob{\alpha_{x}} + \Prob{\beta{x}} = 1 \]
 \end{itemize}
 }
 }
+\end{frame}
+
+\begin{frame}{Summary}{Teleportation}
+
+\begin{itemize}
+    \item Alice has a qubit whose state \QState{A} she wants to send to Bob.
+    \item Alice and Bob share an EPR pair, and Bob expects eventually to have \QState{A} on his qubit of the pair.
+    \item With the appropriate quantum circuit, Alice measures her qubit with state \QState{A} and also measures her qubit of the EPR pair.
+    \item After she sends those results to Bob, he can reconstruct the state of Alice's qubit prior to measurement.
+    \item In this process, Alice loses her qubit \QState{A}.
+    \item The effect on entanglement happens immediately regardless of distance.
+    \item The transformations Bob must apply to his qubit depend on Alice's measurements, which cannot travel faster than the speed of light.
+\end{itemize}
+    
 \end{frame}

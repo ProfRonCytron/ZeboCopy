@@ -83,6 +83,36 @@ We next examine a more concise and visually compelling definition of a qubit.
     
 \end{frame}
 
+\begin{frame}{From polarizing filters to a sphere}{The angular separation between the basis states changes.}
+\Vskip{-3em}\TwoColumns{%
+\begin{itemize}
+    \item<1-> With polarizing filters, our bases were horiziontal \visible<2->{and vertical, so they were separated by \Degrees{90}.}
+    \item<3-> We imposed a \Degrees{90} angular separation between these bases logically as well.
+    \item<4-> We are about to use a \emph{sphere} to capture quantum state.  To use the entire sphere, we locate \ket{0} at the north pole and \ket{1} at the south pole.
+    \item<5-> In that depiction, the basis states are separated by \Degrees{180}.
+\end{itemize}
+}{%
+\Vskip{-3em}\begin{center}
+\begin{TIKZP}
+\visible<3->{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<1->{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2->{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+\visible<4->{%
+\begin{center}
+    \begin{BlochSphere}[scale=1]{60}{115}
+    \BlochSpherePhiTheta{}
+     \TZPoint{0,0,1}{\ket{0}}{right}
+     \TZPoint{0,0,-1}{\ket{1}}{below}
+    \end{BlochSphere}
+\end{center}}
+}
+\end{frame}
+
 \begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far.}
 \[ \Bloch{\theta}{\phi} \]
 \begin{itemize}
@@ -103,7 +133,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \end{itemize} 
 \end{frame}
 
-\begin{frame}{The Bloch sphere}{Our two angular parameters can imply a point on the surface of a sphere.}
+\begin{frame}{The Bloch sphere}{Our two angular parameters determine a point on the unit sphere.}
 \TwoColumns{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
 \begin{itemize}
@@ -131,7 +161,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{itemize}
   \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  The choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.
   \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$.
-  \item<4-> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$, but the formula might make you think otherwise.
+  \item<4-> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$.  How can this be?
 \end{itemize}
 }{%
 \only<1-4>{%
@@ -149,7 +179,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{BlochSphere}}%
 \only<5>{%
 \begin{itemize}
-\item However, with $0$ as the amplitude on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
+\item With $0$ as the amplitude on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
   \ExpPhase{(-\textcolor{OrangeRed}{\phi})} on \ket{\psi}.
 \item Global phases can be ignored as they do not affect measurements or interactions.
 \end{itemize}
@@ -291,9 +321,9 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
-\begin{frame}{Antipodal points are orthogonal}{Leave as exercise?}
-\ToDo{include or not?}
-\end{frame}
+%% \begin{frame}{Antipodal points are orthogonal}{Leave as exercise?}
+%% \ToDo{include or not?}
+%% \end{frame}
 
 \section{The Pauli matrices}
 
