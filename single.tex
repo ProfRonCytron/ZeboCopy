@@ -529,6 +529,49 @@
 \ensuremath{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}}
 \def\UGate{%
 \SQBG{\relax}{\UGateA{}}{\UGateB{}}{\UGateC{}}{\UGateD{}}}%
+\newenvironment{BBKey}[0]{%
+\def\STD{%
+\begin{tikzpicture}[scale=0.35]
+\SquareOutline{}
+\draw[ultra thick,purple] (0,0.5) -- (1,0.5);
+\draw[ultra thick,purple] (0.5,0) -- (0.5,1);
+\end{tikzpicture}}%
+\def\HDM{%
+\begin{tikzpicture}[scale=0.30]
+\SquareOutline{}
+\draw[ultra thick,purple] (0,0) -- (1,1);
+\draw[ultra thick,purple] (0,1) -- (1,0);
+\end{tikzpicture}}%
+\def\BBUp{%
+\begin{tikzpicture}[scale=0.30]
+\SquareOutline{}
+\draw[->,thick,purple] (0.5,0) -- (0.5,1);
+\end{tikzpicture}}%
+\def\BBRt{%
+\begin{tikzpicture}[scale=0.30]
+\SquareOutline{}
+\draw[->,thick,purple] (0,0.5) -- (1,0.5);
+\end{tikzpicture}}%
+\def\BBNe{%
+\begin{tikzpicture}[scale=0.30]
+\SquareOutline{}
+\draw[->,thick,purple] (0,0) -- (1,1);
+\end{tikzpicture}}%
+\def\BBSe{%
+\begin{tikzpicture}[scale=0.30]
+\SquareOutline{}
+\draw[->,thick,purple] (0,1) -- (1,0);
+\end{tikzpicture}}%
+\def\BBBasis{%
+\begin{tabular}{c|c|c}
+Basis & 0 & 1 \\
+\hline
+\STD{} & \BBUp{} & \BBRt{} \\
+\HDM{} & \BBNe{} & \BBSe{}
+\end{tabular}
+}%
+}{%
+}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}

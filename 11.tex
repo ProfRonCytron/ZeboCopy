@@ -3,6 +3,11 @@
 \section*{Overview}
 
 \begin{frame}{Overview}{What will we study here?}
+
+\begin{itemize}
+    \item other stuff
+    \item Quantum devices for key distribution \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#Implementations}{have been built}.
+\end{itemize}
     
 \end{frame}
 
@@ -33,6 +38,7 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
     \item Eve, the evesdropper, can determine $a$ and $b$ if she can efficiently solve the \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete log} problem.
     \item A quantum computer can do that!
     \item Most companies are therefore interested in \href{https://en.wikipedia.org/wiki/Post-quantum_cryptography}{post-quantum cryptography}.
+    \item Quantum key-distribution machines \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#Implementations}{have been built}.
 \end{itemize}
 \end{frame}
 
@@ -68,5 +74,65 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
     }
     \item<4-> Alice and Bob now share a key that nobody else (probably) knows.
 \end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}{BB84}{Notation}
+\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{BBKey}
+
+To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{other presentations of this material}, we use the following notation:
+    \begin{description}
+     \item<1->[\STD{}] denotes the standard basis, depicted to the right.  Measurements in this basis are
+     \ket{0} and \ket{1}, with symbols \BBUp{} and \BBRt{},
+     respectively.  These measurements will be interpreted as bits $0$ and $1$, respectively
+     \item<2->[\HDM{}] denotes the \emph{Hadamard} basis.  Measurements in this basis are \ket{+} and \ket{-},
+     with symbols \BBNe{} and \BBSe{}, respectively.  These measurements will be interpreted as bits $0$ and $1$, respectively.
+    \end{description}
+\end{BBKey}}{%
+\begin{center}
+\begin{TIKZP}
+\draw<1->[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{1}};
+\draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{0}};
+\draw<2->[->,ultra thick] (0,0) -- (45:1) node[above] {\ket{+}};
+\draw<2->[->,ultra thick] (0,0) -- (-45:1) node[below] {\ket{-}};
+\end{TIKZP}
+\MedSkip{}
+\visible<3->{%
+\begin{BBKey}
+\BBBasis{}
+\end{BBKey}}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{BB84 protocol}{How does it work?}
+\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{center}
+    \begin{tabular}{r|cccc}
+    State & \multicolumn{4}{|c}{Value Sent}  \\ \hline
+    1     \\
+    2     \\
+    3
+    \end{tabular}
+\end{center}
+\begin{BBKey}
+\begin{itemize}
+    \item<1-> Alice randomly picks a basis \STD{} or \HDM{}.
+    \item<2-> Alice randomly generates $0$ or$1$ in that basis, using the table shown to the right.
+    \item<3-> Bob receives the state and then randomly decides to measure the state in \STD{} or \HDM{}.
+    \begin{itemize}
+        \item Half the time, he will agree with Alice's basis, and his measurement will yield the state Alice sent.
+        \item Half the time, he will disagree with Alice's basis, and then his measurement is equally likely to be $0$ or $1$.
+    \end{itemize}
+\end{itemize}
+\end{BBKey}
+}{%
+\begin{BBKey}
+\begin{center}
+    \BBBasis{}
+\end{center}
+\end{BBKey}
 }
 \end{frame}
