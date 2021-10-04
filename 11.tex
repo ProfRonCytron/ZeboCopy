@@ -1,0 +1,72 @@
+\SetTitle{11}{Key distribution}{Quantum advantages here}{11}
+
+\section*{Overview}
+
+\begin{frame}{Overview}{What will we study here?}
+    
+\end{frame}
+
+\section*{Classical exchange}
+
+\begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log.}
+
+\Vskip{-3em}\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
+\visible<1->{\All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}}
+\visible<2->{\All{Compute $5^{x}\bmod 23$}{I compute $A=5^{a}\bmod 23$.}{I compute $B=5^{b}\bmod 23$.}}
+\visible<3->{\All{}{I publish $A=17$.}{I publish $B=18$.}}
+\visible<4->{\All{Everybody hears:}{$B=18$}{$A=17$.}}
+\visible<5->{\All{}{I compute $B^{a}\bmod 23$.}{I compute $A^{b}\bmod 23$.}}
+\visible<6->{\All{}{I obtain $6=18^{7}\bmod 23$.}{I obtain $6=17^{12}\bmod 23$.}}
+\visible<7->{\All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}}
+\end{ProtocolDialog}
+\OnlyRemark{8}{%
+It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key and nobody else can compute it efficiently unless they know $a$ or $b$---unless they have a sufficiently large quantum computer.
+}
+    
+\end{frame}
+
+\begin{frame}{Remarks on Diffie--Hellman}
+\begin{itemize}[<+->]
+    \item The inventors were recognized in 2015 with the \href{https://awards.acm.org/about/2015-turing}{Turing award}.
+    \item The shared secret is used sufficiently briefly that attempts to guess it will not pay off.
+    \item The secrets $a$ and $b$ can be randomly generated.
+    \item Eve, the evesdropper, can determine $a$ and $b$ if she can efficiently solve the \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete log} problem.
+    \item A quantum computer can do that!
+    \item Most companies are therefore interested in \href{https://en.wikipedia.org/wiki/Post-quantum_cryptography}{post-quantum cryptography}.
+\end{itemize}
+\end{frame}
+
+\section*{BB84}
+
+\begin{frame}{BB84 (Bennett and Brassard)}{Overview}
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\begin{center}
+    \begin{TIKZP}[scale=0.9]
+    \draw (0,0) rectangle ++(1,1) node[pos=0.5] {Alice};
+    \draw (4,0) rectangle ++(1,1) node[pos=0.5] {Bob};
+    \draw<2->[->] (1,0.5) -- (4,0.5) node[midway,above] {sends stream};
+    \draw<3->[->] (0.5,0) -- (2.4,-1.5);
+    \draw<3->[->] (4.5,0) -- (2.6,-1.5);
+    \draw<3-> (2.5,-1.5) node[below] {publish};
+    \end{TIKZP}
+\end{center}}{%
+\begin{itemize}
+    \item<1-> Alice and Bob are separated and begin with no shared information.
+    \item<2-> Alice sends a stream of quantum states to Bob.
+    \only<2>{%
+    \begin{itemize}
+        \item These are sent physically, not teleported
+        \item For example, over a fiber-optic channel
+        \item Or better yet, a stream of photons set in space
+    \end{itemize}}
+    \item<3-> Alice and Bob publish some information
+    \only<3>{%
+    \begin{itemize}
+        \item This allows them to determine a shared key.
+        \item They can also probabilistically rule out an evesdropper.
+    \end{itemize}
+    }
+    \item<4-> Alice and Bob now share a key that nobody else (probably) knows.
+\end{itemize}
+}
+\end{frame}
