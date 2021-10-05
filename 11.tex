@@ -109,23 +109,16 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 
 \begin{frame}{BB84 protocol}{How does it work?}
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
-\begin{center}
-    \begin{tabular}{r|cccc}
-    State & \multicolumn{4}{|c}{Value Sent}  \\ \hline
-    1     \\
-    2     \\
-    3
-    \end{tabular}
-\end{center}
 \begin{BBKey}
 \begin{itemize}
     \item<1-> Alice randomly picks a basis \STD{} or \HDM{}.
     \item<2-> Alice randomly generates $0$ or $1$ in that basis, using the table shown to the right.
-    \item<3-> Bob receives the state and then randomly decides to measure the state in \STD{} or \HDM{}.
+    \item<3-> Bob receives the state and then randomly decides to measure the state in \STD{} or \HDM{}.  His basis agrees with Alice's half the time.
+    \only<3>{%
     \begin{itemize}
-        \item Half the time, he will agree with Alice's basis, and his measurement will yield the state Alice sent.
+        \item Half the time, he will agree with Alice's basis, and his measurement, $0$ or $1$, will yield the state Alice sent.
         \item Half the time, he will disagree with Alice's basis, and then his measurement is equally likely to be $0$ or $1$.
-    \end{itemize}
+    \end{itemize}}
 \end{itemize}
 \end{BBKey}
 }{%
@@ -135,4 +128,16 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \end{center}
 \end{BBKey}
 }
+\only<4->{%
+\begin{BBKey}
+\begin{center}
+    \begin{tabular}{c|cccccccc}
+       & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+    Alice's basis   & \STD{} & \STD{} & \HDM{} & \STD{} & \HDM{} & \HDM{} & \HDM{} & \STD{}  \\
+    Alice sends    \\
+    Bob's basis \\
+    Agree? \\
+    \end{tabular}
+\end{center}
+\end{BBKey}}
 \end{frame}
