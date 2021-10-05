@@ -79,9 +79,8 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
 \end{frame}
 
 \begin{frame}{BB84}{Notation}
-\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
-\begin{BBKey}
-
+\Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{BBKey}%
 To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{other presentations of this material}, we use the following notation:
     \begin{description}
      \item<1->[\STD{}] denotes the standard basis, depicted to the right.  Measurements in this basis are
@@ -110,6 +109,7 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \begin{frame}{BB84 protocol}{How does it work?}
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{BBKey}
+\only<1-6>{%
 \begin{itemize}
     \item<1-> Alice randomly picks a basis \STD{} or \HDM{}.
     \item<2-> Alice randomly generates $0$ or $1$ in that basis, using the table shown to the right.
@@ -119,7 +119,14 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
         \item Half the time, he will agree with Alice's basis, and his measurement, $0$ or $1$, will yield the state Alice sent.
         \item Half the time, he will disagree with Alice's basis, and then his measurement is equally likely to be $0$ or $1$.
     \end{itemize}}
+\end{itemize}}
+\only<7->{%
+\begin{itemize}
+    \item When they are ready, they publish their sequence of bases.
+    \item They now know where they have agreement, and the measurements made in those instances constitute a shared key.
+    \item Their shared key so far is $0101$.
 \end{itemize}
+}
 \end{BBKey}
 }{%
 \begin{BBKey}

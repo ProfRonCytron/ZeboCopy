@@ -256,8 +256,8 @@
 \end{scope}
 }
 \def\SquareOutline{%
-\path (0,0) rectangle (1,1);
-}
+\path (0,0) rectangle (1,1);%
+}%
 \newcommand\Qif[1][scale=1.0]{%
 \begin{scope}[#1]
 \SquareOutline{}
@@ -531,42 +531,42 @@
 \SQBG{\relax}{\UGateA{}}{\UGateB{}}{\UGateC{}}{\UGateD{}}}%
 \newenvironment{BBKey}[0]{%
 \def\STD{%
-\begin{tikzpicture}[scale=0.35]
-\SquareOutline{}
-\draw[ultra thick,purple] (0,0.5) -- (1,0.5);
-\draw[ultra thick,purple] (0.5,0) -- (0.5,1);
+\begin{tikzpicture}[scale=0.35]%
+\SquareOutline{}%
+\draw[ultra thick,purple] (0,0.5) -- (1,0.5);%
+\draw[ultra thick,purple] (0.5,0) -- (0.5,1);%
 \end{tikzpicture}}%
 \def\HDM{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\draw[ultra thick,purple] (0,0) -- (1,1);
-\draw[ultra thick,purple] (0,1) -- (1,0);
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\draw[ultra thick,purple] (0,0) -- (1,1);%
+\draw[ultra thick,purple] (0,1) -- (1,0);%
 \end{tikzpicture}}%
 \def\BBUp{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\draw[->,thick,purple] (0.5,0) -- (0.5,1);
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\draw[->,thick,purple] (0.5,0) -- (0.5,1);%
 \end{tikzpicture}}%
 \def\BBRt{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\draw[->,thick,purple] (0,0.5) -- (1,0.5);
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\draw[->,thick,purple] (0,0.5) -- (1,0.5);%
 \end{tikzpicture}}%
 \def\BBNe{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\draw[->,thick,purple] (0,0) -- (1,1);
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\draw[->,thick,purple] (0,0) -- (1,1);%
 \end{tikzpicture}}%
 \def\BBSe{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\draw[->,thick,purple] (0,1) -- (1,0);
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\draw[->,thick,purple] (0,1) -- (1,0);%
 \end{tikzpicture}}%
 \def\Agree{%
-\begin{tikzpicture}[scale=0.30]
-\SquareOutline{}
-\fill[green] (0.5,0.5) circle(0.25);
-\end{tikzpicture}
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\fill[green] (0.5,0.5) circle(0.4);%
+\end{tikzpicture}%
 }%
 \def\BBBasis{%
 \begin{tabular}{c|c|c}
@@ -574,9 +574,10 @@ Basis & 0 & 1 \\
 \hline
 \STD{} & \BBUp{} & \BBRt{} \\
 \HDM{} & \BBNe{} & \BBSe{}
-\end{tabular}
+\end{tabular}%
 }%
 }{%
+\relax%
 }
 
 
