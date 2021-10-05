@@ -132,11 +132,12 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \begin{BBKey}
 \begin{center}
     \begin{tabular}{c|cccccccc}
-       & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
-    Alice's basis   & \STD{} & \STD{} & \HDM{} & \STD{} & \HDM{} & \HDM{} & \HDM{} & \STD{}  \\
-    Alice sends    \\
-    Bob's basis \\
-    Agree? \\
+      \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{Example} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+    Alice's basis   & \STD{} & \visible<5->{ \STD{}} & \visible<6->{\HDM{} & \STD{} & \HDM{} & \HDM{} & \HDM{} & \STD{}}  \\
+    Alice sends  & \BBUp{} & \visible<5->{\BBRt{}} & \visible<6->{\BBSe{} & \BBUp{} & \BBSe{} & \BBNe{} & \BBNe{} & \BBRt{}  }\\
+    Bob's basis  & \STD{} & \visible<5->{\HDM{}} & \visible<6->{\HDM{} & \HDM{} & \STD{} & \HDM{} & \STD{} & \STD{} }\\
+    \visible<7->{Agree? & \Agree{} & & \Agree{} & & & \Agree{} & & \Agree{} }\\
+    \visible<7->{Shared key & $0$ & & $1$ & & & $0$ & & $1$}
     \end{tabular}
 \end{center}
 \end{BBKey}}
