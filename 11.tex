@@ -4,8 +4,15 @@
 
 \begin{frame}{Overview}{What will we study here?}
 
-\begin{itemize}
-    \item other stuff
+\begin{itemize}[<+->]
+    \item \href{https://en.wikipedia.org/wiki/Alice_and_Bob}{Alice and Bob} wish to create a shared key that nobody else knows.
+    \item We review a classical approach, \href{https://en.wikipedia.org/wiki/Diffie-Hellman_key_exchange}{Diffie--Hellman}.
+    \item We examine two quantum protocols
+    \begin{description}
+       \item[\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84}] Alice physically sends states, such as photons, to Bob.  This works well if Alice and Bob are always separated.
+       \item[\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#E91_protocol:_Artur_Ekert_(1991)}{E91}] Alice and Bob begin with $k$ EPR pairs, but they can then separate and agree on a shared key.
+    \end{description}
+    \item Both protocols allow detection of \href{https://en.wikipedia.org/wiki/Eavesdropping}{Eve, the eavesdropper}.
     \item Quantum devices for key distribution \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#Implementations}{have been built}.
 \end{itemize}
     
@@ -13,7 +20,7 @@
 
 \section*{Classical exchange}
 
-\begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log.}
+\begin{frame}{\href{https://en.wikipedia.org/wiki/Diffie-Hellman_key_exchange}{Diffie--Hellman} key exchange}{Secrecy relies on the apparent difficulty of \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete log problem}.}
 
 \Vskip{-3em}\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
 \visible<1->{\All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}}
@@ -30,12 +37,12 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
     
 \end{frame}
 
-\begin{frame}{Remarks on Diffie--Hellman}
+\begin{frame}{Remarks on \href{https://en.wikipedia.org/wiki/Diffie-Hellman_key_exchange}{Diffie--Hellman}}
 \begin{itemize}[<+->]
     \item The inventors were recognized in 2015 with the \href{https://awards.acm.org/about/2015-turing}{Turing award}.
     \item The shared secret is used sufficiently briefly that attempts to guess it will not pay off.
     \item The secrets $a$ and $b$ can be randomly generated.
-    \item Eve, the evesdropper, can determine $a$ and $b$ if she can efficiently solve the \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete log} problem.
+    \item Eve, the eavesdropper, can determine $a$ and $b$ quickly if she can efficiently solve the \href{https://en.wikipedia.org/wiki/Discrete_logarithm}{discrete log} problem.
     \item A quantum computer can do that!
     \item Most companies are therefore interested in \href{https://en.wikipedia.org/wiki/Post-quantum_cryptography}{post-quantum cryptography}.
     \item Quantum key-distribution machines \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#Implementations}{have been built}.
@@ -69,7 +76,7 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
     \only<3>{%
     \begin{itemize}
         \item This allows them to determine a shared key.
-        \item They can also probabilistically rule out an evesdropper.
+        \item They can also probabilistically rule out an eavesdropper.
     \end{itemize}
     }
     \item<4-> Alice and Bob now share a key that nobody else (probably) knows.
