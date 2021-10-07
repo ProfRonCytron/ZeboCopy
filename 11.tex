@@ -88,7 +88,7 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
 \begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84 protocol}}{Notation}
 \Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{BBKey}%
-To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{other presentations of this material}, we use the following notation:
+To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{other presentations of this material}, we exchange the geographical locations of \ket{0} and \ket{1} and use the following notation:
     \begin{description}
      \item<1->[\STD{}] denotes the standard basis, depicted to the right.  Measurements in this basis are
      \ket{0} and \ket{1}, with symbols \BBUp{} and \BBRt{},
@@ -275,7 +275,7 @@ How much should they publish?
 \begin{itemize}[<+->]
     \item Alice and Bob begin with $k$ EPR pairs, one for each bit of the key they wish to share.
     \item They can then separate and carry out the protocol.
-    \item Detection of \href{https://en.wikipedia.org/wiki/Alice_and_Bob\#Cast_of_characters}{Eve, the eavesdropper} is accomplished by statistical analysis of their measurements.
+    \item Detection of \href{https://en.wikipedia.org/wiki/Alice_and_Bob\#Cast_of_characters}{Eve, the eavesdropper} is accomplished by statistical analysis of most of their measurements.
     \item The protocol relies on the following property:
     \begin{itemize}
         \item Given an EPR pair, Alice and Bob will observe the same measurement if they measure in the same basis.  \alert{This is true no matter the basis.}
@@ -284,5 +284,51 @@ How much should they publish?
     \item They publish the bases they used, and where they were the same, they should always agree on those measurements.
     \item Even where they differ, however, the bases used will cause the measurements to correlate more often than is classically possible.  If Eve is interfering, the correlation will drop to the classical level.
 \end{itemize}
+
+\end{frame}
+
+\begin{frame}{The measurement bases}{Increments of $\pi/8$ away from \ket{0}}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> We begin with the computational basis
+    \item<2-> The basis $Z_\theta$ is rotated $\theta$ degrees counterclockwise from \ket{0}.
+    \only<3>{%
+    \item<3> While \ket{1} is similarly rotated, we will not show it to keep the diagrams simple and clean.}
+    \item<4-> Here is the basis $Z_\frac{\pi}{8}$\visible<5->{, $Z_\frac{\pi}{4}$}\visible<6->{, and $Z_{-\frac{\pi}{8}}$.}
+\end{itemize}}
+\only<7->{%
+\begin{itemize}
+    \item<7-> \textcolor<7>{OrangeRed}{Alice} will measure in one of three bases.
+    \item<8-> \textcolor<8>{OliveGreen}{Bob} will measure in one of three bases.
+    \item<9-> With Bob and Alice each drawing from three bases, there are $9$ combinations of basis pairs.  \item<10-> Among those pairs, \textcolor<10>{Purple}{$2$ have the same basis} for both Alice and Bob.
+\end{itemize}
+}
+}{%
+\begin{center}
+\begin{TIKZP}[scale=2]
+\textcolor<8>{OliveGreen}{%
+\textcolor<7>{OrangeRed}{%
+\textcolor<10>{Purple}{%
+\draw<1->[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};}%
+}%
+}
+\draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+\draw<2-3>[thick] (1.0,0) arc(0:30:1.0);
+\draw<2-3>[->] (0,0) -- (30:1);
+\draw<3>[->,dotted] (0,0) -- (120:1);
+\node<2-3> at (0.7,0.2) {$\theta$};
+\textcolor<7>{OrangeRed}{%
+\draw<5->[->,thick] (0,0) -- (45:1) node[right] {$\frac{\pi}{4}$};
+\textcolor<8>{OliveGreen}{%
+\textcolor<10>{Purple}{%
+\draw<4->[->,thick] (0,0) -- (22.5:1) node[right] {$\frac{\pi}{8}$};}%
+}%
+}
+\textcolor<8>{OliveGreen}{%
+\draw<6->[->,thick] (0,0) -- (-22.5:1) node[right] {$-\frac{\pi}{8}$};}
+\end{TIKZP}
+\end{center}
+}
     
 \end{frame}
