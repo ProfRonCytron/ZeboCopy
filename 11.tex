@@ -99,10 +99,10 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \end{BBKey}}{%
 \begin{center}
 \begin{TIKZP}
-\draw<1->[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{1}};
-\draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{0}};
-\draw<2->[->,ultra thick] (0,0) -- (45:1) node[above] {\ket{+}};
-\draw<2->[->,ultra thick] (0,0) -- (-45:1) node[below] {\ket{-}};
+\draw<1->[->,thick] (0,0) -- (1,0) node[right] {\ \ket{1}};
+\draw<1->[->,thick] (0,0) -- (0,1) node[above] {\ket{0}};
+\draw<2->[->,thick] (0,0) -- (45:1) node[above] {\ket{+}};
+\draw<2->[->,thick] (0,0) -- (-45:1) node[below] {\ket{-}};
 \end{TIKZP}
 \MedSkip{}
 \visible<3->{%
@@ -322,7 +322,7 @@ How much should they publish?
 \draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
 \draw<2-3>[thick] (1.0,0) arc(0:30:1.0);
 \draw<2-3>[->] (0,0) -- (30:1);
-\draw<3>[->,dotted] (0,0) -- (120:1);
+\visible<3>{\draw[->,dotted] (0,0) -- (120:1);}
 \node<2-3> at (0.7,0.2) {$\theta$};
 \textcolor<7>{OrangeRed}{%
 \draw<5->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};
