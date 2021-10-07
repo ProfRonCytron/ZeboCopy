@@ -44,7 +44,7 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
 
 \section*{BB84}
 
-\begin{frame}{BB84 (Bennett and Brassard)}{Overview}
+\begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84 protocol} (Bennett and Brassard)}{Overview}
 \TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
 \begin{center}
     \begin{TIKZP}[scale=0.9]
@@ -104,6 +104,35 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \end{BBKey}}
 \end{center}
 }
+\end{frame}
+
+\begin{frame}{Possibilities for Alice and Bob}{Using two bases}
+
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\Vskip{-3em}\begin{BBKey}
+\begin{center}
+    \begin{tabular}{cc|cc|c}
+    \multicolumn{2}{c|}{Alice} & \multicolumn{2}{|c|}{Bob} & Agreed \\
+    basis & sends & basis & observes & bit \\ \hline
+    \visible<1->{\STD{} & \BBUp{} & \STD{} & \BBUp{} & $0$ \\}
+    \visible<2->{\STD{} & \BBUp{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}
+    \visible<3->{\STD{} & \BBRt{} & \STD{} & \BBRt{} & $1$ \\}
+    \visible<4->{\STD{} & \BBRt{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}
+    \visible<5->{\HDM{} & \BBNe{} & \STD{} &  \BBUp{} or \BBRt{} & \DisAgree{} \\}
+    \visible<6->{\HDM{} & \BBNe{} & \HDM{} & \BBNe{} & $0$ \\}
+    \visible<7->{\HDM{} & \BBSe{} & \STD{} & \BBUp{} or \BBRt{} & \DisAgree{} \\}
+    \visible<8->{\HDM{} & \BBSe{} & \HDM{} & \BBSe{} & $1$ \\}
+    \end{tabular}
+\end{center}
+\end{BBKey}
+}{%
+\begin{BBKey}
+\begin{center}
+\BBBasis{}
+\end{center}
+\end{BBKey}
+}
+
 \end{frame}
 
 \begin{frame}{BB84 protocol}{How does it work?}
@@ -219,13 +248,21 @@ How much should they publish?
 
 \begin{frame}{Analysis for detecting Eve}
 \Vskip{-3em}\begin{itemize}[<+->]
-    \item Suppose Alice and Bob publish $n$ measurements from states where they agreed on basis.  They essentially publish $n$ bits from their agreed-upon key.
+    \item Suppose Alice and Bob publish $n$ measurements from states where they agreed on basis.  They essentially disclose $n$ bits from their agreed-upon key.
     \item For each one of those bits, the probability of Eve agreeing (or disagreeing) on basis while intercepting is $\frac{1}{2}$.
     \item The probability of Eve being that lucky (picking the same basis as Alice and Bob) for $n$ such measurements is thus $\left(\frac{1}{2}\right)^{n}$.
-    \item The probability of catching Eve is thus
+    \item The probability of catching Eve after $n$ disclosed bits is thus
     \[ 1 - \left(\frac{1}{2}\right)^{n} \]
-    \item They can be 99\% certain of Eve's absence if they find no discrepancy after publishing $7$ measurements. 
+    \begin{itemize}
+    \item They can be 99\% certain of Eve's absence if they find no discrepancy after disclosing $7$ measurements. 
+    \end{itemize}
     \item To make sure Eve is surprised, the disclosed measurements should be randomly drawn from the mutual key.  Alice and Bob can discard those disclosed bits.
 \end{itemize}
 
+\end{frame}
+
+\section*{Ekert91}
+
+\begin{frame}{Another protocol using shared entangled bits}
+    
 \end{frame}
