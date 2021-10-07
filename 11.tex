@@ -85,7 +85,7 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
 
 \end{frame}
 
-\begin{frame}{BB84}{Notation}
+\begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84 protocol}}{Notation}
 \Vskip{-3em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{BBKey}%
 To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{other presentations of this material}, we use the following notation:
@@ -142,7 +142,7 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 
 \end{frame}
 
-\begin{frame}{BB84 protocol}{How does it work?}
+\begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84 protocol}}{How does it work?}
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{BBKey}
 \only<1-6>{%
@@ -268,8 +268,21 @@ How much should they publish?
 
 \end{frame}
 
-\section*{Ekert91}
+\section*{E91}
 
-\begin{frame}{Another protocol using shared entangled bits}
+\begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#E91_protocol:_Artur_Ekert_(1991)}{E91 protocol} (Ekert)}{Overview}
+
+\begin{itemize}[<+->]
+    \item Alice and Bob begin with $k$ EPR pairs, one for each bit of the key they wish to share.
+    \item They can then separate and carry out the protocol.
+    \item Detection of \href{https://en.wikipedia.org/wiki/Alice_and_Bob\#Cast_of_characters}{Eve, the eavesdropper} is accomplished by statistical analysis of their measurements.
+    \item The protocol relies on the following property:
+    \begin{itemize}
+        \item Given an EPR pair, Alice and Bob will observe the same measurement if they measure in the same basis.  \alert{This is true no matter the basis.}
+    \end{itemize}
+    \item For this protocol, Alice measure in one of threee bases, and so does Bob.
+    \item They publish the bases they used, and where they were the same, they should always agree on those measurements.
+    \item Even where they differ, however, the bases used will cause the measurements to correlate more often than is classically possible.  If Eve is interfering, the correlation will drop to the classical level.
+\end{itemize}
     
 \end{frame}
