@@ -290,23 +290,27 @@ How much should they publish?
 \begin{frame}{The measurement bases}{Increments of $\pi/8$ away from \ket{0}}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \only<1-6>{%
+\begin{EKey}
 \begin{itemize}
     \item<1-> We begin with the computational basis
-    \item<2-> The basis $Z_\theta$ is rotated $\theta$ degrees counterclockwise from \ket{0}.
+    \item<2-> The basis $Z_\theta$ is rotated $\theta$ degrees counterclockwise from \ket{0}.  Thus, $\ZZ{}=\ket{0}$.
     \only<3>{%
     \item<3> While \ket{1} is similarly rotated, we will not show it to keep the diagrams simple and clean.}
-    \item<4-> Here is the basis $Z_\frac{\pi}{8}$\visible<5->{, $Z_\frac{\pi}{4}$}\visible<6->{, and $Z_{-\frac{\pi}{8}}$.}
-\end{itemize}}
+    \item<4-> Here is the basis \ZZPO{8}\visible<5->{, \ZZPO{4}}\visible<6->{, and \ZZNPO{8}.}
+\end{itemize}\end{EKey}}
 \only<7->{%
+\begin{EKey}
 \begin{itemize}
     \item<7-> \textcolor<7>{OrangeRed}{Alice} will measure in one of three bases.
     \item<8-> \textcolor<8>{OliveGreen}{Bob} will measure in one of three bases.
     \item<9-> With Alice and Bob each drawing from three bases, there are $9$ combinations of basis pairs:
-    \TensProd{\Set{a}}{\Set{b}}.
+    \TensProd{\Set{\textcolor<10>{Purple}{\ZZ{}}, \ZZPO{8}, \textcolor<10>{Purple}{\ZZPO{4}}}}{\Set{\ZZNPO{8},\textcolor<10>{Purple}{\ZZ{}},\textcolor<10>{Purple}{\ZZPO{4}}}}.
     \item<10-> Among those pairs, \textcolor<10>{Purple}{$2$ have the same basis} for both Alice and Bob.
 \end{itemize}
+\end{EKey}
 }
 }{%
+\begin{EKey}
 \begin{center}
 \begin{TIKZP}[scale=2]
 \textcolor<8>{OliveGreen}{%
@@ -321,16 +325,17 @@ How much should they publish?
 \draw<3>[->,dotted] (0,0) -- (120:1);
 \node<2-3> at (0.7,0.2) {$\theta$};
 \textcolor<7>{OrangeRed}{%
-\draw<5->[->,thick] (0,0) -- (45:1) node[right] {$\frac{\pi}{4}$};
+\draw<5->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};
 \textcolor<8>{OliveGreen}{%
 \textcolor<10>{Purple}{%
-\draw<4->[->,thick] (0,0) -- (22.5:1) node[right] {$\frac{\pi}{8}$};}%
+\draw<4->[->,thick] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};}%
 }%
 }
 \textcolor<8>{OliveGreen}{%
-\draw<6->[->,thick] (0,0) -- (-22.5:1) node[right] {$-\frac{\pi}{8}$};}
+\draw<6->[->,thick] (0,0) -- (-22.5:1) node[right] {\ZZNPO{8}};}
 \end{TIKZP}
 \end{center}
+\end{EKey}
 }
     
 \end{frame}

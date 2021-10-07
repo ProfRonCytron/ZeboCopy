@@ -589,9 +589,14 @@ Basis & 0 & 1 \\
 \def\ZZ{%
 \ZRot{0}%
 }%
-\def\ZRot##1{%
+\def\ZZPO##1{%
+\ZRot{\frac{\pi}{##1}}%
 }%
-\def\ZDen##1{%
+\def\ZZNPO##1{%
+\ZRot{\ensuremath{\,-\frac{\pi}{##1}}}%
+}%
+\def\ZRot##1{%
+\ensuremath{Z_{##1}}%
 }%
 }{%
 }
