@@ -76,12 +76,12 @@
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{
 \begin{TIKZP}[scale=0.6]
 %  \begin{scope}
-    \fill<1>[color=BrickRed]   ( 90:1.2) circle (2);
-    \draw[color=BrickRed]   ( 90:1.2) circle (2);
-    \fill<2>[color=OliveGreen] (210:1.2) circle (2);
-    \draw[color=OliveGreen] (210:1.2) circle (2);
-    \fill<3>[color=NavyBlue]  (330:1.2) circle (2);
-    \draw[color=NavyBlue]  (330:1.2) circle (2);
+    \fill<1>[color=\RCone]   ( 90:1.2) circle (2);
+    \draw[color=\RCone]   ( 90:1.2) circle (2);
+    \fill<2>[color=\RCthree] (210:1.2) circle (2);
+    \draw[color=\RCthree] (210:1.2) circle (2);
+    \fill<3>[color=\RCtwo]  (330:1.2) circle (2);
+    \draw[color=\RCtwo]  (330:1.2) circle (2);
 %  \end{scope}
   \node<1-> at ( 90:2)    {Physics};
   \node<2-> at ( 210:2)   {Math};
@@ -97,9 +97,9 @@
 }{%
 
 \begin{itemize}
-    \item<1->{\textcolor<1>{BrickRed}{Physics is the study of the observable universe}}
-    \item<2->{\textcolor<2>{OliveGreen}{Math is the study of logic and reasoning}}
-    \item<3->{\textcolor<3>{NavyBlue}{Computer science solves problems using computation}}
+    \item<1->{\textcolor<1>{\RCone}{Physics is the study of the observable universe}}
+    \item<2->{\textcolor<2>{\RCthree}{Math is the study of logic and reasoning}}
+    \item<3->{\textcolor<3>{\RCtwo}{Computer science solves problems using computation}}
 \end{itemize}
 }
 \BigSkip{}

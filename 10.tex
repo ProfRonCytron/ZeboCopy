@@ -201,7 +201,7 @@
 \begin{center}
 \begin{tabular}{r@{\hbox to 4ex{\hss}}rlcrll}
 \QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} &  \\
-\ket{0} & \textcolor<8>{NavyBlue}{\UGateA{}}& \ket{0} & $+$ &  \textcolor<9>{Green}{\UGateB{}} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
+\ket{0} & \textcolor<8>{\RCtwo}{\UGateA{}}& \ket{0} & $+$ &  \textcolor<9>{Green}{\UGateB{}} & \ket{1} & \visible<4->{=\alert{\QState{\relax}}}\\
 \ket{1} & $\sin(\theta/2)$ & \ket{0} & 
    $+$ &  $\ExpPhase{\lambda}\cos(\theta/2)$ & \ket{1} & 
 \end{tabular}
@@ -231,9 +231,9 @@
 \begin{tabular}{r@{$\ =\ $}rl@{$\ +\ $}rl}
     $\sqrt{2}\QState{B}$& $\sin(\theta/2)$ & \ket{0}  
    & $\ExpPhase{\lambda}\cos(\theta/2)$ &\ket{1} \\
-  \visible<7->{ $\textcolor<7>{OrangeRed}{\NamedGate{Z}}\textcolor<7>{NavyBlue}{\NamedGate{X}}\sqrt{2}\QState{B}$&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
+  \visible<7->{ $\textcolor<7>{\RCone}{\NamedGate{Z}}\textcolor<7>{\RCtwo}{\NamedGate{X}}\sqrt{2}\QState{B}$&$\ExpPhase{\lambda}\cos(\theta/2)$  & \ket{0}  
    & $-\sin(\theta/2)$ &\ket{1} \\
-   &\textcolor<8>{NavyBlue}{$\cos(\theta/2)$}  & \ket{0}  
+   &\textcolor<8>{\RCtwo}{$\cos(\theta/2)$}  & \ket{0}  
    & \textcolor<9>{Green}{$-\textcolor<10>{purple}{\ExpNegPhase{\lambda}}\sin(\theta/2)$} &\ket{1}}
 \end{tabular}
 \end{center}}
@@ -241,7 +241,7 @@
 \only<6-9>{%
 \begin{itemize}
     \item<6-> Bob's qubit's state if $\QState{A}=\ket{1}$
-    \item<7-> We need to \textcolor<7>{NavyBlue}{exchange the amplitudes} and \textcolor<7>{OrangeRed}{negate the second term}.
+    \item<7-> We need to \textcolor<7>{\RCtwo}{exchange the amplitudes} and \textcolor<7>{\RCone}{negate the second term}.
     \item<8-> Bob now has the the same probability of measuring \ket{0} for his qubit as \QState{\relax}.
     \begin{itemize}
     \item<9-> And similarly for measuring \ket{1}

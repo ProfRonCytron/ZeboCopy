@@ -14,8 +14,8 @@
 
 % \logo{\includegraphics[height=2.5cm]{logo.pdf}}
 \def\ColorR#1{\textcolor{BrickRed}{#1}}
-\def\ColorG#1{\textcolor{OliveGreen}{#1}}
-\def\ColorB#1{\textcolor{NavyBlue}{#1}}
+\def\ColorG#1{\textcolor{\RCthree}{#1}}
+\def\ColorB#1{\textcolor{\RCtwo}{#1}}
 \definecolor{links}{HTML}{2E8B57}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 \def\LinkArrow#1{%
@@ -369,7 +369,7 @@
 \Shift{6}{0}{\RotateAroundCenter{-45}{\Mirror{}}}
 \Shift{6}{-2}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
 \Shift{8}{-2}{\Measurement[color=orange]{}}
-\Shift{6}{-4}{\RotateAroundCenter{-90}{\Measurement[color=NavyBlue]{}}}
+\Shift{6}{-4}{\RotateAroundCenter{-90}{\Measurement[color=\RCtwo]{}}}
 }
 \def\Shift#1#2#3{%
 \begin{scope}[shift={(#1,#2)}] #3\end{scope}
@@ -450,21 +450,21 @@
 \end{TIKZP}
 }
 \def\PhiTheta#1#2{%
-\mbox{\ensuremath{\textcolor{OrangeRed}{\phi = #1}, \textcolor{NavyBlue}{\theta = #2}}}}
+\mbox{\ensuremath{\textcolor{\RCone}{\phi = #1}, \textcolor{\RCtwo}{\theta = #2}}}}
 \newenvironment{BlochSphere}[3][scale=1.0]{
     \bgroup%
     \def\BlochSpherePhiTheta{%
     \tdplotsetrotatedcoords{0}{0}{0};
         \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
-        \draw[tdplot_rotated_coords,thick,OrangeRed] (0.3,0,0) arc (0:115:0.3);
-        \draw[tdplot_rotated_coords,OrangeRed,thick,dashed] (0,0,0) -- (phi);
-        \draw[OrangeRed] (0.4,0.4,0) node {$\phi$};
+        \draw[tdplot_rotated_coords,thick,\RCone] (0.3,0,0) arc (0:115:0.3);
+        \draw[tdplot_rotated_coords,\RCone,thick,dashed] (0,0,0) -- (phi);
+        \draw[\RCone] (0.4,0.4,0) node {$\phi$};
         
         \tdplotsetrotatedcoords{25}{-90}{0};
         \path[tdplot_rotated_coords] (1,0,0) arc (0:45:1) node(theta) {};
-        \draw[tdplot_rotated_coords,thick,NavyBlue] (0.4,0,0) arc (0:45:0.4);
-        \draw[tdplot_rotated_coords,NavyBlue,thick] (0,0,0) -- (theta);
-        \draw[NavyBlue] (-0.4,0,0.3) node {$\theta$};
+        \draw[tdplot_rotated_coords,thick,\RCtwo] (0.4,0,0) arc (0:45:0.4);
+        \draw[tdplot_rotated_coords,\RCtwo,thick] (0,0,0) -- (theta);
+        \draw[\RCtwo] (-0.4,0,0.3) node {$\theta$};
         
         
     }
@@ -602,6 +602,7 @@ Basis & 0 & 1 \\
 }
 \def\RCone{OrangeRed}
 \def\RCtwo{NavyBlue}
+\def\RCthree{OliveGreen}
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
 %%

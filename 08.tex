@@ -116,13 +116,13 @@ complex circle.
 \begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns.}
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     
 \TwoColumns{%
 \begin{itemize}
     \item<1-> The columns of $U$ are orthogonal
-    \item<2-> $\CQB{\Conj{\textcolor{OrangeRed}{a}}}{\Conj{\textcolor{OliveGreen}{c}}} \SQB{\textcolor{NavyBlue}{b}}{\textcolor{Brown}{d}}=\Conj{\textcolor{OrangeRed}{a}}\textcolor{NavyBlue}{b} + \Conj{\textcolor{OliveGreen}{c}}\textcolor{Brown}{d}=0$
+    \item<2-> $\CQB{\Conj{\textcolor{\RCone}{a}}}{\Conj{\textcolor{\RCthree}{c}}} \SQB{\textcolor{\RCtwo}{b}}{\textcolor{Brown}{d}}=\Conj{\textcolor{\RCone}{a}}\textcolor{\RCtwo}{b} + \Conj{\textcolor{\RCthree}{c}}\textcolor{Brown}{d}=0$
 \end{itemize}
 }{%
 \begin{itemize}
@@ -132,9 +132,9 @@ complex circle.
 }
 \visible<4->{%
 \MedSkip{}\[
-\textcolor{OrangeRed}{\ExpNegPhase{\phi_a}\cos(\theta/2)}\,\textcolor{NavyBlue}{\ExpPhase{\phi_b}\sin(\theta/2)}
+\textcolor{\RCone}{\ExpNegPhase{\phi_a}\cos(\theta/2)}\,\textcolor{\RCtwo}{\ExpPhase{\phi_b}\sin(\theta/2)}
 +
-\textcolor{OliveGreen}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{Brown}{\ExpPhase{\phi_d}\sin(\theta/2)}
+\textcolor{\RCthree}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{Brown}{\ExpPhase{\phi_d}\sin(\theta/2)}
 = 0 \]}%
 \visible<5->{\[
 \cos(\theta/2)\sin(\theta/2)\left[
@@ -151,7 +151,7 @@ The value of $\theta$ must be arbitrary, so we can only get $0$ when
 
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     
 \begin{align*}
@@ -168,7 +168,7 @@ We next eliminate $\phi_{d}$ in favor of the other phases.
 \begin{frame}{Proof (continued)}{Now 4 parameters, but soon only 3}
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{OrangeRed}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{NavyBlue}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{OliveGreen}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     \[
     \phi_{d} = (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
@@ -195,21 +195,21 @@ The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore
     
 \end{frame}
 \begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters.}
-\def\Phii{\textcolor{OrangeRed}{\phi}}
-\def\Lambdaa{\textcolor{NavyBlue}{\lambda}}
+\def\Phii{\textcolor{\RCone}{\phi}}
+\def\Lambdaa{\textcolor{\RCtwo}{\lambda}}
 \[
 U = \SQBG{%
     \relax}{%
     \textcolor{Black}{\cos(\theta/2)}}{%
-    \ExpPhase{(\textcolor<2->{NavyBlue}{\phi_{b}-\phi_{a}-\pi}+\pi)}\sin(\theta/2)}{%
-    \ExpPhase{\textcolor<2->{OrangeRed}{(\phi_{c}-\phi_{a})}}\sin(\theta/2)}{%
+    \ExpPhase{(\textcolor<2->{\RCtwo}{\phi_{b}-\phi_{a}-\pi}+\pi)}\sin(\theta/2)}{%
+    \ExpPhase{\textcolor<2->{\RCone}{(\phi_{c}-\phi_{a})}}\sin(\theta/2)}{%
     \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}
     \]
 \TwoColumns{%
 
 \Vskip{-3.5em}\begin{align*}
-     \visible<2->{\mbox{Let } \Phii &= \textcolor<2>{OrangeRed}{\phi_{c}-\phi_{a}} \\
-     \mbox{Let } \Lambdaa &= \textcolor{NavyBlue}{\phi_{b}-\phi_{a}-\pi}}
+     \visible<2->{\mbox{Let } \Phii &= \textcolor<2>{\RCone}{\phi_{c}-\phi_{a}} \\
+     \mbox{Let } \Lambdaa &= \textcolor{\RCtwo}{\phi_{b}-\phi_{a}-\pi}}
 \end{align*}
 \Vskip{-3em}
 \only<5>{%

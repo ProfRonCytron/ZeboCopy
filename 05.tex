@@ -81,8 +81,8 @@ The beam splitter places a photon into a \emph{superposition} of two paths.  In 
 \TwoColumns{%
 \begin{itemize}
     \item<1-> The light source emits a single photon.
-    \item<2,4-> \textcolor{orange}{In the path shown here, the beam splitter does not reflect the photon.}
-    \item<3,4-> \textcolor{NavyBlue}{In the path shown here, the photon is reflected by the beam splitter and again by the mirror.}
+    \item<2,4-> \textcolor{\RCone}{In the path shown here, the beam splitter does not reflect the photon.}
+    \item<3,4-> \textcolor{\RCtwo}{In the path shown here, the photon is reflected by the beam splitter and again by the mirror.}
 \end{itemize}
 }{%
 \begin{center}
@@ -90,10 +90,10 @@ The beam splitter places a photon into a \emph{superposition} of two paths.  In 
     \LightSource{}
     \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
     \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
-    \Shift{6}{0}{\Measurement[color=orange]{}}
-    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
-    \visible<2,4->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
-    \visible<3->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \Shift{6}{0}{\Measurement[color=\RCone]{}}
+    \Shift{6}{-2}{\Measurement[color=\RCtwo]{}}
+    \visible<2,4->{\draw[thick,color=\RCone] (4.5,0.5) -- (6,0.5);}
+    \visible<3->{\draw[thick,color=\RCtwo] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
     
     \draw[thick,color=red] (1,0.5) -- ++(3.5,0);
 
@@ -114,8 +114,8 @@ These outcomes are mutually exclusive because there is just one photon.  It can 
 \end{itemize}
 \TwoColumns{%
 \Vskip{-2em}\begin{itemize}
-    \item<3-> Let \textcolor{orange}{$\QZero{} = \PZero{}$} be \textcolor{orange}{one path}.
-    \item<3-> Let \textcolor{NavyBlue}{$\QOne{} = \POne{}$} be \textcolor{NavyBlue}{the other}.
+    \item<3-> Let \textcolor{\RCone}{$\QZero{} = \PZero{}$} be \textcolor{\RCone}{one path}.
+    \item<3-> Let \textcolor{\RCtwo}{$\QOne{} = \POne{}$} be \textcolor{\RCtwo}{the other}.
     \item<4-> We can verify these are orthogonal:
     \[
         \braket{0}{1} = \braket{1}{0} =  0
@@ -125,9 +125,9 @@ These outcomes are mutually exclusive because there is just one photon.  It can 
 \visible<5->{%
 A superposition of paths is then
 \[
-\alpha\textcolor{orange}{\ket{0}} + \beta\textcolor{NavyBlue}{\ket{1}} = \SQB{\alpha}{\beta}
+\alpha\textcolor{\RCone}{\ket{0}} + \beta\textcolor{\RCtwo}{\ket{1}} = \SQB{\alpha}{\beta}
 \]
-where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange}{\ket{0}} and \textcolor{NavyBlue}{\ket{1}}, respectively.  This is related to the probability of outcome, but there is more to say about that later.
+where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{\RCone}{\ket{0}} and \textcolor{\RCtwo}{\ket{1}}, respectively.  This is related to the probability of outcome, but there is more to say about that later.
 }
 }
 \end{frame}
@@ -167,21 +167,21 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
     \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
     \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
     \Shift{2}{-4}{\RotateAroundCenter{-45}{\Mirror}}
-    \Shift{6}{0}{\Measurement[color=orange]{}}
-    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
-    \Shift{6}{-4}{\Measurement[color=OliveGreen]{}}
-    \visible<2->{\draw[thick,color=orange] (2.5,0.5) -- (4.5,0.5);}
-    \visible<5->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
-    \visible<6->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
-    \visible<3->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
+    \Shift{6}{0}{\Measurement[color=\RCone]{}}
+    \Shift{6}{-2}{\Measurement[color=\RCtwo]{}}
+    \Shift{6}{-4}{\Measurement[color=\RCthree]{}}
+    \visible<2->{\draw[thick,color=\RCone] (2.5,0.5) -- (4.5,0.5);}
+    \visible<5->{\draw[thick,color=\RCone] (4.5,0.5) -- (6,0.5);}
+    \visible<6->{\draw[thick,color=\RCtwo] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \visible<3->{\draw[thick,color=\RCthree] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
     \draw[thick,color=red] (1,0.5) -- ++(1.5,0);
 
 \end{TIKZP}
 \end{center}
-\only<3>{\textcolor{OliveGreen}{There is thus a 50\% chance of hitting the bottom measuring device.}
+\only<3>{\textcolor{\RCthree}{There is thus a 50\% chance of hitting the bottom measuring device.}
 }
-\only<5>{\textcolor{orange}{There is a 25\% chance of hitting the top measuring device.}}
-\only<6>{\textcolor{NavyBlue}{There is a 25\% chance of hitting the middle measuring device.}}
+\only<5>{\textcolor{\RCone}{There is a 25\% chance of hitting the top measuring device.}}
+\only<6>{\textcolor{\RCtwo}{There is a 25\% chance of hitting the middle measuring device.}}
 }
     
 \end{frame}
@@ -189,17 +189,17 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \begin{frame}{Naming the three possible paths}{We can add one more basis vector.}
 \TwoColumns{%
 
-    \visible<1,4->{\textcolor{orange}{$\QZero{} = \begin{pmatrix}1\\ 0\\ 0\end{pmatrix}$}}
-    \visible<2,4->{\textcolor{NavyBlue}{$\QOne{} = \begin{pmatrix}0 \\ 1\\ 0\end{pmatrix}$}}
-    \visible<3,4->{\textcolor{OliveGreen}{$\ket{2} = \begin{pmatrix}0 \\ 0\\ 1\end{pmatrix}$}}
+    \visible<1,4->{\textcolor{\RCone}{$\QZero{} = \begin{pmatrix}1\\ 0\\ 0\end{pmatrix}$}}
+    \visible<2,4->{\textcolor{\RCtwo}{$\QOne{} = \begin{pmatrix}0 \\ 1\\ 0\end{pmatrix}$}}
+    \visible<3,4->{\textcolor{\RCthree}{$\ket{2} = \begin{pmatrix}0 \\ 0\\ 1\end{pmatrix}$}}
     
 \begin{itemize}
     \item<4-> We can verify $\Forall{i\not=j}{\braket{i}{j}=0}$ so these are mutually orthogonal basis vectors.
     \item<5> A superposition is then
     \[
-    \alpha\textcolor{orange}{\ket{0}} +
-    \beta\textcolor{NavyBlue}{\ket{1}} +
-    \gamma\textcolor{OliveGreen}{\ket{2}} = \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix}
+    \alpha\textcolor{\RCone}{\ket{0}} +
+    \beta\textcolor{\RCtwo}{\ket{1}} +
+    \gamma\textcolor{\RCthree}{\ket{2}} = \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix}
     \]
 \end{itemize}
 
@@ -211,13 +211,13 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
     \Shift{4}{0}{\RotateAroundCenter{-45}{\BeamSplitter}}
     \Shift{4}{-2}{\RotateAroundCenter{-45}{\Mirror}}
     \Shift{2}{-4}{\RotateAroundCenter{-45}{\Mirror}}
-    \Shift{6}{0}{\Measurement[color=orange]{}}
-    \Shift{6}{-2}{\Measurement[color=NavyBlue]{}}
-    \Shift{6}{-4}{\Measurement[color=OliveGreen]{}}
-    \visible<1->{\draw[thick,color=orange] (2.5,0.5) -- (4.5,0.5);}
-    \visible<1->{\draw[thick,color=orange] (4.5,0.5) -- (6,0.5);}
-    \visible<2->{\draw[thick,color=NavyBlue] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
-    \visible<3->{\draw[thick,color=OliveGreen] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
+    \Shift{6}{0}{\Measurement[color=\RCone]{}}
+    \Shift{6}{-2}{\Measurement[color=\RCtwo]{}}
+    \Shift{6}{-4}{\Measurement[color=\RCthree]{}}
+    \visible<1->{\draw[thick,color=\RCone] (2.5,0.5) -- (4.5,0.5);}
+    \visible<1->{\draw[thick,color=\RCone] (4.5,0.5) -- (6,0.5);}
+    \visible<2->{\draw[thick,color=\RCtwo] (4.5,0.5) -- ++(0,-2) -- ++(1.5,0);}
+    \visible<3->{\draw[thick,color=\RCthree] (2.5,0.5) -- ++(0,-4) -- ++ (3.5,0);}
     \draw[thick,color=red] (1,0.5) -- ++(1.5,0);
 
 \end{TIKZP}
@@ -255,8 +255,8 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
 \draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
 }
-\visible<2>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
-\visible<3>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 }
@@ -289,8 +289,8 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
 \draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
 }
-\visible<2>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
-\visible<3>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<3>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 }
@@ -362,7 +362,7 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 
 \Vskip{-4em}\TwoUnequalColumns{0.50\textwidth}{0.50\textwidth}{%
 \begin{itemize}
-  \item Surprisingly, \emph{every} photon is measured only by the \textcolor{orange}{device on the right}.
+  \item Surprisingly, \emph{every} photon is measured only by the \textcolor{\RCone}{device on the right}.
 
 \item The explanation requires understanding \emph{phase} and \emph{interference}.   \item Mathematically, this is easiest with complex arithmetic.
 \end{itemize}
@@ -372,9 +372,9 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{orange
 \MZ{}
 \draw[color=red] (1,0.5) -- (2.5,0.5);
 \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
+\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+\draw[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
 \end{TIKZP}
 \end{center}
 }
@@ -422,13 +422,13 @@ When reflected, we assume here that the photon experiences \textcolor<6->{purple
 
 \Vskip{-4em}\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \begin{itemize}
-  \item<1-> A photon is measured \textcolor{NavyBlue}{here} using one of two paths:
+  \item<1-> A photon is measured \textcolor{\RCtwo}{here} using one of two paths:
   \begin{itemize}
       \item<2-> \textcolor{purple}{Here, the photon is reflected by a mirror, but passes through both beam splitters.  \alert<2>{There is no phase shift in this case.}}
-      \item<3-> \textcolor{OliveGreen}{Here, the photon is reflected by each beam splitter.  \alert<3>{The accumulated delay is therefore $2\times \pi/2 = \pi$~radians.}}
+      \item<3-> \textcolor{\RCthree}{Here, the photon is reflected by each beam splitter.  \alert<3>{The accumulated delay is therefore $2\times \pi/2 = \pi$~radians.}}
   \end{itemize}
-  \item<4-> \textcolor{NavyBlue}{Where the paths converge, the waves cancel, so there is no probability of measurement here.}
-  \item<5> \textcolor{orange}{All photons are measured here.}
+  \item<4-> \textcolor{\RCtwo}{Where the paths converge, the waves cancel, so there is no probability of measurement here.}
+  \item<5> \textcolor{\RCone}{All photons are measured here.}
 \end{itemize}
 }{%
 \Vskip{-2em}
@@ -438,10 +438,10 @@ When reflected, we assume here that the photon experiences \textcolor<6->{purple
 \draw[color=red] (1,0.5) -- (2.5,0.5);
 \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
 \draw<2>[ultra thick,color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-3.5);
-\draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
-\draw<3>[ultra thick,color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0) -- ++(0,-1.5);
-\draw<1,5->[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw<1-4>[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
+\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+\draw<3>[ultra thick,color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0) -- ++(0,-1.5);
+\draw<1,5->[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
+\draw<1-4>[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
 \end{TIKZP}
 \MedSkip{}
 
@@ -452,7 +452,7 @@ When reflected, we assume here that the photon experiences \textcolor<6->{purple
 \SineWave{1.0}
 \end{scope}}
 \visible<3,4>{
-\begin{scope}[color=OliveGreen]
+\begin{scope}[color=\RCthree]
 \SineWave{-1.0}
 \end{scope}}
 \end{TIKZP}}
@@ -576,8 +576,8 @@ i & 1
 
 \def\ralpha{\ensuremath{\textcolor{red}{\alpha}}}
 \def\bbeta{\ensuremath{\textcolor{brown}{\beta}}}
-\def\ralphap{\ensuremath{\textcolor{orange}{\alpha'}}}
-\def\bbetap{\ensuremath{\textcolor{NavyBlue}{\beta'}}}
+\def\ralphap{\ensuremath{\textcolor{\RCone}{\alpha'}}}
+\def\bbetap{\ensuremath{\textcolor{\RCtwo}{\beta'}}}
 
 
 \Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
@@ -605,12 +605,12 @@ i & 1
     \visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
     \visible<1->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$}  -- node[midway,below]  {\ket{0}} ++(0.5,0);}
     \visible<2->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
-    \visible<3->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
-    \visible<4->{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
+    \visible<3->{\draw[->,color=\RCone] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
+    \visible<4->{\draw[->,color=\RCtwo] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
     
 \end{TIKZP}
 \end{center}
-\only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{orange}{photon traveling east} and \visible<4->{\textcolor{NavyBlue}{photon traveling south}}}
+\only<3-4>{We want to compute the effect of the beam splitter in creating a superposition of outputs: \textcolor{\RCone}{photon traveling east} and \visible<4->{\textcolor{\RCtwo}{photon traveling south}}}
 \only<5-7>{\ralphap{} is composed of an equal fraction of \only<6-7>{\ralpha{} continuing right} \only<7>{and \bbeta{} reflecting to the right with a $\frac{\pi}{2}$ phase shift.}}
 \only<8-10>{\bbetap{} is composed of an equal fraction of \only<9-10>{\ralpha{} reflecting down with a $\frac{\pi}{2}$ phase shift} \only<10>{and \bbeta{} continuing down.}}
 }%
@@ -648,7 +648,7 @@ and we view the beam splitter as represented mathematically as
     \only<5>{\item The interference canceled the bottom component.    
     \alert{This explains why the bottom device never measures any photons in this setup.}
     \item
-    We can also see the top component is rotated by $\pi/2$ radians.  The superpositions measured \textcolor{orange}{by this device} each experienced one beam-splitter reflection.}
+    We can also see the top component is rotated by $\pi/2$ radians.  The superpositions measured \textcolor{\RCone}{by this device} each experienced one beam-splitter reflection.}
 \end{itemize}
 }{%
 \begin{center}
@@ -659,16 +659,16 @@ and we view the beam splitter as represented mathematically as
         \draw[color=red] (1,0.5) -- (2.5,0.5);
         \draw<1>[ultra thick,color=red] (1,0.5) -- (2.5,0.5);
         \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-        \draw[color=OliveGreen] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
-        \draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-        \draw[->,color=NavyBlue] (6.5,-1.5) -- ++(0,-1.5);
+        \draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
+        \draw[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
+        \draw[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
     \end{TIKZP}
     \begin{TIKZP}[scale=1.5]
     \visible<1->{\RotateAroundCenter{-45}{\BeamSplitter{}}}
     \visible<1->{\draw[->,color=red] (0,0.5) node[left] {$\alpha$}  -- node[midway,below]  {\ket{0}} ++(0.5,0);}
     \visible<1->{\draw[->,color=brown] (0.5,1) node[above] {$\beta$} -- node[midway,right] {\ket{1}} ++(0, -0.5);}
-    \visible<1->{\draw[->,color=orange] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
-    \visible<1->{\draw[->,color=NavyBlue] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
+    \visible<1->{\draw[->,color=\RCone] (0.5,0.5) -- (1.0,0.5) node[right] {$\alpha'$};}
+    \visible<1->{\draw[->,color=\RCtwo] (0.5,0.5) -- ++(0,-0.5) node[below] {$\beta'$};}
     
 \end{TIKZP}
 \end{center}

@@ -331,13 +331,13 @@ We can do this because the qubits are acting independently at this point.  This 
 \visible<3->{Proof (by contradiction):}
 \visible<4->{Suppose there exist
     \[
-    \SQB{a}{b} \mbox{ and } \SQB{c}{d}\ |\ \RootTwo{}\TensProd{\SQB{a}{b}}{\SQB{c}{d}} = \RootTwo{}\DQB{\textcolor<6>{OrangeRed}{1}}{\textcolor<6>{NavyBlue}{0}}{\textcolor<7>{OrangeRed}{0}}{\textcolor<7>{NavyBlue}{1}}
+    \SQB{a}{b} \mbox{ and } \SQB{c}{d}\ |\ \RootTwo{}\TensProd{\SQB{a}{b}}{\SQB{c}{d}} = \RootTwo{}\DQB{\textcolor<6>{\RCone}{1}}{\textcolor<6>{\RCtwo}{0}}{\textcolor<7>{\RCone}{0}}{\textcolor<7>{\RCtwo}{1}}
     \]}
 }{%
 \visible<5->{Then}
 \begin{align*}
-    \visible<6->{\textcolor<6>{OrangeRed}{ac} = & 1 & \textcolor<6>{NavyBlue}{ad} =& 0 }\\
-    \visible<7->{\visible<8->{\times} \textcolor<7>{NavyBlue}{bd} = & 1 & \visible<8->{\times} \textcolor<7>{OrangeRed}{bc} =& 0 }\\
+    \visible<6->{\textcolor<6>{\RCone}{ac} = & 1 & \textcolor<6>{\RCtwo}{ad} =& 0 }\\
+    \visible<7->{\visible<8->{\times} \textcolor<7>{\RCtwo}{bd} = & 1 & \visible<8->{\times} \textcolor<7>{\RCone}{bc} =& 0 }\\
     \visible<8->{---- & -- & ---- & --} \\
     \visible<9->{abcd = & 1 & abcd =& 0}
 \end{align*}
@@ -422,10 +422,10 @@ Bell's predictions have been substantiated repeatedly by experiments, and we wil
 \Vskip{-5em}\TwoColumns{%
 \begin{itemize}[<+->]
     \item Consider the state
-    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{OrangeRed}{0}\textcolor<3->{NavyBlue}{1}}-\ket{\textcolor<2->{OrangeRed}{1}\textcolor<3->{NavyBlue}{0}}\right)
+    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{\RCone}{0}\textcolor<3->{\RCtwo}{1}}-\ket{\textcolor<2->{\RCone}{1}\textcolor<3->{\RCtwo}{0}}\right)
     \]
-    \item \textcolor{OrangeRed}{Alice gets the first qubit.}
-    \item \textcolor{NavyBlue}{Bob gets the second qubit.}
+    \item \textcolor{\RCone}{Alice gets the first qubit.}
+    \item \textcolor{\RCtwo}{Bob gets the second qubit.}
     \item Recalling
     \begin{align*}
         \ket{+}= & \RootTwo{}\SQB{1}{1} \\
@@ -436,7 +436,7 @@ Bell's predictions have been substantiated repeatedly by experiments, and we wil
 }{%
 \begin{itemize}
     \item<5->  We can show
-    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{OrangeRed}{+}\textcolor<3->{NavyBlue}{-}}-\ket{\textcolor<2->{OrangeRed}{-}\textcolor<3->{NavyBlue}{+}}\right)
+    \[\QState{\relax} = \RootTwo{}\left(\ket{\textcolor<2->{\RCone}{+}\textcolor<3->{\RCtwo}{-}}-\ket{\textcolor<2->{\RCone}{-}\textcolor<3->{\RCtwo}{+}}\right)
     \]
     \item<6-> Alice can choose to measure her qubit in the computational (\PauliZ{}) basis or in the \PauliX{} basis.  Let's assume she sees \ket{0} in the former case and \ket{+} in the latter case.
     \item<7-> That choice causes Bob, light years away, to obtain state \ket{1} or \ket{-} for his qubit, but those are entirely different states.
@@ -547,8 +547,8 @@ Thus, if any $U$ can clone \ket{0} and \ket{1} then it cannot clone \ket{+}.
 \only<10-17>{%
 \Vskip{-2em}If $U$ can do the following
 \begin{itemize}
-    \item \textcolor<15>{OrangeRed}{$U(\TensProd{\ket{0}}{\ket{0^{n-1}}})= \TensProd{\ket{00}}{f(\ket{0})}$}
-    \item \textcolor<16>{NavyBlue}{$U(\TensProd{\ket{1}}{\ket{0^{n-1}}})= \TensProd{\ket{11}}{f(\ket{1})}$}
+    \item \textcolor<15>{\RCone}{$U(\TensProd{\ket{0}}{\ket{0^{n-1}}})= \TensProd{\ket{00}}{f(\ket{0})}$}
+    \item \textcolor<16>{\RCtwo}{$U(\TensProd{\ket{1}}{\ket{0^{n-1}}})= \TensProd{\ket{11}}{f(\ket{1})}$}
 \end{itemize}
 \only<10>{%
 \alert{That is, it must clone \ket{0} and \ket{1} faithfully.}}
@@ -558,10 +558,10 @@ then when presented with $\QState{a}=\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
 \visible<12->{U(\ket{+})=& \RootTwo{}U(\TensProd{(\ket{0}+\ket{1})}{\ket{0^{n-1}}})} \\
 \visible<13->{\sqrt{2}\,U(\ket{+})= & U(\TensProd{\ket{0}}{\ket{0^{n-1}}}+\TensProd{\ket{1}}{\ket{0^{n-1}}})} \\
 \visible<14->{ = & 
-\textcolor<15>{OrangeRed}{U(\TensProd{\ket{0}}{\ket{0^{n-1}}})} + \textcolor<16>{NavyBlue}{U(\TensProd{\ket{1}}{\ket{0^{n-1}}})}} \\
+\textcolor<15>{\RCone}{U(\TensProd{\ket{0}}{\ket{0^{n-1}}})} + \textcolor<16>{\RCtwo}{U(\TensProd{\ket{1}}{\ket{0^{n-1}}})}} \\
 \visible<15->{ = &
-\textcolor<15>{OrangeRed}{\TensProd{\ket{00}}{f(\ket{0})}} +
-\visible<16->{\textcolor<16>{NavyBlue}{\TensProd{\ket{11}}{f(\ket{1})}
+\textcolor<15>{\RCone}{\TensProd{\ket{00}}{f(\ket{0})}} +
+\visible<16->{\textcolor<16>{\RCtwo}{\TensProd{\ket{11}}{f(\ket{1})}
 }}} \\
 \visible<17->{%
 U(\ket{+}) = & 

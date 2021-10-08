@@ -65,26 +65,26 @@
 \TwoColumns{%
 \begin{itemize}
     \item<1-> Start with unpolarized light.
-    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<2-> Impose a \textcolor{\RCtwo}{vertically polarizing filter}.
     \item<3-> You see half of the light passing through.
-    \item<4-> Impose a second \textcolor{OliveGreen}{identical filter}.
+    \item<4-> Impose a second \textcolor{\RCthree}{identical filter}.
     \item<5-> No more light is filtered out this time.
-    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45}.
-    \item<7> You now see half of the previous light passing through, now polarized according to this \textcolor{orange}{last filter}.
+    \item<6-> Impose \textcolor{\RCone}{another filter} at \Degrees{45}.
+    \item<7> You now see half of the previous light passing through, now polarized according to this \textcolor{\RCone}{last filter}.
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
 \visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
-\visible<2>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2>{\begin{scope}[draw=\RCtwo]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<3-4,5,6>{%
 \foreach \x in {-1, -0.75,...,1} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 }
-\visible<4>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 
-\visible<6>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<6>{\begin{scope}[draw=\RCone,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<7>{%
 \begin{scope}[rotate=45]
 \foreach \x in {-1, -0.5,...,1} {
@@ -103,22 +103,22 @@
 \TwoColumns{%
 \begin{itemize}
     \item<1-> Start with unpolarized light.
-    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<2-> Impose a \textcolor{\RCtwo}{vertically polarizing filter}.
     \item<3-> You see half the light passing through.
-    \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, behind the first one, rotated \Degrees{90}.
+    \item<4-> Add a second \textcolor{\RCthree}{identical filter}, behind the first one, rotated \Degrees{90}.
     \item<5-> No light passes through now.  We should expect this.
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
 \visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
-\visible<2,4>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2,4>{\begin{scope}[draw=\RCtwo]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<3-4>{%
 \foreach \x in {-1, -0.75,...,1} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 }
-\visible<4>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4>{\begin{scope}[draw=\RCthree,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 }
@@ -134,10 +134,10 @@
 }{%
 \begin{center}
 \begin{TIKZP}
-\visible<1-3>{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\visible<1-3>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
 \draw[->,thick] (0,0) -- (1,0) ;
 }
-\visible<2>{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
+\visible<2>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}
 \draw[->,thick] (0,0) -- (1,0) ;
 \draw[->,thick] (0,0) -- (0,1);
 }
@@ -154,25 +154,25 @@
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
 \begin{itemize}
     \item<1-> Start with unpolarized light
-    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<2-> Impose a \textcolor{\RCtwo}{vertically polarizing filter}.
     \item<3-> You see half the light passing through.
-    \item<4-> Add a second \textcolor{OliveGreen}{identical filter}, in front the first one, rotated \Degrees{90}.
+    \item<4-> Add a second \textcolor{\RCthree}{identical filter}, in front the first one, rotated \Degrees{90}.
     \item<5-> You see no light, like previously.
-    \item<6-> Impose \textcolor{orange}{another filter} at \Degrees{45} sandwiched \emph{between} the \textcolor{NavyBlue}{first} and \textcolor{OliveGreen}{second} filters.
-    \item<7> You now see 25\% of the light passing through and it is polarized according to the \textcolor{OliveGreen}{last} filter.
+    \item<6-> Impose \textcolor{\RCone}{another filter} at \Degrees{45} sandwiched \emph{between} the \textcolor{\RCtwo}{first} and \textcolor{\RCthree}{second} filters.
+    \item<7> You now see 25\% of the light passing through and it is polarized according to the \textcolor{\RCthree}{last} filter.
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
 \visible<1-2>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
-\visible<2,4,6,7>{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2,4,6,7>{\begin{scope}[draw=\RCtwo]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<3-4>{%
 \foreach \x in {-1, -0.75,...,1} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 }
-\visible<6,7>{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
-\visible<4,6,7>{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<6,7>{\begin{scope}[draw=\RCone,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4,6,7>{\begin{scope}[draw=\RCthree,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<7>{%
 \begin{scope}[rotate=90]
 \foreach \x in {-0.5,0, ...,0.5} {
@@ -203,34 +203,34 @@
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
 \begin{itemize}
     \item<1-> Start with unpolarized light
-    \item<2-> Impose a \textcolor{NavyBlue}{vertically polarizing filter}.
+    \item<2-> Impose a \textcolor{\RCtwo}{vertically polarizing filter}.
     \item<3-> You see half the light passing through.
 .
-    \item<4-> The \textcolor{orange}{another filter} at \Degrees{45} sandwiched is next.
+    \item<4-> The \textcolor{\RCone}{another filter} at \Degrees{45} sandwiched is next.
     \item<5-> Its angle will cause $\cos^2(\pi/4)=1/2$ of the light to pass through.
-        \item<6-> Add the final filter \textcolor{OliveGreen}{identical filter}, rotated \Degrees{90}.
+        \item<6-> Add the final filter \textcolor{\RCthree}{identical filter}, rotated \Degrees{90}.
     \item<6-> Its angle with the previous filter is also \Degrees{45}, so that the light is cut down by another factor of 2.
     
-    \item<7> You thus see $1/4$ of the original light, polarized according to the \textcolor{OliveGreen}{last} filter.
+    \item<7> You thus see $1/4$ of the original light, polarized according to the \textcolor{\RCthree}{last} filter.
 \end{itemize}
 }{%
 \begin{center}
 \begin{TIKZP}
 \visible<1>{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
-\visible<2->{\begin{scope}[draw=NavyBlue]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2->{\begin{scope}[draw=\RCtwo]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<2-3>{%
 \foreach \x in {-1, -0.75,...,1} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 }
-\visible<4->{\begin{scope}[draw=orange,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<4->{\begin{scope}[draw=\RCone,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<4-5>{%
 \begin{scope}[rotate=45]
 \foreach \x in {-0.5,-0.25,...,0.5} {
 \draw[<->,thick,color=BrickRed] (\x,-1) -- (\x,1);
 }
 \end{scope}}
-\visible<6->{\begin{scope}[draw=OliveGreen,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<6->{\begin{scope}[draw=\RCthree,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<6-7>{%
 \begin{scope}[rotate=90]
 \foreach \x in {-0.5,0.5} {

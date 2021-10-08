@@ -59,7 +59,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 
 \def\Bloch#1#2{%
 \ensuremath{%
-\cos{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{OrangeRed}{#2}}\sin{\frac{\textcolor{NavyBlue}{#1}}{2}}\ket{1}}}
+\cos{\frac{\textcolor{\RCtwo}{#1}}{2}}\ket{0} + \Polar{}{\textcolor{\RCone}{#2}}\sin{\frac{\textcolor{\RCtwo}{#1}}{2}}\ket{1}}}
 
 \section{Bloch sphere}
 
@@ -98,8 +98,8 @@ We next examine a more concise and visually compelling definition of a qubit.
 \draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
 \draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
 }
-\visible<1->{\begin{scope}[draw=NavyBlue,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
-\visible<2->{\begin{scope}[draw=OliveGreen]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<1->{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<2->{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 \visible<4->{%
@@ -116,9 +116,9 @@ We next examine a more concise and visually compelling definition of a qubit.
 \begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far.}
 \[ \Bloch{\theta}{\phi} \]
 \begin{itemize}
-    \item The parameter \textcolor{NavyBlue}{$\theta$} trades wave amplitude between \ket{0} and \ket{1}.
+    \item The parameter \textcolor{\RCtwo}{$\theta$} trades wave amplitude between \ket{0} and \ket{1}.
     \item Only the relative phase between \ket{0} and \ket{1} matters for interactions.  
-    \item This formulation ascribes the phase difference to \ket{1}, using a walk of \textcolor{OrangeRed}{$\phi$} radians counterclockwise around the complex unit circle, starting at 0~radians.
+    \item This formulation ascribes the phase difference to \ket{1}, using a walk of \textcolor{\RCone}{$\phi$} radians counterclockwise around the complex unit circle, starting at 0~radians.
     \item This formulation of state makes clear that while only two real-valued parameters are needed, the number of states is \href{https://en.wikipedia.org/wiki/Uncountable_set}{uncountably infinite}.
     
 \end{itemize}
@@ -140,8 +140,8 @@ We next examine a more concise and visually compelling definition of a qubit.
 
 \item \ket{\psi} is located 
 \begin{itemize}
-    \item  \textcolor{OrangeRed}{$\phi$} radians off the $x$~axis and 
-    \item \textcolor{NavyBlue}{$\theta$} radians off the $z$~axis.
+    \item  \textcolor{\RCone}{$\phi$} radians off the $x$~axis and 
+    \item \textcolor{\RCtwo}{$\theta$} radians off the $z$~axis.
 \end{itemize}
 \item We locate states \emph{on} the unit sphere, but the distance from the center of the sphere has no meaning here.  
 
@@ -159,15 +159,15 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half.}
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
-  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  The choice of \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=0$.
+  \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  The choice of \textcolor{\RCone}{$\phi$} doesn't matter when $\textcolor{\RCtwo}{\theta}=0$.
   \item<3-> We locate \ket{1} at $\PhiTheta{0}{\pi}$ using $\Bloch{\pi}{0}$.
-  \item<4-> From the picture, \textcolor{OrangeRed}{$\phi$} doesn't matter when $\textcolor{NavyBlue}{\theta}=\pi$.  How can this be?
+  \item<4-> From the picture, \textcolor{\RCone}{$\phi$} doesn't matter when $\textcolor{\RCtwo}{\theta}=\pi$.  How can this be?
 \end{itemize}
 }{%
 \only<1-4>{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]}
 \only<5>{%
-\[ \ket{\psi} =  \ExpPhase{\textcolor{OrangeRed}{\phi}} \ket{1} \]
+\[ \ket{\psi} =  \ExpPhase{\textcolor{\RCone}{\phi}} \ket{1} \]
 }%
 \only<1-4>{%
 \begin{BlochSphere}[scale=1.5]{60}{115}
@@ -179,8 +179,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{BlochSphere}}%
 \only<5>{%
 \begin{itemize}
-\item With $0$ as the amplitude on \ket{0}, any phase on \ket{1} with $\textcolor{OrangeRed}{\phi}\not=0$ can be canceled with an appropriate global phase of 
-  \ExpPhase{(-\textcolor{OrangeRed}{\phi})} on \ket{\psi}.
+\item With $0$ as the amplitude on \ket{0}, any phase on \ket{1} with $\textcolor{\RCone}{\phi}\not=0$ can be canceled with an appropriate global phase of 
+  \ExpPhase{(-\textcolor{\RCone}{\phi})} on \ket{\psi}.
 \item Global phases can be ignored as they do not affect measurements or interactions.
 \end{itemize}
 }
@@ -192,8 +192,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \begin{itemize}
   \item<1-> The north and south poles, \ket{0} and \ket{1}, respectively, are our \emph{standard} or \emph{computational basis}.
    All other points on the sphere are superpositions of that basis.
-   \item<2-> The probability of measuring \ket{0} or \ket{1} is related to how close the state is to the north or south pole, respectively, which is represented by $\textcolor{NavyBlue}{\theta}$.
-   \item<3-> The probability of measuring \ket{0} is $\cos^{2}(\textcolor{NavyBlue}{\theta}/2)$.  At the equator, we are equally likely to measure \ket{0} or \ket{1}.
+   \item<2-> The probability of measuring \ket{0} or \ket{1} is related to how close the state is to the north or south pole, respectively, which is represented by $\textcolor{\RCtwo}{\theta}$.
+   \item<3-> The probability of measuring \ket{0} is $\cos^{2}(\textcolor{\RCtwo}{\theta}/2)$.  At the equator, we are equally likely to measure \ket{0} or \ket{1}.
 \end{itemize}
 }{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
@@ -210,15 +210,15 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 {%
 \def\Sket#1{%
 \ket{\hbox to 4ex{\hfil\ensuremath{#1}\hfil}}}%
-\def\R#1{\mbox{\textcolor{OrangeRed}{#1}}}%
-\def\B#1{\mbox{\textcolor{NavyBlue}{#1}}}%
+\def\R#1{\mbox{\textcolor{\RCone}{#1}}}%
+\def\B#1{\mbox{\textcolor{\RCtwo}{#1}}}%
 \begin{frame}{Navigating the Bloch sphere}{Other points of interest}
 
 
 \Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{center}
     \begin{tabular}{ccc}
-        State & \textcolor{OrangeRed}{$\phi$} & \textcolor{NavyBlue}{$\theta$} \\
+        State & \textcolor{\RCone}{$\phi$} & \textcolor{\RCtwo}{$\theta$} \\
         \visible<1->{\Sket{0} & \R{$0$} & \B{$0$} \\}%
         \visible<1->{\Sket{1} & \R{$0$} & \B{$\pi$} \\}%
         \visible<2->{\Sket{+x} & \R{$0$} & \B{$\pi/2$} \\}%
@@ -257,15 +257,15 @@ A more general interpretation of the sphere ascribes meaning to interior points.
     \item Typically, our computations begin and end (with measurements) in the standard basis.
     \item We often create a uniform superposition of the standard basis states, \ket{+} or \ket{-}, which together form the \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Hadamard_gate}{Hadamard} basis in quantum computing.
     \item<1-> How?  We need a transformation (unitary matrix) \Hadamard{} that sends $\ket{0}\mapsto \ket{+}$ and $\ket{1}\mapsto \ket{-}$.
-    \item<3-> From linear algebra, the columns of \Hadamard{} are the transformed versions of \textcolor<4->{NavyBlue}{\ket{0}} and \textcolor<5->{OliveGreen}{\ket{1}}.
+    \item<3-> From linear algebra, the columns of \Hadamard{} are the transformed versions of \textcolor<4->{\RCtwo}{\ket{0}} and \textcolor<5->{\RCthree}{\ket{1}}.
     \item<6-> Because it is symmetric and its entries are real, \mbox{\Hadamard{} = \Conj{\Hadamard{}}}  $\rightarrow$ \Hadamard{} is also its own inverse.
     
 \end{itemize}
 }{%
 \visible<2->{%
 \begin{eqnarray*}
-    \SQB{1}{0} & \mapsto & \textcolor<3->{NavyBlue}{\frac{1}{\sqrt{2}}\SQB{1}{1}} \\
-    \SQB{0}{1} & \mapsto & \textcolor<3->{OliveGreen}{\frac{1}{\sqrt{2}}\SQB{1}{-1}}
+    \SQB{1}{0} & \mapsto & \textcolor<3->{\RCtwo}{\frac{1}{\sqrt{2}}\SQB{1}{1}} \\
+    \SQB{0}{1} & \mapsto & \textcolor<3->{\RCthree}{\frac{1}{\sqrt{2}}\SQB{1}{-1}}
     \end{eqnarray*}}
 \visible<4->{%
 \[
@@ -273,8 +273,8 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \]
 \begin{TIKZP}[overlay]
   \draw[white] (0,0) circle(1pt);  % anchor
-  \draw<4-5>[NavyBlue,thick] (2.25,0.7) ellipse(0.3 and 0.6);
-  \draw<5>[OliveGreen,thick] (3, 0.7) ellipse (0.3 and 0.6);
+  \draw<4-5>[\RCtwo,thick] (2.25,0.7) ellipse(0.3 and 0.6);
+  \draw<5>[\RCthree,thick] (3, 0.7) ellipse (0.3 and 0.6);
 \end{TIKZP}
 }
 }
@@ -291,7 +291,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{description}
 \item In quantum computing we almost always use the standard basis of \ket{0} and \ket{1} (the z axis).
 \item The named axes are mutually orthogonal. \Exercise{Orthogonal Axes}{Prove orthogonality of the x, y, and z axes}
-\item While we can characterize two of the dimensions using only real values (the z--x plane, where $\textcolor{OrangeRed}{\phi}=0$), we require complex values to admit a third mutually orthogonal dimension (y).
+\item While we can characterize two of the dimensions using only real values (the z--x plane, where $\textcolor{\RCone}{\phi}=0$), we require complex values to admit a third mutually orthogonal dimension (y).
 
 \end{itemize}
 }{%
@@ -446,7 +446,7 @@ $\PauliZ{}=\ZMatrix{}$
 
 {%
 \def\Redify#1{\textcolor{RedOrange}{#1}}%
-\def\Bluify#1{\textcolor{NavyBlue}{#1}}%
+\def\Bluify#1{\textcolor{\RCtwo}{#1}}%
 \def\Term#1{\frac{i^{#1}\theta^{#1}A^{#1}}{#1!}}%
 \def\TermA#1{\frac{i\theta^{#1}A}{#1!}}%
 \def\TermI#1{\frac{\theta^{#1}\Identity{}}{#1!}}%
