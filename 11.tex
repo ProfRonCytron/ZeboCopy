@@ -406,3 +406,63 @@ We will see that the \emph{unused} measurements can implicate Eve.
 \end{EKey}
 
 \end{frame}}
+
+\begin{frame}{Enter Eve}{The eavesdropper}
+\begin{itemize}[<+->]
+    \item With the BB84 protocol, Eve could measure a state in flight from Alice to Bob.
+    \item How can Eve intercept states here?
+    \begin{itemize}
+        \item The EPR pairs are sent to Alice and Bob.  If Eve had access to them at the end of the protocol, she could determine the shared secret by re-measuring the agreed-upon states.
+        \item But Alice and Bob can protect their EPR pairs, and they can also destroy them (change their state) after agreement.
+    \end{itemize}
+    \item Suppose Eve can bribe the EPR maker so that there are \emph{three} entangled qubits, in the state
+    \[ \RootTwo{}\left(\ket{000}+\ket{111}\right) \]
+    with Eve retaining one qubit and the other two going to Alice and Bob.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Creating three entangled qubits}{It's easy}
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\Vskip{-4em}\begin{align*}
+    \QState{ab} & = \RootTwo{}\DQB{1}{0}{0}{1} \\
+    \visible<2->{\QState{x}  & = \TensProd{\QState{ab}}{\SQB{1}{0}} \\}
+    \visible<3->{\QState{abc} &= \
+\end{align*}
+}{%
+\only<3>{%
+\[
+\QState{x} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0}
+\]
+}
+
+}
+    
+\end{frame}
+
+\begin{frame}{Enter Eve}{The eavesdropper}
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{itemize}
+    \item<1-> For this protocol, we assume Eve has physical access to Alice's or Bob's qubits and can make measurements on them.
+    \item<2-> These bases are the ones from which Alice and Bob will construct their shared key.
+    \item<3-> Let's assume Eve only tries to measure on one of those states.
+    \begin{itemize}
+    \item<4-> When she guesses the basis correctly, she will receive the same information Alice and Bob share, and she will know this from their published bases sequences.
+    \item<5-> When she guesses the basis incorrectly, she will be right $\sim 85\%$ of the time.
+    \end{itemize}
+\end{itemize}
+}{%
+\begin{EKey}
+\begin{center}
+\begin{TIKZP}[scale=2]
+\draw<1->[->,ultra thick,\RCone] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+\draw<1->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};
+\draw<1->[->,thick,\RCone] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};
+\draw<1->[->,thick] (0,0) -- (-22.5:1) node[right] {\ZZNPO{8}};
+\end{TIKZP}
+\end{center}
+\end{EKey}
+}
+    
+\end{frame}
