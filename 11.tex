@@ -367,7 +367,9 @@ We will see that the \emph{unused} measurements can implicate Eve.
 
 {
 \def\V#1#2{%
-  \visible<#1->{#2}}%
+  \visible<#1-9>{#2}}%
+\def\VA#1#2{%
+  \visible<#1-9,10->{#2}}%
 \begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#E91_protocol:_Artur_Ekert_(1991)}{E91 protocol} (Ekert)}{Example}
 
 
@@ -375,20 +377,27 @@ We will see that the \emph{unused} measurements can implicate Eve.
 \begin{center}
     \begin{tabular}{c|ccccccccc}
     Example & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
-         Alice basis & \ZZ{} & \V{2}{\ZZ{}} & \V{3}{\ZZ{}} & \V{4}{\ZZPO{8}} & \V{5}{\ZZPO{8}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZPO{4}} & \V{8}{\ZZPO{4}} & \V{9}{\ZZPO{4}} \\
-         Alice measures & $0$ & \V{2}{$1$} & \V{3}{$0$} & \V{4}{$1$} & \V{5}{$0$} & \V{6}{$1$} & \V{7}{$0$} & \V{8}{$1$} & \V{9}{$0$} \\
-         Bob basis & \ZZNPO{8} & \V{2}{\ZZ{}} & \V{3}{\ZZPO{8}} &   \V{4}{\ZZNPO{8}} & \V{5}{\ZZ{}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZNPO{8}} & \V{8}{\ZZ{}} & \V{9}{\ZZPO{8}} \\
-         Bob measures &  $0$ & \V{2}{$1$} & \V{3}{$0$} & \V{4}{$0$} & \V{5}{$0$} & \V{6}{$1$} & \V{7}{$1$} & \V{8}{$1$} &  \V{9}{$0$} \\
-         $\theta$ &  $\pi/8$ & $0$ & $\pi/8$ & $\pi/4$ & $\pi/8$ & $0$ &$3\pi/8$ & $\pi/4$ & $\pi/8$ \\
-         Useful? & \MetaAgree{} & \Agree{} & \MetaAgree{} & & \MetaAgree{} & \Agree{} & \DisAgree{} & &  \MetaAgree{} \\
-         Shared key &  & $1$ & & & & $1$ & & &
+         Alice basis & \V{1}{\ZZ{}} & \V{2}{\ZZ{}} & \V{3}{\ZZ{}} & \V{4}{\ZZPO{8}} & \V{5}{\ZZPO{8}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZPO{4}} & \V{8}{\ZZPO{4}} & \V{9}{\ZZPO{4}} \\
+         Alice measures & $0$ & \V{2}{$1$} & \VA{3}{$0$} & \V{4}{$1$} & \VA{5}{$0$} & \V{6}{$1$} & \VA{7}{$0$} & \V{8}{$1$} & \VA{9}{$0$} \\
+         Bob basis & \V{1}{\ZZNPO{8}} & \V{2}{\ZZ{}} & \V{3}{\ZZPO{8}} &   \V{4}{\ZZNPO{8}} & \V{5}{\ZZ{}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZNPO{8}} & \V{8}{\ZZ{}} & \V{9}{\ZZPO{8}} \\
+         Bob measures &  $0$ & \V{2}{$1$} & \VA{3}{$0$} & \V{4}{$0$} & \VA{5}{$0$} & \V{6}{$1$} & \VA{7}{$1$} & \V{8}{$1$} &  \VA{9}{$0$} \\
+         $\theta$ &  $\pi/8$ & \V{2}{$0$} & \VA{3}{$\pi/8$} & \V{4}{$\pi/4$} & \VA{5}{$\pi/8$} & \V{6}{$0$} &\VA{7}{$3\pi/8$} & \V{8}{$\pi/4$} & \VA{9}{$\pi/8$} \\
+         Useful? & \MetaAgree{} & \V{2}{\Agree{}} & \VA{3}{\MetaAgree{}} &\V{4}{$--$} & \VA{5}{\MetaAgree{}} & \V{6}{\Agree{}} & \VA{7}{\DisAgree{}} & \V{8}{$--$} &  \VA{9}{\MetaAgree{}} \\
+         Shared key &  & \V{2}{$1$} & & & & \V{6}{$1$} & & &
     \end{tabular}
 \end{center}
+\only<1-9>{%
 \begin{description}
-    \item<1->[\MetaAgree{}] blah
-    \item<2->[\Agree{}] blah
-    \item<7->[\DisAgree{}] blah
-\end{description}
+    \item<1->[\MetaAgree{}] These bases differ, but only by $\pi/8$ radians.  We expect agreement with probability~$\cos^{2}(\pi/8) \approx 0.85$.
+    \item<2->[\Agree{}] Exact basis match.  This bit is added to the shared key.
+    \item<7->[\DisAgree{}] Bases differ by $3\pi/8$ radians, expecting \emph{dis}agreement with probability~$\sim 0.85$.
+\end{description}}
+\only<10->{%
+\begin{itemize}
+    \item Here we contrived to succeed on 100\% of the \MetaAgree{} and \DisAgree{} cases, but we expect to be right only about 85\% of the time.
+    \item How does this expectation help us catch Eve?
+\end{itemize}
+}
 \end{EKey}
 
 \end{frame}}
