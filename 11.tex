@@ -305,8 +305,8 @@ How much should they publish?
 \only<7->{%
 \begin{EKey}
 \begin{itemize}
-    \item<7-> \textcolor<7>{OrangeRed}{Alice} will measure in one of three bases.
-    \item<8-> \textcolor<8>{OliveGreen}{Bob} will measure in one of three bases.
+    \item<7-> \textcolor<7>{\RCone}{Alice} will measure in one of three bases.
+    \item<8-> \textcolor<8>{\RCtwo}{Bob} will measure in one of three bases.
     \item<9-> With Alice and Bob each drawing from three bases, there are $9$ combinations of basis pairs:
     \TensProd{\Set{\textcolor<10>{Purple}{\ZZ{}}, \ZZPO{8}, \textcolor<10>{Purple}{\ZZPO{4}}}}{\Set{\ZZNPO{8},\textcolor<10>{Purple}{\ZZ{}},\textcolor<10>{Purple}{\ZZPO{4}}}}.
     \item<10-> Among those, \textcolor<10>{Purple}{$2$ have the same basis} for both Alice and Bob: they will observe the same measurements.
@@ -318,8 +318,8 @@ How much should they publish?
 \begin{EKey}
 \begin{center}
 \begin{TIKZP}[scale=2]
-\textcolor<8>{OliveGreen}{%
-\textcolor<7>{OrangeRed}{%
+\textcolor<8>{\RCtwo}{%
+\textcolor<7>{\RCone}{%
 \textcolor<10>{Purple}{%
 \draw<1->[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};}%
 }%
@@ -330,14 +330,14 @@ How much should they publish?
 \visible<3>{\draw[->,dotted] (0,0) -- (120:1);}
 \visible<3>{\node at (1,0.6) {$Z_\theta$};}
 \node<2-3> at (0.7,0.2) {$\theta$};
-\textcolor<7>{OrangeRed}{%
+\textcolor<7>{\RCone}{%
 \draw<5->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};
-\textcolor<8>{OliveGreen}{%
+\textcolor<8>{\RCtwo}{%
 \textcolor<10>{Purple}{%
 \draw<4->[->,thick] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};}%
 }%
 }
-\textcolor<8>{OliveGreen}{%
+\textcolor<8>{\RCtwo}{%
 \draw<6->[->,thick] (0,0) -- (-22.5:1) node[right] {\ZZNPO{8}};}
 \end{TIKZP}
 \end{center}
