@@ -288,7 +288,7 @@ How much should they publish?
 \end{frame}
 
 \begin{frame}{The measurement bases}{Increments of $\pi/8$ away from \ket{0}}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \only<1-6>{%
 \begin{EKey}
 \begin{itemize}
@@ -305,7 +305,8 @@ How much should they publish?
     \item<8-> \textcolor<8>{OliveGreen}{Bob} will measure in one of three bases.
     \item<9-> With Alice and Bob each drawing from three bases, there are $9$ combinations of basis pairs:
     \TensProd{\Set{\textcolor<10>{Purple}{\ZZ{}}, \ZZPO{8}, \textcolor<10>{Purple}{\ZZPO{4}}}}{\Set{\ZZNPO{8},\textcolor<10>{Purple}{\ZZ{}},\textcolor<10>{Purple}{\ZZPO{4}}}}.
-    \item<10-> Among those pairs, \textcolor<10>{Purple}{$2$ have the same basis} for both Alice and Bob.
+    \item<10-> Among those, \textcolor<10>{Purple}{$2$ have the same basis} for both Alice and Bob: they will observe the same measurements.
+    \item<11-> For 3 of the pairs, measurement is separated by $\pi/8$ radians. While not guaranteed, Alice and Bob expect to see the same value $\cos^{2}(\pi/8)\approx 0.85$ of the time.
 \end{itemize}
 \end{EKey}
 }
@@ -336,6 +337,10 @@ How much should they publish?
 \end{TIKZP}
 \end{center}
 \end{EKey}
+
+\visible<12->{%
+When their bases differ, their published measurements can implicate Eve.
+}
 }
     
 \end{frame}
