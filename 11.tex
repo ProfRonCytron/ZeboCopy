@@ -365,25 +365,30 @@ We will see that the \emph{unused} measurements can implicate Eve.
 \end{EKey}
 \end{frame}
 
+{
+\def\V#1#2{%
+  \visible<#1->{#2}}%
 \begin{frame}{\href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#E91_protocol:_Artur_Ekert_(1991)}{E91 protocol} (Ekert)}{Example}
+
 
 \Vskip{-4em}\begin{EKey}
 \begin{center}
     \begin{tabular}{c|ccccccccc}
     Example & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
-         Alice basis & \ZZ{} & \ZZ{} & \ZZ{} & \ZZPO{8} & \ZZPO{8} & \ZZPO{8} & \ZZPO{4} & \ZZPO{4} & \ZZPO{4} \\
-         Alice measures & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ \\
-         Bob basis & \ZZNPO{8} & \ZZ{} & \ZZPO{8} &   \ZZNPO{8} & \ZZ{} & \ZZPO{8} & \ZZNPO{8} & \ZZ{} & \ZZPO{8} \\
-         Bob measures &  $0$ & $1$ & $0$ & & $0$ & $1$ & $1$ & &  $0$ \\
+         Alice basis & \ZZ{} & \V{2}{\ZZ{}} & \V{3}{\ZZ{}} & \V{4}{\ZZPO{8}} & \V{5}{\ZZPO{8}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZPO{4}} & \V{8}{\ZZPO{4}} & \V{9}{\ZZPO{4}} \\
+         Alice measures & $0$ & \V{2}{$1$} & \V{3}{$0$} & \V{4}{$1$} & \V{5}{$0$} & \V{6}{$1$} & \V{7}{$0$} & \V{8}{$1$} & \V{9}{$0$} \\
+         Bob basis & \ZZNPO{8} & \V{2}{\ZZ{}} & \V{3}{\ZZPO{8}} &   \V{4}{\ZZNPO{8}} & \V{5}{\ZZ{}} & \V{6}{\ZZPO{8}} & \V{7}{\ZZNPO{8}} & \V{8}{\ZZ{}} & \V{9}{\ZZPO{8}} \\
+         Bob measures &  $0$ & \V{2}{$1$} & \V{3}{$0$} & \V{4}{$0$} & \V{5}{$0$} & \V{6}{$1$} & \V{7}{$1$} & \V{8}{$1$} &  \V{9}{$0$} \\
          $\theta$ &  $\pi/8$ & $0$ & $\pi/8$ & $\pi/4$ & $\pi/8$ & $0$ &$3\pi/8$ & $\pi/4$ & $\pi/8$ \\
          Useful? & \MetaAgree{} & \Agree{} & \MetaAgree{} & & \MetaAgree{} & \Agree{} & \DisAgree{} & &  \MetaAgree{} \\
          Shared key &  & $1$ & & & & $1$ & & &
     \end{tabular}
 \end{center}
-\begin{itemize}
-    \item lah
-    \item blah
-\end{itemize}
+\begin{description}
+    \item<1->[\MetaAgree{}] blah
+    \item<2->[\Agree{}] blah
+    \item<7->[\DisAgree{}] blah
+\end{description}
 \end{EKey}
 
-\end{frame}
+\end{frame}}
