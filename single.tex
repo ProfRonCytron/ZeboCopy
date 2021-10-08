@@ -562,6 +562,17 @@
 \SquareOutline{}%
 \draw[->,thick,purple] (0,1) -- (1,0);%
 \end{tikzpicture}}%
+\def\BBBasis{%
+\begin{tabular}{c|c|c}
+Basis & 0 & 1 \\
+\hline
+\STD{} & \BBUp{} & \BBRt{} \\
+\HDM{} & \BBNe{} & \BBSe{}
+\end{tabular}%
+}%
+}{%
+\relax%
+}
 \def\Agree{%
 \begin{tikzpicture}[scale=0.30]%
 \SquareOutline{}%
@@ -574,17 +585,12 @@
 \fill[red] (0.5,0.5) circle(0.4);%
 \end{tikzpicture}%
 }%
-\def\BBBasis{%
-\begin{tabular}{c|c|c}
-Basis & 0 & 1 \\
-\hline
-\STD{} & \BBUp{} & \BBRt{} \\
-\HDM{} & \BBNe{} & \BBSe{}
-\end{tabular}%
+\def\MetaAgree{%
+\begin{tikzpicture}[scale=0.30]%
+\SquareOutline{}%
+\fill[yellow] (0.5,0.5) circle(0.4);%
+\end{tikzpicture}%
 }%
-}{%
-\relax%
-}
 \newenvironment{EKey}[0]{%
 \def\ZZ{%
 \ZRot{0}%
