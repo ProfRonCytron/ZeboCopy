@@ -423,18 +423,29 @@ We will see that the \emph{unused} measurements can implicate Eve.
 
 
 \begin{frame}{Creating three entangled qubits}{It's easy}
-\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \Vskip{-4em}\begin{align*}
     \QState{ab} & = \RootTwo{}\DQB{1}{0}{0}{1} \\
     \visible<2->{\QState{x}  & = \TensProd{\QState{ab}}{\SQB{1}{0}} \\}
-    \visible<3->{\QState{abc} &= \
+    \visible<4->{\QState{abe} &= \NamedGate{CCNOT}\QState{x}}
 \end{align*}
+\Vskip{-3em}\begin{itemize}
+    \item<1-> We begin with an EPR pair.
+    \item<2-> We add a qubit in state \ket{0}.
+    \item<4-> We run these three qubits through a \href{https://en.wikipedia.org/wiki/Toffoli_gate\#Universality_and_Toffoli_gate}{\NamedGate{CCNOT}} gate.
+    \item<5-> We obtain our result.
+\end{itemize}
 }{%
-\only<3>{%
+\only<3-4>{%
 \[
 \QState{x} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0}
 \]
-}
+}%
+\only<5>{%
+\[
+\QState{abe} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{0}{1}
+\]
+}%
 
 }
     
