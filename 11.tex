@@ -424,6 +424,7 @@ We will see that the \emph{unused} measurements can implicate Eve.
 
 \begin{frame}{Creating three entangled qubits}{It's easy}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-2,4-5>{%
 \Vskip{-4em}\begin{align*}
     \QState{ab} & = \RootTwo{}\DQB{1}{0}{0}{1} \\
     \visible<2->{\QState{x}  & = \TensProd{\QState{ab}}{\SQB{1}{0}} \\}
@@ -434,7 +435,25 @@ We will see that the \emph{unused} measurements can implicate Eve.
     \item<2-> We add a qubit in state \ket{0}.
     \item<4-> We run these three qubits through a \href{https://en.wikipedia.org/wiki/Toffoli_gate\#Universality_and_Toffoli_gate}{\NamedGate{CCNOT}} gate.
     \item<5-> We obtain our result.
-\end{itemize}
+\end{itemize}}%
+\only<3>{%
+The \href{https://en.wikipedia.org/wiki/Toffoli_gate}{\NamedGate{CCNOT}} or \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tuffoli} gate swaps the bottom two entries when
+applied to \QState{x}:
+\[
+    \begin{pmatrix*}[r]
+    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 
+    \end{pmatrix*}
+\]
+}%
+\only<6->{%
+}
 }{%
 \only<3-4>{%
 \[
