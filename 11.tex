@@ -440,7 +440,7 @@ We will see that the \emph{unused} measurements can implicate Eve.
 The \href{https://en.wikipedia.org/wiki/Toffoli_gate}{\NamedGate{CCNOT}} or \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tuffoli} gate swaps the bottom two entries when
 applied to \QState{x}:
 \[
-    \begin{pmatrix*}[r]
+    \NamedGate{CCNOT} =\begin{pmatrix*}[r]
     1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
     0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
     0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
@@ -483,27 +483,65 @@ The circuit:
 \end{frame}
 
 \begin{frame}{Enter Eve}{The eavesdropper}
-\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\Vskip{-3em}\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<1-4>{%
 \begin{itemize}
-    \item<1-> For this protocol, we assume Eve has physical access to Alice's or Bob's qubits and can make measurements on them.
-    \item<2-> These bases are the ones from which Alice and Bob will construct their shared key.
-    \item<3-> Let's assume Eve only tries to measure on one of those states.
-    \begin{itemize}
-    \item<4-> When she guesses the basis correctly, she will receive the same information Alice and Bob share, and she will know this from their published bases sequences.
-    \item<5-> When she guesses the basis incorrectly, she will be right $\sim 85\%$ of the time.
-    \end{itemize}
+    \item<1-> We assume a sequence of $k$ EPR \emph{triples}, one qubit each for Alice, Bob, and Eve.  
+    \item<2-> Measurement of any of the three qubits in any basis causes the other two qubits of the triple to experience identical collapse.
+    \item<3-> \textcolor<3>{\RCone}{These bases} are the ones from which Alice and Bob will construct their shared key.
+    \item<4-> To find the shared key, Eve must measure qubits that Alice and Bob measured in their \textcolor<4>{\RCone}{common bases}.
+\end{itemize}}%
+\only<5-7>{%
+Scenario 1
+\begin{itemize}
+    \item<5-> Alice and Bob publish their bases, but do nothing to their qubits after they were measured for the protocol.
+    \item<6-> Eve can now construct the shared key perfectly and secretly, by measuring (her \Quote{copy} of) each qubit used to construct the shared key in its disclosed basis.
+    \item<7-> To avoid this possibility, Alice and Bob must destroy (change the state) of their qubits after measuring them but before disclosing their sequnce of bases.
 \end{itemize}
-}{%
+}%
+\only<8->{%
+Scenario 2}%
+\only<8-13>{%
+\begin{itemize}
+    \item<8-> Alice measures her qubits before the bases are disclosed.
+    \item<9-> Eve should use \textcolor{\RCone}{one of these bases} (say \textcolor{\RCone}{\ket{0}})) since only those are used to create the shared key.
+    \item<10-> The probability of her guessing correctly is 0.5.
+    \begin{description}
+        \item<11->[correct] \textcolor{\RCtwo}{She will perfectly measure the qubit.}
+        \item<12->[incorrect] \textcolor{\RCthree}{The proximity of the two bases is $\pi/2$ radians yielding an 85\% chance of measuring the same value as Alice and Bob.}
+    \end{description}
+\end{itemize}
+}%
+\only<14->{%
 \begin{EKey}
+\begin{itemize}
+    \item<14-> \textcolor{\RCone}{Eve} is likely to compute most of the shared-key qubits.
+    \item<15-> Her actions affect Alice's and Bob's qubits!
+    \item<16-> If \textcolor{\RCtwo}{Alice} and \textcolor{\RCthree}{Bob} measure as shown, they expect to agree about 85\% of the time.  
+    \item<17-> If the qubits collapse to \ket{000} thanks to \textcolor{\RCone}{Eve}, then \textcolor{\RCtwo}{Alice's measurement} is now equally likely to yield $0$ or $1$.  Their agreement in this case thus drops to 50\%.
+    \item<19-> Alice and Bob detect Eve by measuring agreement on such qubits.
+\end{itemize}
+\end{EKey}
+}
+}{%
+\Vskip{-3em}\begin{EKey}
 \begin{center}
-\begin{TIKZP}[scale=2]
+\begin{TIKZP}[scale=1.5]
 \draw<1->[->,ultra thick,\RCone] (0,0) -- (1,0) node[right] {\ \ket{0}};
 \draw<1->[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
-\draw<1->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};
-\draw<1->[->,thick,\RCone] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};
+\textcolor<16->{\RCtwo}{\draw<1->[->,thick] (0,0) -- (45:1) node[right] {\ZZPO{4}};}
+\draw<1-13>[->,thick,\RCone] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};
+\draw<14-15>[->,thick] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};
+\draw<16->[->,thick,\RCthree] (0,0) -- (22.5:1) node[right] {\ZZPO{8}};
 \draw<1->[->,thick] (0,0) -- (-22.5:1) node[right] {\ZZNPO{8}};
 \end{TIKZP}
 \end{center}
+\only<8-14>{%
+\begin{align*}
+& \visible<10->{\frac{1}{2}} \textcolor{\RCtwo}{\visible<11->{(1.0)}} \visible<10->{ + \frac{1}{2}} \textcolor{\RCthree}{\visible<12->{\cos^{2}(\pi/8)}} \\
+\visible<13->{\approx\ & 0.93}
+\end{align*}
+}
 \end{EKey}
 }
     
