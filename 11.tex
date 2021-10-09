@@ -422,7 +422,7 @@ We will see that the \emph{unused} measurements can implicate Eve.
 \end{frame}
 
 
-\begin{frame}{Creating three entangled qubits}{It's easy}
+\begin{frame}{Creating three entangled qubits}{One each for Alice, Bob, Eve to create state \QState{abe}}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \only<1-2,4-5>{%
 \Vskip{-4em}\begin{align*}
@@ -453,6 +453,7 @@ applied to \QState{x}:
 \]
 }%
 \only<6->{%
+The circuit:
 \begin{center}
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\QZero{}} &  \gate{H} & \ctrl{1} & \ctrl{2} & \qw & \rstick[wires=3]{\QState{abe}} \\
@@ -466,7 +467,7 @@ applied to \QState{x}:
 \]
 }
 }{%
-\only<3-4>{%
+\only<2-4>{%
 \[
 \QState{x} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0}
 \]
