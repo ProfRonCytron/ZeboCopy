@@ -453,6 +453,17 @@ applied to \QState{x}:
 \]
 }%
 \only<6->{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H} & \ctrl{1} & \ctrl{2} & \qw & \rstick[wires=3]{\QState{abe}} \\
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \ctrl{1} & \qw & \\
+\lstick{\QZero{}} & \qw  & \qw  & \targ{} & \qw & 
+\end{quantikz}}
+\end{center}
+\BigSkip{}
+\[
+\QState{abe} = \frac{\ket{000}+\ket{111}}{\sqrt{2}}
+\]
 }
 }{%
 \only<3-4>{%
@@ -460,7 +471,7 @@ applied to \QState{x}:
 \QState{x} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0}
 \]
 }%
-\only<5>{%
+\only<5->{%
 \[
 \QState{abe} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{0}{1}
 \]
