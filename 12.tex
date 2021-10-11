@@ -1,0 +1,56 @@
+\SetTitle{12}{Games with quantum advantage}{These rely on entanglement}{12}
+
+\section*{Overview}
+
+\begin{frame}{Overview}{What will we study here?}
+\end{frame}
+
+\section*{CHSH}
+
+{%
+\def\RD#1{\textcolor{red}{#1}}
+\def\YL#1{\textcolor{Goldenrod}{#1}}
+\def\GN#1{\textcolor{green}{#1}}
+\def\OR#1{\textcolor{orange}{#1}}
+\begin{frame}{Introduction}{The CHSH game}
+    \begin{itemize}[<+->]
+        \item Alice and Bob are initially proximate, so that they can strategize.\footnote{They could make some EPR pairs, but that comes later!}
+        \item They then separate by a large distance.
+        \item A referee randomly and uniformly sends one of two words to Alice, and one of two other words to Bob.  It is expedient to use colors for the words:
+        \begin{description}
+            \item[Alice] will hear \RD{red} or \YL{yellow}.
+            \item[Bob] will hear \GN{green} or \OR{orange}.
+        \end{description}
+    \item Alice and Bob each respond with one bit ($0$ or $1$).  To win$\ldots$
+    \begin{itemize}
+        \item If Alice and Bob hear \RD{red} and \GN{green}, respectively, their bits must differ.
+        \item Otherwise, their bits must agree.
+    \end{itemize}
+    \item Alice and Bob are too far apart to communicate before their answer is needed.
+    \item What is the best they can do?
+    \end{itemize}
+\end{frame}%
+
+\begin{frame}{Classical strategies}{How well can they do?}
+
+\begin{itemize}
+    \item Based on the information given to Alice, she has only four possible strategies:
+    \begin{itemize}
+        \item Always respond $0$
+        \item Always respond $1$
+        \item Use the colors:  \RD{$0$}, \YL{$1$}
+        \item Or oppositely:  \YL{$0$}, \RD{$1$}
+    \end{itemize}
+    \item Bob has the same four strategies, so between them they have~16 strategies.
+    \item The simplest strategy is that they always respond with the same bit, say $0$.
+    \item They will win $\frac{3}{4}$ of the games they play, which turns out to be the best they can do classically.
+\end{itemize}
+    
+\end{frame}
+}
+
+\section*{Magic square}
+
+\begin{frame}{Introduction}{The Mirmen--Peres magic square, exhibiting quantum telepathy}
+    
+\end{frame}
