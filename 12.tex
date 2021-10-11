@@ -33,7 +33,7 @@
 
 \begin{frame}{Classical strategies}{How well can they do?}
 
-\begin{itemize}
+\begin{itemize}[<+->]
     \item Based on the information given to Alice, she has only four possible strategies:
     \begin{itemize}
         \item Always respond $0$
@@ -42,10 +42,23 @@
         \item Or oppositely:  \YL{$0$}, \RD{$1$}
     \end{itemize}
     \item Bob has the same four strategies, so between them they have~16 strategies.
-    \item The simplest strategy is that they always respond with the same bit, say $0$.
-    \item They will win $\frac{3}{4}$ of the games they play, which turns out to be the best they can do classically.
+    \item The simplest strategy: they each respond always with the same bit, say $0$.
+    \item They win $\frac{3}{4}$ of the games they play, which turns out to be the best they can do classically.
 \end{itemize}
     
+\end{frame}
+
+\begin{frame}{Analysis of classical strategies}{They win at best with probability $0.75$.}
+\begin{center}
+    \begin{tabular}{c|cccc}
+        Bob  & \multiclumn{4}{c}{Alice} \\
+         & $0$ & $1$ & \RD{$0$} & \YL{0} \\
+        $0$ &  \\
+        $1$ & \\
+        \GN{$0$} & \\
+        \OR{$0$} &
+    \end{tabular}
+\end{center}
 \end{frame}
 }
 
