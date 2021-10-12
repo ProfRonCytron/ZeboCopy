@@ -8,10 +8,11 @@
 \section*{CHSH}
 
 {%
-\def\RD#1{\textcolor{red}{#1}}
-\def\YL#1{\textcolor{Goldenrod}{#1}}
-\def\GN#1{\textcolor{green}{#1}}
-\def\OR#1{\textcolor{orange}{#1}}
+\def\Red{Red}\def\Yellow{Goldenrod}\def\Green{green}\def\Orange{orange}%
+\def\RD#1{\textcolor{\Red}{#1}}
+\def\YL#1{\textcolor{\Yellow}{#1}}
+\def\GN#1{\textcolor{\Green}{#1}}
+\def\OR#1{\textcolor{\Orange}{#1}}
 \begin{frame}{Introduction}{The CHSH game}
     \begin{itemize}[<+->]
         \item Alice and Bob are initially proximate, so that they can strategize.\footnote{They could make some EPR pairs, but that comes later!}
@@ -48,20 +49,64 @@
     
 \end{frame}
 
-\begin{frame}{Analysis of a given Strategy}{We just enumerate the possibilities}.
-\TwoColumns{%
+\begin{frame}{Analysis of a given Strategy}{We enumerate the possibilities}.
+\Vskip{-3em}\TwoColumns{%
 \begin{itemize}
-    \item 
+    \item<1-> The both-$0$ strategy wins with probability $0.75$y.
+    \item<2-> Of course, so does the both-$1$ strategy
+    \item<3-> Using referee information doesn't improve the results.
 \end{itemize}
 }{%
+\only<1,4>{%
 \begin{center}
     \begin{tabular}{cccccc}
       &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
        & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $0$ & $0$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $0$ & $0$ & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $0$ & $0$ & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $0$ & $0$ & \Agree{} \\
     \end{tabular}
-\end{center}
+\end{center}}%
+\only<2>{%
+\begin{center}
+    \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+    \end{tabular}
+\end{center}}%
+\only<3>{%
+\begin{center}
+    \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & \RD{$0$} & \GN{$1$} & \Agree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & \RD{$0$} & \OR{$0$} & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & \YL{$1$} & \GN{$1$} & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & \YL{$1$} & \OR{$0$} & \DisAgree{} \\
+    \end{tabular}
+\end{center}}%
+\only<5->{%
+\begin{center}
+   \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+    \end{tabular}
+\end{center}}%
 }
-    
+\BigSkip{}
+\begin{itemize}
+        \item<4-> Using any strategy that is fixed over the game, the best they can do is win with probability~$0.75$, as with the both-$0$ strateg
+    \item<5-> Any random strategy or mix of strategies is a distribution of fixed strategies, which wins at best with probability~$0.75$, and in the worst case they might never win.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Analysis of classical strategies}{They win at best with probability $0.75$.}
