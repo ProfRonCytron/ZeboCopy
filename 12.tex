@@ -116,26 +116,69 @@
     \item In Ekert's key-distribution algorithm, we observed that when two measurement bases are separated by $\pi/8$ radians, the probability of coincidental measurement is $\cos^{2}(\pi/8)\approx 0.85$.
     \item We can use this property to bias agreement in the three cases where such agreement is a win for Alice and Bob.  Note that while they will likely agree, the choice of whether that agreement is on~$0$ or~$1$ is (uniformly) random.
     \item We can also arrange for them to likely disagree in the one case where that is a win for them.
+    \item In the slides that follow, we color a participant by the color supplied to her or him by the referee. So \RD{Alice} heard \RD{red}, but \YL{Alice} heard \YL{yellow}.  Similarly, \GN{Bob} heard \GN{green} and \OR{Bob} heard \OR{orange}.
 \end{itemize}
     
 \end{frame}
 
 \begin{frame}{Quantum approach to winning CHSH more often}{Uses entanglement and proximity of bases}
 
-\TwoColumns{%
+\Vskip{-3em}\TwoColumns{%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> Alice and Bob each have one qubit of an EPR pair in state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item<1-> The computational basis, as usual.
+    \item<2-> \OR{Bob} measures his qubit in that basis.
+    \item<3-> \YL{Alice}, not knowing whether she faces \OR{Bob} or \GN{Bob}, always measures measures~$\pi/8$ radians counterclockwise from~\ket{0}.
+    \item<4-> \RD{Alice}'s basis is rotated $\pi/$ radians clockwise from~\ket{0}.
+\end{itemize}}%
+\only<5-6>{%
+\begin{itemize}
+    \item<5-> Consider \GN{Bob}'s other possibility.
+    \item<5-> \YL{Alice} is $\pi/8$ radians away, and so they agree with the usual probability.
+    \item<6-> But \RD{Alice} is $3\pi/8$ radians away.
+\end{itemize}}%
+\only<7->{%
+Putting this all together:
+\begin{itemize}
+    \item<7-> Alice and Bob begin with an EPR pair and then separate.
+    \item<8-> They each measure their qubit in the basis of the color they hear.
+    \item<9-> They win by the requisite agreement or disagreement approximately~85\% of the time.  \end{itemize}
+}
 }{%}
 \begin{center}
 \begin{TIKZP}[scale=2.0]
 \draw<1>[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
 \draw<1>[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};
-\draw<2-4>[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};
+\draw<2-4,7->[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};
 \draw<2>[->,thick,dotted,\Orange] (0,0) -- (90:1) node[above] { };
-\draw<4,6>[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};
-\draw<3-5>[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};
-\draw<5->[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};
+\draw<4,6,7->[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};
+\draw<3-5,7->[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};
+\draw<5-,7->[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};
 \end{TIKZP}
-\end{center}}
-    
+\end{center}
+\BigSkip{}
+\only<2>{%
+We show only the \ket{0}~axis of a basis.  The \ket{1}~axis is $\pi/2$~radians counterclockwise.
+\BigSkip{}
+If \OR{Bob} measures first, he is equally likely to measure~$0$ or~$1$.
+}%
+\only<3>{%
+The probability that \only<3>{\YL{Alice}} and \OR{Bob} measure the same value, both~$0$ or both~$1$, is~$\cos^{2}(\pi/2)\approx 0.85$.
+\MedSkip{}
+If \YL{Alice} measures first, \YL{she} is more likely to see~$0$ than~$1$, but with the change in state, \OR{Bob} is still about 85\% likely to match \YL{her} measurement}%
+\only<4>{%
+The same is true here:  the probability that \RD{Alice} and \OR{Bob} measure the same result is about~$0.85$, no matter who measures first.
+}%
+\only<6>{%
+The probability of \emph{disagreement} between \RD{Alice} and \GN{Bob} is approximately~$0.85$.
+}%
+}%
+\only<10->{%
+\BigSkip{}
+The quantum approach wins $\sim 85\%$ of the time, while classically the best we achieve is to win $75\%$ of the time. \alert{Quantum behavior provides a clear and measurable advantage over classical logic.}
+
+}
 \end{frame}
 }
 
