@@ -52,7 +52,7 @@
 \begin{frame}{Analysis of a given Strategy}{We enumerate the possibilities}.
 \Vskip{-3em}\TwoColumns{%
 \begin{itemize}
-    \item<1-> The both-$0$ strategy wins with probability $0.75$y.
+    \item<1-> The both-$0$ strategy wins with probability $0.75$.
     \item<2-> Of course, so does the both-$1$ strategy
     \item<3-> Using referee information doesn't improve the results.
 \end{itemize}
@@ -104,22 +104,26 @@
 }
 \BigSkip{}
 \begin{itemize}
-        \item<4-> Using any strategy that is fixed over the game, the best they can do is win with probability~$0.75$, as with the both-$0$ strateg
+        \item<4-> Using any strategy that is fixed over the game, the best they can do is win with probability~$0.75$, as with the both-$0$ strategy.
     \item<5-> Any random strategy or mix of strategies is a distribution of fixed strategies, which wins at best with probability~$0.75$, and in the worst case they might never win.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Analysis of classical strategies}{They win at best with probability $0.75$.}
-\begin{center}
-    \begin{tabular}{c|cccc}
-          & \multicolumn{4}{c}{Alice} \\
-        Bob & $0$ & $1$ & \RD{$0$} & \YL{0} \\
-        $0$ &  \\
-        $1$ & \\
-        \GN{$0$} & \\
-        \OR{$0$} &
-    \end{tabular}
-\end{center}
+\begin{frame}{Discussion}{Can quantum help?}
+
+\begin{itemize}[<+->]
+    \item The best Alice and Bob can do classically is win with probability~$0.75$.
+    \item In Ekert's key-distribution algorithm, we observed that when two measurement bases are separated by $\pi/8$ radians, the probability of coincidental measurement is $\cos^{2}(\pi/8)\approx 0.85$.
+    \item We can use this property to bias agreement in the three cases where such agreement is a win for Alice and Bob.  Note that while they will likely agree, the choice of whether that agreement is on~$0$ or~$1$ is (uniformly) random.
+    \item We can also arrange for them to likely disagree in the one case where that is a win for them.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Quantum approach to winning CHSH more often}{Uses entanglement and proximity of bases}
+
+
+    
 \end{frame}
 }
 
