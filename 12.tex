@@ -126,12 +126,13 @@
 }{%}
 \begin{center}
 \begin{TIKZP}[scale=2.0]
-\draw<1-2>[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
-\draw<1->[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};
-\draw<2->[->,thick,\Orange] (0,0) -- (22.5:1) node[above right] {\stackbox[l]{Bob \\ Alice should agree}};
-\draw<2>[->,thick,dotted,\Orange] (0,0) -- (112.5:1) node[above] { };
-\draw<3->[->,thick,\Red] (0,0) -- (0:1) node[right] {Alice};
-\draw<4->[->,thick,\Yellow] (0,0) -- (45:1) node[above left] {Alice};
+\draw<1>[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw<1>[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};
+\draw<2-4>[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};
+\draw<2>[->,thick,dotted,\Orange] (0,0) -- (90:1) node[above] { };
+\draw<4,6>[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};
+\draw<3-5>[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};
+\draw<5->[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};
 \end{TIKZP}
 \end{center}}
     
