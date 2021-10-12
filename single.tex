@@ -529,12 +529,13 @@
 \ensuremath{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}}
 \def\UGate{%
 \SQBG{\relax}{\UGateA{}}{\UGateB{}}{\UGateC{}}{\UGateD{}}}%
-\def\FCirc#1#2{%
+\def\FCirc#1{%
 \begin{tikzpicture}[scale=#1]%
 \SquareOutline{}%
-\fill[#2] (0.5,0.5) circle(0.4);%
+\fill (0.5,0.5) circle(0.4);%
 \end{tikzpicture}%
 }%
+\def\SCirc{\FCirc{0.3}}%
 \newenvironment{BBKey}[0]{%
 \def\STD{%
 \begin{tikzpicture}[scale=0.35]%
@@ -580,11 +581,11 @@ Basis & 0 & 1 \\
 \relax%
 }
 \def\Agree{%
-  \FCirc{0.30}{green}}
+  \textcolor{green}{\FCirc{0.30}}}%
 \def\DisAgree{%
-   \FCirc{0.30}{red}}%
+   \textcolor{red}{\FCirc{0.30}}}%
 \def\MetaAgree{%
-   \FCirc{0.30}{yellow}}%
+   \textcolor{yellow}{\FCirc{0.30}}}%
 \newenvironment{EKey}[0]{%
 \def\ZZ{%
 \ZRot{0}%
