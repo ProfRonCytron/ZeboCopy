@@ -277,14 +277,17 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 \begin{frame}{Proof of no static solution}{We cannot place values in each cell that always work.}
 
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\begin{itemize}
+\Vskip{-3em}\begin{itemize}
     \item<1-> Each row's product is~\PP{} so the three rows' products is also~\PP{}.
     \item<2-> Each column's product is~\MM{} so the three columns' products is also~\MM{}.
     \item<3-> This is a contradiction.
 \end{itemize}
 \begin{align*}
-    \visible<1->{a b c \times d e f \times g h k & = \PP{} \\}
-    \visible<2->{a d g \times b e h \times c f k & = \MM{}}
+    \visible<1>{a b c = d e f = g h k &= \PP{} \\}
+    \visible<1,3>{a b c \times d e f \times g h k & = \PP{} \\}
+    \visible<2>{a d g = b e h = c f k &= \MM{} \\}
+    \visible<2->{a d g \times b e h \times c f k & = \MM{} \\}
+    \visible<3->{abcdefghk & \neq abcdefghk}
 \end{align*}
 
 }{%
