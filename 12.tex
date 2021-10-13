@@ -13,7 +13,7 @@
 \def\YL#1{\textcolor{\Yellow}{#1}}
 \def\GN#1{\textcolor{\Green}{#1}}
 \def\OR#1{\textcolor{\Orange}{#1}}
-\begin{frame}{Introduction}{The CHSH game}
+\begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/CHSH_game}{CHSH} game}{This game is due to John Clauser, Michael Horne, Abner Shimony,and Richard Holt.}
     \begin{itemize}[<+->]
         \item Alice and Bob are initially proximate, so that they can strategize.\footnote{They could make some EPR pairs, but that comes later!}
         \item They then separate by a large distance.
@@ -162,27 +162,27 @@ Putting this all together:
 \end{TIKZP}
 \end{center}
 \only<2>{%
-We show only the \ket{0}~axis of a basis.  The \ket{1}~axis is $\pi/2$~radians counterclockwise.
+We show only the \ket{0}~axis of a basis.  The \ket{1}~axis is $\pi/2$~radians counterclockwise from~\ket{0}.
 \BigSkip{}
-If \OR{Bob} measures first, he is equally likely to measure~$0$ or~$1$.
+If \OR{Bob} measures his qubit first, he is equally likely to measure~$0$ or~$1$.
 }%
 \only<3>{%
 The probability that \only<3>{\YL{Alice}} and \OR{Bob} measure the same value, both~$0$ or both~$1$, is~$\cos^{2}(\pi/2)\approx 0.85$.
 \MedSkip{}
 If \YL{Alice} measures first, \YL{she} is more likely to see~$0$ than~$1$, but with the change in state, \OR{Bob} is still about 85\% likely to match \YL{her} measurement}%
 \only<4>{%
-The same is true here:  the probability that \RD{Alice} and \OR{Bob} measure the same result is about~$0.85$, no matter who measures first.
+The same is true here: \RD{Alice} and \OR{Bob} measure the same result with probability~$0.85$, no matter who measures first.
 }%
 \only<5>{%
-If \GN{Bob} measures first, he will surely see~$0$.  But then \YL{Alice} is about $85\%$ likely to see~$0$ after that.  If \YL{Alice} measures first, she will likely measure~$0$.  With either ensuing change of state, \GN{Bob} is $85\%$ likely to match \YL{Alice}'s measurement.
+If \GN{Bob} measures first, he will certainly see~$0$.  But then \YL{Alice} is about $85\%$ likely to see~$0$ after that.  If \YL{Alice} measures first, she will likely measure~$0$.  With either ensuing change of state, \GN{Bob} is $85\%$ likely to match \YL{Alice}'s measurement.
 }
 \only<6>{%
-The probability of \emph{disagreement} between \RD{Alice} and \GN{Bob} is approximately~$0.85$, no matter who measures first.
+The probability of \emph{disagreement} between \RD{Alice} and \GN{Bob} is approximately~$0.85$, no matter who measures first. In this case they win by disagreeing.
 }%
 }%
 \only<10->{%
 \BigSkip{}
-The quantum approach wins $\sim 85\%$ of the time, while classically the best we achieve is to win $75\%$ of the time. \alert{Quantum behavior provides a clear and measurable advantage over classical logic.}
+The quantum approach wins $\sim 85\%$ of the time, while classically we win at best $75\%$ of the time. \alert{Quantum behavior provides a clear and measurable advantage over classical logic.}
 
 }
 \end{frame}
@@ -190,6 +190,19 @@ The quantum approach wins $\sim 85\%$ of the time, while classically the best we
 
 \section*{Magic square}
 
-\begin{frame}{Introduction}{The Mermin--Peres magic square, exhibiting quantum telepathy}
+\begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}.}
+
+\begin{itemize}[<+->]
+    \item With CHSH, a quantum approach is probabilistically better than any classical approach but does not guarantee to win the game.
+    \item The Mermin--Peres magic square is a puzzle that Alice and Bob can win at best $\frac{8}{9}$ of the time, but a quantum approach on a reliable quantum computer can always win.
+    \item Alice and Bob share two EPR pairs, each initially in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item Variations of the game we consider also go by the same name, and they are equivalent in difficulty and in the approach to a quantum-based solution.
+    \item We follow the game as specified in the
+    \href{https://en.wikipedia.org/wiki/Wiki}{Wikipedia} \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{article}.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{How is the game played?}
     
 \end{frame}
