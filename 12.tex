@@ -123,7 +123,7 @@
 
 \begin{frame}{Quantum approach to winning CHSH more often}{Uses entanglement and proximity of bases}
 
-\Vskip{-3em}\TwoColumns{%
+\Vskip{-3em}\TwoUnequalColumns{0.48\textwidth}{0.52\textwidth}{%
 \only<1-4>{%
 \begin{itemize}
     \item<1-> Alice and Bob each have one qubit of an EPR pair in state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
@@ -146,18 +146,21 @@ Putting this all together:
     \item<9-> They win by the requisite agreement or disagreement approximately~85\% of the time.  \end{itemize}
 }
 }{%}
-\begin{center}
-\begin{TIKZP}[scale=2.0]
-\draw<1>[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
-\draw<1,7->[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};
-\draw<2-4,7->[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};
-\draw<2>[->,thick,dotted,\Orange] (0,0) -- (90:1) node[above] { };
-\draw<4,6,7->[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};
-\draw<3-5,7->[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};
-\draw<5-,7->[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=1.7]
+\visible<1>{\draw[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};}
+\visible<1,7->{\draw[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};}
+\visible<2-4,7->{\draw[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};}
+\visible<2>{\draw[->,thick,dotted,\Orange] (0,0) -- (90:1) node[above] { };}
+\visible<4,6,7->{\draw[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};}
+\visible<3-5,7->{\draw[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};}
+\visible<3>{\draw[->] (1,0) arc (0:22.5:1.0) node[below right] {{\small $\pi/8$ radians}};}
+\visible<5->{\draw[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};}
+\visible<6>{\draw (1,0)  node[above right] {{\small $3\pi/8$ radians}} arc(0:-22.5:1);
+\draw[->] (1,0) arc(0:45:1);}
+
 \end{TIKZP}
 \end{center}
-\BigSkip{}
 \only<2>{%
 We show only the \ket{0}~axis of a basis.  The \ket{1}~axis is $\pi/2$~radians counterclockwise.
 \BigSkip{}
