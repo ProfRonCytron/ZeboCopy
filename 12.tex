@@ -189,7 +189,25 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 }
 
 \section*{Magic square}
-
+{
+\def\MPC#1{\fbox{\hbox to 5ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
+\def\XP#1{\hbox to 3ex{\hss#1\hss 1}}%
+\def\PP{%
+\XP{$+$}}%
+\def\MM{%
+\XP{$-$}}%
+\def\MPSquare#1#2#3#4#5#6#7#8#9{%
+{%
+    \setlength{\tabcolsep}{0pt}
+    \adjustbox{valign=t}{\begin{tabular}{rrccc}
+   \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $Bob$\ \downarrow$} \\
+    & & 1 & 2 & 3 \\
+        $\rightarrow\ $ & \ 1\ \ & \MPC{#1} & \MPC{#2} & \MPC{#3} \\
+        \mbox{Alice }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
+        $\rightarrow\ $&\ 3\ \ & \MPC{#7} & \MPC{#8} & \MPC{#9} \\
+    \end{tabular}}
+}}
+\def\VS#1#2{\visible<#1>{#2}}
 \begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}.}
 
 \begin{itemize}[<+->]
@@ -204,5 +222,47 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 \end{frame}
 
 \begin{frame}{How is the game played?}
+\Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> After enjoying some time together, Alice and Bob separate and cannot communicate with each other.
+    \item<2-> A referee chooses a \textcolor{\RCone}{row number for Alice (2)} and a \textcolor{\RCtwo}{column number for Bob (1)}.
+    \item<3-> Alice must respond with an entry for each cell of \textcolor{\RCone}{her designated row}, choosing~\PP{} or~\MM{}.
+    \item<6-> The product of \textcolor{\RCone}{her entries} must be~\PP{}.
+\end{itemize}}
+\only<7->{%
+\begin{itemize}
+    \item<7-> Bob must do the same for \textcolor{\RCtwo}{his designated column}.
+    \item<8-> Where the row and column \textcolor{Purple}{intersect}, Alice and Bob must agree on the value, or they lose.
+    \item<10-> The product of \textcolor{\RCtwo}{his entries} must be~\MM{}.
+\end{itemize}
+}
+}{%
+\begin{center}
+\MPSquare{\VS{7-}{\textcolor{\RCtwo}{\PP}}}{ }{ }{\only<3-7>{\VS{3-}{\textcolor{\RCone}{\PP}}}\only<8->{\VS{3-}{\textcolor{Purple}{\PP}}}}{\VS{4-}{\textcolor{\RCone}{\MM}}}{\VS{5-}{\textcolor{\RCone}{\MM}}}{\VS{9-}{\textcolor{\RCtwo}{\MM}}}{ }{ }
+\end{center}
+}%
+\end{frame}
+
+\begin{frame}{Best classical solution}{They can agree to respond as shown on this slide, winning $8$ of $9$ games on average.}
+
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item Alice and Bob can agree before separating to respond as shown in the square here.
+    \item We can verify that for the first two rows and columns, they always agree on the common value and the products are correct.
+    \item For row or column three, Alice and Bob would have to complete their response in a way that creates the correct product.
+    \begin{description}
+      \item[Alice] must respond \MM{} so her row's product is \PP{}.
+      \item[Bob] must respond \PP{} so his column's product is \MM{}.
+    \end{description}
+\end{itemize}
+}{%
+\Vskip{-3em}\begin{center}
+\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\alert{\textbf{?}}}
+\end{center}
+\alert{They only lose when \emph{both} the third row and column are designated.}
+}
     
 \end{frame}
+
+}
