@@ -465,19 +465,18 @@ $\PauliZ{}=\ZMatrix{}$
 \only<13->{%
 \begin{itemize}
     \item<13-> Consider the observable \PauliX{} with eigenvectors \visible<14->{\alert<14>{\ket{+}}} \visible<15->{and \alert<15>{\ket{-}}.}
-    
 \end{itemize}
 }
 }{%
 \only<8-12>{%
-\begin{alignat*}{4}
-    \ZMatrix{} \alert<8>{\PZero{}} & \mbox{ = } & +1  & \alert<8>{\PZero{}}  \\
-    \visible<9->{\ZMatrix{}  \alert<9>{\POne{}} & \mbox{ = } & -1  & \alert<9>{\POne{}} }
+\begin{alignat*}{5}
+    \ZMatrix{} & \alert<8>{\PZero{}} & \mbox{ = } & +1  & \alert<8>{\PZero{}}  \\
+    \visible<9->{\ZMatrix{} & \alert<9>{\POne{}} & \mbox{ = } & -1  & \alert<9>{\POne{}} }
 \end{alignat*}}%
 \only<13->{%
-\begin{alignat*}{4}
-    \XMatrix{} \alert<14>{\PHad{}} & \mbox{ = } & +1  & \alert<14>{\PHad{}}  \\
-    \visible<15->{\XMatrix{}  \alert<15>{\PHadm{}} & \mbox{ = } & -1  & \alert<15>{\PHadm{}} }
+\begin{alignat*}{5}
+    \XMatrix{} & \alert<14>{\PHad{}} & \mbox{ = } & +1  & \alert<14>{\PHad{}}  \\
+    \visible<15->{\XMatrix{} & \alert<15>{\PHadm{}} & \mbox{ = } & -1  & \alert<15>{\PHadm{}} }
 \end{alignat*}}
 \begin{center}
 \begin{TIKZP}
@@ -485,9 +484,13 @@ $\PauliZ{}=\ZMatrix{}$
 \draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \alert<8>{\ket{0}}};
 \draw[->,ultra thick] (0,0) -- (0,1) node[above] {\alert<9>{\ket{1}}};
 \visible<10>{\alert{\draw[->,thick] (0,0) -- (30:1) node[above] {$\psi$};}}
+\visible<14>{\alert{\draw[->,thick] (0,0) -- (45:1) node[above] {\ket{+}};}}
+\visible<15>{\alert{\draw[->,thick] (0,0) -- (-45:1) node[right] {\ket{-}};}}
 }
 \visible<8>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<9>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<14>{\begin{scope}[draw=\RCtwo,scale=0.7,rotate=-45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<15>{\begin{scope}[draw=\RCthree,scale=0.7,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
 }
