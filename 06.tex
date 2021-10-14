@@ -456,22 +456,22 @@ $\PauliZ{}=\ZMatrix{}$
 \only<6->{%
 \TwoColumns{%
 \begin{itemize}
-    \item<7-> Each Pauli matrix is an observable.
-    \item<8-> The \PauliZ{} matrix corresponds to the \href{https://en.wikipedia.org/wiki/Qubit\#Standard_representation}{computational basis}, because its eigenvectors are \alert<8>{\ket{0}} \visible<9->{and \alert<9>{\ket{1}}.}
+    \item<6-> Each Pauli matrix is an observable.
+    \item<7-> The \PauliZ{} matrix corresponds to the \href{https://en.wikipedia.org/wiki/Qubit\#Standard_representation}{computational basis}, because its eigenvectors are \visible<8->{\alert<8>{\ket{0}}} \visible<9->{and \alert<9>{\ket{1}}.}
     \item<10-> Starting from an \alert<10>{arbitrary state~$\psi$}, \visible<11->{once measured, subsequent imposition of \PauliZ{} produces the same eigenvalue and eigenvector.}
 \end{itemize}
 }{%
 \only<8-11>{%
-\begin{align*}
-    \ZMatrix{} \alert<8>{\PZero{}} & = & +1  & \alert<8>{\PZero{}}  \\
-    \visible<9->{\ZMatrix{}  \alert<9>{\POne{}} & = & -1  & \alert<9>{\POne{}} }
-\end{align*}}
+\begin{alignat*}{4}
+    \ZMatrix{} \alert<8>{\PZero{}} & \mbox{ = } & +1  & \alert<8>{\PZero{}}  \\
+    \visible<9->{\ZMatrix{}  \alert<9>{\POne{}} & \mbox{ = } & -1  & \alert<9>{\POne{}} }
+\end{alignat*}}
 \begin{center}
 \begin{TIKZP}
 \visible<8->{
 \draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \alert<8>{\ket{0}}};
 \draw[->,ultra thick] (0,0) -- (0,1) node[above] {\alert<9>{\ket{1}}};
-\visible<10>{\draw[->,thick] (0,0) -- (30:1) node[above] {\alert<10>{$\psi$}};}
+\visible<10>{\alert{\draw[->,thick] (0,0) -- (30:1) node[above] {$\psi$};}}
 }
 \visible<8>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<9>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
