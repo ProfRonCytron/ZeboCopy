@@ -444,6 +444,42 @@ $\PauliZ{}=\ZMatrix{}$
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Eigenvalues of the Pauli gates}{And their corresponding eigenvectors}
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> In quantum computing, a \href{https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics}{measurement of a quantum system} is modeled by an operator $M$ called an \href{https://en.wikipedia.org/wiki/Observable}{observable}.  We can generally view the measurement as yielding $+1$ or $-1$.
+    \item<2-> After observation, the system is in a state $\psi$ such that subsequent applications of $\psi$ certainly yield the same measurement.
+    \item<3-> If a system has been measured by an operator $M$ and it entered some state $\psi$, then we must have \[ M\psi = \lambda\psi \] where $\lambda=\pm 1$ is the measured result.
+    \item<4-> The above equation is the \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors\#Formal_definition}{definition} of an eigenvalue~$\lambda$ and its eigenvector~$\psi$.
+    \item<5-> For qubits, measurement operators yield $\pm 1$ and there will be a distinct eigenvector for each of those eigenvalues.
+\end{itemize}}%
+\only<6->{%
+\TwoColumns{%
+\begin{itemize}
+    \item<7-> Each Pauli matrix is an observable.
+    \item<8-> The \PauliZ{} matrix corresponds to the \href{https://en.wikipedia.org/wiki/Qubit\#Standard_representation}{computational basis}, because its eigenvectors are \ket{0} \visible<9->{and \ket{1}.}
+\end{itemize}
+}{%
+\only<8-9>{%
+\begin{align*}
+    \ZMatrix{} \PZero{} & = & +1  & \PZero{} \\
+    \visible<9->{\ZMatrix{}  \POne{} & = & -1  & \POne{}}
+\end{align*}}
+\begin{center}
+\begin{TIKZP}
+\visible<8->{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<8>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<9>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+}
+
+\end{frame}
+
 {%
 \def\Redify#1{\textcolor{RedOrange}{#1}}%
 \def\Bluify#1{\textcolor{\RCtwo}{#1}}%
