@@ -455,16 +455,29 @@ $\PauliZ{}=\ZMatrix{}$
 \end{itemize}}%
 \only<6->{%
 \TwoColumns{%
+\only<6-12>{%
 \begin{itemize}
     \item<6-> Each Pauli matrix is an observable.
     \item<7-> The \PauliZ{} matrix corresponds to the \href{https://en.wikipedia.org/wiki/Qubit\#Standard_representation}{computational basis}, because its eigenvectors are \visible<8->{\alert<8>{\ket{0}}} \visible<9->{and \alert<9>{\ket{1}}.}
-    \item<10-> Starting from an \alert<10>{arbitrary state~$\psi$}, \visible<11->{once measured, subsequent imposition of \PauliZ{} produces the same eigenvalue and eigenvector.}
+    \item<10-> When an \alert<10>{arbitrary state~$\psi$}\visible<11->{ is measured as \ket{0} or \ket{1}, subsequent applications of \PauliZ{} produce the same eigenvalue and eigenvector.}  
+    \item<12-> If $\psi$ happens to be \ket{0} or \ket{1}, then re-measurement must yield same state.
+\end{itemize}}%
+\only<13->{%
+\begin{itemize}
+    \item<13-> Consider the observable \PauliX{} with eigenvectors \visible<14->{\alert<14>{\ket{+}}} \visible<15->{and \alert<15>{\ket{-}}.}
+    
 \end{itemize}
+}
 }{%
-\only<8-11>{%
+\only<8-12>{%
 \begin{alignat*}{4}
     \ZMatrix{} \alert<8>{\PZero{}} & \mbox{ = } & +1  & \alert<8>{\PZero{}}  \\
     \visible<9->{\ZMatrix{}  \alert<9>{\POne{}} & \mbox{ = } & -1  & \alert<9>{\POne{}} }
+\end{alignat*}}%
+\only<13->{%
+\begin{alignat*}{4}
+    \XMatrix{} \alert<14>{\PHad{}} & \mbox{ = } & +1  & \alert<14>{\PHad{}}  \\
+    \visible<15->{\XMatrix{}  \alert<15>{\PHadm{}} & \mbox{ = } & -1  & \alert<15>{\PHadm{}} }
 \end{alignat*}}
 \begin{center}
 \begin{TIKZP}
