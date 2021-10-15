@@ -444,6 +444,65 @@ $\PauliZ{}=\ZMatrix{}$
 \end{itemize}
 \end{frame}
 
+%%
+%% This material might move to module 12
+%%
+\begin{frame}{Eigenvalues of the Pauli gates}{And their corresponding eigenvectors}
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> In quantum computing, a \href{https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics}{measurement of a quantum system} is modeled by an operator $M$ called an \href{https://en.wikipedia.org/wiki/Observable}{observable}.  We can generally view the measurement as yielding $+1$ or $-1$.
+    \item<2-> After observation, the system is in a state $\psi$ such that subsequent applications of $\psi$ certainly yield the same measurement.
+    \item<3-> If a system has been measured by an operator $M$ and it entered some state $\psi$, then we must have \[ M\psi = \lambda\psi \] where $\lambda=\pm 1$ is the measured result.
+    \item<4-> The above equation is the \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors\#Formal_definition}{definition} of an eigenvalue~$\lambda$ and its eigenvector~$\psi$.
+    \item<5-> For qubits, measurement operators yield $\pm 1$ and there will be a distinct eigenvector for each of those eigenvalues.
+\end{itemize}}%
+\only<6->{%
+\TwoColumns{%
+\only<6-12>{%
+\begin{itemize}
+    \item<6-> Each Pauli matrix is an observable.
+    \item<7-> The \PauliZ{} matrix corresponds to the \href{https://en.wikipedia.org/wiki/Qubit\#Standard_representation}{computational basis}, because its eigenvectors are \visible<8->{\alert<8>{\ket{0}}} \visible<9->{and \alert<9>{\ket{1}}.}
+    \item<10-> When an \alert<10>{arbitrary state~$\psi$}\visible<11->{ is measured as \ket{0} or \ket{1}, subsequent applications of \PauliZ{} produce the same eigenvalue and eigenvector.}  
+    \item<12-> If $\psi$ happens to be \ket{0} or \ket{1}, then re-measurement must yield same state.
+\end{itemize}}%
+\only<13->{%
+\begin{itemize}
+    \item<13-> Consider the observable \PauliX{} with eigenvectors \visible<14->{\alert<14>{\ket{+}}} \visible<15->{and \alert<15>{\ket{-}}.}
+\end{itemize}
+}
+}{%
+\only<8-12>{%
+\begin{alignat*}{5}
+    \ZMatrix{} & \alert<8>{\PZero{}} & \mbox{ = } & +1  & \alert<8>{\PZero{}}  \\
+    \visible<9->{\ZMatrix{} & \alert<9>{\POne{}} & \mbox{ = } & -1  & \alert<9>{\POne{}} }
+\end{alignat*}}%
+\only<13->{%
+\begin{alignat*}{5}
+    \XMatrix{} & \alert<14>{\PHad{}} & \mbox{ = } & +1  & \alert<14>{\PHad{}}  \\
+    \visible<15->{\XMatrix{} & \alert<15>{\PHadm{}} & \mbox{ = } & -1  & \alert<15>{\PHadm{}} }
+\end{alignat*}}
+\begin{center}
+\begin{TIKZP}
+\visible<8->{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \alert<8>{\ket{0}}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\alert<9>{\ket{1}}};
+\visible<10>{\alert{\draw[->,thick] (0,0) -- (30:1) node[above] {$\psi$};}}
+\visible<14>{\alert{\draw[->,thick] (0,0) -- (45:1) node[above] {\ket{+}};}}
+\visible<15>{\alert{\draw[->,thick] (0,0) -- (-45:1) node[right] {\ket{-}};}}
+}
+\visible<8>{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<9>{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<14>{\begin{scope}[draw=\RCtwo,scale=0.7,rotate=-45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<15>{\begin{scope}[draw=\RCthree,scale=0.7,rotate=45]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}
+\end{center}
+}
+}
+
+\end{frame}
+%%
+%% End of stuff that might move to module 12
+%%
 {%
 \def\Redify#1{\textcolor{RedOrange}{#1}}%
 \def\Bluify#1{\textcolor{\RCtwo}{#1}}%
@@ -514,6 +573,8 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 \visible<6>{\QED{}}
 \end{frame}
 }
+
+
 \begin{frame}{Arbitrary rotations}{The Pauli matrices rotate by $\pi$ radians;  how can we rotate by $\theta$ radians?}
 We can use the extended Euler formula to express rotation about the Bloch x, y, or z axes:
 \begin{align*}

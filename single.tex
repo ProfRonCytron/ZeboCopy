@@ -171,6 +171,7 @@
 \def\PZero{\SQB{1}{0}}
 \def\POne{\SQB{0}{1}}
 \def\PHad{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{1}}
+\def\PHadm{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{-1}}
 \def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
 \def\Intersect#1#2{\ensuremath{#1 \cap #2}}
 \def\Union#1#2{\ensuremath{#1 \cup #2}}
@@ -529,6 +530,13 @@
 \ensuremath{\ExpPhase{(\phi+\lambda)}\cos(\theta/2)}}
 \def\UGate{%
 \SQBG{\relax}{\UGateA{}}{\UGateB{}}{\UGateC{}}{\UGateD{}}}%
+\def\FCirc#1{%
+\begin{tikzpicture}[scale=#1]%
+\SquareOutline{}%
+\fill (0.5,0.5) circle(0.4);%
+\end{tikzpicture}%
+}%
+\def\SCirc{\FCirc{0.3}}%
 \newenvironment{BBKey}[0]{%
 \def\STD{%
 \begin{tikzpicture}[scale=0.35]%
@@ -574,23 +582,11 @@ Basis & 0 & 1 \\
 \relax%
 }
 \def\Agree{%
-\begin{tikzpicture}[scale=0.30]%
-\SquareOutline{}%
-\fill[green] (0.5,0.5) circle(0.4);%
-\end{tikzpicture}%
-}%
+  \textcolor{green}{\FCirc{0.30}}}%
 \def\DisAgree{%
-\begin{tikzpicture}[scale=0.30]%
-\SquareOutline{}%
-\fill[red] (0.5,0.5) circle(0.4);%
-\end{tikzpicture}%
-}%
+   \textcolor{red}{\FCirc{0.30}}}%
 \def\MetaAgree{%
-\begin{tikzpicture}[scale=0.30]%
-\SquareOutline{}%
-\fill[yellow] (0.5,0.5) circle(0.4);%
-\end{tikzpicture}%
-}%
+   \textcolor{yellow}{\FCirc{0.30}}}%
 \newenvironment{EKey}[0]{%
 \def\ZZ{%
 \ZRot{0}%
@@ -615,5 +611,5 @@ Basis & 0 & 1 \\
 %% test
 %%
 \begin{document}
-\include{11}
+\include{12}%06}
 \end{document}

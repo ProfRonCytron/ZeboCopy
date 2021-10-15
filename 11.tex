@@ -120,15 +120,15 @@ To match \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_prot
 \begin{center}
     \begin{tabular}{cc|cc|c}
     \multicolumn{2}{c|}{Alice} & \multicolumn{2}{|c|}{Bob} & Agreed \\
-    basis & sends & basis & observes & bit \\ \hline
-    \visible<1->{\STD{} & \BBUp{} & \STD{} & \BBUp{} & $0$ \\}
-    \visible<2->{\STD{} & \BBUp{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}
-    \visible<3->{\STD{} & \BBRt{} & \STD{} & \BBRt{} & $1$ \\}
-    \visible<4->{\STD{} & \BBRt{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}
-    \visible<5->{\HDM{} & \BBNe{} & \STD{} &  \BBUp{} or \BBRt{} & \DisAgree{} \\}
-    \visible<6->{\HDM{} & \BBNe{} & \HDM{} & \BBNe{} & $0$ \\}
-    \visible<7->{\HDM{} & \BBSe{} & \STD{} & \BBUp{} or \BBRt{} & \DisAgree{} \\}
-    \visible<8->{\HDM{} & \BBSe{} & \HDM{} & \BBSe{} & $1$ \\}
+    basis & sends & basis & observes & bit \\ \hline%
+    \visible<1->{\STD{} & \BBUp{} & \STD{} & \BBUp{} & $0$ \\}%
+    \visible<2->{\STD{} & \BBUp{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}%
+    \visible<3->{\STD{} & \BBRt{} & \STD{} & \BBRt{} & $1$ \\}%
+    \visible<4->{\STD{} & \BBRt{} & \HDM{} & \BBNe{} or \BBSe{} & \DisAgree{} \\}%
+    \visible<5->{\HDM{} & \BBNe{} & \STD{} &  \BBUp{} or \BBRt{} & \DisAgree{} \\}%
+    \visible<6->{\HDM{} & \BBNe{} & \HDM{} & \BBNe{} & $0$ \\}%
+    \visible<7->{\HDM{} & \BBSe{} & \STD{} & \BBUp{} or \BBRt{} & \DisAgree{} \\}%
+    \visible<8->{\HDM{} & \BBSe{} & \HDM{} & \BBSe{} & $1$ \\}%
     \end{tabular}
 \end{center}
 \end{BBKey}
@@ -519,7 +519,7 @@ Scenario 2}%
     \item<15-> Her actions affect Alice's and Bob's qubits!
     \item<16-> If \textcolor{\RCtwo}{Alice} and \textcolor{\RCthree}{Bob} measure as shown, they expect to agree about 85\% of the time.  
     \item<17-> If the qubits collapse to \ket{000} thanks to \textcolor{\RCone}{Eve}, then \textcolor{\RCtwo}{Alice's measurement} is now equally likely to yield $0$ or $1$.  Their agreement in this case thus drops to 50\%.
-    \item<19-> Alice and Bob detect Eve by measuring agreement on such qubits.
+    \item<18-> Alice and Bob detect Eve by measuring agreement on such qubits.
 \end{itemize}
 \end{EKey}
 }

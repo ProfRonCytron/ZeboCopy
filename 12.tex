@@ -1,0 +1,334 @@
+\SetTitle{12}{Games with quantum advantage}{These rely on entanglement}{12}
+
+\section*{Overview}
+
+\begin{frame}{Overview}{What will we study here?}
+\end{frame}
+
+\section*{CHSH}
+
+{%
+\def\Red{Red}\def\Yellow{Goldenrod}\def\Green{green}\def\Orange{orange}%
+\def\RD#1{\textcolor{\Red}{#1}}
+\def\YL#1{\textcolor{\Yellow}{#1}}
+\def\GN#1{\textcolor{\Green}{#1}}
+\def\OR#1{\textcolor{\Orange}{#1}}
+\begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/CHSH_game}{CHSH} game}{This game is due to John Clauser, Michael Horne, Abner Shimony,and Richard Holt.}
+    \begin{itemize}[<+->]
+        \item Alice and Bob are initially proximate, so that they can strategize.\footnote{They could make some EPR pairs, but that comes later!}
+        \item They then separate by a large distance.
+        \item A referee randomly and uniformly sends one of two words to Alice, and one of two other words to Bob.  It is expedient to use colors for the words:
+        \begin{description}
+            \item[Alice] will hear \RD{red} or \YL{yellow}.
+            \item[Bob] will hear \GN{green} or \OR{orange}.
+        \end{description}
+    \item Alice and Bob each respond with one bit ($0$ or $1$).  To win$\ldots$
+    \begin{itemize}
+        \item If Alice and Bob hear \RD{red} and \GN{green}, respectively, their bits must differ.
+        \item Otherwise, their bits must agree.
+    \end{itemize}
+    \item Alice and Bob are too far apart to communicate before their answer is needed.
+    \item What is the best they can do?
+    \end{itemize}
+\end{frame}%
+
+\begin{frame}{Classical strategies}{How well can they do?}
+
+\begin{itemize}[<+->]
+    \item Based on the information given to Alice, she has only four possible strategies:
+    \begin{itemize}
+        \item Always respond $0$
+        \item Always respond $1$
+        \item Use the colors:  \RD{$0$}, \YL{$1$}
+        \item Or oppositely:  \YL{$0$}, \RD{$1$}
+    \end{itemize}
+    \item Bob has the same four strategies, so between them they have~16 strategies.
+    \item The simplest strategy: they each respond always with the same bit, say $0$.
+    \item They win $\frac{3}{4}$ of the games they play, which turns out to be the best they can do classically.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Analysis of a given Strategy}{We enumerate the possibilities}.
+\Vskip{-3em}\TwoColumns{%
+\begin{itemize}
+    \item<1-> The both-$0$ strategy wins with probability $0.75$.
+    \item<2-> Of course, so does the both-$1$ strategy
+    \item<3-> Using referee information doesn't improve the results.
+\end{itemize}
+}{%
+\only<1,4>{%
+\begin{center}
+    \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $0$ & $0$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $0$ & $0$ & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $0$ & $0$ & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $0$ & $0$ & \Agree{} \\
+    \end{tabular}
+\end{center}}%
+\only<2>{%
+\begin{center}
+    \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $1$ & $1$ & \Agree{} \\
+    \end{tabular}
+\end{center}}%
+\only<3>{%
+\begin{center}
+    \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & \RD{$0$} & \GN{$1$} & \Agree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & \RD{$0$} & \OR{$0$} & \Agree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & \YL{$1$} & \GN{$1$} & \Agree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & \YL{$1$} & \OR{$0$} & \DisAgree{} \\
+    \end{tabular}
+\end{center}}%
+\only<5->{%
+\begin{center}
+   \begin{tabular}{cccccc}
+      &  \multicolumn{2}{c}{Hears} & \multicolumn{2}{c}{Responds} & Win?\\
+       & Alice & Bob & Alice & Bob \\
+       1 & \RD{\SCirc{}} & \GN{\SCirc{}} & $1$ & $1$ & \DisAgree{} \\
+       2 & \RD{\SCirc{}} & \OR{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+        3 & \YL{\SCirc{}} & \GN{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+       4 & \YL{\SCirc{}} & \OR{\SCirc{}} & $0$ & $1$ & \DisAgree{} \\
+    \end{tabular}
+\end{center}}%
+}
+\BigSkip{}
+\begin{itemize}
+        \item<4-> Using any strategy that is fixed over the game, the best they can do is win with probability~$0.75$, as with the both-$0$ strategy.
+    \item<5-> Any random strategy or mix of strategies is a distribution of fixed strategies, which wins at best with probability~$0.75$, and in the worst case they might never win.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion}{Can quantum help?}
+
+\begin{itemize}[<+->]
+    \item The best Alice and Bob can do classically is win with probability~$0.75$.
+    \item In Ekert's key-distribution algorithm, we observed that when two measurement bases are separated by $\pi/8$ radians, the probability of coincidental measurement is $\cos^{2}(\pi/8)\approx 0.85$.
+    \item We can use this property to bias agreement in the three cases where such agreement is a win for Alice and Bob.  Note that while they will likely agree, the choice of whether that agreement is on~$0$ or~$1$ is (uniformly) random.
+    \item We can also arrange for them to likely disagree in the one case where that is a win for them.
+    \item In the slides that follow, we color a participant by the color supplied to her or him by the referee. So \RD{Alice} heard \RD{red}, but \YL{Alice} heard \YL{yellow}.  Similarly, \GN{Bob} heard \GN{green} and \OR{Bob} heard \OR{orange}.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Quantum approach to winning CHSH more often}{Uses entanglement and proximity of bases}
+
+\Vskip{-3em}\TwoUnequalColumns{0.48\textwidth}{0.52\textwidth}{%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> Alice and Bob each have one qubit of an EPR pair in state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item<1-> The computational basis, as usual.
+    \item<2-> \OR{Bob} measures his qubit in that basis.
+    \item<3-> \YL{Alice}, not knowing whether she faces \OR{Bob} or \GN{Bob}, always measures measures~$\pi/8$ radians counterclockwise from~\ket{0}.
+    \item<4-> \RD{Alice}'s basis is rotated $\pi/$ radians clockwise from~\ket{0}.
+\end{itemize}}%
+\only<5-6>{%
+\begin{itemize}
+    \item<5-> Consider \GN{Bob}'s other possibility.
+    \item<5-> \YL{Alice} is $\pi/8$ radians away, and so they agree with the usual probability.
+    \item<6-> But \RD{Alice} is $3\pi/8$ radians away.
+\end{itemize}}%
+\only<7->{%
+Putting this all together:
+\begin{itemize}
+    \item<7-> Alice and Bob begin with an EPR pair and then separate.
+    \item<8-> They each measure their qubit in the basis of the color they hear.
+    \item<9-> They win by the requisite agreement or disagreement approximately~85\% of the time.  \end{itemize}
+}
+}{%}
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=1.7]
+\visible<1>{\draw[->,thick] (0,0) -- (1,0) node[right] {\ \ket{0}};}
+\visible<1,7->{\draw[->,thick] (0,0) -- (0,1) node[above] {\ket{1}};}
+\visible<2-4,7->{\draw[->,thick,\Orange] (0,0) -- (0:1) node[right] {Bob};}
+\visible<2>{\draw[->,thick,dotted,\Orange] (0,0) -- (90:1) node[above] { };}
+\visible<4,6,7->{\draw[->,thick,\Red] (0,0) -- (-22.5:1) node[right] {Alice};}
+\visible<3-5,7->{\draw[->,thick,\Yellow] (0,0) -- (22.5:1) node[right] {Alice};}
+\visible<3>{\draw[->] (1,0) arc (0:22.5:1.0) node[below right] {{\small $\pi/8$ radians}};}
+\visible<5->{\draw[->,thick,\Green] (0,0) -- (45:1) node[above right] {Bob};}
+\visible<6>{\draw (1,0)  node[above right] {{\small $3\pi/8$ radians}} arc(0:-22.5:1);
+\draw[->] (1,0) arc(0:45:1);}
+
+\end{TIKZP}
+\end{center}
+\only<2>{%
+We show only the \ket{0}~axis of a basis.  The \ket{1}~axis is $\pi/2$~radians counterclockwise from~\ket{0}.
+\BigSkip{}
+If \OR{Bob} measures his qubit first, he is equally likely to measure~$0$ or~$1$.
+}%
+\only<3>{%
+The probability that \only<3>{\YL{Alice}} and \OR{Bob} measure the same value, both~$0$ or both~$1$, is~$\cos^{2}(\pi/2)\approx 0.85$.
+\MedSkip{}
+If \YL{Alice} measures first, \YL{she} is more likely to see~$0$ than~$1$, but with the change in state, \OR{Bob} is still about 85\% likely to match \YL{her} measurement}%
+\only<4>{%
+The same is true here: \RD{Alice} and \OR{Bob} measure the same result with probability~$0.85$, no matter who measures first.
+}%
+\only<5>{%
+If \GN{Bob} measures first, he will certainly see~$0$.  But then \YL{Alice} is about $85\%$ likely to see~$0$ after that.  If \YL{Alice} measures first, she will likely measure~$0$.  With either ensuing change of state, \GN{Bob} is $85\%$ likely to match \YL{Alice}'s measurement.
+}
+\only<6>{%
+The probability of \emph{disagreement} between \RD{Alice} and \GN{Bob} is approximately~$0.85$, no matter who measures first. In this case they win by disagreeing.
+}%
+}%
+\only<10->{%
+\BigSkip{}
+The quantum approach wins $\sim 85\%$ of the time, while classically we win at best $75\%$ of the time. \alert{Quantum behavior provides a clear and measurable advantage over classical logic.}
+
+}
+\end{frame}
+}
+
+\section*{Magic square}
+{
+\def\MPC#1{\fbox{\hbox to 5ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
+\def\XP#1{\hbox to 3ex{\hss#1\hss 1}}%
+\def\PP{%
+\XP{$+$}}%
+\def\MM{%
+\XP{$-$}}%
+\def\MPSquare#1#2#3#4#5#6#7#8#9{%
+{%
+    \setlength{\tabcolsep}{0pt}%
+    \adjustbox{valign=t}{\begin{tabular}{rrccc}
+   \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $Bob$\ \downarrow$} \\
+    & & 1 & 2 & 3 \\
+        $\rightarrow\ $ & \ 1\ \ & \MPC{#1} & \MPC{#2} & \MPC{#3} \\
+        \mbox{Alice }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
+        $\rightarrow\ $&\ 3\ \ & \MPC{#7} & \MPC{#8} & \MPC{#9} \\
+    \end{tabular}}}}
+\def\VS#1#2{\visible<#1>{#2}}
+\begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}.}
+
+\begin{itemize}[<+->]
+    \item With CHSH, a quantum approach is probabilistically better than any classical approach but does not guarantee to win the game.
+    \item The Mermin--Peres magic square is a puzzle that Alice and Bob can win at best $\frac{8}{9}$ of the time, but a quantum approach on a reliable quantum computer can always win.
+    \item Alice and Bob share two EPR pairs, each initially in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item Variations of the game we consider also go by the same name, and they are equivalent in difficulty and in the approach to a quantum-based solution.
+    \item We follow the game as specified in the
+    \href{https://en.wikipedia.org/wiki/Wiki}{Wikipedia} \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{article}.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{How is the game played?}
+\Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> After enjoying some time together, Alice and Bob separate and cannot communicate with each other.
+    \item<2-> A referee chooses a \textcolor{\RCone}{row number for Alice (2)} and a \textcolor{\RCtwo}{column number for Bob (1)}.
+    \item<3-> Alice must respond with an entry for each cell of \textcolor{\RCone}{her designated row}, choosing~\PP{} or~\MM{}.
+    \item<6-> The product of \textcolor{\RCone}{her entries} must be~\PP{}.
+\end{itemize}}
+\only<7->{%
+\begin{itemize}
+    \item<7-> Bob must do the same for \textcolor{\RCtwo}{his designated column}.
+    \item<8-> Where the row and column \textcolor{Purple}{intersect}, Alice and Bob must agree on the value, or they lose.
+    \item<10-> The product of \textcolor{\RCtwo}{his entries} must be~\MM{}.
+\end{itemize}
+}
+}{%
+\begin{center}
+\MPSquare{\VS{7-}{\textcolor{\RCtwo}{\PP}}}{ }{ }{\only<3-7>{\VS{3-}{\textcolor{\RCone}{\PP}}}\only<8->{\VS{3-}{\textcolor{Purple}{\PP}}}}{\VS{4-}{\textcolor{\RCone}{\MM}}}{\VS{5-}{\textcolor{\RCone}{\MM}}}{\VS{9-}{\textcolor{\RCtwo}{\MM}}}{ }{ }
+\end{center}
+}%
+\end{frame}
+
+\begin{frame}{Best classical solution}{They can agree to respond as shown on this slide, winning $8$ of $9$ games on average.}
+
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-6>{%
+\begin{itemize}[<+->]
+    \item Alice and Bob can agree before separating to respond as shown in the square here.
+    \item We can verify that for the first two rows and columns, they always agree on the common value and the products are correct.
+    \item For row or column three, Alice and Bob would have to complete their response in a way that creates the correct product.
+    \begin{description}
+      \item[Alice] must respond \MM{} so her row's product is \PP{}.
+      \item[Bob] must respond \PP{} so his column's product is \MM{}.
+    \end{description}
+\end{itemize}}%
+\only<7->{%
+\begin{itemize}
+    \item<7-> While other static solutions are possible, each would have at least one square where Alice and Bob cannot agree classically on an entry.
+    \item<8-> As with previous games, we will use measurements of entangled qubits to influence choices made by \textit{incommunicado} Alice and Bob.
+    \item<9-> On a perfect quantum computer, they can always win.
+\end{itemize}
+}
+}{%
+\Vskip{-3em}\begin{center}
+\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\only<1-3,6-8>{\alert{\textbf{?}}}\only<4>{\MM{}}\only<5>{\PP{}}}
+\end{center}
+\visible<6->{%
+\alert{They only lose when \emph{both} the third row and column are designated because they can't agree.}}
+}
+    
+\end{frame}
+
+\begin{frame}{Proof of no static solution}{We cannot place values in each cell that always work.}
+
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> Each row's product is~\PP{} so the three rows' products is also~\PP{}.
+    \item<2-> Each column's product is~\MM{} so the three columns' products is also~\MM{}.
+    \item<3-> This is a contradiction.
+\end{itemize}
+\begin{align*}
+    \visible<1>{a b c = d e f = g h k &= \PP{} \\}
+    \visible<1,3>{a b c \times d e f \times g h k & = \PP{} \\}
+    \visible<2>{a d g = b e h = c f k &= \MM{} \\}
+    \visible<2->{a d g \times b e h \times c f k & = \MM{} \\}
+    \visible<3->{abcdefghk & \neq abcdefghk}
+\end{align*}
+
+}{%
+\Vskip{-3em}\begin{center}
+\MPSquare{$a$}{$b$}{$c$}{$d$}{$e$}{$f$}{$g$}{$h$}{$k$}
+\end{center}
+}
+    
+\end{frame}
+
+\begin{frame}{Variations}{They are equivalent.}
+\Vskip{-5em}\TwoUnequalColumns{0.53\textwidth}{0.47\textwidth}{%
+\begin{itemize}[<+->]
+    \item In the version we consider, we require the product of each row's entries to be \PP{} and the product of each column's entries to be \MM{}.
+    \item In another version, the product of each row's and each column's entries is \PP{}, \emph{except} the product of the third column's entries is \MM{}.
+    \item A solution to the first form can be reduced from a solution to the second form by always negating the values as shown.
+    \item The proof of no static solution is the same.
+\end{itemize}
+}{%
+\Vskip{-1em}\begin{center}
+\MPSquare{ }{ }{ }{ }{ }{ }{\visible<3->{\alert{$-$}}}{\visible<3->{\alert{$-$}}}{ }
+\end{center}
+\visible<4->{%
+This causes columns~1 and~2 to have product~\MM{}.  The third row still has a positive product because the two negations cancel.
+}
+}
+\end{frame}
+
+
+\begin{frame}{Quantum-based solution}{We use two EPR pairs.}
+
+\begin{itemize}[<+->]
+    \item Alice and Bob begin with two EPR pairs, each in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item When they separate, they take one half of each pair with them.
+    \item Depending on the row (for Alice) and the column (for Bob), they will carry out measurements based on a table, in a basis related to their particular row or column.
+    \item We will prove that they
+    \begin{itemize}
+        \item agree on a value at the cell intersecting the row and column, and
+        \item obtain the necessary row and column products.
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+}
