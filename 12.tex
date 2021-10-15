@@ -198,15 +198,14 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 \XP{$-$}}%
 \def\MPSquare#1#2#3#4#5#6#7#8#9{%
 {%
-    \setlength{\tabcolsep}{0pt}
+    \setlength{\tabcolsep}{0pt}%
     \adjustbox{valign=t}{\begin{tabular}{rrccc}
    \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $Bob$\ \downarrow$} \\
     & & 1 & 2 & 3 \\
         $\rightarrow\ $ & \ 1\ \ & \MPC{#1} & \MPC{#2} & \MPC{#3} \\
         \mbox{Alice }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
         $\rightarrow\ $&\ 3\ \ & \MPC{#7} & \MPC{#8} & \MPC{#9} \\
-    \end{tabular}}
-}}
+    \end{tabular}}}}
 \def\VS#1#2{\visible<#1>{#2}}
 \begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}.}
 
@@ -297,6 +296,25 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 }
     
 \end{frame}
+
+\begin{frame}{Variations}{They are equivalent.}
+\Vskip{-5em}\TwoUnequalColumns{0.53\textwidth}{0.47\textwidth}{%
+\begin{itemize}[<+->]
+    \item In the version we consider, we require the product of each row's entries to be \PP{} and the product of each column's entries to be \MM{}.
+    \item In another version, the product of each row's and each column's entries is \PP{}, \emph{except} the product of the third column's entries is \MM{}.
+    \item A solution to the first form can be reduced from a solution to the second form by always negating the values as shown.
+    \item The proof of no static solution is the same.
+\end{itemize}
+}{%
+\Vskip{-1em}\begin{center}
+\MPSquare{ }{ }{ }{ }{ }{ }{\visible<3->{\alert{$-$}}}{\visible<3->{\alert{$-$}}}{ }
+\end{center}
+\visible<4->{%
+This causes columns~1 and~2 to have product~\MM{}.  The third row still has a positive product because the two negations cancel.
+}
+}
+\end{frame}
+
 
 \begin{frame}{Quantum-based solution}{We use two EPR pairs.}
 
