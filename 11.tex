@@ -650,6 +650,47 @@ Then \TensProd{\Identity{}}{U} is
 
 \end{frame}
 
+\begin{frame}{More generally}{Using one of $k$ entangled qubits to obtain $k+1$ entangled qubits}
+
+\begin{theorem}
+Let
+\Vskip{-3em}\begin{align*}
+   \QState{1} & = \TwoSup{0}{1} \\[1.1em]
+   \QState{i} & = \left(\TensProd{\Identity^{i-1}}{\NamedGate{CNOT}}\right) \left(\TensProd{\QState{i-1}}{\ket{0}}\right) \\[1.1em]
+   P(k) &= \left[\  \QState{k} = \TwoSup{0^k}{1^k}\  \right]
+\end{align*}
+then
+\[ \Forall{n\geq 1}{P(n)} \]
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Proof}{By induction, base case}
+\begin{description}
+   \item[$P(1)$]  $\TwoSup{0}{1} = \TwoSup{0^1}{1^1} \QState{1}$
+\end{description}
+\end{frame}
+\begin{frame}{By induction, inductive step}
+\begin{description}
+   \item[\Implies{P(k)}{P(k+1)}]
+   We may assume \QState{k} = \TwoSup{0^k}{1^k}
+\end{description}
+{\small
+\begin{align*}
+    \TensProd{\QState{k}}{\ket{0}}  = 
+    \TensProd{\TwoSup{0^k}{1^k}}{\ket{0}} & = \textcolor{\RCone}{\TwoSup{0^{k}0}{1^{k}0}} \\
+    \visible<2->{\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
+    \left(\textcolor<2>{\RCone}{\TwoSup{\textcolor<3>{\RCtwo}{0^{k}0}}{\textcolor<4>{\RCtwo}{1^{k}0}}}\right)}\visible<3->{ & = 
+    \RootTwo{}\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
+    \left(\ket{\textcolor<3>{\RCtwo}{0^{k}0}}\right) \\ & + 
+    \visible<4->{\RootTwo{}\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
+    \left(\ket{\textcolor<4>{\RCtwo}{1^{k}0}}\right)}} \\
+    \visible<4->{& = \TwoSup{0^k}{1^k} = \QState{k+1}}
+\end{align*}}
+\QED{}
+
+\Vskip{-3em}\only<5->{Note that it doesn't matter which of the top $k$ wires \NamedGate{CNOT} uses as its control qubit, because they are identical.}
+\end{frame}
+
 
 \begin{frame}{Summary}{What have we learned?}
 \begin{itemize}
