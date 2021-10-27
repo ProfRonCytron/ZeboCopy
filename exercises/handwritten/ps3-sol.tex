@@ -28,12 +28,6 @@
         \end{pmatrix}
         \]
     \item We need to consider tensor products when our state is entangled.
-    \item Proof by contradiction: Let $\ket{\psi_e}$ be some entangled state. Suppose there exists some set of single qubit unitary operations that when applied to $\ket{\psi_e}$ results in some non-entangled state $\ket{\psi_n}$. Call this set of operations $A \otimes B$. We can then write
-    \[\ket{\psi_n} = A(c_0\ket{0}+c_1\ket{1}) \otimes B(c_2\ket{0}+c_3\ket{1})\]
-    since $\ket{\psi_n}$ is a non-entangled state. We could then apply $A^{-1} \otimes B^{-1}$ to $\ket{\psi_n}$ to obtain $\ket{\psi_e}$ as so
-    \[(A^{-1} \otimes B^{-1})\ket{\psi_n} = A^{-1}A(c_0\ket{0}+c_1\ket{1}) \otimes B^{-1}B(c_2\ket{0}+c_3\ket{1})\]
-    \[= (c_0\ket{0}+c_1\ket{1}) \otimes (c_2\ket{0}+c_3\ket{1}) = \ket{\psi_e}\]
-    We observe above that $\ket{\psi_e}$ can be written as the tensor product of two states which contradicts our earlier assumption that $\ket{\psi_e}$ was an entangled state. (Revisit this?)
     \item \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} - \frac{i}{\sqrt{2}}\ket{01} = \ket{0} \otimes (\frac{1}{\sqrt{2}}\ket{0} - \frac{i}{\sqrt{2}}\ket{1})\]
     \item This is an entangled state. Proof: Note:
     \[\frac{1}{\sqrt{2}}\ket{01} + \frac{1}{\sqrt{2}}\ket{10} = 
