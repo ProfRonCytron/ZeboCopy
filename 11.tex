@@ -547,13 +547,48 @@ Scenario 2}%
     
 \end{frame}
 
-\begin{frame}{Must Eve bribe the EPR maker?}{Creating multiple qubit entanglements one qubit at a time}
+\begin{frame}{Must Eve bribe the EPR maker?}{Or can somebody else abet Eve?}
 
+\TwoColumns{%
 \begin{itemize}[<+->]
-    \item In the previous slides, Eve brib
+    \item Alice and Bob seek to create a secret shared key.
+    \item Each receives one half of an EPR pair from some source.
+    \item How does Eve do her job?
+    \item She entices the EPR maker to create \emph{three} entangled qubits, sending one to each participant.
 \end{itemize}
+}{%
+\begin{center}
+    \begin{TIKZP}[scale=0.9]
+    \draw (0,0) rectangle ++(1,1) node[pos=0.5] {Alice};
+    \draw (4,0) rectangle ++(1,1) node[pos=0.5] {Bob};
+    \draw<2-> (1,-2.5) rectangle ++(3,1) node[pos=0.5] {EPRs 'R Us};
+    \draw<3-> (2,0) rectangle ++(1,1) node[pos=0.5] {Eve};
+    \draw<4>[<-,\RCone,thick] (2.5,0) -- (2.5,-1.5);
+    \draw<5>[<-,\RCone,thick] (3.0,0.5) -- (4.0,0.5);
+    \draw<2->[<-,thick] (0.5,0) -- (2.5,-1.5);
+    \draw<2->[<-,thick] (4.5,0) -- (2.5,-1.5);
+    %\draw<3-> (2.5,-1.5) node[below] {publish};
+    \end{TIKZP}
+\end{center}}
+
+\visible<5->{\begin{center}
+    Could Alice or Bob create the entangled third qubit on their own?\end{center}}
 
 \end{frame}
+
+\begin{frame}{A quorus of entangled qubits}{Creating qubit entanglements incrementally:  one qubit at a time}
+\TwoColumns{%
+}{%
+\begin{itemize}[<+->]
+  \item If we begin with a pair of entangled qubits in the state $\RootTwo$
+  \item do we need both of them to create an entangled third qubit?
+  \item or can just one of them suffice?
+\end{itemize}
+}
+
+
+\end{frame}
+
 
 \begin{frame}{Summary}{What have we learned?}
 \begin{itemize}
