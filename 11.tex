@@ -577,12 +577,24 @@ Scenario 2}%
 \end{frame}
 
 \begin{frame}{A quorus of entangled qubits}{Creating qubit entanglements incrementally:  one qubit at a time}
-\TwoColumns{%
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\only<1>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw 
+\end{quantikz}}}%
+\only<2->{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw & \rstick{\alert<2>{a}} \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw & \rstick{\alert<2-3>{b}} \\
+\lstick{\QZero{}} &   \qw    &  \qw     & \qw & \rstick{e}
+\end{quantikz}}}%
 }{%
 \begin{itemize}[<+->]
-  \item If we begin with a pair of entangled qubits in the state $\RootTwo$
-  \item do we need both of them to create an entangled third qubit?
-  \item or can just one of them suffice?
+  \item We begin with a pair of entangled qubits in the state \TwoSup{00}{11}.
+  \item Do we need \emph{both} of them to create an entangled third qubit?
+  \item Or can just one of them suffice?
+  \item The state we seek is \TwoSup{000}{111}.
 \end{itemize}
 }
 
