@@ -577,25 +577,74 @@ Scenario 2}%
 \end{frame}
 
 \begin{frame}{A quorus of entangled qubits}{Creating qubit entanglements incrementally:  one qubit at a time}
-\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
-\only<1>{%
+\Vskip{-3em}\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\only<1,5>{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw \\
 \lstick{\QZero{}} &   \qw    &  \targ{} & \qw 
 \end{quantikz}}}%
-\only<2->{%
+\only<2-4>{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw & \rstick{\alert<2>{a}} \\
 \lstick{\QZero{}} &   \qw    &  \targ{} & \qw & \rstick{\alert<2-3>{b}} \\
 \lstick{\QZero{}} &   \qw    &  \qw     & \qw & \rstick{e}
 \end{quantikz}}}%
+\only<6-11>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw  \\
+\lstick{\QZero{}} & \qw & \qw & \qw
+\end{quantikz}}}%
+\only<12->{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw & \qw \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \ctrl{1} & \qw  \\
+\lstick{\QZero{}} & \qw & \qw & \targ{} & \qw
+\end{quantikz}}}%
+\only<7-8>{%
+\BigSkip{}
+We seek a gate of the form \TensProd{\Identity}{U} that flips the bottom two bits.  Suppose
+\[ U = \begin{pmatrix*} a & b & c & d \\ e & f & g & h \\ s & t & u & v \\ w & x & y & z \end{pmatrix*}
+\]
+}%
+\only<9-11>{%
+\begin{itemize}
+   \item<9-> This will flip the bottom two state values.
+   \item<10-> Given our input vector, the easiest completion is the \alert<10>{\NamedGate{CNOT}} gate.
+   \item<11-> Thus $U=\NamedGate{CNOT}$
+\end{itemize}
+}%
+\only<12>{%
+{\small
+\[\left(\TensProd{\NamedGate{I}}{\NamedGate{CNOT}}\right)\RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0} = \RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{0}{1}\]}}
 }{%
+\only<1-4>{%
 \begin{itemize}[<+->]
   \item We begin with a pair of entangled qubits in the state \TwoSup{00}{11}.
   \item Do we need \emph{both} of them to create an entangled third qubit?
   \item Or can just one of them suffice?
   \item The state we seek is \TwoSup{000}{111}.
+\end{itemize}}%
+\only<5-7>{%
+\begin{itemize}
+    \item<5-> State is $\TwoSup{00}{11}=\RootTwo{}\DQB{1}{0}{0}{1}$
+    \item<6-> $\ldots$tensored with \PZero{} to get $\RootTwo{}\QQB{1}{0}{0}{0}{0}{0}{1}{0}$
 \end{itemize}
+}%
+\only<8->{%
+Then \TensProd{\Identity{}}{U} is
+
+\[\begin{pmatrix*}
+\AltAlert{11-}{1}{a} & \AltAlert{11-}{0}{b} & \AltAlert{11-}{0}{c} & \AltAlert{11-}{0}{d} & 0 & 0 & 0 & 0 \\
+\AltAlert{11-}{0}{e} & \AltAlert{11-}{1}{f} & \AltAlert{11-}{0}{g} & \AltAlert{11-}{0}{h} & 0 & 0 & 0 & 0 \\
+\AltAlert{11-}{0}{s} & \AltAlert{11-}{0}{g} & \AltAlert{11-}{0}{u} & \AltAlert{11-}{1}{v} & 0 & 0 & 0 & 0 \\
+\AltAlert{11-}{0}{w} & \AltAlert{11-}{0}{x} & \AltAlert{11-}{1}{y} & \AltAlert{11-}{0}{z} & 0 & 0 & 0 & 0 \\
+\only<8->{%
+0 & 0 & 0 & 0 & \AltAlert{10-}{1}{a} & \AltAlert{10-}{0}{b} & \AltAlert{10-}{0}{c} & \AltAlert{10-}{0}{d} \\
+0 & 0 & 0 & 0 & \AltAlert{10-}{0}{e} & \AltAlert{10-}{1}{f} & \AltAlert{10-}{0}{g} & \AltAlert{10-}{0}{h} \\
+0 & 0 & 0 & 0 & \AltAlert{9-}{0}{s} & \AltAlert{9-}{0}{t} & \AltAlert{9-}{0}{u} & \AltAlert{9-}{1}{v} \\
+0 & 0 & 0 & 0 & \AltAlert{9-}{0}{w} & \AltAlert{9-}{0}{x} & \AltAlert{9-}{1}{y} & \AltAlert{9-}{0}{z}}
+\end{pmatrix*}\]}%
 }
 
 
