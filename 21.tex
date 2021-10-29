@@ -1,0 +1,61 @@
+\SetTitle{21}{Deutsch's Problem}{Is $f(x)$ contant or balanced?}{20}
+
+\begin{frame}{Deutsch's problem}{Formilation}
+
+\begin{itemize}
+    \item We are given an oracle $f(x): \Set{0,1} \mapsto \Set{0,1}$
+    \item Which of the following characterizes $f(x)$?
+    \begin{description}
+        \item[constant]   \Forall{x}{f(x)=k}, where $k$ is $0$ or $1$
+        \item[balanced]   For half of its inputs, $f(x)=1$ and for the other half $f(x)=0$
+    \end{description}
+    \item Because $x$ is a single bit, $f(x)$ must be one of the above.
+\end{itemize}
+    
+\end{frame}
+{
+\def\FF#1#2#3#4#5{%
+\begin{center}
+\begin{tabular}{c|cc}
+#1 & $x$ & $f(x)$ \\
+\hline
+0  &  #2 & #3 \\
+1  &  #4 & #5
+\end{tabular}
+\end{center}
+}
+\begin{frame}{Possible functions}{There are only four.}
+
+\TwoColumns{%
+\visible<2->{\begin{center}\alert{Constant}\end{center}}
+\FF{A}{0}{0}{1}{0}
+\FF{B}{0}{1}{1}{1}
+}{%
+\visible<3>{\begin{center}\alert{Balanced}\end{center}}
+\FF{C}{0}{0}{1}{1}
+\FF{D}{0}{1}{1}{1}
+}
+    
+\end{frame}
+
+\begin{frame}{Form of the oracle}{It has to be reversible.}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}[<+->]
+    \item We consider a quantum gate $U_f$ that implements $f(x)$.
+    \item It accepts $x$ and an \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancillary} input $y$.
+    \item It copies $x$ onto the top output qubit.
+    \item It computes \Xor{y}{f(x)} on the bottom output qubit.
+    \item When $y=\ket{0}$ the bottom qubit is $f(x)$.
+    \item When $y=\ket{1}$ the bottom qubit is $\Not{f(x)}$.
+\end{itemize}
+}{%
+\begin{TIKZP}[scale=0.7]
+\draw (0,0) rectangle node[pos=0.5] {$U_f$} ++(4,2);
+\visible<2->{\draw[<-] (0,0.5) node[right] {\only<1-4>{$y$}\only<5>{\ket{0}}\only<6>{\ket{1}}} -- ++(-1,0);
+\draw[<-] (0,1.5) node[right] {$x$} -- ++(-1,0);}
+\visible<4->{\draw[->] (4,0.5) node[left] {\only<1-4>{\Xor{y}{f(x)}}\only<5>{$f(x)$}\only<6>{\Not{$f(x)$}}} -- ++(1,0);}
+\visible<3->{\draw[->] (4,1.5) node[left] {$x$} -- ++(1,0);}
+\end{TIKZP}
+}    
+\end{frame}
+}
