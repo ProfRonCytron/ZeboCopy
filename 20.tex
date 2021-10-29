@@ -2,29 +2,74 @@
 
 \begin{frame}{Overview}{What will we study?}
 
-\begin{itemize}[<+->]
+\begin{itemize}
+    \item We have just seen that quantum systems have an advantage over classical systems for some simple games.
+    \item We now study algorithms for which quantum computing has advantages.
+    \item We study the \href{https://qiskit.org/textbook/ch-gates/phase-kickback.html}{phase-kickback trick}, which is used for many of the algorithms of interest.
     \item We will look at a sequence of problems, their classical solutions, and their quantum solutions.
-    \item We study the phase-kickback trick, which is used for many of the algorithms of interest.
     \item Each successive problem is harder for a classical computer to solve.
-    \item We study a general technique for unstructured search, Grover's algorithm.
-    \item We learn how to use quantum computers to find the period of a function.
-    \item We learn how to compute the Quantum Fourier Transform.
-    \item We finish with Shor's famous algorithm for factoring numbers.
+    \item We study a general technique for unstructured search, \href{https://en.wikipedia.org/wiki/Grover\%27s_algorithm}{Grover's algorithm}.
+    \item We learn how to use quantum computers to find the \href{https://en.wikipedia.org/wiki/Periodic_function}{period} of a function.
+    \item We learn how to compute the \href{https://en.wikipedia.org/wiki/Quantum_Fourier_transform}{Quantum Fourier Transform}.
+    \item We finish with \href{https://en.wikipedia.org/wiki/Shor\%27s_algorithm}{Shor's famous algorithm} for \href{https://en.wikipedia.org/wiki/Integer_factorization}{factoring} numbers.
 \end{itemize}
     
 \end{frame}
 
-\begin{frame}{An important note}{Concerning proofs of quantum algorithms' correctness}
+\begin{frame}{An important note}{Concerning correctness proofs for quantum algorithms}
 
 \begin{itemize}
     \item With some classical algorithms, you may be convinced of the algorithm's correctness simply from the code of the algorithm.
-    \item You have probably nonetheless been required to write proofs of such algorithms.
-    \item With quantum algorithms, it is the properties of a quantum circuit that yield desired results.
-    \item It is unlikely that we can understand those properties by inspection.
-    \item Proofs by way of the state analysis of circuits are required to understand how and why a given algorithm produces its results.
+    \item You have probably nonetheless been required to write proofs of such algorithms, but you were likely already a believer.
+    \item With quantum algorithms, it is the properties of quantum circuits that yield desired results.
+    \item It will be difficult to understand by inspection how a quantum circuit works.
+    \item Proofs by way of circuit state-analysis are required to understand how and why a given algorithm produces its results.
 \end{itemize}
     
 \end{frame}
 
 \begin{frame}{Oracles}{A box that provides answers}
+\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{itemize}[<+->]
+  \item Many of the problems we study will feature an \href{https://qiskit.org/textbook/ch-gates/oracles.html}{oracle}, which is an opaque box that computes some function~$f(x)$ of its input~$x$.
+  \item The oracle has the following obligations:
+  \begin{itemize}
+      \item It must respect any promises it makes.
+      \item It must reliably return the evaluation of $f(x)$ for any input $x$ in its domain.
+      \item Its computation time must respect stated bounds, for example, \href{https://en.wikipedia.org/wiki/P_(complexity)}{polynomial time}.
+      \item The components necessary for implementing $f$ must be available in a quantum circuit.
+  \end{itemize}
+  \item The oracle's opacity hides some secret, and it is our task to discover that secret, both classically and using quantum computation.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{TIKZP}[scale=1.0]
+    \draw[color=gray,fill,fill opacity=0.4] (1,-2) rectangle ++(1,2);
+    \draw  (1.5,-1) node {$f$};
+    \draw[->,thick] (0,-1) -- node[above] {$x$} ++(1,0);
+    \draw[->,thick] (2,-1) -- node[above] {$f(x)$} ++(1,0);
+    \end{TIKZP}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Universal gates}{For combinational logic}
+
+\TwoColumns{%
+\begin{itemize}
+    \item Recall that the Nand gate is universal for classical combinational circuits.
+    \item The \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tofolli} or \NamedGate{CCNOT} gate, shown on the right, computes 
+    \And{a}{b}.
+    \item The \NamedGate{X} gate complements its input.
+    \item Verify that the bottom qubit is~\ket{0} iff $a=b=\ket{1}$
+\end{itemize}
+}{%
+\BigSkip{}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{$a$} &  \ctrl{1} & \qw & \qw \\
+\lstick{$b$} &  \ctrl{1} & \qw & \qw  \\
+\lstick{\QZero{}} & \targ{}  & \gate{X} & \qw \rstick{$\Not{\And{a}{b}}$}
+\end{quantikz}}
+}
+
 \end{frame}
