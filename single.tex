@@ -453,10 +453,28 @@
 }
 \def\PhiTheta#1#2{%
 \mbox{\ensuremath{\textcolor{\RCone}{\phi = #1}, \textcolor{\RCtwo}{\theta = #2}}}}
+%
+% #2 -- orcacle name
+% #3 -- upper left input
+% #4 -- lower left input
+% #5 -- upper right output
+% #6 -- lower right output
+%
+\newenvironment{Oracle}[6][scale=1.0]{%
+\begin{TIKZP}[#1]
+\draw (0,0) rectangle node[pos=0.5] {\mbox{#2}} ++(4,2);
+\draw[<-] (0,1.5) node[right] {\mbox{#3}} -- ++(-1,0);
+\draw[<-] (0,0.5) node[right] {\mbox{#4}} -- ++(-1,0);
+\draw[->] (4,1.5) node[left] {\mbox{#5}} -- ++(1,0);
+\draw[->] (4,0.5) node[left] {\mbox{#6}} -- ++(1,0);
+}{%
+\end{TIKZP}
+}
+
 \newenvironment{BlochSphere}[3][scale=1.0]{
     \bgroup%
     \def\BlochSpherePhiTheta{%
-    \tdplotsetrotatedcoords{0}{0}{0};
+    \tdplotsetrotatedcoords{0}{0}{0};O
         \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
         \draw[tdplot_rotated_coords,thick,\RCone] (0.3,0,0) arc (0:115:0.3);
         \draw[tdplot_rotated_coords,\RCone,thick,dashed] (0,0,0) -- (phi);
