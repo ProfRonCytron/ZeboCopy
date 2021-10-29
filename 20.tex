@@ -53,23 +53,73 @@
 }
 \end{frame}
 
-\begin{frame}{Universal gates}{For combinational logic}
+\begin{frame}{Universal gates}{For combinational logic in quantum circuits}
 
 \TwoColumns{%
-\begin{itemize}
+\only<1-6>{%
+\begin{itemize}[<+->]
     \item Recall that the Nand gate is universal for classical combinational circuits.
     \item The \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tofolli} or \NamedGate{CCNOT} gate, shown on the right, computes 
     \And{a}{b}.
     \item The \NamedGate{X} gate complements its input.
     \item Verify that the bottom qubit is~\ket{0} iff $a=b=\ket{1}$
-\end{itemize}
-}{%
+    \item Alternatively, the bottom qubit could be initialized to \ket{1} and the \NamedGate{X} gate would then be omitted.
+\end{itemize}}%
+\only<7-9>{%
+\begin{itemize}
+  \item<7-> The quantum circuit computes the correct result on classical inputs~\ket{0} and~\ket{1}, 
+  \item<8-> It also produces results when an input is a \emph{superposition} of those states.
+  \item<9-> Linearity allows us to consider a quantum gate's behavior on inputs in superposition as the sum of the gate applied to the superposition's basis states. 
+\end{itemize}}%
+\only<10->{%
+We explore this idea with the simpler \NamedGate{CNOT} gate:
 \BigSkip{}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{$a$} &  \ctrl{1} & \qw & \qw \\
+\lstick{$b$} &  \targ{} & \qw & \qw 
+\end{quantikz}}
+\BigSkip{}
+\visible<12->{%
+The result
+{\small\[
+\alpha_{0}\beta_{0}\ket{00} +
+  \alpha_{0}\beta_{1}\ket{01} +
+  \alpha_{1}\beta_{1}\ket{10} +
+  \alpha_{1}\beta_{0}\ket{11}
+\]}%
+can be an entangled state: it cannot necessarily be written as the tensor product of two one-qubit states.}
+}
+}{%
+\only<1-9>{%
+\visible<2->{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{$a$} &  \ctrl{1} & \qw & \qw \\
 \lstick{$b$} &  \ctrl{1} & \qw & \qw  \\
 \lstick{\QZero{}} & \targ{}  & \gate{X} & \qw \rstick{$\Not{\And{a}{b}}$}
-\end{quantikz}}
+\end{quantikz}}}
+\BigSkip{}
+\visible<5->{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{$a$} &  \ctrl{1} & \qw & \qw \\
+\lstick{$b$} &  \ctrl{1} & \qw & \qw  \\
+\lstick{\QOne{}} & \targ{}  & \qw & \qw \rstick{$\Not{\And{a}{b}}$}
+\end{quantikz}}}
+\only<6->{%
+\BigSkip{}
+We can thus realize a combinational circuit using quantum qubits and gates.}}%
+\only<10->{%
+\Vskip{-3em}\begin{itemize}
+  \item<10-> Consider \CNOT{a}{b} with $a=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$ and $b=\beta_{0}\ket{0}+\beta_{1}\ket{1}$
+  \item<11-> The input is the tensor product
+  $\alpha_{0}\beta_{0}\ket{00} +
+  \alpha_{0}\beta_{1}\ket{01} +
+  \alpha_{1}\beta_{0}\ket{10} +
+  \alpha_{1}\beta_{1}\ket{11}
+  $
+  \item<11-> So we compute {\small
+  \[ \CNOTMatrix{}\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{0}}{\alpha_{1}\beta_{1}}=\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{1}}{\alpha_{1}\beta_{0}} \]}
+\end{itemize}
+}
 }
 
 \end{frame}
