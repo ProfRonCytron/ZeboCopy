@@ -116,13 +116,13 @@ complex circle.
 \begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns.}
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     
 \TwoColumns{%
 \begin{itemize}
     \item<1-> The columns of $U$ are orthogonal
-    \item<2-> $\CQB{\Conj{\textcolor{\RCone}{a}}}{\Conj{\textcolor{\RCthree}{c}}} \SQB{\textcolor{\RCtwo}{b}}{\textcolor{Brown}{d}}=\Conj{\textcolor{\RCone}{a}}\textcolor{\RCtwo}{b} + \Conj{\textcolor{\RCthree}{c}}\textcolor{Brown}{d}=0$
+    \item<2-> $\CQB{\Conj{\textcolor{\RCone}{a}}}{\Conj{\textcolor{\RCthree}{c}}} \SQB{\textcolor{\RCtwo}{b}}{\textcolor{\RCfour}{d}}=\Conj{\textcolor{\RCone}{a}}\textcolor{\RCtwo}{b} + \Conj{\textcolor{\RCthree}{c}}\textcolor{\RCfour}{d}=0$
 \end{itemize}
 }{%
 \begin{itemize}
@@ -134,7 +134,7 @@ complex circle.
 \MedSkip{}\[
 \textcolor{\RCone}{\ExpNegPhase{\phi_a}\cos(\theta/2)}\,\textcolor{\RCtwo}{\ExpPhase{\phi_b}\sin(\theta/2)}
 +
-\textcolor{\RCthree}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{Brown}{\ExpPhase{\phi_d}\sin(\theta/2)}
+\textcolor{\RCthree}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{\RCfour}{\ExpPhase{\phi_d}\sin(\theta/2)}
 = 0 \]}%
 \visible<5->{\[
 \cos(\theta/2)\sin(\theta/2)\left[
@@ -151,14 +151,14 @@ The value of $\theta$ must be arbitrary, so we can only get $0$ when
 
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     
 \begin{align*}
 \ExpPhase{(\phi_{b}-\phi_{a})} &= - \ExpPhase{(\phi_{d}-\phi_{c})} \\
  & = \ExpPhase{\pi}\,\ExpPhase{(\phi_{d}-\phi_{c})} \\
  & = \ExpPhase{(\phi_{d}-\phi_{c}+\pi)} \\
- \textcolor{Brown}{\phi_{d}} &= \phi_{b}+\phi_{c}-\phi_{a} -\pi \\
+ \textcolor{\RCfour}{\phi_{d}} &= \phi_{b}+\phi_{c}-\phi_{a} -\pi \\
  &= \phi_{b}+\phi_{c}-\phi_{a} -\pi + 2\pi \\
  &= (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
 \end{align*}
@@ -168,7 +168,7 @@ We next eliminate $\phi_{d}$ in favor of the other phases.
 \begin{frame}{Proof (continued)}{Now 4 parameters, but soon only 3}
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
-    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{Brown}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
     \]
     \[
     \phi_{d} = (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
