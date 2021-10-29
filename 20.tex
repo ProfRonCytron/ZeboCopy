@@ -79,7 +79,7 @@ We explore this idea with the simpler \NamedGate{CNOT} gate:
 \lstick{$b$} &  \targ{} & \qw & \qw 
 \end{quantikz}}
 \BigSkip{}
-\visible<12->{%
+\visible<13->{%
 The result
 {\small\[
 \alpha_{0}\beta_{0}\ket{00} +
@@ -90,7 +90,7 @@ The result
 can be an entangled state: it cannot necessarily be written as the tensor product of two one-qubit states.}
 }
 }{%
-\only<1-9>{%
+\only<1-10>{%
 \visible<2->{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{$a$} &  \ctrl{1} & \qw & \qw \\
@@ -107,16 +107,16 @@ can be an entangled state: it cannot necessarily be written as the tensor produc
 \only<6->{%
 \BigSkip{}
 We can thus realize a combinational circuit using quantum qubits and gates.}}%
-\only<10->{%
+\only<11->{%
 \Vskip{-3em}\begin{itemize}
-  \item<10-> Consider \CNOT{a}{b} with $a=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$ and $b=\beta_{0}\ket{0}+\beta_{1}\ket{1}$
+  \item<11-> Consider \CNOT{a}{b} with $a=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$ and $b=\beta_{0}\ket{0}+\beta_{1}\ket{1}$
   \item<11-> The input is the tensor product
   $\alpha_{0}\beta_{0}\ket{00} +
   \alpha_{0}\beta_{1}\ket{01} +
   \alpha_{1}\beta_{0}\ket{10} +
   \alpha_{1}\beta_{1}\ket{11}
   $
-  \item<11-> So we compute {\small
+  \item<12-> So we compute {\small
   \[ \CNOTMatrix{}\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{0}}{\alpha_{1}\beta_{1}}=\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{1}}{\alpha_{1}\beta_{0}} \]}
 \end{itemize}
 }
