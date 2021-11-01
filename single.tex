@@ -461,7 +461,7 @@
 % #6 -- lower right output
 %
 \newenvironment{Oracle}[6][scale=1.0]{%
-\begin{GateBox}[#1]{3}{2}{2}
+\begin{GateBox}[#1]{2.5}{1.5}{2}
 \BoxLabel{#2}
 \Input{0}{#3}
 \Input{1}{#4}
@@ -475,6 +475,27 @@
 ##1 & ##2 & ##3 \\}
 \begin{tabular}{c|cc}
 \TRow{#1}{#2}{#3}\hline
+}{%
+\end{tabular}
+}
+%%
+%%  1 name
+%%  2 one x
+%%  3 one f(x)
+%%  4 another x
+%%  5 another f(x)
+\def\SBitTable#1#2#3#4#5{%
+\begin{center}
+    \begin{TTable}{#1}{$x$}{$f(x)$}
+    \TRow{ }{#2}{#3}
+    \TRow{ }{#4}{#5}
+    \end{TTable}
+\end{center}}
+\newenvironment{UTable}[5]{%
+\def\URow##1##2##3##4##5{%
+##1 & ##2 & ##3  & ##4 & ##5\\}
+\begin{tabular}{c|cc|cc}
+\URow{#1}{#2}{#3}{#4}{#5}\hline
 }{%
 \end{tabular}
 }
