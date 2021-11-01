@@ -61,7 +61,40 @@
 }    
 \end{frame}
 
-\begin{frame}{Realizing the oracle for \Quote{A}}{We design a circuit that meets the classical specification.}
+{
+\def\V#1#2{\visible<#1->{\textcolor{#2}{\FCirc{0.30}}}}
+\begin{frame}{Review of how the matrix sends inputs to outputs}{Linear algebra}
+
+\TwoColumns{%
+For a two-qubit system, recall the representation of bases as column vectors:
+\begin{center}
+    \begin{tabular}{cccc}
+    \ket{00} & \ket{01} & \ket{10} & \ket{11} \\
+    \textcolor<1->{\RCone}{\DQB{1}{0}{0}{0}} &
+     \textcolor<2->{\RCtwo}{\DQB{0}{1}{0}{0}} &
+      \textcolor<3->{\RCthree}{\DQB{0}{0}{1}{0}} &
+       \textcolor<4->{\RCfour}{\DQB{0}{0}{0}{1}}
+     \end{tabular}
+\end{center}
+
+Each column is the output produced when give its corresponding input basis vector.
+}{%
+We can thus think of the unitary matrix in terms of where it sends each of the basis vectors.
+\[
+U = \begin{pmatrix*}[c]
+  \ket{00} & \ket{01} & \ket{10} & \ket{11} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} 
+\end{pmatrix*}
+\]
+}
+
+    
+\end{frame}}
+
+\begin{frame}{Realizing the oracle for \Quote{A}: $f(x)=0$}{We design a circuit that meets the classical specification.}
 
 \TwoColumns{%
 \Vskip{-3em}\begin{center}
@@ -73,11 +106,11 @@
 \BigSkip{}
 \visible<2->{%
 \begin{center}
-\begin{UTable}{$U_A$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
-\URow{}{0}{0}{0}{0}
-\URow{}{0}{1}{0}{1}
-\URow{}{1}{0}{1}{0}
-\URow{}{1}{1}{1}{1}
+\begin{UTable}{$U_A$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\URow{}{0}{0}{0}{0}{0}
+\URow{}{0}{1}{0}{0}{1}
+\URow{}{1}{0}{0}{1}{0}
+\URow{}{1}{1}{0}{1}{1}
 \end{UTable}\end{center}}
 }{%
 \begin{Oracle}[scale=0.75]{$U_A$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
@@ -95,6 +128,131 @@ Thus, $U_A$ is just the identity function, so our quantum circuit doesn't have t
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\ket{x}} &  \qw & \qw \rstick{\ket{x}} \\
 \lstick{\ket{y}} &  \qw & \qw \rstick{\ket{\Xor{y}{f(x)}}}
+\end{quantikz}}\end{center}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Realizing the oracle for \Quote{B}: $f(x)=1$}{We design a circuit that meets the classical specification.}
+
+\TwoColumns{%
+\Vskip{-3em}\begin{center}
+\begin{TTable}{B}{$x$}{$f(x)$}
+\TRow{ }{0}{1}
+\TRow{ }{1}{1}
+\end{TTable}
+\end{center}
+\BigSkip{}
+\visible<2->{%
+\begin{center}
+\begin{UTable}{$U_B$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\URow{}{0}{0}{1}{0}{1}
+\URow{}{0}{1}{1}{0}{0}
+\URow{}{1}{0}{1}{1}{1}
+\URow{}{1}{1}{1}{1}{0}
+\end{UTable}\end{center}}
+}{%
+\begin{Oracle}[scale=0.75]{$U_B$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}
+
+\BigSkip{}
+\visible<3->{%
+\Forall{x}{f(x)=1}, so $\Xor{y}{f(x)}=\Xor{y}{1}=\Not{y}$.  
+\MedSkip{}
+Thus, $U_B$ is realized by complementing $y$.}
+
+\BigSkip{}
+\visible<4>{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}} &  \qw & \qw \rstick{\ket{x}} \\
+\lstick{\ket{y}} &  \gate{X} & \qw \rstick{\ket{\Xor{y}{f(x)}}}
+\end{quantikz}}\end{center}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Realizing the oracle for \Quote{C}: $f(x)=x$}{We design a circuit that meets the classical specification.}
+
+\TwoColumns{%
+\Vskip{-3em}\begin{center}
+\begin{TTable}{C}{$x$}{$f(x)$}
+\TRow{ }{0}{0}
+\TRow{ }{1}{1}
+\end{TTable}
+\end{center}
+\BigSkip{}
+\visible<2->{%
+\begin{center}
+\begin{UTable}{$U_C$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\URow{}{0}{0}{0}{0}{0}
+\URow{}{0}{1}{0}{0}{1}
+\URow{}{1}{0}{1}{1}{1}
+\URow{}{1}{1}{1}{1}{0}
+\end{UTable}\end{center}}
+}{%
+\begin{Oracle}[scale=0.75]{$U_C$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}
+
+\BigSkip{}
+\visible<3->{%
+\Forall{x}{f(x)=x}, so $\Xor{y}{f(x)}=\Xor{y}{x}$.}%
+
+\BigSkip{}
+\only<3>{%
+The matrix form may look familiar?
+\[U_{C} = \CNOTMatrix{} \]
+}%
+\only<4>{%
+Thus, a \NamedGate{CNOT} gate will flip $y$ when $x$ is~$1$:
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}} &  \ctrl{1} & \qw \rstick{\ket{x}} \\
+\lstick{\ket{y}} &  \targ{} & \qw \rstick{\ket{\Xor{y}{f(x)}}}
+\end{quantikz}}\end{center}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Realizing the oracle for \Quote{D}: $f(x)=\Not{x}$}{We design a circuit that meets the classical specification.}
+
+\TwoColumns{%
+\Vskip{-3em}\begin{center}
+\begin{TTable}{D}{$x$}{$f(x)$}
+\TRow{ }{0}{1}
+\TRow{ }{1}{0}
+\end{TTable}
+\end{center}
+\BigSkip{}
+\visible<2->{%
+\begin{center}
+\begin{UTable}{$U_D$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\URow{}{0}{0}{1}{0}{1}
+\URow{}{0}{1}{1}{0}{0}
+\URow{}{1}{0}{0}{1}{0}
+\URow{}{1}{1}{0}{1}{1}
+\end{UTable}\end{center}}
+}{%
+\begin{Oracle}[scale=0.75]{$U_D$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}
+
+\BigSkip{}
+\visible<3->{%
+\Forall{x}{f(x)=x}, so $\Xor{y}{f(x)}=\Xor{y}{x}$.}%
+
+\BigSkip{}
+\only<3>{%
+This just like the previous case, except the output is the complement of what we had before.
+}%
+\only<4>{%
+Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}} &  \ctrl{1} & \qw & \qw \rstick{\ket{x}} \\
+\lstick{\ket{y}} &  \targ{} & \gate{X} & \qw \rstick{\ket{\Xor{y}{f(x)}}}
 \end{quantikz}}\end{center}
 }
 }

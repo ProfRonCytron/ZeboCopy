@@ -491,13 +491,15 @@
     \TRow{ }{#4}{#5}
     \end{TTable}
 \end{center}}
-\newenvironment{UTable}[5]{%
-\def\URow##1##2##3##4##5{%
-##1 & ##2 & ##3  & ##4 & ##5\\}
-\begin{tabular}{c|cc|cc}
-& \multicolumn{2}{|c|}{Inputs}
+%%
+%%
+\newenvironment{UTable}[6]{%
+\def\URow##1##2##3##4##5##6{%
+##1 & ##2 & ##3  & ##4 & ##5 & ##6\\}
+\begin{tabular}{c|cc|c|cc}
+& \multicolumn{2}{|c|}{Inputs} &
 & \multicolumn{2}{|c}{Outputs} \\
-\URow{#1}{#2}{#3}{#4}{#5}\hline
+\URow{#1}{#2}{#3}{#4}{#5}{#6}\hline
 }{%
 \end{tabular}
 }
