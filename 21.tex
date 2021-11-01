@@ -13,27 +13,17 @@
 \end{itemize}
     
 \end{frame}
-{
-\def\FF#1#2#3#4#5{%
-\begin{center}
-\begin{tabular}{c|cc}
-#1 & $x$ & $f(x)$ \\
-\hline
-0  &  #2 & #3 \\
-1  &  #4 & #5
-\end{tabular}
-\end{center}
-}
+
 \begin{frame}{Possible functions}{There are only four.}
 
 \TwoColumns{%
 \visible<2->{\begin{center}\alert{Constant}\end{center}}
-\FF{A}{0}{0}{1}{0}
-\FF{B}{0}{1}{1}{1}
+\SBitTable{A}{0}{0}{1}{0}
+\SBitTable{B}{0}{1}{1}{1}
 }{%
 \visible<3>{\begin{center}\alert{Balanced}\end{center}}
-\FF{C}{0}{0}{1}{1}
-\FF{D}{0}{1}{1}{1}
+\SBitTable{C}{0}{0}{1}{1}
+\SBitTable{D}{0}{1}{1}{1}
 }
     
 \end{frame}
@@ -46,7 +36,7 @@
     \item It copies $x$ onto the top output qubit.
     \item It computes \Xor{y}{f(x)} on the bottom output qubit.
     \item When $y=\ket{0}$ the bottom qubit is $f(x)$.
-    \item When $y=\ket{1}$ the bottom qubit is $\Not{f(x)}$.
+    \item When $y=\ket{1}$ the bottom qubit is \Not{$f(x)$}.
 \end{itemize}
 }{%
 \BigSkip{}
@@ -66,8 +56,7 @@
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\ket{0}}{$x$}{$f(x)$}
 \end{Oracle}}%
 \only<6>{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\ket{1}}{$x$}{\Not{f(x)}}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\ket{1}}{$x$}{\Not{$f(x)$}}
 \end{Oracle}}%
 }    
 \end{frame}
-}
