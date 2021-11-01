@@ -61,11 +61,10 @@
 }    
 \end{frame}
 
-\begin{frame}{Realizing the oracle}{We design a circuit that meets the classical specification.}
+\begin{frame}{Realizing the oracle for \Quote{A}}{We design a circuit that meets the classical specification.}
 
 \TwoColumns{%
-\only<1-3>{%
-\begin{center}
+\Vskip{-3em}\begin{center}
 \begin{TTable}{A}{$x$}{$f(x)$}
 \TRow{ }{0}{0}
 \TRow{ }{1}{0}
@@ -79,30 +78,25 @@
 \URow{}{0}{1}{0}{1}
 \URow{}{1}{0}{1}{0}
 \URow{}{1}{1}{1}{1}
-\end{UTable}\end{center}}}
-\only<4-6>{%
-\begin{center}
-\begin{TTable}{A}{$x$}{$f(x)$}
-\TRow{ }{0}{0}
-\TRow{ }{1}{0}
-\end{TTable}
-\end{center}
-\BigSkip{}
-\visible<2->{%
-\begin{center}
-\begin{UTable}{$U_A$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
-\URow{}{0}{0}{0}{0}
-\URow{}{0}{1}{0}{1}
-\URow{}{1}{0}{1}{0}
-\URow{}{1}{1}{1}{1}
-\end{UTable}\end{center}}}
+\end{UTable}\end{center}}
 }{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\begin{Oracle}[scale=0.75]{$U_A$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}
 
 \BigSkip{}
-\visible<3>{%
-This is the identity function, so our quantum circuit doesn't have to do anything to its inputs.}
+\visible<3->{%
+\Forall{x}{f(x)=0}, so $\Xor{y}{f(x)}=\Xor{y}{0}=y$.  
+\MedSkip{}
+Thus, $U_A$ is just the identity function, so our quantum circuit doesn't have to do anything to its inputs to realize $U_A$.}
+
+\BigSkip{}
+\visible<4>{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}} &  \qw & \qw \rstick{\ket{x}} \\
+\lstick{\ket{y}} &  \qw & \qw \rstick{\ket{\Xor{y}{f(x)}}}
+\end{quantikz}}\end{center}
+}
 }
     
 \end{frame}
