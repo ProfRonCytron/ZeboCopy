@@ -14,36 +14,36 @@
 \maketitle
 
 \begin{enumerate}[font=\bfseries]
-    \item Math shown below in (2).
+    \item Math shown below.
     \[CZ(H \otimes I) = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-    1 & 1 & 0 & 0 \\
-    1 & -1 & 0 & 0 \\
-    0 & 0 & 1 & 1 \\
-    0 & 0 & -1 & 1
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & -1 & 0 \\
+    0 & -1 & 0 & 1
     \end{pmatrix}
     \]
-    \item No the state arrived at is not entangled. Most easily verified by testing circuit with Qiskit. Analytic reasoning given below:
-    \[I \otimes H = \frac{1}{\sqrt{2}}\begin{pmatrix}
-    1 & 1 & 0 & 0 \\
-    1 & -1 & 0 & 0 \\
-    0 & 0 & 1 & 1 \\
-    0 & 0 & 1 & -1
+    No the state obtained is not entangled. Most easily verified by testing circuit with Qiskit. Analytic reasoning given below:
+    \[H \otimes I = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & -1 & 0 \\
+    0 & 1 & 0 & -1
     \end{pmatrix}\]
     \[CZ(H \otimes I) = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-    1 & 1 & 0 & 0 \\
-    1 & -1 & 0 & 0 \\
-    0 & 0 & 1 & 1 \\
-    0 & 0 & -1 & 1
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & -1 & 0 \\
+    0 & -1 & 0 & 1
     \end{pmatrix}
     \]
     \[\frac{1}{\sqrt{2}}
     \begin{pmatrix}
-    1 & 1 & 0 & 0 \\
-    1 & -1 & 0 & 0 \\
-    0 & 0 & 1 & 1 \\
-    0 & 0 & -1 & 1
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & -1 & 0 \\
+    0 & -1 & 0 & 1
     \end{pmatrix}
     \begin{pmatrix}
     1 \\ 0 \\ 0 \\ 0
@@ -51,7 +51,7 @@
     =
     \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-    1 \\ 1 \\ 0 \\ 0
+    1 \\ 0 \\ 1 \\ 0
     \end{pmatrix}
     \]
     \item No, the controlled Z gate cannot be written as the tensor product of two matrices. Note the controlled Z gate can be written as (from Qiskit):
@@ -84,13 +84,14 @@
     This gives:
     \[ae = 1, ah = 1, de = 1, dh = -1\]
     \[aedh = -1 \neq 1 = ahde\]
+    \item To-do
     \item \begin{enumerate}
         \item 50\%. Bob still has no idea what the other bit is and so must guess what procedure to apply and hope he gets lucky.
         \item If Bob knows the first qubit's value he knows if his state needs to experience a phase shift (a Z gate). If the value is 0 no phase shift is needed. If the value is 1 he knows he will need to apply a Z gate. He does not know if he needs to apply a X gate first though.
         \item If Bob knows the second qubit's value he knows if his amplitudes need to be flipped or not (a X gate). If the value is 0 no flip is needed. If the value is 1 he knows he will need to apply a X gate. He does not know if he needs to apply a Z gate though.
         \item He would want the second qubit. See (c).
     \end{enumerate}
-    \item See Lecture 10. Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time. (Remove this question?)
+    \item See Lecture 10. Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time.
     \item I believe Cytron has a good proof. For now I provide a proof for a slightly different question. Proof by contradiction: Let $\ket{\psi_e}$ be some entangled state. Suppose there exists some set of single qubit unitary operations that when applied to $\ket{\psi_e}$ results in some non-entangled state $\ket{\psi_n}$. Call this set of operations $A \otimes B$. We can then write
     \[\ket{\psi_n} = A(c_0\ket{0}+c_1\ket{1}) \otimes B(c_2\ket{0}+c_3\ket{1})\]
     since $\ket{\psi_n}$ is a non-entangled state. We could then apply $A^{-1} \otimes B^{-1}$ to $\ket{\psi_n}$ to obtain $\ket{\psi_e}$ as so
@@ -120,6 +121,7 @@
     0 \\ 1 \\ -1 \\ 0
     \end{pmatrix}
     =
+    \frac{1}{\sqrt{2}}
     \begin{pmatrix}
     0 \\ \alpha_x \\ -\alpha_x \\ 0 \\
     0 \\ \beta_x \\ -\beta_x \\ 0
@@ -127,8 +129,37 @@
     \]
     \[
     \ket{\psi_2} = (CNOT \otimes I)\ket{\psi_1} = 
+    \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+    0 \\ \alpha_x \\ -\alpha_x \\ 0 \\
+    -\beta_x \\ 0 \\ 0 \\ \beta_x
+    \end{pmatrix}
     \]
-    Paused here to resolve tensor product notation issue. See Slack.
+    8x8 matrices not included just to save space.
+    \[
+    \ket{\psi_3} = (H \otimes I \otimes I)\ket{\psi_2} = 
+    \frac{1}{2}
+    \begin{pmatrix}
+    -\beta_x \\ \alpha_x \\ -\alpha_x \\ \beta_x \\
+    \beta_x \\ \alpha_x \\ -\alpha_x \\ -\beta_x
+    \end{pmatrix}
+    \]
+    \[\begin{tabular}{r|l}
+\multicolumn{1}{c}{Alice measures} & \multicolumn{1}{c}{Bob's state} \\
+  \ket{xy}=\ket{00} & -\beta_x\ket{0} + \alpha_x\ket{1}  \\
+  \ket{xy}=\ket{01}  & -\alpha_x\ket{0} + \beta_x\ket{1} \\
+  \ket{xy}=\ket{10} & \beta_x\ket{0} + \alpha_x\ket{1} \\
+  \ket{xy}=\ket{11} & -\alpha_x\ket{0} - \beta_x\ket{1}
+\end{tabular}\]
+    \[\begin{tabular}{r|l}
+\multicolumn{1}{c}{Alice measures} & \multicolumn{1}{c}{Bob's action} \\
+  \ket{xy}=\ket{00} & X then Z  \\
+  \ket{xy}=\ket{01}  & Z \\
+  \ket{xy}=\ket{10} & X \\
+  \ket{xy}=\ket{11} & Nothing
+\end{tabular}\]
+
+\item You have a 2/3 chance of measuring 0.
 \end{enumerate}
 
 
