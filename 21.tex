@@ -81,14 +81,23 @@ Each column is the output produced when give its corresponding input basis vecto
 }{%
 We can thus think of the unitary matrix in terms of where it sends each of the basis vectors.
 \[
-U = \begin{pmatrix*}[c]
+\only<1-4>{U = }\begin{pmatrix*}[c]
   \ket{00} & \ket{01} & \ket{10} & \ket{11} \\
   \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
   \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
   \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
   \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} 
 \end{pmatrix*}
+\only<5>{%
+\textcolor{\RCone}{\DQB{1}{0}{0}{0}} = \DQB{\V{5}{\RCone}}{\V{5}{\RCone}}{\V{5}{\RCone}}{\V{5}{\RCone}}}
+\only<6>{%
+\textcolor{\RCtwo}{\DQB{0}{1}{0}{0}} = \DQB{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}}
+\only<7>{%
+\textcolor{\RCthree}{\DQB{0}{0}{1}{0}} = \DQB{\V{7}{\RCthree}}{\V{7}{\RCthree}}{\V{7}{\RCthree}}{\V{7}{\RCthree}}}
+\only<8>{%
+\textcolor{\RCfour}{\DQB{0}{0}{0}{1}} = \DQB{\V{8}{\RCfour}}{\V{8}{\RCfour}}{\V{8}{\RCfour}}{\V{8}{\RCfour}}}
 \]
+\visible<5-8>{Applying the matrix to a given basis vector extracts the associated column.}
 }
 
     
@@ -241,7 +250,7 @@ Thus, a \NamedGate{CNOT} gate will flip $y$ when $x$ is~$1$:
 
 \BigSkip{}
 \visible<3->{%
-\Forall{x}{f(x)=x}, so $\Xor{y}{f(x)}=\Xor{y}{x}$.}%
+\Forall{x}{f(x)=\Not{x}}, so $\Xor{y}{f(x)}=\Xor{y}{\Not{x}}=\Not{\Xor{y}{x}}$.}%
 
 \BigSkip{}
 \only<3>{%
