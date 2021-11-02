@@ -124,14 +124,133 @@ We can thus realize a combinational circuit using quantum qubits and gates.}}%
 
 \end{frame}
 
-\begin{frame}{Realization of gates using matrices vs. logic}{Matrices grow exponentially in the number of qubits.}
+{
+\def\V#1#2{\visible<#1->{\textcolor{#2}{\FCirc{0.30}}}}
+\begin{frame}{Review of how the matrix sends inputs to outputs}{Linear algebra}
 
+\TwoColumns{%
+For a two-qubit system, recall the representation of bases as column vectors:
 \begin{center}
-\begin{UTable}{$U$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
-\URow{}{0}{0}{0}{0}{0}
-\URow{}{0}{1}{0}{0}{1}
-\URow{}{1}{0}{1}{1}{1}
-\URow{}{1}{1}{1}{1}{0}
-\end{UTable}\end{center}
+    \begin{tabular}{cccc}
+    \ket{00} & \ket{01} & \ket{10} & \ket{11} \\
+    \textcolor<1->{\RCone}{\DQB{1}{0}{0}{0}} &
+     \textcolor<2->{\RCtwo}{\DQB{0}{1}{0}{0}} &
+      \textcolor<3->{\RCthree}{\DQB{0}{0}{1}{0}} &
+       \textcolor<4->{\RCfour}{\DQB{0}{0}{0}{1}}
+     \end{tabular}
+\end{center}
+
+Each column is the output produced when give its corresponding input basis vector.
+}{%
+We can thus think of the unitary matrix in terms of where it sends each of the basis vectors.
+\[
+\only<1-4>{U = }\begin{pmatrix*}[c]
+  \ket{00} & \ket{01} & \ket{10} & \ket{11} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} \\
+  \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} 
+\end{pmatrix*}
+\only<5>{%
+\textcolor{\RCone}{\DQB{1}{0}{0}{0}} = \DQB{\V{5}{\RCone}}{\V{5}{\RCone}}{\V{5}{\RCone}}{\V{5}{\RCone}}}
+\only<6>{%
+\textcolor{\RCtwo}{\DQB{0}{1}{0}{0}} = \DQB{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}{\V{6}{\RCtwo}}}
+\only<7>{%
+\textcolor{\RCthree}{\DQB{0}{0}{1}{0}} = \DQB{\V{7}{\RCthree}}{\V{7}{\RCthree}}{\V{7}{\RCthree}}{\V{7}{\RCthree}}}
+\only<8>{%
+\textcolor{\RCfour}{\DQB{0}{0}{0}{1}} = \DQB{\V{8}{\RCfour}}{\V{8}{\RCfour}}{\V{8}{\RCfour}}{\V{8}{\RCfour}}}
+\]
+\visible<5-8>{Applying the matrix to a given basis vector extracts the associated column.}
+}
+
+    
+\end{frame}}
+
+\begin{frame}{Using outer products}{To construct gates}
+
+\href{https://qiskit.org/textbook/ch-states/single-qubit-gates.html\#1.1-The-X-Gate-}{see this}
     
 \end{frame}
+
+{
+\def\V#1#2#3{%
+   \textcolor<#1->{#2}{#3}}
+\begin{frame}{Realization of gates using matrices vs. logic}{Matrices grow exponentially in the number of qubits.}
+We can formulate a unitary gate using a matrix derived from a truth table such as this.
+\only<6->{But these matrices grow exponentially in the number of qubits.}
+\TwoColumns{%
+\only<1-6>{%
+\[
+U=\begin{pmatrix*}
+  \V{2}{\RCone}{1} & \V{3}{\RCtwo}{0} & \V{4}{\RCthree}{0} & \V{5}{\RCfour}{0} \\
+  \V{2}{\RCone}{0} & \V{3}{\RCtwo}{1} & \V{4}{\RCthree}{0} & \V{5}{\RCfour}{0} \\
+  \V{2}{\RCone}{0} & \V{3}{\RCtwo}{0} & \V{4}{\RCthree}{0} & \V{5}{\RCfour}{1} \\
+  \V{2}{\RCone}{0} & \V{3}{\RCtwo}{0} & \V{4}{\RCthree}{1} & \V{5}{\RCfour}{0}
+\end{pmatrix*}
+\]}%
+\only<6>{%
+\BigSkip{}
+This unitary matrix is the familiar \NamedGate{CNOT} gate.  We can arrive at this solution more directly, without having to compute the above matrix.
+}
+\only<7->{%
+\begin{itemize}
+    \item<7-> Inspection of the table shows that $x$ is copied, input to output.
+    \item<8-> When \alert<8>{$x=0$}, \textcolor<8>{\RCtwo}{$y$ is copied to output}.
+    \item<9-> When \alert<9-10>{$x=1$}, \textcolor<10>{\RCtwo}{$y$ is flipped on output}.
+\end{itemize}
+}
+\only<11>{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}} &  \ctrl{1} & \qw \rstick{\ket{x}} \\
+\lstick{\ket{y}} &  \targ{} & \qw \rstick{\ket{y}}
+\end{quantikz}}\end{center}
+}%
+\only<2>{%
+\[
+\textcolor{\RCone}{%
+\DQB{1}{0}{0}{0}\mapsto \DQB{1}{0}{0}{0}
+}
+\]
+}
+\only<3>{%
+\[
+\textcolor{\RCtwo}{%
+\DQB{0}{1}{0}{0}\mapsto \DQB{0}{1}{0}{0}
+}
+\]
+}
+\only<4>{%
+\[
+\textcolor{\RCthree}{%
+\DQB{0}{0}{1}{0}\mapsto \DQB{1}{0}{0}{1}
+}
+\]
+}
+\only<5>{%
+\[
+\textcolor{\RCfour}{%
+\DQB{0}{0}{0}{1}\mapsto \DQB{0}{0}{1}{0}
+}
+\]
+}
+}{%
+\begin{center}
+\begin{UTable}{$U$}{\alert<7>{$x$}}{$y$}{}{\alert<7>{$x$}}{$y$}
+\URow{\visible<2>{\CFCirc{\RCone}}}{\alert<8>{0}}{\textcolor<8>{\RCtwo}{0}}{}{0}{\textcolor<8>{\RCtwo}{0}}
+\URow{\visible<3>{\CFCirc{\RCtwo}}}{\alert<8>{0}}{\textcolor<8>{\RCtwo}{1}}{}{0}{\textcolor<8>{\RCtwo}{1}}
+\URow{\visible<4>{\CFCirc{\RCthree}}}{\alert<9>{1}}{\textcolor<10>{\RCtwo}{0}}{}{1}{\textcolor<10>{\RCtwo}{1}}
+\URow{\visible<5>{\CFCirc{\RCfour}}}{\alert<9>{1}}{\textcolor<10>{\RCtwo}{1}}{}{1}{\textcolor<10>{\RCtwo}{0}}
+\end{UTable}\end{center}
+\begin{center}
+\begin{GateBox}[scale=1.0]{2}{1}{2}
+\BoxLabel{U?}
+\Input{0}{$x$}
+\Input{1}{$y$}
+\Output{0}{$x$}
+\Output{1}{$y$}
+\end{GateBox}
+\end{center}
+    }
+\end{frame}
+}
