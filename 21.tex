@@ -247,14 +247,30 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 
 \begin{frame}{Solution}{We can arrange for the quantum circuit to produce all possible answers.}
 
-\TwoColumns{%
-\begin{GateBox}[scale=1.0]{3}{2}{2}
+\begin{center}
+\begin{GateBox}[scale=1.0]{2}{1.2}{2}
 \BoxLabel{$Q_f$}
-\Input{0}{\QPlus{}}
+\Input{0}{\alt<1>{\QPlus{}}{\ket{+}}}
 \Input{1}{\ket{0}}
-\Output{0}{}
+\ComputeMyY{0}\draw (0,\MyY) node[right] {$x$};
+\ComputeMyY{1}\draw (0,\MyY) node[right] {$y$};
+\Output{0}{$x$}
+\Output{1}{\Xor{y}{f(x)}}
 \end{GateBox}
+\end{center}
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> The input is the superposition of the two possible basis states.
+    \item<2-> We know this state as \ket{+}.
+    \item<3-> Recall we can create $\ket{+}=\QPlus{}$ using this circuit:
+\end{itemize}
 }{%
+\visible<3->{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{0}} &  \gate{H} &  \qw \rstick{\ket{+}}
+\end{quantikz}}%
+\end{center}}
 }
     
 \end{frame}
