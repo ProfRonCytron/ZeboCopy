@@ -251,7 +251,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \begin{GateBox}[scale=1.0]{2}{1.2}{2}
 \BoxLabel{$U_f$}
 \Input{0}{\alt<1>{\QPlus{}}{\ket{+}}}
-\Input{1}{\ket{0}}
+\Input{1}{\alt<14->{\alert{\ket{-}}}{\ket{0}}}
 \ComputeMyY{0}\draw (0,\MyY) node[right] {$x$};
 \ComputeMyY{1}\draw (0,\MyY) node[right] {$y$};
 \Output{0}{$x$}
@@ -304,7 +304,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\ket{0}$
 \only<12->{%
 \begin{itemize}
     \item<12-> While the information is in the output, we cannot recover it by measurement.
-    \item<13-> We need to try something different, using \emph{interference} to get the result we need.
+    \item<13-> We need to try something different, using \alert{interference} to get the result we need.
 \end{itemize}
 }
 \end{frame}
