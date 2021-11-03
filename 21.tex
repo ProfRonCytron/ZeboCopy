@@ -9,7 +9,7 @@
         \item[constant]   \Forall{x}{f(x)=k}, where $k$ is $0$ or $1$
         \item[balanced]   For half of its inputs, $f(x)=1$ and for the other half $f(x)=0$
     \end{description}
-    \item Because $x$ is a single bit, $f(x)$ must be one of the above.
+    \item Given the domain and range of $f(x)$, the function must be one of the above.
 \end{itemize}
     
 \end{frame}
@@ -224,6 +224,34 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \lstick{\ket{y}} &  \targ{} & \gate{X} & \qw \rstick{\ket{\Xor{y}{f(x)}}}
 \end{quantikz}}\end{center}
 }
+}
+    
+\end{frame}
+
+\begin{frame}{Is $f(x)$ constant or balanced?}{Classical approach}
+
+\TwoColumns{%
+\begin{itemize}[<+->]
+    \item If we perform one evaluation of $f$, say on $0$, then we do not know if $f(x)$ is always $f(0)$ or if $f(x)$ may be different.
+    \item Classically it takes \emph{two} queries of $f$ to determine the answer to this question.
+\end{itemize}
+}{%
+\begin{align*}
+    f(0) &= 0 \\
+    f(1) &= \ ?
+\end{align*}
+}
+\BigSkip{}
+\visible<3>{We will see that a quantum circuit for $f$ can reveal whether the function is constant or balanced with \emph{a single} query!}
+\end{frame}
+
+\begin{frame}{Solution}{We can arrange for the quantum circuit to produce all possible answers.}
+
+\TwoColumns{%
+\begin{GateBox}[scale=1.0]{3}{2}{2}
+\Input{0}{}
+\end{GateBox}
+}{%
 }
     
 \end{frame}
