@@ -167,8 +167,8 @@ We can thus think of the unitary matrix in terms of where it sends each of the b
 \end{frame}}
 
 {
-\def\V#1#2{\textcolor{#2}{\FCirc{0.30}}}
-\def\VV#1}{\DQB{#1}{#1}{#1}{#1}}
+\def\V#1#2{\visible<#1->{\CFCirc{#2}}}
+\def\VV#1{\DQB{\CFCirc{#1}}{\CFCirc{#1}}{\CFCirc{#1}}{\CFCirc{#1}}}
 \begin{frame}{Using outer products}{To construct gates}
 
 \href{https://qiskit.org/textbook/ch-states/single-qubit-gates.html\#1.1-The-X-Gate-}{see this}
@@ -183,11 +183,57 @@ U = \begin{pmatrix*}[c]
   \V{1}{\RCone} & \V{2}{\RCtwo} & \V{3}{\RCthree} & \V{4}{\RCfour} 
 \end{pmatrix*}
 \]
+\only<1>{%
+\[\VV{\RCone}\CDQB{1}{0}{0}{0} =
+\begin{pmatrix*}[r]
+  \CFCirc{\RCone} & 0 & 0 & 0 \\
+  \CFCirc{\RCone} & 0 & 0 & 0 \\
+  \CFCirc{\RCone} & 0 & 0 & 0 \\
+  \CFCirc{\RCone} & 0 & 0 & 0
+  \end{pmatrix*}
+  \]
+}%
+\only<2>{%
+\[\VV{\RCtwo}\CDQB{0}{1}{0}{0} =
+\begin{pmatrix*}[r]
+  0 & \CFCirc{\RCtwo} & 0 & 0  \\
+  0 & \CFCirc{\RCtwo} & 0 & 0  \\
+  0 & \CFCirc{\RCtwo} & 0 & 0  \\
+  0 & \CFCirc{\RCtwo} & 0 & 0
+  \end{pmatrix*}
+  \]
+}%
+\only<3>{%
+\[\VV{\RCthree}\CDQB{0}{0}{1}{0} =
+\begin{pmatrix*}[r]
+  0 & 0 & \CFCirc{\RCthree} & 0   \\
+  0 & 0 & \CFCirc{\RCthree} & 0   \\
+  0 & 0 & \CFCirc{\RCthree} & 0   \\
+  0 & 0 & \CFCirc{\RCthree} & 0 
+  \end{pmatrix*}
+  \]
+}%
+\only<4>{%
+\[\VV{\RCfour}\CDQB{0}{0}{0}{1} =
+\begin{pmatrix*}[r]
+  0 & 0 & 0 & \CFCirc{\RCfour}    \\
+  0 & 0 & 0 & \CFCirc{\RCfour}    \\
+  0 & 0 & 0 & \CFCirc{\RCfour}    \\
+  0 & 0 & 0 & \CFCirc{\RCfour}  
+  \end{pmatrix*}
+  \]
+}%
+\only<5-9>{%
+\BigSkip{}
+We can express those row vectors as bras.
+}
 }{%
 \begin{align*}
     U & =
-      \VV{\RCone} \CDQB{1}{0}{0}{0} \\
-      & + \VV{rctwo} \CDQB{0}{1}{0}{0}
+      \VV{\RCone} \alt<1-5>{\CDQB{1}{0}{0}{0}}{\bra{00}}
+      + \visible<2->{\VV{\RCtwo}} \alt<1-6>{\CDQB{0}{1}{0}{0}}{\bra{01}} \\
+      & + \visible<3->{\VV{\RCthree}} \alt<1-7>{\CDQB{0}{0}{1}{0}}{\bra{10}}
+      + \visible<4->{\VV{\RCfour}} \alt<1-8>{\CDQB{0}{0}{0}{1}}{\bra{11}}
 \end{align*}
 }
     
