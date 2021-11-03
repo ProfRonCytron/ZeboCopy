@@ -90,7 +90,7 @@ The result
 can be an entangled state: it cannot necessarily be written as the tensor product of two one-qubit states.}
 }
 }{%
-\only<1-10>{%
+\only<1-9>{%
 \visible<2->{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{$a$} &  \ctrl{1} & \qw & \qw \\
@@ -140,7 +140,7 @@ For a two-qubit system, recall the representation of bases as column vectors:
      \end{tabular}
 \end{center}
 
-Each column is the output produced when give its corresponding input basis vector.
+Each column is the output produced when given its corresponding input basis vector.
 }{%
 We can thus think of the unitary matrix in terms of where it sends each of the basis vectors.
 \[
@@ -225,7 +225,7 @@ U = \begin{pmatrix*}[c]
 }%
 \only<5-9>{%
 \BigSkip{}
-We can express those row vectors as bras.
+We can express those row vectors as bras and the column vectors as kets.
 }
 }{%
 \begin{align*}
@@ -290,7 +290,7 @@ This unitary matrix is the familiar \NamedGate{CNOT} gate.  We can arrive at thi
 \only<4>{%
 \[
 \textcolor{\RCthree}{%
-\DQB{0}{0}{1}{0}\mapsto \DQB{1}{0}{0}{1}
+\DQB{0}{0}{1}{0}\mapsto \DQB{0}{0}{0}{1}
 }
 \]
 }
