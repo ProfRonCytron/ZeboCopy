@@ -435,8 +435,8 @@
 \pgfmathsetmacro{\Max}{\Signals}
 \pgfmathsetmacro{\Vsep}{\Height / \Max}
 \pgfmathsetmacro{\Wlen}{\Width / 5}
-\def\CalcY##1{%
-0}
+\def\ComputeMyY##1{%
+   \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}}
 \def\Input##1##2{%
    \pgfmathsetmacro{\Xone}{-\Wlen}
    \pgfmathsetmacro{\Xtwo}{0}
