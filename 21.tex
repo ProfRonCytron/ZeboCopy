@@ -34,9 +34,9 @@
     \item We consider a quantum gate $U_f$ that implements $f(x)$.
     \item It accepts $x$ and an \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancillary} input $y$.
     \item It copies $x$ onto the top output qubit.
-    \item It computes \Xor{y}{f(x)} on the bottom output qubit.
-    \item When $y=\QZero{}$ the bottom qubit is $f(x)$.
-    \item When $y=\QOne{}$ the bottom qubit is \Not{$f(x)$}.
+    \item It computes \alert{\Xor{y}{f(x)}} on the bottom output qubit.
+    \item When $y=\QZero{}$ the bottom qubit is $\Xor{0}{f(x)}=f(x)$.
+    \item When $y=\QOne{}$ the bottom qubit is $\Xor{1}{f(x)}=\Not{f(x)}$.
 \end{itemize}
 }{%
 \BigSkip{}
@@ -50,7 +50,7 @@
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\relax}
 \end{Oracle}}%
 \only<4>{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\alert{\Xor{y}{f(x)}}}
 \end{Oracle}}%
 \only<5>{%
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QZero{}}{$x$}{$f(x)$}
@@ -171,7 +171,7 @@ Thus, $U_B$ is realized by complementing $y$.}
 
 \BigSkip{}
 \only<3>{%
-The matrix form may look familiar?
+The matrix may look familiar?
 \[U_{C} = \CNOTMatrix{} \]
 }%
 \only<4>{%
@@ -232,7 +232,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 
 \TwoColumns{%
 \begin{itemize}[<+->]
-    \item If we perform one evaluation of $f$, say on $0$, then we do not know if $f(x)$ is always $f(0)$ or if $f(x)$ may be different.
+    \item If we perform one evaluation of $f$, say on $0$, then we do not know if $f(x)$ is always $f(0)$ or if $f(1)$ may be different.
     \item Classically it takes \emph{two} queries of $f$ to determine the answer to this question.
 \end{itemize}
 }{%
@@ -279,7 +279,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
         $\TensProd{x}{(\Xor{y}{f(x)})}  =
         \TensProd{x}{(\Xor{0}{f(x)})} 
         = \TensProd{x}{f(x)}
-        = \ket{x\,f(x)}$
+        = \alert{\ket{x\,f(x)}}$
 
 \SmallSkip{}
 By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
@@ -299,7 +299,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     \item<8-> But what happens if we measure?
     \item<9-> We randomly and uniformly see \emph{either} \ket{0\,f(0)} or \ket{1\,f(1)}.
     \item<10-> It could take \emph{more} than two evaluations to see both answers!
-    \item<11-> Even a \emph{partial} measurement of the top qubit collapses the bottom one.
+    \item<11-> Even if we measure only the top qubit, the bottom qubit collapses too.
 \end{itemize}
 }%
 \only<12->{%
@@ -310,6 +310,49 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 }
 \end{frame}
 
+\begin{frame}{Creating \ket{-}}{A few approaches}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}[<+->]
+    \item Recall 
+    \begin{itemize}
+        \item $\ket{+}=\QPlus{}$
+        \item $\ket{-}=\QMinus{}$
+    \end{itemize}
+    \item Use \PauliZ{} on \ket{+}
+    \[
+    \ZMatrix{}\PPlus{} = \PMinus{}=\ket{-}\]
+    \item Use \Hadamard{} on \QOne{}
+    \[ \HMatrix{}\POne{} = \PMinus{}=\ket{-}
+    \]
+\end{itemize}
+}{%
+\BigSkip{}\BigSkip{}
+\visible<4>{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H} & \gate{Z}& \qw \rstick{\ket{-}}
+\end{quantikz}}\end{center}}%
+\BigSkip{}
+\BigSkip{}
+\BigSkip{}
+\visible<5>{%
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QOne{}} &  \gate{H} & \qw & \qw \rstick{\ket{-}}
+\end{quantikz}}\end{center}}%
+}
+    
+\end{frame}
+
 \begin{frame}{Deutsch's algorithm}{Uses interference to find constant vs. balanced functions}
+
+\TwoColumns{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}} & \qw \slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<7-8>{\QState{2}}} & \meter{\textcolor<8->{red}{0/1}}\\
+\lstick{\QZero{}} & \gate{X} &   \gate{H}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}}  & \meter{\textcolor<8->{red}{0/1}}
+\end{quantikz}}%
+}{%
+}
     
 \end{frame}
