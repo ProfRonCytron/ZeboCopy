@@ -35,8 +35,8 @@
     \item It accepts $x$ and an \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancillary} input $y$.
     \item It copies $x$ onto the top output qubit.
     \item It computes \Xor{y}{f(x)} on the bottom output qubit.
-    \item When $y=\ket{0}$ the bottom qubit is $f(x)$.
-    \item When $y=\ket{1}$ the bottom qubit is \Not{$f(x)$}.
+    \item When $y=\QZero{}$ the bottom qubit is $f(x)$.
+    \item When $y=\QOne{}$ the bottom qubit is \Not{$f(x)$}.
 \end{itemize}
 }{%
 \BigSkip{}
@@ -53,10 +53,10 @@
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}}%
 \only<5>{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\ket{0}}{$x$}{$f(x)$}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QZero{}}{$x$}{$f(x)$}
 \end{Oracle}}%
 \only<6>{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\ket{1}}{$x$}{\Not{$f(x)$}}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QOne{}}{$x$}{\Not{$f(x)$}}
 \end{Oracle}}%
 }    
 \end{frame}
@@ -251,7 +251,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \begin{GateBox}[scale=1.0]{2}{1.2}{2}
 \BoxLabel{$U_f$}
 \Input{0}{\alt<1>{\QPlus{}}{\ket{+}}}
-\Input{1}{\alt<14->{\alert{\ket{-}}}{\ket{0}}}
+\Input{1}{\alt<14->{\alert{\ket{-}}}{\QZero{}}}
 \ComputeMyY{0}\draw (0,\MyY) node[right] {$x$};
 \ComputeMyY{1}\draw (0,\MyY) node[right] {$y$};
 \Output{0}{$x$}
@@ -269,7 +269,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \only<3>{%
 \begin{center}
 \adjustbox{valign=t}{\begin{quantikz}
-\lstick{\ket{0}} &  \gate{H} &  \qw \rstick{\ket{+}}
+\lstick{\QZero{}} &  \gate{H} &  \qw \rstick{\ket{+}}
 \end{quantikz}}%
 \end{center}}%
 }%
@@ -282,7 +282,7 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
         = \ket{x\,f(x)}$
 
 \SmallSkip{}
-By linearity, with $x$ in the superposition \QPlus{} and $y=\ket{0}$
+By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     \begin{align*}
     U_f(\TensProd{\QPlus}{0}) &= \RootTwo{}U_f(\ket{00}+\ket{10}) \\
     \visible<5->{ &= \RootTwo{}\left(

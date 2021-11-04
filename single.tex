@@ -92,8 +92,8 @@
 \ensuremath{\RootTwo{}\left(#1 #3 #2\right)}}
 \def\TwoSup#1#2{%
    \TwoSupOp{\ket{#1}}{\ket{#2}}{+}}
-\def\QPlus{\TwoSup{0}{1}}
-\def\QMinus{\TwoSupOp{\ket{0}}{\ket{1}}{-}}
+\def\QPlus{\TwoSupOp{\QZero}{\QOne}{+}}
+\def\QMinus{\TwoSupOp{\QZero}{\QOne}{-}}
 \def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
 \def\BigSkip{%
 
@@ -169,8 +169,8 @@
 \long\def\Example#1{%
 \begin{example} #1\end{example}}
 \def\VV{\textit{vice versa}}
-\def\QZero{\ket{0}}
-\def\QOne{\ket{1}}
+\def\QZero{\ket{\hbox to 0.7em{\hss 0\hss}}}
+\def\QOne{\ket{\hbox to 0.7em{\hss 1\hss}}}
 \def\QState#1{\ket{\QName{#1}}}
 \def\QName#1{\ensuremath{\psi_{#1}}}
 \def\TensProd#1#2{\ensuremath{#1 \bm{\otimes} #2}}
