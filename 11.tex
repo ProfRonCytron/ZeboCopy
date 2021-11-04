@@ -666,7 +666,7 @@ then
 
 \begin{frame}{Proof}{By induction, base case}
 \begin{description}
-   \item[$P(1)$]  $\TwoSup{0}{1} = \TwoSup{0^1}{1^1} \QState{1}$
+   \item[$P(1)$]  $\TwoSup{0}{1} = \TwoSup{0^1}{1^1} = \QState{1}$
 \end{description}
 \end{frame}
 \begin{frame}{Proof}{By induction, inductive step}
@@ -678,13 +678,13 @@ then
 \begin{align*}
     \TensProd{\QState{k}}{\ket{0}}  = 
     \TensProd{\TwoSup{0^k}{1^k}}{\ket{0}} & = \textcolor<1-2>{\RCone}{\TwoSup{0^{k}0}{1^{k}0}} \\
-    \visible<2->{\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
+    \visible<2->{\left(\TensProd{\Identity^{k}}{\NamedGate{CNOT}}\right)
     \left(\textcolor<2>{\RCone}{\TwoSup{\textcolor<3->{\RCtwo}{0^{k}0}}{\textcolor<4->{\RCthree}{1^{k}0}}}\right)}\visible<3->{ & = 
     \RootTwo{}\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
     \left(\ket{\textcolor<3->{\RCtwo}{0^{k}0}}\right) \\ & + 
     \visible<4->{\RootTwo{}\left(\TensProd{\Identity^{k-1}}{\NamedGate{CNOT}}\right)
     \left(\ket{\textcolor<4->{\RCthree}{1^{k}0}}\right)}} \\
-    \visible<4->{& = \TwoSup{\textcolor{\RCtwo}{0^k}}{\textcolor{\RCthree}{1^k}} = \QState{k+1}}
+    \visible<4->{& = \TwoSup{\textcolor{\RCtwo}{0^{k+1}}}{\textcolor{\RCthree}{1^{k+1}}} = \QState{k+1}}
 \end{align*}}
 \QED{}
 
