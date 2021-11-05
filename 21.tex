@@ -348,11 +348,12 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \begin{frame}{Deutsch's algorithm}{Uses interference to find constant vs. balanced functions}
 
 \begin{center}
-\Vskip{-3em}\adjustbox{valign=t}{\begin{quantikz}
+\Vskip{-3em}\adjustbox{valign=t, width=0.5\textwidth}{\begin{quantikz}
 \lstick{\QZero{}} & \qw\slice{\alert<2>{\QState{0}}} &  \gate{H}\slice{\alert<3-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<6-8>{\QState{2}}} &\gate{H}\slice{\alert<9-10>{\QState{3}}} & \meter{\textcolor<8->{red}{0/1}} \\
 \lstick{\QZero{}} & \gate{X} &   \gate{H}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}}%
 \end{center}
+\only<1-17>{%
 \Vskip{-4em}\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
 \only<1-7>{%
     \begin{align*}
@@ -364,8 +365,8 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \begin{align*}
     \alert{U_{f}(\ket{xy})} & \alert{= \ket{x\,\Xor{y}{f(x)}}} \\
     \only<8-9>{U_{f}(\ket{00}) &= \ket{0\,\Xor{0}{f(0)}} \\}
-    \only<9-10>{U_{f}(\ket{01}) &= \ket{0\,\Xor{0}{f(1)}} \\}
-    \only<10-11>{U_{f}(\ket{10}) &= \ket{1\,\Xor{1}{f(0)}} \\}
+    \only<9-10>{U_{f}(\ket{01}) &= \ket{0\,\Xor{1}{f(0)}} \\}
+    \only<10-11>{U_{f}(\ket{10}) &= \ket{1\,\Xor{0}{f(1)}} \\}
     \only<11-12>{U_{f}(\ket{11}) &= \ket{1\,\Xor{1}{f(1)}}}
 \end{align*}}%
 \only<13->{%
@@ -377,8 +378,11 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \begin{align*}
     \visible<6->{\QState{2} &= U_f(\frac{1}{2}\left[\ket{00}-\ket{01}+\ket{10}-\ket{11}\right]) \\[1em]}
        \visible<7->{ &= \frac{%
-        \alt<14->{\ket{0\,f(0)}}{\alt<9->{\ket{0\,\Xor{0}{f(0)}}}{U_f(\ket{00})}}-\alt<15->{\ket{0\,f(1)}}{\alt<10->{\ket{0\,\Xor{0}{f(1)}}}{U_f(\ket{01})}}}{2} \\ & + \frac{\alt<11->{\ket{1\,\Xor{1}{f(0)}}}{U_f(\ket{10})}-\alt<12->{\ket{1\,\Xor{1}{f(1)}}}{U_f(\ket{11})}}{2}}
+        \alt<14->{\ket{0\,f(0)}}{\alt<9->{\ket{0\,\Xor{0}{f(0)}}}{U_f(\ket{00})}}-\alt<16->{\ket{0\,\Not{f(0)}}}{\alt<10->{\ket{0\,\Xor{1}{f(0)}}}{U_f(\ket{01})}}}{2} \\ & + \frac{\alt<15->{\ket{1\,f(1)}}{\alt<11->{\ket{1\,\Xor{0}{f(1)}}}{U_f(\ket{10})}}-\alt<17->{\ket{1\,\Not{f(1)}}}{\alt<12->{\ket{1\,\Xor{1}{f(1)}}}{U_f(\ket{11})}}}{2}}
 \end{align*}
+}}
+\only<18->{%
+\[ \QState{2} = \frac{\ket{0\,f(0)} - \ket{0\,\Not{f(0)}} + \ket{1\,f(1)} - \ket{1\,\Not{f(1)}}}{2}\]
 }
     
 \end{frame}
