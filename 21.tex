@@ -381,8 +381,17 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \only<29-30>{%
 \[ \alert{\ket{-} = \QMinus{}} \]
 }%
+\only<31>{%
+\begin{center}
+    \begin{tabular}{ccc}
+       $f(x)$ & \QState{2} & \QState{3} \\ \hline
+    constant & \ket{+} & \QZero{} \\
+    balanced & \ket{-} & \QOne{}
+    \end{tabular}
+\end{center}
 }
-\only<6->{
+}
+\only<6-30>{
 \Vskip{-2em}\begin{align*}
     \only<6-7>{\QState{2} &= U_f(\frac{1}{2}\left[\ket{00}-\ket{01}+\ket{10}-\ket{11}\right]) \\[1em]}
      \only<7->{\visible<8->{\QState{2}}   &= \frac{%
@@ -397,27 +406,43 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 }
 \only<21-25>{%
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
-Suppose $f(0)=f(1)$.  \only<25>{Then the top qubit at \QState{2} is \ket{+}.  Measuring at \QState{3} yields \alert{\ket{0}}.}
+Suppose $f(0)=f(1)$.  \only<23-24>{%
+Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits' states.
+}
+\only<25>{Then the top qubit at \QState{2} is \ket{+}.  Measuring at \QState{3} yields \alert{\ket{0}}.}
 }{%
 \Vskip{-4em}\begin{align*}
     2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\Not{f(0)}} + \ket{1\,\alert<21>{f(0)}} - \ket{1\,\Not{\alert<21>{f(0)}}} \\
   \visible<22->{  & = \TensProd{(\ket{0}+\ket{1})}{f(0)} - \TensProd{(\ket{0}+\ket{1})}{\Not{f(0)}} \\}
-  \visible<23->{  & = \TensProd{(\ket{0}+\ket{1})}{(f(0)-\Not{f(0)})} \\}
-  \visible<24->{ \QState{2} &= \TensProd{\ket{+}}{(f(0)-\Not{f(0)})\frac{1}{\sqrt{2}}} }
+  \visible<23->{  & = \TensProd{\textcolor<23-24>{\RCone}{(\ket{0}+\ket{1})}}{\textcolor<23-24>{\RCtwo}{(f(0)-\Not{f(0)})}} \\}
+  \visible<24->{ \QState{2} &= \TensProd{\textcolor<24>{\RCone}{\ket{+}}}{\textcolor<24>{\RCtwo}{(f(0)-\Not{f(0)})\frac{1}{\sqrt{2}}}} }
 \end{align*}
 }
 }
-\only<26->{%
+\only<26-30>{%
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
-Suppose $f(0) = \Not{f(1)}$.  \only<30>{Then the top qubit at \QState{2} is \ket{-}.  Measuring at \QState{3} yields \alert{\ket{1}}.}
+Suppose $f(0) = \Not{f(1)}$. 
+ \only<28-29>{%
+Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits' states.
+}
+\only<30>{Then the top qubit at \QState{2} is \ket{-}.  Measuring at \QState{3} yields \alert{\ket{1}}.}
 }{%
 \Vskip{-4em}\begin{align*}
     2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\alert<26>{f(1)}} + \ket{1\,f(0)} - \ket{1\,\alert<26>{f(0)}} \\
   \visible<27->{  & = \TensProd{(\ket{0}-\ket{1})}{f(0)} - \TensProd{(\ket{0}-\ket{1})}{f(1)} \\}
-  \visible<28->{  & = \TensProd{(\ket{0}-\ket{1})}{(f(0)-f(1))} \\}
-  \visible<29->{ \QState{2} &= \TensProd{\ket{-}}{(f(0)-f(1))\frac{1}{\sqrt{2}}} }
+  \visible<28->{  & = \TensProd{\textcolor<28-29>{\RCone}{(\ket{0}-\ket{1})}}{\textcolor<28-29>{\RCtwo}{(f(0)-f(1))}} \\}
+  \visible<29->{ \QState{2} &= \TensProd{\textcolor<29>{\RCone}{\ket{-}}}{\textcolor<29>{\RCtwo}{(f(0)-f(1))\frac{1}{\sqrt{2}}}} }
 \end{align*}
 }
+}
+\only<31->{%
+\BigSkip{}
+\begin{itemize}
+    \item<31-> We can determine if $f(x)$ is constant or balanced with a single query of $U_f$.  Classically two queries were needed.
+    \item<32-> We perform a \href{https://physics.stackexchange.com/questions/184242/partial-measurement-and-the-math-behind-it}{partial measurement} of the system, measuring only the top qubit.
+    \item<33-> This quantum circuit never created any entanglement:  each state could be tensor factored into the product of single qubit states.
+    \item<34-> The effect of sending $y=\ket{-}$ into $U_f$ is manifest primarily on the top qubit.   We call this \emph{phase kickback} and study it next.
+\end{itemize}
 }
 
 \end{frame}
