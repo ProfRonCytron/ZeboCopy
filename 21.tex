@@ -350,7 +350,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\QZero{}} & \qw\slice{\alert<2>{\QState{0}}} &  \gate{H}\slice{\alert<3-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<6-8>{\QState{2}}} &\gate{H}\slice{\alert<9-10>{\QState{3}}} & \meter{\alt<25>{\alert{0}}{0/1}} \\
+\lstick{\QZero{}} & \qw\slice{\alert<2>{\QState{0}}} &  \gate{H}\slice{\alert<3-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<6-8>{\QState{2}}} &\gate{H}\slice{\alert<9-10>{\QState{3}}} & \meter{\alt<30>{\alert{1}}{\alt<25>{\alert{0}}{0/1}}} \\
 \lstick{\QZero{}} & \gate{X} &   \gate{H}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}}%
 \end{center}
@@ -377,6 +377,9 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \end{align*}}%
 \only<23-24>{%
 \[ \alert{\ket{+} = \QPlus{}} \]
+}%
+\only<29-30>{%
+\[ \alert{\ket{-} = \QMinus{}} \]
 }%
 }
 \only<6->{
@@ -406,8 +409,14 @@ Suppose $f(0)=f(1)$.  \only<25>{Then the top qubit at \QState{2} is \ket{+}.  Me
 }
 \only<26->{%
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
-Suppose $f(0) = \Not{f(1)}$.
+Suppose $f(0) = \Not{f(1)}$.  \only<30>{Then the top qubit at \QState{2} is \ket{-}.  Measuring at \QState{3} yields \alert{\ket{1}}.}
 }{%
+\Vskip{-4em}\begin{align*}
+    2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\alert<26>{f(1)}} + \ket{1\,f(0)} - \ket{1\,\alert<26>{f(0)}} \\
+  \visible<27->{  & = \TensProd{(\ket{0}-\ket{1})}{f(0)} - \TensProd{(\ket{0}-\ket{1})}{f(1)} \\}
+  \visible<28->{  & = \TensProd{(\ket{0}-\ket{1})}{(f(0)-f(1))} \\}
+  \visible<29->{ \QState{2} &= \TensProd{\ket{-}}{(f(0)-f(1))\frac{1}{\sqrt{2}}} }
+\end{align*}
 }
 }
 
