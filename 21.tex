@@ -345,6 +345,8 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     
 \end{frame}
 
+
+
 \begin{frame}{Deutsch's algorithm}{Uses interference to find constant vs. balanced functions}
 
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
@@ -370,15 +372,19 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     \only<11>{U_{f}(\ket{\textcolor{\RCone}{1}\textcolor{\RCtwo}{0}}) & = \ket{\textcolor{\RCone}{1}\,\Xor{\textcolor{\RCtwo}{0}}{f(\textcolor{\RCone}{1})}}}
     \only<12>{U_{f}(\ket{\textcolor{\RCone}{1}\textcolor{\RCtwo}{1}}) & = \ket{\textcolor{\RCone}{1}\,\Xor{\textcolor{\RCtwo}{1}}{f(\textcolor{\RCone}{1})}}}
 \end{align*}}
-\only<13-22>{%
+\only<13-17>{%
 \begin{align*}
     \visible<13->{\Xor{0}{f(a)} &= f(a)} \\
     \visible<16->{\Xor{1}{f(a)} &= \Not{f(a)}}
 \end{align*}}%
+\only<22,27>{%
+\BigSkip{}
+\alert{Recall \[\ket{a\,b} = \ket{a}\ket{b} \]}
+}%
 \only<23-24>{%
 \[ \alert{\ket{+} = \QPlus{}} \]
 }%
-\only<29-30>{%
+\only<28-30>{%
 \[ \alert{\ket{-} = \QMinus{}} \]
 }%
 \only<31>{%
@@ -405,7 +411,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \end{itemize}
 }
 \only<21-25>{%
-\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
+\Vskip{-2em}\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
 Suppose $f(0)=f(1)$.  \only<23-24>{%
 Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits' states.
 }
@@ -413,14 +419,14 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 }{%
 \Vskip{-4em}\begin{align*}
     2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\Not{f(0)}} + \ket{1\,\alert<21>{f(0)}} - \ket{1\,\Not{\alert<21>{f(0)}}} \\
-  \visible<22->{  & = \TensProd{(\ket{0}+\ket{1})}{f(0)} - \TensProd{(\ket{0}+\ket{1})}{\Not{f(0)}} \\}
-  \visible<23->{  & = \TensProd{\textcolor<23-24>{\RCone}{(\ket{0}+\ket{1})}}{\textcolor<23-24>{\RCtwo}{(f(0)-\Not{f(0)})}} \\}
-  \visible<24->{ \QState{2} &= \TensProd{\textcolor<24>{\RCone}{\ket{+}}}{\textcolor<24>{\RCtwo}{(f(0)-\Not{f(0)})\frac{1}{\sqrt{2}}}} }
+  \visible<22->{  & = \TensProd{(\ket{0}+\ket{1})}{\ket{f(0)}} - \TensProd{(\ket{0}+\ket{1})}{\ket{\Not{f(0)}}} \\}
+  \visible<23->{  & = \TensProd{\textcolor<23-24>{\RCone}{(\ket{0}+\ket{1})}}{\textcolor<23-24>{\RCtwo}{(\ket{f(0)}-\ket{\Not{f(0)}})}} \\}
+  \visible<24->{ \QState{2} &= \TensProd{\textcolor<24>{\RCone}{\ket{+}}}{\textcolor<24>{\RCtwo}{(\ket{f(0)}-\ket{\Not{f(0)}})\frac{1}{\sqrt{2}}}} }
 \end{align*}
 }
 }
 \only<26-30>{%
-\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
+\Vskip{-2em}\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
 Suppose $f(0) = \Not{f(1)}$. 
  \only<28-29>{%
 Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits' states.
@@ -429,14 +435,14 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 }{%
 \Vskip{-4em}\begin{align*}
     2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\alert<26>{f(1)}} + \ket{1\,f(0)} - \ket{1\,\alert<26>{f(0)}} \\
-  \visible<27->{  & = \TensProd{(\ket{0}-\ket{1})}{f(0)} - \TensProd{(\ket{0}-\ket{1})}{f(1)} \\}
-  \visible<28->{  & = \TensProd{\textcolor<28-29>{\RCone}{(\ket{0}-\ket{1})}}{\textcolor<28-29>{\RCtwo}{(f(0)-f(1))}} \\}
-  \visible<29->{ \QState{2} &= \TensProd{\textcolor<29>{\RCone}{\ket{-}}}{\textcolor<29>{\RCtwo}{(f(0)-f(1))\frac{1}{\sqrt{2}}}} }
+  \visible<27->{  & = \TensProd{(\ket{0}-\ket{1})}{\ket{f(0)}} - \TensProd{(\ket{0}-\ket{1})}{\ket{f(1)}} \\}
+  \visible<28->{  & = \TensProd{\textcolor<28-29>{\RCone}{(\ket{0}-\ket{1})}}{\textcolor<28-29>{\RCtwo}{(\ket{f(0)}-\ket{f(1)})}} \\}
+  \visible<29->{ \QState{2} &= \TensProd{\textcolor<29>{\RCone}{\ket{-}}}{\textcolor<29>{\RCtwo}{(\ket{f(0)}-\ket{f(1)})\frac{1}{\sqrt{2}}}} }
 \end{align*}
 }
 }
 \only<31->{%
-\BigSkip{}
+\MedSkip{}
 \begin{itemize}
     \item<31-> We can determine if $f(x)$ is constant or balanced with a single query of $U_f$.  Classically two queries were needed.
     \item<32-> We perform a \href{https://physics.stackexchange.com/questions/184242/partial-measurement-and-the-math-behind-it}{partial measurement} of the system, measuring only the top qubit.
