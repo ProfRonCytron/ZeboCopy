@@ -251,11 +251,11 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \begin{GateBox}[scale=1.0]{2}{1.2}{2}
 \BoxLabel{$U_f$}
 \Input{0}{\alt<1>{\QPlus{}}{\ket{+}}}
-\Input{1}{\alt<14->{\alert{\ket{-}}}{\QZero{}}}
+\Input{1}{\alt<16->{\alert{\ket{-}}}{\QZero{}}}
 \ComputeMyY{0}\draw (0,\MyY) node[right] {$x$};
 \ComputeMyY{1}\draw (0,\MyY) node[right] {$y$};
-\Output{0}{$x$}
-\Output{1}{\Xor{y}{f(x)}}
+\Output{0}{\alert<12-14>{$x$}}
+\Output{1}{\alert<12-14>{\Xor{y}{f(x)}}}
 \end{GateBox}
 \end{center}
 \TwoColumns{%
@@ -291,8 +291,8 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
         \ket{1\,f(1)}}{\sqrt{2}}}
     \end{align*}}%
 \only<7->{%
-\visible<7-13>{
-\[ U_{f}(\ket{+\,0}) = \TwoSup{0\,f(0)}{1\,f(1)} \]}}
+\visible<7-16>{
+\[ U_{f}(\ket{+\,0}) = \TwoSup{0\,\textcolor<14>{\RCone}{f(0)}}{1\,\textcolor<14>{\RCtwo}{f(1)}} \]}}
 \only<7-11>{%
 \Vskip{-2em}\begin{itemize}
     \item<7-> We forced $U_f$ to produce \emph{both} outputs.
@@ -302,10 +302,17 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     \item<11-> Even if we measure only the top qubit, the bottom qubit collapses too.
 \end{itemize}
 }%
-\only<12->{%
+\only<12-14>{%
 \begin{itemize}
-    \item<12-> While the information is in the output, we cannot recover it by measurement.
-    \item<13-> We need to try something different, using \alert{interference} to get the result we need.
+    \item<12-> It is misleading to see the \alert<12>{output} of $U_f$ labeled to look like a tensor product.
+    \item<13-> Without analysis, we cannot know if the output can be tensor factored.
+    \item<14-> Consider \textcolor{\RCone}{$f(0)=0$} and \textcolor{\RCtwo}{$f(1)=1$}.  Then $U_f$ creates \alert<14>{\TwoSup{00}{11}} as the output, which we know cannot be tensor factored!
+\end{itemize}
+}%
+\only<15->{%
+\begin{itemize}
+    \item<15-> While the information is in the output, we cannot recover it by measurement.
+    \item<16-> We need to try something different, using \alert{interference} to get the result we need.
 \end{itemize}
 }
 \end{frame}
@@ -372,9 +379,9 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
     \only<11>{U_{f}(\ket{\textcolor{\RCone}{1}\textcolor{\RCtwo}{0}}) & = \ket{\textcolor{\RCone}{1}\,\Xor{\textcolor{\RCtwo}{0}}{f(\textcolor{\RCone}{1})}}}
     \only<12>{U_{f}(\ket{\textcolor{\RCone}{1}\textcolor{\RCtwo}{1}}) & = \ket{\textcolor{\RCone}{1}\,\Xor{\textcolor{\RCtwo}{1}}{f(\textcolor{\RCone}{1})}}}
 \end{align*}}
-\only<13-17>{%
+\only<13-18>{%
 \begin{align*}
-    \visible<13->{\Xor{0}{f(a)} &= f(a)} \\
+    \visible<13-15>{\Xor{0}{f(a)} &= f(a)} \\
     \visible<16->{\Xor{1}{f(a)} &= \Not{f(a)}}
 \end{align*}}%
 \only<22,27>{%
@@ -401,7 +408,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \Vskip{-2em}\begin{align*}
     \only<6-7>{\QState{2} &= U_f(\frac{1}{2}\left[\ket{00}-\ket{01}+\ket{10}-\ket{11}\right]) \\[1em]}
      \only<7->{\visible<8->{\QState{2}}   &= \frac{%
-        \alt<14->{\ket{0\,f(0)}}{\alt<9->{\ket{0\,\Xor{0}{f(0)}}}{U_f(\ket{00})}}-\alt<16->{\ket{0\,\Not{f(0)}}}{\alt<10->{\ket{0\,\Xor{1}{f(0)}}}{U_f(\ket{01})}}  + \alt<15->{\ket{1\,f(1)}}{\alt<11->{\ket{1\,\Xor{0}{f(1)}}}{U_f(\ket{10})}}-\alt<17->{\ket{1\,\Not{f(1)}}}{\alt<12->{\ket{1\,\Xor{1}{f(1)}}}{U_f(\ket{11})}}}{2}}
+        \alt<14->{\ket{0\,f(0)}}{\alt<9->{\ket{0\,\alert<13>{\Xor{0}{f(0)}}}}{U_f(\ket{00})}}-\alt<17->{\ket{0\,\Not{f(0)}}}{\alt<10->{\ket{0\,\alert<16>{\Xor{1}{f(0)}}}}{U_f(\ket{01})}}  + \alt<15->{\ket{1\,f(1)}}{\alt<11->{\ket{1\,\alert<13-14>{\Xor{0}{f(1)}}}}{U_f(\ket{10})}}-\alt<18->{\ket{1\,\Not{f(1)}}}{\alt<12->{\ket{1\,\alert<16-17>{\Xor{1}{f(1)}}}}{U_f(\ket{11})}}}{2}}
 \end{align*}}
 \only<18-20>{%
 \begin{itemize}
