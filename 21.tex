@@ -234,15 +234,16 @@ Thus, we add an \PauliX{} gate after the \NamedGate{CNOT} gate:
 \begin{itemize}[<+->]
     \item If we perform one evaluation of $f$, say on $0$, then we do not know if $f(x)$ is always $f(0)$ or if $f(1)$ may be different.
     \item Classically it takes \emph{two} queries of $f$ to determine the answer to this question.
+    \visible<3-4>{Here $f(x)$ is \alt<3>{constant}{balanced}.}
 \end{itemize}
 }{%
 \begin{align*}
     f(0) &= 0 \\
-    f(1) &= \ ?
+    \visible<2->{f(1) &= \alt<4>{1}{\alt<3>{0}{\ ?}}}
 \end{align*}
 }
 \BigSkip{}
-\visible<3>{We will see that a quantum circuit for $f$ can reveal whether the function is constant or balanced with \emph{a single} query!}
+\visible<5>{We will see that a quantum circuit for $f$ can reveal whether the function is constant or balanced with \emph{a single} query!}
 \end{frame}
 
 \begin{frame}{Using superposition}{We can arrange for the quantum circuit to produce all possible answers.}
