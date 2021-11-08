@@ -52,16 +52,42 @@ Recall
     \visible<7->{&= \TwoSupOp{\ket{\X\,f(\X)}}{\ket{\X\,\Not{f(\X)}}}{-}}
 \end{align*}
 }}
-\only<8->{%
+\only<8-17>{%
+\BigSkip{}
+\TwoColumns{%
+\visible<8->{Case $f(x)=0$}
+\begin{align*}
+   \visible<9->{U_f(\ket{x\,-}) &= \TwoSupOp{\ket{x\,0}}{\ket{x\,1}}{-} \\}
+    \visible<10->{&= \TensProd{\ket{x}}{\QMinus} \\}
+    \visible<11->{&= \TensProd{\ket{x}}{\ket{-}} \\}
+   \visible<12->{ & = \ket{x\,-}}
+\end{align*}
+}{%
+\visible<13->{Case $f(x)=1$}
+\begin{align*}
+   \visible<14->{ U_f(\ket{x\,-}) &= \TwoSupOp{\ket{x\,1}}{\ket{x\,0}}{-} \\}
+    \visible<15->{&= \TensProd{\ket{x}}{\TwoSupOp{\QOne}{\QZero}{-}} \\}
+   \visible<16->{ &= \TensProd{\ket{x}}{\alert{-}\QMinus} \\}
+   \visible<17->{ & = \alert{-}\ket{x\,-}}
+\end{align*}
+}
+}%
+\only<18->{%
 \BigSkip{}
 \TwoColumns{%
 Case $f(x)=0$
-\begin{align*}
-    U_f(\ket{x\,-}) &= \TwoSupOp{\ket{x\,0}}{\ket{x\,1}}{-} \\
-    &= \TensProd{x}{\QMinus}
-\end{align*}
+\[ U_f(\ket{x\,-}) = \ket{x\,-} \]
 }{%
+Case $f(x)=1$
+\[ U_f(\ket{x\,-}) = \alert{-}\ket{x\,-} \]
 }
+\BigSkip{}
+\visible<19->{\[ U_f(\ket{x\,-}) = (-1)^{f(x)}\ket{x\,-}\]}
+\begin{itemize}
+    \item<20-> Phase kickback associates the function result as the \emph{sign} on the state \ket{x\,-}.
+    \item<21-> That sign is \emph{not} a global phase, with bottom qubit result \QMinus{}.
+    \item<22-> The sign imposes a phase change relative to the \QZero{} and \QOne{} terms.
+\end{itemize}
 }
     
 \end{frame}
