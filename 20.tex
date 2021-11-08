@@ -28,13 +28,13 @@
     
 \end{frame}
 
-\begin{frame}{Oracles}{A box that provides answers}
+\begin{frame}{Oracles}{Boxes that provide answers}
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{itemize}[<+->]
   \item Many of the problems we study will feature an \href{https://qiskit.org/textbook/ch-gates/oracles.html}{oracle}, which is an opaque box that computes some function~$f(x)$ of its input~$x$.
   \item The oracle has the following obligations:
   \begin{itemize}
-      \item It must respect any promises it makes.
+      \item It must respect all promises it makes.
       \item It must reliably return the evaluation of $f(x)$ for any input $x$ in its domain.
       \item Its computation time must respect stated bounds, for example, \href{https://en.wikipedia.org/wiki/P_(complexity)}{polynomial time}.
       \item The components necessary for implementing $f$ must be available in a quantum circuit.
