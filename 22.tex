@@ -1,0 +1,21 @@
+\SetTitle{22}{The phase kickback trick}{An unexpected but useful phenomenon}{22}
+
+\begin{frame}{Overview}{What do we study here?}
+
+\end{frame}
+
+\begin{frame}{Recall our oracle}{With its ancillary input $y$}
+
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\begin{Oracle}[scale=0.75]{$U_f$}{\alert<1>{$x$}}{\alert<2>{$y$}}{\alert<4>{$x$}}{\alert<3>{\Xor{y}{f(x)}}}
+\end{Oracle}
+}{%
+\begin{itemize}[<+->]
+    \item The input $x$ is the uniform superposition of all values.
+    \item The input $y$ is \ket{-}.
+    \item The bottom qubit has a constant value, regardless of $f(x)$.
+    \item However, the top qubit is a superpositon of terms, each term with a sign related to the function $f$ evaluated on that term.
+\end{itemize}
+}
+
+\end{frame}
