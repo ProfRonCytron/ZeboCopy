@@ -21,15 +21,48 @@
 
 \end{frame}
 
+{
+\def\X{\ColorOne{\ensuremath{x}}}\def\Y{\ColorTwo{\ensuremath{y}}}
 \begin{frame}{Single qubit}{Phase kickback}
 \TwoColumns{%
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}
-\begin{itemize}
-    \item Recall
-    \[ U_{f}:  \ket{x\,y}\mapsto \ket{x\,\Xor{y}{f(x)}}\]
-\end{itemize}
 }{%
+\only<1-7>{%
+Recall
+    $U_{f}:  \ket{\X\,\Y}\mapsto \ket{\X\,\Xor{\Y}{f(\X)}}$}
+\only<8->{%
+\Vskip{-3em}\begin{align*}
+    U_f(\ket{x\,-}) &= \TwoSupOp{\ket{\X\,f(\X)}}{\ket{\X\,\Not{f(\X)}}}{-}
+\end{align*}
+}%
+}
+\only<1-7>{%
+\TwoColumns{%
+\begin{align*}
+   \visible<1->{ U_f(\ket{x-}) &= U_f(\TensProd{\ket{x}}{\ket{-}}) \\}
+    \visible<2->{&= U_f(\TensProd{\ket{x}}{\QMinus}) \\}
+   \visible<3->{ &= U_{f}(\TwoSupOp{\ket{x0}}{\ket{x1}}{-}) \\}
+  \visible<4->{  &= \RootTwo{}\left(U_f(\ket{\X\,\ColorTwo{0}})-U_f(\ket{\X\,\ColorTwo{1}})\right)}
+\end{align*}
+}{%
+\begin{align*}
+    \visible<5->{&= \RootTwo{}\left(\ket{\X\,(\Xor{\ColorTwo{0}}{f(\X)})}-U_f(\ket{\X\,\ColorTwo{1}})\right) \\}
+    \visible<6->{&= \RootTwo\left(\ket{\X\,f(\X)} - \ket{\X\,(\Xor{\ColorTwo{1}}{f(\X)})}\right) \\}
+    \visible<7->{&= \TwoSupOp{\ket{\X\,f(\X)}}{\ket{\X\,\Not{f(\X)}}}{-}}
+\end{align*}
+}}
+\only<8->{%
+\BigSkip{}
+\TwoColumns{%
+Case $f(x)=0$
+\begin{align*}
+    U_f(\ket{x\,-}) &= \TwoSupOp{\ket{x\,0}}{\ket{x\,1}}{-} \\
+    &= \TensProd{x}{\QMinus}
+\end{align*}
+}{%
+}
 }
     
 \end{frame}
+}
