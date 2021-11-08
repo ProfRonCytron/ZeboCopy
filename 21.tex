@@ -461,3 +461,21 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 }
 
 \end{frame}
+
+\begin{frame}{What about the bottom qubit?}{Homework problem but let's take a quick look.}
+
+\Vskip{-4em}\begin{align*} 
+\invisible<5>{f(0) = f(1) \longrightarrow &  \QState{2} = \TensProd{\textcolor{\RCone}{\ket{+}}}{\textcolor{\RCtwo}{(\ket{f(0)}-\ket{\Not{f(0)}})\frac{1}{\sqrt{2}}}} \\}
+\invisible<4>{f(0) \not= f(1) \longrightarrow & \QState{2} = \TensProd{\textcolor{\RCone}{\ket{-}}}{\textcolor{\RCtwo}{(\ket{f(0)}-\ket{f(1)})\frac{1}{\sqrt{2}}}}}
+\end{align*}
+\Vskip{-3em}\begin{itemize}[<+->]
+  \item Tensor factored, we can see the values present on the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits.
+  \item In a homework problem you will study the value of the second qubit for each of the above cases.
+  \item We note here that the presence of \ket{-} as input for $y$ on the bottom qubit has the effect of changing phase on the \emph{top} qubit's value on output:
+  \begin{description}
+     \item[$f(0)=f(1)$] $\textcolor{\RCone}{\ket{+}}=\TwoSupOp{\ket{0}}{\alert{\ket{1}}}{\alert{+}}$
+     \item[$f(0)\not=f(1)$] $\textcolor{\RCone}{\ket{-}}=\TwoSupOp{\ket{0}}{\alert{\ket{1}}}{\alert{-}}$
+  \end{description}
+  \item This is called \emph{phase kickback}.
+\end{itemize}
+\end{frame}
