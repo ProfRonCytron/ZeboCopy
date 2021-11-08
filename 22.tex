@@ -76,13 +76,13 @@ Recall
 \BigSkip{}
 \TwoColumns{%
 Case $f(x)=0$
-\[ U_f(\ket{x\,-}) = \ket{x\,-} \]
+\[ U_f(\ket{x\,-}) = \alt<19-20>{\alert{\fbox{+1}}}{}\ket{x\,-} \]
 }{%
 Case $f(x)=1$
-\[ U_f(\ket{x\,-}) = \alert{-}\ket{x\,-} \]
+\[ U_f(\ket{x\,-}) = \alt<19-20>{\alert{\fbox{-1}}}{-}\ket{x\,-} \]
 }
 \BigSkip{}
-\visible<19->{\[ U_f(\ket{x\,-}) = \alert{(-1)^{f(x)}}\ket{x\,-}\]}
+\visible<19->{\[ U_f(\ket{x\,-}) = \alert<19-20>{(-1)^{f(x)}}\ket{x\,-}\]}
 \begin{itemize}
     \item<20-> Phase kickback associates the function result as the \emph{sign} on the state \ket{x\,-}.
     \item<21-> That sign is \emph{not} a global phase, with bottom qubit result \QMinus{}.
