@@ -6,8 +6,8 @@
 
 \begin{frame}{Recall our oracle}{With its ancillary input $y$}
 
-\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
-\begin{Oracle}[scale=0.75]{$U_f$}{\alert<1>{$x$}}{\alert<2>{$y$}}{\alert<4>{$x$}}{\alert<3>{\Xor{y}{f(x)}}}
+\TwoUnequalColumns{0.37\textwidth}{0.63\textwidth}{%
+\begin{Oracle}[scale=0.75]{$U_f$}{\alert<1>{$x$}}{\alert<2,5>{$y$}}{\alert<4,5>{$x$}}{\alert<3>{\Xor{y}{f(x)}}}
 \end{Oracle}
 }{%
 \begin{itemize}[<+->]
@@ -15,7 +15,21 @@
     \item The input $y$ is \ket{-}.
     \item The bottom qubit has a constant value, regardless of $f(x)$.
     \item However, the top qubit is a superpositon of terms, each term with a sign related to the function $f$ evaluated on that term.
+    \item This is \emph{phase kickback}:  The bottom qubit's input, when \ket{-}, kicks phase changes up the top qubit's output.
 \end{itemize}
 }
 
+\end{frame}
+
+\begin{frame}{Single qubit}{Phase kickback}
+\TwoColumns{%
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}
+\begin{itemize}
+    \item Recall
+    \[ U_{f}:  \ket{x\,y}\mapsto \ket{x\,\Xor{y}{f(x)}}\]
+\end{itemize}
+}{%
+}
+    
 \end{frame}
