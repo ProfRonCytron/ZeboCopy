@@ -14,7 +14,7 @@
 
 \section{Tensor product of states}
 
-\begin{frame}{A system of two qubits}{We start here, and generalization will be easy.}
+\begin{frame}{A system of two qubits}{We start here, and generalization will be easy}
 \begin{itemize}
     \item Consider two qubits, one in state \QState{a} and the other in state \QState{b}.
     \item We say the system of those two qubits is in state
@@ -26,7 +26,7 @@
 \end{frame}
 
 
-\begin{frame}{Tensor product of two states}{We must keep track of the combinations separately.}
+\begin{frame}{Tensor product of two states}{We must keep track of the combinations separately}
 \TwoColumns{%
 \only<1-5>{%
 \begin{itemize}
@@ -98,7 +98,7 @@ The resulting state is
 }
 \end{frame}
 
-\begin{frame}{Properties of tensor products}{There are more, but these are important for quantum computing.}
+\begin{frame}{Properties of tensor products}{There are more, but these are important for quantum computing}
 \begin{itemize}
     \item If $a \in \Co{}$ and $v$ and $w$ are quantum states, then
     \[ 
@@ -113,7 +113,7 @@ The resulting state is
 \end{frame}
 
 
-\begin{frame}{Now three qubits}{Each new qubit is incorporated by tensor product.}
+\begin{frame}{Now three qubits}{Each new qubit is incorporated by tensor product}
 
 \Vskip{-3em}\TwoColumns{%
 \only<1-10>{%
@@ -158,7 +158,7 @@ Counting down a column $(0, 1, 2, \ldots)$, we include the binary encoding of ea
 \section{Tensor product of gates}
 
 
-\begin{frame}{From states to gates}{We can use tensor products of matrices to reason about systems of gates.}
+\begin{frame}{From states to gates}{We can use tensor products of matrices to reason about systems of gates}
 Computing the tensor product of two matrices is similar to computing the tensor product of two vectors.  It is demonstrated by the example of 
 \[
 \TensProd{\PauliZ{}}{\Hadamard{}} = %
@@ -201,7 +201,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 
 \section{Uniform superpositions}
 
-\begin{frame}{Another example}{We can create the uniform superposition of two qubits using Hadamard gates.}
+\begin{frame}{Another example}{We can create the uniform superposition of two qubits using Hadamard gates}
 \TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<4>{\QState{1}}}  & \qw\\
@@ -228,7 +228,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 }
 \end{frame}
 
-\begin{frame}{General superposition of $n$ qubits}{The idea extends to any number of qubits.}
+\begin{frame}{General superposition of $n$ qubits}{The idea extends to any number of qubits}
 \TwoUnequalColumns{0.25\textwidth}{0.75\textwidth}{%
 \adjustbox{scale=0.9,valign=t}{\begin{quantikz}
 \lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-3>{\QState{1}}}  & \meter{\textcolor<5-6>{red}{0/1}} \\
@@ -270,7 +270,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 
 \section{Entanglement}
 
-\begin{frame}{Entangling two qubits}{We use gates we have studied to create an interesting quantum state.}
+\begin{frame}{Entangling two qubits}{We use gates we have studied to create an interesting quantum state}
 
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
@@ -346,7 +346,7 @@ We can do this because the qubits are acting independently at this point.  This 
     
 \end{frame}
 
-\begin{frame}{How entangled are the qubits?}{Their experience with CNOT cannot be undone unless they are physically proximate again.}
+\begin{frame}{How entangled are the qubits?}{Their experience with CNOT cannot be undone unless they are physically proximate again}
 
 \TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
@@ -367,7 +367,7 @@ Entanglement defies classical physics and logic and affords advantages for games
 
 \section{EPR paradox}
 
-\begin{frame}{Pondering entanglement}{Einstein regarded quantum theory as incomplete.}
+\begin{frame}{Pondering entanglement}{Einstein regarded quantum theory as incomplete}
 
 \begin{itemize}
     \item<1-> Upon measurement, our entangled qubits collapse unpredictably to the same value, instantaneously, even if they are separated by light years.
@@ -466,7 +466,7 @@ This violates belief in locality and realism.}}
 
 \end{frame}
 
-\begin{frame}{Why not \NamedGate{CNOT}?}{It copies basis states faithfully.}
+\begin{frame}{Why not \NamedGate{CNOT}?}{It copies basis states faithfully}
 
 \TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
@@ -503,7 +503,7 @@ But then $\NamedGate{CNOT}\left(\TensProd{\SQB{\alpha}{\beta}}{\PZero{}}\right) 
     
 \end{frame}
 
-\begin{frame}{No cloning theorem}{It is impossible to construct a unitary gate that clones an arbitrary qubit.}
+\begin{frame}{No cloning theorem}{It is impossible to construct a unitary gate that clones an arbitrary qubit}
 
 \TwoUnequalColumns{0.35\textwidth}{0.65\textwidth}{%
 \Vskip{-2.2em}\alert<3>{For $n\geq 2$}

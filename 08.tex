@@ -50,7 +50,7 @@ These constraints will take us from 8 parameters to only 3.}
 
 \end{frame}
 
-\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$ with complex entries.}
+\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$ with complex entries}
 \TwoColumns{%
 $U = \SQBG{\relax}{a}{b}{c}{d}$ so
 $\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
@@ -88,7 +88,7 @@ complex circle.
 }
 \end{frame}
 
-\begin{frame}{Proof (continued)}{The other entries follow from the requirement that each row and column is \href{https://en.wikipedia.org/wiki/Unit_vector}{normal}.}
+\begin{frame}{Proof (continued)}{The other entries follow from the requirement that each row and column is \href{https://en.wikipedia.org/wiki/Unit_vector}{normal}}
 \[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
     \SQBG{\relax}{\ExpPhase{\phi_{a}}\cos(\theta/2)}{\visible<4->{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\visible<6->{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\visible<7->{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
@@ -113,7 +113,7 @@ complex circle.
 }
 \end{frame}
 
-\begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns.}
+\begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns}
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
     \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
@@ -147,7 +147,7 @@ The value of $\theta$ must be arbitrary, so we can only get $0$ when
 \ExpPhase{(\phi_{b}-\phi_{a})} = - \ExpPhase{(\phi_{d}-\phi_{c})}
 \]}
 \end{frame}
-\begin{frame}{Proof (continued)}{We can now relate the phases.}
+\begin{frame}{Proof (continued)}{We can now relate the phases}
 
 \Vskip{-3em}\[
     U=\SQBG{\relax}{a}{b}{c}{d} = 
@@ -194,7 +194,7 @@ We next eliminate $\phi_{d}$ in favor of the other phases.
 The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore be \visible<5->{ignored.}}
     
 \end{frame}
-\begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters.}
+\begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters}
 \def\Phii{\textcolor{\RCone}{\phi}}
 \def\Lambdaa{\textcolor{\RCtwo}{\lambda}}
 \[

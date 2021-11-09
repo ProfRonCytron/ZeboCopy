@@ -63,7 +63,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 
 \section{Bloch sphere}
 
-\begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit.}
+\begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit}
 \begin{itemize}
    \item We start with three real parameters:
    \( \ket{\psi}= r_{a}\left( \ket{0} + r_{b}\Exp{i \phi}\ket{1}\right) \)
@@ -83,7 +83,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     
 \end{frame}
 
-\begin{frame}{From polarizing filters to a sphere}{The angular separation between the basis states changes.}
+\begin{frame}{From polarizing filters to a sphere}{The angular separation between the basis states changes}
 \Vskip{-3em}\TwoColumns{%
 \begin{itemize}
     \item<1-> With polarizing filters, our bases were horiziontal \visible<2->{and vertical, so they were separated by \Degrees{90}.}
@@ -113,7 +113,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 }
 \end{frame}
 
-\begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far.}
+\begin{frame}{Our two-parameter characterization}{It meshes well with our studies so far}
 \[ \Bloch{\theta}{\phi} \]
 \begin{itemize}
     \item The parameter \textcolor{\RCtwo}{$\theta$} trades wave amplitude between \ket{0} and \ket{1}.
@@ -125,7 +125,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     
 \end{frame}
 
-\begin{frame}{Recall the beam splitter}{We characterize two of its states using our new formula.}
+\begin{frame}{Recall the beam splitter}{We characterize two of its states using our new formula}
 \[ \Bloch{\theta}{\phi} \]
     \begin{itemize}
         \item The state of the photon was initially $\Bloch{0}{0} = \SQB{1}{0}$
@@ -133,7 +133,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \end{itemize} 
 \end{frame}
 
-\begin{frame}{The Bloch sphere}{Our two angular parameters determine a point on the unit sphere.}
+\begin{frame}{The Bloch sphere}{Our two angular parameters determine a point on the unit sphere}
 \TwoColumns{%
 \[ \ket{\psi} = \Bloch{\theta}{\phi} \]
 \begin{itemize}
@@ -156,7 +156,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
-\begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half.}
+\begin{frame}{Correspondence between the formula and the sphere}{We see why the formula cuts the angle in half}
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
   \item<2-> We locate \ket{0} at \PhiTheta{0}{0} using \Bloch{0}{0}.  The choice of \textcolor{\RCone}{$\phi$} doesn't matter when $\textcolor{\RCtwo}{\theta}=0$.
@@ -187,7 +187,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 }
 \end{frame}
 
-\begin{frame}{The computational basis}{Measurement outcomes are related to proximity to the north or south pole.}
+\begin{frame}{The computational basis}{Measurement outcomes are related to proximity to the north or south pole}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
   \item<1-> The north and south poles, \ket{0} and \ket{1}, respectively, are our \emph{standard} or \emph{computational basis}.
@@ -251,7 +251,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 \end{frame}
 }
 
-\begin{frame}{Switching between bases}{We consider here the standard and Hadamard bases.}
+\begin{frame}{Switching between bases}{We consider here the standard and Hadamard bases}
 \TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{itemize}
     \item Typically, our computations begin and end (with measurements) in the standard basis.
@@ -327,7 +327,7 @@ A more general interpretation of the sphere ascribes meaning to interior points.
 
 \section{The Pauli matrices}
 
-\begin{frame}{Overview of the Pauli matrices}{We use these as gates in quantum computation.}
+\begin{frame}{Overview of the Pauli matrices}{We use these as gates in quantum computation}
 
 \begin{itemize}
     \item There are three \href{https://en.wikipedia.org/wiki/Pauli_matrices}{Pauli matrices} that are named for the three axes of the Bloch sphere.
@@ -423,7 +423,7 @@ rotates a state  by $\pi$ radians around the y~axis.
 }
 \end{frame}
 
-\begin{frame}{Properties of Pauli gates}{These should be apparent from our study so far.}
+\begin{frame}{Properties of Pauli gates}{These should be apparent from our study so far}
 \begin{center}
 $\PauliX{}=\XMatrix{}$
 $\PauliY{}=\YMatrix{}$
@@ -510,7 +510,7 @@ $\PauliZ{}=\ZMatrix{}$
 \def\TermA#1{\frac{i\theta^{#1}A}{#1!}}%
 \def\TermI#1{\frac{\theta^{#1}\Identity{}}{#1!}}%
 \def\TermF#1{\frac{\theta^{#1}}{#1!}}%
-\begin{frame}{A useful theorem for expressing rotations}{A matrix extension of \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}.}
+\begin{frame}{A useful theorem for expressing rotations}{A matrix extension of \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}}
 
 
 \Vskip{-3em}
@@ -590,7 +590,7 @@ When $\theta=\pi$, $\cos(-\pi/2)=0$ and $\sin(-\pi/2)=-1$ $\rightarrow$ $R_a(\pi
 \def\EulerP#1{%
 \ComplexDiff{\cos\left(\frac{\theta}{2}\right)\Identity}{\sin\left(\frac{\theta}{2}\right)#1}}
 
-\begin{frame}{Matrix formulation of rotating gates}{We use the matrix form of Euler's formula.}
+\begin{frame}{Matrix formulation of rotating gates}{We use the matrix form of Euler's formula}
 
 \begin{align*}
 R_{x}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliX{}}%
