@@ -135,3 +135,40 @@ This applies directly to Deutsch's problem ($f(x)$ balanced$\longrightarrow U_f(
     \end{description}
 }
 \end{frame}
+
+\begin{frame}{Multiple qubits}{First, their superposition}
+\TwoUnequalColumns{0.55\textwidth}{0.44\textwidth}{%
+\begin{itemize}
+\item<1-> So far, we have studied a single qubit whose superposition is as shown.
+\item<2-> If we add one more qubit, there are four states in the computational basis, and their uniform superposition is as shown.
+\item<4-> It is convenient to interpret the states' encodings as binary numerals, whose numbers enumerate the possible basis states.
+\item<5-> We can also view them as bit strings of length $n$.
+\end{itemize}
+}{%
+\only<1>{%
+\[ \QState{} = \QPlus{} \]
+}%
+\only<2-5>{%
+\begin{align*}
+\QState{} &= \frac{\ket{00} + \ket{01} + \ket{10} + \ket{11}}{\sqrt{4}} \\
+\visible<3->{ &= \frac{\ket{0} + \ket{1} + \ket{2} +\ket{3}}{\sqrt{4}} \\}
+\visible<4->{ &= \RootTwoN{n}\sum_{x=0}^{2^{n}-1} \ket{x} \\[1em]}
+ \visible<5->{&= \RootTwoN{n}\sum_{x\in \Set{0,1}^{n}} \ket{x}}
+\end{align*}
+}
+}
+
+\end{frame}
+
+\begin{frame}{Multiple qubits}{Phase kickback}
+\begin{center}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}    
+\end{center}
+\begin{align*}
+U_f\left(\TensProd{\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}}\ket{x}}{\ket{-}}\right) &=
+\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}} U_f(\ket{x\,-}) \\
+&= \RootTwoN{n} \sum_{x\in \Set{0,1}^{n}}\TensProd{\NegF{x}\ket{x}}{\ket{-}}
+\end{align*}
+
+\end{frame}
