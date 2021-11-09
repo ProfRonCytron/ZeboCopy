@@ -23,7 +23,7 @@
 
 {
 \def\X{\ColorOne{\ensuremath{x}}}\def\Y{\ColorTwo{\ensuremath{y}}}
-\begin{frame}{Single qubit}{Phase kickback}
+\begin{frame}{Single qubit}{Here $x$ is not in a superposition but simply a basis state.}
 \TwoColumns{%
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}
@@ -82,7 +82,8 @@ Case $f(x)=1$
 \[ U_f(\ket{x\,-}) = \alt<19-20>{\alert{\fbox{-1}}}{-}\ket{x\,-} \]
 }
 \BigSkip{}
-\visible<19->{\[ U_f(\ket{x\,-}) = \alert<19-20>{(-1)^{f(x)}}\ket{x\,-}\]}
+\visible<19->{\[ U_f(\ket{x\,-}) \only<19>{= \alert<19-20>{\NegF{x}}\ket{x\,-}}
+= \TensProd{\alert<19-20>{\NegF{x}}\ket{x}}{\ket{-}}\]}
 \begin{itemize}
     \item<20-> Phase kickback associates the function result as the \emph{sign} on the state \ket{x\,-}.
     \item<21-> That sign is \emph{not} a global phase, with bottom qubit result \QMinus{}.
@@ -92,3 +93,28 @@ Case $f(x)=1$
     
 \end{frame}
 }
+
+\begin{frame}{Single qubit}{In superposition.}
+\TwoColumns{%
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
+\end{Oracle}
+}{%
+\[ U_f(\ket{x\,-})
+= \TensProd{\NegF{x}\ket{x}}{\ket{-}}\]
+}
+\BigSkip{}
+\begin{itemize}
+    \item Linearity allows the above equation to apply to a superposition:
+    \begin{align*}
+        \ket{x} & ={\alpha_0}\ket{0}+\alpha_{1}\ket{1} \\
+        U_f(\ket{x}) &= \alpha_{0}U_f(\ket{0}) + \alpha_{1}U_f(\ket{1}) \\
+        &= \alpha_{0} \NegF{0}\ket{0}
+        +  \alpha_{1} \NegF{1}\ket{1}
+    \end{align*}
+    \item This applies directly to Deutsch's problem:
+    \begin{description}
+      \item[$f(x)=0$] $U_f(\ket{x}) = \QPlus{}$
+      \item[$f(x)=1$] $U_f(\ket{x}) = \TwoSupOp{-\QZero}{-\QOne{}}{+} \equiv \QPlus{}$
+    \end{description}
+\end{itemize}
+\end{frame}
