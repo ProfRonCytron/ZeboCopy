@@ -307,7 +307,7 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \Vskip{-2em}\begin{itemize}
     \item<12-> It is misleading to see the \alert<12>{output} of $U_f$ labeled to look like a tensor product.  $U_f$ will generate the outputs as specified, but the result is not necessarily expressible as \TensProd{x}{(\Xor{y}{f(x)})}.
     \item<13-> Without analysis, we cannot know if the output is tensor-factorable.
-    \item<14-> Consider \textcolor{\RCone}{$f(0)=0$} and \textcolor{\RCtwo}{$f(1)=1$}.  Then $U_f$ creates \alert<14>{\TwoSup{00}{11}} as the (entangled) output, which we know cannot be tensor-factored!
+    \item<14-> Consider \textcolor{\RCone}{$f(0)=0$} and \textcolor{\RCtwo}{$f(1)=1$}.  Then $U_f$ creates \alert<14>{\TwoSup{00}{11}} as the (entangled) output, which we know cannot be tensor factored!
 \end{itemize}
 }%
 \only<15->{%
@@ -455,7 +455,7 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 \begin{itemize}
     \item<31-> We can determine if $f(x)$ is constant or balanced with a single query of $U_f$.  Classically two queries were needed.
     \item<32-> We perform a \href{https://physics.stackexchange.com/questions/184242/partial-measurement-and-the-math-behind-it}{partial measurement} of the system, measuring only the top qubit.
-    \item<33-> This quantum circuit never created any entanglement:  each state could be tensor-factored into the product of single qubit states.
+    \item<33-> This quantum circuit never created any entanglement:  each state could be tensor factored into the product of single qubit states.
     \item<34-> The effect of sending $y=\ket{-}$ into $U_f$ is manifest primarily on the top qubit.   We call this \emph{phase kickback} and study it next.
 \end{itemize}
 }
@@ -469,7 +469,7 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 \invisible<4>{f(0) \not= f(1) \longrightarrow & \QState{2} = \TensProd{\textcolor{\RCone}{\ket{-}}}{\textcolor{\RCtwo}{(\ket{f(0)}-\ket{f(1)})\frac{1}{\sqrt{2}}}}}
 \end{align*}
 \Vskip{-2em}\begin{itemize}[<+->]
-  \item Tensor-factored, we can see the values present on the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits.
+  \item Tensor factored, we can see the values present on the \textcolor{\RCone}{top} and \textcolor{\RCtwo}{bottom} qubits.
   \item You will analyze the \textcolor{\RCtwo}{bottom qubit's} value for each of the above cases.
   \item We note here that the input of \ket{-} for $y$ on the \textcolor{\RCtwo}{bottom qubit} has the effect of changing phase on the \textcolor{\RCone}{\emph{top} qubit's} value on output:
   \begin{description}
