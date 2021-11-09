@@ -161,14 +161,17 @@ This applies directly to Deutsch's problem ($f(x)$ balanced$\longrightarrow U_f(
 \end{frame}
 
 \begin{frame}{Multiple qubits}{Phase kickback}
-\begin{center}
+\Vskip{-4em}\begin{center}
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}    
 \end{center}
-\begin{align*}
+\Vskip{-2em}\begin{align*}
 U_f\left(\TensProd{\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}}\ket{x}}{\ket{-}}\right) &=
 \RootTwoN{n}\sum_{x\in \Set{0,1}^{n}} U_f(\ket{x\,-}) \\
 &= \RootTwoN{n} \sum_{x\in \Set{0,1}^{n}}\TensProd{\NegF{x}\ket{x}}{\ket{-}}
 \end{align*}
+\begin{itemize}
+    \item Phase kickback places a sign on each term $x$ of the summation that is determined by $f(x)$.
+\end{itemize}
 
 \end{frame}
