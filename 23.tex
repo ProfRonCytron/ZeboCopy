@@ -1,0 +1,31 @@
+\SetTitle{23}{The Deutsch-Josza problem}{Demonstrates asymptotic quantum advantage}{23}
+
+\begin{frame}{Overview}{What will we study here?}
+
+\begin{itemize}[<+->]
+    \item This problem and its solution are due to
+    \href{https://en.wikipedia.org/wiki/David_Deutsch}{David Deutsch} and \href{https://en.wikipedia.org/wiki/Richard_Jozsa}{Richard Josza}.
+    \item This problem is similar to Deutsch's problem, which we have studied.
+    \item But here, $f(x)$ takes an input of $n$~bits.
+    \item We care, as before, whether $f(x)$ is \emph{constant} or \emph{balanced}.
+    \item This problem distinguishes the complexity classes
+    \begin{description}
+        \item[\CompClass{P}] problems that can be solved in polynomial time on a quantum computer
+        \item[\CompClass{EQP}] problems that can be solved \textbf{e}xactly on a \textbf{q}uantum computer in \textbf{p}olynomial time.
+    \end{description}
+    \item The phase-kickback trick we have just studied is the key to solving this problem efficiently on a quantum computer.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Exact}{What's up with that?}
+\begin{itemize}[<+->]
+    \item There are two sources of inaccuracy in quantum computing:
+    \begin{itemize}
+        \item Some algorithms are inherently probabilistic. While you are likely to get a desired result, it may take effort (multiple runs) to overcome the probability of obtaining the wrong answer.
+        \item Quantum devices are subject to noise and other effects that causes \href{https://en.wikipedia.org/wiki/Quantum_decoherence}{decoherence}.  Results from a system experiencing decoherence are unpredictable and invalid.
+    \end{itemize}
+    \item Simulation (emulation) provides results with no artifacts of decoherence, but are limited in the number of quantum bits that can be accommodated in reasonable time.
+    \item So, \emph{exact quantum} means that on an ideal quantum device, we obtain the answer exactly, with probability 100\%.
+\end{itemize}
+\end{frame}
