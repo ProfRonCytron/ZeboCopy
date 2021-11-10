@@ -443,7 +443,7 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
 \only<30>{Then the top qubit at \QState{2} is \ket{-}.  Measuring at \QState{3} yields \alert{\ket{1}}.}
 }{%
 \Vskip{-4em}\begin{align*}
-    2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\alert<26>{f(1)}} + \ket{1\,f(0)} - \ket{1\,\alert<26>{f(0)}} \\
+    2\times\QState{2} &= \ket{0\,f(0)} - \ket{0\,\alert<26>{f(1)}} + \ket{1\,f(1)} - \ket{1\,\alert<26>{f(0)}} \\
   \visible<27->{  & = \TensProd{(\ket{0}-\ket{1})}{\ket{f(0)}} - \TensProd{(\ket{0}-\ket{1})}{\ket{f(1)}} \\}
   \visible<28->{  & = \TensProd{\textcolor<28-29>{\RCone}{(\ket{0}-\ket{1})}}{\textcolor<28-29>{\RCtwo}{(\ket{f(0)}-\ket{f(1)})}} \\}
   \visible<29->{ \QState{2} &= \TensProd{\textcolor<29>{\RCone}{\ket{-}}}{\textcolor<29>{\RCtwo}{(\ket{f(0)}-\ket{f(1)})\frac{1}{\sqrt{2}}}} }
@@ -456,7 +456,7 @@ Tensor-factored, this state tells us the \textcolor{\RCone}{top} and \textcolor{
     \item<31-> We can determine if $f(x)$ is constant or balanced with a single query of $U_f$.  Classically two queries were needed.
     \item<32-> We perform a \href{https://physics.stackexchange.com/questions/184242/partial-measurement-and-the-math-behind-it}{partial measurement} of the system, measuring only the top qubit.
     \item<33-> This quantum circuit never created any entanglement:  each state could be tensor factored into the product of single qubit states.
-    \item<34-> The effect of sending $y=\ket{-}$ into $U_f$ is manifest primarily on the top qubit.   We call this \emph{phase kickback} and study it next.
+    \item<34-> The effect of sending $y=\ket{-}$ into $U_f$ is manifested primarily on the top qubit.   We call this \emph{phase kickback} and study it next.
 \end{itemize}
 }
 
