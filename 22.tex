@@ -165,13 +165,53 @@ This applies directly to Deutsch's problem ($f(x)$ balanced$\longrightarrow U_f(
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{$y$}{$x$}{\Xor{y}{f(x)}}
 \end{Oracle}    
 \end{center}
+\only<1-4>{%
 \Vskip{-2em}\begin{align*}
-U_f\left(\TensProd{\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}}\ket{x}}{\ket{-}}\right) &=
-\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}} U_f(\ket{x\,-}) \\
-&= \RootTwoN{n} \sum_{x\in \Set{0,1}^{n}}\TensProd{\NegF{x}\ket{x}}{\ket{-}}
+\visible<1->{U_f\left(\TensProd{\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}}\ket{x}}{\ket{-}}\right)}\visible<2->{ &=
+\RootTwoN{n}\sum_{x\in \Set{0,1}^{n}} U_f(\ket{x\,-}) \\}
+\visible<3->{&= \RootTwoN{n} \sum_{x\in \Set{0,1}^{n}}\TensProd{\NegF{x}\ket{x}}{\ket{-}}}
 \end{align*}
 \begin{itemize}
-    \item Phase kickback places a sign on each term $x$ of the summation that is determined by $f(x)$.
-\end{itemize}
+    \item<1-> Input is the uniform superposition of all basis states for $n$ qubits, each term with positive sign, and $y=\ket{-}$.
+    \item<4-> Phase kickback places a sign on each term $x$ of the summation that is determined by $f(x)$.
+\end{itemize}}
+\only<5->{%
+\TwoColumns{%
+Input $n=3$ qubits
+\begin{center}
+    \begin{tabular}{c|c}
+         $x$ & $f(x)$ \\ \hline
+  \visible<6->{       000 & 0 \\}
+  \visible<7->{         001 & 1 \\}
+  \visible<8->{         010 & 1 \\}
+  \visible<9->{         011 & 1 \\}
+  \visible<10->{         100 & 0 \\}
+  \visible<11->{         101 & 1 \\}
+  \visible<12->{         110 & 0\\}
+  \visible<13->{         111 & 1}
+    \end{tabular}
+\end{center}
+}{%
+Output
+\begin{align*}
+    \RootTwoN{3} \left(\right.
+   \visible<6->{ &\ket{000} }
+   \visible<7-> { - \ket{001} \\}
+    \visible<8-> { - &\ket{010}}
+  \visible<9-> {  - \ket{011} \\}
+  \visible<10-> { &\ket{100}}
+  \visible<11-> {-\ket{101} \\}
+  \visible<12-> {&\ket{110}}
+  \visible<13-> {-\ket{111} \\}
+    \left.\right)
+\end{align*}
+\visible<14->{%
+A given $f(x)$ induces a unique signature of signs on the output basis states.}
+}
+}
 
+\end{frame}
+
+\begin{frame}{More about phase kickback}{using controlled-U gate on an eigenstate of U}
+    
 \end{frame}
