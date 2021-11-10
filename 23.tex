@@ -66,9 +66,9 @@ Deutsch Problem, single qubit}
 }%
 \only<8->{%
 \begin{align*}
-   \only<8-10>{ \QState{0} &= \ket{\TensSupProd{0}{n}\,1} \\}
+   \only<8-10>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
    \visible<9->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
-    \visible<10-> {& =  \RootTwoN{n}\TensProd{\sum_{x\in \Set{0,1}^n}\ket{x}}{\ket{-}} \\}
+    \visible<10-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\sum_{x\in \Set{0,1}^n}\ket{x}}}{\ColorTwo{\ket{-}}} \\}
     \visible<11->{\QState{2} &= \RootTwoN{n}\TensProd{\sum_{x\in \Set{0,1}^n} \NegF{x}\ket{x}}{\ket{-}}}
 \end{align*}
 }
