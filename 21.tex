@@ -360,8 +360,8 @@ By linearity, with $x$ in the superposition \QPlus{} and $y=\QZero{}$
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\QZero{}} & \qw\slice{\alert<2>{\QState{0}}} &  \gate{H}\slice{\alert<3-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<6-8>{\QState{2}}} &\gate{H}\slice{\alert<9-10>{\QState{3}}} & \meter{\alt<30>{\alert{1}}{\alt<25>{\alert{0}}{0/1}}} \\
-\lstick{\QZero{}} & \gate{X} &   \gate{H}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\lstick{\QZero{}} & \qw\slice{\alert<2>{\QState{0}}} &  \gate{\Hadamard}\slice{\alert<3-5>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<6-8>{\QState{2}}} &\gate{\Hadamard}\slice{\alert<9-10>{\QState{3}}} & \meter{\alt<30>{\alert{1}}{\alt<25>{\alert{0}}{0/1}}} \\
+\lstick{\QZero{}} & \gate{\PauliX} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}}%
 \end{center}
 }{%
