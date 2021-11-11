@@ -111,6 +111,34 @@ Deutsch Problem, single qubit}
 \end{itemize}
 }%
 \only<17->{%
-}
+\TwoColumns{%
+\Vskip{-3em}\begin{center}
+\begin{TIKZP}[scale=0.9]
+\draw (0,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_1$};
+\draw (0.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_2$};
+\draw (1,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (1.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_n$};
+\draw (0,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_1$};
+\draw (0.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_2$};
+\draw (1,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (1.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_n$};
+\end{TIKZP}\end{center}
+\begin{itemize}
+    \item<18-> \ColorThree{This is the exclusive-or of the \emph{and} of each pair of bits.}
+    \item<19-> \ColorFour{This is the sum of the product of each pair of bits.}
+\end{itemize}
+}{%
+\SmallSkip{}
+We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follows:
+\begin{align*}
+   \visible<18->{ \DotP{v}{w} & \ColorThree{= \oplus_{i=1}^{n}\ {v_i}{w_i}} \\}
+        \visible<19->{ & \ColorFour{= \sum_{i=1}^{n}\ {v_i}{w_i}\ \mbox{(mod 2)}}}
+\end{align*}
+\only<20->{\Vskip{-1em}These are equivalent (proof later).}
+}}
 \end{frame}
     
