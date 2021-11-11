@@ -110,7 +110,7 @@ Deutsch Problem, single qubit}
 \item<16-> It suffices to study basis states, as linearity applies to \ColorOne{superpositions}.
 \end{itemize}
 }%
-\only<17->{%
+\only<17-20>{%
 \TwoColumns{%
 \Vskip{-3em}\begin{center}
 \begin{TIKZP}[scale=0.9]
@@ -139,6 +139,17 @@ We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follow
         \visible<19->{ & \ColorFour{= \sum_{i=1}^{n}\ {v_i}{w_i}\ \mbox{(mod 2)}}}
 \end{align*}
 \only<20->{\Vskip{-1em}These are equivalent (proof later).}
-}}
+}}%
+\only<21->{
+\BigSkip{}
+\[
+P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
+  = \RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}
+\]
+\begin{itemize}
+\item<22-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Forall{v}{\DotP{v}{w}=0}.
+\item<23-> We can use this formula to compute \QState{3}.
+\end{itemize}
+}
 \end{frame}
     
