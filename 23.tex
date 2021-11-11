@@ -43,7 +43,8 @@
 \end{frame}
 
 \begin{frame}{Solution}{Like before}
-\Vskip{-4em}\TwoUnequalColumns{0.52\textwidth}{0.48\textwidth}{%
+\only<1-25>{%
+\Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
 \lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{\alert<1>{n}}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<3,5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<3,6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
@@ -69,20 +70,20 @@ Deutsch Problem, single qubit}
    \only<8-10>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
    \only<8-11>{%
    \visible<9->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
-    \visible<10-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{x}{n}\ket{x}}}{\ColorTwo{\ket{-}}} \\}}
+    \visible<10-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n}\ket{w}}}{\ColorTwo{\ket{-}}} \\}}
     \only<11-13>{%
-    \visible<11->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{x}{n} \NegF{x}\ket{x}}}{\ColorTwo{\ket{-}}} \\}
+    \visible<11->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}}{\ColorTwo{\ket{-}}} \\}
     \visible<12->{\QState{3} &= \left(\TensProd{\TensSupProd{\Hadamard}{n}}{\Identity}\right)(\QState{2}) \\}}
     \visible<13->{%
        \only<14->{\QState{3}} & = \frac{\TensSupProd{\Hadamard}{n}
-       \left(
-       \ColorOne{\SumBV{x}{n} \NegF{x}\ket{x}}
-       \right)}{\ColorOne{\sqrt{2^n}}} \\
+       (
+       \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
+       )}{\ColorOne{\sqrt{2^n}}} \\
        & \TensOp{} \ColorTwo{\only<13>{\Identity}\ket{-}}
     }
 \end{align*}
 }%
-}
+}}
 \only<1-3>{%
 \BigSkip{}
 \begin{itemize}
@@ -95,7 +96,7 @@ Deutsch Problem, single qubit}
 \begin{itemize}
     \item<4-> We have seen
     \Vskip{-3em}\[ \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} = 
-    \RootTwoN{n}\SumBV{x}{n} \ket{x} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
+    \RootTwoN{n}\SumBV{w}{n} \ket{w} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
     \]
     \item<5-> So we know the result of these $n$ \Hadamard{} operations.
     \item<6-> But what about these?  Their input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
@@ -112,7 +113,7 @@ Deutsch Problem, single qubit}
 }%
 \only<17-20>{%
 \TwoColumns{%
-\Vskip{-3em}\begin{center}
+\Vskip{-2.5em}\begin{center}
 \begin{TIKZP}[scale=0.9]
 \draw (0,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_1$};
 \draw (0.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_2$};
@@ -141,15 +142,27 @@ We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follow
 \only<20->{\Vskip{-1em}These are equivalent (proof later).}
 }}%
 \only<21->{
-\BigSkip{}
 \[
 P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
-  = \RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}
+  = \textcolor<26>{\RCthree}{\RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}
 \]
+\only<21-23>{%
 \begin{itemize}
-\item<22-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Forall{v}{\DotP{v}{w}=0}.
+\item<22-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
 \item<23-> We can use this formula to compute \QState{3}.
-\end{itemize}
+\end{itemize}}
+\only<24->{%
+\begin{align*}
+    \visible<24->{\ColorOne{\sqrt{2^n}} \QState{3} &= \TensProd{\TensSupProd{\Hadamard}{n}
+       (
+       \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
+       )}{\ColorTwo{\ket{-}}} \\}
+    \visible<25->{   &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}} \TensSupProd{\Hadamard}{n}(\ColorOne{\ket{w}})}{\ColorTwo{\ket{-}}} \\}
+    \visible<26->{
+    \ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}} &= 
+    }
+\end{align*}
+}
 }
 \end{frame}
     
