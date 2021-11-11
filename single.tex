@@ -173,7 +173,8 @@
 \def\QOne{\ket{\hbox to 0.7em{\hss 1\hss}}}
 \def\QState#1{\ket{\QName{#1}}}
 \def\QName#1{\ensuremath{\psi_{#1}}}
-\def\TensProd#1#2{\ensuremath{#1 \bm{\otimes} #2}}
+\def\TensOp{\ensuremath{\bm{\otimes}}}
+\def\TensProd#1#2{\ensuremath{#1 \TensOp{} #2}}
 \def\TensSupProd#1#2{\ensuremath{#1^{\bm{\otimes} #2}}}
 \def\PZero{\SQB{1}{0}}
 \def\POne{\SQB{0}{1}}
@@ -690,6 +691,10 @@ Basis & 0 & 1 \\
 \def\ColorFour#1{\textcolor{\RCfour}{#1}}
 \def\NegF#1{\ensuremath{(-1)^{f(#1)}}}
 \def\RootTwoN#1{\ensuremath{\frac{1}{\sqrt{2^#1}}}}
+%%
+%% var, exponent
+%%
+\def\SumBV#1#2{\ensuremath{\displaystyle\sum\limits_{#1\in \Set{0,1}^{#2}}}}
 
 
 
