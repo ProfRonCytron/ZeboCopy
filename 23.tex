@@ -30,7 +30,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Deutsch-Josza}{Problem statement}
+\begin{frame}{Deutsch--Josza}{Problem statement}
 \begin{itemize}[<+->]
     \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$
     \item We are \href{https://en.wikipedia.org/wiki/Promise_problem}{promised} that $f(x)$ is one of the following:
@@ -42,15 +42,15 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Solution}{Like before}
-\only<1-25>{%
+\begin{frame}{Deutsch--Josza}{Solution}
+\only<1-24,32->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
 \lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{\alert<1>{n}}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<3,5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<3,6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
 \lstick{\alert<2>{\textcolor<8->{\RCtwo}{\QZero{}}}} & \gate{\alert<2>{\textcolor<8->{\RCtwo}{\PauliX}}} &   \gate{\alert<2>{\Hadamard}}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}} \only<1-3>{\\[1em]
-Deutsch-Josza Problem, $n$ qubits}
+Deutsch--Josza Problem, $n$ qubits}
 \end{center}
 \only<11>{%
 \BigSkip{}
@@ -65,7 +65,7 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 Deutsch Problem, single qubit}
 \end{center}%
 }%
-\only<8->{%
+\only<8-24>{%
 \Vskip{-2.5em}\begin{align*}
    \only<8-10>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
    \only<8-11>{%
@@ -83,6 +83,14 @@ Deutsch Problem, single qubit}
     }
 \end{align*}
 }%
+\only<32->{%
+\begin{itemize}
+    \item<32-> If we measure \TensSupProd{0}{n} only, then $f(x)$ is constant.
+    \item<33-> Otherwise we should never see \TensSupProd{0}{n} and $f(x)$ is balanced.
+    \item<34-> What if \TensSupProd{0}{n} seen sometimes?
+\end{itemize}
+\MedSkip{}
+}
 }}
 \only<1-3>{%
 \BigSkip{}
@@ -141,28 +149,44 @@ We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follow
 \end{align*}
 \only<20->{\Vskip{-1em}These are equivalent (proof later).}
 }}%
-\only<21->{
+\only<21-26>{%
 \[
 P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
   = \textcolor<26>{\RCthree}{\RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}
-\]
+\]}%
 \only<21-23>{%
 \begin{itemize}
 \item<22-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
 \item<23-> We can use this formula to compute \QState{3}.
 \end{itemize}}
-\only<24->{%
-\begin{align*}
+\only<24-31>{%
+\Vskip{-2em}\begin{align*}
+\only<24-26>{%
     \visible<24->{\ColorOne{\sqrt{2^n}} \QState{3} &= \TensProd{\TensSupProd{\Hadamard}{n}
        (
        \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
        )}{\ColorTwo{\ket{-}}} \\}
-    \visible<25->{   &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}} \TensSupProd{\Hadamard}{n}(\ColorOne{\ket{w}})}{\ColorTwo{\ket{-}}} \\}
-    \visible<26->{
-    \ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}} &= 
+    \visible<25->{   &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}} \TensSupProd{\Hadamard}{n}(\ColorOne{\ket{w}})}{\ColorTwo{\ket{-}}} \\}}
+    \only<26-28>{\visible<26->{
+    \ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}}\QState{3} &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}}\ColorThree{\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\ket{-}}} \\
+    }}%
+    \visible<28->{%
+    \only<29->{\ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}}\QState{3}}&= \TensProd{\ColorThree{\SumBV{v}{n}} \ColorOne{\SumBV{w}{n}} \ColorOne{\NegF{w}} \ColorThree{\NegOneExp{\DotP{v}{w}}} \ColorThree{\ket{v}}}{\ColorTwo{\ket{-}}}
     }
 \end{align*}
-}
+}%
+\only<29->{%
+Look at the $\ColorThree{\ket{v}}=\ket{\TensSupProd{0}{n}}$ term, where \Forall{\ColorThree{v}}{\ColorThree{\NegOneExp{\DotP{v}{w}}}=1}
+    \begin{description}
+      \item<30->[\Forall{w}{\ColorOne{f(w)}=0}:]  $\ColorOne{\SumBV{w}{n} 1}\ =\ {2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
+      \item<31->[\Forall{w}{\ColorOne{f(w)}=1}:] $\ColorOne{\SumBV{w}{n} -1}\ =\ -{2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
+      \item<31->[\ColorOne{$f(w)$} balanced:]
+      \Vskip{-2em}\[
+      \ColorOne{\SumBV{w}{n} \NegOneExp{f(w)}}
+      = 2^{n-1} - 2^{n-1}
+      = 0
+      \]
+    \end{description}
 }
 \end{frame}
     
