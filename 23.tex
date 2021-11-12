@@ -155,46 +155,25 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
-\only<14-21,29->{%
+\only<1-8,16->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
-\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{n}\slice{\QState{0}} &  \gate{\TensSupProd{\Hadamard}{n}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\gate{\TensSupProd{\Hadamard}{n}}\slice{\QState{3}} & \meter{0/1} \\
+\lstick{\QZero{}} & \gate{\PauliX} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}}
 \end{center}
-\only<8>{%
-\BigSkip{}
-This is the phase-kickback trick result.  But how do we compute The \alert{\TensSupProd{\Hadamard}{n}} when its input is something other than \TensSupProd{0}{n}?}
 }{%
-\only<5-21>{%
-\Vskip{-2.5em}\begin{align*}
-   \only<5-7>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
-   \only<5-8>{%
-   \visible<6->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
-    \visible<7-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n}\ket{w}}}{\ColorTwo{\ket{-}}} \\}}
-    \only<8-10>{%
-    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}}{\ColorTwo{\ket{-}}} \\}
-    \visible<9->{\QState{3} &= \left(\TensProd{\TensSupProd{\Hadamard}{n}}{\Identity}\right)(\QState{2}) \\}}
-    \visible<10->{%
-       \only<11->{\QState{3}} & = \frac{\TensSupProd{\Hadamard}{n}
-       (
-       \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
-       )}{\ColorOne{\sqrt{2^n}}} \\
-       & \TensOp{} \ColorTwo{\only<10>{\Identity}\ket{-}}
-    }
-\end{align*}
-}%
-\only<29->{%
+\only<16->{%
 \begin{itemize}
-    \item<29-> If we measure \TensSupProd{0}{n} only, then $f(x)$ is constant.
-    \item<30-> Otherwise we should never see \TensSupProd{0}{n} and $f(x)$ is balanced.
-    \item<31-> What if \TensSupProd{0}{n} seen sometimes?
+    \item<16-> If we measure \TensSupProd{0}{n} only, then $f(x)$ is constant.
+    \item<17-> Otherwise we should never see \TensSupProd{0}{n} and $f(x)$ is balanced.
+    \item<18-> What if \TensSupProd{0}{n} seen sometimes?
 \end{itemize}
 \MedSkip{}
 }
 }}%
-\only<14-17>{%
+\only<1-4>{%
 \TwoColumns{%
 \Vskip{-2.5em}\begin{center}
 \begin{TIKZP}[scale=0.9]
@@ -212,50 +191,50 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \draw (2.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_n$};
 \end{TIKZP}\end{center}
 \begin{itemize}
-    \item<15-> \ColorThree{This is the exclusive-or of the \emph{and} of each pair of bits.}
-    \item<16-> \ColorFour{This is the sum of the product of each pair of bits.}
+    \item<2-> \ColorThree{This is the exclusive-or of the \emph{and} of each pair of bits.}
+    \item<3-> \ColorFour{This is the sum of the product of each pair of bits.}
 \end{itemize}
 }{%
 \SmallSkip{}
 We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follows:
 \begin{align*}
-   \visible<15->{ \DotP{v}{w} & \ColorThree{= \oplus_{i=1}^{n}\ {v_i}{w_i}} \\}
-        \visible<16->{ & \ColorFour{= \sum_{i=1}^{n}\ {v_i}{w_i}\ \mbox{(mod 2)}}}
+   \visible<2->{ \DotP{v}{w} & \ColorThree{= \oplus_{i=1}^{n}\ {v_i}{w_i}} \\}
+        \visible<3->{ & \ColorFour{= \sum_{i=1}^{n}\ {v_i}{w_i}\ \mbox{(mod 2)}}}
 \end{align*}
-\only<17->{\Vskip{-1em}These are equivalent (proof later).}
+\only<4->{\Vskip{-1em}These are equivalent (proof later).}
 }}%
-\only<18-23>{%
+\only<5-10>{%
 \[
 P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
-  = \textcolor<23>{\RCthree}{\RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}
+  = \textcolor<10>{\RCthree}{\RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}
 \]}%
-\only<18-23>{%
+\only<5-10>{%
 \begin{itemize}
-\item<19-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
-\item<20-> We can use this formula to compute \QState{3}.
+\item<6-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
+\item<7-> We can use this formula to compute \QState{3}.
 \end{itemize}}
-\only<21-28>{%
+\only<8-15>{%
 \Vskip{-2em}\begin{align*}
-\only<21-23>{%
-    \visible<21->{\ColorOne{\sqrt{2^n}} \QState{3} &= \TensProd{\TensSupProd{\Hadamard}{n}
+\only<8-10>{%
+    \visible<8->{\ColorOne{\sqrt{2^n}} \QState{3} &= \TensProd{\TensSupProd{\Hadamard}{n}
        (
        \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
        )}{\ColorTwo{\ket{-}}} \\}
-    \visible<22->{   &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}} \TensSupProd{\Hadamard}{n}(\ColorOne{\ket{w}})}{\ColorTwo{\ket{-}}} \\}}
-    \only<23-25>{\visible<23->{
+    \visible<9->{   &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}} \TensSupProd{\Hadamard}{n}(\ColorOne{\ket{w}})}{\ColorTwo{\ket{-}}} \\}}
+    \only<10-12>{\visible<10->{
     \ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}}\QState{3} &= \TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}}\ColorThree{\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\ket{-}}} \\
     }}%
-    \visible<25->{%
-    \only<26->{\ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}}\QState{3}}&= \TensProd{\ColorThree{\SumBV{v}{n}} \ColorOne{\SumBV{w}{n}} \ColorOne{\NegF{w}} \ColorThree{\NegOneExp{\DotP{v}{w}}} \ColorThree{\ket{v}}}{\ColorTwo{\ket{-}}}
+    \visible<12->{%
+    \only<13->{\ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}}\QState{3}}&= \TensProd{\ColorThree{\SumBV{v}{n}} \ColorOne{\SumBV{w}{n}} \ColorOne{\NegF{w}} \ColorThree{\NegOneExp{\DotP{v}{w}}} \ColorThree{\ket{v}}}{\ColorTwo{\ket{-}}}
     }
 \end{align*}
 }%
-\only<26->{%
+\only<13->{%
 Look at the $\ColorThree{\ket{v}}=\ket{\TensSupProd{0}{n}}$ term, where \Forall{\ColorThree{v}}{\ColorThree{\NegOneExp{\DotP{v}{w}}}=1}
     \begin{description}
-      \item<27->[\Forall{w}{\ColorOne{f(w)}=0}:]  $\ColorOne{\SumBV{w}{n} 1}\ =\ {2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
-      \item<28->[\Forall{w}{\ColorOne{f(w)}=1}:] $\ColorOne{\SumBV{w}{n} -1}\ =\ -{2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
-      \item<28->[\ColorOne{$f(w)$} balanced:]
+      \item<14->[\Forall{w}{\ColorOne{f(w)}=0}:]  $\ColorOne{\SumBV{w}{n} 1}\ =\ {2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
+      \item<15->[\Forall{w}{\ColorOne{f(w)}=1}:] $\ColorOne{\SumBV{w}{n} -1}\ =\ -{2^n}$. All other \ColorThree{\ket{v}} terms have zero amplitude.
+      \item<16->[\ColorOne{$f(w)$} balanced:]
       \Vskip{-2em}\[
       \ColorOne{\SumBV{w}{n} \NegOneExp{f(w)}}
       = 2^{n-1} - 2^{n-1}
