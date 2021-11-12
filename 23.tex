@@ -68,13 +68,46 @@ Best wishes,  Richard.
     
 \end{frame}
 
+\begin{frame}{Deutsch--Josza solution}{Compared to the Deutsch circuit}
+
+\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}}\slice{\QState{0}} &  \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{3}} & \meter{0/1} \\
+\lstick{\alert<2>{\QZero{}}} & \gate{\alert<2>{\PauliX}} &   \gate{\alert<2>{\Hadamard}}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\end{quantikz}} \only<1-3>{\\[1em]
+Deutsch--Josza Problem, $n$ qubits}
+\end{center}
+}{%
+\only<1-3>{%
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\QZero{}} & \qw\slice{\QState{0}} &  \gate{\Hadamard}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\gate{\Hadamard}\slice{\QState{3}} & \meter{0/1} \\
+\lstick{\QZero{}} & \gate{\PauliX} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\end{quantikz}} \only<1-3>{\\[1.2em]
+Deutsch Problem, single qubit}
+\end{center}%
+}%
+}
+\only<1-3>{%
+\BigSkip{}
+\begin{itemize}
+    \item<1-> The Deutsch--Josza input for $x$ is now $n$ qubits.
+    \item<2-> The input for $y$ is still a single qubit, whose value will be \ket{-} going into $U_f$.
+    \item<3-> We apply an $n$-way Hadamard operation on either side of $U_f$ to the top $n$~qubits~($x$).  This is realized by a single Hadamard gate applied to each qubit for $x$.
+\end{itemize}
+}
+
+    
+\end{frame}
+
 \begin{frame}{Deutsch--Josza Solution}{Up to \QState{2}, prior to the final \TensSupProd{\Hadamard}{n}}
-\only<1-24,32->{%
+\only<4-24,32->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{\alert<1>{n}}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<3,5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<3,6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
-\lstick{\alert<2>{\textcolor<8->{\RCtwo}{\QZero{}}}} & \gate{\alert<2>{\textcolor<8->{\RCtwo}{\PauliX}}} &   \gate{\alert<2>{\Hadamard}}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{\alert<1>{n}}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
+\lstick{\textcolor<8->{\RCtwo}{\QZero{}}} & \gate{\textcolor<8->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}} \only<1-3>{\\[1em]
 Deutsch--Josza Problem, $n$ qubits}
 \end{center}
@@ -82,15 +115,6 @@ Deutsch--Josza Problem, $n$ qubits}
 \BigSkip{}
 This is the phase-kickback trick result.  But how do we compute The \alert{\TensSupProd{\Hadamard}{n}} when its input is something other than \TensSupProd{0}{n}?}
 }{%
-\only<1-3>{%
-\begin{center}
-\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\QZero{}} & \qw\slice{\QState{0}} &  \gate{\Hadamard}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\gate{\Hadamard}\slice{\QState{3}} & \meter{0/1} \\
-\lstick{\QZero{}} & \gate{\PauliX} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
-\end{quantikz}} \only<1-3>{\\[1em]
-Deutsch Problem, single qubit}
-\end{center}%
-}%
 \only<8-24>{%
 \Vskip{-2.5em}\begin{align*}
    \only<8-10>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
@@ -117,15 +141,7 @@ Deutsch Problem, single qubit}
 \end{itemize}
 \MedSkip{}
 }
-}}
-\only<1-3>{%
-\BigSkip{}
-\begin{itemize}
-    \item<1-> The Deutsch--Josza input for $x$ is now $n$ qubits.
-    \item<2-> The input for $y$ is still a single qubit, whose value will be \ket{-} going into $U_f$.
-    \item<3-> We apply an $n$-way Hadamard operation on either side of $U_f$ to the top $n$~qubits~($x$).  This is realized by a single Hadamard gate applied to each qubit for $x$.
-\end{itemize}
-}
+}}%
 \only<4-7>{%
 \begin{itemize}
     \item<4-> We have seen
