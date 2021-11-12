@@ -102,7 +102,60 @@ Deutsch Problem, single qubit}
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{Up to \QState{2}, prior to the final \TensSupProd{\Hadamard}{n}}
-\only<1-21,29->{%
+
+\Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
+\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\end{quantikz}}
+\end{center}
+\only<8>{%
+\BigSkip{}
+This is the phase-kickback trick result.  But how do we compute The \alert{\TensSupProd{\Hadamard}{n}} when its input is something other than \TensSupProd{0}{n}?}
+}{%
+\only<5-13>{%
+\Vskip{-2.5em}\begin{align*}
+   \only<5-7>{ \QState{0} &= \ket{\ColorOne{\TensSupProd{0}{n}}\,\ColorTwo{1}} \\}
+   \only<5-8>{%
+   \visible<6->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
+    \visible<7-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n}\ket{w}}}{\ColorTwo{\ket{-}}} \\}}
+    \only<8-10>{%
+    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}}{\ColorTwo{\ket{-}}} \\}
+    \visible<9->{\QState{3} &= \left(\TensProd{\TensSupProd{\Hadamard}{n}}{\Identity}\right)(\QState{2}) \\}}
+    \visible<10->{%
+       \only<11->{\QState{3}} & = \frac{\TensSupProd{\Hadamard}{n}
+       (
+       \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
+       )}{\ColorOne{\sqrt{2^n}}} \\
+       & \TensOp{} \ColorTwo{\only<10>{\Identity}\ket{-}}
+    }
+\end{align*}
+}%
+}%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> We have seen
+    \Vskip{-3em}\[ \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} = 
+    \RootTwoN{n}\SumBV{w}{n} \ket{w} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
+    \]
+    \item<2-> So we know the result of these $n$ \Hadamard{} operations.
+    \item<3-> But what about these?  Their input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
+    \item<4-> We present results first and proofs later.
+\end{itemize}
+}%
+\only<11-13>{%
+\BigSkip{}
+\begin{itemize}
+\item<11-> How do we compute \TensSupProd{\Hadamard}{n}(\ket{w}), where \ket{w} is a basis state, but not necessarily~\ket{\TensSupProd{0}{n}}?  
+\item<12-> We show how to do this here, leaving the proof for later.
+\item<13-> It suffices to study basis states, as linearity applies to \ColorOne{superpositions}.
+\end{itemize}
+}%
+\end{frame}
+
+\begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
+\only<14-21,29->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
@@ -141,25 +194,6 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \MedSkip{}
 }
 }}%
-\only<1-4>{%
-\begin{itemize}
-    \item<1-> We have seen
-    \Vskip{-3em}\[ \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} = 
-    \RootTwoN{n}\SumBV{w}{n} \ket{w} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
-    \]
-    \item<2-> So we know the result of these $n$ \Hadamard{} operations.
-    \item<3-> But what about these?  Their input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
-    \item<4-> We present results first and proofs later.
-\end{itemize}
-}%
-\only<11-13>{%
-\BigSkip{}
-\begin{itemize}
-\item<11-> How do we compute \TensSupProd{\Hadamard}{n}(\ket{w}), where \ket{w} is a basis state, but not necessarily~\ket{\TensSupProd{0}{n}}?  
-\item<12-> We show how to do this here, leaving the proof for later.
-\item<13-> It suffices to study basis states, as linearity applies to \ColorOne{superpositions}.
-\end{itemize}
-}%
 \only<14-17>{%
 \TwoColumns{%
 \Vskip{-2.5em}\begin{center}
@@ -190,7 +224,7 @@ We define the operation \DotP{v}{w} on two $n$-bit vectors $v$ and $w$ as follow
 \end{align*}
 \only<17->{\Vskip{-1em}These are equivalent (proof later).}
 }}%
-\only<17-23>{%
+\only<18-23>{%
 \[
 P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
   = \textcolor<23>{\RCthree}{\RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}}
