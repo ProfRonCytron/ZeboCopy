@@ -52,6 +52,22 @@ Best wishes,  Richard.
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Sneak preview}{Of the secret sauce}
+\Vskip{-3.5em}\begin{itemize}[<+->]
+    \item The function $f(x)$ accepts an input \AllBits{x}{n}.  Each input is $n$~bits long, and \alert<10->{there are $2^n$ such strings} in the domain.
+    \item For each such $x$, $f(x)$ evaluates to~$0$ or~$1$.  \only<10->{\alert{\NegF{x} is $\pm 1$.}}
+    \item If we compute $\SumBV{x}{n} \alt<9->{\alert{\NegF{x}}}{f(x)}$ then we should obtain:
+    \begin{description}
+        \item[\alt<11->{\alert{$2^n$}}{$0$}]  We obtain this sum if \Forall{x}{f(x)=0}.
+        \item[\alt<12->{\alert{$-2^{n}$}}{$2^n$}]  We obtain this sum if \Forall{x}{f(x)=1}.
+        \item[\alt<13->{\alert{$0$}}{$\frac{2^n}{2}=2^{n-1}$}]  \textcolor<14->{\RCtwo}{We obtain this sum if exactly half of the function evaluations are~$1$ and the other half are~$0$.}
+    \end{description}
+    \item As described, we require $2^n$ function evaluations classically.  We hope to use a quantum computer to accomplish that work with a single evaluation.
+    \item But first we are going to make \alert{one change} to our summation to leverage \textcolor<14->{\RCtwo}{interference} in quantum systems.
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}{Deutsch--Josza}{Solution}
 \only<1-24,32->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
