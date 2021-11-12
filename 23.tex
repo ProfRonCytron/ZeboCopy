@@ -106,10 +106,9 @@ Deutsch Problem, single qubit}
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{\alert<1>{n}}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
+\lstick{\ket{\textcolor<8->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<8>{\QState{0}}} &  \gate{\alert<5>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9-10>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<11>{\QState{2}}} &\gate{\alert<6,11>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<12->{\QState{3}}} & \meter{0/1} \\
 \lstick{\textcolor<8->{\RCtwo}{\QZero{}}} & \gate{\textcolor<8->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
-\end{quantikz}} \only<1-3>{\\[1em]
-Deutsch--Josza Problem, $n$ qubits}
+\end{quantikz}}
 \end{center}
 \only<11>{%
 \BigSkip{}
