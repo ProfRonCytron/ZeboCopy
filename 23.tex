@@ -55,7 +55,7 @@ Best wishes,  Richard.
 \begin{frame}{Sneak preview}{Of the secret sauce}
 \Vskip{-3.5em}\begin{itemize}[<+->]
     \item The function $f(x)$ accepts an input \AllBits{x}{n}.  Each input is $n$~bits long, and \alert<10->{there are $2^n$ such strings} in the domain.
-    \item For each such $x$, $f(x)$ evaluates to~$0$ or~$1$.  \only<10->{\alert{\NegF{x} is $\pm 1$.}}
+    \item For each such $x$, $f(x)$ evaluates to~$0$ or~$1$.  \only<10->{\alert{Then \NegF{x} is $\pm 1$.}}
     \item If we compute $\SumBV{x}{n} \alt<9->{\alert{\NegF{x}}}{f(x)}$ then we should obtain:
     \begin{description}
         \item[\alt<11->{\alert{$2^n$}}{$0$}]  We obtain this sum if \Forall{x}{f(x)=0}.
