@@ -154,6 +154,86 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 }%
 \end{frame}
 
+\begin{frame}{Closer look at \QState{2}}{Case \Forall{x}{f(x)=0}}
+
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\only<1-12>{\begin{itemize}
+  \item<2-> Consider $n=3$
+  \item<4-> \Forall{w}{\ColorThree{f(w)}=0}.
+  \item<5-> Then \Forall{\ColorThree{w}}{\ColorThree{\NegF{w}}=\ColorThree{1}}.
+  \item<8-> \Hadamard{} is its own inverse.  
+  \item<10-> The state whose Hadamard transformation is the uniform superposition shown here is \ket{000}.
+  \item<11-> Measurement of \QState{3} will yield \ket{000} always.
+  \item<12-> This argument holds for any $n$.
+\end{itemize}}%
+\only<13->{%
+\begin{itemize}
+\item Another way to say this is that we have arranged for constructive interference on the~\ket{000} term  in~\QState{3} and destructive interference on all other terms.
+
+\item With all amplitude on the \ket{000} term, measurement will yield $000$.
+
+\item We just have to be sure we see \ket{000} if \emph{and only if} the function $f(x)$ is constant.
+\end{itemize}
+}
+}{%
+\only<1-8,10->{
+\begin{align*}
+   \visible<1->{ \QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1-4>{\NegF{w}}{\NegOneExp{0}}} \ColorOne{\ket{w}} \\}
+   \visible<6->{ &= \ColorThree{1} \ColorOne{\ket{000}} +
+    \ColorThree{1} \ColorOne{\ket{001}} \\
+    & + \ColorThree{1} \ColorOne{\ket{010}} +
+    \ColorThree{1} \ColorOne{\ket{011}} \\
+    & + \ColorThree{1} \ColorOne{\ket{100}} +
+     \ColorThree{1} \ColorOne{\ket{101}} \\
+   & + \ColorThree{1} \ColorOne{\ket{110}} +
+    \ColorThree{1} \ColorOne{\ket{111}}} \\
+    \visible<7->{\QState{3} &= \TensSupProd{\Hadamard}{3}\QState{2} \\}
+    \visible<10->{ &= \ket{000}}
+\end{align*}}
+\only<9>{%
+\begin{align*}
+    \Hadamard{}^{2} &= \HMatrix{} \times \HMatrix{} \\[1em]
+    &= \IMatrix{}
+\end{align*}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Closer look at \QState{2}}{Case \Forall{x}{f(x)=1}}
+
+\TwoColumns{%
+\only<1-9>{%
+\begin{itemize}
+    \item<1-> Same as previous case, except $\ldots$
+    \item<2-> Now our function returns~$1$ for any input instead of~$0$.
+    \item<5-> This is a global phase, present on each term, so this state is equivalent to our previous case.
+    \item<8-> We will measure $000$ in this case as well.
+    \item<9-> To achieve our desired result we must show that if $f(x)$ is balanced, we \emph{never} measure $000$.
+\end{itemize}}%
+\only<10->{%
+\begin{itemize}
+    \item It's going to take some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
+\end{itemize}
+}
+}{%
+\begin{align*}
+   \visible<1->{ \QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1>{\NegF{w}}{\NegOneExp{1}}} \ColorOne{\ket{w}} \\}
+   \visible<3->{ &\alt<6->{\equiv}{=} \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{000}} +
+    \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{001}} \\
+    & + \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{010}} +
+    \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{011}} \\
+    & + \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{100}} +
+     \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{101}} \\
+   & + \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{110}} +
+    \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{111}}} \\
+    \visible<4->{\QState{3} &= \TensSupProd{\Hadamard}{3}\QState{2} \\}
+    \visible<7->{ &= \ket{000}}
+\end{align*}
+}
+
+\end{frame}
+
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
 \only<1-8,16->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
