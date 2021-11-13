@@ -178,7 +178,7 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 }{%
 \only<1-8,10->{
 \begin{align*}
-   \visible<1->{ \QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1-4>{\NegF{w}}{\NegOneExp{0}}} \ColorOne{\ket{w}} \\}
+   \visible<1->{ \ColorOne{\sqrt{2^{\alt<1>{n}{3}}}}\QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1-4>{\NegF{w}}{\NegOneExp{0}}} \ColorOne{\ket{w}} \\}
    \visible<6->{ &= \ColorThree{1} \ColorOne{\ket{000}} +
     \ColorThree{1} \ColorOne{\ket{001}} \\
     & + \ColorThree{1} \ColorOne{\ket{010}} +
@@ -213,12 +213,15 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{itemize}}%
 \only<10->{%
 \begin{itemize}
-    \item It's going to take some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
+    \item<10-> It takes some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
+    \item<11-> When $f(x)$ is balanced, a global phase that switches the sign of each term will have no effect on the measurement outcome.
+    \item<12-> The function $-f(x)$ is balanced iff $f(x)$ is balanced. 
+    \item<12-> It is helpful to view $f(x)$ as determining the sign $\pm 1$ of each term.
 \end{itemize}
 }
 }{%
 \begin{align*}
-   \visible<1->{ \QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1>{\NegF{w}}{\NegOneExp{1}}} \ColorOne{\ket{w}} \\}
+   \visible<1->{ \ColorOne{\sqrt{2^{\alt<1>{n}{3}}}}\QState{2} &= \ColorOne{\SumBV{w}{\alt<1>{n}{3}}} \ColorThree{\alt<1>{\NegF{w}}{\NegOneExp{1}}} \ColorOne{\ket{w}} \\}
    \visible<3->{ &\alt<6->{\equiv}{=} \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{000}} +
     \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{001}} \\
     & + \ColorThree{\only<1-5>{-}1} \ColorOne{\ket{010}} +
