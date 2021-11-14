@@ -291,6 +291,19 @@ Generally
 }}
 \end{frame}
 
+\begin{frame}{\TensSupProd{\Hadamard}{n}\ket{w}, where $w$ is an arbitrary $n$-qubit basis state}{Superpositions follow from linearity}
+\[
+P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
+  = \RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}
+\]
+
+\begin{itemize}
+\item<1-> We prove $P(n)$ later but accept it as true for now.
+\item<2-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
+\item<3-> We can use this formula to compute \QState{3}.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
 \only<1-8,16->{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
