@@ -695,7 +695,9 @@ Basis & 0 & 1 \\
 %%
 %% var, exponent
 %%
-\def\SumBV#1#2{\ensuremath{\displaystyle\sum\limits_{\AllBits{#1}{#2}}}}
+\def\SumBV#1#2{\OpBV{#1}{#2}{\displaystyle\sum\limits}}
+\def\AllBV#1#2{\OpBV{#1}{#2}{\forall}\ }
+\def\OpBV#1#2#3{\ensuremath{#3_{\AllBits{#1}{#2}}}}
 \def\DotP#1#2{\ensuremath{#1\boldsymbol{\cdot}#2}}
 
 

@@ -245,6 +245,49 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{frame}
 
 \begin{frame}{Defining the operation \DotP{v}{w}}{There are two equivlent definitions}
+
+\TwoColumns{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}
+\draw (0,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_1$};
+\draw (0.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_2$};
+\draw (1,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (1.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_n$};
+\draw (0,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_1$};
+\draw (0.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_2$};
+\draw (1,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (1.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
+\draw (2.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_n$};
+\end{TIKZP}\end{center}
+\begin{itemize}
+    \item<2-> \ColorThree{Exclusive-or of the \emph{and} of each pair}
+    \item<3-> \ColorFour{Sum of the product of each pair}
+\end{itemize}
+}{%
+\begin{align*}
+   \visible<2->{ \DotP{v}{w} & \ColorThree{= \oplus_{i=1}^{n}\ {v_i}{w_i}} \\}
+        \visible<3->{ & \ColorFour{= \sum_{i=1}^{n}\ {v_i}{w_i}\ \mbox{(mod 2)}}}
+\end{align*}
+\only<4->{\Vskip{-1em}The above are equivalent (proof later).}
+}
+\Vskip{-1em}\TwoColumns{%
+Examples
+\begin{itemize}
+    \item<5-> $\DotP{\alert{1}010}{\alert{1}101} = 1$
+    \item<6-> $\DotP{1\alert{11}0}{0\alert{11}0}=0$
+    \item<7-> $\DotP{1110}{\ColorTwo{0000}}=0$
+    \item<8-> $\DotP{\alert{111}0}{\ColorThree{1111}}=1$
+\end{itemize}
+}{%
+Generally
+\begin{itemize}
+    \item<7-> $\AllBV{v}{n} \DotP{v}{\ColorTwo{0^n}}=0$
+    \item<8-> $\AllBV{v}{n} \DotP{v}{\ColorThree{1^n}} = \mbox{parity}(v)$
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
