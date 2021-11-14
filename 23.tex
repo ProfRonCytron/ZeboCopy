@@ -244,7 +244,7 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Defining the operation \DotP{v}{w}}{There are two equivlent definitions}
+\begin{frame}{Defining the operation \DotP{v}{w}}{A Boolean dot (inner) product of two bit vectors}
 
 \TwoColumns{%
 \Vskip{-4em}\begin{center}
@@ -273,6 +273,7 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{align*}
 \only<4->{\Vskip{-1em}The above are equivalent (proof later).}
 }
+\only<5->{%
 \Vskip{-1em}\TwoColumns{%
 Examples
 \begin{itemize}
@@ -285,9 +286,9 @@ Examples
 Generally
 \begin{itemize}
     \item<7-> $\AllBV{v}{n} \DotP{v}{\ColorTwo{0^n}}=0$
-    \item<8-> $\AllBV{v}{n} \DotP{v}{\ColorThree{1^n}} = \mbox{parity}(v)$
+    \item<8-> $\AllBV{v}{n} \DotP{v}{\ColorThree{1^n}} = \mbox{\href{https://en.wikipedia.org/wiki/Parity_function}{parity}}(v)$
 \end{itemize}
-}
+}}
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
