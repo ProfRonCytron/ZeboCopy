@@ -215,8 +215,8 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \begin{itemize}
     \item<10-> It takes some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
     \item<11-> When $f(x)$ is balanced, a global phase that switches the sign of each term will have no effect on the measurement outcome.
-    \item<12-> The function $-f(x)$ is balanced iff $f(x)$ is balanced. 
-    \item<13-> It is helpful to view $f(x)$ as determining the sign $\pm 1$ of each term.
+    \item<12-> In other words, the function $-f(x)$ is balanced iff $f(x)$ is balanced. 
+    \item<13-> It is helpful to view \ColorThree{\NegF{x}} as determining the sign $\pm 1$ of each \ColorOne{term}.
 \end{itemize}
 }
 }{%
@@ -235,6 +235,16 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
 \end{align*}
 }
 
+\end{frame}
+
+\begin{frame}{Hadamard of an arbitrary basis state}{Superpositions follow using linearity}
+\begin{itemize}
+    \item We have seen $\TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}}=\RootTwoN{n}\SumBV{v}{n}\ket{v}$.
+    \item How do we compute the $n$-way Hadamard of a basis state \ket{w} of $n$ qubits?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Defining the operation \DotP{v}{w}}{There are two equivlent definitions}
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
