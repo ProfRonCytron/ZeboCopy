@@ -293,14 +293,14 @@ Generally
 
 \begin{frame}{\TensSupProd{\Hadamard}{n}\ket{w}, where $w$ is an arbitrary $n$-qubit basis state}{Superpositions follow from linearity}
 \[
-P(n):  \TensSupProd{\Hadamard}{n}\ket{w}
-  = \RootTwoN{n}\SumBV{v}{n} \NegOneExp{\DotP{v}{w}} \ket{v}
+P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
+  = \RootTwoN{n}\SumBV{\ColorThree{v}}{n} \NegOneExp{\alt<5>{\ColorTwo{0}}{\ColorTwo{\DotP{v}{\alt<4>{0^n}{w}}}}} \ket{\ColorThree{v}}
 \]
 
 \begin{itemize}
 \item<1-> We prove $P(n)$ later but accept it as true for now.
-\item<2-> \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\DotP{v}{w}=0}}.
-\item<3-> We can use this formula to compute \QState{3}.
+\item<2-> \TensSupProd{\Hadamard}{n}\ket{\alert{\TensSupProd{0}{n}}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\ColorTwo{\DotP{v}{w}=0}}}.
+\item<6-> We can use this formula to compute the result for any basis state \ket{w}, by computing $w$'s \ColorTwo{dot product} with every basis vector \ColorThree{$v$}.
 \end{itemize}
 \end{frame}
 
