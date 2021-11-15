@@ -306,17 +306,63 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \only<7->{%
 \TwoColumns{%
 \begin{HTable}{101}{v}
-\TE{000}{0}{+}{000}
-\TE{001}{1}{-}{001}
-\TE{000}{0}{+}{010}
-\TE{001}{1}{-}{011}
-\TE{100}{1}{-}{100}
-\TE{101}{0}{+}{101}
-\TE{100}{1}{-}{110}
-\TE{101}{0}{+}{111}
+\visible<8->{\TE{000}{0}{+}{000} \\}
+\visible<9->{\TE{001}{1}{-}{001} \\}
+\visible<10->{\TE{000}{0}{+}{010} \\}
+\visible<11->{\TE{001}{1}{-}{011} \\}
+\visible<12->{\TE{100}{1}{-}{100} \\}
+\visible<13->{\TE{101}{0}{+}{101} \\}
+\visible<14->{\TE{100}{1}{-}{110} \\}
+\visible<15->{\TE{101}{0}{+}{111}}
 \end{HTable}
 }{%
+\begin{HTable}{011}{v}
+\visible<8->{\TE{000}{0}{+}{000} \\}
+\visible<9->{\TE{001}{1}{-}{001} \\}
+\visible<10->{\TE{010}{1}{-}{010} \\}
+\visible<11->{\TE{011}{0}{+}{011} \\}
+\visible<12->{\TE{000}{0}{+}{100} \\}
+\visible<13->{\TE{001}{1}{-}{101} \\}
+\visible<14->{\TE{010}{1}{-}{110} \\}
+\visible<15->{\TE{011}{0}{+}{111}}
+\end{HTable}
 }}
+\end{frame}
+
+\begin{frame}{Compete two-qubit example}{And the superposition of those results}
+
+\Vskip{-5em}\TwoColumns{%
+{\small
+\begin{center}
+\begin{HTable}{00}{v}
+\TE{00}{0}{+}{00} \\
+\TE{00}{0}{+}{01} \\
+\TE{00}{0}{+}{10} \\
+\TE{00}{0}{+}{11}
+\end{HTable} \\
+\begin{HTable}{01}{v}
+\TE{00}{0}{+}{00} \\
+\TE{01}{1}{-}{01} \\
+\TE{00}{0}{+}{10} \\
+\TE{01}{0}{-}{11}
+\end{HTable}\end{center}}
+}{%
+{\small
+\begin{center}
+\begin{HTable}{10}{v}
+\TE{00}{0}{+}{00} \\
+\TE{00}{0}{+}{01} \\
+\TE{10}{1}{-}{10} \\
+\TE{10}{1}{-}{11}
+\end{HTable} \\
+\begin{HTable}{11}{v}
+\TE{00}{0}{+}{00} \\
+\TE{01}{1}{-}{01} \\
+\TE{10}{1}{-}{10} \\
+\TE{11}{0}{+}{11}
+\end{HTable}\end{center}}
+}
+    
 \end{frame}
 
 \begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
