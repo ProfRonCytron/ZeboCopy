@@ -703,9 +703,8 @@ Basis & 0 & 1 \\
 %
 %% #1 w for H((w>)
 %% #2 free variable name
-%% #3 start slide number
 \newcounter{HTableCounter}
-\newenvironment{HTable}[3]{%
+\newenvironment{HTable}[2]{%
 %% ##1 v^w
 %% ##2 v . w
 %% ##3 result
@@ -715,7 +714,7 @@ Basis & 0 & 1 \\
 }%
 \setcounter{HTableCounter}{#3}
 \begin{tabular}{c|c|r|c}
-\visible<\theHTableCounter->{\multicolumn{4}{c}{\Hadamard(\ket{#1})}} \\ 
+\multicolumn{4}{c}{\Hadamard(\ket{#1})} \\ 
 \And{#2}{#1} & \DotP{#2}{#1} &  \multicolumn{1}{|c|}{Amp} & \ensuremath{#2}\\ \hline
 }{%
 \end{tabular}
