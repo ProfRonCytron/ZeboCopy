@@ -331,6 +331,7 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 
 \begin{frame}{Complete two-qubit example}{And the superposition of those results}
 
+\only<1-11>{%
 \Vskip{-5em}\TwoColumns{%
 {\small
 \begin{center}
@@ -362,17 +363,30 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \TE{11}{0}{\alert<9>{+}}{11}
 \end{HTable}}\end{center}}
 }
-
 \only<5-9>{%
 \BigSkip{}
-\visible<5->{Notice what happens if we sum these tables.} \visible<6->{Constructive interference on term~\ket{00}.}  \visible<7->{Destructive interference on the the other three terms.}}
+\visible<5->{Notice what happens if we sum these tables.} \visible<6->{Constructive interference on term~\ket{00}.}  \visible<7->{Destructive interference on the the other three terms.}}}
+\only<12->{%
+We knew 
+\[
+\Hadamard(\ket{00}) = \frac{1}{2}\DQB{1}{1}{1}{1}
+\]
+and now we see
+\[
+\Hadamard\left(\frac{1}{2}\DQB{1}{1}{1}{1}\right) = \ket{00}
+\]
+}
 \only<10->{%
 \SmallSkip{}
 \[
-\frac{\Hadamard(\ket{\ColorOne{00}}) +
+\frac{\alt<10>{\Hadamard(\ket{\ColorOne{00}}) +
 \Hadamard(\ket{\ColorTwo{01}}) +
 \Hadamard(\ket{\ColorThree{10}}) +
-\Hadamard(\ket{\ColorFour{11}})}{2} = \ket{00}
+\Hadamard(\ket{\ColorFour{11}})}{%
+\Hadamard(
+\ket{\ColorOne{00}} + \ket{\ColorTwo{01}} + \ket{\ColorThree{10}} + \ket{\ColorFour{11}}
+)}}{2} 
+= \ket{00}
 \]}
     
 \end{frame}
