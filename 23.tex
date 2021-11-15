@@ -305,7 +305,7 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \end{itemize}}%
 \only<7->{%
 \TwoColumns{%
-\begin{HTable}{101}{v}
+\begin{HTable}{101}{v}{3}
 \visible<8->{\TE{000}{0}{+}{000} \\}
 \visible<9->{\TE{001}{1}{-}{001} \\}
 \visible<10->{\TE{000}{0}{+}{010} \\}
@@ -316,7 +316,7 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \visible<15->{\TE{101}{0}{+}{111}}
 \end{HTable}
 }{%
-\begin{HTable}{011}{v}
+\begin{HTable}{011}{v}{3}
 \visible<8->{\TE{000}{0}{+}{000} \\}
 \visible<9->{\TE{001}{1}{-}{001} \\}
 \visible<10->{\TE{010}{1}{-}{010} \\}
@@ -329,41 +329,51 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 }}
 \end{frame}
 
-\begin{frame}{Compete two-qubit example}{And the superposition of those results}
+\begin{frame}{Complete two-qubit example}{And the superposition of those results}
 
 \Vskip{-5em}\TwoColumns{%
 {\small
 \begin{center}
-\begin{HTable}{00}{v}
-\TE{00}{0}{+}{00} \\
-\TE{00}{0}{+}{01} \\
-\TE{00}{0}{+}{10} \\
-\TE{00}{0}{+}{11}
-\end{HTable} \\[1em]
-\begin{HTable}{01}{v}
-\TE{00}{0}{+}{00} \\
-\TE{01}{1}{-}{01} \\
-\TE{00}{0}{+}{10} \\
-\TE{01}{0}{-}{11}
-\end{HTable}\end{center}}
+\visible<1->{\begin{HTable}{\ColorOne{00}}{v}{2}
+\TE{00}{0}{\alert<6>{+}}{00} \\
+\TE{00}{0}{\alert<7>{+}}{01} \\
+\TE{00}{0}{\alert<8>{+}}{10} \\
+\TE{00}{0}{\alert<9>{+}}{11}
+\end{HTable} \\[1em]}
+\visible<2->{\begin{HTable}{\ColorTwo{01}}{v}{2}
+\TE{00}{0}{\alert<6>{+}}{00} \\
+\TE{01}{1}{\alert<7>{-}}{01} \\
+\TE{00}{0}{\alert<8>{+}}{10} \\
+\TE{01}{0}{\alert<9>{-}}{11}
+\end{HTable}}\end{center}}
 }{%
 {\small
 \begin{center}
-\begin{HTable}{10}{v}
-\TE{00}{0}{+}{00} \\
-\TE{00}{0}{+}{01} \\
-\TE{10}{1}{-}{10} \\
-\TE{10}{1}{-}{11}
-\end{HTable} \\[1em]
-\begin{HTable}{11}{v}
-\TE{00}{0}{+}{00} \\
-\TE{01}{1}{-}{01} \\
-\TE{10}{1}{-}{10} \\
-\TE{11}{0}{+}{11}
-\end{HTable}\end{center}}
+\visible<3->{\begin{HTable}{\ColorThree{10}}{v}{2}
+\TE{00}{0}{\alert<6>{+}}{00} \\
+\TE{00}{0}{\alert<7>{+}}{01} \\
+\TE{10}{1}{\alert<8>{-}}{10} \\
+\TE{10}{1}{\alert<9>{-}}{11}
+\end{HTable} \\[1em]}
+\visible<4->{\begin{HTable}{\ColorFour{11}}{v}{2}
+\TE{00}{0}{\alert<6>{+}}{00} \\
+\TE{01}{1}{\alert<7>{-}}{01} \\
+\TE{10}{1}{\alert<8>{-}}{10} \\
+\TE{11}{0}{\alert<9>{+}}{11}
+\end{HTable}}\end{center}}
 }
 
-Notice what happens if we sum these tables.
+\only<5-9>{%
+\BigSkip{}
+\visible<5->{Notice what happens if we sum these tables.} \visible<6->{Constructive interference on term~\ket{00}.}  \visible<7->{Destructive interference on the the other three terms.}}
+\only<10->{%
+\SmallSkip{}
+\[
+\frac{\Hadamard(\ket{\ColorOne{00}}) +
+\Hadamard(\ket{\ColorTwo{01}}) +
+\Hadamard(\ket{\ColorThree{10}}) +
+\Hadamard(\ket{\ColorFour{11}})}{2} = \ket{00}
+\]}
     
 \end{frame}
 
