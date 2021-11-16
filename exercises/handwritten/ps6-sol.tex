@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Problem Set 6 Solutions}
+\author{CSE 468}
+\date{May 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}[font=\bfseries]
+    \item Placeholder
+    \item To-do
+    \item I first work through the analysis in Lecture 22 with $y=\ket{+}$.
+    \[U_f = U_f(\ket{x}\otimes\ket{+}) = U_f(\ket{x}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}))\]
+    \[=U_f(\frac{1}{\sqrt{2}}(\ket{x0}+\ket{x1})) = 
+    \frac{1}{\sqrt{2}}(\ket{x(0\oplus f(x))}+ \ket{x(1\oplus f(x))})\]
+    \[= \frac{1}{\sqrt{2}}(\ket{xf(x)}+\ket{x\overline{f(x)}})\]
+    If we consider $f(x) = 0$ and $f(x) = 1$ (Deutsch problem) the outputs are identical and so we cannot distinguish between the two cases. More generally we do not have the form $U_f(\ket{x+}) = (-1)^{f(x)} \ket{x} \otimes \ket{+}$. And so the function result is not "kicked" onto the basis state which makes the phase kickback trick "useless" with $y = \ket{+}$ as the input. add more here?
+\end{enumerate}
+
+
+
+\end{document}
