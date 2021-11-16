@@ -1,4 +1,4 @@
-\SetTitle{23}{The Deutsch-Josza problem}{Demonstrates asymptotic quantum advantage}{23}
+\SetTitle{23}{The Deutsch--Josza problem}{Demonstrates asymptotic quantum advantage}{23}
 
 \begin{frame}{Overview}{What will we study here?}
 
@@ -10,7 +10,7 @@
     \item We care, as before, whether $f(x)$ is \emph{constant} or \emph{balanced}.
     \item This problem distinguishes the complexity classes
     \begin{description}
-        \item[\href{https://complexityzoo.net/Complexity_Zoo:P}{\CompClass{P}}] problems that can be solved in polynomial time on a quantum computer
+        \item[\href{https://complexityzoo.net/Complexity_Zoo:P}{\CompClass{P}}] problems that can be solved in polynomial time on a classical computer
         \item[\href{https://complexityzoo.net/Complexity_Zoo:E\#eqp}{\CompClass{EQP}}] problems that can be solved \textbf{e}xactly on a \textbf{q}uantum computer in \textbf{p}olynomial time.
     \end{description}
     \item The phase-kickback trick we have just studied is the key to solving this problem efficiently on a quantum computer.
@@ -62,7 +62,7 @@ Best wishes,  Richard.
         \item[\alt<12->{\alert{$-2^{n}$}}{$2^n$}]  We obtain this sum if \Forall{x}{f(x)=1}.
         \item[\alt<13->{\alert{$0$}}{$\frac{2^n}{2}=2^{n-1}$}]  \textcolor<14->{\RCtwo}{We obtain this sum if exactly half of the function evaluations are~$1$ and the other half are~$0$.}
     \end{description}
-    \item As described, we require $2^n$ function evaluations classically.  We hope to use a quantum computer to accomplish that work with a single evaluation.
+    \item As described, we require $\Theta(2^n)$ function evaluations classically.  We hope to use a quantum computer to accomplish that work with a single evaluation.
     \item But first we are going to make \alert{one change} to our summation to leverage \textcolor<14->{\RCtwo}{interference} in quantum systems.
 \end{itemize}
     
@@ -107,12 +107,16 @@ Deutsch Problem, single qubit}
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
 \lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
-\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} &  & 
 \end{quantikz}}
 \end{center}
 \only<8>{%
-\BigSkip{}
-This is the phase-kickback trick result.  But how do we compute The \alert{\TensSupProd{\Hadamard}{n}} when its input is something other than \TensSupProd{0}{n}?}
+\begin{itemize}
+\item This is the phase-kickback result.
+\item As drawn, \QState{2} includes only the top $n$ qubits.  
+\item The complete state developed on output of $U_f$ is \TensProd{\QState{2}}{\ColorTwo{\ket{-}}}.
+\item Still to come: how do we compute the \alert{\TensSupProd{\Hadamard}{n}} when its input is not \TensSupProd{0}{n}?
+\end{itemize}}
 }{%
 \only<5-13>{%
 \Vskip{-2.5em}\begin{align*}
@@ -121,14 +125,13 @@ This is the phase-kickback trick result.  But how do we compute The \alert{\Tens
    \visible<6->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
     \visible<7-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n}\ket{w}}}{\ColorTwo{\ket{-}}} \\}}
     \only<8-10>{%
-    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}}{\ColorTwo{\ket{-}}} \\}
-    \visible<9->{\QState{3} &= \left(\TensProd{\TensSupProd{\Hadamard}{n}}{\Identity}\right)(\QState{2}) \\}}
+    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}\\}
+    \visible<9->{\QState{3} &= \TensProd{\Hadamard}{n}(\QState{2}) \\}}
     \visible<10->{%
        \only<11->{\QState{3}} & = \frac{\TensSupProd{\Hadamard}{n}
        (
        \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
-       )}{\ColorOne{\sqrt{2^n}}} \\
-       & \TensOp{} \ColorTwo{\only<10>{\Identity}\ket{-}}
+       )}{\ColorOne{\sqrt{2^n}}}
     }
 \end{align*}
 }%
@@ -317,14 +320,14 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \end{HTable}
 }{%
 \begin{HTable}{011}{v}{3}
-\visible<8->{\TE{000}{0}{+}{000} \\}
-\visible<9->{\TE{001}{1}{-}{001} \\}
-\visible<10->{\TE{010}{1}{-}{010} \\}
-\visible<11->{\TE{011}{0}{+}{011} \\}
-\visible<12->{\TE{000}{0}{+}{100} \\}
-\visible<13->{\TE{001}{1}{-}{101} \\}
-\visible<14->{\TE{010}{1}{-}{110} \\}
-\visible<15->{\TE{011}{0}{+}{111}}
+\visible<16->{\TE{000}{0}{+}{000} \\}
+\visible<17->{\TE{001}{1}{-}{001} \\}
+\visible<18->{\TE{010}{1}{-}{010} \\}
+\visible<19->{\TE{011}{0}{+}{011} \\}
+\visible<20->{\TE{000}{0}{+}{100} \\}
+\visible<21->{\TE{001}{1}{-}{101} \\}
+\visible<22->{\TE{010}{1}{-}{110} \\}
+\visible<23->{\TE{011}{0}{+}{111}}
 \end{HTable}
 }}
 \end{frame}
@@ -345,7 +348,7 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \TE{00}{0}{\alert<6>{+}}{00} \\
 \TE{01}{1}{\alert<7>{-}}{01} \\
 \TE{00}{0}{\alert<8>{+}}{10} \\
-\TE{01}{0}{\alert<9>{-}}{11}
+\TE{01}{1}{\alert<9>{-}}{11}
 \end{HTable}}\end{center}}
 }{%
 {\small
@@ -372,7 +375,7 @@ We knew
 \[
 \Hadamard(\ket{00}) = \frac{1}{2}\DQB{1}{1}{1}{1}
 \]
-and now we see
+and now we see, in another way, that \Hadamard{} is its own inverse:
 \[
 \Hadamard\left(\frac{1}{2}\DQB{1}{1}{1}{1}\right) = \ket{00}
 \]
