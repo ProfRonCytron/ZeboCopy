@@ -107,12 +107,16 @@ Deutsch Problem, single qubit}
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
 \lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
-\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} &  & 
 \end{quantikz}}
 \end{center}
 \only<8>{%
-\BigSkip{}
-This is the phase-kickback trick result.  But how do we compute the \alert{\TensSupProd{\Hadamard}{n}} when its input is something other than \TensSupProd{0}{n}?}
+\begin{itemize}
+\item This is the phase-kickback result.
+\item As drawn, \QState{2} includes only the top $n$ qubits.  
+\item The complete state developed on output of $U_f$ is \TensProd{\QState{2}}{\ColorTwo{\ket{-}}}.
+\item Still to come: how do we compute the \alert{\TensSupProd{\Hadamard}{n}} when its input is not \TensSupProd{0}{n}?
+\end{itemize}}
 }{%
 \only<5-13>{%
 \Vskip{-2.5em}\begin{align*}
@@ -121,14 +125,13 @@ This is the phase-kickback trick result.  But how do we compute the \alert{\Tens
    \visible<6->{ \QState{1} &= \TensSupProd{\Hadamard}{n+1} \QState{0} \\}
     \visible<7-> {& =  \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n}\ket{w}}}{\ColorTwo{\ket{-}}} \\}}
     \only<8-10>{%
-    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\TensProd{\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}}{\ColorTwo{\ket{-}}} \\}
-    \visible<9->{\QState{3} &= \left(\TensProd{\TensSupProd{\Hadamard}{n}}{\Identity}\right)(\QState{2}) \\}}
+    \visible<8->{\QState{2} &= \ColorOne{\RootTwoN{n}}\ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}\\}
+    \visible<9->{\QState{3} &= \TensProd{\Hadamard}{n}(\QState{2}) \\}}
     \visible<10->{%
        \only<11->{\QState{3}} & = \frac{\TensSupProd{\Hadamard}{n}
        (
        \ColorOne{\SumBV{w}{n} \NegF{w}\ket{w}}
-       )}{\ColorOne{\sqrt{2^n}}} \\
-       & \TensOp{} \ColorTwo{\only<10>{\Identity}\ket{-}}
+       )}{\ColorOne{\sqrt{2^n}}}
     }
 \end{align*}
 }%
