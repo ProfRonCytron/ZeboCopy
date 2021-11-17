@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{braket}
+\usepackage{bbm}
 
 
 \title{Problem Set 6}
@@ -19,13 +20,22 @@
 \begin{enumerate}[font=\bfseries]
 
     \item Note: Phase kickback, oracle, Deutsch questions, Deutsch Josza questions
-    \item Analyze bottom qubit in Lecture 21, slide 13. (Will add better explanation)
+    \item Consider the standard Deutsch problem (Lecture 21).
     \begin{enumerate}
-        \item What would measuring the qubit directly in each case yield?
-        \item If the bottom qubit was run through a Hadamard gate, what would measuring the qubit in each case yield?
+        \item Remembering that global phases can be ignored, what is the state of the \emph{bottom} qubit, which originally went unmeasured? Be sure to analyze both the balanced and constant case.
+        \item What would measure this qubit directly yield?
+        \item If the bottom qubit were run through a Hadamard gate, what would measuring it yield?
     \end{enumerate}
     \item Consider the phase kickback trick studied in Lecture 22. Suppose the input for $y = \ket{+}$. Explain why the phase kickback trick no longer works by analysing the circuit in terms of the Deutsch problem as well as more generally.
-    \item D-J problem, k-balanced f analysis
+    \item Consider the Deutsch-Josza problem. In this problem, we considered functions that were constant or balanced. We will now investigate how the D-J problem handles a function that isn't balanced or constant. Define a $k$-balanced function to be a function such that $|\sum_{w\in\{0,1\}^n} \mathbbm{1}{[f(w) = 0]} - \sum_{w\in\{0,1\}^n} \mathbbm{1}{[f(w) = 1]}| = k$ (|num of inputs that map to 0 - num of inputs that map to 1| = k). Should probably divide by some function of n.
+    \begin{enumerate}
+        \item Let's start with an example. Suppose $n = 2$ and $f(\ket{00}) = 0, f(\ket{01}) = 1, f(\ket{10}) = 1, f(\ket{11}) = 1$. Is $f$ $k$-balanced? If so, what is $k$?
+        \item Find $\ket{\psi_2}$ of the D-J problem using this $f$.
+        \item Find $\ket{\psi_3}$ of the D-J problem using this $f$.
+        \item Conclusions?
+        \item Move to general case?
+        \item How many queries classically would it take to identify if $f$ is constant or $k$-balanced? (balanced or $k$-balanced?)
+    \end{enumerate}
     
 \end{enumerate}
 
