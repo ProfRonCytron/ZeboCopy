@@ -22,10 +22,10 @@
 \begin{itemize}[<+->]
     \item There are two sources of inaccuracy in quantum computing:
     \begin{itemize}
-        \item Some algorithms are inherently probabilistic, such as the Elitzur--Vaidman bomb we have studied. While you are likely to get a desired result, it may take effort to overcome the probability of obtaining the wrong answer.  And you may be unlucky to the point where it takes a long time to get the answer.
+        \item Some algorithms are inherently probabilistic, such as the Elitzur--Vaidman bomb we have studied. While you are likely to get a desired result, it may take effort to overcome the probability of obtaining the wrong answer.  And you may be unlucky to the point that it takes a long time to get the answer.
         \item Quantum computing devices are subject to noise and other interference that causes \href{https://en.wikipedia.org/wiki/Quantum_decoherence}{decoherence}.  Results from a system experiencing decoherence are unpredictable and invalid.
     \end{itemize}
-    \item Simulation (emulation) provides results with no artifacts of decoherence, but those are restrictive in the number of quantum bits (\href{https://qiskit.org/documentation/tutorials/simulators/6_extended_stabilizer_tutorial.html}{currently}, 63) that can be accommodated in reasonable time.
+    \item Simulation (emulation) provides results with no artifacts of decoherence, but those are restrictive in the number of quantum bits (\href{https://qiskit.org/documentation/tutorials/simulators/6_extended_stabilizer_tutorial.html}{currently}, 63~qubits) that can be accommodated in reasonable time.
     \item So, \emph{exact quantum polynomial} means that on an ideal quantum device, we obtain the answer exactly, with probability 100\%, in polynomial time.
 \end{itemize}
 \end{frame}
@@ -43,12 +43,13 @@ Best wishes,  Richard.
 
 \begin{frame}{Deutsch--Josza}{Problem statement}
 \begin{itemize}[<+->]
-    \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$.  It takes in a value expressed in $n$ bits and returns \True{} or \False{}.
+    \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$.  It takes in a value expressed in $n$ bits and returns \False{}~($0$) or \True~($1$).
     \item We are \href{https://en.wikipedia.org/wiki/Promise_problem}{promised} that $f(x)$ is one of the following:
     \begin{description}
         \item[constant]  \Forall{x\in \Set{0,1}^n}{f(x) = k}, where $k=0$ or $k=1$.
         \item[balanced]  For exactly half of its inputs, $f(x) = 0$ and for the other half $f(x) = 1$.
     \end{description}
+    \item We assume that the promise holds, but we eventually consider the consequences of breaking this promise.
 \end{itemize}
 \end{frame}
 
@@ -65,7 +66,7 @@ Best wishes,  Richard.
       \item[$0$] implying $f(x)$ is constant
       \item[$1$] implying $f(x)$ is balanced
     \end{description}
-    \item Classically we can require $2^{n-1}+1$ evaluations to determine the nature of $f(x)$.
+    \item Classically it can take $2^{n-1}+1$ evaluations to determine the nature of $f(x)$.
 \end{itemize}
     
 \end{frame}
@@ -127,11 +128,11 @@ Deutsch Problem, single qubit}
         \Hadamard = \TensSupProd{\Hadamard}{1} = \HMatrix{}
     \]
     \item We can then define
-    \[  \TensSupProd{\Hadamard}{n} = \TensProd{\Hadamard}{\TensSupProd{\Hadamard}{n-1}} = \SQBG{\RootTwo}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}
+    \[  \TensSupProd{\Hadamard}{n} = \TensProd{\Hadamard}{\TensSupProd{\Hadamard}{n-1}} = \SQBG{\RootTwo}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{-\TensSupProd{\Hadamard}{n-1}}
     \]
-    \item When $n$ is clear in context, we may drop the superscript, for writing
+    \item When $n$ is clear in context, we may drop the superscript, for example:
     \[
-       \TensSupProd{\Hadamard}{2} \ket{00} \mbox{ as }
+       \TensSupProd{\Hadamard}{2} \ket{00} \mbox{ may be written as }
        \Hadamard \ket{00}
     \]
 \end{itemize}
