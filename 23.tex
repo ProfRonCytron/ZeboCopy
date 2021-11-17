@@ -144,7 +144,7 @@ Deutsch Problem, single qubit}
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
-\lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
+\lstick{\ket{\textcolor<5->{\RCone}{\TensSupProd{0}{n}}}} & \qwbundle{n}\slice{\alert<5>{\QState{0}}} &  \gate{\alert<2>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<6-7>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<8>{\QState{2}}} &\gate{\alert<3-4,8>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<9->{\QState{3}}} & \meter{0/1} \\
 \lstick{\textcolor<5->{\RCtwo}{\QZero{}}} & \gate{\textcolor<5->{\RCtwo}{\PauliX}} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} &  & 
 \end{quantikz}}
 \end{center}
@@ -180,9 +180,9 @@ Deutsch Problem, single qubit}
     \Vskip{-3em}\[ \TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}} = 
     \RootTwoN{n}\SumBV{w}{n} \ket{w} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
     \]
-    \item<2-> So we know the result of these $n$ \Hadamard{} operations.
-    \item<3-> But what about these?  Their input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
-    \item<4-> We develop the solution here but leave the proofs for later.
+    \item<2-> So we know the result of this $n$-way \Hadamard{} operation.
+    \item<3-> But what about this one?  
+    \item<4-> Its input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
 \end{itemize}
 }%
 \only<11-13>{%
