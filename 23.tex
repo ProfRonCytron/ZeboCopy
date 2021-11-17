@@ -52,6 +52,24 @@ Best wishes,  Richard.
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Classical approach}{Takes $\Theta(2^{n})$ evaluations of the function}
+
+\begin{itemize}[<+->]
+    \item The function $f(x)$ accepts an input \AllBits{x}{n}.  Each input is $n$~bits long, and there are $2^n$ such strings in the domain.
+    \item Let's assume $f(x)$ takes $O(1)$ time
+    to evaluate its result for a given input~$x$.
+    \item With $2^{n}$ possible inputs, the function $f(x)$ could conspire to make the first $\frac{2^n}{2}=2^{n-1}$ results the same.  Let's suppose they all evaluate to $0$.
+    \item At that point, a classical approach lacks the necessary information to decide whether $f(x)$ is constant or balanced.
+    \item The next evaluation will either yield
+    \begin{description}
+      \item[$0$] implying $f(x)$ is constant
+      \item[$1$] implying $f(x)$ is balanced
+    \end{description}
+    \item Classically we can require $2^{n-1}+1$ evaluations to determine the nature of $f(x)$.
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}{Sneak preview}{Of the secret sauce}
 \Vskip{-3.5em}\begin{itemize}[<+->]
     \item The function $f(x)$ accepts an input \AllBits{x}{n}.  Each input is $n$~bits long, and \alert<10->{there are $2^n$ such strings} in the domain.
@@ -98,6 +116,25 @@ Deutsch Problem, single qubit}
 \end{itemize}
 }
 
+\end{frame}
+
+\begin{frame}{The $n$-way \href{https://en.wikipedia.org/wiki/Hadamard_transform}{Hadamard transform}}{One \Hadamard{} gate applied to each qubit}
+
+\begin{itemize}[<+->]
+    \item By convention we define $\TensSupProd{\Hadamard}{0}=1$.
+    \item We have seen the single-qubit Hadamard transform \Hadamard{} defined as:
+    \[
+        \Hadamard = \TensSupProd{\Hadamard}{1} = \HMatrix{}
+    \]
+    \item We can then define
+    \[  \TensSupProd{\Hadamard}{n} = \TensProd{\Hadamard}{\TensSupProd{\Hadamard}{n-1}} = \SQBG{\RootTwo}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}
+    \]
+    \item When $n$ is clear in context, we may drop the superscript, for writing
+    \[
+       \TensSupProd{\Hadamard}{2} \ket{00} \mbox{ as }
+       \Hadamard \ket{00}
+    \]
+\end{itemize}
     
 \end{frame}
 
@@ -157,7 +194,7 @@ Deutsch Problem, single qubit}
 }%
 \end{frame}
 
-\begin{frame}{Closer look at \QState{2}}{Case \Forall{x}{f(x)=0}}
+\begin{frame}{Closer look at \QState{2}}{Case $f(x)$ is constant: \Forall{x}{f(x)=0}}
 
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \only<1-12>{\begin{itemize}
@@ -203,7 +240,7 @@ Deutsch Problem, single qubit}
     
 \end{frame}
 
-\begin{frame}{Closer look at \QState{2}}{Case \Forall{x}{f(x)=1}}
+\begin{frame}{Closer look at \QState{2}}{Case $f(x)$ is (the other) constant: \Forall{x}{f(x)=1}}
 
 \TwoColumns{%
 \only<1-9>{%
@@ -218,7 +255,7 @@ Deutsch Problem, single qubit}
 \begin{itemize}
     \item<10-> It takes some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
     \item<11-> When $f(x)$ is balanced, a global phase that switches the sign of each term will have no effect on the measurement outcome.
-    \item<12-> In other words, the function $-f(x)$ is balanced iff $f(x)$ is balanced. 
+    \item<12-> In other words, the function $1-f(x)$ is balanced iff $f(x)$ is balanced. 
     \item<13-> It is helpful to view \ColorThree{\NegF{x}} as determining the sign $\pm 1$ of each \ColorOne{term}.
 \end{itemize}
 }
@@ -244,6 +281,9 @@ Deutsch Problem, single qubit}
 \begin{itemize}
     \item We have seen $\TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}}=\RootTwoN{n}\SumBV{v}{n}\ket{v}$.
     \item How do we compute the $n$-way Hadamard of a basis state \ket{w} of $n$ qubits?
+    \[
+    \TensSupProd{\Hadamard}{n}\ket{w} = \mbox{?}
+    \]
 \end{itemize}
 \end{frame}
 
