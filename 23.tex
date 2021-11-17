@@ -128,13 +128,14 @@ Deutsch Problem, single qubit}
         \Hadamard = \TensSupProd{\Hadamard}{1} = \HMatrix{}
     \]
     \item We can then define
-    \[  \TensSupProd{\Hadamard}{n} = \TensProd{\Hadamard}{\TensSupProd{\Hadamard}{n-1}} = \SQBG{\RootTwo}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{-\TensSupProd{\Hadamard}{n-1}}
+    \Vskip{-1.5em}\[  \TensSupProd{\Hadamard}{n} = \TensProd{\Hadamard}{\TensSupProd{\Hadamard}{n-1}} = \SQBG{\RootTwo}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{\TensSupProd{\Hadamard}{n-1}}{-\TensSupProd{\Hadamard}{n-1}}
     \]
     \item When $n$ is clear in context, we may drop the superscript, for example:
     \[
        \TensSupProd{\Hadamard}{2} \ket{00} \mbox{ may be written as }
        \Hadamard \ket{00}
     \]
+    \item If the input to \TensSupProd{\Hadamard}{n} is not entangled, then analysis can consider each qubit separately.
 \end{itemize}
     
 \end{frame}
@@ -151,9 +152,9 @@ Deutsch Problem, single qubit}
 \only<8>{%
 \begin{itemize}
 \item This is the phase-kickback result.
-\item As drawn, \QState{2} includes only the top $n$ qubits.  
+\item As drawn, \QState{2} includes only the top $n$ qubits, omitting the bottom one.
 \item The complete state developed on output of $U_f$ is \TensProd{\QState{2}}{\ColorTwo{\ket{-}}}.
-\item Still to come: how do we compute the \alert{\TensSupProd{\Hadamard}{n}} when its input is not \TensSupProd{0}{n}?
+\item The bottom qubit, \ColorTwo{\ket{-}}, is tensor factorable from the top $n$~qubits. We drop it from analysis as of \QState{2}.
 \end{itemize}}
 }{%
 \only<5-13>{%
@@ -195,7 +196,7 @@ Deutsch Problem, single qubit}
 }%
 \end{frame}
 
-\begin{frame}{Closer look at \QState{2}}{Case $f(x)$ is constant: \Forall{x}{f(x)=0}}
+\begin{frame}{A closer look at \QState{2}}{Case $f(x)$ is constant: \Forall{x}{f(x)=0}}
 
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \only<1-12>{\begin{itemize}
