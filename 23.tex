@@ -18,14 +18,14 @@
     
 \end{frame}
 
-\begin{frame}{Exact}{What's up with that?}
+\begin{frame}{Exact?}{What's up with that?}
 \begin{itemize}[<+->]
     \item There are two sources of inaccuracy in quantum computing:
     \begin{itemize}
         \item Some algorithms are inherently probabilistic, such as the Elitzur--Vaidman bomb we have studied. While you are likely to get a desired result, it may take effort to overcome the probability of obtaining the wrong answer.  And you may be unlucky to the point that it takes a long time to get the answer.
         \item Quantum computing devices are subject to noise and other interference that causes \href{https://en.wikipedia.org/wiki/Quantum_decoherence}{decoherence}.  Results from a system experiencing decoherence are unpredictable and invalid.
     \end{itemize}
-    \item Simulation (emulation) provides results with no artifacts of decoherence, but those are restrictive in the number of quantum bits (\href{https://qiskit.org/documentation/tutorials/simulators/6_extended_stabilizer_tutorial.html}{currently}, 63~qubits) that can be accommodated in reasonable time.
+    \item Simulation (emulation) provides results with no artifacts of decoherence, but those are limited in the number of quantum bits (\href{https://qiskit.org/documentation/tutorials/simulators/6_extended_stabilizer_tutorial.html}{currently}, 63~qubits) that can be accommodated in reasonable time.
     \item So, \emph{exact quantum polynomial} means that on an ideal quantum device, we obtain the answer exactly, with probability 100\%, in polynomial time.
 \end{itemize}
 \end{frame}
@@ -113,7 +113,7 @@ Deutsch Problem, single qubit}
 \begin{itemize}
     \item<1-> The Deutsch--Josza input for $x$ is now $n$ qubits.
     \item<2-> The input for $y$ is still a single qubit, whose value will be \ket{-} going into $U_f$.
-    \item<3-> We apply an $n$-way Hadamard operation on either side of $U_f$ to the top $n$~qubits~($x$).  This is realized by a single Hadamard gate applied to each qubit for $x$.
+    \item<3-> We apply an $n$-way Hadamard operation on either side of $U_f$ to the top $n$~qubits~($x$).  This is realized by a single Hadamard gate applied to each qubit for the input~$x$.
 \end{itemize}
 }
 
@@ -182,8 +182,8 @@ Deutsch Problem, single qubit}
     \RootTwoN{n}\SumBV{w}{n} \ket{w} = \RootTwoN{n}\DQB{1}{\vdots}{\vdots}{1}
     \]
     \item<2-> So we know the result of this $n$-way \Hadamard{} operation.
-    \item<3-> But what about this one?  
-    \item<4-> Its input is probably not \ket{\TensSupProd{0}{n}}, so we need to analyze what happens there.
+    \item<3-> But what about \alert<3>{this} one?  
+    \item<4-> Its input is probably not \ket{\TensSupProd{0}{n}}, so some deeper analysis is needed.  But first we build up to \QState{2} by analyzing states~\QState{0} and~\QState{1}.
 \end{itemize}
 }%
 \only<11-13>{%
@@ -258,7 +258,7 @@ Deutsch Problem, single qubit}
     \item<10-> It takes some analysis to prove how a balanced $f(x)$ measures after \QState{3}.
     \item<11-> When $f(x)$ is balanced, a global phase that switches the sign of each term will have no effect on the measurement outcome.
     \item<12-> In other words, the function $1-f(x)$ is balanced iff $f(x)$ is balanced. 
-    \item<13-> It is helpful to view \ColorThree{\NegF{x}} as determining the sign $\pm 1$ of each \ColorOne{term}.
+    \item<13-> It is helpful to view \ColorThree{\NegF{x}} as determining the \ColorThree{sign $\pm 1$} of each \ColorOne{term}.
 \end{itemize}
 }
 }{%
@@ -332,6 +332,7 @@ Generally
 \begin{itemize}
     \item<7-> $\Forall{\AllBits{v}{n}}{ \DotP{v}{\ColorTwo{0^n}}=0}$
     \item<8-> $\Forall{\AllBits{v}{n}}{ \DotP{v}{\ColorThree{1^n}} = \mbox{\href{https://en.wikipedia.org/wiki/Parity_function}{parity}}(v)}$
+    \item<9-> Is the number of \alert{common \Quote{1}s} even or odd?
 \end{itemize}
 }}
 \end{frame}
@@ -345,31 +346,31 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 \only<1-6>{%
 \begin{itemize}
 \item<1-> We prove $P(n)$ later but accept it as true for now.
-\item<2-> \TensSupProd{\Hadamard}{n}\ket{\alert{\TensSupProd{0}{n}}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\ColorTwo{\DotP{\ColorThree{v}}{w}=0}}}.
+\item<2-> \TensSupProd{\Hadamard}{n}\ket{\alert{\TensSupProd{0}{n}}} provides the correct result, because \Implies{w=0^n}{\Forall{v}{\ColorTwo{\DotP{\ColorThree{v}}{w}=0}}}.  \visible<5->{The weight present on each~\ColorThree{\ket{v}} is~$1$.}
 \item<6-> We can use this formula to compute the result for any basis state \ket{w}, by computing $w$'s \ColorTwo{dot product} with every basis vector \ColorThree{$v$}.
 \end{itemize}}%
 \only<7->{%
 \TwoColumns{%
-\begin{HTable}{101}{v}{3}
+\begin{HTable}{\alert<12-15>{1}0\alert<9,11,13,15>{1}}{v}{3}
 \visible<8->{\TE{000}{0}{+}{000} \\}
-\visible<9->{\TE{001}{1}{-}{001} \\}
+\visible<9->{\TE{00\alert<9>{1}}{1}{-}{001} \\}
 \visible<10->{\TE{000}{0}{+}{010} \\}
-\visible<11->{\TE{001}{1}{-}{011} \\}
-\visible<12->{\TE{100}{1}{-}{100} \\}
-\visible<13->{\TE{101}{0}{+}{101} \\}
-\visible<14->{\TE{100}{1}{-}{110} \\}
-\visible<15->{\TE{101}{0}{+}{111}}
+\visible<11->{\TE{00\alert<11>{1}}{1}{-}{011} \\}
+\visible<12->{\TE{\alert<12>{1}00}{1}{-}{100} \\}
+\visible<13->{\TE{\alert<13>{1}0\alert<13>{1}}{0}{+}{101} \\}
+\visible<14->{\TE{\alert<14>{1}00}{1}{-}{110} \\}
+\visible<15->{\TE{\alert<15>{1}0\alert<15>{1}}{0}{+}{111}}
 \end{HTable}
 }{%
-\begin{HTable}{011}{v}{3}
+\begin{HTable}{0\alert<18,19,22,23>{1}\alert<17,19,21,23>{1}}{v}{3}
 \visible<16->{\TE{000}{0}{+}{000} \\}
-\visible<17->{\TE{001}{1}{-}{001} \\}
-\visible<18->{\TE{010}{1}{-}{010} \\}
-\visible<19->{\TE{011}{0}{+}{011} \\}
+\visible<17->{\TE{00\alert<17>{1}}{1}{-}{001} \\}
+\visible<18->{\TE{0\alert<18>{1}0}{1}{-}{010} \\}
+\visible<19->{\TE{0\alert<19>{11}}{0}{+}{011} \\}
 \visible<20->{\TE{000}{0}{+}{100} \\}
-\visible<21->{\TE{001}{1}{-}{101} \\}
-\visible<22->{\TE{010}{1}{-}{110} \\}
-\visible<23->{\TE{011}{0}{+}{111}}
+\visible<21->{\TE{00\alert<21>{1}}{1}{-}{101} \\}
+\visible<22->{\TE{0\alert<22>{1}0}{1}{-}{110} \\}
+\visible<23->{\TE{0\alert<23>{11}}{0}{+}{111}}
 \end{HTable}
 }}
 \end{frame}
@@ -410,7 +411,7 @@ P(n):  \TensSupProd{\Hadamard}{n}\ket{\alt<3-4>{\alert{\TensSupProd{0}{n}}}{w}}
 }
 \only<5-9>{%
 \BigSkip{}
-\visible<5->{Notice what happens if we sum these tables.} \visible<6->{Constructive interference on term~\ket{00}.}  \visible<7->{Destructive interference on the the other three terms.}}}
+\visible<5->{Notice what happens if we sum these tables.} \visible<6->{\alert<6>{Constructive} interference on term~\ket{00}.}  \visible<7->{\alert<7-9>{Destructive} interference on the the other three terms.}}}
 \only<12->{%
 
 We knew 
@@ -464,7 +465,7 @@ P(n):  \ColorThree{\TensSupProd{\Hadamard}{n}\ket{w}
        \right)} \visible<3->{= \ColorOne{\SumBV{w}{n} \NegF{w}} \ColorThree{\TensSupProd{\Hadamard}{n}} \ColorOne{\ket{w}} \\}
        \visible<4,5->{%
        \ColorThree{\sqrt{2^n}}\ColorOne{\sqrt{2^n}} \QState{3} &= \ColorOne{\SumBV{w}{n}\NegF{w}}
-       \ColorThree{\SumBV{v}{n} \NegOneExp{\DotP{v}{\ColorOne{w}}} \ket{v}} \\
+       \ColorThree{\SumBV{v}{n} \NegOneExp{\DotP{v}{\ColorOne{w}}} \ket{v}}\ \mbox{substitute \ColorThree{\TensSupProd{\Hadamard}{n}}} \\
        }
        \only<6->{%
     \visible<6,7->{   & = 
@@ -472,7 +473,7 @@ P(n):  \ColorThree{\TensSupProd{\Hadamard}{n}\ket{w}
        \textcolor<6>{white}{\fbox{\ColorOne{\SumBV{w}{n}}
        \ColorOne{\NegF{w}}
        \ColorThree{\NegOneExp{\DotP{v}{\ColorOne{w}}}}}} \ \ColorThree{\ket{v}}
-        \\}
+        \ \mbox{move \ColorThree{$\Sigma$} left}\\}
      \visible<8,9->{  &= \alert<10>{\fbox{\ColorOne{\SumBV{w}{n}\NegF{w}} \only<8>{\ColorThree{\NegOneExp{\DotP{0^n}{\ColorOne{w}}}}}}} \ColorThree{\ket{\TensSupProd{0}{n}}}
      + \fbox{\fontsize{3.5}{4}\selectfont\ColorOne{\SumBV{w}{n}}
        \ColorOne{\NegF{w}}
@@ -523,11 +524,25 @@ There is \emph{no weight} on the \ColorThree{\ket{00.0}} term so the weight must
 \section*{Proofs}
 
 
-\begin{frame}{Proof}{about dot products}
+\begin{frame}{Theorem}{Equivalence of \DotP{v}{w} definitions}
     
+
+\begin{theorem}
+\TwoColumns{%
+Given bit strings $v$ and $w$, each of length~$n$:
+\begin{align*}
+    v &= v_{1} v_{2} \ldots v_{n} \\
+    w &= w_{1} w_{2} \ldots w_{n}
+\end{align*}
+}{%
+Define P(n):  \[\oplus_{i=1}^{n}\ {v_i}{w_i} = \sum_{i=1}^{n}\ v_{i}{w_i}\mbox{ (mod 2)}\]
+}
+\[\Forall{n\geq 0}{P(n)}\]
+\end{theorem}
 \end{frame}
 
-\begin{frame}{Proof}{Hadamard on non-zero states}
+\begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
+
     
 \end{frame}
 
