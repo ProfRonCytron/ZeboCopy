@@ -52,10 +52,22 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \vrule width 0pt depth 1em
 \Reason{2}{Induction hypothesis}
 \Reason{3}{Substitution}
-\Vskip{-2em}\begin{align*}
-    \TensSupProd{\Hadamard}{k+1} \ket{\W}\QState{} &= \TensProd{\TensSupProd{\Hadamard}{k}\ket{\W}}{\Hadamard\QState{}} \\
-    \alert{P(k)\longrightarrow} \sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{\W} &= \SumBV{\V}{k} \NegOneExp{\DotP{\V}{\W}} \ket{\V} \\
-    \sqrt{2^n}\ \TensProd{\TensSupProd{\Hadamard}{k}\ket{\W}}{\Hadamard\QState{}} &= \TensProd{\SumBV{\V}{k} \NegOneExp{\DotP{\V}{\W}} \ket{\V}}{\Hadamard\QState{}}
+\Reason{4-7}{\Implies{\QState{} = \QZero{}}{\ColorTwo{\Hadamard\QState{}}=\ColorThree{\QPlus{}}}}
+\Reason{8-11}{\Implies{\QState{} = \QOne{}}{\Hadamard\QState{}=\QMinus{}}}
+\Vskip{-1em}\begin{align*}
+\only<1-3>{%
+    P(k)\longrightarrow \visible<2->{\ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}}
+    \only<3-4>{%
+    \visible<3->{\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}}
+\only<4->{%
+    \ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
+\only<5->{%
+    &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\
+    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{0}}} \ket{v}}\ColorThree{\ket{0}} 
+    \\ & +
+    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{0}}} \ket{v}}\ColorThree{\ket{1}} \\
+   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}
+    }
 \end{align*}
     
 \end{frame}
