@@ -597,28 +597,6 @@ We have shown \Forall{n\geq 0}{P(n)}
 
 \subsection*{Hadamard}
 
-{
-\def\V{\ColorTwo{\ensuremath{v}}}
-\def\W{\ColorOne{\ensuremath{w}}}
-\begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
 
-\Vskip{-3em}\begin{theorem}
-Given a basis state $\ket{\W}, \AllBits{\W}{n}$
-\[
-\TensSupProd{\Hadamard}{n}\ket{\W} = \RootTwoN{n}\SumBV{\V}{n} \NegOneExp{\DotP{\V}{\W}} \ket{\V}
-\]
-\end{theorem}
-\begin{itemize}[<+->]
-    \item Given any basis state \W, its Hadamard transform is the uniform superposition of all basis states of $n$~qubits.
-    \item The coefficent of each state~\V{} is $\pm 1$, determined by its dot product with~\W.
-    \item If we change any bit of \W, then at least one term in the sum will flip its coefficient.  The signature of $\pm 1$ on each term \ket{\V} is thus unique for a given~\W{}. This is true also because \TensSupProd{\Hadamard}{n} is its own inverse.
-    \item Our proof proceeds by induction on $n$.
-\end{itemize}
-    
-\end{frame}
-
-\begin{frame}{Proof}{Base case}
-\end{frame}
-}
 
     

@@ -1,0 +1,62 @@
+\SetTitle{23}{The Deutsch--Josza problem}{Demonstrates asymptotic quantum advantage}{23}
+
+{
+\def\V{\ColorTwo{\ensuremath{v}}}
+\def\W{\ColorOne{\ensuremath{w}}}
+\def\Reason#1#2{\only<#1>{\textit{#2}}}
+\begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
+
+\Vskip{-3em}\begin{theorem}
+Given a basis state $\ket{\W}, \AllBits{\W}{n}$
+\[
+P(n): \TensSupProd{\Hadamard}{n}\ket{\W} = \RootTwoN{n}\SumBV{\V}{n} \NegOneExp{\DotP{\V}{\W}} \ket{\V}
+\]
+\end{theorem}
+\begin{itemize}[<+->]
+    \item Given any basis state \W, its Hadamard transform is the uniform superposition of all basis states of $n$~qubits.
+    \item The coefficent of each state~\V{} is $\pm 1$, determined by its dot product with~\W.
+    \item If we change any bit of \W, then at least one term in the sum will flip its coefficient.  The signature of $\pm 1$ on each term \ket{\V} is thus unique for a given~\W{}. This is true also because \TensSupProd{\Hadamard}{n} is its own inverse.
+    \item Our proof proceeds by induction on $n$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Proof}{Base case}
+
+When $n=0$
+\begin{align*}
+    \TensSupProd{\Hadamard}{0}\ket{\W} &= \RootTwoN{0}\SumBV{\V}{0} \NegOneExp{\DotP{\V}{\W}} \ket{\V} \\[1em]
+    &= \frac{\NegOneExp{{0}}}{1} \\[1em]
+    &= 1
+\end{align*}
+which is the \href{https://en.wikipedia.org/wiki/Hadamard_transform}{definition} of \TensSupProd{\Hadamard}{0}.
+\end{frame}
+
+\begin{frame}{Proof}{Induction step}
+Sketch to show \Implies{P(k)}{P(k+1)}:
+\begin{itemize}
+    \item We will assume $P(k)$, which tells us how to compute \TensSupProd{\Hadamard}{k}\ket{\W} when \W{} is $k$~qubits long.
+    \item We then consider the tensor product of \ket{\W} with a single-qubit state~\QState{}.
+    \item Because we deal only with basis states, we must have exactly one of the following:
+    \begin{itemize}
+        \item $\QState{}=\QZero{}$
+        \item $\QState{}=\QOne{}$
+    \end{itemize}
+    \item By cases we show that the formula correctly computes \TensSupProd{\Hadamard}{k+1}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Induction step}
+
+\vrule width 0pt depth 1em
+\Reason{2}{Induction hypothesis}
+\Reason{3}{Substitution}
+\Vskip{-2em}\begin{align*}
+    \TensSupProd{\Hadamard}{k+1} \ket{\W}\QState{} &= \TensProd{\TensSupProd{\Hadamard}{k}\ket{\W}}{\Hadamard\QState{}} \\
+    \alert{P(k)\longrightarrow} \sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{\W} &= \SumBV{\V}{k} \NegOneExp{\DotP{\V}{\W}} \ket{\V} \\
+    \sqrt{2^n}\ \TensProd{\TensSupProd{\Hadamard}{k}\ket{\W}}{\Hadamard\QState{}} &= \TensProd{\SumBV{\V}{k} \NegOneExp{\DotP{\V}{\W}} \ket{\V}}{\Hadamard\QState{}}
+\end{align*}
+    
+\end{frame}
+}
