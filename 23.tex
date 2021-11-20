@@ -1,5 +1,7 @@
 \SetTitle{23}{The Deutsch--Josza problem}{Demonstrates asymptotic quantum advantage}{23}
 
+\section*{Overview}
+
 \begin{frame}{Overview}{What will we study here?}
 
 \begin{itemize}[<+->]
@@ -43,6 +45,8 @@ I hope that gives enough of an indication, and I wish you and your students all 
 Best wishes,  Richard.
 \end{frame}
 
+\section*{Problem}
+
 \begin{frame}{Deutsch--Josza}{Problem statement}
 \begin{itemize}[<+->]
     \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$.  It takes in a value expressed in $n$ bits and returns \False{}~($0$) or \True~($1$).
@@ -54,6 +58,8 @@ Best wishes,  Richard.
     \item We assume that the promise holds, but we eventually consider the consequences of breaking this promise.
 \end{itemize}
 \end{frame}
+
+\subsection*{Classical solution}
 
 \begin{frame}{Classical approach}{Takes $\Theta(2^{n})$ evaluations of the function}
 
@@ -89,6 +95,8 @@ Best wishes,  Richard.
     
 \end{frame}
 
+\subsection*{Quantum solution}
+
 \begin{frame}{Deutsch--Josza solution}{Compared to the Deutsch circuit}
 
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
@@ -121,6 +129,8 @@ Deutsch Problem, single qubit}
 
 \end{frame}
 
+\section*{Hadamard, n-way}
+
 \begin{frame}{The $n$-way \href{https://en.wikipedia.org/wiki/Hadamard_transform}{Hadamard transform}}{One \Hadamard{} gate applied to each qubit}
 
 \begin{itemize}[<+->]
@@ -141,6 +151,8 @@ Deutsch Problem, single qubit}
 \end{itemize}
     
 \end{frame}
+
+\section*{Analysis}
 
 \begin{frame}{Deutsch--Josza Solution}{Up to \QState{2}, prior to the final \TensSupProd{\Hadamard}{n}}
 
@@ -290,6 +302,8 @@ Deutsch Problem, single qubit}
     \]
 \end{itemize}
 \end{frame}
+
+\section*{Dot product}
 
 \begin{frame}{Defining the operation \DotP{v}{w}}{A Boolean dot (inner) product of two bit vectors}
 
@@ -488,6 +502,8 @@ P(n):  \ColorThree{\TensSupProd{\Hadamard}{n}\ket{w}
 \end{align*}
 \end{frame}
 
+\section*{Measurement}
+
 \begin{frame}{Analysis of the \ket{\TensSupProd{0}{n}} term}{Under the three conditions of interest}
 \Vskip{-3em}\[
 \ColorOne{\SumBV{w}{n}\NegF{w}} \ColorThree{\ket{00...0}}
@@ -525,6 +541,7 @@ There is \emph{no weight} on the \ColorThree{\ket{00.0}} term so the weight must
 
 \section*{Proofs}
 
+\subsection*{Dot product}
 
 \begin{frame}{Theorem}{Equivalence of \DotP{v}{w} definitions}
     
@@ -578,9 +595,30 @@ We have shown \Forall{n\geq 0}{P(n)}
 \QED{}}
 \end{frame}
 
+\subsection*{Hadamard}
+
+{
+\def\V{\ColorTwo{\ensuremath{v}}}
+\def\W{\ColorOne{\ensuremath{w}}}
 \begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
 
+\Vskip{-3em}\begin{theorem}
+Given a basis state $\ket{\W}, \AllBits{\W}{n}$
+\[
+\TensSupProd{\Hadamard}{n}\ket{\W} = \RootTwoN{n}\SumBV{\V}{n} \NegOneExp{\DotP{\V}{\W}} \ket{\V}
+\]
+\end{theorem}
+\begin{itemize}[<+->]
+    \item Given any basis state \W, its Hadamard transform is the uniform superposition of all basis states of $n$~qubits.
+    \item The coefficent of each state~\V{} is $\pm 1$, determined by its dot product with~\W.
+    \item If we change any bit of \W, then at least one term in the sum will flip its coefficient.  The signature of $\pm 1$ on each term \ket{\V} is thus unique for a given~\W{}. This is true also because \TensSupProd{\Hadamard}{n} is its own inverse.
+    \item Our proof proceeds by induction on $n$.
+\end{itemize}
     
 \end{frame}
+
+\begin{frame}{Proof}{Base case}
+\end{frame}
+}
 
     
