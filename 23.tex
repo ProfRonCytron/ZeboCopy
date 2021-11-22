@@ -1,4 +1,4 @@
-\SetTitle{23}{The Deutsch--Josza problem}{Demonstrates asymptotic quantum advantage}{23}
+\SetTitle{23}{The Deutsch--Jozsa problem}{Demonstrates asymptotic quantum advantage}{23}
 
 \section*{Overview}
 
@@ -6,7 +6,7 @@
 
 \begin{itemize}[<+->]
     \item This problem and its solution are due to
-    \href{https://en.wikipedia.org/wiki/David_Deutsch}{David Deutsch} and \href{https://en.wikipedia.org/wiki/Richard_Jozsa}{Richard Josza}.
+    \href{https://en.wikipedia.org/wiki/David_Deutsch}{David Deutsch} and \href{https://en.wikipedia.org/wiki/Richard_Jozsa}{Richard Jozsa}.
     \item This problem is similar to Deutsch's problem, which we have studied.
     \item But here, $f(x)$ takes an input of $n$~bits.
     \item We care, as before, whether $f(x)$ is \emph{constant} or \emph{balanced}.
@@ -32,7 +32,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{On the pronunciation of Josza}{From the author himself}
+\begin{frame}{On the pronunciation of Jozsa}{From the author himself}
 
 Thanks for your interesting question!  I generally pronounce my surname as~\Quote{joe--zuh}.
 \SmallSkip{}
@@ -47,7 +47,7 @@ Best wishes,  Richard.
 
 \section*{Problem}
 
-\begin{frame}{Deutsch--Josza}{Problem statement}
+\begin{frame}{Deutsch--Jozsa}{Problem statement}
 \begin{itemize}[<+->]
     \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$.  It takes in a value expressed in $n$ bits and returns \False{}~($0$) or \True~($1$).
     \item We are \href{https://en.wikipedia.org/wiki/Promise_problem}{promised} that $f(x)$ is one of the following:
@@ -97,7 +97,7 @@ Best wishes,  Richard.
 
 \subsection*{Quantum solution}
 
-\begin{frame}{Deutsch--Josza solution}{Compared to the Deutsch circuit}
+\begin{frame}{Deutsch--Jozsa solution}{Compared to the Deutsch circuit}
 
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \begin{center}
@@ -105,7 +105,7 @@ Best wishes,  Richard.
 \lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}}\slice{\QState{0}} &  \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{3}} & \meter{} \\
 \lstick{\alert<2>{\QZero{}}} & \gate{\alert<2>{\PauliX}} &   \gate{\alert<2>{\Hadamard}}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
 \end{quantikz}} \only<1-3>{\\[1em]
-Deutsch--Josza Problem, $n$ qubits}
+Deutsch--Jozsa Problem, $n$ qubits}
 \end{center}
 }{%
 \only<1-3>{%
@@ -121,7 +121,7 @@ Deutsch Problem, single qubit}
 \only<1-3>{%
 \BigSkip{}
 \begin{itemize}
-    \item<1-> The Deutsch--Josza input for $x$ is now $n$ qubits.
+    \item<1-> The Deutsch--Jozsa input for $x$ is now $n$ qubits.
     \item<2-> The input for $y$ is still a single qubit, whose value will be \ket{-} going into $U_f$.
     \item<3-> We apply an $n$-way Hadamard operation on either side of $U_f$ to the top $n$~qubits~($x$).  This is realized by a single Hadamard gate applied to each qubit for the input~$x$.
 \end{itemize}
@@ -154,7 +154,7 @@ Deutsch Problem, single qubit}
 
 \section*{Analysis}
 
-\begin{frame}{Deutsch--Josza Solution}{Up to \QState{2}, prior to the final \TensSupProd{\Hadamard}{n}}
+\begin{frame}{Deutsch--Jozsa Solution}{Up to \QState{2}, prior to the final \TensSupProd{\Hadamard}{n}}
 
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
@@ -454,7 +454,7 @@ and now we see, in another way, that \Hadamard{} is its own inverse:
     
 \end{frame}
 
-\begin{frame}{Deutsch--Josza Solution}{After \QState{2}}
+\begin{frame}{Deutsch--Jozsa Solution}{After \QState{2}}
 \only<1-4>{%
 \Vskip{-4em}\TwoUnequalColumns{0.51\textwidth}{0.49\textwidth}{%
 \begin{center}
@@ -523,7 +523,7 @@ There is \emph{no weight} on the \ColorThree{\ket{00.0}} term so the weight must
     
 \end{frame}
 
-\begin{frame}{Deutsch--Josza}{Putting it all together}
+\begin{frame}{Deutsch--Jozsa}{Putting it all together}
 
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
