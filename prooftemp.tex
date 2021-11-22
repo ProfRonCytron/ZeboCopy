@@ -1,14 +1,30 @@
+
 \SetTitle{23}{The Deutsch--Jozsa problem}{Demonstrates asymptotic quantum advantage}{23}
 
+\tracingmacros=1
 \begin{frame}{test}
 
-\begin{ScrollingProof}
-\Next{\Three}{hi \alert<\Curr>{there}}
-\Next{\Two}{and now}
-\Next{\One}{for something different}
+\begin{ScrollingProof}{1}{5}
+\Next{\Two}{a hi \alert<\Curr>{there}}
+\Next{\Two}{b and now}
+\Next{\Two}{for \Memo{something} different}
+c hi how are you
 \end{ScrollingProof}
+
+\begin{ScrollingProof}{6}{11}
+\Next{\Two}{a hi \alert<\Curr>{there}}
+\Next{\Two}{b and now}
+\Next{\Two}{for \Memo{something} different}
+c hi how are you
+\end{ScrollingProof}
+
+
+
+
+
     
 \end{frame}
+\tracingmacros=0
 
 {
 \def\V{\ColorTwo{\ensuremath{v}}}
@@ -56,6 +72,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \end{itemize}
 
 \end{frame}
+
 
 \begin{frame}{Induction step}
 

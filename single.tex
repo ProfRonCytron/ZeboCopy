@@ -724,8 +724,9 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \newcounter{ScrollEThree}
 %%
 %% start
+%% end
 %%
-\newenvironment{ScrollingProof}[1][1]{%
+\newenvironment{ScrollingProof}[2]{%
    \setcounter{ScrollCounter}{#1}%
    \setcounter{ScrollEOne}{#1}%
    \setcounter{ScrollETwo}{#1}%
@@ -736,15 +737,19 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
    \def\One{\value{ScrollEOne}}%
    \def\Two{\value{ScrollETwo}}%
    \def\Three{\value{ScrollEThree}}%
+   \def\Memo##1{\gdef\RCScrollMemoText{##1}##1}
+   \def\Recall{\RCScrollMemoText}
    \def\Next##1##2{%
-       \only<\value{ScrollCounter}-##1>{##2}%
+       \visible<\value{ScrollCounter}-##1>{##2}%
        \def\Last{##2}%
     \stepcounter{ScrollCounter}%
     \stepcounter{ScrollEOne}%
     \stepcounter{ScrollETwo}%
     \stepcounter{ScrollEThree}%
     }%
+    \only<#1-#2>\bgroup%
 }{%
+    \egroup%
 }
 
 
