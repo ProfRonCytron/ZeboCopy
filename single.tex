@@ -727,10 +727,12 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %%
 \newenvironment{ScrollingProof}[1][1]{%
    \setcounter{ScrollCounter}{#1}%
-   \setcounter{ScrollEOne}{#1}
-   \setcounter{ScrollETwo}{#1}\stepcounter{ScrollETwo}
-   \setcounter{ScrollEThree}{#1}\stepcounter{ScrollEThree}\stepcounter{ScrollEThree}
-   \def\Curr{\value{ScrollCounter}}
+   \setcounter{ScrollEOne}{#1}%
+   \setcounter{ScrollETwo}{#1}%
+      \stepcounter{ScrollETwo}%
+   \setcounter{ScrollEThree}{#1}%
+      \stepcounter{ScrollEThree}\stepcounter{ScrollEThree}%
+   \def\Curr{\value{ScrollCounter}}%
    \def\One{\value{ScrollEOne}}%
    \def\Two{\value{ScrollETwo}}%
    \def\Three{\value{ScrollEThree}}%
