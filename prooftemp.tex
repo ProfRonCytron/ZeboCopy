@@ -1,30 +1,23 @@
 
 \SetTitle{23}{The Deutsch--Jozsa problem}{Demonstrates asymptotic quantum advantage}{23}
 
-\tracingmacros=1
+
 \begin{frame}{test}
 
-\begin{ScrollingProof}{1}{5}
-\Next{\Two}{a hi \alert<\Curr>{there}}
-\Next{\Two}{b and now}
-\Next{\Two}{for \Memo{something} different}
-c hi how are you
+
+\begin{ScrollingProof}
+\Next{\Two}{first}%
+\Next{\Two}{second}
+\Last{done}
 \end{ScrollingProof}
 
-\begin{ScrollingProof}{6}{11}
-\Next{\Two}{a hi \alert<\Curr>{there}}
-\Next{\Two}{b and now}
-\Next{\Two}{for \Memo{something} different}
-c hi how are you
+\begin{ScrollingProof}[5]
+\Next{\One}{third}
 \end{ScrollingProof}
-
-
-
 
 
     
 \end{frame}
-\tracingmacros=0
 
 {
 \def\V{\ColorTwo{\ensuremath{v}}}
@@ -73,8 +66,41 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \end{frame}
 
-
 \begin{frame}{Induction step}
+
+\vrule width 0pt depth 1em
+\Reason{2}{Induction hypothesis}
+\Reason{3}{Substitution}
+\Reason{4-7}{\Implies{\QState{} = \QZero{}}{\ColorTwo{\Hadamard\QState{}}=\ColorThree{\QPlus{}}}}
+\Reason{8-10}{\Implies{\QState{} = \QOne{}}{\Hadamard\QState{}=\QMinus{}}}
+
+\ScrollProof{1}{4}{%
+   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
+    \Next{\Three}{%
+    \ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
+    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
+    \Last{\CarryOne}
+}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\CarryOne}
+\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\}
+\Last{\CarryTwo}
+}
+\ScrollProof{8}{10}{%
+\Next{\Three}{\CarryTwo}
+\Next{\Two}{%
+    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{0}}} \ket{v}}\ColorThree{\ket{0}} 
+    \\ & +
+    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{0}}} \ket{v}}\ColorThree{\ket{1}} \\}
+\Next{\One}{%
+   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}}
+}
+
+    
+\end{frame}
+
+
+\begin{frame}{Old Induction step}
 
 \vrule width 0pt depth 1em
 \Reason{2}{Induction hypothesis}

@@ -719,38 +719,50 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }
 
 \newcounter{ScrollCounter}
+\newcounter{ScrollCounterEnd}
 \newcounter{ScrollEOne}
 \newcounter{ScrollETwo}
 \newcounter{ScrollEThree}
+\newcounter{ScrollEFour}
 %%
 %% start
-%% end
 %%
-\newenvironment{ScrollingProof}[2]{%
+\newenvironment{ScrollingProof}[1][1]{%
    \setcounter{ScrollCounter}{#1}%
    \setcounter{ScrollEOne}{#1}%
    \setcounter{ScrollETwo}{#1}%
       \stepcounter{ScrollETwo}%
    \setcounter{ScrollEThree}{#1}%
       \stepcounter{ScrollEThree}\stepcounter{ScrollEThree}%
+   \setcounter{ScrollEFour}{#1}%
+      \stepcounter{ScrollEFour}\stepcounter{ScrollEFour}\stepcounter{ScrollEFour}
    \def\Curr{\value{ScrollCounter}}%
    \def\One{\value{ScrollEOne}}%
    \def\Two{\value{ScrollETwo}}%
    \def\Three{\value{ScrollEThree}}%
-   \def\Memo##1{\gdef\RCScrollMemoText{##1}##1}
-   \def\Recall{\RCScrollMemoText}
+   \def\Four{\value{ScrollEFour}}%
+   %\def\Memo##1{\gdef\RCScrollMemoText{##1}##1}
+   %\def\Recall{\RCScrollMemoText}
    \def\Next##1##2{%
        \visible<\value{ScrollCounter}-##1>{##2}%
-       \def\Last{##2}%
+       %\def\Last{##2}%
     \stepcounter{ScrollCounter}%
     \stepcounter{ScrollEOne}%
     \stepcounter{ScrollETwo}%
     \stepcounter{ScrollEThree}%
     }%
-    \only<#1-#2>\bgroup%
+    \def\Last##1{%
+        \gdef\ScrollingLastText{##1}%
+        \Next{\Two}{\visible<\value{ScrollETwo}>{\alert{\ensuremath{\big\Uparrow}}\ }##1}}%
 }{%
-    \egroup%
 }
+\long\def\ScrollProof#1#2#3{%
+\only<#1-#2>{%
+\begin{ScrollingProof}[#1]
+\begin{align*}
+#3
+\end{align*}
+\end{ScrollingProof}}}
 
 
 
