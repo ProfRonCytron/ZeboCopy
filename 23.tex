@@ -597,6 +597,143 @@ We have shown \Forall{n\geq 0}{P(n)}
 
 \subsection*{Hadamard}
 
+{
+\def\V{\ColorTwo{\ensuremath{v}}}
+\def\W{\ColorOne{\ensuremath{w}}}
+\def\Reason#1#2{\only<#1>{\textit{#2}}}
+\begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
 
+\Vskip{-3em}\begin{theorem}
+Given a basis state $\ket{\W}, \AllBits{\W}{n}$
+\[
+P(n): \TensSupProd{\Hadamard}{n}\ket{\W} = \RootTwoN{n}\SumBV{\V}{n} \NegOneExp{\DotP{\V}{\W}} \ket{\V}
+\]
+\end{theorem}
+\begin{itemize}[<+->]
+    \item Given any basis state \W, its Hadamard transform is the uniform superposition of all basis states of $n$~qubits.
+    \item The coefficent of each state~\V{} is $\pm 1$, determined by its dot product with~\W.
+    \item If we change any bit of \W, then at least one term in the sum will flip its coefficient.  The signature of $\pm 1$ on each term \ket{\V} is thus unique for a given~\W{}. This is true also because \TensSupProd{\Hadamard}{n} is its own inverse.
+    \item Our proof proceeds by induction on $n$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Proof}{Base case}
+
+When $n=0$
+\begin{align*}
+    \TensSupProd{\Hadamard}{0}\ket{\W} &= \RootTwoN{0}\SumBV{\V}{0} \NegOneExp{\DotP{\V}{\W}} \ket{\V} \\[1em]
+    &= \frac{\NegOneExp{{0}}}{1} \\[1em]
+    &= 1
+\end{align*}
+which is the \href{https://en.wikipedia.org/wiki/Hadamard_transform}{definition} of \TensSupProd{\Hadamard}{0}.
+\end{frame}
+
+\begin{frame}{Proof}{Induction step}
+Sketch to show \Implies{P(k)}{P(k+1)}:
+\begin{itemize}
+    \item We will assume $P(k)$, which tells us how to compute \TensSupProd{\Hadamard}{k}\ket{\W} when \W{} is $k$~qubits long.
+    \item We then consider the tensor product of \ket{\W} with a single-qubit state~\QState{}.
+    \item Because we deal only with basis states, we must have exactly one of the following:
+    \begin{itemize}
+        \item $\QState{}=\QZero{}$
+        \item $\QState{}=\QOne{}$
+    \end{itemize}
+    \item By cases we show that the formula correctly computes \TensSupProd{\Hadamard}{k+1}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Induction step, $\QState{}=\QZero{}$}
+
+\vrule width 0pt depth 1em
+\Reason{1}{Induction hypothesis}
+\Reason{2}{Include one more qubit, case $\QState{}=\QZero{}$}
+\Reason{3}{Substitution of $\Hadamard(\QZero{})=\QPlus{}$}
+\Reason{4}{Scroll up}
+\Reason{6}{Introduce coefficients with value $1$}
+\Reason{7}{Scroll up}
+\Reason{9}{Apply tensor product}
+\Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QZero{}$}
+
+\ScrollProof{1}{4}{%
+   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
+    \Next{\Three}{%
+    \ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
+    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
+    \Last{\CarryOne}
+}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\CarryOne}
+\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\}
+\Last{\CarryTwo}
+}
+\ScrollProof{8}{10}{%
+\Next{\Three}{\CarryTwo}
+\Next{\Two}{%
+    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{0}}} \ket{v}}\ColorThree{\ket{0}} 
+    \\ & +
+    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{0}}} \ket{v}}\ColorThree{\ket{1}} \\}
+\Next{\One}{%
+   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}}
+}
+
+    
+\end{frame}
+
+\begin{frame}{Induction step, $\QState{}=\QOne{}$}
+
+\vrule width 0pt depth 1em
+\Reason{1}{Induction hypothesis}
+\Reason{2}{Include one more qubit, case $\QState{}=\QOne{}$}
+\Reason{3}{Substitution of $\Hadamard(\QOne{})=\QMinus{}$}
+\Reason{4}{Scroll up}
+\Reason{6}{Introduce coefficients with value $1$}
+\Reason{7}{Scroll up}
+\Reason{9}{Apply tensor product}
+\Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QOne{}$}
+
+\ScrollProof{1}{4}{%
+   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
+    \Next{\Three}{%
+    \ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
+    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}-\QOne{})}} \\}
+    \Last{\CarryOne}
+}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\CarryOne}
+\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{1}}\QZero{}+\NegOneExp{\DotP{1}{1}}\QOne{})}} \\}
+\Last{\CarryTwo}
+}
+\ScrollProof{8}{10}{%
+\Next{\Three}{\CarryTwo}
+\Next{\Two}{%
+    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{1}}} \ket{v}}\ColorThree{\ket{0}} 
+    \\ & +
+    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{1}}} \ket{v}}\ColorThree{\ket{1}} \\}
+\Next{\One}{%
+   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QOne{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{1}}} \ket{v}}}
+}
+
+    
+\end{frame}
+
+
+
+}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}[<+->]
+    \item Given a Deutsch--Jozsa problem of $n$~bits, it can take exponential time on a classical computer to determine if the function is constant or balanced.
+    \item This same problem can be solved using a single query on a quantum computer.
+    \item When the function is as promised, we obtain an exact solution in polynomial (constant) time.
+    \item This problem serves to separate the complexity class \CompClass{P} from \CompClass{EQP}.
+    \item The circuit that solves this problem develops full or zero amplitude on the \TensSupProd{0}{n} state if the function is constant or balanced, respectively.
+    \item You will explore on your own the consequences of a broken promise.
+    \item We learned how to compute the Hadamard transform of an arbitrary basis state of $n$~qubits.
+\end{itemize}
+    
+\end{frame}
 
     
