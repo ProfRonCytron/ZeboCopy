@@ -24,7 +24,7 @@
 \begin{itemize}[<+->]
     \item There are two sources of inaccuracy in quantum computing:
     \begin{itemize}
-        \item Some algorithms are inherently probabilistic, such as the Elitzur--Vaidman bomb we have studied. While you are likely to get a desired result, it may take effort to overcome the probability of obtaining the wrong answer.  And you may be unlucky to the point that it takes a long time to get the answer.
+        \item Some algorithms are inherently probabilistic, such as the Elitzur--Vaidman bomb we have studied. While you are likely to get a desired result, it may take effort to overcome the probability of obtaining the wrong answer.  And you may be unlucky to the point that it takes a long time to get the right answer.
         \item Quantum computing devices are subject to noise and other interference that causes \href{https://en.wikipedia.org/wiki/Quantum_decoherence}{decoherence}.  Results from a system experiencing decoherence are unpredictable and invalid.
     \end{itemize}
     \item Simulation (emulation) provides results with no artifacts of decoherence, but those are limited in the number of quantum bits (\href{https://qiskit.org/documentation/tutorials/simulators/6_extended_stabilizer_tutorial.html}{currently}, 63~qubits) that can be accommodated in reasonable time.
@@ -519,7 +519,7 @@ In the above two cases, all weight is on the \ColorThree{\ket{00..0}} term and a
   \item[f(w) half 0, half 1] $\ColorOne{\SumBV{w}{n}\NegF{w}} = 2^{n}/2 - 2^{n}/2 = 0$
 \end{description}}
 \visible<6->{%
-There is \emph{no weight} on the \ColorThree{\ket{00.0}} term so the weight must be on other terms.  It is impossible to measure \ColorThree{\ket{00..0}}}
+There is \emph{no weight} on the \ColorThree{\ket{00..0}} term so the weight must be on other terms.  It is impossible to measure \ColorThree{\ket{00..0}}}
     
 \end{frame}
 
