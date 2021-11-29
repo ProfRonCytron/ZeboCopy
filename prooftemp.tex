@@ -1,24 +1,6 @@
 
 \SetTitle{23}{The Deutsch--Jozsa problem}{Demonstrates asymptotic quantum advantage}{23}
 
-
-\begin{frame}{test}
-
-
-\begin{ScrollingProof}
-\Next{\Two}{first}%
-\Next{\Two}{second}
-\Last{done}
-\end{ScrollingProof}
-
-\begin{ScrollingProof}[5]
-\Next{\One}{third}
-\end{ScrollingProof}
-
-
-    
-\end{frame}
-
 {
 \def\V{\ColorTwo{\ensuremath{v}}}
 \def\W{\ColorOne{\ensuremath{w}}}
@@ -66,13 +48,17 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \end{frame}
 
-\begin{frame}{Induction step}
+\begin{frame}{Induction step, $\QState{}=\QZero{}$}
 
 \vrule width 0pt depth 1em
-\Reason{2}{Induction hypothesis}
-\Reason{3}{Substitution}
-\Reason{4-7}{\Implies{\QState{} = \QZero{}}{\ColorTwo{\Hadamard\QState{}}=\ColorThree{\QPlus{}}}}
-\Reason{8-10}{\Implies{\QState{} = \QOne{}}{\Hadamard\QState{}=\QMinus{}}}
+\Reason{1}{Induction hypothesis}
+\Reason{2}{Include one more qubit, case $\QState{}=\QZero{}$}
+\Reason{3}{Substitution of $\Hadamard(\QZero{})=\QPlus{}$}
+\Reason{4}{Scroll up}
+\Reason{6}{Introduce coefficients with value $1$}
+\Reason{7}{Scroll up}
+\Reason{9}{Apply tensor product}
+\Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QZero{}$}
 
 \ScrollProof{1}{4}{%
    \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
@@ -99,29 +85,43 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
     
 \end{frame}
 
-
-\begin{frame}{Old Induction step}
+\begin{frame}{Induction step, $\QState{}=\QOne{}$}
 
 \vrule width 0pt depth 1em
-\Reason{2}{Induction hypothesis}
-\Reason{3}{Substitution}
-\Reason{4-7}{\Implies{\QState{} = \QZero{}}{\ColorTwo{\Hadamard\QState{}}=\ColorThree{\QPlus{}}}}
-\Reason{8-11}{\Implies{\QState{} = \QOne{}}{\Hadamard\QState{}=\QMinus{}}}
-\Vskip{-1em}\begin{align*}
-\only<1-3>{%
-    P(k)\longrightarrow \visible<2->{\ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}}
-    \only<3-4>{%
-    \visible<3->{\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}}
-\only<4->{%
-    \ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
-\only<5->{%
-    &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\
-    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{0}}} \ket{v}}\ColorThree{\ket{0}} 
+\Reason{1}{Induction hypothesis}
+\Reason{2}{Include one more qubit, case $\QState{}=\QOne{}$}
+\Reason{3}{Substitution of $\Hadamard(\QOne{})=\QMinus{}$}
+\Reason{4}{Scroll up}
+\Reason{6}{Introduce coefficients with value $1$}
+\Reason{7}{Scroll up}
+\Reason{9}{Apply tensor product}
+\Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QOne{}$}
+
+\ScrollProof{1}{4}{%
+   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
+    \Next{\Three}{%
+    \ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
+    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}-\QOne{})}} \\}
+    \Last{\CarryOne}
+}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\CarryOne}
+\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{1}}\QZero{}+\NegOneExp{\DotP{1}{1}}\QOne{})}} \\}
+\Last{\CarryTwo}
+}
+\ScrollProof{8}{10}{%
+\Next{\Three}{\CarryTwo}
+\Next{\Two}{%
+    &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}}\ColorThree{\NegOneExp{\DotP{0}{1}}} \ket{v}}\ColorThree{\ket{0}} 
     \\ & +
-    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{0}}} \ket{v}}\ColorThree{\ket{1}} \\
-   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}
-    }
-\end{align*}
+    \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{1}}} \ket{v}}\ColorThree{\ket{1}} \\}
+\Next{\One}{%
+   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QOne{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{1}}} \ket{v}}}
+}
+
     
 \end{frame}
+
+
+
 }
