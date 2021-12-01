@@ -6,6 +6,8 @@
     \item Review of Deutsch--Jozsa
     \item A good probabilistic algorithm for Deutsch--Jozsa
     \item Simon's problem
+    \item Difficulty of a classical solution
+    \item Quantum computing solution
 \end{itemize}
 
 \end{frame}
@@ -145,13 +147,13 @@ Buddies \\[1em]
 \end{frame}
 
 \begin{frame}{How many queries?}{To find a pair of buddies}
-\begin{itemize}[<+->]
-\item Give $d$ possible values, we need this many queries to find a pair of buddies with probability $p$:
- \[ f(p,d)= \sqrt{2d\times \ln\left(\frac{1}{1-p}\right)}\]
+\Vskip{-3.5em}\begin{itemize}[<+->]
+\item Given $d$ possible values, we need approximately this many queries to find a pair of buddies with probability $p$:
+ \Vskip{-1em}\[ f(p,d)= \sqrt{2d\times \ln\left(\frac{1}{1-p}\right)}\]
 \item We have $2^{n-1}$ possible values, so
-\[ f(p,2^{n})= \sqrt{2^{n} \ln\left(\frac{1}{1-p}\right)}\]
-\item For any fixed probability $p$ this becomes $\Omega(2^n)$.
-\item We thus expect we will need an \emph{exponential} number of queries to find one pair of buddies for this problem.
+\Vskip{-1em}\[ f(p,2^{n-1})= \sqrt{2^{n} \ln\left(\frac{1}{1-p}\right)}\]
+\item For any fixed probability $p$, or more generally when $p$ is not a function of $n$, this becomes~$\Omega(2^n)$.
+\item We thus expect we will need an \emph{exponential} number of queries to find one pair of buddies for this problem to find the solution with probability~$p$.
 \end{itemize}
 
 \end{frame}
