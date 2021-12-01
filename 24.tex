@@ -15,7 +15,7 @@
 \TwoColumns{%
 \only<1-13>{%
 \begin{itemize}[<+->]
-    \item Given $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$. 
+    \item Given $f(x): \BinAlph{n}\mapsto \Set{0,1}$. 
     \item Is $f(x)$
     \begin{description}
         \item[\ColorOne{constant}] $f(x)$ same result for all inputs
@@ -46,7 +46,7 @@ This algorithm produces the correct answer with probability~$\frac{2}{3}$.
 }{%
 \begin{itemize}[<+->]
     \item We can do well if we are willing to take a chance.
-    \item Choose $x$ and $y$ randomly from $\Set{0,1}^n$.
+    \item Choose $x$ and $y$ randomly from \BinAlph{n}.
     \item \alert<14>{If $f(x)\not=f(y)$ say \ColorTwo{balanced}}
     \item Otherwise
     \begin{itemize}
@@ -63,7 +63,7 @@ This algorithm produces the correct answer with probability~$\frac{2}{3}$.
 \begin{itemize}[<+->]
     \item Suppose we are willing to evaluate $f(x)$ $k$ times.
     \item We then say the function is constant iff all evaluations return the same result.
-    \item To simplify analysis each $x$ is drawn randomly and uniformly from $\Set{0,1}^n$.
+    \item To simplify analysis each $x$ is drawn randomly and uniformly from \BinAlph{n}.
     \item If $f(x)$ is \ColorOne{balanced} what is the probability that after $k$ queries we have seen only the same result?
     \begin{itemize}
         \item After the first query, each subsequent query has probability $\frac{1}{2}$ of having the same result.
@@ -77,6 +77,19 @@ This algorithm produces the correct answer with probability~$\frac{2}{3}$.
 \begin{frame}{Simon's problem}{Is difficult probabilistically}
 \begin{itemize}[<+->]
     \item Our joy at separating \CompClass{P} from \CompClass{EQP} is tempered when we realize we can solve Deutsch--Jozsa with high probability using a small number of queries.
-    \item Simon's problem considers a function 
+    \item Simon's problem considers 
+    \begin{itemize}
+        \item a function $f: \BinAlph{n}\mapsto \BinAlph{n-1}$
+        \item a secret $\AllBits{s}{n} \not= 0^{n}$
+    \end{itemize}
+    \item with the following property:
+    \[\Forall{\AllBits{x}{n}}{f(x)=f(\Xor{x}{s})} \]
+    \item In other words, each \AllBits{x}{n} has a \emph{buddy}~\Xor{x}{s} whose value in $f$ is identical.
+    \item Note that the buddy of $x$'s buddy is $x$, because
+    $\Forall{x}{\Xor{(\Xor{x}{s})}{s}=x}$.
+    \item \alert{Simon's problem is to determine the value of~$s$.}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Simon's problem}{Example}
 \end{frame}
