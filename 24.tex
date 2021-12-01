@@ -134,6 +134,24 @@ Buddies \\[1em]
 \begin{frame}{Before we go further, is this problem difficult probabilistically?}{It is related to the birthday problem}
 
 \begin{itemize}[<+->]
-    \item 
+    \item Consider a year of $d=2^{n-1}$ days (function values).
+    \item A room of $2^{n}$ people (function inputs).
+    \item In the room exactly one pair (buddies) share the same birthday.
+    \item We need to find two people with the same birthday.   Once we know their \Quote{names} we can compute the secret~$s$.
+    \item For an exact answer, we may need to examine $2^{n-1}+1$ people worst-case, as with the Deutsch--Jozsa problem.
+    \item For a probabilistic approach, the \href{https://en.wikipedia.org/wiki/Birthday_problem\#Probability_of_a_shared_birthday_(collision)}{shared-birthday problem} defines $f(p,d)$  as the approximate number of queries needed to find~2 identical values among~$d$ possible values with probability $p$:
+    \[ f(p,d)= \sqrt{2d\times \ln\left(\frac{1}{1-p}\right)}\]
 \end{itemize}
+\end{frame}
+
+\begin{frame}{How many queries?}{To find a pair of buddies}
+\begin{itemize}[<+->]
+\item Give $d$ possible values, we need this many queries to find a pair of buddies with probability $p$:
+ \[ f(p,d)= \sqrt{2d\times \ln\left(\frac{1}{1-p}\right)}\]
+\item We have $2^{n-1}$ possible values, so
+\[ f(p,2^{n})= \sqrt{2^{n} \ln\left(\frac{1}{1-p}\right)}\]
+\item For any fixed probability $p$ this becomes $\Omega(2^n)$.
+\item We thus expect we will need an \emph{exponential} number of queries to find one pair of buddies for this problem.
+\end{itemize}
+
 \end{frame}
