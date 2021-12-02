@@ -198,16 +198,16 @@ Buddies \\[1em]
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Frame Title}
+\begin{frame}{Solution for Simon's problem}{Circuit and analysis}
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
-\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}} & \qw\slice{\QState{0}}& \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\qw\slice{\QState{3}}  & \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{4}} & \meter{} & \qw \\
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}} & \qw\slice{\alert<4>{\QState{0}}}& \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\alert<5-9>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<10-18>{\QState{2}}} &\qw\slice{\alert<19>{\QState{3}}}  & \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{4}} & \meter{} & \qw \\
 \lstick{\alert<2>{\ket{\TensSupProd{0}{n-1}}}} &  \qwbundle{\alert<1>{n-1}} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
 \end{quantikz}}
 \end{center}
 \only<1-3>{%
 \begin{itemize}
-    \item<1-> There are $n$~qubits at the top and $n-1$ qubits at the bottom
+    \item<1-> There are $n$~qubits at the top and $n-1$ qubits at the bottom.
     \item<2-> The bottom inputs are all \QZero{}.
     \item<3-> We perform an $n$-way Hadamard transformation on the top qubits before and after the oracle.
 \end{itemize}
