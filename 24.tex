@@ -162,22 +162,23 @@ Buddies \\[1em]
 \Vskip{-4em}\TwoColumns{%
 \Vskip{-3em}\begin{center}
     \begin{GateBox}{2}{4}{8}
-    \BoxLabel{$U_f$}
+    \draw[dashed,blue] (-1,2) -- ++(5,0);
+    \BoxLabel{\raisebox{2em}{$U_f$}}
     \visible<1->{%
     \Input{0}{$x_1$}\Output{0}{$x_1$}
     \Input{1}{$x_2$}\Output{1}{$x_2$}
-    \Input{2}{$\vdots$}\Output{2}{$\vdots$}
+    \Input{2}{\RVDots}\Output{2}{\RVDots}
     \Input{3}{$x_n$}\Output{3}{$x_n$}%
     }%
     \visible<2->{%
     \Input{4}{$b_1$}
     \Input{5}{$b_2$}
-    \Input{6}{$\vdots$}
+    \Input{6}{\RVDots}
     \Input{7}{$b_{n-1}$}}
     \visible<3->{%
     \Output{4}{$\Xor{b_1}{f(x)_{1}}$}
     \Output{5}{$\Xor{b_2}{f(x)_{2}}$}
-    \Output{6}{$\vdots$}
+    \Output{6}{\RVDots}
     \Output{7}{$\Xor{b_{n-1}}{f(x)_{n-1}}$}}
     \end{GateBox}
 \end{center}
@@ -193,6 +194,16 @@ Buddies \\[1em]
 \begin{itemize}
     \item<1-> Create the superposition of all inputs for $x$.
     \item<2-> Supply \QZero{} for each qubit of $b$.
-    \item<4-> Result is the superposition of all inputs and outputs!  On to the analysis$\ldots$
+    \item<4-> Result is the superposition of each \AllBits{x}{n} and $f(x)$!
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Frame Title}
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}} & \qw\slice{\QState{0}}& \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\qw\slice{\QState{3}}  & \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{4}} & \meter{} & \qw \\
+\lstick{\alert<2>{\ket{\TensSupProd{0}{n-1}}}} &  \qwbundle{\alert<1>{n-1}} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
+\end{quantikz}}
+\end{center}
+    
 \end{frame}
