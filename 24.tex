@@ -200,10 +200,46 @@ Buddies \\[1em]
 
 \begin{frame}{Frame Title}
 \begin{center}
-\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
 \lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}} & \qw\slice{\QState{0}}& \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\qw\slice{\QState{3}}  & \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{4}} & \meter{} & \qw \\
 \lstick{\alert<2>{\ket{\TensSupProd{0}{n-1}}}} &  \qwbundle{\alert<1>{n-1}} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
 \end{quantikz}}
 \end{center}
-    
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> There are $n$~qubits at the top and $n-1$ qubits at the bottom
+    \item<2-> The bottom inputs are all \QZero{}.
+    \item<3-> We perform an $n$-way Hadamard transformation on the top qubits before and after the oracle.
+\end{itemize}
+}%
+\Vskip{-2.5em}
+\ScrollProof{4}{8}{%
+\Next{\Four}{\QState{0} &= \ket{\TensSupProd{0}{n}}\ket{\TensSupProd{0}{n-1}} \\}
+\Next{\Three}{\QState{1} &= \TensProd{\TensSupProd{\Hadamard}{n}\ket{\TensSupProd{0}{n}}}{\ket{\TensSupProd{0}{n-1}}} \\}
+\Next{\Two}{ &= \RootTwoN{n}\TensProd{\SumBV{x}{n}\ket{x}}{\ket{\TensSupProd{0}{n-1}}} \\}
+\gdef\CarryOne{\sqrt{2^n}\QState{1} &= \SumBV{x}{n}\ket{x}\ket{\TensSupProd{0}{n-1}}}
+\Last{\CarryOne}
+}
+\ScrollProof{9}{12}{%
+\Next{\Four}{\CarryOne{} \\}
+\Next{\Three}{\sqrt{2^n}\QState{2} = \sqrt{2^n}U_{f}(\QState{1}) &= U_{f}\left(\SumBV{x}{n}\ket{x}\ket{\TensSupProd{0}{n-1}}\right) \\}
+\gdef\CarryTwo{\sqrt{2^n}\QState{2} &= \SumBV{x}{n}\ U_{f}\left(\ket{x}\ket{\TensSupProd{0}{n-1}}\right)}
+\Last{\CarryTwo}
+}
+\ScrollProof{13}{16}{%
+\Next{\Four}{\CarryTwo \\}
+\Next{\Three}{ &= \SumBV{}{n}\ \ket{x}\ket{\Xor{0^{n-1}}{f(x)}} \\}
+\gdef\CarryThree{\QState{2} &= \RootTwoN{n}\SumBV{x}{n}\ \ket{x}\ket{f(x)}}
+\Last{\CarryThree}
+}
+\ScrollProof{17}{19}{%
+\Next{\Three}{\CarryThree}
+}
+\only<17->{%
+\Vskip{-2.5em}\begin{itemize}
+    \item<17-> This is a remarkable state in that it contains the uniform superposition of every possible input $x$ and its evaluation $f(x)$.
+    \item<18-> Measurement of all qubits will yield a particular \TensProd{x}{f(x)}, but this doesn't tell us anything about $x$'s buddy.
+    \item<19-> What happens at \QState{3}, when we measure \only{only} the bottom qubits?
+\end{itemize}
+}
 \end{frame}
