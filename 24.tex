@@ -163,7 +163,7 @@ Buddies \\[1em]
 \Vskip{-3em}\begin{center}
     \begin{GateBox}{2}{4}{8}
     \draw[dashed,blue] (-1,2) -- ++(5,0);
-    \BoxLabel{$U_f$}
+    \BoxLabel{\raisebox{2em}{$U_f$}}
     \visible<1->{%
     \Input{0}{$x_1$}\Output{0}{$x_1$}
     \Input{1}{$x_2$}\Output{1}{$x_2$}
@@ -196,4 +196,14 @@ Buddies \\[1em]
     \item<2-> Supply \QZero{} for each qubit of $b$.
     \item<4-> Result is the superposition of each \AllBits{x}{n} and $f(x)$!
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Frame Title}
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{\alert<1>{n}} & \qw\slice{\QState{0}}& \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\QState{2}} &\qw\slice{\QState{3}}  & \gate{\alert<3>{\TensSupProd{\Hadamard}{n}}}\slice{\QState{4}} & \meter{} & \qw \\
+\lstick{\alert<2>{\ket{\TensSupProd{0}{n-1}}}} &  \qwbundle{\alert<1>{n-1}} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
+\end{quantikz}}
+\end{center}
+    
 \end{frame}
