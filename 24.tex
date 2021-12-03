@@ -298,7 +298,7 @@ Buddies \\[1em]
     \item<4-> We restrict our state analysis to the top~$n$ qubits going forward.
 \end{itemize}
 }%
-\Vskip{-3em}
+\Vskip{-2.5em}
 \ScrollProof{5}{8}{%
 \Next{\Four}{\sqrt{2^n}\QState{2} &= \RootTwoN{n}\SumBV{x}{n}\ \ket{x}\ket{f(x)} \\}
 \Next{\Three}{\QState{3} &= \TwoSup{x}{\Xor{x}{s}} \\}
@@ -313,11 +313,36 @@ Buddies \\[1em]
 \ScrollProof{13}{16}{%
 \Next{\Four}{\CarryOne \\}
 \Next{\Three}{ &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\DotP{(\Xor{x}{s})}{w}}}\ \ket{w} \\}
-\gdef\CarryTwo{\sqrt{2^{n+1}}\QState{4} &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{(\DotP{s}{w})}}}\ \ket{w}}
+\gdef\CarryTwo{\sqrt{2^{n+1}}\QState{4} &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{(\ColorFour{\DotP{s}{w}})}}}\ \ket{w}}
 \Last{\CarryTwo}
 }%
-\ScrollProof{17}{20}{%
-\Next{\Four}{\CarryTwo}
+\only<17->{%
+\begin{align*}
+    \CarryTwo{}
+\end{align*}
+}
+\only<17-20>{%
+\Vskip{-2em}\begin{itemize}
+    \item<18-> All dot products and \Xor{}{} operations are either~$0$ or~$1$.  The \ColorOne{first} and \ColorTwo{second} terms in the sum are thus $\pm 1$.
+    \item<19-> The value of \ColorOne{\DotP{x}{w}} is of course identical to \ColorTwo{\DotP{x}{w}}. However, if \ColorFour{\DotP{s}{w}} is~$1$ then
+    $\ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{\ColorFour{1}}}}=0$, canceling the basis state \ket{w} in \QState{4}.
+    \item<20-> This depends on the secret~$s$ and on the
+    particular value of term~$w$.
+\end{itemize}}
+\only<21-23>{%
+\Vskip{-2em}%
+Two cases:
+\begin{description}
+   \item<21->[$\ColorFour{\DotP{s}{w}}=1$] There is no amplitude on the \ket{w}.
+   \item<22->[$\ColorFour{\DotP{s}{w}}=0$] The coefficient on \ket{w} is $\pm 2$.  Its probability is then $\left(\frac{\pm 2}{\sqrt{2^{n+1}}}\right)^{2}=\frac{1}{2^{n-1}}$
+\end{description}
+\visible<23->{For any $s\not=\TensSupProd{0}{n}$, the two cases occur with equal frequency:  half of \AllBits{w}{n}.  We can rewrite \QState{4} to reflect only observable outcomes.}
+}%
+\only<24->{%
+\[
+\QState{4} \equiv \RootTwoN{n-1}\sum_{w\ |\ \DotP{s}{w}=0}\ \ket{w}
+\]
+We are equally likely to see any outcome \ket{w} such that its dot product with~$s$ is~$0$.
 }
     
 \end{frame}
