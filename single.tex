@@ -765,6 +765,12 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \end{align*}
 \end{ScrollingProof}}}
 \def\RVDots{\raisebox{0.5em}{\ensuremath{\vdots}}}
+%%
+%% #1 -- the state undergoing hadamard
+%% #2 -- the number of bits
+%% #3 -- the free variable
+\def\NHadamard#1#2#3{%
+\SumBV{#3}{#2} \NegOneExp{\DotP{#1}{#3}} \ket{#3}}
 
 
 

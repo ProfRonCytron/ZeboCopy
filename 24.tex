@@ -276,9 +276,48 @@ Buddies \\[1em]
     
     \item<7-> Thus if we measure \ket{\alert<7>{10}} in the bottom qubits, then the top qubits collapse into \TwoSup{\alert<7>{011}}{\alert<7>{110}}.
     \item<8-> As another example, measuring \ket{\alert<8>{01}} at the bottom yields \TwoSup{\alert<8>{000}}{\alert<8>{101}} at the top.
-    \item<9-> These partial measurements don't help:  Sampling the top qubits will yield \ket{000} or \ket{101}.
-    \item<10-> Running the circuit again will yield a random measurement on the bottom qubits!
+    \item<9-> These partial measurements don't help:  Sampling the top qubits will yield \ket{\alert<9>{000}} or \ket{\alert<9>{101}}.
+    \item<10-> Running the circuit again will yield another random measurement on the bottom qubits, with a concomitant collapse of the top qubits' state.
 \end{itemize}}
 }
     
 \end{frame}}
+
+\begin{frame}{Analysis from \QState{3}}{The partial measurement does help, partially}
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{n} & \qw\slice{\QState{0}}& \gate{\TensSupProd{\Hadamard}{n}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<5>{\QState{2}}} &\qw\slice{\alert<6>{\QState{3}}}  & \gate{\TensSupProd{\Hadamard}{n}}\slice{\alert<7->{\QState{4}}} & \meter{} & \qw \\
+\lstick{\ket{\TensSupProd{0}{n-1}}} &  \qwbundle{n-1} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
+\end{quantikz}}
+\end{center}
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> Measuring the bottom qubits yields some state \ket{f(x)} that we will ignore.
+    \item<2-> Of greater importance, the measurement places the top qubits into the state~\TwoSup{x}{\Xor{x}{s}} at \QState{3}.
+    \item<3-> The computation finishes with an $n$-way Hadamard transformation of \QState{3}, which will provide clues about the secret~$s$.
+    \item<4-> We restrict our state analysis to the top~$n$ qubits going forward.
+\end{itemize}
+}%
+\Vskip{-3em}
+\ScrollProof{5}{8}{%
+\Next{\Four}{\sqrt{2^n}\QState{2} &= \RootTwoN{n}\SumBV{x}{n}\ \ket{x}\ket{f(x)} \\}
+\Next{\Three}{\QState{3} &= \TwoSup{x}{\Xor{x}{s}} \\}
+\Last{\sqrt{2}\QState{4} &= \TensSupProd{\Hadamard}{n}\left(\ket{x} + \ket{\Xor{x}{s}}\right) = \TensSupProd{\Hadamard}{n}(\ket{x}) + \TensSupProd{\Hadamard}{n}(\ket{\Xor{x}{s}})}
+}%
+\ScrollProof{9}{12}{%
+\Next{\Four}{\sqrt{2}\QState{4} &= \ColorOne{\TensSupProd{\Hadamard}{n}(\ket{x})} + \ColorTwo{\TensSupProd{\Hadamard}{n}(\ket{\Xor{x}{s}})} \\}
+\Next{\Three}{\mbox{Recall: }\TensSupProd{\Hadamard}{n}\ket{z} &= \RootTwoN{n}\NHadamard{z}{n}{w} \\}
+\gdef\CarryOne{\sqrt{2^n}\sqrt{2}\QState{4} &= \ColorOne{\NHadamard{x}{n}{w}} + \ColorTwo{\NHadamard{(\Xor{x}{s})}{n}{w}}}
+\Last{\CarryOne}
+}%
+\ScrollProof{13}{16}{%
+\Next{\Four}{\CarryOne \\}
+\Next{\Three}{ &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\DotP{(\Xor{x}{s})}{w}}}\ \ket{w} \\}
+\gdef\CarryTwo{\sqrt{2^{n+1}}\QState{4} &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{(\DotP{s}{w})}}}\ \ket{w}}
+\Last{\CarryTwo}
+}%
+\ScrollProof{17}{20}{%
+\Next{\Four}{\CarryTwo}
+}
+    
+\end{frame}
