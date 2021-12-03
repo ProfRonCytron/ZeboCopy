@@ -237,9 +237,48 @@ Buddies \\[1em]
 }
 \only<17->{%
 \Vskip{-2.5em}\begin{itemize}
-    \item<17-> This is a remarkable state in that it contains the uniform superposition of \emph{every possible} input $x$ and its evaluation $f(x)$.
-    \item<18-> Measurement of all qubits will yield a particular \TensProd{x}{f(x)}, but this doesn't tell us anything about $x$'s buddy.
+    \item<17-> This is a remarkable state in that it contains the uniform superposition of \emph{every possible} input $x$ (the top~$n$ qubits) and its evaluation $f(x)$ (the bottom~$n-1$ qubits).
+    \item<18-> Measurement of all qubits will yield a randomly chosen \TensProd{x}{f(x)}, but this doesn't tell us anything about $x$'s buddy.
     \item<19-> What happens at \QState{3}, where we measure \only{only} the bottom qubits?
 \end{itemize}
 }
 \end{frame}
+{
+\def\R#1#2#3{\alert<#1>{#2} & \alert<#1>{#3}}
+\begin{frame}{\vrule width0pt depth2.2em Example measuring $\QState{2} = \RootTwoN{n}\SumBV{x}{n}\ \ket{x}\ket{f(x)}$}
+
+\Vskip{-4em}\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\begin{center}
+    \begin{tabular}{c|c}
+        $x$ & $f(x)$ \\ \hline
+         \R{8-9}{000}{01} \\
+         \R{1,10}{001}{00} \\
+         \R{5}{010}{11} \\
+         \R{7}{011}{10} \\
+         \R{3,10}{100}{00} \\
+         \R{8-9}{101}{01} \\
+         \R{7}{110}{10} \\
+         \R{2,4}{111}{11}
+    \end{tabular}
+\end{center}
+}{%
+\only<1-5>{%
+\begin{itemize}
+  \item<1-> Each measurement of \QState{2} will yield a random $\ket{x}\ket{f(x)}$.
+  \item<2-> We run this circuit many times, but each outcome is random.
+  \item<4-> And we may see a measurement we have seen before.
+  \item<5-> This is no better than classically evaluating $f(x)$.
+\end{itemize}}%
+\only<6->{%
+\begin{itemize}
+    \item<6-> What happens if we measure only the \emph{bottom}~$n-1$ qubits?
+    The system must collapse into a state consistent with what we observe.  
+    
+    \item<7-> Thus if we measure \ket{\alert<7>{10}} in the bottom qubits, then the top qubits collapse into \TwoSup{\alert<7>{011}}{\alert<7>{110}}.
+    \item<8-> As another example, measuring \ket{\alert<8>{01}} at the bottom yields \TwoSup{\alert<8>{000}}{\alert<8>{101}} at the top.
+    \item<9-> These partial measurements don't help:  Sampling the top qubits will yield \ket{000} or \ket{101}.
+    \item<10-> Running the circuit again will yield a random measurement on the bottom qubits!
+\end{itemize}}
+}
+    
+\end{frame}}
