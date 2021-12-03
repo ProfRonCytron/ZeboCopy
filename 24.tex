@@ -8,6 +8,11 @@
     \item Simon's problem
     \item Difficulty of a classical solution
     \item Quantum computing solution
+    \item An efficient solution to this problem involves both a quantum computer and some processing that would typically be performed on a classical computer.
+    \item It has the typical rotate--compute--rotate form of a quantum computation.
+    \item It features intentional partial measurement.
+    \item It is highly likely to yield results quickly.
+    \item However, it is not \emph{guaranteed} to provide an answer in any finite amount of time.
 \end{itemize}
 
 \end{frame}
@@ -344,5 +349,15 @@ Two cases:
 \]
 We are equally likely to see any outcome \ket{w} such that its dot product with~$s$ is~$0$.
 }
+    
+\end{frame}
+
+\begin{frame}{How to find the secret $s$}{It takes multiple runs of the circuit, but each can provide a clue}
+
+\begin{itemize}
+    \item Each time we run the circuit, we observe a \ket{w} such that $\DotP{w}{s}=0$.
+    \item We first use an example to build intuition about the clues such \ket{w} observables provide.
+    \item We then turn to formalizing the solution to Simon's problem and its efficiency on a quantum computer.
+\end{itemize}
     
 \end{frame}
