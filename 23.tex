@@ -600,7 +600,6 @@ We have shown \Forall{n\geq 0}{P(n)}
 {
 \def\V{\ColorTwo{\ensuremath{v}}}
 \def\W{\ColorOne{\ensuremath{w}}}
-\def\Reason#1#2{\only<#1>{\textit{#2}}}
 \begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
 
 \Vskip{-3em}\begin{theorem}
@@ -646,7 +645,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \begin{frame}{Induction step, $\QState{}=\QZero{}$}
 
-\vrule width 0pt depth 1em
+\begin{Reasoning}
 \Reason{1}{Induction hypothesis}
 \Reason{2}{Include one more qubit, case $\QState{}=\QZero{}$}
 \Reason{3}{Substitution of $\Hadamard(\QZero{})=\QPlus{}$}
@@ -655,6 +654,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \Reason{7}{Scroll up}
 \Reason{9}{Apply tensor product}
 \Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QZero{}$}
+\end{Reasoning}
 
 \ScrollProof{1}{4}{%
    \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
@@ -683,7 +683,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \begin{frame}{Induction step, $\QState{}=\QOne{}$}
 
-\vrule width 0pt depth 1em
+\begin{Reasoning}
 \Reason{1}{Induction hypothesis}
 \Reason{2}{Include one more qubit, case $\QState{}=\QOne{}$}
 \Reason{3}{Substitution of $\Hadamard(\QOne{})=\QMinus{}$}
@@ -692,6 +692,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \Reason{7}{Scroll up}
 \Reason{9}{Apply tensor product}
 \Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QOne{}$}
+\end{Reasoning}
 
 \ScrollProof{1}{4}{%
    \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
@@ -717,9 +718,6 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
     
 \end{frame}
-
-
-
 }
 
 \begin{frame}{Summary}{What have we learned?}
