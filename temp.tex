@@ -1,0 +1,56 @@
+\SetTitle{99}{temp}{faster}{99}
+
+{
+\def\R#1#2#3{#1 & #2 & #3}
+\def\S#1#2#3#4{#1 & #2 & #3 & #4}
+\def\RA#1#2#3#4{\alert<#1>{#2} & \alert<#1>{#3} & \alert<#1>{#4}}
+\begin{frame}{Observations using our example}{Building intuition about finding the secret~$s$}
+\Vskip{-3em}\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
+\begin{center}
+    \begin{tabular}{ccc}
+    \multicolumn{3}{c}{$s=101$} \\
+    $w$ & \And{w}{s} & \DotP{w}{s} \\ \hline
+        \RA{2-3}{000}{000}{0} \\
+        \R{001}{001}{1} \\
+        \RA{2-3}{010}{000}{0} \\
+        \R{011}{001}{1} \\
+        \R{100}{100}{1} \\
+        \RA{2-3}{101}{101}{0} \\
+        \R{110}{100}{1} \\
+        \RA{2-3}{111}{101}{0}
+    \end{tabular}
+\end{center}
+}{%
+\begin{itemize}
+    \item<1-> The table shows \DotP{w}{s} for each basis state \ket{w}.
+    \item<2-> The only \emph{observable} states \ket{w} are those for which $\DotP{w}{s}=0$ for our secret~$s$.  All other states have~$0$ amplitude and thus no probability of measurement.
+    \item<3-> Each of the \alert{four} states is observed with probability $\frac{1}{4}$.
+    \begin{description}
+        \item[000]
+        \item[010]
+        \item[101]
+        \item[110]
+    \end{description}
+\end{itemize}
+}
+    
+\end{frame}
+
+\begin{frame}{What does each $w$ tell us about $s$?}
+\begin{center}
+    \begin{tabular}{cccc}
+    $s$ & 010 & 111 & 101 \\
+    ? & \multicolumn{3}{c}{Dot product with $s$} \\
+         \S{000}{0}{0}{0} \\
+         \S{001}{0}{1}{1} \\
+         \S{010}{1}{1}{0} \\
+         \S{011}{1}{0}{1} \\
+         \S{100}{0}{1}{1} \\
+         \S{101}{0}{0}{0} \\
+         \S{110}{1}{0}{1} \\
+         \S{111}{1}{1}{0}
+    \end{tabular}
+\end{center}
+    
+\end{frame}
+}
