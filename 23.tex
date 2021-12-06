@@ -308,21 +308,25 @@ Deutsch Problem, single qubit}
 \begin{frame}{Defining the operation \DotP{v}{w}}{A Boolean dot (inner) product of two bit vectors}
 
 \TwoColumns{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}
-\draw (0,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_1$};
-\draw (0.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_2$};
-\draw (1,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (1.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_n$};
-\draw (0,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_1$};
-\draw (0.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_2$};
-\draw (1,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (1.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_n$};
-\end{TIKZP}\end{center}
+\Vskip{-3em}
+\begin{center}
+\begin{DotPBox}{4}{0.5}{6}
+\Qbit{0}{v_1}
+\Qbit{1}{v_2}
+\Qbit{2}{\cdot}
+\Qbit{3}{\cdot}
+\Qbit{4}{\cdot}
+\Qbit{5}{v_n}
+\end{DotPBox} \\[0.5em]
+\begin{DotPBox}{4}{0.5}{6}
+\Qbit{0}{w_1}
+\Qbit{1}{w_2}
+\Qbit{2}{\cdot}
+\Qbit{3}{\cdot}
+\Qbit{4}{\cdot}
+\Qbit{5}{w_n}
+\end{DotPBox}
+\end{center}
 \begin{itemize}
     \item<2-> \ColorThree{Exclusive-or of the \emph{and} of each pair}
     \item<3-> \ColorFour{Sum of the product of each pair}
