@@ -2,7 +2,6 @@
 
 {
 \def\R#1#2#3{#1 & #2 & #3}
-\def\S#1#2#3#4{#1 & #2 & #3 & #4}
 \def\RA#1#2#3#4{\alert<#1>{#2} & \alert<#1>{#3} & \alert<#1>{#4}}
 \begin{frame}{Observations using our example}{Building intuition about finding the secret~$s$}
 \Vskip{-3em}\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
@@ -35,22 +34,84 @@
 }
     
 \end{frame}
-
+\def\S#1#2#3#4{#1 & 0 & \visible<3->{#2} & \visible<5->{#3} & \visible<7->{#4}}
 \begin{frame}{What does each $w$ tell us about $s$?}
+\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{center}
-    \begin{tabular}{cccc}
-    $s$ & 010 & 111 & 101 \\
-    ? & \multicolumn{3}{c}{Dot product with $s$} \\
-         \S{000}{0}{0}{0} \\
-         \S{001}{0}{1}{1} \\
-         \S{010}{1}{1}{0} \\
-         \S{011}{1}{0}{1} \\
-         \S{100}{0}{1}{1} \\
-         \S{101}{0}{0}{0} \\
-         \S{110}{1}{0}{1} \\
-         \S{111}{1}{1}{0}
+    \begin{tabular}{ccccc}
+                    & \multicolumn{4}{c}{Possible observation $w$} \\
+                    & \alert<1-2>{000} & \alert<3-8>{010} & 111 & 101 \\
+   $s$? & {\small\DotP{s}{000}} & {\small\DotP{s}{010}} & {\small\DotP{s}{111}} & {\small\DotP{s}{101}} \\ \hline%
+        \invisible<9->{\S{000}{0}{0}{0}} \\
+         \invisible<15-17>{\S{\alert<11-17,19->{001}}{0}{1}{1}} \\
+         \invisible<8-17>{\S{\alert<4-17>{010}}{1}{1}{0}} \\
+         \invisible<8-17>{\S{\alert<5-17,20->{011}}{1}{0}{1}} \\
+         \invisible<15-17>{\S{\alert<13-17,21->{100}}{0}{1}{1}} \\
+         \S{\alert<16>{101}}{0}{0}{0} \\
+         \invisible<8-17>{\S{\alert<6-17,22->{110}}{1}{0}{1}} \\
+         \invisible<8-17>{\S{\alert<7-17>{111}}{1}{1}{0}}
     \end{tabular}
-\end{center}
-    
+\end{center}}{%
+\only<1-2>{
+\begin{itemize}
+    \item We can always observe \TensSupProd{0}{n} because its dot product with any~$s$ is $0$.
+    \item However, it does not narrow the field of possible $s$ candidates.
+    \item<2-> Any putative $s$ whose inner product with the observed~$w$ is $1$ cannot be our secret.
+\end{itemize}}%
+\only<3-9>{%
+\begin{itemize}
+    \item<3-> Observing 010 eliminates
+    \begin{itemize}
+        \item<4-> 010
+        \item<5-> 011
+        \item<6-> 110 
+        \item<7-> 111
+    \end{itemize}
+    \item<8-> Our secret $s$ could be any of the remaining values except $000$, which is never our secret.
+    \item<9-> So we can eliminate it from consideration.
+\end{itemize}}%
+\only<10-17>{%
+\begin{itemize}
+    \item<10-> Observation 111 eliminates
+    \begin{itemize}
+        \item<11-> 001
+        \item<12-> 010 (already gone)
+        \item<13-> 100 
+        \item<14-> 111 (already gone)
+    \end{itemize}
+    \item<15-> So we eliminate those.
+    \item<16-> We find our secret $s=101$ as the only possibility remaining.
+    \item<17-> For completeness we show observation 101 next.
+\end{itemize}}
+\only<18->{%
+\begin{itemize}
+    \item<18-> Observation 101 eliminates
+    \begin{itemize}
+        \item<19-> 001
+        \item<20-> 011
+        \item<21-> 100
+        \item<22-> 110
+    \end{itemize}
+\end{itemize}}
+}%
 \end{frame}
 }
+\begin{frame}{Some concerns about this approach}{This small example may be deceiving}
+
+\begin{itemize}[<+->]
+    \item How large are these tables for $n$~qubits?
+    \item They are $\Theta(2^n)$, which is as bad as the classical time bound.
+    \item What is the count of observations $w$ such that $\DotP{w}{s}=0$?
+    \item Half of the basis states, so this count is also $\Theta(2^n)$.   
+    \item We better not need to see very many observations to find $s$.
+    \item And how do we find $s$ without eliminating impossible solutions from a large table?
+    \item We will focus on the bits of $s$, as there are only $n$ of them.
+    \item We will use Gaussian elimination, whose complexity is $\Theta(n^{3})$
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Our example revisited}{We use logic to determine the bits of $s$}
+
+    
+\end{frame}
