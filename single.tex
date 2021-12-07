@@ -434,34 +434,33 @@
 %% #3 -- height
 %% #4 -- signals
 \newenvironment{GateBox}[4][scale=1.0]{%
-\edef\Signals{#4}
-\edef\Height{#3}
-\edef\Width{#2}
-\pgfmathsetmacro{\Max}{\Signals}
-\pgfmathsetmacro{\Vsep}{\Height / \Max}
-\pgfmathsetmacro{\Wlen}{\Width / 5}
+\edef\Signals{#4}%
+\edef\Height{#3}%
+\edef\Width{#2}%
+\pgfmathsetmacro{\Max}{\Signals}%
+\pgfmathsetmacro{\Vsep}{\Height / \Max}%
+\pgfmathsetmacro{\Wlen}{\Width / 5}%
 \def\ComputeMyY##1{%
-   \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}}
+   \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}}%
 \def\Input##1##2{%
    \pgfmathsetmacro{\Xone}{-\Wlen}
    \pgfmathsetmacro{\Xtwo}{0}
    \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}
    \draw[->] (\Xone,\MyY) node[left] {##2} -- (\Xtwo,\MyY);
-}
+}%
 \def\Output##1##2{%
    \pgfmathsetmacro{\Xone}{\Width}
    \pgfmathsetmacro{\Xtwo}{\Width + \Wlen}
    \pgfmathsetmacro{\MyY}{\Height - 0.5 * \Vsep - ##1*\Vsep}
    \draw[->] (\Xone,\MyY) -- (\Xtwo,\MyY) node[right] {##2};
-}
+}%
 \def\BoxLabel##1{%
 \node[draw, fit={(0,0) (\Width,\Height)}, inner sep=0pt, label=center:\mbox{##1}] (A) {};
-}
+}%
 \begin{TIKZP}[#1]
    \draw (0,0) rectangle(#2,#3);
 }{%
-\end{TIKZP}
-}
+\end{TIKZP}}
 %%
 %% 1 options
 %% 2 width
@@ -469,20 +468,18 @@
 %% 4 number of qubits
 %%
 \newenvironment{DotPBox}[4][scale=1.0]{%
-\edef\Qubits{#4}
-\edef\Height{#3}
-\edef\Width{#2}
-\pgfmathsetmacro{\Max}{\Qubits}
-\pgfmathsetmacro{\Hsep}{\Width / \Max}
-\pgfmathsetmacro{\Wlen}{\Width / 5}
+\edef\Qubits{#4}%
+\edef\Height{#3}%
+\edef\Width{#2}%
+\pgfmathsetmacro{\Max}{\Qubits}%
+\pgfmathsetmacro{\Hsep}{\Width / \Max}%
 \def\Qbit##1##2{%
    \pgfmathsetmacro{\MyX}{##1*\Hsep}
    \draw (\MyX,0) rectangle ++(\Hsep,\Height) node[pos=0.5] {\ensuremath{##2}};
-}
+}%
 \begin{TIKZP}[#1]
 }{%
-\end{TIKZP}
-}
+\end{TIKZP}}
 \def\PhiTheta#1#2{%
 \mbox{\ensuremath{\textcolor{\RCone}{\phi = #1}, \textcolor{\RCtwo}{\theta = #2}}}}
 %

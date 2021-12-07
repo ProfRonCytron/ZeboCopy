@@ -1,140 +1,51 @@
 \SetTitle{99}{temp}{faster}{99}
 
-{
-\def\R#1#2#3{#1 & #2 & #3}
-\def\RA#1#2#3#4{\alert<#1>{#2} & \alert<#1>{#3} & \alert<#1>{#4}}
-\begin{frame}{Observations using our example}{Building intuition about finding the secret~$s$}
-\Vskip{-3em}\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
-\begin{center}
-    \begin{tabular}{ccc}
-    \multicolumn{3}{c}{$s=101$} \\
-    $w$ & \And{w}{s} & \DotP{w}{s} \\ \hline
-        \RA{2-3}{000}{000}{0} \\
-        \R{001}{001}{1} \\
-        \RA{2-3}{010}{000}{0} \\
-        \R{011}{001}{1} \\
-        \R{100}{100}{1} \\
-        \RA{2-3}{101}{101}{0} \\
-        \R{110}{100}{1} \\
-        \RA{2-3}{111}{101}{0}
-    \end{tabular}
-\end{center}
-}{%
-\begin{itemize}
-    \item<1-> The table shows \DotP{w}{s} for each basis state \ket{w}.
-    \item<2-> The only \emph{observable} states \ket{w} are those for which $\DotP{w}{s}=0$ for our secret~$s$.  All other states have~$0$ amplitude and thus no probability of measurement.
-    \item<3-> Each of the \alert{four} states is observed with probability $\frac{1}{4}$.
-    \begin{description}
-        \item[000]
-        \item[010]
-        \item[101]
-        \item[110]
-    \end{description}
-\end{itemize}
-}
-    
-\end{frame}
-\def\S#1#2#3#4{#1 & 0 & \visible<3->{#2} & \visible<5->{#3} & \visible<7->{#4}}
-\begin{frame}{What does each $w$ tell us about $s$?}
-\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
-\begin{center}
-    \begin{tabular}{ccccc}
-                    & \multicolumn{4}{c}{Possible observation $w$} \\
-                    & \alert<1-2>{000} & \alert<3-8>{010} & 111 & 101 \\
-   $s$? & {\small\DotP{s}{000}} & {\small\DotP{s}{010}} & {\small\DotP{s}{111}} & {\small\DotP{s}{101}} \\ \hline%
-        \invisible<9->{\S{000}{0}{0}{0}} \\
-         \invisible<15-17>{\S{\alert<11-17,19->{001}}{0}{1}{1}} \\
-         \invisible<8-17>{\S{\alert<4-17>{010}}{1}{1}{0}} \\
-         \invisible<8-17>{\S{\alert<5-17,20->{011}}{1}{0}{1}} \\
-         \invisible<15-17>{\S{\alert<13-17,21->{100}}{0}{1}{1}} \\
-         \S{\alert<16>{101}}{0}{0}{0} \\
-         \invisible<8-17>{\S{\alert<6-17,22->{110}}{1}{0}{1}} \\
-         \invisible<8-17>{\S{\alert<7-17>{111}}{1}{1}{0}}
-    \end{tabular}
-\end{center}}{%
-\only<1-2>{
-\begin{itemize}
-    \item We can always observe \TensSupProd{0}{n} because its dot product with any~$s$ is $0$.
-    \item However, it does not narrow the field of possible $s$ candidates.
-    \item<2-> Any putative $s$ whose inner product with the observed~$w$ is $1$ cannot be our secret.
-\end{itemize}}%
-\only<3-9>{%
-\begin{itemize}
-    \item<3-> Observing 010 eliminates
-    \begin{itemize}
-        \item<4-> 010
-        \item<5-> 011
-        \item<6-> 110 
-        \item<7-> 111
-    \end{itemize}
-    \item<8-> Our secret $s$ could be any of the remaining values except $000$, which is never our secret.
-    \item<9-> So we can eliminate it from consideration.
-\end{itemize}}%
-\only<10-17>{%
-\begin{itemize}
-    \item<10-> Observation 111 eliminates
-    \begin{itemize}
-        \item<11-> 001
-        \item<12-> 010 (already gone)
-        \item<13-> 100 
-        \item<14-> 111 (already gone)
-    \end{itemize}
-    \item<15-> So we eliminate those.
-    \item<16-> We find our secret $s=101$ as the only possibility remaining.
-    \item<17-> For completeness we show observation 101 next.
-\end{itemize}}
-\only<18->{%
-\begin{itemize}
-    \item<18-> Observation 101 eliminates
-    \begin{itemize}
-        \item<19-> 001
-        \item<20-> 011
-        \item<21-> 100
-        \item<22-> 110
-    \end{itemize}
-\end{itemize}}
-}%
-\end{frame}
-}
-\begin{frame}{Some concerns about this approach}{This small example may be deceiving}
 
-\begin{itemize}[<+->]
-    \item How large are these tables for $n$~qubits?
-    \item They are $\Theta(2^n)$, which is as bad as the classical time bound.
-    \item What is the count of observations $w$ such that $\DotP{w}{s}=0$?
-    \item Half of the basis states, so this count is also $\Theta(2^n)$.   
-    \item We better not need to see very many observations to find $s$.
-    \item And how do we find $s$ without eliminating impossible solutions from a large table?
-    \item We will focus on the bits of $s$, as there are only $n$ of them.
-    \item We will use Gaussian elimination, whose complexity is $\Theta(n^{3})$
-\end{itemize}
-    
-\end{frame}
 
 \begin{frame}{Our example revisited}{We use logic to determine the bits of $s$}
 
+\begin{itemize}
+    \item We consider $s=s_{1}s_{2}s_{3}$ so we can reason about the bits of $s$ separately.  Since $s$ does not necessarily denote a binary numerical value, we are free to number these left-to-right, as shown.
+    \item Each observable value $w$ can provide clues about the bits of $s$, as follows:
+\begin{description}
+   \item[010]  Because $\DotP{010}{s_{1}s_{2}s_{3}}=0$, we can conclude $s_{2}=0$.
+   \item[101]  We now require \[
+   \Implies{\DotP{101}{s_{1}0s_{3}}=0}{\Xor{s_1}{s_3}=0}\]
+   Thus $s_1$ and $s_3$ are either both~$0$ or both~$1$.
+\end{description}
+   \item Since $s=000$ is not allowed, we must have the latter case.  
+   \item This yields the correct answer, $s=101$
+\end{itemize}
+
     
 \end{frame}
-
-\begin{frame}{Frame Title}
-
+{
+\def\L#1{\raisebox{-0.65em}{#1}}
+\begin{frame}{Formalizing this logic}{Using Gaussian elimination}
 \begin{center}
-\begin{DotPBox}{4}{0.5}{6}
-\Qbit{0}{v_1}
-\Qbit{1}{v_2}
-\Qbit{2}{\cdot}
-\Qbit{3}{\cdot}
-\Qbit{4}{\cdot}
-\Qbit{5}{v_n}
-\end{DotPBox} \\
-\begin{DotPBox}{4}{0.5}{6}
-\Qbit{0}{w_1}
-\Qbit{1}{w_2}
-\Qbit{2}{\cdot}
-\Qbit{3}{\cdot}
-\Qbit{4}{\cdot}
-\Qbit{5}{w_n}
-\end{DotPBox}
+\begin{tabular}{rclcc}
+\begin{DotPBox}{3}{1}{3}
+\Qbit{0}{1}
+\Qbit{1}{1}
+\Qbit{2}{0}
+\end{DotPBox} & & \begin{DotPBox}{1}{1}{1}\Qbit{0}{s_1}\end{DotPBox}  & & \L{0}\\
+\begin{DotPBox}{3}{1}{3}
+\Qbit{0}{1}
+\Qbit{1}{0}
+\Qbit{2}{1}
+\end{DotPBox}& \L{\FCirc{0.3}} & \begin{DotPBox}{1}{1}{1}\Qbit{0}{s_2}\end{DotPBox}  &\L{=}& \L{0}\\
+\begin{DotPBox}{3}{1}{3}
+\Qbit{0}{1}
+\Qbit{1}{1}
+\Qbit{2}{0}
+\end{DotPBox}& & \begin{DotPBox}{1}{1}{1}\Qbit{0}{s_3}\end{DotPBox} & & \L{0}
+\end{tabular}
 \end{center}
+\begin{itemize}
+    \item Each $w$ is a row of the above matrix, and its dot product with the column vector must be $0$.
+    \item To obtain a solution, we need $n$ linearly independent rows.
+    \item Performing \href{https://en.wikipedia.org/wiki/Gaussian_elimination}{Gaussian elimination} on the system to obtain $s$ takes $\Theta(n^{3})$ time using the most common algorithm.  Multiplication and addition are \And{}{} and \Xor{}{} here.
+\end{itemize}
     
 \end{frame}
+}
