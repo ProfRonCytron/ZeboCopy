@@ -42,10 +42,119 @@
 \end{tabular}
 \end{center}
 \begin{itemize}
-    \item Each $w$ is a row of the above matrix, and its dot product with the column vector must be $0$.
+    \item Each $w$ is a row of the above matrix, and its dot product with the column vector~$s$ must be $0$.
     \item To obtain a solution, we need $n$ linearly independent rows.
     \item Performing \href{https://en.wikipedia.org/wiki/Gaussian_elimination}{Gaussian elimination} on the system to obtain $s$ takes $\Theta(n^{3})$ time using the most common algorithm.  Multiplication and addition are \And{}{} and \Xor{}{} here.
 \end{itemize}
     
+\end{frame}
+
+\def\G#1#2#3{\alert<1>{#1} & #2 & #3}
+\def\B#1#2#3{\invisible<2->{#1 & #2 & #3}}
+
+\begin{frame}{Larger example, $n=4$ qubits}{We don't know $s$ yet}
+\TwoColumns{%
+\only<1-13>{%
+Suppose we see $w$ observations in the following order:
+\begin{itemize}
+    \item<2-> 0101
+    \item<4-> 1010
+    \item<6-> 0000
+    \item<8-> 1111
+    \item<10-> 1011
+    \item<12-> 0001
+\end{itemize}}%
+\only<14->{%
+\begin{itemize}
+    \item<14-> From row~4 we obtain $s_{4}=0$.
+    \item<15-> So we know its value.
+    \item<16-> From row~1 we now obtain $s_{2}=0$.
+    \item<18->Row~2 or ~3 can be used to show $s_{1}=s_{3}=1$
+    \item<20-> We thus obtain $s=1010$.
+\end{itemize}
+}
+}{%
+\begin{center}
+\begin{tabular}{rclcc}
+\visible<3->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
+\Qbit{0}{0}
+\Qbit{1}{\alert<16>{1}}
+\Qbit{2}{0}
+\Qbit{3}{1}
+\end{DotPBox}} & & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<19->{1}{\alert<18>{s_1}}}\end{DotPBox}  & & \L{0}\\
+\visible<5->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
+\Qbit{0}{1}
+\Qbit{1}{0}
+\Qbit{2}{1}
+\Qbit{3}{0}
+\end{DotPBox}}& \L{\FCirc{0.3}} & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alert<16>{\alt<17->{\alert<17>{0}}{s_2}}}\end{DotPBox}  &\L{=}& \L{0}\\
+\visible<11->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
+\Qbit{0}{1}
+\Qbit{1}{0}
+\Qbit{2}{1}
+\Qbit{3}{1}
+\end{DotPBox}}& & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<19->{1}{\alert<18>{s_3}}}\end{DotPBox} & & \L{0} \\
+\visible<13->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
+\Qbit{0}{0}
+\Qbit{1}{0}
+\Qbit{2}{0}
+\Qbit{3}{\alert<14-15>{1}}
+\end{DotPBox}}& & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<15->{\alert<15>{0}}{\alert<14>{s_4}}}\end{DotPBox} & & \L{0}
+\end{tabular}
+\end{center}
+\BigSkip{}
+\only<3>{%
+We accept this as the first equation and set the matrix values accordingly.
+}%
+\only<5>{%
+This is another, independent $w$ and we use it as the second equation.
+}%
+\only<9>{%
+This value is in the span of the first two ($\Xor{0101}{1010}=11111$) so it does not contribute a linearly independent row to our developing matrix.  We do not use this observation.}%
+\only<7>{%
+$w=0000$ never reveals anything of $s$, so we reject this.}%
+\only<11>{%
+This is our third equation.
+}%
+\only<13>{%
+Our fourth equation
+}
+}
+\end{frame}
+\begin{frame}{Showing the work}{Now that we know $s$}
+
+\TwoColumns{%
+\begin{center}
+    \begin{tabular}{ccc}
+    $w$ & \And{w}{s} & \DotP{w}{s} \\ \hline
+        \B{0000}{0000}{0} \\
+        \G{0001}{0000}{0} \\
+        \B{0010}{0010}{1} \\
+        \B{0011}{0010}{1} \\
+        \G{0100}{0000}{0} \\
+        \G{0101}{0000}{0} \\
+        \B{0110}{0010}{1} \\
+        \B{0111}{0010}{1}
+    \end{tabular}
+\end{center}
+}{%
+\begin{center}
+    \begin{tabular}{ccc}
+    $w$ & \And{w}{s} & \DotP{w}{s} \\ \hline
+        \B{1000}{1000}{1} \\
+        \B{1001}{1000}{1} \\
+        \G{1010}{1010}{0} \\
+        \G{1011}{1010}{0} \\
+        \B{1100}{1000}{1} \\
+        \B{1101}{1000}{1} \\
+        \G{1110}{1010}{0} \\
+        \G{1111}{1010}{0}
+    \end{tabular}
+\end{center}
+}%
+\BigSkip{}
+Seven possibly useful values remain for~$w$ once we exclude $0000$.
+
+
 \end{frame}
 }
