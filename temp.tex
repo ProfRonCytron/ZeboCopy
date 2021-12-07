@@ -49,8 +49,7 @@
     
 \end{frame}
 
-\def\G#1#2#3{\alert<1>{#1} & #2 & #3}
-\def\B#1#2#3{\invisible<2->{#1 & #2 & #3}}
+
 
 \begin{frame}{Larger example, $n=4$ qubits}{We don't know $s$ yet}
 \TwoColumns{%
@@ -121,13 +120,16 @@ Our fourth equation
 }
 }
 \end{frame}
+
+\def\G#1#2#3{\alert<1>{#1} & #2 & #3}
+\def\B#1#2#3{\invisible<2->{#1 & #2 & #3}}
 \begin{frame}{Showing the work}{Now that we know $s$}
 
 \TwoColumns{%
 \begin{center}
     \begin{tabular}{ccc}
     $w$ & \And{w}{s} & \DotP{w}{s} \\ \hline
-        \B{0000}{0000}{0} \\
+        \G{0000}{0000}{0} \\
         \G{0001}{0000}{0} \\
         \B{0010}{0010}{1} \\
         \B{0011}{0010}{1} \\
@@ -153,7 +155,7 @@ Our fourth equation
 \end{center}
 }%
 \BigSkip{}
-Seven possibly useful values remain for~$w$ once we exclude $0000$.
+\visible<2->{These are the values of $w$ we might observe.}
 
 
 \end{frame}
