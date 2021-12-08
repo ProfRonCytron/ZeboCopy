@@ -41,7 +41,7 @@
 \Conj{#1}}
 \def\EmptyString{\ensuremath{\lambda}}
 \def\Mag#1{%
-\ensuremath{|\,#1\,|}}
+\ensuremath{{|\,#1\,|}}}
 \def\Prob#1{%
 \ensuremath{\Mag{#1}^{2}}}
 \def\CNOT#1#2{%
@@ -794,6 +794,8 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
    \only<##1>{\textit{##2}}}%
 \vrule width 0pt depth 1em}{%
 }
+\def\Span#1{\ensuremath{{\mbox{span}(#1)}}}
+\def\EmptySet{\Set{\,}}
 
 
 
