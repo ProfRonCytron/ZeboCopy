@@ -59,6 +59,39 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
     
 \end{frame}
 
-\begin{frame}{Analysis}{How likely are we to obtain $n-$ independent observations?}
+\begin{frame}{Analysis}{Overview}
+
+\begin{itemize}
+    \item<1-> For an $n$-qubit problem, there are $2^{n-1}$ possible observed measurements, including \TensSupProd{0}{n}.
+    \item<2-> We need $n-1$ linearly independent measurements.  We seek to build the set $T=\Set{w_{1},w_{2},\ldots, w_{n-1}}$.
+    \item<3-> When we run the circuit to observe $w_{k}$, we hope it is not among the $2^{k-1}$ (think, poisonous) values spanned by our set~$T$.
+    \item<4-> We showed that the number of poisonous values doubles with each addition to~$T$.
+\end{itemize}
+\visible<5->{So while we need a linear number of observations, the number of outcomes that we hope to avoid doubles with each step.  This seems a cause of concern:  can we obtain useful measurements without hitting poisonous values, while those double with each successive measurement?}
     
 \end{frame}
+{
+
+\def\Term#1{\ensuremath{\left(1-\frac{#1}{2^{n-1}}\right)}}
+\def\TermB#1{\ensuremath{\left(1-\frac{1}{#1}\right)}}
+\begin{frame}{Analysis}{How likely are we to obtain $n-$ independent observations?}
+
+\begin{itemize}
+    \item<1-> Our first measurement must only avoid \TensSupProd{0}{n}, the only element in \Span{T}.  The probability of failure here is $\frac{1}{2^{n-1}}$.
+    \item<2-> The next step fails with probability $\frac{2}{2^{n-1}}$, and we continue to double.
+    \item<3-> Generally step~$k$, $1\leq k \leq n-1$ fails with probability $\frac{2^{k-1}}{2^{n-1}}$.
+    \item<4-> The probability of no failure in $n-1$ tries is shown below.
+    
+    
+\end{itemize}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\Term{1} \times \Term{2} \times \cdots \times \Term{2^{n-2}}} \\
+\Last{ = \prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}\mbox{ (terms reversed from above)}}}%
+\ScrollProof{8}{11}{%
+\Next{\Four}{\prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}}
+\Next{\Three}{=& \TermB{2} \TermB{4} \cdots \TermB{2^{n-1}} \\}
+\Last{=& \frac{1}{2} \times \frac{3}{4}\times \frac{7}{8} \times \cdots \times \TermB{2^{n-1}}}
+}
+    
+\end{frame}
+}
