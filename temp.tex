@@ -89,9 +89,13 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 \Last{ = \prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}\mbox{ (terms reversed from above)}}}%
 \ScrollProof{8}{11}{%
 \Next{\Four}{\prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}}
-\Next{\Three}{=& \TermB{2} \TermB{4} \cdots \TermB{2^{n-1}} \\}
-\Last{=& \frac{1}{2} \times \frac{3}{4}\times \frac{7}{8} \times \cdots \times \TermB{2^{n-1}}}
-}
-    
+\Next{\Three}{=& \ColorTwo{\TermB{2}} \times \TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}} \\}
+\gdef\CarryOne{\ColorTwo{\frac{1}{2}}\left[\TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}}\right]}
+\Last{=& \CarryOne}
+}%
+\ScrollProof{12}{14}{
+\Next{\Three}{P =& \CarryOne \\}
+\Next{\Two}{(1-a)\times(1-b) \geq &(1-a-b)\mbox{ if $a,b \geq 0$} \\}
+\Next{\One}{\alert<14>{P \geq} & \frac{1}{2} \left(1 - \frac{1}{4} - \frac{1}{8} - \frac{1}{16} \cdots\right) = \frac{1}{2}\times \frac{1}{2} = \alert<14>{\frac{1}{4}}}}
 \end{frame}
 }
