@@ -16,16 +16,43 @@
     
 \end{frame}
 
+\begin{frame}{Illustration of theorem using our example}{To build intuition}
+\begin{itemize}
+    \item<1-> $T$ is initially empty.  We add:
+    \begin{itemize}
+    \item<2-> 0101
+    \item<3-> 1010
+    \item<4-> 0001
+    \end{itemize}
+\end{itemize}
+\BigSkip{}
+\begin{align*}
+T &= \Set{
+\visible<2->{0101}
+\visible<3->{, 1010}
+\visible<4->{, 0001}
+} \\
+\Span{T} &= \Set{
+\TensSupProd{0}{n}%
+\visible<2->{, 0101}
+\visible<3->{, 1010, 1111}
+\visible<4->{, 0001, 0100, 1011, 1110}
+} \\
+\Mag{\Span{T}} &= 2^\Mag{T} = \alt<1>{1}{\alt<2>{2}{\alt<3>{4}{8}}}
+\end{align*}
+
+\end{frame}
+
 \begin{frame}{Proof of our claim}{By induction on the size of $T$}
 
-\begin{theorem}
+\begin{lemma}
 In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ are linearly independent, then $\Mag{\Span{T}}=2^\Mag{T}$.
-\end{theorem}
-Proof
+\end{lemma}
 \begin{itemize}
     \item The lemma is true initially, because $\Mag{T}=0$ and $\Span{T}=\Set{\TensSupProd{0}{n}}$.
-    \item Now suppose $T=\Set{w_{1},w_{2},\ldots,w_{k-1}}$ so that $\Mag{\Span{T}}=2^{k-1}$ and consider the addition of $w_{k}$ to $T$, where $w_k$ is linearly independent of all strings in~$T$.
-    \item Then \Forall{w_{i}\in T}{\mbox{$\Xor{w_{i}}{w_{k}}\not\in\Span{T}$ but $\Xor{w_{i}}{w_{k}}\in \Span{\Union{T}{\Set{w_{k}}}}$}}
+    \item Assume $T=\Set{w_{1},w_{2},\ldots,w_{k-1}}$ so that $\Mag{\Span{T}}=2^{k-1}$
+    \item Consider the addition of the next observation $w_{k}\not=\TensSupProd{0}{n}$ to $T$, where $w_k$ is linearly independent of all strings in~$T$.
+    \item Then \Forall{w_{i}\in \Union{T}{\TensSupProd{0}{n}}}{\mbox{$\Xor{w_{i}}{w_{k}}\not\in\Span{T}$ but $\Xor{w_{i}}{w_{k}}\in \Span{\Union{T}{\Set{w_{k}}}}$}}
     \item Thus, adding $w_{k}$ to $T$ doubles its span
     \item $\Mag{\Span{\Union{T}{\Set{w_{k}}}}}=2^k$ \QED{}
 \end{itemize}
