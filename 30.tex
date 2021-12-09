@@ -12,3 +12,35 @@
     
 \end{frame}
 
+\begin{frame}{A return to the complex circle}{The basics we need for phase estimation}
+\TwoColumns{%
+\adjustbox{valign=t, width=\textwidth}{\begin{TIKZP}
+\UnitComplexCircle{}
+\visible<1>{%
+\TZPEast{}\TZPNorth{}\TZPSouth{}\TZPWest{}}
+\visible<2-3>{%
+\draw[->,thick] (1,0) arc (0:45:1) coordinate (z) ;
+    \draw[thick,dotted] (0,0) -- (z) ;
+    \TZText{0.5,0}{$\theta$}{above}
+    \ColorOne{\TZText{z}{\ExpPhase{\theta}}{above right}}
+    \visible<3>{%
+    \TZPoint{1,0}{\ExpPhase{0}}{above right}
+    \TZPoint{0,1}{\ExpPhase{\pi/2}}{above right}
+    \TZPoint{-1,0}{\ExpPhase{\pi}}{above left}
+    \TZPoint{0,-1}{\ExpPhase{3\pi/2}}{right}
+    }
+}%
+\visible<4>{%
+\draw[->,thick] (1,0) arc (0:359:1) coordinate (z) ;
+    \draw[thick,dotted] (0,0) -- (z) ;
+    \TZText{z}{$\ExpPhase{0}=\ExpPhase{2\pi}$}{above right}
+}%
+\end{TIKZP}}}{%
+\begin{itemize}
+    \item<1-> Unit points on each axis
+    \item<2-> Traveling $\theta$ radians counterclockwise from $+1$
+\end{itemize}
+}
+    
+\end{frame}
+
