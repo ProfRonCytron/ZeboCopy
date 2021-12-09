@@ -90,7 +90,7 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 \ScrollProof{8}{11}{%
 \Next{\Four}{\prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}}
 \Next{\Three}{=& \ColorTwo{\TermB{2}} \times \TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}} \\}
-\gdef\CarryOne{\ColorTwo{\frac{1}{2}}\left[\TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}}\right]}
+\gdef\CarryOne{\ColorTwo{\frac{1}{2}}\ \left[\TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}}\right]}
 \Last{=& \CarryOne}
 }%
 \ScrollProof{12}{14}{
@@ -101,13 +101,14 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 }
 
 \begin{frame}{Only $\frac{1}{4}$?}{Are we in trouble?}
-\TwoColumns{%
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
-    \item Each trial succeeds with probability at least $\frac{1}{4}$?
-    \item The probability of failing $m$ times in a row is $\left(\frac{3}{4}\right)^{m}$.
-    \item So success with $m$ trails is 
+    \item Each trial succeeds with probability at least~$\frac{1}{4}$---not so good?
+    \item The probability of failing $m$ times in a row is~$\left(\frac{3}{4}\right)^{m}$.
+    \item So success within $m$ trials has probability
     \[ 1 - \left(\frac{3}{4}\right)^{m} \]
     \item The table at the right shows the probability of success for up to $10$~trials.
+    \item We can become arbitrarily, but never completely, assured of finding the secret~$s$.
 \end{itemize}}{%
 \begin{center}
     \begin{tabular}{rc}
