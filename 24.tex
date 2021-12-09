@@ -660,3 +660,142 @@ Our fourth equation
     \item<3-> What is the probability that we obtain a suitable matrix in a given iteration of the above algorithm?  \alert{TL;DR? at least $\frac{1}{4}$}
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Analysis}{Probability of success in a given iteration}
+
+\begin{itemize}
+    \item We regard an $n$-qubit basis vector interchangeably as an $n$-bit string.
+    \item Consider a set $T=\EmptySet{}$ initially, and an $n$-qubit instance of Simon's problem.
+    \item We define the \href{https://en.wikipedia.org/wiki/Linear_span}{span} of $T$, \Span{T}, as the set of $n$-bit basis vectors that are obtainable by addition (\Xor{}{}) of elements in~$T$.  
+    \item Note that $\Forall{T}{\TensSupProd{0}{n} \in \Span{T}}$, as a trivial, zero sum.
+    \item We shall add an $n$-bit basis vector to $T$ only if it is not already in \Span{T}.
+    \item We can then claim 
+    \[\Mag{\Span{T}} = 2^\Mag{T}\]
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Illustration of theorem using our example}{To build intuition}
+\begin{itemize}
+    \item<1-> $T$ is initially empty.  We add:
+    \begin{itemize}
+    \item<2-> 0101
+    \item<3-> 1010
+    \item<4-> 0001
+    \end{itemize}
+\end{itemize}
+
+\begin{align*}
+T &= \Set{
+\visible<2->{0101}
+\visible<3->{, 1010}
+\visible<4->{, 0001}
+} \\
+\Span{T} &= \Set{
+\TensSupProd{0}{n}%
+\visible<2->{, 0101}
+\visible<3->{, 1010, 1111}
+\visible<4->{, 0001, 0100, 1011, 1110}
+} \\
+\Mag{\Span{T}} &= 2^\Mag{T} = \alt<1>{1}{\alt<2>{2}{\alt<3>{4}{8}}}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Proof of our claim}{By induction on the size of $T$}
+
+\begin{lemma}
+In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ are linearly independent, then $\Mag{\Span{T}}=2^\Mag{T}$.
+\end{lemma}
+\begin{itemize}
+    \item The lemma is true initially, because $\Mag{T}=0$ and $\Span{T}=\Set{\TensSupProd{0}{n}}$.
+    \item Assume $T=\Set{w_{1},w_{2},\ldots,w_{k-1}}$ so that $\Mag{\Span{T}}=2^{k-1}$
+    \item Consider the addition of the next observation $w_{k}\not=\TensSupProd{0}{n}$ to $T$, where $w_k$ is linearly independent of all strings in~$T$.
+    \item Then \Forall{w_{i}\in \Union{T}{\TensSupProd{0}{n}}}{\mbox{$\Xor{w_{i}}{w_{k}}\not\in\Span{T}$ but $\Xor{w_{i}}{w_{k}}\in \Span{\Union{T}{\Set{w_{k}}}}$}}
+    \item Thus, adding $w_{k}$ to $T$ doubles its span
+    \item $\Mag{\Span{\Union{T}{\Set{w_{k}}}}}=2^k$ \QED{}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Analysis}{Overview}
+
+\begin{itemize}
+    \item<1-> For an $n$-qubit problem, there are $2^{n-1}$ possible observed measurements, including \TensSupProd{0}{n}.
+    \item<2-> We need $n-1$ linearly independent measurements.  We seek to build the set $T=\Set{w_{1},w_{2},\ldots, w_{n-1}}$.
+    \item<3-> When we run the circuit to observe $w_{k}$, we hope it is not among the $2^{k-1}$ (think, poisonous) values spanned by our set~$T$.
+    \item<4-> We showed that the number of poisonous values doubles with each addition to~$T$.
+\end{itemize}
+\visible<5->{So while we need a linear number of observations, the number of outcomes that we hope to avoid doubles with each step.  This seems a cause of concern:  can we obtain useful measurements without hitting poisonous values, while those double with each successive measurement?}
+    
+\end{frame}
+{
+
+\def\Term#1{\ensuremath{\left(1-\frac{#1}{2^{n-1}}\right)}}
+\def\TermB#1{\ensuremath{\left(1-\frac{1}{#1}\right)}}
+\begin{frame}{Analysis}{How likely are we to obtain $n-$ independent observations?}
+
+\begin{itemize}
+    \item<1-> Our first measurement must only avoid \TensSupProd{0}{n}, the only element in \Span{T}.  The probability of failure here is $\frac{1}{2^{n-1}}$.
+    \item<2-> The next step fails with probability $\frac{2}{2^{n-1}}$, and we continue to double.
+    \item<3-> Generally step~$k$, $1\leq k \leq n-1$ fails with probability $\frac{2^{k-1}}{2^{n-1}}$.
+    \item<4-> The probability of no failure in $n-1$ tries is shown below.
+    
+    
+\end{itemize}
+\ScrollProof{5}{7}{%
+\Next{\Three}{\Term{1} \times \Term{2} \times \cdots \times \Term{2^{n-2}}} \\
+\Last{ = \prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}\mbox{ (terms reversed from above)}}}%
+\ScrollProof{8}{11}{%
+\Next{\Four}{\prod_{k=n-2}^{0} 1 - \frac{2^{k}}{2^{n-1}}}
+\Next{\Three}{=& \ColorTwo{\TermB{2}} \times \TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}} \\}
+\gdef\CarryOne{\ColorTwo{\frac{1}{2}}\ \left[\TermB{4} \times \TermB{8} \times \cdots \times \TermB{2^{n-1}}\right]}
+\Last{=& \CarryOne}
+}%
+\ScrollProof{12}{14}{
+\Next{\Three}{P =& \CarryOne \\}
+\Next{\Two}{(1-a)\times(1-b) \geq &(1-a-b)\mbox{ if $a,b \geq 0$} \\}
+\Next{\One}{\alert<14>{P \geq} & \frac{1}{2} \left(1 - \frac{1}{4} - \frac{1}{8} - \frac{1}{16} \cdots\right) = \frac{1}{2}\times \frac{1}{2} = \alert<14>{\frac{1}{4}}}}
+\end{frame}
+}
+
+\begin{frame}{Only $\frac{1}{4}$?}{Are we in trouble?}
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}[<+->]
+    \item Each trial succeeds with probability at least~$\frac{1}{4}$---not so good?
+    \item The probability of failing $m$ times in a row is~$\left(\frac{3}{4}\right)^{m}$.
+    \item Success within $m$ trials thus has probability
+    \[ 1 - \left(\frac{3}{4}\right)^{m} \]
+    \item The table at the right shows the probability of success for up to $10$~trials.
+    \item We can become arbitrarily, but never completely, assured of finding the secret~$s$.
+\end{itemize}}{%
+\visible<4->{%
+\begin{center}
+    \begin{tabular}{rc}
+    \multicolumn{1}{c}{\#Trials} & \multicolumn{1}{c}{Expected success} \\ \hline
+        1 &  0.25 \\
+        2 &  0.44 \\
+        3 &  0.58 \\
+        4 &  0.68 \\
+        5 &  0.76 \\
+        6 &  0.82 \\
+        7 &  0.87 \\
+        8 &  0.90 \\
+        9 &  0.92 \\
+       10 &  0.94
+    \end{tabular}
+\end{center}}
+}
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Simon's problem has no exact and efficient classical solution.
+    \item Unlike Deutsch--Jozsa, a classical probabilistic solution is also inefficient.
+    \item Applying quantum computation, and subsequent Gaussian elimination, we arrive at a solution, but with only a 25\% chance of success in a given trial.
+    \item By running repeated trials we can become arbitrarily assured of finding the solution.
+    \item The Gaussian elimination can be carried out on a quantum computer---this was the subject of an exam question from~2021---but it's a waste of quantum computing resources.
+\end{itemize}
+    
+\end{frame}
