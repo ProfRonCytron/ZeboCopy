@@ -102,14 +102,15 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 
 \begin{frame}{Only $\frac{1}{4}$?}{Are we in trouble?}
 \Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\begin{itemize}
+\begin{itemize}[<+->]
     \item Each trial succeeds with probability at least~$\frac{1}{4}$---not so good?
     \item The probability of failing $m$ times in a row is~$\left(\frac{3}{4}\right)^{m}$.
-    \item So success within $m$ trials has probability
+    \item Success within $m$ trials thus has probability
     \[ 1 - \left(\frac{3}{4}\right)^{m} \]
     \item The table at the right shows the probability of success for up to $10$~trials.
     \item We can become arbitrarily, but never completely, assured of finding the secret~$s$.
 \end{itemize}}{%
+\visible<4->{%
 \begin{center}
     \begin{tabular}{rc}
     \multicolumn{1}{c}{\#Trials} & \multicolumn{1}{c}{Expected success} \\ \hline
@@ -124,6 +125,6 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
         9 &  0.92 \\
        10 &  0.94
     \end{tabular}
-\end{center}
+\end{center}}
 }
 \end{frame}
