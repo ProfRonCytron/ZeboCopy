@@ -317,8 +317,8 @@ Buddies \\[1em]
 }%
 \ScrollProof{13}{16}{%
 \Next{\Four}{\CarryOne \\}
-\Next{\Three}{ &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\DotP{(\Xor{x}{s})}{w}}}\ \ket{w} \\}
-\gdef\CarryTwo{\sqrt{2^{n+1}}\QState{4} &= \SumBV{w}{n} \ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{(\ColorFour{\DotP{s}{w}})}}}\ \ket{w}}
+\Next{\Three}{ &= \SumBV{w}{n} \left(\ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\DotP{(\Xor{x}{s})}{w}}}\right) \ket{w} \\}
+\gdef\CarryTwo{\sqrt{2^{n+1}}\QState{4} &= \SumBV{w}{n} \left(\ColorOne{\NegOneExp{\DotP{x}{w}}} + \ColorTwo{\NegOneExp{\Xor{(\DotP{x}{w})}{(\ColorFour{\DotP{s}{w}})}}}\right) \ket{w}}
 \Last{\CarryTwo}
 }%
 \only<17->{%
