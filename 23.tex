@@ -308,21 +308,25 @@ Deutsch Problem, single qubit}
 \begin{frame}{Defining the operation \DotP{v}{w}}{A Boolean dot (inner) product of two bit vectors}
 
 \TwoColumns{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}
-\draw (0,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_1$};
-\draw (0.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_2$};
-\draw (1,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (1.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2,0) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2.5,0) rectangle ++(0.5,0.8) node[pos=0.5] {$v_n$};
-\draw (0,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_1$};
-\draw (0.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_2$};
-\draw (1,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (1.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$\cdot$};
-\draw (2.5,-1.2) rectangle ++(0.5,0.8) node[pos=0.5] {$w_n$};
-\end{TIKZP}\end{center}
+\Vskip{-3em}
+\begin{center}
+\begin{DotPBox}{4}{0.5}{6}
+\Qbit{0}{v_1}
+\Qbit{1}{v_2}
+\Qbit{2}{\cdot}
+\Qbit{3}{\cdot}
+\Qbit{4}{\cdot}
+\Qbit{5}{v_n}
+\end{DotPBox} \\[0.5em]
+\begin{DotPBox}{4}{0.5}{6}
+\Qbit{0}{w_1}
+\Qbit{1}{w_2}
+\Qbit{2}{\cdot}
+\Qbit{3}{\cdot}
+\Qbit{4}{\cdot}
+\Qbit{5}{w_n}
+\end{DotPBox}
+\end{center}
 \begin{itemize}
     \item<2-> \ColorThree{Exclusive-or of the \emph{and} of each pair}
     \item<3-> \ColorFour{Sum of the product of each pair}
@@ -600,7 +604,6 @@ We have shown \Forall{n\geq 0}{P(n)}
 {
 \def\V{\ColorTwo{\ensuremath{v}}}
 \def\W{\ColorOne{\ensuremath{w}}}
-\def\Reason#1#2{\only<#1>{\textit{#2}}}
 \begin{frame}{Proof}{\TensSupProd{\Hadamard}{n} on states other than \TensSupProd{0}{n}}
 
 \Vskip{-3em}\begin{theorem}
@@ -646,7 +649,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \begin{frame}{Induction step, $\QState{}=\QZero{}$}
 
-\vrule width 0pt depth 1em
+\begin{Reasoning}
 \Reason{1}{Induction hypothesis}
 \Reason{2}{Include one more qubit, case $\QState{}=\QZero{}$}
 \Reason{3}{Substitution of $\Hadamard(\QZero{})=\QPlus{}$}
@@ -655,17 +658,18 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \Reason{7}{Scroll up}
 \Reason{9}{Apply tensor product}
 \Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QZero{}$}
+\end{Reasoning}
 
 \ScrollProof{1}{4}{%
-   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
+   \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^k}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
     \Next{\Three}{%
-    \ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
-    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
+    \ColorOne{\sqrt{2^k}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorTwo{\Hadamard\QState{}}} \\}
+    \gdef\CarryOne{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^k}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}} &= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\QZero{}+\QOne{})}} \\}
     \Last{\CarryOne}
 }
 \ScrollProof{5}{7}{%
 \Next{\Three}{\CarryOne}
-\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^n}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\}
+\gdef\CarryTwo{\ColorThree{\sqrt{2}}\ColorOne{\sqrt{2^k}}\ \TensProd{\ColorOne{\TensSupProd{\Hadamard}{k}\ket{w}}}{\ColorTwo{\Hadamard\QState{}}}&= \TensProd{\ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}}}{\ColorThree{(\NegOneExp{\DotP{0}{0}}\QZero{}+\NegOneExp{\DotP{1}{0}}\QOne{})}} \\}
 \Last{\CarryTwo}
 }
 \ScrollProof{8}{10}{%
@@ -675,7 +679,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
     \\ & +
     \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ColorThree{\NegOneExp{\DotP{1}{0}}} \ket{v}}\ColorThree{\ket{1}} \\}
 \Next{\One}{%
-   \ColorOne{\sqrt{2^{n\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}}
+   \ColorOne{\sqrt{2^{k\ColorThree{+1}}}}\ \ColorOne{\TensSupProd{\Hadamard}{k\ColorThree{+1}}\ket{w}\ColorTwo{\QZero{}}} &= \ColorOne{\SumBV{v}{k\ColorThree{+1}} \NegOneExp{\DotP{v}{w\ColorTwo{0}}} \ket{v}}}
 }
 
     
@@ -683,7 +687,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
 \begin{frame}{Induction step, $\QState{}=\QOne{}$}
 
-\vrule width 0pt depth 1em
+\begin{Reasoning}
 \Reason{1}{Induction hypothesis}
 \Reason{2}{Include one more qubit, case $\QState{}=\QOne{}$}
 \Reason{3}{Substitution of $\Hadamard(\QOne{})=\QMinus{}$}
@@ -692,6 +696,7 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 \Reason{7}{Scroll up}
 \Reason{9}{Apply tensor product}
 \Reason{10}{Rewrite to prove $P(k+1)$ when $\QState{}=\QOne{}$}
+\end{Reasoning}
 
 \ScrollProof{1}{4}{%
    \Next{\Four}{P(k)\longrightarrow \ColorOne{\sqrt{2^n}\  \TensSupProd{\Hadamard}{k}\ket{w}} &= \ColorOne{\SumBV{v}{k} \NegOneExp{\DotP{v}{w}} \ket{v}} \\}
@@ -717,9 +722,6 @@ Sketch to show \Implies{P(k)}{P(k+1)}:
 
     
 \end{frame}
-
-
-
 }
 
 \begin{frame}{Summary}{What have we learned?}

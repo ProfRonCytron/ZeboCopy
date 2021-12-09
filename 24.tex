@@ -1,0 +1,75 @@
+\SetTitle{25}{Bernstein--Vazarani problem}{Another use of phase kickback}{25}
+
+%% I think this should go before Simon, not after
+
+\begin{frame}{Overview}{What will we learn here?}
+
+\begin{itemize}
+    \item In the Deutsch--Jozsa problem, a function promised to be constant or balanced.
+    \item To obtain an exact solution, a classical approach required $\Theta(2^{n})$ queries while a quantum approach took only $\Theta(1)$ queries.
+    \item We now look at a problem due to \href{https://en.wikipedia.org/wiki/Ethan_Bernstein}{Bernstein} and \href{https://en.wikipedia.org/wiki/Umesh_Vazirani}{Vazirani}.
+    \item In this problem, our function $f(x)$ contains a secret $s$, returning \DotP{x}{s}, where the dot product is defined as we have seen previously.
+    \item Our challenge is to find $s$.
+    \item The quantum solution to this problem uses the \href{https://qiskit.org/textbook/ch-gates/phase-kickback.html}{phase-kickback} trick we have studied and applied previously.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Bernstein--Vazirani}{Problem statement}
+
+\begin{itemize}[<+->]
+    \item We are given a function $f(x): \Set{0,1}^{n}\mapsto \Set{0,1}$.  It takes in a value expressed in $n$ bits and returns \False{}~($0$) or \True~($1$).
+    \item We are \href{https://en.wikipedia.org/wiki/Promise_problem}{promised} that $f(x)$ returns \DotP{x}{s}, where $s$ is an $n$-bit secret.
+    \item We assume that the promise holds, but we eventually consider the consequences of breaking this promise.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Classical solution}{Takes linear time}
+
+\begin{itemize}
+    \item Consider a probe of $f(x)$ with an input whose binary value would be~$2^{i}, 0 \leq i < n$.
+    \item As promised, $f(x)$ will return the dot product of its input with the secret~$s$.
+    \item Our probe contains zeros everywhere except in the position corresponding to~$2^i$.
+    \item The result of the probe therefore reveals the corresponding bit value for $s$:
+    \[ s_{i} = f(2^{i}) = \DotP{2^i}{s} \]
+    if we number the bits so that the rightmost bit is position~$0$ and the leftmost bit is position $n-1$.
+    \item We can therefore classically compute $s$ using $n$~queries.
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Quantum solution}{Takes only a single query}
+
+\Vskip{-4em}\TwoColumns{%
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=\textwidth}{\begin{quantikz}
+\lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{n}\slice{\alert<1>{\QState{0}}} &  \gate{\TensSupProd{\Hadamard}{n}}\slice{\alert<2>{\QState{1}}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<5-6>{\QState{2}}} &\gate{\TensSupProd{\Hadamard}{n}}\slice{\alert<7-9>{\QState{3}}} & \meter{\only<10>{\alert{$s$}}} \\
+\lstick{\QZero{}} & \gate{\PauliX} &   \gate{\Hadamard}   &  \qw\gateinput{$y$}\gateoutput{\Xor{y}{f(x)}} & \qw & \qw
+\end{quantikz}}
+\end{center}
+\begin{Reasoning}
+\Reason{3}{Recall the $n$-way \Hadamard{} transformation}
+\Reason{4}{Recall \Hadamard{} is its own inverse}
+\Reason{5}{Phase kickback trick}
+\Reason{6}{$f(x)=\DotP{x}{s}$}
+\Reason{8}{Apply \alert{this identity}}
+\Reason{9}{Apply \alert{this identity}}
+\Reason{10}{Measuring the top $n$ qubits yields \alert{$s$}}
+\end{Reasoning}
+}{%
+\begin{align*}
+\visible<1->{\QState{0} =&  \TensProd{\ket{\TensSupProd{0}{n}}}{\QOne} \\}
+\visible<2->{\QState{1} =& \TensProd{\SumBV{x}{n} \ket{x}}{\ket{-}} \\}
+\visible<3->{\alert<8>{\TensSupProd{\Hadamard}{n}(\ket{s}) =}& \alert<8>{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}} \\}
+\visible<4->{\alert<9>{\TensSupProd{\Hadamard}{n}(\TensSupProd{\Hadamard}{n}(\ket{s})) =}& \alert<9>{\ket{s}}}
+\end{align*}
+}
+\begin{align*}
+    \visible<5->{\QState{2} =& \TensProd{\SumBV{x}{n} \NegF{x} \ket{x}}{\ket{-}}} 
+               \visible<6->{= \TensProd{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}{\ket{-}} \\}
+    \visible<7->{\QState{3} =& \TensProd{\TensSupProd{\Hadamard}{n}\left(\textcolor<8>{\RCthree}{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}\right)}{\ket{-}}} \visible<8->{= \TensProd{\textcolor<9>{\RCthree}{\TensSupProd{\Hadamard}{n}(\textcolor<8>{\RCthree}{\TensSupProd{\Hadamard}{n}(\ket{s})})}}{\ket{-}} }\visible<9->{= \TensProd{\textcolor<9>{\RCthree}{\alert<10>{\ket{s}}}}{\ket{-}}}
+\end{align*}
+    
+\end{frame}
