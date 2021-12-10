@@ -1,4 +1,4 @@
-\SetTitle{24}{Simon's problem}{Harder probabilistically than Deutsch--Jozsa}{24}
+\SetTitle{25}{Simon's problem}{Harder probabilistically than Deutsch--Jozsa}{24}
 
 \begin{frame}{Overview}{What will we study?}
 
@@ -17,7 +17,7 @@
 
 \end{frame}
 
-\begin{frame}{Deutsch--Jozsa revisited}{We can solve this efficiently if we give up an exact solution}
+\begin{frame}{Deutsch--Jozsa revisited}{We can solve this efficiently if we give up on an exact solution}
 
 \TwoColumns{%
 \only<1-13>{%
@@ -580,7 +580,7 @@ We accept this as the first equation and set the matrix values accordingly.
 This is another, independent $w$ and we use it as the second equation.
 }%
 \only<9>{%
-This value is in the span of the first two ($\Xor{0101}{1010}=11111$) so it does not contribute a linearly independent row to our developing matrix.  We do not use this observation.}%
+This value is in the span of the first two ($\Xor{0101}{1010}=1111$) so it does not contribute a linearly independent row to our developing matrix.  We do not use this observation.}%
 \only<7>{%
 $w=0000$ never reveals anything of $s$, so we reject this.}%
 \only<11>{%
@@ -648,7 +648,7 @@ Our fourth equation
 
 \begin{enumerate}
     \item Create the quantum circuit we have shown for an instance of this problem.  The oracle is engineered as we have shown previously so that it places the correct values on the output qubits for all basis states.
-    \item\label{step:doover} Run that circuit $n-1$ times to obtain observations $w_{1}, w_{2}, \ldots, w_{n-1}$.  These for the rows of a matrix.
+    \item\label{step:doover} Run that circuit $n-1$ times to obtain observations $w_{1}, w_{2}, \ldots, w_{n-1}$.  These form the rows of a matrix.
     \item Determine if those rows are linearly independent and that none of them is all zeros.
     \begin{itemize}
         \item If they are, then use Gaussian elimination to find the secret~$s$.
