@@ -531,15 +531,15 @@ Suppose we see $w$ observations in the following order:
     \item<4-> 1010
     \item<6-> 0000
     \item<8-> 1111
-    \item<10-> 1011
-    \item<12-> 0001
+    \item<10-> 0001
+    \item<12-> 1011
 \end{itemize}}%
 \only<14->{%
 \begin{itemize}
-    \item<14-> From row~4 we obtain $s_{4}=0$.
+    \item<14-> From row~3 we obtain $s_{4}=0$.
     \item<15-> So we know its value.
     \item<16-> From row~1 we now obtain $s_{2}=0$.
-    \item<18->Row~2 or ~3 can be used to show $s_{1}=s_{3}=1$
+    \item<18->Row~2 or~4 can be used to show $s_{1}=s_{3}=1$
     \item<20-> We thus obtain $s=1010$.
 \end{itemize}
 }
@@ -559,16 +559,16 @@ Suppose we see $w$ observations in the following order:
 \Qbit{3}{0}
 \end{DotPBox}}& \L{\FCirc{0.3}} & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alert<16>{\alt<17->{\alert<17>{0}}{s_2}}}\end{DotPBox}  &\L{=}& \L{0}\\
 \visible<11->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
-\Qbit{0}{1}
-\Qbit{1}{0}
-\Qbit{2}{1}
-\Qbit{3}{1}
-\end{DotPBox}}& & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<19->{1}{\alert<18>{s_3}}}\end{DotPBox} & & \L{0} \\
-\visible<13->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
 \Qbit{0}{0}
 \Qbit{1}{0}
 \Qbit{2}{0}
 \Qbit{3}{\alert<14-15>{1}}
+\end{DotPBox}}& & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<19->{1}{\alert<18>{s_3}}}\end{DotPBox} & & \L{0} \\
+\visible<13->{\begin{DotPBox}[scale=0.7]{3}{1}{4}
+\Qbit{0}{1}
+\Qbit{1}{0}
+\Qbit{2}{1}
+\Qbit{3}{1}
 \end{DotPBox}}& & \begin{DotPBox}[scale=0.7]{1}{1}{1}\Qbit{0}{\alt<15->{\alert<15>{0}}{\alert<14>{s_4}}}\end{DotPBox} & & \L{0}
 \end{tabular}
 \end{center}
