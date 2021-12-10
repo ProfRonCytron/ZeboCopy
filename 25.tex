@@ -233,7 +233,7 @@ Buddies \\[1em]
 }
 \ScrollProof{13}{16}{%
 \Next{\Four}{\CarryTwo \\}
-\Next{\Three}{ &= \SumBV{}{n}\ \ket{x}\ket{\Xor{0^{n-1}}{f(x)}} \\}
+\Next{\Three}{ &= \SumBV{x}{n}\ \ket{x}\ket{\Xor{0^{n-1}}{f(x)}} \\}
 \gdef\CarryThree{\QState{2} &= \RootTwoN{n}\SumBV{x}{n}\ \ket{x}\ket{f(x)}}
 \Last{\CarryThree}
 }
@@ -244,7 +244,7 @@ Buddies \\[1em]
 \Vskip{-2.5em}\begin{itemize}
     \item<17-> This is a remarkable state in that it contains the uniform superposition of \emph{every possible} input $x$ (the top~$n$ qubits) and its evaluation $f(x)$ (the bottom~$n-1$ qubits).
     \item<18-> Measurement of all qubits will yield a randomly chosen \TensProd{x}{f(x)}, but this doesn't tell us anything about $x$'s buddy.
-    \item<19-> What happens at \QState{3}, where we measure \only{only} the bottom qubits?
+    \item<19-> State \QState{3} measures only the bottom $n-1$ qubits.  Why?
 \end{itemize}
 }
 \end{frame}
@@ -396,7 +396,7 @@ We are equally likely to see any outcome \ket{w} such that its dot product with~
 }
     
 \end{frame}
-\def\S#1#2#3#4{#1 & 0 & \visible<3->{#2} & \visible<5->{#3} & \visible<7->{#4}}
+\def\S#1#2#3#4{#1 & 0 & \visible<3->{#2} & \visible<10->{#3} & \visible<18->{#4}}
 \begin{frame}{What does each $w$ tell us about $s$?}
 \TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{center}
