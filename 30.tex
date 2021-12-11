@@ -13,37 +13,38 @@
 \end{frame}
 
 \begin{frame}{A return to the complex circle}{The basics we need for phase estimation}
-\TwoColumns{%
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \adjustbox{valign=t, width=\textwidth}{\begin{TIKZP}
 \UnitComplexCircle{}
 \visible<1>{%
 \TZPEast{}\TZPNorth{}\TZPSouth{}\TZPWest{}}
 \visible<2>{%
-\draw[->,thick,red] (1,0) arc (0:45:1) coordinate (z) ;
-\draw[thick,dotted] (0,0) -- (z) ;
-\TZText{0.5,0}{$\theta$}{above}
+  \draw[->,thick,red] (1,0) arc (0:45:1) coordinate (z) ;
+  \draw[thick,dotted] (0,0) -- (z) ;
+  \TZText{0.5,0}{$\theta$}{above}
     \ColorOne{\TZText{z}{\ExpPhase{\theta}}{above right}}
 }
-    \visible<3>{\TZPoint{1,0}{\ExpPhase{0}}{above right}}
-    \visible<4>{
-      \TZPoint{0,1}{\ExpPhase{\pi/2}}{above right}
+\visible<3>{%
+   \TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}
+\visible<4>{
+      \TZPoint{0,1}{$\ExpPhase{\pi/2}=i$}{above right}
       \draw[->,thick,red] (1,0) arc (0:90:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);}
-    \visible<5>{
-      \TZPoint{-1,0}{\ExpPhase{\pi}}{above left}
+\visible<5>{%
+      \TZPoint{-1,0}{$\ExpPhase{\pi}=-1$}{above left}
       \draw[->,thick,red] (1,0) arc (0:180:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
-    \visible<6>{
-      \TZPoint{0,-1}{\ExpPhase{3\pi/2}}{right}
+\visible<6>{%
+      \TZPoint{0,-1}{$\ExpPhase{3\pi/2}=-i$}{below right}
       \draw[->,thick,red] (1,0) arc (0:270:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
-    \visible<7>{
+\visible<7>{%
       \TZPoint{1,0}{\ExpPhase{2\pi}}{above right}
       \draw[->,thick,red] (1,0) arc (0:359:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
-    }
+}
 \end{TIKZP}}}{%
 \begin{itemize}
     \item<1-> Unit points on each axis
