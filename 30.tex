@@ -40,8 +40,9 @@
       \draw[->,thick,red] (1,0) arc (0:270:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
-\visible<7>{%
-      \TZPoint{1,0}{\ExpPhase{2\pi}}{above right}
+\visible<7-8>{%
+      \TZPoint{1,0}{$\ExpPhase{2\pi}\visible<8>{=}$}{above right}
+       \visible<8>{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{below right}}
       \draw[->,thick,red] (1,0) arc (0:359:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
 }
