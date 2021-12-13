@@ -19,31 +19,31 @@
 \visible<1>{%
 \TZPEast{}\TZPNorth{}\TZPSouth{}\TZPWest{}}
 \visible<2>{%
-  \draw[->,thick,red] (1,0) arc (0:45:1) coordinate (z) ;
-  \draw[thick,dotted] (0,0) -- (z) ;
+  \draw[->,thick,\RCtwo] (1,0) arc (0:45:1) coordinate (z) ;
+  \draw[thick,dotted,\RCtwo] (0,0) -- (z) ;
   \TZText{0.5,0}{$\theta$}{above}
-    \ColorOne{\TZText{z}{\ExpPhase{\theta}}{above right}}
+    \ColorTwo{\TZText{z}{\ExpPhase{\theta}}{above right}}
 }
 \visible<3>{%
    \TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}
 \visible<4>{
       \TZPoint{0,1}{$\ExpPhase{\pi/2}=i$}{above right}
-      \draw[->,thick,red] (1,0) arc (0:90:1) coordinate (z) ;
+      \draw[->,thick,\RCtwo] (1,0) arc (0:90:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);}
 \visible<5>{%
       \TZPoint{-1,0}{$\ExpPhase{\pi}=-1$}{above left}
-      \draw[->,thick,red] (1,0) arc (0:180:1) coordinate (z) ;
+      \draw[->,thick,\RCtwo] (1,0) arc (0:180:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
 \visible<6>{%
       \TZPoint{0,-1}{$\ExpPhase{3\pi/2}=-i$}{below right}
-      \draw[->,thick,red] (1,0) arc (0:270:1) coordinate (z) ;
+      \draw[->,thick,\RCtwo] (1,0) arc (0:270:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
 \visible<7-8>{%
       \TZPoint{1,0}{$\ExpPhase{2\pi}\visible<8>{=}$}{above right}
        \visible<8>{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{below right}}
-      \draw[->,thick,red] (1,0) arc (0:359:1) coordinate (z) ;
+      \draw[->,thick,\RCtwo] (1,0) arc (0:359:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
 }
 \end{TIKZP}}}{%
@@ -56,11 +56,60 @@
 \end{frame}
 
 \begin{frame}{Periodic states}{Definition}
-
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+\adjustbox{valign=t, width=\textwidth}{\begin{TIKZP}
+\UnitComplexCircle{}
+\visible<3-4>{%
+ \draw[->,thick,\RCone] (1,0) arc (0:40:1) coordinate (z2);
+ \draw[->,thick,\RCone] (1,0) arc (0:60:1) coordinate (z3);
+ \draw[->,thick,\RCone] (1,0) arc (0:80:1) coordinate (z4);
+ \draw[->,thick,\RCone] (1,0) arc (0:100:1) coordinate (z5);
+ \draw[thick,dotted] (0,0) -- (z2);
+ \draw[thick,dotted] (0,0) -- (z3);
+ \draw[thick,dotted] (0,0) -- (z4);
+ \draw[thick,dotted] (0,0) -- (z5);
+}
+\visible<1-4>{%
+  \draw[->,thick,\RCtwo] (1,0) arc (0:20:1) coordinate (z) ;
+  \draw[thick,dotted,\RCtwo] (0,0) -- (z);
+  \visible<1>{\TZText{0.55,0.15}{\mbox{\small $\theta$}}{right}}
+  \visible<1>{
+    \ColorTwo{\TZText{z}{\ExpPhase{\theta}}{above right}}}
+  \visible<2->{
+    \ColorTwo{\TZText{z}{\ExpPhase{w\cdot 2\pi}}{above right}}}
+}
+\visible<5->{%
+  \draw[->,ultra thick,\RCthree] (0,0) -- (1,0);
+  \visible<5>{\ColorThree{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}}
+  \visible<6->{%
+  \draw[->,thick,\RCtwo] (1,0) arc (0:20:1) coordinate (z2);
+  \ColorTwo{\TZText{z2}{\ \ExpPhase{w\cdot 2\pi\cdot 1}}{right}}
+ \draw[->,thick,\RCone] (1,0) arc (0:40:1) coordinate (z3);
+ \draw[->,thick,\RCone] (1,0) arc (0:60:1) coordinate (z4);
+ \draw[->,thick,\RCone] (1,0) arc (0:80:1) coordinate (z5);
+ \draw[thick,dotted] (0,0) -- (z2);
+ \draw[thick,dotted] (0,0) -- (z3);
+ \ColorOne{\TZText{z3}{\ \ExpPhase{w\cdot 2\pi\cdot 2}}{right}}
+ \draw[thick,dotted] (0,0) -- (z4);
+ \ColorOne{\TZText{z4}{\ \ExpPhase{w\cdot 2\pi\cdot 3}}{above right}}
+ \draw[thick,dotted] (0,0) -- (z5);
+ \ColorOne{\TZText{z5}{\raisebox{4pt}{\ \ExpPhase{w\cdot 2\pi\cdot 4}}}{above right}}}
+}
+\end{TIKZP}}
+}{%
+\only<1-3>{%
 \begin{itemize}
-    \item 
-\end{itemize}
-    
+    \item<1-> The basis states will be related to each other in phase by a constant shift of $\theta$ radians.
+    \item<2-> We capture the extent of the rotation by $\ColorTwo{w}, 0\leq \ColorTwo{w} < 1$, which represents a fraction of a complete rotation of $2\pi$ radians.
+    \item<3-> Each \ColorOne{subsequent basis vector} has amplitude shifted by $\ColorTwo{w}\cdot 2\pi$ radians.
+\end{itemize}}
+\only<4->{%
+\begin{itemize}
+    \item<4-> Global phase consists of a uniform rotation of all points on the complex circle. 
+    \item<5-> We can therefore assert that the first point occurs at $+1$.
+    \item<6-> Each \ColorOne{subsequent point} is $\ColorTwo{w}\cdot 2\pi$ radians counterclockwise on the circle.
+\end{itemize}}
+}
 \end{frame}
 
 \begin{frame}{\QPlus{} and \QMinus}{These are periodic states}
