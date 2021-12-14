@@ -25,6 +25,33 @@
     
 \end{frame}
 
+\begin{frame}{Example}{$n=3$, secret $s$=101}
+\TwoColumns{%
+\begin{center}
+\begin{tabular}{ccc}
+\multicolumn{3}{c}{$s=101$} \\
+$x$  & \And{x}{s} & \DotP{x}{s} \\ \hline
+000  & 000 & 0 \\
+\textcolor<3->{\RCone}{001}  & 001 & \textcolor<3->{\RCone}{1} \\
+\textcolor<4->{\RCtwo}{010}  & 000 & \textcolor<4->{\RCtwo}{0} \\
+011  & 001 & 1 \\
+\textcolor<5->{\RCthree}{100}  & 100 & \textcolor<5->{\RCthree}{1} \\
+101  & 101 & 0 \\
+110  & 100 & 1 \\
+111  & 101 & 0
+\end{tabular}
+\end{center}
+}{%
+\begin{itemize}
+    \item The complete table is shown.
+    \item<2-> Note that evaluating $f(x)=\DotP{x}{s}$ on certain inputs forces the function to reveal a bit of~$s$.
+    \item<6-> Each such input contains a single~$1$, and the result indicates the corresponding bit of~$s$.
+    \item<7-> The analysis here shows
+    \[s = \ColorThree{1}\ColorTwo{0}\ColorOne{1}\]
+\end{itemize}
+}
+\end{frame}
+
 \section*{Classical solution}
 
 \begin{frame}{Classical solution}{Takes linear time}
