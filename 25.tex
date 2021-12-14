@@ -741,11 +741,23 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 \visible<5->{So while we need a linear number of observations, the number of outcomes that we hope to avoid doubles with each step.  This seems a cause of concern:  can we obtain useful measurements without hitting poisonous values, while those double with each successive measurement?}
     
 \end{frame}
+
+\begin{frame}{Analysis}{We need this later}
+
+From a \href{https://en.wikipedia.org/wiki/1/2_\%2B_1/4_\%2B_1/8_\%2B_1/16_\%2B_\%E2\%8B\%AF}{useful identity} showing $0.1111\ldots_{2} = 1$
+\begin{align*}
+    \sum_{i=1}^{\infty} \left({\frac{1}{2}}\right)^{i} &= 1 \\
+    \visible<2->{\sum_{i=\ColorOne{2}}^{\infty} \left({\frac{1}{2}}\right)^{i} &= 1-\ColorOne{\frac{1}{2}}}\visible<3->{ = \ColorTwo{\frac{1}{2}}} \\
+    \visible<4->{1-\sum_{i=2}^{\infty} \left({\frac{1}{2}}\right)^{i} &= 1-\ColorTwo{\frac{1}{2}}}\visible<5->{ = \frac{1}{2} \\[1em]}
+    \visible<6->{1 - \frac{1}{4} - \frac{1}{8} - \cdots &= \frac{1}{2}}
+\end{align*}
+\end{frame}
+
 {
 
 \def\Term#1{\ensuremath{\left(1-\frac{#1}{2^{n-1}}\right)}}
 \def\TermB#1{\ensuremath{\left(1-\frac{1}{#1}\right)}}
-\begin{frame}{Analysis}{How likely are we to obtain $n-$ independent observations?}
+\begin{frame}{Analysis}{How likely are we to obtain $n-1$ independent observations?}
 
 \begin{itemize}
     \item<1-> Our first measurement must only avoid \TensSupProd{0}{n}, the only element in \Span{T}.  The probability of failure here is $\frac{1}{2^{n-1}}$.
