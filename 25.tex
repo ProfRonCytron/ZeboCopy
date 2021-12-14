@@ -1,5 +1,7 @@
 \SetTitle{25}{Simon's problem}{Harder probabilistically than Deutsch--Jozsa}{24}
 
+\section*{Overview}
+
 \begin{frame}{Overview}{What will we study?}
 
 \begin{itemize}
@@ -16,6 +18,8 @@
 \end{itemize}
 
 \end{frame}
+
+\section*{Probabilistic approach Deutsch--Jozsa}
 
 \begin{frame}{Deutsch--Jozsa revisited}{We can solve this efficiently if we give up on an exact solution}
 
@@ -80,6 +84,8 @@ This algorithm produces the correct answer with probability~$\frac{2}{3}$.
 \end{itemize}
     
 \end{frame}
+
+\section*{Simon's problem}
 
 \begin{frame}{Simon's problem}{Is difficult probabilistically}
 \begin{itemize}[<+->]
@@ -203,6 +209,8 @@ Buddies \\[1em]
 \end{itemize}
 \end{frame}
 
+\section*{Solution}
+
 \begin{frame}{Solution for Simon's problem}{Circuit and analysis}
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
@@ -287,6 +295,8 @@ Buddies \\[1em]
 }
     
 \end{frame}}
+
+\section*{Partial measurement}
 
 \begin{frame}{Analysis from \QState{3}}{The partial measurement does help, partially}
 \begin{center}
@@ -520,7 +530,7 @@ We are equally likely to see any outcome \ket{w} such that its dot product with~
     
 \end{frame}
 
-
+\section*{4-qubit example}
 
 \begin{frame}{Larger example, $n=4$ qubits}{Let's find $s$ as Simon would}
 \TwoColumns{%
@@ -660,6 +670,8 @@ Our fourth equation
     \item<3-> What is the probability that we obtain a suitable matrix in a given iteration of the above algorithm?  \alert{TL;DR? at least $\frac{1}{4}$}
 \end{itemize}
 \end{frame}
+
+\section*{Analysis of termination}
 
 \begin{frame}{Analysis}{Probability of success in a given iteration}
 
