@@ -271,7 +271,7 @@ w \approx .w_{1}w_{2}\cdots w_{n}
 \Vskip{-4em}\TwoColumns{%
 \begin{itemize}
     \item<1-> Consider an example \Vskip{-1.2em}\[w=.\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=.\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
-    \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate $.\ColorOne{w_1}\ColorTwo{w_2}\ColorThree{w_3}$ to obtain
+    \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate, as needed, $.\ColorOne{w_1}\ColorTwo{0}\ColorThree{1}$ to obtain
     $.\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
     \item<8-> After \Hadamard{} of that state, we obtain $\ColorOne{w_1}=\ColorOne{1}$
     \item<9-> And so we have found
@@ -282,7 +282,7 @@ w \approx .w_{1}w_{2}\cdots w_{n}
     \item<2-> We first shift left by two bits to obtain $.\ColorThree{w_{3}}$
     \item<3-> After \Hadamard{} of that state, we obtain $\ColorThree{w_3}=\ColorThree{1}$
     \item<4-> We then shift the original value left by one bit to obtain $.\ColorTwo{w_2}\ColorThree{w_3}$.
-    \item<5-> Because we already know $\ColorThree{w_3}$ we can take action to rotate the state to obtain $.\ColorTwo{w_2}0$, clearing the second bit if necessary (it is!).
+    \item<5-> Because we already know $\ColorThree{w_3}$ we can take action to rotate the second bit, if necessary (it is!), to obtain $.\ColorTwo{w_2}\ColorThree{1}\mapsto .\ColorTwo{w_2}0$.
     \item<6-> After \Hadamard{} of that state, we obtain $\ColorTwo{w_2}=\ColorTwo{0}$,
     
 \end{itemize}
