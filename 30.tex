@@ -246,3 +246,19 @@ w \approx .w_{1}w_{2}\cdots w_{n}
     
 \end{frame}
 
+\begin{frame}{Some intuition}{Using the simplest periodic states}
+
+\begin{itemize}[<+->]
+    \item If we know $\QState{}=\ket{+}$ or $\QState{}=\ket{-}$
+    \item then we know only a single qubit is needed to represent the phase.
+    \item $\Hadamard(\QState{})$ yields the bit we seek:
+    \begin{description}
+        \item[$\QState{}=\ket{+}$] $\Hadamard(\QState{}) = \ket{0}$
+        \item[$\QState{}=\ket{-}$] $\Hadamard(\QState{}) = \ket{1}$
+    \end{description}
+    \item Measuring the outcome of the \Hadamard{} gate provides $.w_{1}$ directly.
+    \item If only we could express a period state as the tensor product of states that are either \ket{+} or \ket{-}, we could determine the value of each $w_{i}$ using a \Hadamard{} gate.
+\end{itemize}
+    
+\end{frame}
+
