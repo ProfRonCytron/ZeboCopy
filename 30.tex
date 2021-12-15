@@ -2,7 +2,7 @@
 
 \begin{frame}{Overview}{What will we study here?}
 
-\begin{itemize}
+\begin{itemize}[<+->]
     \item Phase has been an elusive aspect of quantum state.
     \item As we have studied, the probability of a measurement outcomes is related to the amplitude of the coefficient present the associated basis state.
     \item We use phase during a quantum computation to establish interference patterns of interest.
@@ -11,6 +11,8 @@
 \end{itemize}
     
 \end{frame}
+
+\section*{Phase shift}
 
 \begin{frame}{A return to the complex circle}{The basics we need for phase estimation}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
@@ -139,21 +141,21 @@ for a constant $w, 0 \leq w < 1$.
 \TwoColumns{%
 \adjustbox{valign=t, width=\textwidth}{\begin{TIKZP}
 \UnitComplexCircle{}
-\visible<2>{%
+\visible<2,6->{%
 \draw[->,ultra thick,\RCthree] (0,0) -- (1,0);
   \ColorThree{\TZPoint{1,0}{\ExpPhase{0}}{above right}}
 }
-\visible<3>{%
+\visible<3,6->{%
 \draw[->,thick,\RCone] (1,0) arc (0:45:1) coordinate (z2);
   \draw[thick,dotted] (0,0) -- (z2);
   \ColorOne{\TZText{z2}{\ \ExpPhase{\frac{\pi}{4}}}{right}}
 }
-\visible<4>{%
+\visible<4,6->{%
 \draw[->,thick,\RCone] (1,0) arc (0:90:1) coordinate (z3);
   \draw[thick,dotted] (0,0) -- (z3);
   \ColorOne{\TZText{z3}{\ \ExpPhase{\frac{\pi}{2}}}{above right}}
 }
-\visible<5>{%
+\visible<5,6->{%
 \draw[->,thick,\RCone] (1,0) arc (0:135:1) coordinate (z4);
   \draw[thick,dotted] (0,0) -- (z4);
   \ColorOne{\TZText{z4}{\ \ExpPhase{\frac{3\pi}{4}}}{above left}}
@@ -216,7 +218,31 @@ for a constant $w, 0 \leq w < 1$.
     \item Since $0\leq w < 1$, we can approximate $w$ using the binary fraction
     \[ .w_{1}w_{2}\cdots w_{n}\]
     for $n$ bits, where each is~$0$ or~$1$.
+    \item For a single qubit to characterize phase, we have
+    \begin{description}
+        \item[$w=0$]  $.w_{1}=.0$ characterizes \ket{+} exactly
+        \item[$w=\frac{1}{2}$] $.w_{1}=.1$ characterizes \ket{-} exactly
+    \end{description}
+    \item No extra precision is required to capture \ket{+} or \ket{-}, but other periodic states require more qubits for more precision.
+    \item Some periodic states cannot be captured precisely with any number of qubits:
+    \begin{itemize}
+        \item A state whose period is irrational
+        \item A state whose period is rational but whose base-$2$ representation does not terminate
+    \end{itemize}
 \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Phase estimation}{Problem statement}
+
+Given \emph{periodic state} \QState{} for $n$ qubits: 
+\[
+\QState{} = \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y},  0 \leq w < 1
+\]
+use $n$ qubits to compute an $n$-bit estimation of $w$:
+\[
+w \approx .w_{1}w_{2}\cdots w_{n}
+\]
     
 \end{frame}
 
