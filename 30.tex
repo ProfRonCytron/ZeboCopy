@@ -241,7 +241,7 @@ Given \emph{periodic state} \QState{} for $n$ qubits:
 \]
 use $n$ qubits to compute an $n$-bit estimation of $w$:
 \[
-w \approx .w_{1}w_{2}\cdots w_{n}
+w \approx .w_{1}w_{2}\cdots w_{n} 
 \]
     
 \end{frame}
@@ -257,8 +257,36 @@ w \approx .w_{1}w_{2}\cdots w_{n}
         \item[$\QState{}=\ket{-}$] $\Hadamard(\QState{}) = \ket{1}$
     \end{description}
     \item Measuring the outcome of the \Hadamard{} gate provides $.w_{1}$ directly.
-    \item If only we could express a period state as the tensor product of states that are either \ket{+} or \ket{-}, we could determine the value of each $w_{i}$ using a \Hadamard{} gate.
+    \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  This requires:
+    \begin{itemize}
+        \item Shifting the binary bits left, so that the bit of interest is just after the binary point.
+        \item Eliminating any non-zero bits after the bit of interest so we are analyzing only~$.0$ or~$.1$.
+    \end{itemize}
 \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{More intuition}{Using an example}
+
+\Vskip{-4em}\TwoColumns{%
+\begin{itemize}
+    \item<1-> Consider an example \Vskip{-1.2em}\[w=.\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=.\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
+    \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate $.\ColorOne{w_1}\ColorTwo{w_2}\ColorThree{w_3}$ to obtain
+    $.\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
+    \item<8-> After \Hadamard{} of that state, we obtain $\ColorOne{w_1}=\ColorOne{1}$
+    \item<9-> And so we have found
+    \[w=.\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=.\ColorOne{1}\ColorTwo{0}\ColorThree{1}\]
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<2-> We first shift left by two bits to obtain $.\ColorThree{w_{3}}$
+    \item<3-> After \Hadamard{} of that state, we obtain $\ColorThree{w_3}=\ColorThree{1}$
+    \item<4-> We then shift the original value left by one bit to obtain $.\ColorTwo{w_2}\ColorThree{w_3}$.
+    \item<5-> Because we already know $\ColorThree{w_3}$ we can take action to rotate the state to obtain $.\ColorTwo{w_2}0$, clearing the second bit if necessary (it is!).
+    \item<6-> After \Hadamard{} of that state, we obtain $\ColorTwo{w_2}=\ColorTwo{0}$,
+    
+\end{itemize}
+}
     
 \end{frame}
 
