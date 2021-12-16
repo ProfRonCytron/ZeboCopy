@@ -314,19 +314,21 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
 \end{frame}
 
 {
-\def\T#1{\TwoSupOp{\ket{0}}{\ExpPhase{2\pi\left(2^{#1}w\right)}\ket{1}}{+}}
-\begin{frame}{Useful theorem}{Needed for phase estimation}
+\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}
+\begin{frame}{Useful theorem}{Needed for phase estimation, prove later}
+
+\Vskip{-3em}\begin{align*}
+ \RootTwoN{\N}\SumPH{y}{\N} \ExpPhase{2\pi \W{}y} \ket{y} =& \T{\N{}-1}  \\
+ \TensOp{} & \T{\N{}-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \T{\N{}-\N{}} 
+\end{align*}
 \begin{itemize}
-    \item We state the theorem here and prove it later.
-    \item This theorem allows us to view a periodic state qubit-by-qubit, due to the tensor factoring.
+    \item This reveals the separate state of each of the \N{} qubits.
+    \item Each successive qubit reveals another binary digit of \W{}.
 \end{itemize}
 
-\begin{align*}
- \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y} =& \T{n-1}  \\
- \TensOp{} & \T{n-2} \\
- \TensOp{} & \cdots \\
- \TensOp{} & \T{n-n} 
-\end{align*}
 
 \end{frame}
 }
