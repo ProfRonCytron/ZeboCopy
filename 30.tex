@@ -296,22 +296,38 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
     \item Consider $\ExpPhase{2\pi w}, w=\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{w_{k+1}\cdots w_{n}}$ (base 2)
     \item Multiplying $w$ by a power of two shifts the binary point to the right:
     \begin{align*}
-        w &= \LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}\cdots w_{n}} \\
-        2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}}
+       w &= \LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}\cdots w_{n}} \\
+       \visible<4->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
     \end{align*}
     
-    \item So in our exponent we have
+    \item<4-> So in our exponent we have
+    {\Large
     \begin{align*}
-        \ExpPhase{2\pi 2^{k}w} &= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}}} =\ExpPhase{2\pi (\ColorOne{w_{1}w_{2}\cdots w_{k}}+\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}\\
-        &= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}} \times \ExpPhase{2\pi (\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})} \\
-        &= \ColorOne{1} \times \ExpPhase{2\pi (\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}, \mbox{ because $\ExpPhase{2\pi \ColorOne{N}}=\ColorOne{1}$ for any integer \ColorOne{$N$}}
-    \end{align*}
+        \visible<4->{\ExpPhase{2\pi 2^{k}w} &= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}}}} \visible<5->{=\ExpPhase{2\pi (\ColorOne{w_{1}w_{2}\cdots w_{k}}+\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}\\}
+        \visible<6->{&= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}} \times \ExpPhase{2\pi (\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})} \\}
+       \visible<7->{ &= \ColorOne{1} \times \ExpPhase{2\pi (\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}, \mbox{\normalsize because $\ExpPhase{2\pi \ColorOne{N}}=\ColorOne{1}$ for any integer \ColorOne{$N$}}}
+    \end{align*}}
 \end{itemize}
 
 
     
 \end{frame}
 
+{
+\def\T#1{\TwoSupOp{\ket{0}}{\ExpPhase{2\pi\left(2^{#1}w\right)}\ket{1}}{+}}
 \begin{frame}{Useful theorem}{Needed for phase estimation}
+\begin{itemize}
+    \item We state the theorem here and prove it later.
+    \item This theorem allows us to view a periodic state qubit-by-qubit, due to the tensor factoring.
+\end{itemize}
+
+\begin{align*}
+ \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y} =& \T{n-1}  \\
+ \TensOp{} & \T{n-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \T{n-n} 
+\end{align*}
+
 \end{frame}
+}
 
