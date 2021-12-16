@@ -129,7 +129,7 @@ A \emph{periodic state} \QState{} for $n$ qubits can be described as:
 for a constant $w, 0 \leq w < 1$.
 \begin{itemize}
     \item<2-> Some sources include~$1$ in the upper bound for~$w$, but it's the same as~$w=0$.
-    \item<3-> The iteration variable $y$ over interprets the binary string encoding a basis vector as a number.
+    \item<3-> The iteration variable $y$ interprets the binary string encoding a basis vector as a number.
     \item<4-> The basis states all have the same magnitude~\RootTwoN{}, so each is equally likely upon measurement.
 \end{itemize}
     
@@ -257,19 +257,30 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
         \item[$\QState{}=\ket{-}$] $\Hadamard(\QState{}) = \ket{1}$
     \end{description}
     \item Measuring the outcome of the \Hadamard{} gate provides $\LBP{}w_{1}$ directly.
+    \end{itemize}
+    \end{frame}
+    
+\begin{frame}{And if there are more bits}{Building intuition}
+    \TwoColumns{%
+    \begin{itemize}
     \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  This requires:
     \begin{itemize}
         \item Shifting the binary bits left, so that the bit of interest is just after the binary point.
         \item Eliminating any non-zero bits after the bit of interest so we are analyzing only~$.0$ or~$.1$.
     \end{itemize}
 \end{itemize}
+}{%
+\begin{align*}
+\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\end{align*}
+}
     
 \end{frame}
 
 \begin{frame}{More intuition}{Using an example}
 
 \Vskip{-4em}\TwoColumns{%
-\begin{itemize}
+\begin{itemize}[<+->]
     \item<1-> Consider an example \Vskip{-1.2em}\[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
     \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate, as needed, $\LBP{}\ColorOne{w_1}\ColorTwo{0}\ColorThree{1}$ to obtain
     $\LBP{}\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
@@ -297,7 +308,7 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
     \item Multiplying $w$ by a power of two shifts the binary point to the right:
     \begin{align*}
        w &= \LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}\cdots w_{n}} \\
-       \visible<4->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
+       \visible<3->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
     \end{align*}
     
     \item<4-> So in our exponent we have
@@ -336,13 +347,13 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
 {
 \def\TB#1#2{\LBP{}\ColorOne{\ensuremath{#1}}\ColorTwo{\ensuremath{#2}}}
 \def\WO{\ColorOne{\ensuremath{w_1}}}\def\WT{\ColorTwo{\ensuremath{w_2}}}
-\def\TE#1{\TwoSupOp{\QZero{}}{{\large\ExpPhase{2\pi \left(\LBP{}#1\right)}}\QOne{}}{+}}
+\def\TE#1{\TwoSupOp{\QZero{}}{{\ExpPhase{2\pi \left(\LBP{}#1\right)}}\QOne{}}{+}}
 \begin{frame}{Example using $n=2$ qubits}{Applying the theorem}
 \Vskip{-4em}\TwoUnequalColumns{0.37\textwidth}{0.63\textwidth}{%
 \ScrollProof{1}{4}{%
 \Next{\Four}{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi wy}\ket{y} \\}
 \Next{\Three}{w &= \LBP{}\WO{}\WT{} \\}
-\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}{\large\WO{}\WT{}}\right)y}\ket{y}}
+\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}{\WO{}\WT{}}\right)y}\ket{y}}
 \Last{\CarryOne}
 }%
 \only<5->{%
