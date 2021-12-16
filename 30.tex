@@ -129,7 +129,7 @@ A \emph{periodic state} \QState{} for $n$ qubits can be described as:
 for a constant $w, 0 \leq w < 1$.
 \begin{itemize}
     \item<2-> Some sources include~$1$ in the upper bound for~$w$, but it's the same as~$w=0$.
-    \item<3-> The iteration variable $y$ over interprets the binary string encoding a basis vector as a number.
+    \item<3-> The iteration variable $y$ interprets the binary string encoding a basis vector as a number.
     \item<4-> The basis states all have the same magnitude~\RootTwoN{}, so each is equally likely upon measurement.
 \end{itemize}
     
@@ -342,7 +342,7 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
 \ScrollProof{1}{4}{%
 \Next{\Four}{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi wy}\ket{y} \\}
 \Next{\Three}{w &= \LBP{}\WO{}\WT{} \\}
-\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}{\large\WO{}\WT{}}\right)y}\ket{y}}
+\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}{\WO{}\WT{}}\right)y}\ket{y}}
 \Last{\CarryOne}
 }%
 \only<5->{%
