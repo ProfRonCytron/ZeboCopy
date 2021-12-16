@@ -325,11 +325,37 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
  \TensOp{} & \T{\N{}-\N{}} 
 \end{align*}
 \begin{itemize}
-    \item This reveals the separate state of each of the \N{} qubits.
+    \item This articulates the state of each of the \N{} qubits separately.
     \item Each successive qubit reveals another binary digit of \W{}.
 \end{itemize}
 
 
 \end{frame}
 }
+
+{
+\def\WO{\ColorOne{\ensuremath{w_1}}}\def\WT{\ColorTwo{\ensuremath{w_2}}}
+\def\TE#1{\TwoSupOp{\QZero{}}{{\large\ExpPhase{2\pi \left(\LBP{}#1\right)}}\QOne{}}{+}}
+\begin{frame}{Example using $n=2$ qubits}{Applying the theorem}
+\TwoColumns{%
+\ScrollProof{1}{4}{%
+\Next{\Four}{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi wy}\ket{y} \\}
+\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}\WO{}\WT{}\right)y}\ket{y}}
+\Next{\Three}{w &= \LBP{}\WO{}\WT{} \\}
+\Last{\CarryOne}
+}%
+\ScrollProof{5}{8}{%
+\Next{\Four}{\CarryOne}
+}
+}{%
+\ScrollProof{5}{8}{%
+\Next{\Four}{= &\ColorThree{\TE{\WT}} \\ + &\ColorFour{\TE{\WO\WT}}}}
+}
+
+
+    
+\end{frame}
+}
+
+
 
