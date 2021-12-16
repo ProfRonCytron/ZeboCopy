@@ -257,19 +257,30 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
         \item[$\QState{}=\ket{-}$] $\Hadamard(\QState{}) = \ket{1}$
     \end{description}
     \item Measuring the outcome of the \Hadamard{} gate provides $\LBP{}w_{1}$ directly.
+    \end{itemize}
+    \end{frame}
+    
+\begin{frame}{And if there are more bits}{Building intuition}
+    \TwoColumns{%
+    \begin{itemize}
     \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  This requires:
     \begin{itemize}
         \item Shifting the binary bits left, so that the bit of interest is just after the binary point.
         \item Eliminating any non-zero bits after the bit of interest so we are analyzing only~$.0$ or~$.1$.
     \end{itemize}
 \end{itemize}
+}{%
+\begin{align*}
+\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\end{align*}
+}
     
 \end{frame}
 
 \begin{frame}{More intuition}{Using an example}
 
 \Vskip{-4em}\TwoColumns{%
-\begin{itemize}
+\begin{itemize}[<+->]
     \item<1-> Consider an example \Vskip{-1.2em}\[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
     \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate, as needed, $\LBP{}\ColorOne{w_1}\ColorTwo{0}\ColorThree{1}$ to obtain
     $\LBP{}\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
