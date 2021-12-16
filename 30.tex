@@ -334,26 +334,47 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
 }
 
 {
+\def\TB#1#2{\LBP{}\ColorOne{#1}\ColorTwo{#2}}
 \def\WO{\ColorOne{\ensuremath{w_1}}}\def\WT{\ColorTwo{\ensuremath{w_2}}}
 \def\TE#1{\TwoSupOp{\QZero{}}{{\large\ExpPhase{2\pi \left(\LBP{}#1\right)}}\QOne{}}{+}}
 \begin{frame}{Example using $n=2$ qubits}{Applying the theorem}
-\TwoColumns{%
+\TwoUnequalColumns{0.37\textwidth}{0.63\textwidth}{%
 \ScrollProof{1}{4}{%
 \Next{\Four}{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi wy}\ket{y} \\}
-\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}\WO{}\WT{}\right)y}\ket{y}}
 \Next{\Three}{w &= \LBP{}\WO{}\WT{} \\}
+\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}\WO{}\WT{}\right)y}\ket{y}}
 \Last{\CarryOne}
 }%
-\ScrollProof{5}{8}{%
-\Next{\Four}{\CarryOne}
+\only<5->{%
+\begin{align*}
+    \CarryOne
+\end{align*}}
+\only<5->{%
+
+The exact possibilities for $w$:
+\begin{center}
+    \begin{tabular}{cc}
+    \LBP{}\WO\WT & $w$ \\ \hline
+    \visible<6->{\TB{0}{0} & 0 \\[0.2em]}%
+    \visible<7->{\TB{0}{1} & $\frac{1}{4}$\\[0.2em]}%
+    \visible<8->{\TB{1}{0} & $\frac{1}{2}$ \\[0.2em]}%
+    \visible<9->{\TB{1}{1} & $\frac{3}{4}$}
+    \end{tabular}
+\end{center}
 }
 }{%
-\ScrollProof{5}{8}{%
-\Next{\Four}{= &\ColorThree{\TE{\WT}} \\ + &\ColorFour{\TE{\WO\WT}}}}
+\only<5->{%
+\begin{align*}
+= &\ColorThree{\TE{\WT}} \\ \TensOp{} &\ColorFour{\TE{\WO\WT}}
+\end{align*}}
+\only<10->{%
+\begin{description}
+    \item<10->[$\Hadamard(\ColorThree{top}) = \ket{0}$] then $\WT=0$ and we determine \WO{} by $\Hadamard(\ColorFour{bottom})$, yielding $w=0$ or~$\frac{1}{2}$.
+    \item<11->[$\Hadamard(\ColorThree{top}) = \ket{1}$] then we rotate away this bit and measure $\Hadamard(\ColorFour{bottom})$, yielding $w=\frac{1}{4}$ or~$\frac{3}{4}$.
+\end{description}
+
 }
-
-
-    
+}
 \end{frame}
 }
 
