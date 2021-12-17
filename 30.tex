@@ -461,11 +461,29 @@ The exact possibilities for $w$:
     \item<10->[$\Hadamard(\ColorThree{top}) = \ket{0}$] then $\WT=0$, so \TB{w_1}{w_2}=\TB{0}{0}\mbox{ or }\TB{1}{0}. $\Hadamard(\ColorFour{bottom})$ thus yields $w=0$ or~$\frac{1}{2}$.
     \item<11->[$\Hadamard(\ColorThree{top}) = \ket{1}$] then $\WT=1$, so \TB{w_1}{w_2}=\TB{0}{1}\mbox{ or }\TB{1}{1}. We rotate away \WT{} and measure $\Hadamard(\ColorFour{bottom})$, yielding $w=\frac{1}{4}$ or~$\frac{3}{4}$.
 \end{description}
-But how do we \emph{rotate away}?
+\visible<12->{%
+But how do we \emph{rotate away}?}
 }
 }
 \end{frame}
 }
+
+\begin{frame}{Summary}{What do we know so far?}
+
+\begin{itemize}[<+->]
+    \item Analysis shows us that each qubit reveals another binary digit of our phase $w$, starting with the least significant bit.
+    \item Given a qubit that corresponds to
+    \[ \LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \]
+    we isolate \ColorTwo{$w_{k+1}$} by rotating away \ColorThree{any bit afterwards} that has value~$1$.
+    \item This leaves us with two problems to solve:
+    \begin{itemize}
+       \item We require a unitary gate that can rotate a given digit of $w$ from~$1$ to~$0$.
+       \item We must activate that gate \emph{conditionally}, only when the bit it would transform is~$1$.
+    \end{itemize}
+    \item We can used a controlled-$U$ gate, where $U$ is the gate that performs rotation.  Like a \NamedGate{CNOT} gate, the gate is active only when its control bit is~$1$.
+\end{itemize}
+    
+\end{frame}
 
 
 
