@@ -266,9 +266,10 @@ If we can isolate each bit after a binary point, then we can recover the other b
 \SmallSkip{}
 This requires:
     \begin{itemize}
-        \item<2-> Shifting the binary point right, so that it abuts \ColorTwo{the bit of interest}.
-        \item<3-> Dropping the \ColorOne{bits to the left}, because we can.
-        \item<4-> Rotating to eliminate \ColorThree{any non-zero bits after} \ColorTwo{the bit of interest} so we are analyzing only~$.0$ or~$.1$.
+        \item<2-> Shifting the binary point right, so that it abuts \ColorTwo{the bit of interest}
+        \item<3-> Dropping the \ColorOne{bits to the left}, because we can
+        \item<4-> Rotating to eliminate \ColorThree{any non-zero bits} after \ColorTwo{the bit of interest}
+        \item<5-> What remains is~$.0$ or~$.1$, and an \Hadamard{} gate can tell us which it is.
     \end{itemize}
 }{%
 \begin{align*}
@@ -284,24 +285,44 @@ This requires:
 
 \begin{frame}{More intuition}{Using an example}
 
-\Vskip{-4em}\TwoColumns{%
-\begin{itemize}[<+->]
-    \item<1-> Consider an example \Vskip{-1.2em}\[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
-    \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate, as needed, $\LBP{}\ColorOne{w_1}\ColorTwo{0}\ColorThree{1}$ to obtain
-    $\LBP{}\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
-    \item<8-> After \Hadamard{} of that state, we obtain $\ColorOne{w_1}=\ColorOne{1}$
-    \item<9-> And so we have found
-    \[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}\]
-\end{itemize}
-}{%
+\Vskip{-3em}\TwoColumns{%
+\only<1-7>{%
+Finding \ColorThree{$w_3$}
 \begin{itemize}
-    \item<2-> We first shift left by two bits to obtain $\LBP{}\ColorThree{w_{3}}$
-    \item<3-> After \Hadamard{} of that state, we obtain $\ColorThree{w_3}=\ColorThree{1}$
-    \item<4-> We then shift the original value left by one bit to obtain $\LBP{}\ColorTwo{w_2}\ColorThree{w_3}$.
-    \item<5-> Because we already know $\ColorThree{w_3}$ we can take action to rotate the second bit, if necessary (it is!), to obtain $\LBP{}\ColorTwo{w_2}\ColorThree{1}\mapsto \LBP{}\ColorTwo{w_2}0$.
-    \item<6-> After \Hadamard{} of that state, we obtain $\ColorTwo{w_2}=\ColorTwo{0}$,
-    
+    \item<2-> Shift the binary point right two bits
+    \item<4-> Drop the bits to the left
+    \item<6-> Applying \Hadamard{}, say we get \ColorThree{1}
+\end{itemize}}%
+\only<8-15>{%
+Finding \ColorTwo{$w_2$}
+\begin{itemize}
+    \item<8-> Shift the binary point right one bit
+    \item<10-> Drop the bit to the left
+    \item<12-> Rotate away \ColorThree{$w_3$}
+    \item<14-> Applying \Hadamard{}, say we get \ColorTwo{0}
 \end{itemize}
+}%
+\only<16->{%
+Finding \ColorOne{$w_1$}
+\begin{itemize}
+    \item<16-> No need to shift the binary point
+    \item<17-> Rotate away \ColorThree{$w_3$}
+    \item<19-> No need to rotate away \ColorTwo{$w_2$}=\ColorTwo{$0$}
+    \item<21-> Applying \Hadamard{}, say we get \ColorOne{1}
+\end{itemize}
+}%
+}{%
+\[w=
+\visible<1-2,8,16->{\LBP{}}
+\visible<1-4,8-10,16->{\ColorOne{w_{1}}}\visible<9-15>{\LBP{}}
+\visible<1-4,8-19>{\ColorTwo{w_{2}}}\visible<3-7>{\LBP{}}
+\visible<1-12,16-17>{\ColorThree{w_{3}}}
+=
+\visible<1->{\LBP{}}
+\visible<22->{\ColorOne{1}}\visible<20>{\LBP{}}
+\visible<15->{\ColorTwo{0}}\visible<20>{\LBP{}}
+\visible<7->{\ColorThree{1}}
+\visible<21->{= \frac{5}{8}}\]
 }
     
 \end{frame}
