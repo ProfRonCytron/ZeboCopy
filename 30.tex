@@ -364,14 +364,63 @@ Finding \ColorOne{$w_1$}
     \item This articulates the state of each of the \N{} qubits separately.
     \item Each successive qubit reveals another binary digit of \W{}.
 \end{itemize}
-\end{frame}
+\end{frame}}
 
+
+
+{
+\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}
+\def\S#1#2{\ExpPhase{2\pi\W{}#1}\ket{#2}}
 \begin{frame}{How are these expressions different}{They are two views of the same state}
-\end{frame}
+
 \TwoColumns{%
+\Vskip{-3em}\begin{center}
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<6>{$q_2$}} & \qw & \qw & \rstick[wires=3]{\QState{}=\ket{\alert<2,6>{q_{2}}\alert<2,7>{q_{1}}\alert<2,8>{q_{0}}}} \\
+\lstick{\alert<7>{$q_1$}} & \qw & \qw  & \\
+\lstick{\alert<8>{$q_0$}} & \qw & \qw  & \\
+\end{quantikz}}%
+%%
+%% force distance at the bottom to keep the second two-columns still
+%%
+\hrule width 0pt depth 2em
+%%
+\end{center}}{%
+\Vskip{-3em}\only<1-3>{%
+\begin{itemize}
+    \item<1-> This expression has $2^{n}$ terms.
+    \item<2-> Each term represents a particular 3-qubit outcome
+    \item<3-> The phases on each successive term are related by \W{}.
+\end{itemize}
+}%
+\only<4->{%
+\begin{itemize}
+    \item<4-> This expression has $n$ terms.
+    \item<5-> Each represents the tensor-factored state of an individual qubit.
+    \item<9-> Each exposes more of the binary fraction $w$.
+\end{itemize}
+}%
+}
+\Vskip{-5em}\TwoColumns{%
+\begin{align*}
+\QState{} =& \RootTwoN{3}\SumPH{y}{3} \ExpPhase{2\pi \W{}y} \ket{y} \\[.4em]
+=& \S{0}{000} + \S{1}{001} \\
++& \S{2}{010} + \S{3}{011} \\
++& \S{4}{100} + \S{5}{101} \\
++& \S{6}{110} + \S{7}{111}
+\end{align*}
 }{%
-}
-}
+\visible<4->{%
+\MedSkip{}
+\begin{align*}
+ \QState{}=& \alert<6>{\T{\alert<10>{2}}}  \\
+ \TensOp{} & \alert<7>{\T{\alert<11>{1}}} \\
+ \TensOp{} & \alert<8>{\T{\alert<12>{0}}}
+\end{align*}}}
+\end{frame}}
+
 
 {
 \def\TB#1#2{\LBP{}\ColorOne{\ensuremath{#1}}\ColorTwo{\ensuremath{#2}}}
