@@ -298,16 +298,16 @@ Finding \ColorTwo{$w_2$}
 \begin{itemize}
     \item<8-> Shift the binary point right one bit
     \item<10-> Drop the bit to the left
-    \item<12-> Rotate away \ColorThree{$w_3$}
+    \item<12-> Rotate away \ColorThree{$w_3$}=\ColorThree{$1$}
     \item<14-> Applying \Hadamard{}, say we get \ColorTwo{0}
 \end{itemize}
 }%
-\only<16->{%
+\only<16-22>{%
 Finding \ColorOne{$w_1$}
 \begin{itemize}
     \item<16-> No need to shift the binary point
-    \item<17-> Rotate away \ColorThree{$w_3$}
-    \item<19-> No need to rotate away \ColorTwo{$w_2$}=\ColorTwo{$0$}
+    \item<17-> Rotate away \ColorThree{$w_3$}=\ColorThree{$1$}
+    \item<19-> Must not rotate away \ColorTwo{$w_2$}=\ColorTwo{$0$}
     \item<21-> Applying \Hadamard{}, say we get \ColorOne{1}
 \end{itemize}
 }%
@@ -315,14 +315,14 @@ Finding \ColorOne{$w_1$}
 \[w=
 \visible<1-2,8,16->{\LBP{}}
 \visible<1-4,8-10,16->{\ColorOne{w_{1}}}\visible<9-15>{\LBP{}}
-\visible<1-4,8-19>{\ColorTwo{w_{2}}}\visible<3-7>{\LBP{}}
-\visible<1-12,16-17>{\ColorThree{w_{3}}}
+\visible<1-4,8-19,23->{\ColorTwo{w_{2}}}\visible<3-7>{\LBP{}}
+\visible<1-12,16-17,23->{\ColorThree{w_{3}}}
 =
 \visible<1->{\LBP{}}
 \visible<22->{\ColorOne{1}}\visible<20>{\LBP{}}
 \visible<15->{\ColorTwo{0}}\visible<20>{\LBP{}}
 \visible<7->{\ColorThree{1}}
-\visible<21->{= \frac{5}{8}}\]
+\visible<23->{= \frac{5}{8}}\]
 }
     
 \end{frame}
