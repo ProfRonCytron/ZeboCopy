@@ -354,7 +354,6 @@ Finding \ColorOne{$w_1$}
 \def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
 \def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}
 \begin{frame}{Useful theorem}{Needed for phase estimation, prove later}
-
 \Vskip{-3em}\begin{align*}
  \RootTwoN{\N}\SumPH{y}{\N} \ExpPhase{2\pi \W{}y} \ket{y} =& \T{\N{}-1}  \\
  \TensOp{} & \T{\N{}-2} \\
@@ -365,9 +364,13 @@ Finding \ColorOne{$w_1$}
     \item This articulates the state of each of the \N{} qubits separately.
     \item Each successive qubit reveals another binary digit of \W{}.
 \end{itemize}
-
-
 \end{frame}
+
+\begin{frame}{How are these expressions different}{They are two views of the same state}
+\end{frame}
+\TwoColumns{%
+}{%
+}
 }
 
 {
