@@ -82,7 +82,7 @@
 }
 \visible<9->{%
   \draw[->,ultra thick,\RCthree] (0,0) -- (1,0);
-  \visible<9>{\ColorThree{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}}
+  \visible<9->{\ColorThree{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{below right}}}
   \visible<10->{%
   \draw[->,thick,\RCtwo] (1,0) arc (0:20:1) coordinate (z2);
   \draw[thick,dotted] (0,0) -- (z2);
@@ -124,13 +124,13 @@
 
 A \emph{periodic state} \QState{} for $n$ qubits can be described as:
 \[
-\QState{} = \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y}
+\QState{} = \textcolor<4>{\RCtwo}{\RootTwoN{n}}\SumPH{\textcolor<3>{\RCone}{y}}{n} \ExpPhase{2\pi w\textcolor<3>{\RCone}{y}} \ket{\textcolor<3>{\RCone}{y}}
 \]
-for a constant $w, 0 \leq w < 1$.
+for a constant $w, 0 \leq w \textcolor<2>{\RCthree}{< 1}$.
 \begin{itemize}
-    \item<2-> Some sources include~$1$ in the upper bound for~$w$, but it's the same as~$w=0$.
-    \item<3-> The iteration variable $y$ interprets the binary string encoding a basis vector as a number.
-    \item<4-> The basis states all have the same magnitude~\RootTwoN{}, so each is equally likely upon measurement.
+    \item<2-> Some sources include~$1$ in \textcolor<2>{\RCthree}{the upper bound for~$w$}, but it's the same as~$w=0$.
+    \item<3-> The iteration variable \textcolor<3>{\RCone}{$y$} interprets the binary string encoding a basis vector as a number.
+    \item<4-> The basis states all have the same magnitude~\textcolor<4>{\RCtwo}{\RootTwoN{}}, so each is equally likely upon measurement.
 \end{itemize}
     
 \end{frame}
@@ -173,13 +173,13 @@ for a constant $w, 0 \leq w < 1$.
 \begin{align*}
     \ket{+} &= \QPlus{} \\
            \visible<2->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<3->{+ \ColorTwo{\ExpPhase{0}}\QOne{}}\right) \\}
-        \visible<4->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{0}\cdot y} \ket{y}, \ColorFour{w=0}}
+        \visible<4->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{w}\cdot y} \ket{y}, \ColorFour{w=0}}
 \end{align*}
 }{%
 \begin{align*}
     \ket{-} &= \QMinus{} \\
-           \visible<5->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<6->{- \ColorTwo{\ExpPhase{0}}\QOne{}}\right) \\}
-        \visible<7->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{\frac{1}{2}}\cdot y} \ket{y}, \ColorFour{w=\frac{1}{2}}}
+           \visible<5->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<6->{+ \ColorTwo{\ExpPhase{\pi}}\QOne{}}\right) \\}
+        \visible<7->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{w}\cdot y} \ket{y}, \ColorFour{w=\frac{1}{2}}}
 \end{align*}
 }
 \Vskip{-4em}\TwoColumns{%
@@ -283,7 +283,7 @@ This requires:
     
 \end{frame}
 
-\begin{frame}{More intuition}{Using an example}
+\begin{frame}{Example}{With $n=3$ qubits and $w=\frac{5}{8}$}
 
 \Vskip{-3em}\TwoColumns{%
 \only<1-7>{%
@@ -337,7 +337,7 @@ Finding \ColorOne{$w_1$}
        \visible<3->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
     \end{align*}
     
-    \item<4-> So in our exponent we have
+    \item<4-> In an exponent, $\ColorOne{w_{1}w_{2}\cdots w_{k}}$ before \LBP{} can be ignored:
     {\Large
     \begin{align*}
         \visible<4->{\ExpPhase{2\pi 2^{k}w} &= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}}}} \visible<5->{=\ExpPhase{2\pi (\ColorOne{w_{1}w_{2}\cdots w_{k}}+\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}\\}
