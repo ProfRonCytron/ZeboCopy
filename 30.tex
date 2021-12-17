@@ -263,15 +263,21 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
 \begin{frame}{And if there are more bits}{Building intuition}
     \TwoColumns{%
     \begin{itemize}
-    \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  This requires:
+    \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  
+    \item This requires:
     \begin{itemize}
-        \item Shifting the binary bits left, so that the bit of interest is just after the binary point.
-        \item Eliminating any non-zero bits after the bit of interest so we are analyzing only~$.0$ or~$.1$.
+        \item Shifting the binary point right, so that it abuts \ColorTwo{the bit of interest}.
+        \item Dropping the \ColorOne{bits to the left}
+        \item Rotating to eliminate \ColorThree{any non-zero bits after} \ColorTwo{the bit of interest} so we are analyzing only~$.0$ or~$.1$.
     \end{itemize}
 \end{itemize}
 }{%
 \begin{align*}
-\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\invisible{\LBP{}}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\invisible{\LBP{}}\ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\invisible{\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}}\LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\invisible{\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}}\LBP{}\ColorTwo{w_{k+1}}\invisible{\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}}} \\
+%% left off here
 \end{align*}
 }
     
