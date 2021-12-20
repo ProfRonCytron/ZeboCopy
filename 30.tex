@@ -466,6 +466,37 @@ But how do we \emph{rotate away}?}
 }
 }
 \end{frame}
+
+\begin{frame}{Example}{Sketch of the circuit to estimate phase}
+\Vskip{-4em}\begin{center}
+\adjustbox{scale=1.0,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<7>{$q_2$}} & \gate{\alert<2>{H}} & \ctrl{1}  &  \qw & \meter{\alert<2>{0/1}} & \qw\rstick{\alert<2>{\ket{\mbox{$w_2$}}}} \\
+\lstick{$q_1$} & \qw & \gate{\alert<3,7>{\alt<9->{\alert{\mbox{$R_2$}}}{\mbox{$R$}}}}  & \gate{\alert<5>{H}} & \meter{\alert<5>{0/1}} & \qw\rstick{\ket{\alert<5>{\mbox{$w_1$}}}} \\
+\end{quantikz}}
+\end{center}
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> We seek the value of $\LBP{}w_{1}w_{2}$.
+    \item<2-> We can determine the least significant bit immediately as shown.
+    \item<3-> The next step is a \emph{conditional} rotation on the lower qubit, based on~$w_2$:
+    \begin{itemize}
+      \item If $w_{2}=0$, no rotation is applied.  
+      \item If $w_{2}=1$, then its value on the bottom qubit is rotated to~$0$ by this gate.
+    \end{itemize}
+    \item<4-> This leaves the bottom qubit in a state corresponding to $\LBP{}w_{1}0$.  
+    \item<5-> The \Hadamard{} gate and subsequent measurement yield $w_1$.
+\end{itemize}}
+\only<6->{%
+\Vskip{-4em}\begin{itemize}
+    \item<6-> The \NamedGate{R} gate is specific to the binary digit's place that should be rotated.
+    \item<7-> Here, we only need an \NamedGate{R} gate that rotates the second bit from the binary point:  $\LBP{}w_{1}\alert{w_{2}}$.
+    \item<8-> But for a given qubit $w_k$, we may need to rotate any bit after it, $w_{k+1}, w_{k+2}, \ldots, w_{n}$.
+    \item<9-> We will thus parameterize our \NamedGate{R} gate by the binary place value it rotates, relative to the binary point.
+    \item<10-> Gate \NamedGate{$R_i$} rotates the bit in position $i$ after the binary point in $\LBP{}w_{1}w_{2}\cdots$.
+\end{itemize}
+}
+\end{frame}
 }
 
 \begin{frame}{Summary}{What do we know so far?}
