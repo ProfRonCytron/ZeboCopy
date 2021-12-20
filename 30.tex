@@ -471,10 +471,12 @@ But how do we \emph{rotate away}?}
 \begin{frame}{Summary}{What do we know so far?}
 
 \begin{itemize}[<+->]
-    \item Analysis shows us that each qubit reveals another binary digit of our phase $w$, starting with the least significant bit.
-    \item Given a qubit that corresponds to
-    \[ \LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \]
-    we isolate \ColorTwo{$w_{k+1}$} by rotating away \ColorThree{any bit afterwards} that has value~$1$.
+    \item For a periodic state, tensor-factoring analysis shows that each qubit reveals another binary digit of our phase $w$, starting with the least significant bit.
+    \item Given a qubit corresponding to
+     $\LBP{}\ColorTwo{w_{k+1}}\alt<2>{\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}}}{\alert<3>{0\ 0\cdots 0}}$,
+    we isolate \ColorTwo{$w_{k+1}$} by$\ldots$
+    \item $\ldots$ rotating away \ColorThree{any bit afterwards} that has value~$1$.  
+    \item A \Hadamard{} gate applied the result yields~\ColorTwo{$w_{k+1}$}.
     \item This leaves us with two problems to solve:
     \begin{itemize}
        \item We require a unitary gate that can rotate a given digit of $w$ from~$1$ to~$0$.
