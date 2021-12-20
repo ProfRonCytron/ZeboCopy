@@ -466,8 +466,9 @@ But how do we \emph{rotate away}?}
 }
 }
 \end{frame}
+}
 
-\begin{frame}{Example}{Sketch of the circuit to estimate phase}
+\begin{frame}{Circuit for $n=2$ qubits}{Requires one possible rotation}
 \Vskip{-4em}\begin{center}
 \adjustbox{scale=1.0,valign=t}{%
 \begin{quantikz}
@@ -497,7 +498,59 @@ But how do we \emph{rotate away}?}
 \end{itemize}
 }
 \end{frame}
+
+{
+\def\Ca{\ctrl{1}}
+\def\Ra{\gate{\alert<2,6>{\mbox{$R_2$}}}}
+\def\Cb{\ctrl{3}}
+\def\Rb{\gate{\alert<3,6>{\mbox{$R_{(n-1)-k+1}$}}}}
+\def\Cc{\ctrl{4}}
+\def\Rc{\gate{\alert<4,6>{\mbox{$R_{(n)-k+1}$}}}}
+\def\HG{\gate{\alert<7>{H}}}
+\def\PD{\push{\mbox{$\cdots$}}}
+\begin{frame}{Circuit from the perspective of qubit $k$}{General solution for $n$ quvbits}
+
+\Vskip{-4em}\begin{center}
+\adjustbox{scale=0.7,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<4>{$q_n$}}      & \HG & \qw & \qw & \qw & \qw & \qw & \Cc & \qw & \qw & \meter{0/1}\\
+\lstick{\alert<3>{$q_{n-1}$}}  & \PD & \HG & \qw & \qw & \qw & \Cb & \qw & \qw & \qw & \meter{0/1} \\
+\lstick{\RVDots}     \\
+\lstick{\alert<2>{$q_{k+1}$}}  & \PD & \PD & \HG & \Ca & \qw & \qw & \qw & \qw & \qw & \meter{0/1} \\
+\lstick{$q_{k}$}    & \qw & \qw & \qw & \Ra & \PD & \Rb & \Rc & \HG & \qw & \meter{0/1}
+\end{quantikz}}
+\end{center}
+\only<1-8>{%
+\begin{itemize}
+    \item<1-> Qubit $k$ can require the rotation of every qubit $q_i\ |\ i=\alert<2>{k+1},\ldots,\alert<3>{n-1},\alert<4>{n}$.
+    \item<5-> Qubit $k$ thus has \visible<6->{\alert<6>{$k-1$ $R$ gates}} \visible<7->{and \alert<7>{an \Hadamard{} gate}, incurring a delay of $k$ gates.}
+    \item<8-> The longest delay is thus $n$ gates for qubit~$n$.  The other wires' computations are concurrent with qubit~$n$.  The time complexity of this circuit is~$\Theta(n)$.
+\end{itemize}}%
+\only<9-10>{%
+\begin{itemize}
+    \item<9-> The number of gates in the circuit is given by
+    \[
+       \sum_{i=1}^{n} i \visible<10->{=\Theta(n^{2})}
+    \]
+\end{itemize}
+}%
+\only<11-12>{%
+\begin{itemize}
+    \item<11-> The circuit succeeds in estimating the phase $w$ of the $n$-qubit input.
+    \item<12-> However, this is at the cost of the states of those qubits: their states are modified by the gates and collapsed by the measurements.
+\end{itemize}
+}%
+\only<13>{
+
+Challenge:
+\begin{itemize}
+  \item Can an approach be formulated that estimates phase while preserving the input qubits' state(s)?
+  \item If so, what is that appraoch;  if not, why is this impossible?
+\end{itemize}
 }
+
+\end{frame}}
+
 
 \begin{frame}{Summary}{What do we know so far?}
 
