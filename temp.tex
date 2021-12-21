@@ -1,9 +1,46 @@
 \SetTitle{99}{temp}{faster}{99}
 
 
+{
+\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
+\begin{frame}{Our theorem}{Needs a proof, but first a restatement}
+    \Vskip{-3em}\begin{align*}
+ \RootTwoN{\N}\alt<3->{\alert<3>{\SumBV{\Y}{\N}}}{\SumPH{\Y}{\N}} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \T{\N{}-1}  \\
+ \TensOp{} & \T{\N{}-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \T{\N{}-\N{}} 
+\end{align*}
+\only<1-2>{%
+\begin{itemize}
+    \item<1-> The use of \Y{} as the variable for the summation and as \ket{\Y} requires us to view \Y{} as a \href{https://en.wikipedia.org/wiki/Number}{number}, taking on the sequence $0, 1, \ldots,2^{\N}-1$,
+    \item<2-> For the purposes of our proof it is more useful to view \Y{} as a base-2 \href{https://en.wikipedia.org/wiki/Numeral}{numeral}:  a string of \N{}~bits.
+\end{itemize}}%
+\only<3-4>{%
+\begin{itemize}
+    \item The summation in our theorem changes as shown here.
+    \item The summation is now over all bit strings of length~$n$.  These must be interpreted numerically in the exponent.
+\end{itemize}
+}%
+\only<5->{%
+\begin{itemize}
+    \item<5-> In truth this is more accurate, as the tensor products on the right pile up bit strings, not integers.
+\end{itemize}}
+\end{frame}
 
-\begin{frame}{Proof}{Tensor-factoring theorem}
+\begin{frame}{Theorem}{And proof}
+\Vskip{-3em}\begin{theorem}
+\begin{align*}
+P(n):\ \RootTwoN{\N}\SumBV{\Y}{\N} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \T{\N{}-1}  \\
+ \TensOp{} & \T{\N{}-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \T{\N{}-\N{}} 
+\end{align*}
+\Forall{n\geq 1}{P(n)}
+\end{theorem}
+Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$.
     
 \end{frame}
+}
 
 
