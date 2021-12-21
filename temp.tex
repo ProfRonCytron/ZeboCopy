@@ -28,17 +28,45 @@
 \end{itemize}}
 \end{frame}
 
+\def\ThLeftTerm#1{%
+\ensuremath{\ExpPhase{2\pi \W{} #1} \ket{#1}}}
+\def\ThLeft#1{%
+\ensuremath{\RootTwoN{#1}\SumBV{\Y}{#1} \ThLeftTerm{\Y}}}
+\def\Th#1{%
+\begin{align*}
+P(#1):\ \ThLeft{#1} =& \T{#1-1}  \\
+ \TensOp{} & \T{#1-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \T{#1-#1} 
+\end{align*}
+}
+\def\ThTop#1{%
+\fbox{\adjustbox{valign=t, width=0.95\textwidth}{
+$\ThLeft{#1} = \T{#1-1}\TensOp{}\T{#1-2}\TensOp{}\cdots\TensOp\T{#1-#1}$}}}
 \begin{frame}{Theorem}{And proof}
 \Vskip{-3em}\begin{theorem}
-\begin{align*}
-P(n):\ \RootTwoN{\N}\SumBV{\Y}{\N} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \T{\N{}-1}  \\
- \TensOp{} & \T{\N{}-2} \\
- \TensOp{} & \cdots \\
- \TensOp{} & \T{\N{}-\N{}} 
-\end{align*}
+\Th{\N}
 \Forall{n\geq 1}{P(n)}
 \end{theorem}
 Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$.
+    
+\end{frame}
+
+\begin{frame}{Base case}{$n=1$}
+\Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
+\SmallSkip{}
+\begin{Reasoning}
+\Reason{1}{Expansion of sum}
+\Reason{2}{Simplify constants in exponents}
+\Reason{3}{To satisfy the tensor-factored form in the theorem}
+\end{Reasoning}
+
+\ScrollProof{1}{3}{%
+   \Next{\Three}{ \ThLeft{1} &= \TwoSupOp{\ThLeftTerm{0}}{\ThLeftTerm{1}}{+} \\}
+    \Next{\Two}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
+      \Next{\One}{         &= \T{\ColorOne{1-1}}}
+}
+\QED{}
     
 \end{frame}
 }
