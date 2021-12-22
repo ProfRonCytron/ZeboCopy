@@ -69,6 +69,22 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \QED{}
     
 \end{frame}
+
+\begin{frame}{Induction step}{Show \Implies{P(k-1)}{P(k)}}
+\Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
+\SmallSkip{}
+
+\begin{Reasoning}
+\Reason{1}{Calling this long expression $A$}
+\Reason{2}{Using induction hypothesis $P(k-1)$}
+\end{Reasoning}
+
+\[ \mbox{Let } A= \T{k-2} \TensOp{}\cdots\TensOp{}\T{k-k}\]
+\Vskip{-3em}\ScrollProof{2}{4}{%
+\Next{\Three}{A &= \ThLeft{k-1} \\}
+\Last{\TensProd{\TwoSupOp{\QZero{}}{\ExpPhase{2\pi 2^{k-1}\W}\QOne}{+}}{A} &= \TensProd{\TwoSupOp{\QZero{}}{\ExpPhase{2\pi 2^{k-1}\W}\QOne}{+}}{\ThLeft{k-1}}}
+}
+\end{frame}
 }
 
 
