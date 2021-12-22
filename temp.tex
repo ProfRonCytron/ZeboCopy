@@ -57,34 +57,34 @@ $\ColorOne{\SS{#1}=\ThSum{#1}}\ \mbox{\vrule width 1.5pt height 2em depth 1.3em}
  \TensOp{} & \TTerm{\N-\N} 
 \end{align*}}
 \begin{center}
-Define $P(\N):  S(\N)=T(\N)$ \\
+Define $P(\N):  T(\N)=S(\N)$ \\
 \Forall{\N\geq 1}{P(\N)}\end{center}
 \end{theorem}
 Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$.
     
 \end{frame}
 
-\begin{frame}{Base case}{Show $P(1): S(1)=T(1)$}
+\begin{frame}{Base case}{Show $P(1): T(1)=S(1)$}
 \Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 \begin{Reasoning}
-\Reason{1}{Expansion of sum}
+\Reason{4}{Capture as sum}
 \Reason{2}{Simplify constants in exponents}
-\Reason{3}{To satisfy the tensor-factored form in the theorem}
+\Reason{3}{To satisfy the form needed by the summation}
 \end{Reasoning}
 
-\Vskip{-2em}\ScrollProof{1}{3}{%
-   \Next{\Three}{  S(1) &= \ThSum{1} \\
-    &=\TwoSupOp{\ThSumTerm{\ColorFour{0}}}{\ThSumTerm{\ColorFour{1}}}{+} \\}
-    \Next{\Two}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
-      \Next{\One}{         &= \TTerm{\ColorOne{1-1}} = T(1)}
+\Vskip{-2em}\ScrollProof{1}{4}{%
+   \Next{\Four}{T(1) &= \TTerm{\ColorOne{1-1}} \\}
+   \Next{\Three}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
+    \Next{\Two}{&= \TwoSupOp{\ThSumTerm{\ColorFour{0}}}{\ThSumTerm{\ColorFour{1}}}{+} \\}
+    \Next{\One}{&= \ThSum{1} = S(1)}
 }
-\visible<3->{\Vskip{-3em}\QED{}}
+\visible<4->{\Vskip{-3em}\QED{}}
 \end{frame}
 
 \def\W{\ensuremath{w}}
 \def\L{\ColorOne{\ensuremath{L}}}\def\R{\ColorTwo{\ensuremath{R}}}
-\begin{frame}{Induction step}{With $P(n): S(n)=T(n)$, show \Implies{P(k-1)}{P(k)}}
+\begin{frame}{Induction step}{With $P(n): T(n)=S(n)$, show \Implies{P(k-1)}{P(k)}}
 \Vskip{-4.3em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 
