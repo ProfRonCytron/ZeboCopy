@@ -2,14 +2,14 @@
 
 
 {
-\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
-\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
+\def\TTerm#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\textcolor{purple}{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
 \begin{frame}{Our theorem}{Needs a proof, but first a restatement}
     \Vskip{-3em}\begin{align*}
- \RootTwoN{\N}\alt<3->{\alert<3>{\SumBV{\Y}{\N}}}{\SumPH{\Y}{\N}} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \T{\N{}-1}  \\
- \TensOp{} & \T{\N{}-2} \\
+ \RootTwoN{\N}\alt<3->{\alert<3>{\SumBV{\Y}{\N}}}{\SumPH{\Y}{\N}} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \TTerm{\N{}-1}  \\
+ \TensOp{} & \TTerm{\N{}-2} \\
  \TensOp{} & \cdots \\
- \TensOp{} & \T{\N{}-\N{}} 
+ \TensOp{} & \TTerm{\N{}-\N{}} 
 \end{align*}
 \only<1-2>{%
 \begin{itemize}
@@ -39,7 +39,9 @@
 %%%
 \def\ThTop#1{%
 \fbox{\adjustbox{valign=t, width=0.97\textwidth}{
-$S(#1)=\ThSum{#1}\ \mbox{\vrule width 1.5pt height 2em depth 1.3em}\ T(#1)= \T{#1-1}\TensOp{}\T{#1-2}\TensOp{}\cdots\TensOp\T{#1-#1}$}}}
+$\ColorOne{\SS{#1}=\ThSum{#1}}\ \mbox{\vrule width 1.5pt height 2em depth 1.3em}\ \ColorTwo{\TT{#1}= \TTerm{#1-1}\TensOp{}\TTerm{#1-2}\TensOp{}\cdots\TensOp\TTerm{#1-#1}}$}}}
+\def\SS#1{\ColorOne{\ensuremath{S(#1)}}}
+\def\TT#1{\ColorTwo{\ensuremath{T(#1)}}}
 
 \begin{frame}{Theorem}{And proof}
 \Vskip{-3em}\begin{theorem}
@@ -49,20 +51,20 @@ $S(#1)=\ThSum{#1}\ \mbox{\vrule width 1.5pt height 2em depth 1.3em}\ T(#1)= \T{#
 \end{align*}
 }{%
   \begin{align*}
-    T(\N) = &\T{\N-1}  \\
- \TensOp{} & \T{\N-2} \\
+    T(\N) = &\TTerm{\N-1}  \\
+ \TensOp{} & \TTerm{\N-2} \\
  \TensOp{} & \cdots \\
- \TensOp{} & \T{\N-\N} 
+ \TensOp{} & \TTerm{\N-\N} 
 \end{align*}}
 \begin{center}
-$P(\N):  S(\N)=T(\N)$ \\
+Define $P(\N):  S(\N)=T(\N)$ \\
 \Forall{\N\geq 1}{P(\N)}\end{center}
 \end{theorem}
 Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$.
     
 \end{frame}
 
-\begin{frame}{Base case}{Show $S(1)=T(1)$}
+\begin{frame}{Base case}{Show $P(1): S(1)=T(1)$}
 \Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 \begin{Reasoning}
@@ -73,9 +75,9 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 
 \ScrollProof{1}{3}{%
    \Next{\Three}{  S(1) &= \ThSum{1} \\
-    &=\TwoSupOp{\ThSumTerm{0}}{\ThSumTerm{1}}{+} \\}
+    &=\TwoSupOp{\ThSumTerm{\ColorFour{0}}}{\ThSumTerm{\ColorFour{1}}}{+} \\}
     \Next{\Two}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
-      \Next{\One}{         &= \T{\ColorOne{1-1}} = T(1)}
+      \Next{\One}{         &= \TTerm{\ColorOne{1-1}} = T(1)}
 }
 \QED{}
     
@@ -83,7 +85,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 
 \def\W{\ensuremath{w}}
 \def\L{\ColorOne{\ensuremath{L}}}\def\R{\ColorTwo{\ensuremath{R}}}
-\begin{frame}{Induction step}{Show \Implies{P(k-1)}{P(k)}}
+\begin{frame}{Induction step}{With $P(n): S(n)=T(n)$, show \Implies{P(k-1)}{P(k)}}
 \Vskip{-4.3em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 
@@ -96,16 +98,16 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 {\small
 \Vskip{-1.5em}\begin{align*}
 \mbox{Let }\L=& \ColorOne{\ThSum{k-1}} \\
- \mbox{and }    \R=& \ColorTwo{\T{k-2} \TensOp{}\cdots\TensOp{}\T{k-k}}
+ \mbox{and }    \R=& \ColorTwo{\TTerm{k-2} \TensOp{}\cdots\TensOp{}\TTerm{k-k}}
 \end{align*}
 \Vskip{-3em}\ScrollProof{2}{4}{%
 \Next{\Three}{\R &= \L \\}
-\gdef\CarryOne{\TensProd{\ColorThree{\T{k-1}}}{\R}} \gdef\CarryTwo{\TensProd{\ColorThree{\T{k-1}}}{\L}}
+\gdef\CarryOne{\TensProd{\ColorThree{\TTerm{k-1}}}{\R}} \gdef\CarryTwo{\TensProd{\ColorThree{\TTerm{k-1}}}{\L}}
 \Last{\CarryOne &= \CarryTwo}
 }%
 \ScrollProof{5}{8}{%
 \Next{\Four}{&\CarryOne = \CarryTwo \\}
-\Next{\Three}{&\Indent{2em} = \TensProd{\ColorThree{\T{k-1}}}{\ColorOne{\ThSum{k-1}}}\\}
+\Next{\Three}{&\Indent{2em} = \TensProd{\ColorThree{\TTerm{k-1}}}{\ColorOne{\ThSum{k-1}}}\\}
 \Last{&\Indent{2em} = \RootTwoN{k}\left( \ColorThree{\QZero}\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1}w)}\QOne{}}\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
 }}
 \end{frame}
