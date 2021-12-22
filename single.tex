@@ -794,7 +794,7 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \SumBV{#3}{#2} \NegOneExp{\DotP{#1}{#3}} \ket{#3}}
 \newenvironment{Reasoning}{%
 \def\Reason##1##2{%
-   \only<##1>{\textit{##2}}}%
+   \only<##1>{\alert<##1>{\textit{##2}}}}%
 \vrule width 0pt depth 1em}{%
 }
 \def\Span#1{\ensuremath{{\mbox{span}(#1)}}}
@@ -803,7 +803,17 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% Large Binary Point
 %%
 \def\LBP{\mbox{\Huge .\hskip -1pt}}
-
+%%
+%% #1 color
+%% #2 x loc
+%% #3 y loc
+%% #4 width
+%% #5 height
+\def\Highlight#1#2#3#4#5{%
+\begin{tikzpicture}[overlay]
+\draw[fill=#1,opacity=0.2] (#2,#3) rectangle ++(#4,#5);
+\end{tikzpicture}}
+\def\Indent#1{\hbox to #1{\hss}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}

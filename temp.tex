@@ -27,22 +27,27 @@
     \item<5-> In truth this is more accurate, as the tensor products on the right pile up bit strings, not integers.
 \end{itemize}}
 \end{frame}
-
-\def\ThLeftTerm#1{%
+%%%
+%%%
+%%%
+\def\ThSumTerm#1{%
 \ensuremath{\ExpPhase{2\pi \W{} #1} \ket{#1}}}
-\def\ThLeft#1{%
-\ensuremath{\RootTwoN{#1}\SumBV{\Y}{#1} \ThLeftTerm{\Y}}}
+\def\ThSum#1{%
+\ensuremath{\RootTwoN{#1}\SumBV{\Y}{#1} \ThSumTerm{\Y}}}
 \def\Th#1{%
 \begin{align*}
-P(#1):\ \ThLeft{#1} =& \T{#1-1}  \\
+P(#1):\ \ThSum{#1} =& \T{#1-1}  \\
  \TensOp{} & \T{#1-2} \\
  \TensOp{} & \cdots \\
  \TensOp{} & \T{#1-#1} 
 \end{align*}
 }
+%%%
+%%%
 \def\ThTop#1{%
-\fbox{\adjustbox{valign=t, width=0.95\textwidth}{
-$\ThLeft{#1} = \T{#1-1}\TensOp{}\T{#1-2}\TensOp{}\cdots\TensOp\T{#1-#1}$}}}
+\fbox{\adjustbox{valign=t, width=0.97\textwidth}{
+$P(#1):\ \ThSum{#1} = \T{#1-1}\TensOp{}\T{#1-2}\TensOp{}\cdots\TensOp\T{#1-#1}$}}}
+
 \begin{frame}{Theorem}{And proof}
 \Vskip{-3em}\begin{theorem}
 \Th{\N}
@@ -62,7 +67,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \end{Reasoning}
 
 \ScrollProof{1}{3}{%
-   \Next{\Three}{ \ThLeft{1} &= \TwoSupOp{\ThLeftTerm{0}}{\ThLeftTerm{1}}{+} \\}
+   \Next{\Three}{ \ThSum{1} &= \TwoSupOp{\ThSumTerm{0}}{\ThSumTerm{1}}{+} \\}
     \Next{\Two}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
       \Next{\One}{         &= \T{\ColorOne{1-1}}}
 }
@@ -70,20 +75,33 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
     
 \end{frame}
 
+\def\W{\ensuremath{w}}
+\def\L{\ColorOne{\ensuremath{L}}}\def\R{\ColorTwo{\ensuremath{R}}}
 \begin{frame}{Induction step}{Show \Implies{P(k-1)}{P(k)}}
-\Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
+\Vskip{-4.3em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 
 \begin{Reasoning}
-\Reason{1}{Calling this long expression $A$}
+\Reason{1}{\Highlight{orange}{6.69}{0.8}{6.5}{0.75}Note \R{} is the right-hand side excluding the first term}
 \Reason{2}{Using induction hypothesis $P(k-1)$}
+\Reason{3}{\Highlight{orange}{3.3}{0.8}{2.8}{0.75}Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
+\Reason{7}{Carry out the tensor product}
 \end{Reasoning}
-
-\[ \mbox{Let } A= \T{k-2} \TensOp{}\cdots\TensOp{}\T{k-k}\]
+{\small
+\Vskip{-1.5em}\begin{align*}
+\mbox{Let }\L=& \ColorOne{\ThSum{k-1}} \\
+ \mbox{and }    \R=& \ColorTwo{\T{k-2} \TensOp{}\cdots\TensOp{}\T{k-k}}
+\end{align*}
 \Vskip{-3em}\ScrollProof{2}{4}{%
-\Next{\Three}{A &= \ThLeft{k-1} \\}
-\Last{\TensProd{\TwoSupOp{\QZero{}}{\ExpPhase{2\pi 2^{k-1}\W}\QOne}{+}}{A} &= \TensProd{\TwoSupOp{\QZero{}}{\ExpPhase{2\pi 2^{k-1}\W}\QOne}{+}}{\ThLeft{k-1}}}
-}
+\Next{\Three}{\R &= \L \\}
+\gdef\CarryOne{\TensProd{\ColorThree{\T{k-1}}}{\R}} \gdef\CarryTwo{\TensProd{\ColorThree{\T{k-1}}}{\L}}
+\Last{\CarryOne &= \CarryTwo}
+}%
+\ScrollProof{5}{8}{%
+\Next{\Four}{&\CarryOne = \CarryTwo \\}
+\Next{\Three}{&\Indent{2em} = \TensProd{\ColorThree{\T{k-1}}}{\ColorOne{\ThSum{k-1}}}\\}
+\Last{&\Indent{2em} = \RootTwoN{k}\left( \ColorThree{\QZero}\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1}w}\QOne{}}\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
+}}
 \end{frame}
 }
 
