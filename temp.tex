@@ -73,14 +73,13 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \Reason{3}{To satisfy the tensor-factored form in the theorem}
 \end{Reasoning}
 
-\ScrollProof{1}{3}{%
+\Vskip{-2em}\ScrollProof{1}{3}{%
    \Next{\Three}{  S(1) &= \ThSum{1} \\
     &=\TwoSupOp{\ThSumTerm{\ColorFour{0}}}{\ThSumTerm{\ColorFour{1}}}{+} \\}
     \Next{\Two}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
       \Next{\One}{         &= \TTerm{\ColorOne{1-1}} = T(1)}
 }
-\QED{}
-    
+\visible<3->{\Vskip{-3em}\QED{}}
 \end{frame}
 
 \def\W{\ensuremath{w}}
