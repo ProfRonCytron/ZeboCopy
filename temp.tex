@@ -91,7 +91,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \Reason{1-3}{\Highlight{Turquoise}{7.1}{0.85}{6.1}{0.8}}
 \Reason{1}{Using the induction hypothesis;  \TT{k-1} includes the highlighted terms}
 \Reason{2}{Using induction hypothesis $P(k-1)$}
-\Reason{3}{\Highlight{orange}{3.3}{0.8}{2.8}{0.75}Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
+\Reason{3}{\Highlight{LimeGreen}{3.8}{0.85}{2.6}{0.8}Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
 \Reason{7}{Carry out the tensor product}
 \end{Reasoning}
 {\small
@@ -105,13 +105,26 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \ScrollProof{5}{8}{%
 \Next{\Four}{\TT{k} &= \CarryTwo \\}
 \Next{\Three}{& = \TensProd{\CarryThree}{\ColorOne{\ThSum{k-1}}}\\}
-\gdef\CarryFour{\textcolor{Plum}{\RootTwoN{k}}\left( \ColorThree{\QZero}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1}w)}\QOne{}}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
+\gdef\CarryFour{\textcolor{Plum}{\RootTwoN{k}}\left( \ColorThree{\QZero}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}\QOne{}}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
 \Last{& = \CarryFour}
 }%
 \ScrollProof{9}{12}{%
 \Next{\Four}{\TT{k} &= \CarryFour \\}
-\Next{\Three}{&= \RootTwoN{k}\left(\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}}\right)}
-}
+\Next{\Three}{&= \RootTwoN{k}\left(\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\hskip -2ex\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}}\right) \\}
+\gdef\CarryFive{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}} \right)}
+\Last{&= \CarryFive}
+}%
+\ScrollProof{13}{16}{%
+\Next{\Four}{\TT{k} &= \CarryFive\\ }
+\Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \textcolor{Plum}{\ExpPhase{2\pi w(\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)\\}
+\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}}\SumBV{z}{1} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{zy}}
+\Last{ &=  \CarrySix}
+}%
+\ScrollProof{17}{19}{%
+\Next{\Three}{\TT{k} &= \CarrySix\\}
+\Next{\Two}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v}
+= \SS{k}}}
+\only<19->{\QED{}}
 \end{frame}
 }
 
