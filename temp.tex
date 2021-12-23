@@ -88,10 +88,11 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \SmallSkip{}
 
 \begin{Reasoning}
-\Reason{1-3}{\Highlight{Turquoise}{7.1}{0.85}{6.1}{0.8}}
+\CallOut{1-3}{Turquoise}{7.1}{0.8}{6.1}{0.8}
 \Reason{1}{Using the induction hypothesis;  \TT{k-1} includes the highlighted terms}
 \Reason{2}{Using induction hypothesis $P(k-1)$}
-\Reason{3}{\Highlight{LimeGreen}{3.8}{0.85}{2.6}{0.8}Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
+\CallOut{3}{LimeGreen}{3.8}{0.8}{2.6}{0.8}
+\Reason{3}{Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
 \Reason{7}{Carry out the tensor product}
 \end{Reasoning}
 {\small

@@ -796,6 +796,16 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \newenvironment{Reasoning}{%
 \def\Reason##1##2{%
    \only<##1>{\makebox(0,0)[l]{\alert<##1>{\textit{##2}}}}}%
+%%
+%% #1 -- the range for overlays
+%% #2 -- the color
+%% #3 -- x
+%% #4 -- y
+%% #5 -- width
+%% #6 -- height
+%%
+\def\CallOut##1##2##3##4##5##6{%
+    \Reason{##1}{\Highlight{##2}{##3}{##4}{##5}{##6}}}
 \vrule width 0pt depth 0.5em height 0.5em}{%
 }
 \def\Span#1{\ensuremath{{\mbox{span}(#1)}}}
