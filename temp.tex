@@ -97,10 +97,11 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \Reason{10}{Push the \ColorThree{outer kets} into the \ColorOne{summation}}
 \Reason{11}{Factor out the \ColorOne{summation}}
 \Reason{14}{\ColorFive{Combine} \ColorThree{one exponent} with \ColorOne{the adjacent exponent}}
-\Reason{15}{Introduce \ColorBlack{an indexing variable}}
-\Reason{18}{Express the \ColorBlack{index variable} as a \ColorBlack{summation}}
+\Reason{15}{Introduce \ColorBlack{constants \Set{0,1}} so the exponents are expressed similarly}
+\Reason{17}{Note $\ColorOne{(\ColorBlack{1\times}\ColorThree{2^{k-1}}+y)}$ is the numerical value of the bit string $\ColorThree{1}\ColorOne{y}$}
+\Reason{18}{Express the \ColorBlack{constants} as a \ColorBlack{summation}}
 \Reason{19}{Switch the order of the summations}
-\Reason{22}{Express \ColorBlack{$z$} and \ColorOne{$y$} as \ColorBlack{v}}
+\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \ColorBlack{v}}
 \end{Reasoning}
 {\small
 \ScrollProof{1}{4}{%
@@ -134,10 +135,10 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \gdef\CarrySeven{\RootTwoN{k}\SumBV{z}{1}\ColorOne{\SumBV{y}{k-1}} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}}
 \Last{&=  \CarrySeven\\}
 }%
-\ScrollProof{21}{22}{%
-\Next{\Two}{\TT{k} &= \CarrySeven \\}
-\Next{\One}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v}
-= \SS{k}\QEDsym{}}
+\ScrollProof{21}{23}{%
+\Next{\Three}{\TT{k} &= \CarrySeven \\}
+\Next{\Two}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v} \\}
+\Next{\One}{&= \SS{k}\QEDsym{}}
 }%
 \end{frame}
 }
