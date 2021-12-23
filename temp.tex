@@ -83,6 +83,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \end{frame}
 
 \def\W{\ensuremath{w}}
+\def\V{\ColorFive{\ensuremath{v}}}
 \begin{frame}{Induction step}{With $P(n): T(n)=S(n)$, show \Implies{P(k-1)}{P(k)}}
 \Vskip{-4.3em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
@@ -101,7 +102,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \Reason{17}{Note $\ColorOne{(\ColorBlack{1\times}\ColorThree{2^{k-1}}+y)}$ is the numerical value of the bit string $\ColorThree{1}\ColorOne{y}$}
 \Reason{18}{Express the \ColorBlack{constants} as a \ColorBlack{summation}}
 \Reason{19}{Switch the order of the summations}
-\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \ColorBlack{v}}
+\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \V}
 \end{Reasoning}
 {\small
 \ScrollProof{1}{4}{%
@@ -137,7 +138,7 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 }%
 \ScrollProof{21}{23}{%
 \Next{\Three}{\TT{k} &= \CarrySeven \\}
-\Next{\Two}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v} \\}
+\Next{\Two}{&= \RootTwoN{k}\ColorFive{\SumBV{\V}{k} \ExpPhase{2\pi wv}}\ket{\V} \\}
 \Next{\One}{&= \SS{k}\QEDsym{}}
 }%
 \end{frame}
