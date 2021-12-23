@@ -3,7 +3,7 @@
 
 {
 \def\TTerm#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
-\def\N{\textcolor{purple}{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
+\def\N{\ColorFive{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
 \begin{frame}{Our theorem}{Needs a proof, but first a restatement}
     \Vskip{-3em}\begin{align*}
  \RootTwoN{\N}\alt<3->{\alert<3>{\SumBV{\Y}{\N}}}{\SumPH{\Y}{\N}} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \TTerm{\N{}-1}  \\
@@ -89,11 +89,18 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 
 \begin{Reasoning}
 \CallOut{1-3}{Turquoise}{7.1}{0.8}{6.1}{0.8}
-\Reason{1}{Using the induction hypothesis;  \TT{k-1} includes the highlighted terms}
-\Reason{2}{Using induction hypothesis $P(k-1)$}
-\CallOut{3}{LimeGreen}{3.8}{0.8}{2.6}{0.8}
-\Reason{3}{Tensor both sides with the \ColorThree{same term}, which completes the right-hand side}
-\Reason{7}{Carry out the tensor product}
+\Reason{1}{Applying induction hypothesis $P(k-1)$;  \TT{k-1} includes the \textcolor{Turquoise}{highlighted terms}}
+\CallOut{2}{LimeGreen}{3.85}{0.8}{2.7}{0.8}
+\Reason{2}{Tensor both sides with the \ColorThree{same term}, which completes \TT{k}}
+\Reason{6}{Expand \SS{k-1} into its summation}
+\Reason{7}{Perform the stated tensor product, \ColorFive{combine the roots}}
+\Reason{10}{Push the \ColorThree{outer kets} into the \ColorOne{summation}}
+\Reason{11}{Factor out the \ColorOne{summation}}
+\Reason{14}{\ColorFive{Combine} \ColorThree{one exponent} with \ColorOne{the adjacent exponent}}
+\Reason{15}{Introduce \ColorBlack{an indexing variable}}
+\Reason{18}{Express the \ColorBlack{index variable} as a \ColorBlack{summation}}
+\Reason{19}{Switch the order of the summations}
+\Reason{22}{Express \ColorBlack{$z$} and \ColorOne{$y$} as \ColorBlack{v}}
 \end{Reasoning}
 {\small
 \ScrollProof{1}{4}{%
@@ -106,21 +113,19 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \ScrollProof{5}{8}{%
 \Next{\Four}{\TT{k} &= \CarryTwo \\}
 \Next{\Three}{& = \TensProd{\CarryThree}{\ColorOne{\ThSum{k-1}}}\\}
-\gdef\CarryFour{\textcolor{Plum}{\RootTwoN{k}}\left( \ColorThree{\QZero}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}\QOne{}}\hskip-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
+\gdef\CarryFour{\ColorFive{\RootTwoN{k}}\left( \ColorThree{\QZero}\kern-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}\QOne{}}\kern-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
 \Last{& = \CarryFour}
 }%
 \ScrollProof{9}{12}{%
 \Next{\Four}{\TT{k} &= \CarryFour \\}
-\Next{\Three}{&= \RootTwoN{k}\left(\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\hskip -2ex\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}}\right) \\}
+\Next{\Three}{&= \RootTwoN{k}\left(\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\kern -2ex\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}}\right) \\}
 \gdef\CarryFive{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}} \right)}
 \Last{&= \CarryFive}
 }%
 \ScrollProof{13}{16}{%
 \Next{\Four}{\TT{k} &= \CarryFive\\ }
-\Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \textcolor{Plum}{\ExpPhase{2\pi w(\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)\\}
-%%
-%% change below to introduce z
-\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi w(\textcolor{black}{0\times}\ColorThree{2^{k-1}}+\ColorOne{y})}\ket{\ColorThree{0}y}} + \textcolor{Plum}{\ExpPhase{2\pi w(\textcolor{black}{1\times}\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)}
+\Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorFive{\ExpPhase{2\pi w(\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)\\}
+\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi w(\ColorBlack{0\times}\ColorThree{2^{k-1}}+\ColorOne{y})}\ket{\ColorThree{0}y}} + \ColorFive{\ExpPhase{2\pi w(\ColorBlack{1\times}\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)}
 \Last{ &=  \CarrySix}
 }%
 \ScrollProof{17}{20}{%
