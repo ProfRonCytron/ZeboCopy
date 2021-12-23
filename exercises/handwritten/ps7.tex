@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\usepackage{bbm}
+
+
+\title{Problem Set 7}
+\author{CSE 468}
+\date{May 2021}
+
+\begin{document}
+
+\maketitle
+
+
+Questions for phase estimation -- move these as needed
+
+\begin{enumerate}[font=\bfseries]
+    \item How do you realize the rotation $R$ gates?
+    \item The phase estimation circuit changes state on the inputs and collapses state at measurement.  Is it possible to perform phase estimation without changing state of the input?  If so, show how. If not, prove it is impossible (hint:  recall the no-cloning theorem).
+    \item A period state was defined as one in uniform superposition except for phase.  In other words, all basis vectors are equally likely to be observed on measurement.  Consider performing phase estimation on the two-qubit system:
+    \[ \alpha\ket{00} + \beta e^{i 2\pi w}\ket{01} 
+        + \gamma e^{i 2\pi w(2)}\ket{10} + \delta e^{i 2\pi w(3)}\ket{11}
+    \]
+    where $\alpha, \beta, \gamma$ and $\delta$ are real and (of course)
+    \[ \alpha^{2} + \beta^{2} + \gamma^{2} + \delta^{2}=1 \]
+    While this system has its basis states related by a phase $w$, the outcomes upon measurement are not equally likely.  Analyze the results of phase estimation as taught in class on such a system.
+
+    
+\end{enumerate}
+
+
+
+\end{document}
