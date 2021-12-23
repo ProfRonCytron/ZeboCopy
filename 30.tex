@@ -736,9 +736,9 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
 \SmallSkip{}
 \begin{Reasoning}
-\Reason{4}{Capture as sum}
-\Reason{2}{Simplify constants in exponents}
-\Reason{3}{To satisfy the form needed by the summation}
+\Reason{4}{Capture as sum}%
+\Reason{2}{Simplify constants in exponents}%
+\Reason{3}{To satisfy the form needed by the summation}%
 \end{Reasoning}
 
 \Vskip{-2em}\ScrollProof{1}{4}{%
@@ -757,20 +757,20 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \SmallSkip{}
 
 \begin{Reasoning}
-\CallOut{1-3}{Turquoise}{7.1}{0.8}{6.1}{0.8}
-\Reason{1}{Applying induction hypothesis $P(k-1)$;  \TT{k-1} includes the \textcolor{Turquoise}{highlighted terms}}
-\CallOut{2}{LimeGreen}{3.85}{0.8}{2.7}{0.8}
-\Reason{2}{Tensor both sides with the \ColorThree{same term}, which completes \TT{k}}
-\Reason{6}{Expand \SS{k-1} into its summation}
-\Reason{7}{Perform the stated tensor product, \ColorFive{combine the roots}}
-\Reason{10}{Push the \ColorThree{outer kets} into the \ColorOne{summation}}
+\CallOut{1-3}{Turquoise}{7.1}{0.8}{6.1}{0.8}%
+\Reason{1}{Applying induction hypothesis $P(k-1)$;  \TT{k-1} includes the \textcolor{Turquoise}{highlighted terms}}%
+\CallOut{2}{LimeGreen}{3.85}{0.8}{2.7}{0.8}%
+\Reason{2}{Tensor both sides with the \ColorThree{same term}, which completes \TT{k}}%
+\Reason{6}{Expand \SS{k-1} into its summation}%
+\Reason{7}{Perform the stated tensor product, \ColorFive{combine the roots}}%
+\Reason{10}{Push the \ColorThree{\QZero{}} and \ColorThree{\QOne{}} into the \ColorOne{summation}}%
 \Reason{11}{Factor out the \ColorOne{summation}}
-\Reason{14}{\ColorFive{Combine} \ColorThree{one exponent} with \ColorOne{the adjacent exponent}}
-\Reason{15}{Introduce \ColorBlack{constants \Set{0,1}} so the exponents are expressed similarly}
-\Reason{17}{Note $\ColorOne{(\ColorBlack{1\times}\ColorThree{2^{k-1}}+y)}$ is the numerical value of the bit string $\ColorThree{1}\ColorOne{y}$}
-\Reason{18}{Express the \ColorBlack{constants} as a \ColorBlack{summation}}
-\Reason{19}{Switch the order of the summations}
-\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \V}
+\Reason{14}{\ColorFive{Combine} \ColorThree{this exponent} with \ColorOne{its adjacent exponent}}%
+\Reason{15}{Introduce \ColorBlack{constants \Set{0,1}} so the exponents are expressed similarly}%
+\Reason{17}{Note $\ColorOne{(\ColorBlack{1\times}\ColorThree{2^{k-1}}+y)}$ is the numerical value of the bit string $\ColorThree{1}\ColorOne{y}$}%
+\Reason{18}{Express the \ColorBlack{constants} as a \ColorBlack{summation}}%
+\Reason{19}{Switch the order of the summations}%
+\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \V}%
 \end{Reasoning}
 {\small
 \ScrollProof{1}{4}{%
