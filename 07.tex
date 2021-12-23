@@ -1,538 +1,281 @@
-\SetTitle{7}{The Elitzur--Vaidman bomb}{Our first quantum algorithm}{07}
+\SetTitle{7}{Universal quantum gates}{Several approaches, culminating in the qiskit U gate}{07}
 
-\begin{frame}{Overview}
+\begin{frame}{Universality}{Some initial thoughts}
 
-\begin{itemize}
-    \item The \href{https://en.wikipedia.org/wiki/Elitzur-Vaidman_bomb_tester}{Elitzur--Vaidman} bomb is a \href{https://en.wikipedia.org/wiki/Thought_experiment}{Gedankenexperiment} in which a photon measured in a certain way triggers an explosion.
-    \item We can devise a quantum algorithm that is arbitrarily likely to detect the presence of such a bomb without setting it off.
-    \item This algorithm captures the flow of most quantum algorithms:
-    \begin{itemize}
-        \item Preparation of a known state
-        \item Transformation of state by quantum gates
-        \item Iteration by passes or unrolling of a circuit
-        \item Measurement to obtain the result
-        \item Probabilistic analysis for correctness
-    \end{itemize}
-    \item The algorithm uses an interferometer setup like the one we have studied.
+\begin{itemize}[<+->]
+    \item We captured the essence of a single qubit using two real rotational parameters $\phi$ and $\theta$.  Those parameters describe points on the unit sphere, each point corresponding to a quantum state.
+    \item A quantum gate is a mapping from states to states.
+    \item Because such gates must have inverses, the mapping established by such gates must be \href{https://en.wikipedia.org/wiki/Bijection}{bijective}.
+    \item We can think of a gate as a permutation of states, or points, on the Bloch sphere.
+    \item How many parameters does it take to characterize an arbitrary single-qubit quantum gate?
 \end{itemize}
+
     
 \end{frame}
 
-\section{Classical version}
+\begin{frame}{Quantum gate}{Properties}
 
-\begin{frame}{The classical EV bomb}{Based on our previous interferometer}
-
-\Vskip{-3em}\TwoUnequalColumns{0.5\hsize}{0.5\hsize}{%
-\Vskip{-3em}\begin{itemize}
-    \only<1>{%
-    \item Recall that the wave of a photon reflected twice in this diagram is shifted by $\pi$ radians.
-    \item The resulting interference cancels any chance of measuring the photon at the
-    \textcolor{\RCtwo}{blue} sensor.}
-    \only<2>{%
-    \item If we obstruct the bottom path as shown here, the interference cannot occur.  There are thus three possibilities.
-    \begin{itemize}
-        \item The photon is measured at the obstruction, which will occur $1/2$ the time.
-        \item The photon is measured after passing through the first beam splitter.  From there it reaches either the \textcolor{orange}{orange} sensor or the \textcolor{\RCtwo}{blue} sensor.
-    \end{itemize}
-    }
-    \only<3-5>{%
-    \item Suppose the obstruction is a photon-activated bomb.  
-    \item<4-> If the photon is measured by the bomb, then it explodes, and the world as we know it ceases to exist.}
-    \only<5->{
-    \item With the bomb present:
-    \begin{center}
-    \begin{tabular}{lc}
-       Observation & How often? \\\hline
-       \alert<8>{Explosion} & \alert<8>{50\%} \\
-       \textcolor{orange}{Orange sensor} & 25\% \\
-       \textcolor{\RCtwo}{Blue sensor} & 25\%
-     \end{tabular}
-     \end{center}
-     \item<6-> With the bomb absent:
-    \begin{center}
-    \begin{tabular}{lc}
-       Observation & How often? \\\hline
-       Explosion & 0\% \\
-       \textcolor{orange}{Orange sensor} & 100\% \\
-       \textcolor{\RCtwo}{Blue sensor} & 0\%
-     \end{tabular}
-     \end{center}
-     \item<6-> This is a bomb detection device!
-    }
-\end{itemize}
-}{%}
-\begin{TIKZP}[scale=0.7]
-\MZ{}
-\draw[color=red] (1,0.5) -- (2.5,0.5);
-\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\only<1>{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);}
-\only<2->{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\only<4>{\draw[ultra thick,color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw<2->[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
-\visible<2-3,5->{\Shift{4}{-2}{\EVBomb{}}}
-\visible<3->{\draw[white] (4.5,-1.5) node {{\tiny\bf Bomb!}};}
-\visible<4>{\Shift{4}{-2}{\EVBoom{}}}
-\visible<6->{%
-    \fill[gray] (2,-2) rectangle ++(5,3);
-    \draw[white] (4.5,-0.5) node {\bf Bomb present????};
-}
-\end{TIKZP}%
-\MedSkip{}
-\only<2>{Even if the photon isn't measured at the obstruction, its presence prevents interference.}
-\only<5>{Recall that without the obstruction, all photons are measured only at the \textcolor{orange}{orange sensor}.}
-\only<6->{%
-If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb is there, and we live to tell the tale.}
-\only<7->{Detection at the \textcolor{orange}{orange sensor} tells us nothing.} \only<8->{\alert{Oh, and half the time we die if the bomb is there.}}
-}%
-\end{frame}
-
-\begin{frame}{How good is this approach?}{Some analysis}
-
-\begin{itemize}
-    \item If the bomb is there, we detect it 25\% of the time without blowing up.
-    \item We can never be absolutely certain of the bomb's absence, because all photons would be measured by the \textcolor{orange}{orange sensor}, which could happen when the bomb is present.
-    \item After many tries, we can claim with some probability that there is no bomb present.  The probability that we measure $n$ successive photons at the \textcolor{orange}{orange sensor} with a bomb present is $\left(\frac{1}{4}\right)^{n}$.
-    \item Our belief that there is no bomb thus grows exponentially in the number of photons that continue to be observed at the \textcolor{orange}{orange sensor}.
-\end{itemize}
+\TwoUnequalColumns{0.4\textwidth}{0.6\textwidth}{%
+We begin with an arbitrary unitary matrix $U$ to represent a quantum gate for a single qubit:
+\[
+U=\SQBG{\relax}{a}{c}{b}{d}
+\]
+}{%
+\begin{itemize}[<+->]
+    \item $a, b, c, d$ are complex
+    \item So, apparently 8 parameters
+    \item $U$ is invertible and $\Inverse{U}=\Conj{U}$
+    \item The columns form an orthonormal basis
+    \item The rows form an orthonormal basis
+\end{itemize}}
+\BigSkip{}
+\visible<+->{%
+These constraints will take us from 8 parameters to only 3.}
     
 \end{frame}
 
-\begin{frame}{Troubling questions}{Quantum is strange}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\begin{itemize}
-    \item<1-3> Interference that produces photons only at the \textcolor{orange}{orange sensor} requires that superposition persists up to the second beam splitter.
-    \item<2-3> It's understandable that the obstruction blocks the superposition, so that a photon can now reach either sensor.
-    \item<3> However, it seems impossible that, in its superposition, the photon does not cause the bomb to explode.
-\end{itemize}
-}{%
-\begin{TIKZP}[scale=0.5]
-\MZ{}
-\draw[color=red] (1,0.5) -- (2.5,0.5);
-\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\only<1>{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);}
-\only<2->{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw<2->[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
-\visible<2-3>{\Shift{4}{-2}{\EVBomb{}}}
-\visible<3->{\fill[red] (4.5,-1.5) circle(0.25);}
-\end{TIKZP}%
-}
+\begin{frame}{The Qiskit U gate}{Theorem statement}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U(\theta, \phi, \lambda) = 
+    \UGate{}
+    \] where
+    $0 \leq \theta,\phi,\lambda < 2\pi$
+    \end{theorem}
+    For example, the Hadamard gate \HMatrix{} is $U(\pi/2, 0, \pi)$, which yields
+    \[
+    \SQBG{\relax}{\cos \pi/4}{-\ExpPhase{\pi}\sin \pi/4}{\ExpPhase{0}\sin \pi/4}{\ExpPhase{\pi}\cos pi/4} = \HMatrix{}
+    \]
+
 \end{frame}
 
+\begin{frame}{Proof}{We begin with an arbitrary unitary matrix $U$ with complex entries}
+\TwoColumns{%
+$U = \SQBG{\relax}{a}{b}{c}{d}$ so
+$\Conj{U} = \SQBG{\relax}{\Conj{a}}{\Conj{c}}{\Conj{b}}{\Conj{d}}$
 
-\begin{frame}{Two explanations for this behavior}{Physics is not certain how this really works}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\Vskip{-2em}Physics offers (at least) the following explanations.  \only<1-2>{This explanation was \href{https://www.newscientist.com/letter/mg20627650-200-quantum-dogma/}{dogma} for many years.}  \only<2>{This explanation explains well what we see, but has \href{https://www.quantamagazine.org/why-the-many-worlds-interpretation-of-quantum-mechanics-has-many-problems-20181018/}{its own issues}.}
-}{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}[scale=0.4]
-\MZ{}
-\draw[color=red] (1,0.5) -- (2.5,0.5);
-\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-%\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
-\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
-\draw[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
-\Shift{4}{-2}{\EVBomb{}}
-\fill[red] (4.5,-1.5) circle(0.25);
-\end{TIKZP}%
-\end{center}
-}
-  \begin{description}
-     \item<1->[\href{https://en.wikipedia.org/wiki/Copenhagen_interpretation}{Copenhagen}] Until measurement, the superposition exhibits wave behavior.  Upon measurement, the quantum system collapses.  The history up to the collapse will be particle-behavior-consistent with the measurement.  So if the photon is measured by the \textcolor{orange}{orange} or
-     \textcolor{\RCtwo}{blue} sensor, no explosion occurs.
-     \item<2>[\href{https://en.wikipedia.org/wiki/Many-worlds_interpretation}{Many worlds}] The wave nature of the photon persists.  At each point where superposition is introduced, multiple worlds are created, one for each possible outcome.  We happen to be entangled with the world we observe at measurement.  Other worlds have the other measurements.
-  \end{description}
-  
-\end{frame}
-
-\section{Better version}
-
-\begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
-\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
-\only<1-4>{\begin{itemize}
-    \item<1-> The bomb and a polarizing filter are a single package.  The package is either present, or not.
-    \item<2-> If a photon goes through the filter, there is no energy transferred to our bomb apparatus, and so there is no explosion.
-    \item<3-> If a photon is stopped by the filter, then the energy transferred from the photon to the filter causes an explosion.
-\end{itemize}}
-\only<5-8>{%
-\begin{itemize}
-    \item<5-> What happens if we send a photon rotated $\theta$ degrees from horizontal (\ket{0})?
-    \item<6-> Recall the state of the photon is
-    \[ \cos\theta\ket{0} + \sin\theta\ket{1} \]
-    \item<7-> The probability of the photon causing explosion is then $\sin^{2}\theta$.
-    \item<8-> We can choose $\theta > 0$ such that $0 < \sin^{2}\theta < \epsilon$ for any
-    $\epsilon>0$ of interest to us.
-\end{itemize}
-}
-\only<9-10>{%
-\begin{itemize}
-    \item<9-> Key to this algorithm's success is knowing that \emph{if} a photon passes through the filter, then it is in state~\ket{0}, horiziontally polarized, no matter its state prior to the filter.
-    \item<10-> If there is no bomb package, then the state of the photon is preserved, rotated from its prevous state (horizontal, \ket{0})  by $\theta$ radians.
-\end{itemize}}
-\only<11->{%
-\begin{enumerate}
-    \item<11-> Begin with a photon in state \ket{0}.
-    \item<12-> Rotate by $\theta$ radians.
-    \item<13-> The photon enters the box.
-    \only<14-15>{%
-    \begin{itemize}
-        \item<14-> No bomb package?   The photon stays rotated on exit from the box.
-        \item<15> Otherwise, the photon will either trigger an explosion (unlikely), or it will be reset by the filter to the \ket{0} state.
-    \end{itemize}}
-    \item<16-> \textcolor{\RCtwo}{Repeat the above two steps} until \textcolor{\RCthree}{$n$ passes have been made}.
-    \item<17-> Measure the photon after $n$ rotations.
-\end{enumerate}
-}
-}{%
-\Vskip{-2em}\begin{center}
-\begin{TIKZP}[scale=0.8]
-%%
-%% Bounding box
-\path (0,1) rectangle ++(6,-4.5);
-%%
-\Shift{0}{-1}{%
-\begin{scope}
-\fill<1,13->[yellow] (3,-2) rectangle ++(1,3);
-\visible<2,5-12>{%
-   \HPolarizedLightSource{}
-}
-\visible<2>{%
-\Shift{1}{0}{\HPolar{}}
-\Shift{2}{0}{\HPolar{}}
-\Shift{4}{0}{\HPolar{}}
-}
-\visible<3>{%
-\VPolarizedLightSource{}
-\Shift{1}{0}{\VPolar{}}
-\Shift{2}{0}{\VPolar{}}
-}
-\visible<4>{\LightSource{}}
-\draw<2,9>[color=red] (1,0.5) -- ++(5,0);
-\draw<3-10>[color=red] (1,0.5) -- ++(3,0);
-\draw<12>[color=red] (1,0.5) -- ++(1,0);
-\draw<13->[color=red] (2, 0.5) -- ++(3,0);
-\visible<16->{%
-\Shift{5}{0}{\Qif{}}
-\draw[->,\RCtwo,thick] (5.5,1) node[left] {no} -- ++(0,1.0) -- ++(-3.5,0) -- ++(0,-1);
-\draw (5.5,0.5) node {$n$?};
-}
-\visible<16-17>{%
-\draw[->,\RCthree,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
-}
-\visible<17>{%
-\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=\RCthree]}}
-}
-%\draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
-\visible<1-9,15>{
-\Shift{3}{-2}{\EVBomb{}}
-\draw[white] (3.5,-1.5) node {{\tiny\bf Bomb!}};
-\Shift{3}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
-\draw[thick, color=brown] (3.5,0) -- ++(0,-1);
-\draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
-\visible<3>{\Shift{3}{-2}{\EVBoom{}}}}
-\end{scope}}
-\visible<5-10,12->{\Shift{1.5}{-1}{\RotateTheta{}}}
-\visible<9>{
-\Shift{4}{-1}{\HPolar{}}
-}
-\visible<11-13,16->{%
-\fill[Gray] (3,-3) rectangle ++(1,3);
-}
-\visible<10>{%
-\draw[red] (4,-0.5) -- ++(0.5,0);
-\Shift{4}{-1}{\RotateAroundCenter{10}{\HPolar{}}}
-}
-\visible<5-10,13>{%
-\Shift{2}{-1}{\RotateAroundCenter{10}{\HPolar{}}}
-}
-\visible<14>{%
-\Shift{4}{-1}{\RotateAroundCenter{10}{\HPolar{}}}
-}
-\visible<15>{%
-\Shift{4}{-1}{\HPolar{}}
-}
-\end{TIKZP}
-\end{center}
-\only<4>{%
-If we send unpolarized light, then we expect half the photons to trigger an explosion.
-}
-\only<8>{%
-We can thus make the probability of explosion arbitrarily small.
-}
-
-}
-\only<17>{%
 \MedSkip{}
-We will properly determine $\theta$ so that after $n$ rotations we either will see \ket{0} if the bomb package is there, or \ket{1} if it is absent.  And each time through the package, we will have a predictably low (though always \href{https://www.youtube.com/watch?v=KX5jNnDMfxA}{positive}) chance of blowing up.
-}
-\end{frame}
-
-\section{Analysis}
-
-{%
-\def\ShowPhoton#1{%
-\tdplotsetrotatedcoords{90}{90}{90};
-\path[tdplot_rotated_coords] (1,0,0) arc (0:#1:1) node(end) {};
-% \draw[tdplot_rotated_coords,thick,red] (0,0,0) -- (end);
-\fill[color=red] (end) circle(2pt);
-\tdplotsetrotatedcoords{0}{0}{0};
-}
-\begin{frame}{How much rotation?}{We need to go from horizontal to vertical if there is no bomb package}
-\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
-\only<1-10>{%
-No Bomb:
+Because $U$ is unitary:
 \begin{itemize}
-    \item<1-> Photon starts in state \ket{0}
-    \item<2-> Rotation by $\theta$
-    \item<3-> Passes through empty box
-    \item<4-> Presented again for rotation
-    \item<5-> Rotated again by $\theta$
-    \item<6-> Through box
-    \item<7-> Total of $n$ passes
-    \item<8-> Photon ends in state \ket{1}
-    \item<9-> Measured as state \ket{1}
-\end{itemize}}
-\only<11->{%
-Bomb!
-\begin{itemize}
-    \item<11-> Photon starts in state \ket{0}
-    \item<12-> Rotation by $\theta$, as before
-    \item<13-> If the photon passes through, it is reset to \ket{0} and there is no explosion.
-    \item<14-> Presented for rotation by $\theta$
-    \item<15-> Same result as before: no accumulated rotation
-    \item<17-> Measurement yields \ket{0} after any number of passes
+\item<1-> Each column of $U$ (row of \Conj{U}) is \href{https://en.wikipedia.org/wiki/Orthonormality}{orthonormal}:
+\begin{align*}
+    \Conj{a}a + \Conj{c}c = & \Prob{a} + \Prob{c} = 1 \\
+    \Conj{b}b + \Conj{d}d = & \Prob{b} + \Prob{d} = 1 
+\end{align*}
+\item<2-> $\Implies{\Prob{a} + \Prob{c} = 1}{\Mag{a} \leq 1}$
 \end{itemize}
-}
-}{%
-\Vskip{-4em}\begin{center}
-\begin{TIKZP}[scale=0.9]
-%%
-%% Bounding box
-\path (0,1) rectangle ++(6,-4.5);
-%%
-\Shift{0}{-1}{%
-\begin{scope}
-\visible<1-10>{\fill[yellow] (3,-2) rectangle ++(1,3);}
-\visible<11->{
-\Shift{3}{-2}{\EVBomb{}}
-\draw[white] (3.5,-1.5) node {{\tiny\bf Bomb!}};
-\Shift{3}{0}{\RotateAroundCenter{90}{\PFilter{0}{0}{1}{1}{10}}}
-\draw[thick, color=brown] (3.5,0) -- ++(0,-1);
-\draw<3>[ultra thick,color=brown] (3.5,0) -- ++(0,-1);
-}
-\visible<1->{\Shift{1.5}{0}{\RotateTheta{}}}
-\visible<1->{%
-\Shift{5}{0}{\Qif{}}
-\draw[->,\RCtwo,thick] (5.5,1) node[left] {no} -- ++(0,1.0) -- ++(-3.5,0) -- ++(0,-1);
-\draw (5.5,0.5) node {$n$?};
-}
-\visible<1->{%
-\draw[->,\RCthree,thick] (5.5,0) node[left] {yes} -- ++(0,-1);
-}
-\visible<1,11>{%
-   \HPolarizedLightSource{}
-   \draw[color=red] (1,0.5) -- ++(0.5,0);
-}
-\visible<2,12,15,18>{%
-\Shift{2}{0}{\RotateAroundCenter{10}{\HPolar{}}}
-}
-\visible<3>{%
-\Shift{3.5}{0}{\RotateAroundCenter{10}{\HPolar{}}}
-\draw[red] (4,0.5) -- ++(1,0);
-}
-\visible<4>{%
-\Shift{1.25}{1}{\RotateAroundCenter{10}{\HPolar{}}}
-}
 \visible<5>{%
-\Shift{2.1}{0}{\RotateAroundCenter{45}{\HPolar{}}}
-}
-\visible<6>{%
-\Shift{3.5}{0}{\RotateAroundCenter{45}{\HPolar{}}}
-\draw[red] (4,0.5) -- ++(1,0);
-}
-\visible<7>{%
-\Shift{1.25}{1}{\RotateAroundCenter{45}{\HPolar{}}}
-}
-\visible<8>{%
-\Shift{2}{0}{\VPolar{}}
-\draw[red] (3,0.5) -- ++(2,0);
-}
-\visible<9>{%
-\Shift{4.5}{-1}{\VPolar{}}
-\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=\RCthree]}}
-}
-\visible<10>{%
-\draw[red] (2.5,0.5) -- ++(2.5,0);
-}
-\visible<13,16>{%
-\Shift{4}{0}{\HPolar{}}
-}
-\visible<14>{%
-\Shift{1}{1}{\HPolar{}}
-}
-\visible<17>{%
-\Shift{4.5}{-1}{\HPolar{}}
-\Shift{5}{-2}{\RotateAroundCenter{-90}{\Measurement[color=\RCthree]}}}
-\visible<11-17>{%
-\draw[thin, red] (2.5,0.5) -- ++(2.5,0);
-}
-\visible<18>{\Shift{3}{-2}{\EVBoom{}}}
-\end{scope}}
-\end{TIKZP}
-\end{center}
-\only<1-9>{%
-\Vskip{-4em}\begin{center}
-\begin{BlochSphere}[scale=0.9]{60}{115}
-\draw (0,0,1) node[above left] {\ket{0}};
-\draw (0,0,-1) node[below left] {\ket{1}};
-\only<1>{%
-\ShowPhoton{90}
-}
-\only<2-4>{%
-\ShowPhoton{135}
-}
-\only<5-7>{%
-\ShowPhoton{170}
-}
-\only<8-9>{%
-\ShowPhoton{270}
-}
-\end{BlochSphere}
-\end{center}
-}
-\only<10>{%
-On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1}) in $n$ steps, so each step is a rotation of $\theta=\pi/n$ radians.}
-\only<18>{%
-\alert{Each pass, the bomb explodes with probability $\sin^{2}\theta$.}}
-}
-\end{frame}%
-}
-
-\begin{frame}{Achieving rotation with no bomb present}{The Bloch sphere and the physical rotation of a polarizing filter}
-\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
-\only<1-5>{%
-\begin{itemize}
-    \item<1-> The polarization of the photon rotates from
-    \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}} \ket{0}
-    to \begin{tikzpicture} \VPolar{}\end{tikzpicture} \ket{1}.
-    \item<2-> That's a physical filter rotation of $\pi/2$ radians.
-    \item<3-> On the Bloch sphere, \ket{0} and \ket{1} are the north and south poles, respectively.
-    \item<4-> Logical rotation from \ket{0} to \ket{1} takes $\pi$ radians on the Bloch sphere, let's say about the $y$ axis.
-    \item<5-> To achieve complete rotation in $n$ steps, each step rotates by
-    $\theta=\pi/n$ radians.
-\end{itemize}
-}%
-\only<6->{%
-\begin{itemize}
-    \item<6-> We seek to rotate by $\theta=\pi/n$ radians.
-    \item <7->The resulting matrix is thus:
-    \[
-    \SQBG{\relax}{\cos\left(\pi/2n\right)}{-\sin\left(\pi/2n\right)}{\sin\left(\pi/2n\right)}{\cos\left(\pi/2n\right)}
-    \]
-    \item<8-> When there is a bomb present, rotation is always performed on $\ket{0}=\PZero{}$.  
-    \item<9-> The state seen by the bomb's filter is thus:
-    \[
-        \cos(\pi/2n)\ket{0} + \sin(\pi/2n)\ket{1}
-    \]
-\end{itemize}
-}
+\alert<5>{%
+We use $\theta/2$ to accommodate $0\leq \theta < 2\pi$}}
 }{%
-\only<1-2>{%
-\begin{center}
-\begin{TIKZP}
-\RotateAroundCenter{90}{\begin{scope}[draw=\RCone]\PFilter{0}{0}{1}{1}{20}\end{scope}}
-\end{TIKZP}\hbox to 3em{\hss}%
-\begin{TIKZP}
-\RotateAroundCenter{0}{\begin{scope}[draw=\RCtwo]\PFilter{0}{0}{1}{1}{20}\end{scope}}
+\Vskip{-5em}\begin{center}
+\begin{TIKZP}[scale=0.45]
+\UnitComplexCircle{}
 \end{TIKZP}
 \end{center}
+\visible<3->{%
+Because $\Mag{a}\leq 1$, $a$ is some point on or in the unit
+complex circle.
+\begin{itemize}
+    \item<4-> Let $\ExpPhase{\phi_{a}}$ be a point on the circle.
+    \item<5-> We can then scale it by \alert<5>{$\cos(\theta/2)$} to obtain any point on or in the circle.
+    \item<6-> We thus obtain
+    \[
+    a = \ExpPhase{\phi_{a}}\cos(\theta/2)
+    \]
+\end{itemize}}
 }
-\only<2>{%
-\begin{center}
-\begin{TIKZP}
-\draw (0.5,0.5) circle (0.5);
-\draw[->,\RCone] (0.5,0.5) -- ++(0.5,0);
-\draw[->,\RCtwo] (0.5,0.5) -- ++(0,0.5);
-\draw[->,thick] (1.0,0.5) arc(0:90:0.5) node[above] {$\pi/2$ radians};
-\end{TIKZP}
-\end{center}
-}
-\only<3->{%
-\Vskip{-1em}%
-\begin{BlochSphere}[scale=1.2]{60}{115}
-\BlochSpherePhiTheta{}
-\draw (0,0,1) node[above right] {\ket{0}};
-\draw (0,0,-1) node[below right] {\ket{1}};
-\end{BlochSphere}
-}%
-\only<5->{%
-Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
-\SmallSkip{}
-\SQBG{\relax}{\cos\left(\theta/2\right)}{-\sin\left(\theta/2\right)}{\sin\left(\theta/2\right)}{\cos\left(\theta/2\right)}
-}
-}
-    
 \end{frame}
 
-\begin{frame}{Analysis of this algorithm}{How likely are we to blow up with a bomb present and $n$ rotations?}
-\only<1-3>{%
-\begin{itemize}
-    \item<1-> The parameter $n$ determines how many rotations we perform to go from \ket{0} to \ket{1} when no bomb is present.
-    \item<2-> Larger $n$ decreases our probability of blowing up, but $\ldots$
-    \item<3-> Larger $n$ also means we have to approach the bomb more often, so how do we win here?
-\end{itemize}}
-\only<4->{
+\begin{frame}{Proof (continued)}{The other entries follow from the requirement that each row and column is \href{https://en.wikipedia.org/wiki/Unit_vector}{normal}}
+\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\ExpPhase{\phi_{a}}\cos(\theta/2)}{\visible<4->{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\visible<6->{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\visible<7->{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
 \TwoColumns{%
 \begin{itemize}
-    \item<4-> Photon's state after rotation:
-    \[
-        \cos(\pi/2n)\ket{0} + \sin(\pi/2n)\ket{1}
-    \]
-    \item<4-> Each approach to the bomb blows up with probability \alert<6>{$\sin^{2}(\pi/2n)$}.
-    \item<7-> The probability of at least one explosion in $n$ tries is therefore no more than
-    \[
-        \textcolor<8>{\RCone}{n}\left(\frac{\pi}{2\textcolor<8>{\RCtwo}{n}}\right)^{\textcolor<8>{\RCtwo}{2}} \visible<9->{= \frac{\pi^2}{4n}} \visible<10->{\leq \alert<11>{\frac{2.5}{n}}}
-    \]
+    \item<2-> Each row of $U$ is orthonormal, so 
+    $\Prob{a}+\Prob{b}=1$
+    \item<3-> $\Prob{b}=\sin^{2}(\theta/2)$
+    \item<4-> We can let $b=\ExpPhase{\phi_{b}}\sin(\theta/2)$
+    \item<5-> $\Prob{a}+\Prob{c}=1$
+    \item<6-> We can let $c=\ExpPhase{\phi_{c}}\sin(\theta/2)$
+    \item<7-> Same for $d$
 \end{itemize}
 }{%
 \begin{itemize}
-    \item<5-> For an angle $x\geq 0$ in radians
-   \[  \sin x \leq x\mbox{, so }\alert<6>{\sin^{2}x \leq x^{2}} \]
-   \item<6-> The chance of blowing up on each try is no more than
-   \[ {\left(\frac{\pi}{2n}\right)}^{2} \]
-  \item<8-> \only<8-10>{While the chance of some explosion grows \textcolor<8>{\RCone}{linearly with $n$}, the chance of a single explosion grows as \textcolor<8>{\RCtwo}{$1/n^2$}.} \only<11>{\alert{The chance of an explosion can be made \emph{arbitrarily small}.}}
+    \item<3-> $\Mag{\ExpPhase{\theta}}=1$ for all $\theta$
+    \item<4-> Yields the correct magnitude with an arbitrary phase $\phi_{b}$
+    \item<5-> $c$ and $d$ follow in the same way
+    \item<7-> We now have 5 parameters instead of 8
 \end{itemize}
-}}
+}
 \end{frame}
 
-\section{Implementation}
-
-\begin{frame}{Implementation}{Translating the idea into a qiskit program}
+\begin{frame}{Proof (continued)}{We can simplify by applying orthogonality of $U$'s columns}
+\Vskip{-3em}\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
+    
+\TwoColumns{%
 \begin{itemize}
-    \item The flow of this algorithm involves iteration, with $n$ passes through the $\theta$-rotation gate.
-    \item We cannot iterate on a quantum sensor, but we can generate a quantum circuit that contains the $n$ gates we need.
-    \item We write the code using python and qiskit, so we can use loops in python to synthesize the circuit we need.
-    \item That circuit can then be emulated or sent to a quantum device.
-    \item Randomly we either include or exclude the bomb package.
-    \item We then run the circuit to get the following outputs:
-    \begin{itemize}
-        \item Did we blow up on the way?
-        \item Do we measure \ket{0} or \ket{1} for the photon at the end?
-    \end{itemize}
+    \item<1-> The columns of $U$ are orthogonal
+    \item<2-> $\CQB{\Conj{\textcolor{\RCone}{a}}}{\Conj{\textcolor{\RCthree}{c}}} \SQB{\textcolor{\RCtwo}{b}}{\textcolor{\RCfour}{d}}=\Conj{\textcolor{\RCone}{a}}\textcolor{\RCtwo}{b} + \Conj{\textcolor{\RCthree}{c}}\textcolor{\RCfour}{d}=0$
+\end{itemize}
+}{%
+\begin{itemize}
+        \item<3-> Let's plug in the matrix values
+        \item<4-> Recall the conjugate of $\ExpPhase{x}$ is $\ExpNegPhase{x}$
+\end{itemize}
+}
+\visible<4->{%
+\MedSkip{}\[
+\textcolor{\RCone}{\ExpNegPhase{\phi_a}\cos(\theta/2)}\,\textcolor{\RCtwo}{\ExpPhase{\phi_b}\sin(\theta/2)}
++
+\textcolor{\RCthree}{\ExpNegPhase{\phi_c}\cos(\theta/2)}\,\textcolor{\RCfour}{\ExpPhase{\phi_d}\sin(\theta/2)}
+= 0 \]}%
+\visible<5->{\[
+\cos(\theta/2)\sin(\theta/2)\left[
+\ExpPhase{(\phi_{b}-\phi_{a})} +
+\ExpPhase{(\phi_{d}-\phi_{c})} \right]=0
+\]}%
+\visible<6->{%
+The value of $\theta$ must be arbitrary, so we can only get $0$ when
+\[
+\ExpPhase{(\phi_{b}-\phi_{a})} = - \ExpPhase{(\phi_{d}-\phi_{c})}
+\]}
+\end{frame}
+\begin{frame}{Proof (continued)}{We can now relate the phases}
+
+\Vskip{-3em}\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
+    
+\begin{align*}
+\ExpPhase{(\phi_{b}-\phi_{a})} &= - \ExpPhase{(\phi_{d}-\phi_{c})} \\
+ & = \ExpPhase{\pi}\,\ExpPhase{(\phi_{d}-\phi_{c})} \\
+ & = \ExpPhase{(\phi_{d}-\phi_{c}+\pi)} \\
+ \textcolor{\RCfour}{\phi_{d}} &= \phi_{b}+\phi_{c}-\phi_{a} -\pi \\
+ &= \phi_{b}+\phi_{c}-\phi_{a} -\pi + 2\pi \\
+ &= (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
+\end{align*}
+We next eliminate $\phi_{d}$ in favor of the other phases.
+\end{frame}
+
+\begin{frame}{Proof (continued)}{Now 4 parameters, but soon only 3}
+\Vskip{-3em}\[
+    U=\SQBG{\relax}{a}{b}{c}{d} = 
+    \SQBG{\relax}{\textcolor{\RCone}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{\textcolor{\RCtwo}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{\textcolor{\RCthree}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{\textcolor{\RCfour}{\ExpPhase{\phi_{d}}\cos(\theta/2)}}
+    \]
+    \[
+    \phi_{d} = (\phi_{b}+\pi) + \phi_{c}-\phi_{a}
+    \]
+    \begin{align*}
+    \visible<2->{
+    U&= 
+\SQBG{%
+    \phantom{\ExpPhase{\phi_a}}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{a}}\cos(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{b}}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{\phi_{c}}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-\phi_{a})}\cos(\theta/2)}} \\[1.5em]}
+    \visible<3->{
+    &\only<3-4>{=}\only<5->{\equiv} \SQBG{%
+    \visible<3-4>{\ExpPhase{\phi_a}}}{%
+    \textcolor{Black}{\cos(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{b}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{(\phi_{c}-\phi_{a})}\sin(\theta/2)}}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}}
+    \end{align*}
+\visible<4->{
+The coefficient $\ExpPhase{\phi_{a}}$ is a \emph{global} phase and can therefore be \visible<5->{ignored.}}
+    
+\end{frame}
+\begin{frame}{Conclusion of Proof}{We now have a general unitary matrix specified using only three parameters}
+\def\Phii{\textcolor{\RCone}{\phi}}
+\def\Lambdaa{\textcolor{\RCtwo}{\lambda}}
+\[
+U = \SQBG{%
+    \relax}{%
+    \textcolor{Black}{\cos(\theta/2)}}{%
+    \ExpPhase{(\textcolor<2->{\RCtwo}{\phi_{b}-\phi_{a}-\pi}+\pi)}\sin(\theta/2)}{%
+    \ExpPhase{\textcolor<2->{\RCone}{(\phi_{c}-\phi_{a})}}\sin(\theta/2)}{%
+    \textcolor{Black}{\ExpPhase{((\phi_{b}+\pi) + \phi_{c}-2\phi_{a})}\cos(\theta/2)}}
+    \]
+\TwoColumns{%
+
+\Vskip{-3.5em}\begin{align*}
+     \visible<2->{\mbox{Let } \Phii &= \textcolor<2>{\RCone}{\phi_{c}-\phi_{a}} \\
+     \mbox{Let } \Lambdaa &= \textcolor{\RCtwo}{\phi_{b}-\phi_{a}-\pi}}
+\end{align*}
+\Vskip{-3em}
+\only<5>{%
+\begin{align*}
+     \visible<5->{%
+     b' &= \ExpPhase{(\Lambdaa+\pi)}\sin(\theta/2) \\
+     &= \ExpPhase{\pi}\ExpPhase{\Lambdaa}\sin(\theta/2) \\
+     &= -\ExpPhase{\Lambdaa}\sin(\theta/2)}
+\end{align*}}
+\only<6->{%
+\begin{align*}
+    d' &= \ExpPhase{(\phi_{b}+\pi+\phi_{c}-2\phi_{a})}\cos(\theta/2) \\
+       &= \ExpPhase{(\Lambdaa+\Phii+2\pi)}\cos(\theta/2) \\
+       &= \ExpPhase{(\Lambdaa+\Phii)}\cos(\theta/2)
+\end{align*}
+}
+}{%
+\visible<3->{%
+\[
+U = \SQBG{}{%
+\only<3>{a'}%
+\only<4->{\cos(\theta/2)}}{%
+\only<3-4>{b'}%
+\only<5->{-\ExpPhase{\Lambdaa}\sin(\theta/2)}}{%
+\only<3>{c'}
+\only<4->{\ExpPhase{\Phii}\sin(\theta/2)}}{%
+\only<3-5>{d'}%
+\only<6->{\ExpPhase{(\Lambdaa+\Phii)}\cos(\theta/2)}}
+\]}
+\only<4-5>{
+\begin{align*}
+a' &= \cos(\theta/2) \\
+    c' &= \ExpPhase{\Phii}\sin(\theta/2)
+\end{align*}}%
+\only<7->{%
+
+We need just these three parameters to determine a quantum gate: $\theta, \Phii, \Lambdaa$. \QED{}
+}
+}
+
+    
+\end{frame}
+
+\begin{frame}{Importance of this result}{The qiskit \NamedGate{U} gate}
+\begin{theorem}
+   Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
+    \[
+    U(\theta, \phi, \lambda) = 
+    \UGate{}
+    \] where
+    $0 \leq \theta,\phi,\lambda < 2\pi$
+    \end{theorem}
+\begin{itemize}[<+->]
+   \item A qubit has a given probability of measuring \QZero{} or \QOne{}, based on its amplitude.   The \NamedGate{U} gate affects such measurements of that qubit using the parameter~$\theta$. 
+   \item The qiskit environment offers the \href{https://qiskit.org/documentation/stubs/qiskit.circuit.library.UGate.html}{\NamedGate{U}} gate, which is compiled into the necessary actions on a quantum device to realize the gate.
 \end{itemize}
 
 
-
+    
 \end{frame}
 
-\begin{frame}{Summary}{What have we learned?}
-\begin{itemize}
-   \item The interference present in the interferometer allows us to detect the presence of an obstruction probabilistically.
-   \item The wave and particle nature in quantum mechanics leads to the \emph{measurement problem}, with no really satisfying explanations for what we see.
-   \item We developed an algorithmic approach to detecting the presence of a (incendiary) polarizing filter, with arbitrarily low probability of blowing things up.
-   \item That algorithm shares many qualities with algorithms we study in this course.
-   \end{itemize}
+\begin{frame}{Some theoretical results}{From \Kaye{}}
 \end{frame}
-\frame{Programming assignment q2}
+
+\begin{frame}{Universality via Pauli gates}
+
+\ToDo{Do these slides}
+    
+\end{frame}
