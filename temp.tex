@@ -125,9 +125,14 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \ScrollProof{17}{20}{%
 \Next{\Four}{\TT{k} &= \CarrySix \\}
 \Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}}\SumBV{z}{1} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}\\}
-\Next{\Two}{&= \RootTwoN{k}\SumBV{z}{1}\ColorOne{\SumBV{y}{k-1}} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}} \\}
+\gdef\CarrySeven{\RootTwoN{k}\SumBV{z}{1}\ColorOne{\SumBV{y}{k-1}} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}}
+\Last{&=  \CarrySeven\\}
+}%
+\ScrollProof{21}{22}{%
+\Next{\Two}{\TT{k} &= \CarrySeven \\}
 \Next{\One}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v}
-= \SS{k}\QEDsym{}}}
+= \SS{k}\QEDsym{}}
+}%
 \end{frame}
 }
 
