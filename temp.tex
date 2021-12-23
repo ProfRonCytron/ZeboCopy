@@ -117,11 +117,12 @@ Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$
 \ScrollProof{13}{16}{%
 \Next{\Four}{\TT{k} &= \CarryFive\\ }
 \Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \textcolor{Plum}{\ExpPhase{2\pi w(\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)\\}
-\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}}\SumBV{z}{1} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{zy}}
+\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}}\SumBV{z}{1} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}}
 \Last{ &=  \CarrySix}
 }%
-\ScrollProof{17}{19}{%
-\Next{\Three}{\TT{k} &= \CarrySix\\}
+\ScrollProof{17}{20}{%
+\Next{\Four}{\TT{k} &= \CarrySix\\}
+\Next{\Three}{&= \RootTwoN{k}\SumBV{z}{1}\ColorOne{\SumBV{y}{k-1}} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}} \\}
 \Next{\Two}{&= \RootTwoN{k}\SumBV{v}{k} \ExpPhase{2\pi wv}\ket{v}
 = \SS{k}}}
 \only<19->{\QED{}}
