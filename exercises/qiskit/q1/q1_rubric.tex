@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Q1 Grading Guide / Rubric}
+\author{CSE 468}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Autograded}: Tasks 1, 2, 3 (70 points) 
+
+\noindent \textbf{Manual}: Tasks 4, 5 (30 points)
+
+\begin{enumerate}[font=\bfseries]
+    \item (Auto, 10) 
+    \begin{itemize}
+        \item 1 - circuit has 1 classical bit and 1 qubit
+        \item 5 - circuit conforms to gate restrictions
+        \item 4 - circuit returns correct state for random $|\psi\rangle$
+    \end{itemize}
+    \item (Auto, 30): $3\times 10$
+    \begin{itemize}
+        \item 4 - circuit conforms to gate restrictions
+        \item 2 - circuit returns correct state for $|0\rangle$ and $|1\rangle$
+        \item 4 - circuit returns correct state for random
+    \end{itemize}
+    \item (Auto, 30):
+    \begin{itemize}
+        \item 10 - histogram looks good for part A
+        \item 10 - histogram looks good for part B
+        \item 5 - part C: probability won't change with sufficient justification
+        \item 5 - part C: NOT equivalent up to a global phase
+    \end{itemize}
+    \item (Manual, 10)
+    \begin{itemize}
+        \item 10 - response includes something about P and RZ gates being related by a global phase difference. Not expecting a whole lot for this one.
+    \end{itemize}
+    \item (Manual, 20)
+    \begin{itemize}
+        \item 10 - clear use of the transpile function and drew the transpiled circuit
+        \item 5 - 1 RZ gate is used
+        \item 5 - 1 SX gate is used
+    \end{itemize}
+    
+    
+\end{enumerate}
+
+
+\end{document}
