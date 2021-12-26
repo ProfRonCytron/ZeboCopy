@@ -170,8 +170,8 @@
 \long\def\Example#1{%
 \begin{example} #1\end{example}}
 \def\VV{\textit{vice versa}}
-\def\QZero{\ket{\hbox to 0.7em{\hss 0\hss}}}
-\def\QOne{\ket{\hbox to 0.7em{\hss 1\hss}}}
+\def\QZero{\ket{\hbox to 0.7em{\hss \ensuremath{0}\hss}}}
+\def\QOne{\ket{\hbox to 0.7em{\hss \ensuremath{1}\hss}}}
 \def\QState#1{\ket{\QName{#1}}}
 \def\QName#1{\ensuremath{\psi_{#1}}}
 \def\TensOp{\ensuremath{\bm{\otimes}}}
@@ -208,17 +208,18 @@
    \draw (0, 0) circle (1) ;
    }
    \def\TZPEast{\TZPoint{1,0}{$+1$}{above right}}
-   \def\TZPNorth{\TZPoint{0,1}{$i$}{above right}}
+   \def\TZPNorth{\TZPoint{0,1}{$\NiceI{}$}{above right}}
    \def\TZPWest{\TZPoint{-1,0}{$-1$}{above left}}
-   \def\TZPSouth{\TZPoint{0,-1}{$-i$}{below right}}
+   \def\TZPSouth{\TZPoint{0,-1}{$-\NiceI{}$}{below right}}
 \def\TZText#1#2#3{%
   \draw (#1) node [#3] {#2};
 }
 \def\Qiskit{\texttt{qiskit}}
 \def\TwoToThe#1{\ensuremath{2^{#1}}}
 \def\Exp#1{\ensuremath{e^{#1}}}
-\def\ExpPhase#1{\Exp{\,\mathfrak{i}\,#1}}
-\def\ExpNegPhase#1{\Exp{-i\,#1}}
+\def\NiceI{\ensuremath{\mathfrak{i}}}
+\def\ExpPhase#1{\Exp{\,\NiceI\,#1}}
+\def\ExpNegPhase#1{\Exp{-\NiceI\,#1}}
 %%
 %% Not sure this is used
 %%
@@ -614,6 +615,7 @@
 
 \long\def\Exercise#1#2{%
 \relax}
+\newcommand\QEDsym[1][2em]{\hbox to #1{\hss\ensuremath{\square}}}
 \def\QED{\begin{flushright}\ensuremath{\square}\end{flushright}}
 \def\UGateA{%
 \ensuremath{\cos(\theta/2)}}
@@ -705,10 +707,13 @@ Basis & 0 & 1 \\
 \def\RCtwo{CornflowerBlue}
 \def\RCthree{LimeGreen}
 \def\RCfour{Tan}
+\def\RCfive{Plum}
 \def\ColorOne#1{\textcolor{\RCone}{#1}}
 \def\ColorTwo#1{\textcolor{\RCtwo}{#1}}
 \def\ColorThree#1{\textcolor{\RCthree}{#1}}
 \def\ColorFour#1{\textcolor{\RCfour}{#1}}
+\def\ColorFive#1{\textcolor{\RCfive}{#1}}
+\def\ColorBlack#1{\textcolor{black}{#1}}
 \def\NegF#1{\NegOneExp{f(#1)}}
 \def\NegOneExp#1{\ensuremath{(-1)^{#1}}}
 \def\RootTwoN#1{\ensuremath{\frac{1}{\sqrt{2^{#1}}}}}
@@ -793,8 +798,18 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \SumBV{#3}{#2} \NegOneExp{\DotP{#1}{#3}} \ket{#3}}
 \newenvironment{Reasoning}{%
 \def\Reason##1##2{%
-   \only<##1>{\textit{##2}}}%
-\vrule width 0pt depth 1em}{%
+   \only<##1>{\makebox(0,0)[l]{\alert<##1>{\textit{##2}}}}}%
+%%
+%% #1 -- the range for overlays
+%% #2 -- the color
+%% #3 -- x
+%% #4 -- y
+%% #5 -- width
+%% #6 -- height
+%%
+\def\CallOut##1##2##3##4##5##6{%
+    \Reason{##1}{\Highlight{##2}{##3}{##4}{##5}{##6}}}
+\vrule width 0pt depth 0.5em height 0.5em}{%
 }
 \def\Span#1{\ensuremath{{\mbox{span}(#1)}}}
 \def\EmptySet{\Set{\,}}
@@ -802,7 +817,17 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% Large Binary Point
 %%
 \def\LBP{\mbox{\Huge .\hskip -1pt}}
-
+%%
+%% #1 color
+%% #2 x loc
+%% #3 y loc
+%% #4 width
+%% #5 height
+\def\Highlight#1#2#3#4#5{%
+\begin{tikzpicture}[overlay]
+\draw[fill=#1,opacity=0.2] (#2,#3) rectangle ++(#4,#5);
+\end{tikzpicture}}
+\def\Indent#1{\hbox to #1{\hss}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
@@ -810,5 +835,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{30}
+\include{00}
 \end{document}

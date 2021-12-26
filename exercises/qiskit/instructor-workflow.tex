@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Creating Qiskit Assignments}
+\author{CSE 468}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Note}: You must activate the course Conda environment for these steps to work.
+
+\subsection*{Create Assignment}
+\begin{enumerate}[font=\bfseries]
+    \item Create a homework assignment on Gradescope (create assignment, programming assignment). Enable manual grading. Fill in the autograder point total specified by the corresponding grading document. Configure other settings as desired.
+    \item Obtain a token
+    \begin{enumerate}
+        \item Open a Python shell
+        \item Run \texttt{from otter.generate.token import APIClient}
+        \item Run \texttt{print(APIClient.get\_token())}. You will be prompted for your Gradescope email and password.
+    \end{enumerate}
+    \item Clone sample.ipynb to create a master assignment \texttt{q*.ipynb}. Fill in the \texttt{token}, \texttt{course\_id}, and \texttt{assignment\_id} fields. The \texttt{course\_id} and \texttt{assignment\_id} can be obtained by clicking into an assignment on Gradescope and inspecting the URL.
+    For example,\\ \texttt{www.gradescope.com/courses/280928/assignments/1733086/outline/edit} shows that the course\_id is 280928 and assignment\_id is 1733086.
+\end{enumerate}
+\newpage
+
+
+\subsection*{Build and Distribute Assignment}
+\begin{enumerate}[font=\bfseries]
+    \item Run all cells of the \texttt{q*.ipynb} and save.
+    \item Run \texttt{otter assign q*.ipynb q*-dist --v1}. You may get a number of warnings for otter syntax errors which will need to be fixed before the assignment can be generated. If everything goes smoothly, the command will print ``All tests passed!" at the end.
+    \item \texttt{cd} into \texttt{dist}. Note the respective \texttt{autograder} and \texttt{student} directories.
+    \item \texttt{cd} into \texttt{autograder}
+    \begin{enumerate}
+        \item Configure additional manual graded questions with their point values.
+        \item Add \texttt{autograder.zip} to the ``Configure Autograder" section of the Gradescope assignment. The Dockerfile will take some time to build.
+    \end{enumerate}
+    \item \texttt{cd} into \texttt{student}. The notebook file \texttt{q*.ipynb} in this folder is the one that should be distributed to students. Note that this is distinct from the master assignment with the same name in the root of the assignment folder.
+    
+
+\end{enumerate}
+    
+
+
+\end{document}

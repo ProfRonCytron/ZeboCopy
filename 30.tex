@@ -1,13 +1,24 @@
-\SetTitle{30}{Phase estimation}{What separates the superpositions in a state?}{30}
+\SetTitle{30}{Phase estimation}{Finding the phase difference among superpositions in a periodic state}{30}
 
+\section*{Overview}
 \begin{frame}{Overview}{What will we study here?}
 
 \begin{itemize}[<+->]
     \item Phase has been an elusive aspect of quantum state.
-    \item As we have studied, the probability of a measurement outcomes is related to the amplitude of the coefficient present the associated basis state.
+    \item As we have studied, the probability of a measurement outcome is related to the amplitude of the coefficient present on the associated basis state.
     \item We use phase during a quantum computation to establish interference patterns of interest.
     \item While we cannot directly measure phase, we can estimate a constant phase shift between basis states in a superposition.
     \item The study of this material leads directly to quantum Fourier analysis, which in turn is the basis of Shor's famous algorithm.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Why do we study this?}{The roadmap ahead}
+
+\begin{itemize}[<+->]
+    \item Phase estimation is somewhat interesting on its own.
+    \item Perhaps more importantly, the reverse of phase estimation is the \href{https://en.wikipedia.org/wiki/Quantum_Fourier_transform}{Quantum Fourier Transform}~(QFT).
+    \item We need QFT to develop \href{https://en.wikipedia.org/wiki/Shor\%27s_algorithm}{Shor's algorithm}.
 \end{itemize}
     
 \end{frame}
@@ -82,7 +93,7 @@
 }
 \visible<9->{%
   \draw[->,ultra thick,\RCthree] (0,0) -- (1,0);
-  \visible<9>{\ColorThree{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}}
+  \visible<9->{\ColorThree{\TZPoint{1,0}{$\ExpPhase{0}=+1$}{below right}}}
   \visible<10->{%
   \draw[->,thick,\RCtwo] (1,0) arc (0:20:1) coordinate (z2);
   \draw[thick,dotted] (0,0) -- (z2);
@@ -120,17 +131,18 @@
 }
 \end{frame}
 
-\begin{frame}{Periodic states}{definition}
+\section*{Periodic state}
+\begin{frame}{Periodic state}{Definition}
 
 A \emph{periodic state} \QState{} for $n$ qubits can be described as:
 \[
-\QState{} = \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y}
+\QState{} = \textcolor<4>{\RCtwo}{\RootTwoN{n}}\SumPH{\textcolor<3>{\RCone}{y}}{n} \ExpPhase{2\pi w\textcolor<3>{\RCone}{y}} \ket{\textcolor<3>{\RCone}{y}}
 \]
-for a constant $w, 0 \leq w < 1$.
+for a constant $w, 0 \leq w \textcolor<2>{\RCthree}{< 1}$.
 \begin{itemize}
-    \item<2-> Some sources include~$1$ in the upper bound for~$w$, but it's the same as~$w=0$.
-    \item<3-> The iteration variable $y$ over interprets the binary string encoding a basis vector as a number.
-    \item<4-> The basis states all have the same magnitude~\RootTwoN{}, so each is equally likely upon measurement.
+    \item<2-> Some sources include~$1$ in \textcolor<2>{\RCthree}{the upper bound for~$w$}, but it's the same as~$w=0$.
+    \item<3-> The iteration variable \textcolor<3>{\RCone}{$y$} interprets the binary string encoding a basis vector as a number.
+    \item<4-> The basis states all have the same magnitude~\textcolor<4>{\RCtwo}{\RootTwoN{n}}, so each is equally likely upon measurement.
 \end{itemize}
     
 \end{frame}
@@ -173,13 +185,13 @@ for a constant $w, 0 \leq w < 1$.
 \begin{align*}
     \ket{+} &= \QPlus{} \\
            \visible<2->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<3->{+ \ColorTwo{\ExpPhase{0}}\QOne{}}\right) \\}
-        \visible<4->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{0}\cdot y} \ket{y}, \ColorFour{w=0}}
+        \visible<4->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{w}\cdot y} \ket{y}, \ColorFour{w=0}}
 \end{align*}
 }{%
 \begin{align*}
     \ket{-} &= \QMinus{} \\
-           \visible<5->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<6->{- \ColorTwo{\ExpPhase{0}}\QOne{}}\right) \\}
-        \visible<7->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{\frac{1}{2}}\cdot y} \ket{y}, \ColorFour{w=\frac{1}{2}}}
+           \visible<5->{ &=  \RootTwoN{1}\left(\ColorOne{\ExpPhase{0}}\QZero{} \visible<6->{+ \ColorTwo{\ExpPhase{\pi}}\QOne{}}\right) \\}
+        \visible<7->{    &= \RootTwoN{1}\SumPH{y}{1} \ExpPhase{2\pi\cdot \ColorFour{w}\cdot y} \ket{y}, \ColorFour{w=\frac{1}{2}}}
 \end{align*}
 }
 \Vskip{-4em}\TwoColumns{%
@@ -212,6 +224,7 @@ for a constant $w, 0 \leq w < 1$.
     
 \end{frame}
 
+\section*{Problem statement}
 \begin{frame}{Phase estimation}{Of periodic states}
 
 \begin{itemize}[<+->]
@@ -257,35 +270,74 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
         \item[$\QState{}=\ket{-}$] $\Hadamard(\QState{}) = \ket{1}$
     \end{description}
     \item Measuring the outcome of the \Hadamard{} gate provides $\LBP{}w_{1}$ directly.
-    \item If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  This requires:
-    \begin{itemize}
-        \item Shifting the binary bits left, so that the bit of interest is just after the binary point.
-        \item Eliminating any non-zero bits after the bit of interest so we are analyzing only~$.0$ or~$.1$.
     \end{itemize}
-\end{itemize}
+    \end{frame}
+    
+\begin{frame}{And if there are more bits}{Building intuition}
+    \TwoColumns{%
+If we can isolate each bit after a binary point, then we can recover the other binary digits as well, using the \Hadamard{} gate.  
+\SmallSkip{}
+This requires:
+    \begin{itemize}
+        \item<2-> Shifting the binary point right, so that it abuts \ColorTwo{the bit of interest}
+        \item<3-> Dropping the \ColorOne{bits to the left}, because we can (see soon)
+        \item<4-> Rotating to eliminate \ColorThree{any non-zero bits} after \ColorTwo{the bit of interest}
+        \item<5-> What remains is~$.0$ or~$.1$, and an \Hadamard{} gate can tell us which it is.
+    \end{itemize}
+}{%
+\begin{align*}
+\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\invisible{\LBP{}}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\
+\visible<2->{\invisible{\LBP{}}\ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\}
+\visible<3->{\invisible{\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}}\LBP{}\ColorTwo{w_{k+1}}\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}} \\}
+\visible<4->{\invisible{\LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}}\LBP{}\ColorTwo{w_{k+1}}\invisible{\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}}} }
+%% left off here
+\end{align*}
+}
     
 \end{frame}
 
-\begin{frame}{More intuition}{Using an example}
+\section*{Example}
 
-\Vskip{-4em}\TwoColumns{%
+\begin{frame}{Example}{With $n=3$ qubits and $w=\frac{5}{8}$}
+
+\Vskip{-3em}\TwoColumns{%
+\only<1-7>{%
+Finding \ColorThree{$w_3$}
 \begin{itemize}
-    \item<1-> Consider an example \Vskip{-1.2em}\[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}= \frac{5}{8}\]
-    \item<7-> Finally, knowing $\ColorTwo{w_2}$ and $\ColorThree{w_3}$, we can rotate, as needed, $\LBP{}\ColorOne{w_1}\ColorTwo{0}\ColorThree{1}$ to obtain
-    $\LBP{}\ColorOne{w_1}00$, requiring a rotation of the \ColorThree{third bit} but not the \ColorTwo{second bit}.
-    \item<8-> After \Hadamard{} of that state, we obtain $\ColorOne{w_1}=\ColorOne{1}$
-    \item<9-> And so we have found
-    \[w=\LBP{}\ColorOne{w_{1}}\ColorTwo{w_{2}}\ColorThree{w_{3}}=\LBP{}\ColorOne{1}\ColorTwo{0}\ColorThree{1}\]
+    \item<2-> Shift the binary point right two bits
+    \item<4-> Drop the bits to the left
+    \item<6-> Applying \Hadamard{}, say we get \ColorThree{1}
+\end{itemize}}%
+\only<8-15>{%
+Finding \ColorTwo{$w_2$}
+\begin{itemize}
+    \item<8-> Shift the binary point right one bit
+    \item<10-> Drop the bit to the left
+    \item<12-> Rotate away \ColorThree{$w_3$}=\ColorThree{$1$}
+    \item<14-> Applying \Hadamard{}, say we get \ColorTwo{0}
 \end{itemize}
+}%
+\only<16-22>{%
+Finding \ColorOne{$w_1$}
+\begin{itemize}
+    \item<16-> No need to shift the binary point
+    \item<17-> Rotate away \ColorThree{$w_3$}=\ColorThree{$1$}
+    \item<19-> Must not rotate away \ColorTwo{$w_2$}=\ColorTwo{$0$}
+    \item<21-> Applying \Hadamard{}, say we get \ColorOne{1}
+\end{itemize}
+}%
 }{%
-\begin{itemize}
-    \item<2-> We first shift left by two bits to obtain $\LBP{}\ColorThree{w_{3}}$
-    \item<3-> After \Hadamard{} of that state, we obtain $\ColorThree{w_3}=\ColorThree{1}$
-    \item<4-> We then shift the original value left by one bit to obtain $\LBP{}\ColorTwo{w_2}\ColorThree{w_3}$.
-    \item<5-> Because we already know $\ColorThree{w_3}$ we can take action to rotate the second bit, if necessary (it is!), to obtain $\LBP{}\ColorTwo{w_2}\ColorThree{1}\mapsto \LBP{}\ColorTwo{w_2}0$.
-    \item<6-> After \Hadamard{} of that state, we obtain $\ColorTwo{w_2}=\ColorTwo{0}$,
-    
-\end{itemize}
+\[w=
+\visible<1-2,8,16->{\LBP{}}
+\visible<1-4,8-10,16->{\ColorOne{w_{1}}}\visible<9-15>{\LBP{}}
+\visible<1-4,8-19,23->{\ColorTwo{w_{2}}}\visible<3-7>{\LBP{}}
+\visible<1-12,16-17,23->{\ColorThree{w_{3}}}
+=
+\visible<1-2,8,16->{\LBP{}}
+\visible<22->{\ColorOne{1}}\visible<9-15>{\LBP{}}
+\visible<15->{\ColorTwo{0}}\visible<3-7>{\LBP{}}
+\visible<7->{\ColorThree{1}}
+\visible<23->{= \frac{5}{8}}\]
 }
     
 \end{frame}
@@ -297,10 +349,10 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
     \item Multiplying $w$ by a power of two shifts the binary point to the right:
     \begin{align*}
        w &= \LBP{}\ColorOne{w_{1}w_{2}\cdots w_{k}}\ColorTwo{\invisible{\LBP{}}w_{k+1}\cdots w_{n}} \\
-       \visible<4->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
+       \visible<3->{ 2^{k}w &= \ColorOne{\invisible{\LBP{}}w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}},\ 0\leq k\leq n}
     \end{align*}
     
-    \item<4-> So in our exponent we have
+    \item<4-> In an exponent, $\ColorOne{w_{1}w_{2}\cdots w_{k}}$ before \LBP{} can be ignored:
     {\Large
     \begin{align*}
         \visible<4->{\ExpPhase{2\pi 2^{k}w} &= \ExpPhase{2\pi \ColorOne{w_{1}w_{2}\cdots w_{k}}\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}}}} \visible<5->{=\ExpPhase{2\pi (\ColorOne{w_{1}w_{2}\cdots w_{k}}+\LBP{}\ColorTwo{w_{k+1}\cdots w_{n}})}\\}
@@ -313,21 +365,455 @@ w \approx \LBP{}w_{1}w_{2}\cdots w_{n}
     
 \end{frame}
 
+\section*{Theorem without proof}
 {
-\def\T#1{\TwoSupOp{\ket{0}}{\ExpPhase{2\pi\left(2^{#1}w\right)}\ket{1}}{+}}
-\begin{frame}{Useful theorem}{Needed for phase estimation}
-\begin{itemize}
-    \item We state the theorem here and prove it later.
-    \item This theorem allows us to view a periodic state qubit-by-qubit, due to the tensor factoring.
-\end{itemize}
-
-\begin{align*}
- \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi wy} \ket{y} =& \T{n-1}  \\
- \TensOp{} & \T{n-2} \\
+\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}
+\begin{frame}{Useful theorem}{Needed for phase estimation, prove later}
+\Vskip{-3em}\begin{align*}
+ \RootTwoN{\N}\SumPH{y}{\N} \ExpPhase{2\pi \W{}y} \ket{y} =& \T{\N{}-1}  \\
+ \TensOp{} & \T{\N{}-2} \\
  \TensOp{} & \cdots \\
- \TensOp{} & \T{n-n} 
+ \TensOp{} & \T{\N{}-\N{}} 
 \end{align*}
+\begin{itemize}
+    \item This articulates the state of each of the \N{} qubits separately.
+    \item Each successive qubit reveals another binary digit of \W{}.
+\end{itemize}
+\end{frame}}
 
+
+
+{
+\def\T#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorOne{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}
+\def\S#1#2{\ExpPhase{2\pi\W{}#1}\ket{#2}}
+\begin{frame}{How are these expressions different?}{They are two views of the same state}
+
+\TwoColumns{%
+\Vskip{-3em}\begin{center}
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<6>{$q_2$}} & \qw & \qw & \rstick[wires=3]{\QState{}=\ket{\alert<2,6>{q_{2}}\alert<2,7>{q_{1}}\alert<2,8>{q_{0}}}} \\
+\lstick{\alert<7>{$q_1$}} & \qw & \qw  & \\
+\lstick{\alert<8>{$q_0$}} & \qw & \qw  & \\
+\end{quantikz}}%
+%%
+%% force distance at the bottom to keep the second two-columns still
+%%
+\hrule width 0pt depth 2em
+%%
+\end{center}}{%
+\Vskip{-3em}\only<1-3>{%
+\begin{itemize}
+    \item<1-> This expression has $2^{n}$ terms.
+    \item<2-> Each term represents a particular 3-qubit outcome
+    \item<3-> The phases on each successive term are related by \W{}.
+\end{itemize}
+}%
+\only<4->{%
+\begin{itemize}
+    \item<4-> This expression has $n$ terms.
+    \item<5-> Each represents the tensor-factored state of an individual qubit.
+    \item<9-> Each exposes more of the binary fraction $w$.
+\end{itemize}
+}%
+}
+\Vskip{-5em}\TwoColumns{%
+\begin{align*}
+\QState{} =& \RootTwoN{3}\SumPH{y}{3} \ExpPhase{2\pi \W{}y} \ket{y} \\[.4em]
+=& \S{0}{000} + \S{1}{001} \\
++& \S{2}{010} + \S{3}{011} \\
++& \S{4}{100} + \S{5}{101} \\
++& \S{6}{110} + \S{7}{111}
+\end{align*}
+}{%
+\visible<4->{%
+\MedSkip{}
+\begin{align*}
+ \QState{}=& \alert<6>{\T{\alert<10>{2}}}  \\
+ \TensOp{} & \alert<7>{\T{\alert<11>{1}}} \\
+ \TensOp{} & \alert<8>{\T{\alert<12>{0}}}
+\end{align*}}}
+\end{frame}}
+
+\section*{Example}
+{
+\def\TB#1#2{\LBP{}\ColorOne{\ensuremath{#1}}\ColorTwo{\ensuremath{#2}}}
+\def\WO{\ColorOne{\ensuremath{w_1}}}\def\WT{\ColorTwo{\ensuremath{w_2}}}
+\def\TE#1{\TwoSupOp{\QZero{}}{{\ExpPhase{2\pi \left(\LBP{}#1\right)}}\QOne{}}{+}}
+\begin{frame}{Example using $n=2$ qubits}{Applying the theorem}
+\Vskip{-4em}\TwoUnequalColumns{0.37\textwidth}{0.63\textwidth}{%
+\ScrollProof{1}{4}{%
+\Next{\Four}{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi wy}\ket{y} \\}
+\Next{\Three}{w &= \LBP{}\WO{}\WT{} \\}
+\gdef\CarryOne{\QState{} &= \SumPH{y}{2} \ExpPhase{2\pi \left(\LBP{}{\WO{}\WT{}}\right)y}\ket{y}}
+\Last{\CarryOne}
+}%
+\only<5->{%
+\begin{align*}
+    \CarryOne
+\end{align*}}
+\only<5->{%
+
+The exact possibilities for $w$:
+\begin{center}
+    \begin{tabular}{cc}
+    \LBP{}\WO\WT & $w$ \\ \hline
+    \visible<6->{\TB{0}{0} & \alert<10>{0} \\[0.2em]}%
+    \visible<7->{\TB{0}{1} & \alert<11>{$\frac{1}{4}$}\\[0.2em]}%
+    \visible<8->{\TB{1}{0} & \alert<10>{$\frac{1}{2}$} \\[0.2em]}%
+    \visible<9->{\TB{1}{1} & \alert<11>{$\frac{3}{4}$}}
+    \end{tabular}
+\end{center}
+}
+}{%
+\only<5->{%
+\begin{align*}
+= &\ColorThree{\TE{\WT}} \\ \TensOp{} &\ColorFour{\TE{\WO\WT}}
+\end{align*}}
+\only<10->{%
+\begin{description}
+    \item<10->[$\Hadamard(\ColorThree{top}) = \ket{0}$] then $\WT=0$, so \TB{w_1}{w_2}=\TB{0}{0}\mbox{ or }\TB{1}{0}. $\Hadamard(\ColorFour{bottom})$ thus yields $w=0$ or~$\frac{1}{2}$.
+    \item<11->[$\Hadamard(\ColorThree{top}) = \ket{1}$] then $\WT=1$, so \TB{w_1}{w_2}=\TB{0}{1}\mbox{ or }\TB{1}{1}. We rotate away \WT{} and measure $\Hadamard(\ColorFour{bottom})$, yielding $w=\frac{1}{4}$ or~$\frac{3}{4}$.
+\end{description}
+\visible<12->{%
+But how do we \emph{rotate away}?}
+}
+}
 \end{frame}
 }
+
+\begin{frame}{Circuit for $n=2$ qubits}{Requires one possible rotation}
+\Vskip{-4em}\begin{center}
+\adjustbox{scale=1.0,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<7>{$q_2$}} & \gate{\alert<2>{H}} & \ctrl{1}  &  \qw & \meter{\alert<2>{0/1}} & \qw\rstick{\alert<2>{\ket{\mbox{$w_2$}}}} \\
+\lstick{$q_1$} & \qw & \gate{\alert<3,7>{\alt<9->{\alert{\mbox{$R_2$}}}{\mbox{$R$}}}}  & \gate{\alert<5>{H}} & \meter{\alert<5>{0/1}} & \qw\rstick{\ket{\alert<5>{\mbox{$w_1$}}}} \\
+\end{quantikz}}
+\end{center}
+\only<1-5>{%
+\begin{itemize}
+    \item<1-> We seek the value of $\LBP{}w_{1}w_{2}$.
+    \item<2-> We can determine the least significant bit immediately as shown.
+    \item<3-> The next step is a \emph{conditional} rotation on the lower qubit, based on~$w_2$:
+    \begin{itemize}
+      \item If $w_{2}=0$, no rotation is applied.  
+      \item If $w_{2}=1$, then its value on the bottom qubit is rotated to~$0$ by this gate.
+    \end{itemize}
+    \item<4-> This leaves the bottom qubit in a state corresponding to $\LBP{}w_{1}0$.  
+    \item<5-> The \Hadamard{} gate and subsequent measurement yield $w_1$.
+\end{itemize}}
+\only<6->{%
+\Vskip{-4em}\begin{itemize}
+    \item<6-> The \NamedGate{R} gate is specific to the binary digit's place that should be rotated.
+    \item<7-> Here, we only need an \NamedGate{R} gate that rotates the second bit from the binary point:  $\LBP{}w_{1}\alert{w_{2}}$.
+    \item<8-> But for a given qubit $w_k$, we may need to rotate any bit after it, $w_{k+1}, w_{k+2}, \ldots, w_{n}$.
+    \item<9-> We will thus parameterize our \NamedGate{R} gate by the binary place value it rotates, relative to the binary point.
+    \item<10-> Gate \NamedGate{$R_i$} rotates the bit in position $i$ after the binary point in $\LBP{}w_{1}w_{2}\cdots$.
+\end{itemize}
+}
+\end{frame}
+
+\section*{Solution}
+
+{
+\def\Ca{\ctrl{1}}
+\def\Ra{\gate{\alert<2,6>{\mbox{$R_2$}}}}
+\def\Cb{\ctrl{3}}
+\def\Rb{\gate{\alert<3,6>{\mbox{$R_{(n-1)-k+1}$}}}}
+\def\Cc{\ctrl{4}}
+\def\Rc{\gate{\alert<4,6>{\mbox{$R_{(n)-k+1}$}}}}
+\def\HG{\gate{\alert<7>{H}}}
+\def\PD{\push{\mbox{$\cdots$}}}
+\begin{frame}{Circuit from the perspective of qubit $k$}{General solution for $n$ qubits}
+
+\Vskip{-4em}\begin{center}
+\adjustbox{scale=0.7,valign=t}{%
+\begin{quantikz}
+\lstick{\alert<4>{$q_n$}}      & \HG & \qw & \qw & \qw & \qw & \qw & \Cc & \qw & \qw & \meter{0/1}\\
+\lstick{\alert<3>{$q_{n-1}$}}  & \PD & \HG & \qw & \qw & \qw & \Cb & \qw & \qw & \qw & \meter{0/1} \\
+\lstick{\RVDots}     \\
+\lstick{\alert<2>{$q_{k+1}$}}  & \PD & \PD & \HG & \Ca & \qw & \qw & \qw & \qw & \qw & \meter{0/1} \\
+\lstick{$q_{k}$}    & \qw & \qw & \qw & \Ra & \PD & \Rb & \Rc & \HG & \qw & \meter{0/1}
+\end{quantikz}}
+\end{center}
+\only<1-8>{%
+\begin{itemize}
+    \item<1-> Qubit $k$ can require the rotation of every qubit $q_i\ |\ i=\alert<2>{k+1},\ldots,\alert<3>{n-1},\alert<4>{n}$.
+    \item<5-> Qubit $k$ thus has \visible<6->{\alert<6>{$k-1$ $R$ gates}} \visible<7->{and \alert<7>{an \Hadamard{} gate}, incurring a delay of $k$ gates.}
+    \item<8-> The longest delay is thus $n$ gates for qubit~$n$.  The other wires' computations are concurrent with qubit~$n$.  The time complexity of this circuit is~$\Theta(n)$.
+\end{itemize}}%
+\only<9-10>{%
+\begin{itemize}
+    \item<9-> The number of gates in the circuit is given by
+    \[
+       \sum_{i=1}^{n} i \visible<10->{=\Theta(n^{2})}
+    \]
+\end{itemize}
+}%
+\only<11-12>{%
+\begin{itemize}
+    \item<11-> The circuit succeeds in estimating the phase $w$ of the $n$-qubit input.
+    \item<12-> However, this is at the cost of the states of those qubits: their states are modified by the gates and collapsed by the measurements.
+\end{itemize}
+}%
+\only<13>{
+\begin{itemize}
+  \item How do we realize the $R$ gates?  This is left as an exercise.
+\end{itemize}
+}
+\end{frame}}
+
+
+\begin{frame}{Summary}{What do we know so far?}
+
+\begin{itemize}[<+->]
+    \item For a periodic state, tensor-factoring analysis shows that each qubit reveals another binary digit of our phase $w$, starting with the least significant bit.
+    \item Given a qubit corresponding to
+     $\LBP{}\ColorTwo{w_{k+1}}\alt<2>{\ColorThree{w_{k+2}w_{k+3}\cdots w_{n}}}{\alert<3>{0\ 0\cdots 0}}$,
+    we isolate \ColorTwo{$w_{k+1}$} by$\ldots$
+    \item $\ldots$ rotating away \ColorThree{any bit afterwards} that has value~$1$.  
+    \item A \Hadamard{} gate applied the result yields~\ColorTwo{$w_{k+1}$}.
+    \item This leaves us with two problems to solve:
+    \begin{itemize}
+       \item We require a unitary gate that can rotate a given digit of $w$ from~$1$ to~$0$.
+       \item We must activate that gate \emph{conditionally}, only when the bit it would transform is~$1$.
+    \end{itemize}
+    \item We can used a controlled-$U$ gate, where $U$ is the gate that performs rotation.  Like a \NamedGate{CNOT} gate, the gate is active only when its control bit is~$1$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Back to our $n=2$ qubit example}{How do we rotate when neessary?}
+Consider $w=\LBP{}\ColorOne{w_1}\ColorTwo{w_2}$ with $\ColorTwo{w_{2}}=\ColorTwo{1}$.  There are two possibilities:
+\TwoColumns{%
+\[w=\LBP{}\ColorOne{\alert<6>{0}}\ColorTwo{1}=\frac{1}{4}\]
+\ScrollProof{2}{5}{
+\Next{\Four}{\QState{} =& \TwoSupOp{\QZero{}}{\ExpPhase{2\pi\cdot\frac{1}{4}}\QOne{}}{+} \\}
+\Next{\Three}{  =& \TwoSupOp{\QZero{}}{\ExpPhase{\frac{\pi}{2}}\QOne{}}{+} \\}
+\Last{
+  =& \TwoSupOp{\QZero{}}{\NiceI{}\QOne{}}{+}}
+}%
+\only<6->{%
+\[\QState{} = \TwoSupOp{\QZero{}}{\NiceI{}\QOne{}}{+} \]
+Goal:  $U$ transforms this state to \ket{+} so we measure \ColorOne{\alert<6>{0}} for \ColorOne{$w_1$}.
+\[  U\RootTwo{}\SQB{1}{\NiceI} = \PPlus{} \]
+}
+}{%
+\[w=\LBP{}\ColorOne{\alert<6>{1}}\ColorTwo{1}=\frac{3}{4}\]
+\ScrollProof{2}{5}{%
+\Next{\Four}{\QState{} =& \TwoSupOp{\QZero{}}{\ExpPhase{2\pi\cdot\frac{3}{4}}\QOne{}}{+} \\}
+\Next{\Three}{  =& \TwoSupOp{\QZero{}}{\ExpPhase{\frac{3\pi}{2}}\QOne{}}{+} \\}
+\Last{  =& \TwoSupOp{\QZero{}}{\NiceI{}\QOne{}}{-}}
+}%
+\only<6->{%
+\[\QState{} = \TwoSupOp{\QZero{}}{\NiceI{}\QOne{}}{-} \]
+Goal:  $U$ transforms this state to \ket{-} so we measure \ColorOne{\alert<6>{1}} for \ColorOne{$w_1$}.
+\[ U\RootTwo{}\SQB{1}{-\NiceI{}} = \PMinus{}\]
+}
+}
+    
+\end{frame}
+
+\section*{Rotation}
+
+\begin{frame}{Designing $U$}{So that it has its intended effects}
+\TwoColumns{%
+\[  U\RootTwo{}\SQB{1}{\NiceI} = \PPlus{} \]
+}{%
+\[ U\RootTwo{}\SQB{1}{-\NiceI{}} = \PMinus{}\]
+}
+\begin{align*}
+    \visible<2->{U= \SQBG{\relax}{1}{0}{0}{-\NiceI{}} }\visible<3->{= \SQBG{\relax}{1}{0}{0}{\ExpNegPhase{\frac{\pi}{2}}} }
+    \visible<4->{&= \SQBG{\relax}{1}{0}{0}{\ExpNegPhase{2\pi\frac{1}{2^2}}}}
+\end{align*}
+\only<2>{%
+Check our work:
+\TwoColumns{%
+\[ \SQBG{\relax}{1}{0}{0}{-\NiceI{}}\SQB{1}{\NiceI} = \SQB{1}{1} \]
+}{%
+\[ \SQBG{\relax}{1}{0}{0}{-\NiceI{}}\SQB{1}{-\NiceI} = \SQB{1}{-1} \]
+}}
+\only<3->{%
+\begin{itemize}
+    \item<3-> Write this in polar notation.  We rotate clockwise by $\pi/2$ radians.
+    \item<4-> Now expressed as a fraction of $2\pi$ radians.
+    \item<5-> This matrix rotates \ColorTwo{$w_2$}, the second bit from the binary point.
+    \item<6-> To rotate the $k$th bit from the binary point, use:
+    \[ U = \SQBG{\relax}{1}{0}{0}{\ExpNegPhase{2\pi\frac{1}{2^k}}} \]
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Why does this $U$ work?}{A bit-based explanation}
+
+Consider value
+{\Large
+\( v = \ExpPhase{2\pi (\LBP{}w_{1}w_{2}\cdots \ColorOne{w_{k}}0\cdots 0)}\)}%
+with \ColorOne{$w_k$}=\ColorOne{1}.
+
+To clear \ColorOne{$w_k$} in the exponent, we need to multiply~$v$ by~{$z$=\Large\( \ExpNegPhase{2\pi(\LBP{}00\cdots\ColorOne{1}0\cdots0)} \)}:
+
+{\Large
+\begin{align*}
+   \visible<2->{ v =& \ExpPhase{2\pi (\LBP{}w_{1}w_{2}\cdots \ColorOne{1}0\cdots 0)} \\}
+    \visible<3->{v \times z =&
+    \ExpPhase{2\pi (\LBP{}w_{1}w_{2}\cdots \ColorOne{1}0\cdots 0)}\times \ExpNegPhase{2\pi(\LBP{}00\cdots\ColorOne{1}0\cdots0)} \\}
+    \visible<4->{=& \ExpPhase{2\pi(\LBP{}00\cdots\ColorOne{1}0\cdots 0\ -\  \LBP{}00\cdots\ColorOne{1}0\cdots0)} \\}
+    \visible<5->{=& \ExpPhase{2\pi(\LBP{}00\cdots\ColorOne{0}0\cdots 0)}\\}
+    \visible<6->{z =& \ExpNegPhase{2\pi\frac{1}{2^{\ColorOne{k}}}}}
+\end{align*}
+}
+\end{frame}
+
+\section*{Theorem}
+{
+\def\TTerm#1{\TwoSupOp{\QZero}{\ExpPhase{2\pi\left(2^{#1}\W{}\right)}\QOne}{+}}
+\def\N{\ColorFive{\ensuremath{n}}}\def\W{\ColorTwo{\ensuremath{w}}}\def\Y{\ColorFour{y}}
+\begin{frame}{Our theorem}{Needs a proof, but first a restatement}
+    \Vskip{-3em}\begin{align*}
+ \RootTwoN{\N}\alt<3->{\alert<3>{\SumBV{\Y}{\N}}}{\SumPH{\Y}{\N}} \ExpPhase{2\pi \W{}\Y} \ket{\Y} =& \TTerm{\N{}-1}  \\
+ \TensOp{} & \TTerm{\N{}-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \TTerm{\N{}-\N{}} 
+\end{align*}
+\only<1-2>{%
+\begin{itemize}
+    \item<1-> The use of \Y{} as the variable for the summation and as \ket{\Y} requires us to view \Y{} as a \href{https://en.wikipedia.org/wiki/Number}{number}, taking on the sequence $0, 1, \ldots,2^{\N}-1$,
+    \item<2-> For the purposes of our proof it is more useful to view \Y{} as a base-2 \href{https://en.wikipedia.org/wiki/Numeral}{numeral}:  a string of \N{}~bits.
+\end{itemize}}%
+\only<3-4>{%
+\begin{itemize}
+    \item The summation in our theorem changes as shown here.
+    \item The summation is now over all bit strings of length~$n$.  These must be interpreted numerically in the exponent.
+\end{itemize}
+}%
+\only<5->{%
+\begin{itemize}
+    \item<5-> In truth this is more accurate, as the tensor products on the right pile up bit strings, not integers.
+    \item<6-> To help the proof fit on these slides, we will define functions that generate portions of the theorem.
+\end{itemize}}
+\end{frame}
+%%%
+%%%
+%%%
+\def\ThSumTerm#1{%
+\ensuremath{\ExpPhase{2\pi \W{} #1} \ket{#1}}}
+\def\ThSum#1{%
+\ensuremath{\RootTwoN{#1}\SumBV{\Y}{#1} \ThSumTerm{\Y}}}
+%%%
+%%%
+\def\ThTop#1{%
+\fbox{\adjustbox{valign=t, width=0.97\textwidth}{
+$\ColorOne{\SS{#1}=\ThSum{#1}}\ \mbox{\vrule width 1.5pt height 2em depth 1.3em}\ \ColorTwo{\TT{#1}= \TTerm{#1-1}\TensOp{}\TTerm{#1-2}\TensOp{}\cdots\TensOp\TTerm{#1-#1}}$}}}
+\def\SS#1{\ColorOne{\ensuremath{S(#1)}}}
+\def\TT#1{\ColorTwo{\ensuremath{T(#1)}}}
+
+\begin{frame}{Theorem}{And proof}
+\Vskip{-3em}\begin{theorem}
+\TwoColumns{%
+\begin{align*}
+    S(\N) =& \ThSum{\N}
+\end{align*}
+}{%
+  \begin{align*}
+    T(\N) = &\TTerm{\N-1}  \\
+ \TensOp{} & \TTerm{\N-2} \\
+ \TensOp{} & \cdots \\
+ \TensOp{} & \TTerm{\N-\N} 
+\end{align*}}
+\begin{center}
+Define $P(\N):  T(\N)=S(\N)$ \\
+\Forall{\N\geq 1}{P(\N)}\end{center}
+\end{theorem}
+Proof by induction.  We first show $P(1)$ and then show $\Implies{P(k-1)}{P(k)}$.
+    
+\end{frame}
+
+\section*{Proof}
+\begin{frame}{Base case}{Show $P(1): T(1)=S(1)$}
+\Vskip{-4em}\begin{center}\ThTop{\N}\end{center}
+\SmallSkip{}
+\begin{Reasoning}
+\Reason{4}{Capture as sum}%
+\Reason{2}{Simplify constants in exponents}%
+\Reason{3}{To satisfy the form needed by the summation}%
+\end{Reasoning}
+
+\Vskip{-2em}\ScrollProof{1}{4}{%
+   \Next{\Four}{T(1) &= \TTerm{\ColorOne{1-1}} \\}
+   \Next{\Three}{           &= \TwoSupOp{\QZero}{\ExpPhase{2\pi\W}\QOne}{+} \\}
+    \Next{\Two}{&= \TwoSupOp{\ThSumTerm{\ColorFour{0}}}{\ThSumTerm{\ColorFour{1}}}{+} \\}
+    \Next{\One}{&= \ThSum{1} = S(1)}
+}
+\visible<4->{\Vskip{-3em}\QED{}}
+\end{frame}
+
+\def\W{\ensuremath{w}}
+\def\V{\ColorFive{\ensuremath{v}}}
+\begin{frame}{Induction step}{With $P(n): T(n)=S(n)$, show \Implies{P(k-1)}{P(k)}}
+\Vskip{-4.3em}\begin{center}\ThTop{\N}\end{center}
+\SmallSkip{}
+
+\begin{Reasoning}
+\CallOut{1-3}{Turquoise}{7.1}{0.8}{6.1}{0.8}%
+\Reason{1}{Applying induction hypothesis $P(k-1)$;  \TT{k-1} includes the \textcolor{Turquoise}{highlighted terms}}%
+\CallOut{2}{LimeGreen}{3.85}{0.8}{2.7}{0.8}%
+\Reason{2}{Tensor both sides with the \ColorThree{same term}, which completes \TT{k}}%
+\Reason{6}{Expand \SS{k-1} into its summation}%
+\Reason{7}{Perform the stated tensor product, \ColorFive{combine the roots}}%
+\Reason{10}{Push the \ColorThree{\QZero{}} and \ColorThree{\QOne{}} into the \ColorOne{summation}}%
+\Reason{11}{Factor out the \ColorOne{summation}}
+\Reason{14}{\ColorFive{Combine} \ColorThree{this exponent} with \ColorOne{its adjacent exponent}}%
+\Reason{15}{Introduce \ColorBlack{constants \Set{0,1}} so the exponents are expressed similarly}%
+\Reason{17}{Note $\ColorOne{(\ColorBlack{1\times}\ColorThree{2^{k-1}}+y)}$ is the numerical value of the bit string $\ColorThree{1}\ColorOne{y}$}%
+\Reason{18}{Express the \ColorBlack{constants} as a \ColorBlack{summation}}%
+\Reason{19}{Switch the order of the summations}%
+\Reason{22}{Express \ColorBlack{$z$}\ColorOne{$y$} as \V}%
+\end{Reasoning}
+{\small
+\ScrollProof{1}{4}{%
+\Next{\Four}{\TT{k-1} &= \SS{k-1}\\}
+\gdef\CarryThree{\ColorThree{\TTerm{k-1}}}%
+\gdef\CarryOne{\TensProd{\CarryThree}{\TT{k-1}}} \gdef\CarryTwo{\TensProd{\CarryThree}{\SS{k-1}}}%
+\Next{\Three}{\CarryOne &= \CarryTwo \\}
+\Last{\TT{k} &= \CarryTwo}
+}}%
+\ScrollProof{5}{8}{%
+\Next{\Four}{\TT{k} &= \CarryTwo \\}
+\Next{\Three}{& = \TensProd{\CarryThree}{\ColorOne{\ThSum{k-1}}}\\}
+\gdef\CarryFour{\ColorFive{\RootTwoN{k}}\left( \ColorThree{\QZero}\kern-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}\QOne{}}\kern-3ex\ColorOne{\SumBV{y}{k=1}\ExpPhase{2\pi wy}\ket{y}}\right)}
+\Last{& = \CarryFour}
+}%
+\ScrollProof{9}{12}{%
+\Next{\Four}{\TT{k} &= \CarryFour \\}
+\Next{\Three}{&= \RootTwoN{k}\left(\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\kern -2ex\ColorOne{\SumBV{y}{k-1}\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}}\right) \\}
+\gdef\CarryFive{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorThree{\ExpPhase{2\pi(2^{k-1})w}}\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{1}y}} \right)}
+\Last{&= \CarryFive}
+}%
+\ScrollProof{13}{16}{%
+\Next{\Four}{\TT{k} &= \CarryFive\\ }
+\Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi wy}\ket{\ColorThree{0}y}} + \ColorFive{\ExpPhase{2\pi w(\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)\\}
+\gdef\CarrySix{\RootTwoN{k}\ColorOne{\SumBV{y}{k-1}} \left(\ColorOne{\ExpPhase{2\pi w(\ColorBlack{0\times}\ColorThree{2^{k-1}}+\ColorOne{y})}\ket{\ColorThree{0}y}} + \ColorFive{\ExpPhase{2\pi w(\ColorBlack{1\times}\ColorThree{2^{k-1}}+\ColorOne{y})}}\ColorOne{\ket{\ColorThree{1}y}} \right)}
+\Last{ &=  \CarrySix}
+}%
+\ScrollProof{17}{20}{%
+\Next{\Four}{\TT{k} &= \CarrySix \\}
+\Next{\Three}{&= \RootTwoN{k}\ColorOne{\SumBV{y}{k-1}}\SumBV{z}{1} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}\\}
+\gdef\CarrySeven{\RootTwoN{k}\SumBV{z}{1}\ColorOne{\SumBV{y}{k-1}} \ExpPhase{2\pi w (z\times2^{k-1}+y)}\ket{z\ColorOne{y}}}
+\Last{&=  \CarrySeven\\}
+}%
+\ScrollProof{21}{23}{%
+\Next{\Three}{\TT{k} &= \CarrySeven \\}
+\Next{\Two}{&= \RootTwoN{k}\ColorFive{\SumBV{\V}{k} \ExpPhase{2\pi wv}}\ket{\V} \\}
+\Next{\One}{&= \SS{k}\QEDsym{}}
+}%
+\end{frame}
+}
+
+
+
+
+
 
