@@ -84,21 +84,19 @@
     This gives:
     \[ae = 1, ah = 1, de = 1, dh = -1\]
     \[aedh = -1 \neq 1 = ahde\]
-    \item To-do
     \item \begin{enumerate}
         \item 50\%. Bob still has no idea what the other bit is and so must guess what procedure to apply and hope he gets lucky.
         \item If Bob knows the first qubit's value he knows if his state needs to experience a phase shift (a Z gate). If the value is 0 no phase shift is needed. If the value is 1 he knows he will need to apply a Z gate. He does not know if he needs to apply a X gate first though.
         \item If Bob knows the second qubit's value he knows if his amplitudes need to be flipped or not (a X gate). If the value is 0 no flip is needed. If the value is 1 he knows he will need to apply a X gate. He does not know if he needs to apply a Z gate though.
         \item He would want the second qubit. See (c).
     \end{enumerate}
-    \item See Lecture 10. Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time.
+    \item Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time.
     \item I believe Cytron has a good proof. For now I provide a proof for a slightly different question. Proof by contradiction: Let $\ket{\psi_e}$ be some entangled state. Suppose there exists some set of single qubit unitary operations that when applied to $\ket{\psi_e}$ results in some non-entangled state $\ket{\psi_n}$. Call this set of operations $A \otimes B$. We can then write
     \[\ket{\psi_n} = A(c_0\ket{0}+c_1\ket{1}) \otimes B(c_2\ket{0}+c_3\ket{1})\]
     since $\ket{\psi_n}$ is a non-entangled state. We could then apply $A^{-1} \otimes B^{-1}$ to $\ket{\psi_n}$ to obtain $\ket{\psi_e}$ as so
     \[(A^{-1} \otimes B^{-1})\ket{\psi_n} = A^{-1}A(c_0\ket{0}+c_1\ket{1}) \otimes B^{-1}B(c_2\ket{0}+c_3\ket{1})\]
     \[= (c_0\ket{0}+c_1\ket{1}) \otimes (c_2\ket{0}+c_3\ket{1}) = \ket{\psi_e}\]
     We observe above that $\ket{\psi_e}$ can be written as the tensor product of two states which contradicts our earlier assumption that $\ket{\psi_e}$ was an entangled state.
-    \item To-do
     \item I follow along a similar analysis to Lecture 10 below:
     \[\ket{\psi_A\psi_B} = 
     \frac{1}{\sqrt{2}}
