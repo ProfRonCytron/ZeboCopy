@@ -13,8 +13,6 @@
 
 \maketitle
 
-\noindent \textbf{Note:} Pauli matrix type questions
-
 \begin{enumerate}[font=\bfseries]
     \item 
     \begin{enumerate}
@@ -64,14 +62,15 @@
                 \end{pmatrix} 
                 \]
         \item No.
-        \item Yes.
+        \item Yes. Although $\ket{\psi_0}$ and $\ket{\psi_1}$ have different phase coefficients, their probabilities of each measurement are the same.
     \end{enumerate}
     
-    \item \[R_y(\theta) = \begin{pmatrix} \cos{\theta/2} & -\sin{\theta/2} \\
+    \item Note there are multiple correct answers.
+    \[R_y(\theta) = \begin{pmatrix} \cos{\theta/2} & -\sin{\theta/2} \\
         \sin{\theta/2} & \cos{\theta/2}
         \end{pmatrix}\]
         \[\cos^2{\theta} = \frac{1}{4}, \theta = \frac{\pi}{3}\]
-        \[\begin{pmatrix} 
+        \[U = \begin{pmatrix} 
         \frac{\sqrt{3}}{2} & -\frac{1}{2} \\
         \frac{1}{2} & \frac{\sqrt{3}}{2}
             \end{pmatrix}
@@ -83,7 +82,39 @@
         \end{enumerate}
     \item 2 unique locations
     \item 6 unique locations
-    \item To-do
+    \item \begin{enumerate}
+        \item $\ket{0}$ and $\ket{1}$
+        \item Uncountably infinite
+        \item Note students may simplify this expression slightly differently.
+        \[ \ket{\psi'} = \cos({\frac{\pi - \theta}{2})\ket{0}+e^{i(\phi + \pi)}\sin({\frac{\pi - \theta}{2}})\ket{1}}
+        \]
+        \[
+        = \cos({\frac{\pi - \theta}{2})\ket{0}-e^{i\phi}\sin({\frac{\pi - \theta}{2}})\ket{1}}
+        \]
+        \item 
+        \[
+        \braket{\psi|\psi'} = 
+        \begin{pmatrix}
+            \cos{(\frac{\theta}{2})} & e^{-i\phi}\sin{(\frac{\theta}{2})}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \cos({\frac{\pi-\theta}{2})} \\
+            -e^{i\phi}\sin({\frac{\pi - \theta}{2}})
+        \end{pmatrix}
+        \]
+        \[
+        = \cos{(\frac{\theta}{2})}\cos({\frac{\pi-\theta}{2})} - e^{i\phi}e^{-i\phi}\sin{(\frac{\theta}{2})}\sin{(\frac{\pi - \theta}{2})}
+        \]
+        Note $e^{i\phi}e^{-i\phi} = e^{i\phi - i\phi} = 1$.
+        \[
+        = \cos{(\frac{\theta}{2})}\cos({\frac{\pi-\theta}{2})} - \sin{(\frac{\theta}{2})}\sin{(\frac{\pi - \theta}{2})}
+        \]
+        Recall $\cos{(x + y)} = \cos{(x)}\cos{(y)} - \sin{(x)}\sin{(y)}$.
+        \[
+        = \cos{(\frac{\theta}{2} + \frac{\pi - \theta}{2})} = \cos{\frac{\pi}{2}} = 0 
+        \]
+        Therefore orthogonal.
+    \end{enumerate}
     \item Agree to play. Recall antipodal points on the Bloch sphere determine a basis. Apply the appropriate quantum gate to rotate into this antipodal basis and then you will know with 100\% confidence the state you will observe.
     \item 
         \begin{enumerate}
