@@ -15,16 +15,42 @@
 
 \begin{enumerate}[font=\bfseries]
     \item Measurement
-    \item \[ \frac{1}{\sqrt{2}}\begin{pmatrix}
+    \item 
+    \[
+    \mathbf{HX} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & 1 \\ 1 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+    0 & 1 \\ 1 & 0
+    \end{pmatrix}
+    \]
+    \[ =\frac{1}{\sqrt{2}}\begin{pmatrix}
         1 & -1 \\
         1 & 1
         \end{pmatrix}
         \]
-    \item \[ \frac{1}{\sqrt{2}}\begin{pmatrix}
-        0 & i & 0 & -i \\
-        i & 0 & -i & 0 \\
-        0 & -i & 0 & -i \\
-        -i & 0 & -i & 0 \\
+    \item 
+    \[
+    \mathbf{IX} = \begin{pmatrix}
+    0 & 1 \\ 1 & 0
+    \end{pmatrix}
+    \]
+    \[
+    \mathbf{HY} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    1 & 1 \\ 1 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+    0 & -i \\ i & 0
+    \end{pmatrix}
+    = \frac{1}{\sqrt{2}}\begin{pmatrix}
+    i & -i \\ -i & -i
+    \end{pmatrix}
+    \]
+    \[ \mathbf{IX} \otimes \mathbf{HY} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        0 & 0 & i & -i \\
+        0 & 0 & -i & -i \\
+        i & -i & 0 & 0 \\
+        -i & -i & 0 & 0 \\
         \end{pmatrix}
         \]
     \item We need to consider tensor products when our state is entangled.
