@@ -109,12 +109,12 @@ $\Xor{(\Xor{x}{y})}{x} = y$
 Consider again a general Boolean function of two inputs:
 }{
 \mbox{}\vskip -3em\mbox{}
-\BTable{f(x,y)}{r_{00}}{r_{01}}{r_{10}}{r_{11}}
+\BTable{f(x,y)}{\alert<2>{r_{00}}}{\alert<3>{r_{01}}}{\alert<4>{r_{10}}}{\alert<5>{r_{11}}}
 }
 \MedSkip{}
 Any of the 16 possible functions can be written as:
 \[
-f(x,y) = \Not{x}\Not{y}\,r_{00} +\Not{x}y \,r_{01} + x\Not{y}\, r_{10} +xy \,r_{11} 
+f(x,y) = \visible<2->{\Not{x}\Not{y}\,r_{00}}\visible<3->{ +\Not{x}y \,r_{01} }\visible<4->{+ x\Not{y}\, r_{10} }\visible<5->{+xy \,r_{11} }
 \]
 For any $x,y$, exactly one of the above conjunctions involving $x$ and $y$ is true.  Thus, the above expression remains the same if $+$ is replaced by $\oplus$.  
 \MedSkip{}
