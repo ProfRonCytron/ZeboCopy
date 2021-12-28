@@ -167,7 +167,7 @@ We can thus achieve universality with only a Nand gate.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Complex Numbers}{Cartesian coordinates}
+\begin{frame}{Complex numbers}{Cartesian coordinates}
   
   \TwoColumns{%
   \begin{itemize}
@@ -192,12 +192,12 @@ We can thus achieve universality with only a Nand gate.
   }
   \visible<3->{
   \draw[->] (0, 0) -- (1, 2) ;
-  \TZPoint{1.05,2.05}{$z=a+bi$}{above right}
+  \TZPoint{1.05,2.05}{$z=a+b\NiceI$}{above right}
   
   }
   \visible<4->{
   \draw[->] (0, 0) -- (1, -2) ;
-  \TZPoint{1.05,-2.05}{$\Conj{z}=a-bi$}{below right}
+  \TZPoint{1.05,-2.05}{$\Conj{z}=a-b\NiceI$}{below right}
   }
 \end{TIKZP}
 }
@@ -214,7 +214,7 @@ We can thus achieve universality with only a Nand gate.
  \begin{itemize}
      \item<1-> The unit circle has radius~$1$.
      \item<2-> On the real axis, the circle has intercepts at~\only<2->{$+1$} \only<3->{and~$-1$.}
-     \item<4-> On the imaginary axis, the circle has intercepts at~\only<4->{$+i$} \only<5->{and~$-i$.}
+     \item<4-> On the imaginary axis, the circle has intercepts at~\only<4->{$+\NiceI$} \only<5->{and~$-\NiceI$.}
  \end{itemize}
  }{%
  \begin{TIKZP}[scale=1.3]
@@ -237,7 +237,7 @@ We can thus achieve universality with only a Nand gate.
 \TwoColumns{
 \begin{itemize}
     \item<1-> A complex number $z$ as shown to the right is at the Cartesian coordinate
-    \[z=r(\cos{\theta}+i\sin{\theta})\]
+    \[z=r(\cos{\theta}+\NiceI\sin{\theta})\]
     \item<2-> From \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}, we can write this as
     \[ z = \Polar{r}{\theta} \]
     
@@ -268,9 +268,9 @@ Multiplication and Conjugation
     \item<2-> $z_1z_2 = \Polar{r_{1}r_{2}}{(\theta_1+\theta_2)}$
     \item<3-> Given $a=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
     \item<4-> $\Conj{z} = \Conj{(\Polar{r}{\theta})}$
-    \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+i\sin{\theta})}$
-    \item<4-> $\Conj{z} = r(\cos{\theta}-i\sin{\theta})$
-    \item<4-> $\Conj{z} = r(\cos(-\theta)+i\sin(-\theta))$
+    \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+\NiceI\sin{\theta})}$
+    \item<4-> $\Conj{z} = r(\cos{\theta}-\NiceI\sin{\theta})$
+    \item<4-> $\Conj{z} = r(\cos(-\theta)+\NiceI\sin(-\theta))$
     \item<4-> $\Conj{z} = \Polar{r}{(-\theta)}$
 \end{itemize}
 }{
@@ -314,18 +314,18 @@ Quantum computing borrows notation from physics in using \href{https://en.wikipe
 \[
 \visible<2->{\ket{\psi} = }
 \begin{pmatrix}
-0.5\\ i \\ 5+3i \\ \sqrt{2}
+0.5\\ \NiceI \\ 5+3\NiceI \\ \sqrt{2}
 
 \end{pmatrix}
 \]
-\visible<3->{The letter $\psi$ is typically used in quantum computing to represent \alert{p}state, and especially \alert{p}superpositions.}
+\visible<3->{The letter \alert{$\psi$} is typically used in quantum computing to represent \alert{p}state, and especially \alert{p}superpositions.}
 }
 
 \only<4->{\BigSkip{} The \emph{bra} of a ket is its conjugate transpose, and \VV{}.
 \[
 \bra{\psi} =
 \begin{pmatrix}
-0.5 & -i & 5-3i &  \sqrt{2}
+0.5 & -\NiceI & 5-3\NiceI &  \sqrt{2}
 \end{pmatrix}
 \]
 }
@@ -336,13 +336,13 @@ The complete bra-ket of a state is the inner product of its bra with its ket, wh
 \begin{eqnarray*}
 \braket{\psi}{\psi} & = &
 \begin{pmatrix}
-0.5 & -i & 5-3i &  \sqrt{2}
+0.5 & -\NiceI & 5-3\NiceI &  \sqrt{2}
 \end{pmatrix}
 \times\begin{pmatrix}
-0.5\\ i \\ 5+3i \\ \sqrt{2}
+0.5\\ \NiceI \\ 5+3\NiceI \\ \sqrt{2}
 \end{pmatrix}
 \\
- & = & 0.5^{2} + -i^{2} + 25-9i^{2} + 2 
+ & = & 0.5^{2} + -\NiceI^{2} + 25-9\NiceI^{2} + 2 
 \end{eqnarray*}
     
 \end{frame}
