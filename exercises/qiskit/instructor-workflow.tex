@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{braket}
+\usepackage{dirtree}
 
 \title{Creating Qiskit Assignments}
 \author{CSE 468}
@@ -41,9 +42,24 @@
         \item Add \texttt{autograder.zip} to the ``Configure Autograder" section of the Gradescope assignment. The Dockerfile will take some time to build.
     \end{enumerate}
     \item \texttt{cd} into \texttt{student}. The notebook file \texttt{q*.ipynb} in this folder is the one that should be distributed to students. Note that this is distinct from the master assignment with the same name in the root of the assignment folder.
-    
-
 \end{enumerate}
+\newpage
+\subsection*{Qiskit Assignment Directory Guide}
+\dirtree{%
+ .1 /q*.
+ .2 q*.ipynb // master file for developing assignment.
+ .2 q*\_rubric.tex // grading document.
+ .2 /q*-dist // otter-assign output.
+ .3 /student.
+ .4 q*.ipynb // notebook to release to students.
+ .3 /autograder.
+ .4 autograder.zip // autograder package for Gradescope.
+ .4 q*.ipynb // notebook in otterized format with solutions.
+ .4 q*-sol.pdf // document containing solutions to ALL questions.
+ .4 q*-template.pdf // document containing solutions to manual questions.
+ .4 otter\_config.json // otter metadata from master notebook.
+ .4 requirements.txt // additional required packages for autograder specified in master notebook metadata that get appended to the otter base image requirements, e.g Qiskit. 
+}
     
 
 
