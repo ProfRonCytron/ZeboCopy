@@ -299,8 +299,8 @@ Magnitude
     
 \end{frame}
 
-\begin{frame}{Bra-ket notation}{Describing quantum states}
-Quantum computing borrows notation from physics in using \href{https://en.wikipedia.org/wiki/Paul_Dirac}{Paul Dirac}'s \href{https://en.wikipedia.org/wiki/Bra-ket_notation}{bra-ket} notation.
+\begin{frame}{Bra--ket notation}{Describing quantum states}
+Quantum computing borrows notation from physics in using \href{https://en.wikipedia.org/wiki/Paul_Dirac}{Paul Dirac}'s \href{https://en.wikipedia.org/wiki/Bra-ket_notation}{bra--ket} notation.
 \TwoColumns{%
 \begin{itemize}
 \item<1-> We typically represent a quantum state using a column vector.
@@ -332,7 +332,7 @@ Quantum computing borrows notation from physics in using \href{https://en.wikipe
 \end{frame}
 
 \begin{frame}{Inner Products}
-The complete bra-ket of a state is the inner product of its bra with its ket, which computes the magnitude of the state, squared:
+The complete bra--ket of a state \QState{} is the inner product of its bra with the ket, which computes the magnitude of the state, squared:
 \begin{eqnarray*}
 \braket{\psi}{\psi} & = &
 \begin{pmatrix}
@@ -342,16 +342,16 @@ The complete bra-ket of a state is the inner product of its bra with its ket, wh
 0.5\\ \NiceI \\ 5+3\NiceI \\ \sqrt{2}
 \end{pmatrix}
 \\
- & = & 0.5^{2} + -\NiceI^{2} + 25-9\NiceI^{2} + 2 
+ & = & 0.5^{2} + -\NiceI^{2} + 25-9\NiceI^{2} + 2 \\
+ & = & \Prob{\QState{}}
 \end{eqnarray*}
-    
+For a state~\QState{} that arises in a quantum system,  the above expression is the \emph{probability} of observing state \QState{} in that system.
 \end{frame}
 
 \begin{frame}{Outer products}
-If we instead multiply a ket-bra pair, we obtain an \href{https://en.wikipedia.org/wiki/Outer_product}{outer product}.
-This is helpful if we know how we want an operator to behave but don't know how to construct the matrix. Consider we want to build a quantum \emph{not} gate (Pauli \PauliX)
+If we instead multiply a ket--bra pair, we obtain an \href{https://en.wikipedia.org/wiki/Outer_product}{outer product}.
+Outer products can be used to define a matrix based on where it sends basis vectors.  For example, suppose we want to build a quantum \emph{not} gate (Pauli \PauliX).  We want the following behavior:
 \begin{itemize}
-    \item We want the following behavior:
     \item \ket{0} maps to \ket{1}
     \item \ket{1} maps to \ket{0}
 \end{itemize}
