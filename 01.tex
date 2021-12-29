@@ -350,35 +350,51 @@ For a state~\QState{} that arises in a quantum system,  the above expression is 
 
 \begin{frame}{Outer products}
 If we instead multiply a ket--bra pair, we obtain an \href{https://en.wikipedia.org/wiki/Outer_product}{outer product}.
-Outer products can be used to define a matrix based on where it sends basis vectors.  For example, suppose we want to build a quantum \emph{not} gate (Pauli \PauliX).  We want the following behavior:
+Outer products define a matrix based on where it sends basis vectors.  Suppose we want to build a quantum \emph{not} gate (Pauli \PauliX):
 \begin{itemize}
-    \item \ket{0} maps to \ket{1}
-    \item \ket{1} maps to \ket{0}
+    \item<2-> \ColorThree{\ket{0}} maps to \ColorOne{\ket{1}}
+    \item<3-> \ColorThree{\ket{1}} maps to \ColorTwo{\ket{0}}
 \end{itemize}
-Using outer products gives
-\[\ket{0}\bra{1} + \ket{1}\bra{0} = 
-\begin{pmatrix}
-1 \\ 0
-\end{pmatrix}
-\begin{pmatrix}
-0 & 1
-\end{pmatrix}
-+
+\visible<4->{A basis bra \ColorThree{\bra{i}} sends the preceding ket} \visible<5->{(below, \ColorOne{\ket{1}}} \visible<6->{and \ColorTwo{\ket{0}})}\visible<7->{ into column \ColorThree{$i$} of a matrix with all other entries $0$.}
+\visible<4->{
+\[\visible<5->{\ColorOne{\ket{1}}}\visible<4->{\ColorThree{\bra{0}}} + \visible<6,7,9->{\ColorTwo{\ket{0}}}\visible<4->{\ColorThree{\bra{1}}} = 
+\visible<5->{\ColorOne{
 \begin{pmatrix}
 0 \\ 1
-\end{pmatrix}
+\end{pmatrix}}}
+\visible<4->{\ColorThree{
 \begin{pmatrix}
 1 & 0
-\end{pmatrix}
+\end{pmatrix}}}
++
+\visible<6,7,9->{\ColorTwo{
+\begin{pmatrix}
+1 \\ 0
+\end{pmatrix}}}
+\visible<4-7,9->{\ColorThree{
+\begin{pmatrix}
+0 & 1
+\end{pmatrix}}}
+\visible<8->{
 = 
 \begin{pmatrix}
-0 & 1 \\
-1 & 0
+\ColorOne{0} & 0 \\
+\ColorOne{1} & 0
+\end{pmatrix}}
+\visible<9->{
++
+\begin{pmatrix}
+0 & \ColorTwo{1} \\
+0 & \ColorTwo{0}
+\end{pmatrix}}
+\visible<10->{
+=
+\begin{pmatrix}
+\ColorOne{0} & \ColorTwo{1} \\
+\ColorOne{1} & \ColorTwo{0}
 \end{pmatrix}
-= \PauliX{}
-\]
-We can also prove a more general argument that uses outer products to construct any $n$-qubit operator.
-\ToDo{finish this}
+= \PauliX{}}
+\]}
 \end{frame}
 
 \begin{frame}{Unit vectors}
