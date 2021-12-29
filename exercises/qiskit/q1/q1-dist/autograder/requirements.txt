@@ -1,3 +1,0 @@
-qiskit
-pylatexenc
-git+https://github.com/qiskit-community/qiskit-textbook.git#egg=qiskit_textbook&subdirectory=qiskit-textbook-src
