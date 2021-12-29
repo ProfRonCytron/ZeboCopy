@@ -7,5 +7,6 @@
 /*.pdf
 /exercises/*.pdf
 /exercises/qiskit/course-setup/*.pdf
+/exercises/qiskit/q*/q*-dist
 .ipynb_checkpoints
 **/.DS_Store
