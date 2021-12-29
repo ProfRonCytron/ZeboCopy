@@ -16,23 +16,24 @@
 \begin{enumerate}[font=\bfseries]
     \item Shared key is 1001. (Columns 2,4,6,8)
     \item Eve is present. Column 4 gives her away because Alice and Bob are measuring in the same basis and yet Bob measures a different state than the one Alice sends. This means Eve must have intercepted the state and measured in the "wrong" basis (here Eve measures in the standard basis while A and B are measuring in the Hadamard basis)
+    \item Otherwise Eve could intervene undetected. If Eve was eavesdropping and knew what bases Alice measured in, Eve could always measure in the "right" basis and then there would be no way to detect her.
     \item 4 measurements. $1 - (\frac{1}{2})^4 = .9375$
     \item Lots of potential factors. Proximity, quantum communication channel, etc. Will add better guidelines here.
     \item Uncertainty principle
     \item Entanglement
     \item Note this is an adaptation of the B92 protocol.
         \begin{enumerate}
-            \item Bob will measure $\uparrow$. Add more here.
-            \item Bob will measure $\nearrow$. Alice and Bob should not use this in their shared key because it is deterministic.
+            \item Bob will measure $\uparrow$.
+            \item Bob will measure $\nearrow$. 
             \item Bob will measure either $\nearrow$ or $\nwarrow$.
             \item Bob will measure either $\uparrow$ or $\rightarrow$.
             \item If Bob measures $\uparrow$ he does not know which state Alice initially sent. Similarly for $\nearrow$. If Bob measures $\rightarrow$ he knows Alice sent $\nearrow$. Similarly, if Bob measures $\nwarrow$ he knows Alice sent $\uparrow$.
-            \item Alice should send some number of states to Bob.  After all states are sent and measured, Bob should publish the trials in which he measured $\nwarrow$ or $\rightarrow$. Pick one symbol to represent 0 and the other to represent 1. These trials make up the shared key.
+            \item Alice should send some number of states to Bob.  After all states are sent and measured, Bob should publish the trials in which he measured $\nwarrow$ or $\rightarrow$. Pick one symbol to represent 0 and the other to represent 1. $\nwarrow$ corresponds to $\uparrow$ for Alice. $\rightarrow$ corresponds to $\nearrow$ for Alice. These trials make up the shared key.
             \item Publish some portion of their measurements and confirm they agree (identically to BB84). 
         \end{enumerate}
-    \item To-do
-    \item To-do
-    \item Otherwise Eve could intervene undetected. If Eve was eavesdropping and knew what bases Alice measured in, Eve could always measure in the "right" basis and then there would be no way to detect her.
+    \item Eve is present. Consider the columns where Alice measures in $\frac{\pi}{4}$ basis and Bob measures in $\frac{\pi}{8}$ basis (columns 2,3,7,9 in table). We expect agreement 85\% of the time; however, these columns only agree 50\% of the time, indicating that Eve is present.
+    \item Note there are likely many solutions. A simple solution: Alice and Bob should both randomly rotate each qubit before publishing their bases. (Not sure if this is right actually).
+    
 \end{enumerate}
 
 
