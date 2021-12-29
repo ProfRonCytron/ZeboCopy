@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Q2 Grading Guide / Rubric}
+\author{CSE 468}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Autograded}: Tasks 1, 2, 3 (30 points) 
+
+\noindent \textbf{Manual}: Tasks 4, 5, 6 (70 points)
+
+\begin{enumerate}[font=\bfseries]
+    \item (Auto, 10) 
+    \begin{itemize}
+        \item 3 - function returns correctly for public cases
+        \item 7 - function returns correctly for hidden test
+    \end{itemize}
+    \item (Auto, 10):
+    \begin{itemize}
+        \item 1 - answer uses correct number of decimal places (5)
+        \item 2 - function returns correctly for public cases
+        \item 7 - function returns correctly for hidden test
+    \end{itemize}
+    \item (Auto, 10)
+    \begin{itemize}
+        \item 3 - function returns correctly for public cases
+        \item 7 - function returns correctly for hidden test
+    \end{itemize}
+    \item (Manual, 40):
+    \begin{itemize}
+        \item 16 - ``empty" circuit is a correct EV bomb instance (i.e. correct number of qubits, classical bits, identity gates applied, and a final measurement is done)
+        \item 4 - ``empty" circuit is drawn with probability == .5 such that there are 5 rotation gates and 5 identity gates
+        \item 16 - ``bomb" circuit is a correct EV bomb instance (i.e. correct number of qubits, classical bits, measurements applied, and a final measurement is done)
+        \item 4 - ``bomb" circuit is drawn with probability == .5 such that there are 5 rotation gates and 6 total measurements
+    \end{itemize}
+    \item (Manual, 10)
+    \begin{itemize}
+        \item 5 - correct description of meaning of $|0\rangle$ and $|1\rangle$
+        \item 3 - response indicates whether or not the results align with what we'd expect to see
+        \item 2 - graph provides evidence for student's conclusion
+    \end{itemize}
+    \item (Manual, 20)
+    \begin{itemize}
+        \item 10 - ran EV bomb instance on IBM quantum computer
+        \item 5 - correct parameters for run i.e. ``bomb", probability == .9
+        \item 5 - interpretation of results is reasonable
+    \end{itemize}
+    
+    
+\end{enumerate}
+
+
+\end{document}
