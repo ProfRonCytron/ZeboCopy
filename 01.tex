@@ -400,9 +400,49 @@ Outer products define a matrix based on where it sends basis vectors.  Suppose w
 That column is then chosen by \ColorThree{\ket{i}} when subjected to the matrix:  $\PauliX(\ColorThree{\ket{0}})=\ColorOne{\ket{1}}$ and $\PauliX(\ColorThree{\ket{1}})=\ColorTwo{\ket{0}}$.}
 \end{frame}
 
-\begin{frame}{Unit vectors}
+\begin{frame}{State vectors}{A column vector represents a state in quantum computing}
 
-\ToDo{finish this}
+\TwoUnequalColumns{0.85\textwidth}{0.15\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> Quantum computing deals greatly with probability distributions among states.
+    \item<2-> We use vectors to represent states, with an entry for every possible combination of observable outcomes.
+    \item<3-> So, the state of an $n$-qubit system is represented by a vector of $2^n$ entries.  On the right is a $2$-qubit system with~4 combinations of observables \visible<4->{\ColorOne{$00$}}\visible<5->{, \ColorTwo{$01$}}\visible<6->{, \ColorThree{$10$}}\visible<7->{, and~\ColorFour{$11$}.}
+    \item<8-> If the vector on the right contained probabilities, we would insist that they sum to~$1$.
+    \item<9-> In quantum computing, the entries are not probabilities. They are \href{https://en.wikipedia.org/wiki/Probability_amplitude}{probability amplitudes}, which can be negative.  The \href{https://en.wikipedia.org/wiki/Square_(algebra)\#Absolute_square}{modulus square} of such a quantity yields the probability of the corresponding observable's outcome.
+\end{itemize}%
+}{%
+\only<3->{%
+\[\DQB{\visible<4->{\CFCirc{\RCone}}}{\visible<5->{\CFCirc{\RCtwo}}}{\visible<6->{\CFCirc{\RCthree}}}{\visible<7->{\CFCirc{\RCfour}}}\]
+}%
+}
+\end{frame}
+
+\begin{frame}{Unit vectors}{Probabilities must be preserved}
+
+\TwoUnequalColumns{0.85\textwidth}{0.15\textwidth}{%
+\only<1-5>{%
+\Vskip{-3.5em}\begin{itemize}
+    \item<1-> Consider a general vector shown to the right with $m$ entries.  
+    \item<2-> The \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#p-norm}{$p$-norm} of a vector $v$ is defined as
+    \Vskip{-1em}\[
+    \PNorm{v}{p} = \left(\sum_{i=1}^{m} \Mag{x_{i}}^p\right)^{1/p}
+    \]
+    \item<3-> $p=1$ is the \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#Taxicab_norm_or_Manhattan_norm}{taxicab norm}, the sum of a vector of distances.
+    \item<4-> Quantum computing uses the \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#Euclidean_norm_of_complex_numbers}{$2$-norm} of a vector, requiring \ColorOne{unit length}:
+    \[
+    \Implies{\ColorOne{\sqrt{\sum_{i=1}^{m} \Prob{x_i}} = 1}}{\visible<5->{\ColorTwo{\sum_{i=1}^{m} \Prob{x_i}=1}}}
+    \]
+    \item<5-> With \Prob{x_i} as the probability of outcome~$i$, \ColorTwo{the above} requires that probabilities sum to~$1$.
+\end{itemize}}%
+\OnlyRemark{6}{%
+\href{https://scottaaronson.com/}{Scott Aaronson} has said that much of the wonder of quantum computing can be attributed to its use of the 2-norm.\LinkArrow{https://www.scottaaronson.com/democritus/lec9.html}
+\MedSkip{}
+Let's follow his way of thinking about this using the above arrow and see where it takes us.  And Scott Aaronson thinks and writes brilliantly.  I hope you enjoy reading his work as much as I do.
+}
+}{%
+\[
+\QQB{x_1}{x_2}{x_3}{\SCirc{}}{\SCirc{}}{\SCirc{}}{\SCirc{}}{x_m}\]
+}
 \end{frame}
 
 
