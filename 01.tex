@@ -237,9 +237,9 @@ We can thus achieve universality with only a Nand gate.
 \TwoColumns{
 \begin{itemize}
     \item<1-> A complex number $z$ as shown to the right is at the Cartesian coordinate
-    \[z=r(\cos{\theta}+\NiceI\sin{\theta})\]
+    \[z=\ColorOne{r}(\cos{\ColorTwo{\theta}}+\NiceI\sin{\ColorTwo{\theta}})\]
     \item<2-> From \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}, we can write this as
-    \[ z = \Polar{r}{\theta} \]
+    \[ z = \Polar{\ColorOne{r}}{\ColorTwo{\theta}} \]
     
 \end{itemize}
     
@@ -248,15 +248,15 @@ We can thus achieve universality with only a Nand gate.
     \UnitComplexCircle{}
     \draw[->,ultra thick] (1,0) arc (0:45:1) coordinate (z) ;
     \draw[thick] (0,0) -- (z) ;
-    \TZText{0.5,0}{$\theta$}{above}
+    \TZText{0.5,0}{\ColorTwo{$\theta$}}{above}
     \TZText{z}{$z$}{above right}
-    \TZText{0.35,0.35}{$r$}{above}
-    \TZPoint{1,0}{$(r,0)$}{below right}
+    \TZText{0.35,0.35}{\ColorOne{$r$}}{above}
+    \TZPoint{1,0}{$(\ColorOne{r},0)$}{below right}
  \end{TIKZP}
  }
  \only<3->{
-\BigSkip{}The complex number \Polar{r}{\theta} can thus be found by starting at $(r,0)$ and walking counterclockwise around a circle of radius $r$,
-traversing a distance of $\theta$ radians along the circle.}
+\BigSkip{}The complex number \Polar{\ColorOne{r}}{\ColorTwo{\theta}} can thus be found by starting at $(\ColorOne{r},0)$ and walking counterclockwise around a circle of radius \ColorOne{$r$},
+traversing a distance of \ColorTwo{$\theta$} radians along the circle.}
 \end{frame}
 
 \begin{frame}{Complex numbers in polar coordinates}{Useful properties}
