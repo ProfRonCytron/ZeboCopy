@@ -130,23 +130,23 @@ We define Nand as the not-of-and-of its two inputs:
 }{%
 \mbox{}\vskip -3.5em\mbox{}\BTable{\Nand{x}{y}}{1}{1}{1}{0}
 }
-\only<2->{
+\visible<2->{
 \MedSkip{}
 From this, we can compute the three operations that provide universality:
 \begin{eqnarray*}
 \Not{x} & = & \Nand{x}{1} \\
 \And{x}{y} & = & \Not{\Nand{x}{y}} \\
-\only<3->{
+\visible<3->{
 \Or{x}{y} & = & \Nand{\Not{x}}{\Not{y}}}
 \end{eqnarray*}
 }
-\only<3>{
+\visible<3->{
 The last one follows from one of \href{https://en.wikipedia.org/wiki/De_Morgan\%27s_laws}{De~Morgan's laws}:
 \[
 \Not{uw} = \Or{\Not{u}}{\Not{w}}
 \]
 }
-\only<4->{
+\visible<4->{
 We can thus achieve universality with only a Nand gate.
 }
 
@@ -238,7 +238,7 @@ We can thus achieve universality with only a Nand gate.
 \begin{itemize}
     \item<1-> A complex number $z$ as shown to the right is at the Cartesian coordinate
     \[z=\ColorOne{r}(\cos{\ColorTwo{\theta}}+\NiceI\sin{\ColorTwo{\theta}})\]
-    \item<2-> From \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}, we can write this as
+    \item<2-> From \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}, we can write this using reals \ColorOne{$r$} and \ColorTwo{$\theta$} as
     \[ z = \Polar{\ColorOne{r}}{\ColorTwo{\theta}} \]
     
 \end{itemize}
@@ -263,10 +263,10 @@ traversing a distance of \ColorTwo{$\theta$} radians along the circle.}
 \TwoColumns{%
 Multiplication and Conjugation
 \begin{itemize}
-    \item Given $z_{1}=\Polar{r_{1}}{\theta_{1}}$ and $z_{2}=\Polar{r_{2}}{\theta_{2}}$
-    \item<2-> $z_{1}z_{2} = \Polar{r_{1}}{\theta_1}\Polar{r_{2}}{\theta_2}$
-    \item<2-> $z_1z_2 = \Polar{r_{1}r_{2}}{(\theta_1+\theta_2)}$
-    \item<3-> Given $a=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
+    \item<1-> Given $z_{1}=\Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_{1}}}$ and $z_{2}=\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_{2}}}$
+    \item<2-> $z_{1}z_{2} = \Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_1}}\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_2}}$
+    \item<3-> $z_1z_2 = \Polar{\ColorOne{r_{1}}\ColorThree{r_{2}}}{(\ColorTwo{\theta_1}+\ColorFour{\theta_2})}$
+    \item<4-> Given $a=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
     \item<4-> $\Conj{z} = \Conj{(\Polar{r}{\theta})}$
     \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+\NiceI\sin{\theta})}$
     \item<4-> $\Conj{z} = r(\cos{\theta}-\NiceI\sin{\theta})$
@@ -275,6 +275,12 @@ Multiplication and Conjugation
 \end{itemize}
 }{
 Magnitude
+\begin{itemize}
+    \item<5-> $\Forall{\theta}{\Mag{\ExpPhase{\theta}}=\sin^{2}\theta+\cos^{2}\theta=1}$
+    \item<6-> $\Mag{r\ExpPhase{\theta}}=\Mag{r}\times\Mag{\ExpPhase{\theta}}=r$
+    \item<7-> $\Implies{z=r\ExpPhase{\theta}}{\Mag{z}=\Mag{\Conj{z}}=r}$
+    \item<8-> $\Implies{z=r\ExpPhase{\theta}}{\Mag{z\Conj{z}}=\Mag{\Conj{z}z}=r^{2}}$
+\end{itemize}
 }
     
 \end{frame}
