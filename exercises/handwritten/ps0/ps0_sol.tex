@@ -1,22 +1,32 @@
-%To-do
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Problem Set 0 Solutions}
+\author{CSE 468}
+\date{\today}
+
 \begin{document}
 
-Approximate time to complete exercises: 5-10 minutes.
+\maketitle
 
 \begin{enumerate}[font=\bfseries]
-    \item Is $f(x) = x^3$ a reversible function?\newline
-    \textbf{Yes.} $f(x)$ has the same number of inputs and ouputs.
-    \item Is taking the maximum of some set a reversible function?\newline
-    \textbf{No.} A set may contain many elements while the max function outputs a single number.
-    \item Is SHA256 a reversible function? Read about SHA256 here: https://en.wikipedia.org/wiki/SHA-2\newline
-    \textbf{No.} SHA256 uses a ``one-way compression function" which takes two inputs and returns a single output.
-    \item What quadrant of the complex unit circle is $e^{i\frac{3\pi}{4}}$ in?\newline
-    Recall that we can think of theta as the distance we traverse around the complex unit circle starting from $(1,0)$. By tracing this out on a unit circle, it can be seen that $e^{i\frac{3\pi}{4}}$ is in the \textbf{quadrant 2}.\newline
-    
+    \item Yes. $f(x)$ has the same number of inputs and outputs (namely 1). Furthermore, we can use the inverse $f^{-1}(x) = x^{\frac{1}{3}}$, to obtain the input.
+    \item No. A set may contain many elements while the max function outputs a single number. Thus, it is impossible to determine the whole set given just the maximum value of the set, meaning max is not a reversible function.
+    \item No. SHA-256 uses a ``one-way compression function" which takes two inputs and returns a single output.
+    \item Recall that we can think of theta as the distance we traverse around the complex unit circle starting from $(1,0)$. By tracing this out on a unit circle, it can be seen that $e^{i\frac{3\pi}{4}}$ is in quadrant 2.
     Alternatively, we can use $e^{i\frac{3\pi}{4}} = \cos{\frac{3\pi}{4}}+i\sin{\frac{3\pi}{4}} = -\frac{1}{\sqrt{2}}+i\frac{1}{\sqrt{2}}$.
-    The real component, $-\frac{1}{\sqrt{2}}$, tells us we're on the left side of the unit circle. The imaginary coefficient, $\frac{1}{\sqrt{2}}$, puts us on the top half. The intersection of these pieces of information yields quadrant 2.
-    
-    
+    The real component, $-\frac{1}{\sqrt{2}}$, tells us we're on the left side of the unit circle. The imaginary coefficient, $\frac{1}{\sqrt{2}}$, puts us in the top half. The intersection of these pieces of information yields quadrant 2.
+    \item 10 - 3$i$
+    \item Acceptable answers:
+        \begin{itemize}
+            \item Because quantum computing is cool
+            \item Because Ron, David, and Will are cool
+            \item Etc.
+        \end{itemize}
 \end{enumerate}
 
 
