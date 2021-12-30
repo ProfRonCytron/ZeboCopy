@@ -417,7 +417,7 @@ That column is then chosen by \ColorThree{\ket{i}} when subjected to the matrix:
 }
 \end{frame}
 
-\begin{frame}{Unit vectors}{Probabilities must be preserved}
+\begin{frame}{Unit vectors in quantum computing}{The discipline is based on the $2$-norm}
 
 \TwoUnequalColumns{0.85\textwidth}{0.15\textwidth}{%
 \only<1-5>{%
@@ -427,22 +427,34 @@ That column is then chosen by \ColorThree{\ket{i}} when subjected to the matrix:
     \Vskip{-1em}\[
     \PNorm{v}{p} = \left(\sum_{i=1}^{m} \Mag{x_{i}}^p\right)^{1/p}
     \]
-    \item<3-> $p=1$ is the \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#Taxicab_norm_or_Manhattan_norm}{taxicab norm}, the sum of a vector of distances.
+    \item<3-> $p=1$ is the \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#Taxicab_norm_or_Manhattan_norm}{Manhattan norm}, the sum of a vector of distances.
     \item<4-> Quantum computing uses the \href{https://en.wikipedia.org/wiki/Norm_(mathematics)\#Euclidean_norm_of_complex_numbers}{$2$-norm} of a vector, requiring \ColorOne{unit length}:
     \[
     \Implies{\ColorOne{\sqrt{\sum_{i=1}^{m} \Prob{x_i}} = 1}}{\visible<5->{\ColorTwo{\sum_{i=1}^{m} \Prob{x_i}=1}}}
     \]
     \item<5-> With \Prob{x_i} as the probability of outcome~$i$, \ColorTwo{the above} requires that probabilities sum to~$1$.
 \end{itemize}}%
-\OnlyRemark{6}{%
-\href{https://scottaaronson.com/}{Scott Aaronson} has said that much of the wonder of quantum computing can be attributed to its use of the 2-norm.\LinkArrow{https://www.scottaaronson.com/democritus/lec9.html}
-\MedSkip{}
-Let's follow his way of thinking about this using the above arrow and see where it takes us.  And Scott Aaronson thinks and writes brilliantly.  I hope you enjoy reading his work as much as I do.
-}
 }{%
 \[
 \QQB{x_1}{x_2}{x_3}{\SCirc{}}{\SCirc{}}{\SCirc{}}{\SCirc{}}{x_m}\]
 }
+\end{frame}
+
+\begin{frame}{More on the $2$-norm}{From Scott Aaronson}
+
+\begin{itemize}
+\item 
+\href{https://scottaaronson.com/}{Scott Aaronson} has said that much of the wonder of quantum computing can be attributed to its use of the 2-norm.\LinkArrow{https://www.scottaaronson.com/democritus/lec9.html}  That material is included in \href{https://www.amazon.com/Quantum-Computing-since-Democritus-Aaronson/dp/0521199565}{his book}.  
+
+\item To me, he is the \href{https://en.wikipedia.org/wiki/Douglas_Hofstadter}{Douglas Hofstadter} of quantum computing.  I hope you enjoy reading their work as much as I do.
+\item 
+Let's follow his way of thinking about this \LinkArrow{https://www.scottaaronson.com/democritus/lec9.html} and see where it takes us.  This will take \alert{about 30~minutes}, and here are some helpful notes:
+\begin{itemize}
+    \item \href{https://en.wikipedia.org/wiki/Andrew_Wiles}{Andrew Wiles} is a mathematician who famously proved \href{https://en.wikipedia.org/wiki/Fermat\%27s_Last_Theorem}{Fermat's last theorem}. While that theorem concerns integer arithmetic, it poetically deals with squaring.
+    \item \href{https://en.wikipedia.org/wiki/Raymond_Laflamme}{Ray Laflamme} is a quantum physicist with whom Aaronson \href{https://news.ycombinator.com/item?id=23621425}{worked in 2006} at \href{https://uwaterloo.ca/institute-for-quantum-computing/}{Waterloo's Institute for Quantum Computing}.
+\end{itemize}
+\end{itemize}
+
 \end{frame}
 
 
