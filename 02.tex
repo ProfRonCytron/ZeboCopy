@@ -11,6 +11,7 @@
 \end{frame}
 
 
+
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When a single ball enters at a time}
 \TwoColumns{%
 Consider the mechanical \emph{and} gate shown here.
@@ -24,19 +25,23 @@ Consider the mechanical \emph{and} gate shown here.
 }{%
 \Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
 \begin{ReverseDiag}
+\BBall{\RCone}{(1,-0.5)}
+\BBall{\RCtwo}{(0.5,-1.25)}
+\BBall{\RCone}{(2,-2.25)}
+\BBall{\RCtwo}{(1.5,-3)}
 \visible<1-2>{%
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
+\visible<1>{\BBall{\RCone}{(.85,1.5)}}
 \draw<2>[->,thick,dashed] (0.85,1.25) -- ++(0,-6.25);
-\visible<2>{\fill[\RCthree,fill opacity=0.7] (.85,-5.25) circle(0.25);}}
+\visible<2>{\BBall{\RCone}{(.85,-5.25)}}}
 \visible<3-4>{%
-\visible<3>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
+\visible<3>{\BBall{\RCtwo,}{(-1.75,-0.85)}}
 \draw<4>[->,thick,dashed] (-1.5,-0.85) -- ++(5.5,0);
-\visible<4>{\fill[\RCthree,fill opacity=0.7] (4.25,-0.85) circle(0.25);}
+\visible<4>{\BBall{\RCtwo,}{(4.25,-0.85)}}
 }
 \end{ReverseDiag}}
 
 }
-\only<5->{
+\visible<5->{
 \MedSkip{}No energy is put in or taken out of the system.  The ball has its own energy, maintained throughout its motion through the box.}
     
 \end{frame}
@@ -54,8 +59,10 @@ Here, two balls enter, one from the top, and one from the left
 }{%
 \Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
 \begin{ReverseDiag}
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
+\BBall{\RCone}{(1,-0.5)}
+\BBall{\RCtwo}{(0.5,-1.25)}
+\BBall{\RCone}{(2,-2.25)}
+\BBall{\RCtwo}{(1.5,-3)}
 \end{ReverseDiag}}
 }
 \only<5->{
