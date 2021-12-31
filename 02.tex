@@ -49,7 +49,7 @@ Here, two balls enter, one from the top, and one from the left
     \item<1-> A ball entering from the top and a ball entering from the left at the same time
     \only<2->{will \alert<2>{collide here}.}
     \item<3-> They bounce internally at the same time.
-    \item<4-> One ball emerges from the ``AND-output'' chute and the other emerges from the ``1-out'' chute.
+    \item<4-> One ball emerges from the ``AND-output'' chute, the other from the ``1-out'' chute.
     
 \end{itemize}
 }{%
@@ -66,10 +66,14 @@ Here, two balls enter, one from the top, and one from the left
 \BBall{\RCone}{(2,-2.25)}
 \BBall{\RCtwo}{(1.5,-3)}
 }
+\visible<4->{%
+\BBall{\RCone}{(4.5,-2.25)}
+\BBall{\RCtwo}{(1.5,-5.5)}
+}
 \end{ReverseDiag}}
 }
-\only<5->{
-\SmallSkip{}Again, the energy of the box remains the same throughout.\Remark{It would take energy to \emph{stop} the ball from exiting the ``1-out'' chute.}}
+\visible<5->{
+\MedSkip{}Again, the energy of the box remains the same throughout.\Remark{It would take energy to \emph{stop} the ball from exiting the ``1-out'' chute.}}
 
     
 \end{frame}
