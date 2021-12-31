@@ -10,11 +10,23 @@
 \end{itemize}
 \end{frame}
 
+\section*{Reversible computations}
+
+\begin{frame}{Reversible computing \LinkArrow{https://en.wikipedia.org/wiki/Reversible_computing}}{A brief history}
+\begin{itemize}[<+->]
+    \item A process that is reversible is \href{https://en.wikipedia.org/wiki/Isentropic_process}{isentropic}.
+    \item This means that the system requires no net input of energy, and that it requires no net disposition of energy (such as heat loss).
+    \item Long ago, such systems were studied by computer scientists because they had the potential to make computations more efficient.
+    \item From a practical point of view, the energy lost by non-reversible computing is small compared to other energy losses in a computing system.
+    \item However, quantum computing requires reversible gates.
+    \item We begin with a mechanical example of an \NamedGate{and} gate, implemented using billiard balls.
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When a single ball enters at a time}
 \TwoColumns{%
-Consider the mechanical \emph{and} gate shown here.
+Consider the mechanical \NamedGate{and} gate shown here.
 \begin{itemize}
     \item<1-> A ball entering from the top
     \only<2->{will emerge from the ``1-out'' hole.}
@@ -48,7 +60,7 @@ Here, two balls enter, one from the top, and one from the left
 \begin{itemize}
     \item<1-> A ball entering from the top and a ball entering from the left at the same time
     \only<2->{will \alert<2>{collide here}.}
-    \item<3-> They bounce internally at the same time.
+    \item<3-> They collide internally one more time.
     \item<4-> One ball emerges from the ``AND-output'' chute, the other from the ``1-out'' chute.
     
 \end{itemize}
