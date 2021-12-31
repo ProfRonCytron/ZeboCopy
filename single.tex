@@ -851,10 +851,10 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }{%
 \end{TIKZP}
 }
-\newenvironment{Pixture}[2]{%
+\newenvironment{Pixture}[3][width=1.0\textwidth]{%
 \begin{TIKZP}
 \node at (0,0)
-    {\includegraphics{#1/#2}}; 
+    {\includegraphics[#1]{#2/#3}}; 
 }{%
 \end{TIKZP}
 }
