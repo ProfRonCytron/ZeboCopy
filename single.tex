@@ -833,6 +833,18 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \draw[fill=#1,opacity=0.2] (#2,#3) rectangle ++(#4,#5);
 \end{tikzpicture}}
 \def\Indent#1{\mbox{}\hbox to #1{\hss}}
+\newenvironment{ReverseDiag}[1][scale=1.0]{%
+\begin{TIKZP}[#1]
+    \draw[thick,draw=black,fill=gray, fill opacity=0.2] (0,0) -- ++(2,0) -- ++(0.5,-0.5) -- ++(0,-3) -- ++(-2.0,0) -- ++(-0.5,0.5) -- cycle;
+    \draw[thick,draw=black,fill=\RCone] (0.5,0) -- ++(0,1)  -- node[above right,pos=0.5] {1-in} ++(0.75,0) -- ++(0,-1) -- cycle;
+    \draw[thick,draw=black,fill=\RCtwo] (0,-0.5) -- ++(-1,0)  -- node[below left] {0-in} ++(0,-0.75) -- ++(1,0) -- cycle;
+    \draw[thick,draw=black,fill=\RCone] (0.5,-3.5) -- ++(0,-1) -- ++(0.75,0) node[below right,pos=0.5] {1-out} -- ++(0,1) -- cycle;
+    \draw[thick,draw=black,fill=\RCtwo] (2.5,-0.5) -- ++(1,0) -- ++(-0,-0.75) node[right] {0-out}-- ++ (-1,0) -- cycle;
+    \draw[thick,draw=black,fill=\RCfour] (2.5,-2.75) -- ++(1,0) -- ++(-0,-0.75) node[right] {AND-out}-- ++ (-1,0) -- cycle;
+
+}{%
+\end{TIKZP}
+}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
