@@ -5,6 +5,17 @@
 \usepackage{enumitem}
 \usepackage{braket}
 \graphicspath{ {./ps4-assets/}{./exercises/handwritten/ps4/ps4-assets/} }
+%%
+%%
+\newcommand{\Blank}{\mbox{\hskip 4pt\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
 
 
 \title{Problem Set 4}
@@ -15,6 +26,9 @@
 
 \maketitle
 
+\noindent Name:\NameBlank{} \newline
+\noindent Student ID:\NameBlank{} \newline
+\textbf{Note:} You may discuss these problems with other students, but you must write your own solutions.
 \begin{enumerate}[font=\bfseries]
     \item (10 points) Give the unitary matrix that describes the circuit below. Note the second gate is the controlled Z gate with $q_0$ as the control bit and $q_1$ as the target bit. Is the state at the end of this circuit entangled? Why or why not?
     \[\includegraphics[scale=0.8]{cz-gate}\]
