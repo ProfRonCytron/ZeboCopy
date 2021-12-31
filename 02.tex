@@ -43,7 +43,7 @@ Consider the mechanical \emph{and} gate shown here.
 \end{frame}
 
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When two balls enter simultaneously}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 Here, two balls enter, one from the top, and one from the left
 \begin{itemize}
     \item<1-> A ball entering from the top and a ball entering from the left at the same time
@@ -57,14 +57,20 @@ Here, two balls enter, one from the top, and one from the left
 \begin{ReverseDiag}
 \visible<1>{%
 \BBall{\RCone}{(1,1.5)}
-\BBall{\RCtwo,}{(-1.75,-1.2)}}
+\draw[->,thick,\RCone] (1,1.5) -- ++(0,-2);
+\BBall{\RCtwo,}{(-1.75,-1.2)}
+\draw[->,thick,\RCtwo] (-1.75,-1.2) -- ++(2.5,0);}
 \visible<2>{%
 \BBall{\RCone}{(1,-0.5)}
+\draw[->,thick,\RCone] (1,-0.5) -- ++(1.0,0) -- ++(0,-2);
 \BBall{\RCtwo}{(0.5,-1.25)}
+\draw[->,thick,\RCtwo] (0.5,-1.25) -- ++(0,-1.75) -- ++(1.25,0);
 }
 \visible<3>{%
 \BBall{\RCone}{(2,-2.25)}
+\draw[->,thick,\RCone] (2,-2.25) -- ++(2,0);
 \BBall{\RCtwo}{(1.5,-3)}
+\draw[->,thick,\RCtwo] (1.5,-3) -- ++(0,-2);
 }
 \visible<4->{%
 \BBall{\RCone}{(4.5,-2.25)}
