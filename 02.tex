@@ -10,7 +10,12 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer \ToDo{redraw picture}}}{When a single ball enters at a time}
+{\def\BillBall#1{%
+\begin{tikzpicture}[scale=#1]%
+\fill (0.5,0.5) circle(0.4);%
+\end{tikzpicture}}
+
+\begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When a single ball enters at a time}
 \TwoColumns{%
 Consider the mechanical \emph{and} gate shown here.
 \begin{itemize}
@@ -21,21 +26,27 @@ Consider the mechanical \emph{and} gate shown here.
     
 \end{itemize}
 }{%
+\Vskip{-2em}\adjustbox{width=0.9\textwidth}{%
+\begin{ReverseDiag}
+\visible<1-2>{%
+\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
+\draw[->,thick,dashed] (0.85,1.25) -- ++(0,-6.25);
+\visible<2>{\fill[\RCthree,fill opacity=0.7] (.85,-5.25) circle(0.25);}}
+\visible<3-4>{%
+\visible<3>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
+\draw[->,thick,dashed] (-1.5,-0.85) -- ++(5.5,0);
+\visible<4>{\fill[\RCthree,fill opacity=0.7] (4.25,-0.85) circle(0.25);}
+}
 
-\begin{TIKZP}
-\node at (0,0)
-    {\includegraphics[width=0.7\textwidth]{02/single.png}};
-\visible<1>{\fill[color=SpringGreen] (-.59,2.2) circle(0.25);}
-\visible<2>{\fill[color=SpringGreen] (-.59,-2.1) circle(0.25);}
-\visible<3>{\fill[color=SpringGreen] (-2.7,0.3) circle(0.25);}
-\visible<4>{\fill[color=SpringGreen] (2.5,0.3) circle(0.25);}
-\end{TIKZP}
+
+\end{ReverseDiag}}
 
 }
 \only<5->{
 \MedSkip{}No energy is put in or taken out of the system.  The ball has its own energy, maintained throughout its motion through the box.}
     
-\end{frame}
+\end{frame}}
+
 \begin{frame}{The billiard ball computer}{When two balls enter simultaneously}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 Here, two balls enter, one from the top, and one from the left
