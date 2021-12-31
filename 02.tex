@@ -10,10 +10,6 @@
 \end{itemize}
 \end{frame}
 
-{\def\BillBall#1{%
-\begin{tikzpicture}[scale=#1]%
-\fill (0.5,0.5) circle(0.4);%
-\end{tikzpicture}}
 
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When a single ball enters at a time}
 \TwoColumns{%
@@ -26,28 +22,26 @@ Consider the mechanical \emph{and} gate shown here.
     
 \end{itemize}
 }{%
-\Vskip{-2em}\adjustbox{width=0.9\textwidth}{%
+\Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
 \begin{ReverseDiag}
 \visible<1-2>{%
 \visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
-\draw[->,thick,dashed] (0.85,1.25) -- ++(0,-6.25);
+\draw<2>[->,thick,dashed] (0.85,1.25) -- ++(0,-6.25);
 \visible<2>{\fill[\RCthree,fill opacity=0.7] (.85,-5.25) circle(0.25);}}
 \visible<3-4>{%
 \visible<3>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
-\draw[->,thick,dashed] (-1.5,-0.85) -- ++(5.5,0);
+\draw<4>[->,thick,dashed] (-1.5,-0.85) -- ++(5.5,0);
 \visible<4>{\fill[\RCthree,fill opacity=0.7] (4.25,-0.85) circle(0.25);}
 }
-
-
 \end{ReverseDiag}}
 
 }
 \only<5->{
 \MedSkip{}No energy is put in or taken out of the system.  The ball has its own energy, maintained throughout its motion through the box.}
     
-\end{frame}}
+\end{frame}
 
-\begin{frame}{The billiard ball computer}{When two balls enter simultaneously}
+\begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When two balls enter simultaneously}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 Here, two balls enter, one from the top, and one from the left
 \begin{itemize}
@@ -58,15 +52,11 @@ Here, two balls enter, one from the top, and one from the left
     
 \end{itemize}
 }{%
-\Vskip{-3.2em}\Hskip{-0em}
-\begin{TIKZP}
-\node at (0,0)
-    {\includegraphics[width=0.7\textwidth]{02/double.png}};
-\visible<1>{\fill[color=SpringGreen] (-.45,1.8) circle(0.25);}
-\visible<2>{\fill[color=red] (-.6,0.4) circle(0.25);}
-\visible<1>{\fill[color=SpringGreen] (-2.2,0.3) circle(0.25);}
-\end{TIKZP}
-
+\Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
+\begin{ReverseDiag}
+\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
+\visible<1>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
+\end{ReverseDiag}}
 }
 \only<5->{
 \SmallSkip{}Again, the energy of the box remains the same throughout.\Remark{It would take energy to \emph{stop} the ball from exiting the ``1-out'' chute.}}
