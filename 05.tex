@@ -571,8 +571,8 @@ Each wave amplitude must therefore be of the form
 \def\BSG{%
 \ensuremath{\frac{1}{\sqrt{2}}
 \begin{pmatrix}
-1 & i \\
-i & 1
+1 & \NiceI \\
+\NiceI & 1
 \end{pmatrix}}}
 
 \section{Quantum gates}
@@ -598,8 +598,8 @@ i & 1
     \begin{eqnarray*}
      \ket{\psi'} & = & \SQB{\ralphap{}}{\bbetap{}} \\
      \ralphap{} & = & \frac{1}{\sqrt{2}}\left(\visible<6->{\ralpha{}}
-        + \visible<7->{i\bbeta{}}\right) \\
-    \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{i\ralpha{}}
+        + \visible<7->{\NiceI\bbeta{}}\right) \\
+    \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{\NiceI\ralpha{}}
          + \visible<10->{\bbeta{}}\right)}
     \end{eqnarray*}}
 }{%
@@ -640,15 +640,15 @@ and we view the beam splitter as represented mathematically as
     \only<1-2>{
     \item We begin with the photon in state \SQB{1}{0}.}
     \only<2-3>{\item At the first beam splitter, we obtain the state
-    \[ \BSG{} \SQB{1}{0} = \frac{1}{\sqrt{2}} \SQB{1}{i}
+    \[ \BSG{} \SQB{1}{0} = \frac{1}{\sqrt{2}} \SQB{1}{\NiceI}
     \]}
     \only<3-4>{\item The mirrors flip the sense of two paths with respect to the second beam splitter.  We therefore apply a gate to swap the two components and obtain
     \[
-    \XMatrix{} \RootTwo{}\SQB{1}{i} = \RootTwo{}\SQB{i}{1}
+    \XMatrix{} \RootTwo{}\SQB{1}{\NiceI} = \RootTwo{}\SQB{\NiceI}{1}
     \]}
     \only<4-5>{\item The final beam splitter produces
     \[
-    \BSG{}\RootTwo{}\SQB{i}{1} = \frac{1}{2}\SQB{2i}{i^{2}+1} = \SQB{i}{0}
+    \BSG{}\RootTwo{}\SQB{\NiceI}{1} = \frac{1}{2}\SQB{2\NiceI}{\NiceI^{2}+1} = \SQB{\NiceI}{0}
     \]}
     \only<5>{\item The interference canceled the bottom component.    
     \alert{This explains why the bottom device never measures any photons in this setup.}
