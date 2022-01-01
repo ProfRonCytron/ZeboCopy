@@ -514,10 +514,8 @@ $\PauliZ{}=\ZMatrix{}$
 
 
 \Vskip{-3em}
-\only<1-6>{%\begin{theorem}
-\[  \alert<2>{A^{2}=\Identity{}} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]
-%\end{theorem}
-}
+\only<1-6>{%
+\[  \alert<2>{A^{2}=\Identity{}} \rightarrow \ExpPhase{\theta A} = \Complex{\cos(\theta)\ \Identity{}}{\sin(\theta)\ A} \]}
 \TwoColumns{%
 Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor series}:
 \begin{align*}
@@ -531,7 +529,7 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 }
 \end{align*}
 }{%
-\Vskip{-4em}\begin{align*}
+\Vskip{-4.3em}\begin{align*}
 \ExpPhase{\theta A}
 \only<1-2>{%
 = {} &
@@ -566,11 +564,10 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 = {} & \Identity{}\left[ \Redify{\cos(\theta)} \right]
   \\[0.5em] &
   + i\,\left[
-  \Bluify{\sin(\theta)}\right]\,A
+  \Bluify{\sin(\theta)}\right]\,A \QEDsym{}
 }
 \end{align*}
 }
-\visible<6>{\QED{}}
 \end{frame}
 }
 
