@@ -83,7 +83,7 @@
 \def\ZMatrix{%
 \SQBG{\relax}{1}{0}{0}{-1}}
 \def\YMatrix{%
-\SQBG{\relax}{0}{-i}{i}{0}}
+\SQBG{\relax}{0}{-\NiceI}{\NiceI}{0}}
 \def\IMatrix{%
 \SQBG{\relax}{1}{0}{0}{1}}
 \def\Co#1{\mathbb{C}}
@@ -235,8 +235,8 @@
 \def\ComplexDiff#1#2{\ComplexGen{#1}{#2}{-}}
 \def\ImaginaryM#1{\ComplexDiff{\relax}{#1}}
 \def\ComplexGen#1#2#3{%
-\ensuremath{#1 #3 i\relax #2}}
-\def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{\NiceI\relax#2}}}
+\ensuremath{#1 #3 \NiceI\relax #2}}
+\def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\ExpPhase{#2}}}
 %%
 %% #1 -- lower left x
 %% #2 -- lower left y

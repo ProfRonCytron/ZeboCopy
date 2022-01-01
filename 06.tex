@@ -14,7 +14,7 @@
 \section{Efficient characterization}
 
 \begin{frame}{State space}{Definition}
-\Postulate{State Space}{The state of a quantum system is a unit vector in a complex \href{https://en.wikipedia.org/wiki/Hilbert_space}{Hilbert space}}
+\Vskip{-3em}\Postulate{State Space}{The state of a quantum system is a unit vector in a complex \href{https://en.wikipedia.org/wiki/Hilbert_space}{Hilbert space}}
 \begin{itemize}
     \item We need a Hilbert space, rather than the simpler \href{https://en.wikipedia.org/wiki/Euclidean_space}{Euclidean space}, because we use complex values to represent state.
     \item We have used two dimensions to specify a single qubit, one each for $\alpha$ and $\beta$: $\ket{\psi}=\SQB{\alpha}{\beta}$, where
@@ -42,15 +42,15 @@ We next examine a more concise and visually compelling definition of a qubit.
 }{%
 \ColHead{Polar}
 \begin{itemize}
-    \item Write $\alpha = r_{a}\left(\cos\theta_{a}+i\, \sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
-    \item Write $\beta = r_{b}\left(\cos\theta_{b}+i\, \sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
+    \item Write $\alpha = r_{a}\left(\cos\theta_{a}+\NiceI \sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
+    \item Write $\beta = r_{b}\left(\cos\theta_{b}+\NiceI \sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
     \item Then \begin{eqnarray*} \ket{\psi} & = & \Polar{r_{a}}{\theta_{a}}\ket{0} + \Polar{r_{b}}{\theta_{b}}\ket{1} \\
     & = & \visible<1>{\Exp{i \theta_{a}}}\left( \alert<4>{r_{a}}\ket{0} + \Polar{\alert<4>{r_{b}}}{
     \only<1-2>{(\theta_{b}-\theta_{a})}
     \only<3->{\alert<4>{\phi}}
     }\ket{1} \right)
     \end{eqnarray*}
-    \item<2-> Discard $\Exp{i \theta_{a}}$ as a global phase
+    \item<2-> Discard $\ExpPhase{\theta_{a}}$ as a global phase
     \item<3-> Let $\phi=\theta_{b}-\theta_{a}$
     \item<4-> So we need just \alert{three real parameters}
 \end{itemize}
@@ -405,7 +405,7 @@ rotates a state  by $\pi$ radians around the x~axis.
 \PauliY{} = \YMatrix{}
 \]
 \begin{itemize}
-    \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-i\beta}{i\alpha} = -i\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
+    \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-\NiceI\beta}{i\alpha} = -\NiceI\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
     \item<2-> The two eigenstates are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
     \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
@@ -435,8 +435,8 @@ $\PauliZ{}=\ZMatrix{}$
     \begin{center}
     { \setlength{\tabcolsep}{3pt}%
     \begin{tabular}{rcrl@{\hspace{3em}}rcrl@{\hspace{3em}}rcrl} \setlength{\tabcolsep}{1pt}
-        \PauliX{}\PauliY{} & = & $i$ &\PauliZ{} & \PauliZ{}\PauliX{} & = & $i$ &\PauliY{} & \PauliY{}\PauliZ{} & = & $i$ &\PauliX{} \\
-        \PauliY{}\PauliX{} & = & $-i$ &\PauliZ{} &  \PauliX{}\PauliZ{} & = & $-i$ &\PauliY{} & \PauliZ{}\PauliY{} & = & $-i$ &\PauliX{}
+        \PauliX{}\PauliY{} & = & \NiceI &\PauliZ{} & \PauliZ{}\PauliX{} & = & \NiceI &\PauliY{} & \PauliY{}\PauliZ{} & = & \NiceI &\PauliX{} \\
+        \PauliY{}\PauliX{} & = & $-\NiceI$ &\PauliZ{} &  \PauliX{}\PauliZ{} & = & $-\NiceI$ &\PauliY{} & \PauliZ{}\PauliY{} & = & $-\NiceI$ &\PauliX{}
     \end{tabular}}
     \end{center}
     \item Each matrix has \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvalues} $\pm 1$.
@@ -621,5 +621,3 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
     \item There are matrices that describe arbitrary rotations about the Bloch axes. 
 \end{itemize}
 \end{frame}
-\frame{Homework ps2}
-\frame{Programming exercise q1}
