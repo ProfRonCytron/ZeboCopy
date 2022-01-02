@@ -17,11 +17,13 @@
     \item<4-> We can then talk about the number of steps it takes to solve a problem of some size~$n$.  You should already be familiar with \href{https://en.wikipedia.org/wiki/Asymptotic_computational_complexity}{asymptotic notation to express complexity}, especially the time an algorithm or problem takes.
 \end{itemize}
 
-\OnlyRemark{5}{We will use asymptotic complexity to describe the time and area needed for computation on a quantum computer.}
+\OnlyRemark{5}{We use asymptotic complexity to describe the time and area needed for computations on a quantum computer.}
     
 \end{frame}
 
-\begin{frame}{What input provides a given output?}{A common problem to consider}
+\section*{Unstructured search}
+
+\begin{frame}{What input provides a given output?}{An interesting problem to consider}
 
 \TwoColumns{%
 \begin{center}
@@ -67,9 +69,9 @@
 Here, we can easily find an input that matches a given output, but we cannot hope to create a function $f^{-1}(y)$.
 \end{itemize}
 }
-\only<6>{
-\begin{itemize}
-\item Examples of this include 
+\only<6->{
+\Vskip{-3em}\begin{itemize}
+\item<6-> Examples of this include 
 \begin{itemize}
     \item \href{https://en.wikipedia.org/wiki/Bitcoin}{Bitcoin}
     \item \href{https://en.wikipedia.org/wiki/SHA-1}{SHA-1}
@@ -77,33 +79,11 @@ Here, we can easily find an input that matches a given output, but we cannot hop
     \item and other similar hash functions
 \end{itemize}
 
-\item A famous problem for quantum computing is shown next.
+\item<7-> This is an example of \emph{unstructured search}, which we examine next.  Quantum computers are asymptotically faster at solving such problems, but the speedup is relatively modest.
+\item<8-> An asymptotically more impressive problem is \emph{factoring}, considered after that.
 \end{itemize}
 }
 
-}
-\end{frame}
-
-\section{Hard problems}
-
-\begin{frame}{Famous problem for quantum computing}{Given an integer $n$, find integers $p$ and $q$ such that $pq=n$}
-\TwoColumns{%
-
-\begin{itemize}
-    \item We don't know yet the true difficulty of this problem.
-    \item Classically, there is as yet no polynomial-time algorithm for solving this problem.
-\item<5->
-As we will study, \alert{a quantum computer can solve this problem in polynomial time}.
-\item<6> \emph{Aside}: do you see a familiar (to my class) 3-digit number embedded in each of the factors?
-\end{itemize}
-}{
-\begin{itemize}
-    \item Can you factor 21 easily into its two prime factors?  \only<2->{$21=7\times 3$}
-    \item<3-> How about \[329716591508669867994509609\]
-    \item<4-> It is the product of the \href{https://en.wikipedia.org/wiki/Pell_number\#Primes_and_squares}{Pell prime} \[1746860020068409\]
-    and the \href{https://en.wikipedia.org/wiki/Wieferich_prime}{Wieferich prime} \[188748146801\]
-    
-\end{itemize}
 }
 \end{frame}
 
@@ -137,6 +117,31 @@ How much time does it take to find \SpecialX{x}?
 }
 \OnlyRemark{7}{Consider how \emph{you} would achieve such a bound looking for something.  The quantum world is strange but offers the promise of greater computing power.}
 \end{frame}
+
+
+\section{Factoring}
+
+\begin{frame}{The factoring problem}{Given an integer $n$, find integers $p$ and $q$ such that $pq=n$}
+\TwoColumns{%
+
+\begin{itemize}
+    \item We don't know yet the true difficulty of this problem.
+    \item Classically, there is as yet no polynomial-time algorithm for solving this problem.
+\item<5->
+As we will study, a quantum computer can solve this problem in \alert{polynomial time} using \href{https://en.wikipedia.org/wiki/Shor\%27s_algorithm}{Shor's algorithm}.
+\item<6> \emph{Aside}: do you see a familiar (to my class) 3-digit number embedded in each of the factors?
+\end{itemize}
+}{
+\begin{itemize}
+    \item Can you factor 21 easily into its two prime factors?  \only<2->{$21=7\times 3$}
+    \item<3-> How about \[329716591508669867994509609\]
+    \item<4-> It is the product of the \href{https://en.wikipedia.org/wiki/Pell_number\#Primes_and_squares}{Pell prime} \[1746860020068409\]
+    and the \href{https://en.wikipedia.org/wiki/Wieferich_prime}{Wieferich prime} \[188748146801\]
+    
+\end{itemize}
+}
+\end{frame}
+
 
 \begin{frame}{The discrete log problem}{\href{https://en.wikipedia.org/wiki/Diffie\%E2\%80\%93Hellman_key_exchange}{Key exchange protocol} for \href{https://en.wikipedia.org/wiki/HTTPS}{\texttt{https}}}
 \TwoColumns{%
@@ -177,15 +182,15 @@ The problem of finding $x$ given $y$ is the \href{https://en.wikipedia.org/wiki/
 \begin{frame}{Diffie--Hellman key exchange}{Secrecy relies on the apparent difficulty of discrete log}
 
 \Vskip{-3em}\begin{ProtocolDialog}{0.28\textwidth}{0.33\textwidth}{0.37\textwidth}
-\All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}
-\All{Compute $5^{x}\bmod 23$}{I compute $A=5^{a}\bmod 23$.}{I compute $B=5^{b}\bmod 23$.}
-\All{}{I publish $A=17$.}{I publish $B=18$.}
-\All{Everybody hears:}{$B=18$}{$A=17$.}
-\All{}{I compute $B^{a}\bmod 23$.}{I compute $A^{b}\bmod 23$.}
-\All{}{I obtain $6=18^{7}\bmod 23$.}{I obtain $6=17^{12}\bmod 23$.}
-\All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}
+\visible<2->{\All{$g=5$ and $p=23$.}{My secret $a=7$.}{My secret $b=12$.}}
+\visible<3->{\All{Compute $5^{x}\bmod 23$}{I compute $A=5^{a}\bmod 23$.}{I compute $B=5^{b}\bmod 23$.}}
+\visible<4->{\All{Publish the result}{I publish $A=17$.}{I publish $B=18$.}}
+\visible<5->{\All{Everybody hears $Y$}{$B=18$}{$A=17$.}}
+\visible<6->{\All{{\small Compute} $Y^{x} \bmod 23$}{I compute $B^{a}\bmod 23$.}{I compute $A^{b}\bmod 23$.}}
+\visible<7->{\All{}{I obtain $6=18^{7}\bmod 23$.}{I obtain $6=17^{12}\bmod 23$.}}
+\visible<8->{\All{They agree!}{We have a shared key $6$.}{We have a shared key $6$.}}
 \end{ProtocolDialog}
-\OnlyRemark{2}{%
+\OnlyRemark{9}{%
 It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{efficient} classical algorithm for computing $a$ given $A$ and $B$.  Alice and Bob share the key and nobody else can compute it efficiently unless they know $a$ or $b$---unless they have a sufficiently large quantum computer.
 }
     
@@ -204,6 +209,25 @@ It's easy to compute $A$ from $a$ and $B$ from $b$.  There is no known \emph{eff
         \item We have examples of problems that appear to be very difficult on a classical computer but which have efficient solutions on a quantum computer.
     \end{itemize}
 \end{itemize}
-
     
 \end{frame}
+
+\section*{Quantum puzzles}
+
+\begin{frame}{Quantum fly trap games and puzzles}{In preparation for next lecture}
+
+\begin{itemize}
+    \item \href{https://quantumflytrap.com/}{Quantum fly trap} is by Piotr Magdal, Klem Jankiewicz, and Pawel Grabarz \LinkArrow{https://quantumflytrap.com/about/}.
+    \item \href{https://github.com/stared/quantum-game}{An older version} (no longer live) of this game was developed by Piotr Magdal.
+    \item The \href{https://quantumflytrap.com}{newer version} adds useful features.
+    \begin{itemize}
+    \item \href{https://lab.quantumflytrap.com/game}{Here} are challenges with increasing difficulty, and you unlock higher levels by solving lower ones.
+    \item \href{https://lab.quantumflytrap.com/lab}{Here} is the virtual lab where you can create and execute your own scenarios of interest.  
+    \item Help on a component can be found \href{https://lab.quantumflytrap.com/info/}{here}.
+    \end{itemize}
+    \item \alert{Get as far as you can and you can with \href{https://lab.quantumflytrap.com/game}{the challenges} and perhaps present your solutions in class next time.}
+\end{itemize}
+    
+\end{frame}
+
+

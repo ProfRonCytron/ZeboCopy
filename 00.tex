@@ -3,13 +3,14 @@
 \section{Foreword}
 \begin{frame}{Some notes about these slides}
 \begin{itemize}[<+->]
-    \item These slides were prepared during my sabbatical leave.  I am grateful to Washington University, McKelvey School of Engineering, and the Department of Computer Science and Engineering for sponsoring my sabbatical.
+    \item These slides were prepared during my \href{https://en.wikipedia.org/wiki/Sabbatical}{sabbatical} leave.  I am grateful to Washington University, McKelvey School of Engineering, and the Department of Computer Science and Engineering for sponsoring my sabbatical.
     \item There are some typographical conventions used in these slides, as follows.
     \begin{itemize}
         \item These slides include \href{https://en.wikipedia.org/wiki/Hyperlink}{hyperlinks} to material you can find on the Internet.
         \item Where a larger idea or presentation cites material on the Internet, that link will often appear before or after the material. \LinkArrow{https://en.wikipedia.org/wiki/Wikipedia:Citing_sources}
         \item Where images appear without citation, they are available for \emph{free use} or fall under the \href{https://en.wikipedia.org/wiki/Fair_use}{\emph{fair use}} clause for copyright material. \LinkArrow{https://fas.org/irp/crs/RL31423.pdf}
     \end{itemize}
+    \item These slides are best viewed full-screen, so that overlays can immediately and fully take the place of a previous slide.  There are section links in the left column to facilitate navigation.
 \end{itemize}
 \end{frame}
 
@@ -19,8 +20,8 @@
 \end{quote}
 In love and appreciation, I dedicate this work to my wife, Betsy Cytron.  At this writing we have been married~32 years, and she has been with me through good times and bad. We have watched and helped each other find happiness and satisfaction in our work, in our families, and in each other.  I am grateful and so fortunate to have such a partner in life.
 \SmallSkip{}
-From some thesaurus, which I have thus far been unable to locate,  Betsy holds that \href{https://www.merriam-webster.com/dictionary/sabbatical}{sabbatical} is a synonym for vacation.  My time has been wonderfully flexible in sabbatical, and I am grateful to Betsy for understanding that sabbatical involves work, just of a different pace and nature.
-\begin{flushright}25 December 2022\end{flushright}
+From a thesaurus that I have been unable to locate,  Betsy holds that \href{https://www.merriam-webster.com/dictionary/sabbatical}{sabbatical} is a synonym for vacation.  My time has been wonderfully flexible in sabbatical, and I am grateful to Betsy for understanding that sabbatical involves work, just of a different pace and nature.
+\begin{flushright}25 December 2021\end{flushright}
 \end{frame}
 \begin{frame}{Errata}
 
@@ -30,14 +31,26 @@ Thanks for your help!
 \end{frame}
 
 \begin{frame}{Colophon}{Tools rule}
-Before I embarked on this journey, my extensive research (asking friends and colleagues on \href{https://en.wikipedia.org/wiki/Facebook}{facebook}) identified \href{https://en.wikipedia.org/wiki/Beamer_(LaTeX)}{beamer} as the package of choice for generating slides using \href{https://en.wikibooks.org/wiki/LaTeX}{\LaTeX}.
+Before I embarked on this journey, my extensive research (asking friends and colleagues on \href{https://en.wikipedia.org/wiki/Facebook}{facebook}) identified \href{https://en.wikipedia.org/wiki/Beamer_(LaTeX)}{beamer} as the package of choice for generating slides using \href{https://en.wikibooks.org/wiki/LaTeX}{\LaTeX}.  \href{https://en.wikipedia.org/wiki/Overleaf}{Overleaf} is a fantastic editor for \LaTeX, and versions are maintained using \href{https://en.wikipedia.org/wiki/Git}{git}.
 
 \begin{description}[<+->]
-  \item[beamer] allows slides to be designed to include overlays to reveal information and develop a story, without having to specify the same material repeatedly. As is typically the case with this style of authoring material, I was able to focus primarily on the content, leaving issues of formatting and display to the tools.
+  \item[beamer] allows slides to be designed to include overlays, without having to duplicate material. As is typically the case with this style of authoring material, I was able to focus primarily on the content, leaving issues of formatting and display to the tools.
   \item[\href{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}{tikz}] is a powerful package for typesetting drawings.
   \item[\href{https://ctan.org/pkg/quantikz?lang=en}{quantikz}] is a package for typesetting quantum circuits.
 \end{description}
 I wrote many macros in \TeX{} and \LaTeX{}, which I will gladly share, but without the above tools, this work would have been unnecessarily difficult.  Many thanks to those who have developed these tools.
+\end{frame}
+
+\begin{frame}{Why spend time developing these slides?}{Instead of a book}
+\begin{itemize}
+    \item I was approached about writing an introductory text for this course.
+    \item I have previously written (co-authored) \href{https://www.amazon.com/Crafting-Compiler-Charles-N-Fischer/dp/0136067050}{a book on compilers}.
+    \item I truly \href{https://www.cse.wustl.edu/~cytron/FAQ/writers.html}{enjoy writing}, and developing a text would have been satisfying.
+    \item However, I feel this material is best presented in a more animated manner.  The overlays in beamer allow me to tell a story, develop proofs, and layer the information in a way that I hope makes this information easier to learn.
+    \item As a \emph{live} document, these slides can link to material elsewhere, which is not easy to accomplish in a physical book.
+    \item Publishers still primarily make money selling physical text.
+    \item I hope you find these slides a more reasonable approach in many ways to studying and learning this material.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Gratitude}{For this space}
@@ -54,6 +67,7 @@ I wrote many macros in \TeX{} and \LaTeX{}, which I will gladly share, but witho
         \item \Indent{4em}\href{https://www.quapawtribe.com/401/Tribal-Name}{Ogaxpa} (downstream people)
         \item \href{https://en.wikipedia.org/wiki/Miami_people}{Myaamia (Miami--Illinois) Nation} (language)
         \end{itemize}
+    \item If we are remote as you read this slide, then please offer homage and gratitude, as you see fit, to those who once occupied your space.
 \end{itemize}
 \end{frame}
 \section{Instructor}

@@ -13,9 +13,6 @@
     \end{itemize}
     \item We initially investigate these ideas using photons and optical components.
     \item The \href{https://lab.quantumflytrap.com/lab}{quantum games} website is a useful and fun way to explore these ideas.
-    \begin{itemize}
-        \item A simpler antecedent of that website is \href{http://play.quantumgame.io/}{here}.
-    \end{itemize}
     
     
 \end{itemize}
@@ -392,12 +389,10 @@ where $\alpha$ and $\beta$ characterize the \emph{presence} of \textcolor{\RCone
     The amount of phase shift depends on properties of~the splitter, such as its size and material.
 \end{itemize}}%
 \only<6->{%
-\begin{TIKZP}
-\node at (0,0)
-    {\includegraphics[width=0.9\textwidth]{05/phaseshift.png}};
+\begin{Pixture}[width=0.9\textwidth]{05}{phaseshift.png}
 \node at (-1.6,2.0) { \textcolor{blue}{not reflected}};
 \node at (1.7,2.0)  { \textcolor{purple}{reflected}};
-\end{TIKZP}
+\end{Pixture}
 \begin{center}
 {\small Thanks to Rick Roesler for this plot}
 \end{center}
@@ -465,10 +460,20 @@ We will soon look at how to model this behavior mathematically.}
 
 \begin{frame}{The quantum eraser}{This material can be skipped, but you may find it interesting}
 \begin{itemize}
+    \item Treatments that may lead you to think quantum mechanics can cause time to go backwards.
+
+\begin{itemize}
     \item A \href{https://www.scientificamerican.com/article/slide-show-do-it-yourself-diy-quantum-eraser/}{do-it yourself} approach.
     \item This material from \href{https://www.physlab.org/wp-content/uploads/2016/07/machzehnder-v4.pdf}{here}
     \item PBS Space Time: \href{https://www.youtube.com/watch?v=8ORLN_KwAgs}{How the Quantum Eraser Rewrites the Past}
     \item PBS Space Time: \href{https://www.youtube.com/watch?v=2Uzytrooz44}{Quantum Eraser Lottery Challenge}
+\end{itemize}
+\item \href{https://en.wikipedia.org/wiki/Sabine_Hossenfelder}{Sabine Hossenfelder} makes this so clear.
+\begin{itemize}
+    \item \href{https://www.youtube.com/watch?v=RQv5CVELG3U}{Debunking delayed choice}
+    \item Her amazing \href{https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw}{YouTube channel}
+    \item Her \href{https://backreaction.blogspot.com/}{blog}
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -566,8 +571,8 @@ Each wave amplitude must therefore be of the form
 \def\BSG{%
 \ensuremath{\frac{1}{\sqrt{2}}
 \begin{pmatrix}
-1 & i \\
-i & 1
+1 & \NiceI \\
+\NiceI & 1
 \end{pmatrix}}}
 
 \section{Quantum gates}
@@ -582,7 +587,7 @@ i & 1
 
 \Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \visible<1->{Suppose the beam splitter is presented with a photon in superposition
-    \[\ket{\psi}=
+    \Vskip{-1em}\[\ket{\psi}=
     \visible<1->{\ralpha\textcolor{red}{\ket{0}}}
     \visible<2->{+ \bbeta\textcolor{brown}{\ket{1}}
     = \SQB{\ralpha}{\bbeta}
@@ -593,8 +598,8 @@ i & 1
     \begin{eqnarray*}
      \ket{\psi'} & = & \SQB{\ralphap{}}{\bbetap{}} \\
      \ralphap{} & = & \frac{1}{\sqrt{2}}\left(\visible<6->{\ralpha{}}
-        + \visible<7->{i\bbeta{}}\right) \\
-    \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{i\ralpha{}}
+        + \visible<7->{\NiceI\bbeta{}}\right) \\
+    \visible<8->{\bbetap{} & = & \frac{1}{\sqrt{2}}\left(\visible<9->{\NiceI\ralpha{}}
          + \visible<10->{\bbeta{}}\right)}
     \end{eqnarray*}}
 }{%
@@ -635,15 +640,15 @@ and we view the beam splitter as represented mathematically as
     \only<1-2>{
     \item We begin with the photon in state \SQB{1}{0}.}
     \only<2-3>{\item At the first beam splitter, we obtain the state
-    \[ \BSG{} \SQB{1}{0} = \frac{1}{\sqrt{2}} \SQB{1}{i}
+    \[ \BSG{} \SQB{1}{0} = \frac{1}{\sqrt{2}} \SQB{1}{\NiceI}
     \]}
     \only<3-4>{\item The mirrors flip the sense of two paths with respect to the second beam splitter.  We therefore apply a gate to swap the two components and obtain
     \[
-    \XMatrix{} \RootTwo{}\SQB{1}{i} = \RootTwo{}\SQB{i}{1}
+    \XMatrix{} \RootTwo{}\SQB{1}{\NiceI} = \RootTwo{}\SQB{\NiceI}{1}
     \]}
     \only<4-5>{\item The final beam splitter produces
     \[
-    \BSG{}\RootTwo{}\SQB{i}{1} = \frac{1}{2}\SQB{2i}{i^{2}+1} = \SQB{i}{0}
+    \BSG{}\RootTwo{}\SQB{\NiceI}{1} = \frac{1}{2}\SQB{2\NiceI}{\NiceI^{2}+1} = \SQB{\NiceI}{0}
     \]}
     \only<5>{\item The interference canceled the bottom component.    
     \alert{This explains why the bottom device never measures any photons in this setup.}
@@ -724,5 +729,3 @@ The matrix $U$ is \emph{unitary} iff $U\Conj{U}=\Conj{U}U=\Identity$}
 \end{itemize}
     
 \end{frame}
-\frame{Assignment ps1}
-\frame{Programming assignment q0}

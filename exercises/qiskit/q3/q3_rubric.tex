@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+
+\title{Q2 Grading Guide / Rubric}
+\author{CSE 468}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Autograded}: Tasks 1, 2, 3, 4A (85 points) 
+
+\noindent \textbf{Manual}: 4B (15 points)
+
+\begin{enumerate}[font=\bfseries]
+    \item (Auto, 10)
+    \begin{itemize}
+        \item 10 - correct state is returned and gates are not added to or modified in the circuit
+    \end{itemize}
+    \item (Auto, 30) $2\times15$
+    \begin{itemize}
+        \item 1 - measurements are made
+        \item 14 - correct state is achieved without using initialization
+    \end{itemize}
+    \item (Auto, 30) $2\times15$
+    The rules checker must pass for a solution to receive any credit for this question.
+    \begin{itemize}
+        \item 1 - solution passes rules checker
+        \item 4 - consistent measurements are observed for each gate; points divided among tests according to how many possibilities the oracle can be
+        \item 10 - consistent measurements are observed for each gate and they correspond to unique basis states
+    \end{itemize}
+    \item (Auto/Manual, 30) $2\times15$
+    \begin{itemize}
+        \item 3 - solution works for $
+        0\rangle$
+        \item 3 - solution works for $
+        1\rangle$
+        \item 9 - solution works for complex $
+        \Psi\rangle$
+        \item 5 - (manual) attempt is made with correct U gate parameters
+        \item 10 - (manual) solution is compatible with provided code and histogram shows desired ratio
+    \end{itemize}
+\end{enumerate}
+
+
+\end{document}

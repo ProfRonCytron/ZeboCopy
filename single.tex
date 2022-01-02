@@ -12,7 +12,7 @@
 \usepackage{bm}
 \pgfplotsset{compat=newest}
 \logo{%
-\stackbox[c][c]{\includegraphics[height=1.15cm]{logo.pdf}\\[-3pt]{\textcopyright~2021}\\{Ron K. Cytron}}}
+\stackbox[c][c]{\includegraphics[height=1.15cm]{logo.pdf}\\[-3pt]{\textcopyright~2022}\\{Ron K. Cytron}}}
 
 % \logo{\includegraphics[height=2.5cm]{logo.pdf}}
 \def\ColorR#1{\textcolor{BrickRed}{#1}}
@@ -83,7 +83,7 @@
 \def\ZMatrix{%
 \SQBG{\relax}{1}{0}{0}{-1}}
 \def\YMatrix{%
-\SQBG{\relax}{0}{-i}{i}{0}}
+\SQBG{\relax}{0}{-\NiceI}{\NiceI}{0}}
 \def\IMatrix{%
 \SQBG{\relax}{1}{0}{0}{1}}
 \def\Co#1{\mathbb{C}}
@@ -200,9 +200,9 @@
 \def\SQB#1#2{%
 \ensuremath{\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
 \def\CQB#1#2{%
-\ensuremath{\begin{pmatrix*}[r] #1 #2\end{pmatrix*}}}
+\ensuremath{\begin{pmatrix*}[r] #1\, #2\end{pmatrix*}}}
 \def\CDQB#1#2#3#4{%
-\ensuremath{\begin{pmatrix*}[r] #1 #2 #3 #4\end{pmatrix*}}}
+\ensuremath{\begin{pmatrix*}[r] #1 \, #2 \,#3 \, #4\end{pmatrix*}}}
 \def\TZPointDiam{2pt}
 \def\TZPoint#1#2#3{%
 \draw[fill=black] (#1) circle (\TZPointDiam) node[#3] {#2} ;}
@@ -235,8 +235,8 @@
 \def\ComplexDiff#1#2{\ComplexGen{#1}{#2}{-}}
 \def\ImaginaryM#1{\ComplexDiff{\relax}{#1}}
 \def\ComplexGen#1#2#3{%
-\ensuremath{#1 #3 i\relax #2}}
-\def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\Exp{\NiceI\relax#2}}}
+\ensuremath{#1 #3 \NiceI\relax #2}}
+\def\Polar#1#2{\ensuremath{#1\hbox to 0.1pt{\hss}\ExpPhase{#2}}}
 %%
 %% #1 -- lower left x
 %% #2 -- lower left y
@@ -388,7 +388,7 @@
 \Shift{2}{-2}{\RotateAroundCenter{-45}{\Mirror{}}}
 \Shift{6}{0}{\RotateAroundCenter{-45}{\Mirror{}}}
 \Shift{6}{-2}{\RotateAroundCenter{-45}{\BeamSplitter{}}}
-\Shift{8}{-2}{\Measurement[color=orange]{}}
+\Shift{8}{-2}{\Measurement[color=\RCone]{}}
 \Shift{6}{-4}{\RotateAroundCenter{-90}{\Measurement[color=\RCtwo]{}}}
 }
 \def\Shift#1#2#3{%
@@ -402,7 +402,7 @@
 \def\Vskip#1{\mbox{}\vskip #1\mbox{}}
 \def\Hskip#1{\mbox{}\hskip #1\mbox{}}
 \author{Ron K.~Cytron}
-\institute{Washington University\\Saint Louis, Missouri\\[2em] \textcopyright~2021 All rights reserved by the author}
+\institute{Washington University\\Saint Louis, Missouri\\[2em] \textcopyright~2022 All rights reserved by the author}
 \setbeamertemplate{footline}[frame number]{}
 %\setbeamertemplate{footline}[text line]{%
 %  \parbox{\linewidth}{\vspace*{-8pt}\textcopyright~2021\hfill\insertshortauthor\hfill\insertpagenumber}}
@@ -834,17 +834,31 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \end{tikzpicture}}
 \def\Indent#1{\mbox{}\hbox to #1{\hss}}
 \newenvironment{ReverseDiag}[1][scale=1.0]{%
+%%
+%% ##1 color
+%% ##2 location
+%%
+\def\BallRadius{0.45}
+\def\BBall##1##2{\fill[##1,fill opacity=0.7] ##2 circle(\BallRadius);}
 \begin{TIKZP}[#1]
     \draw[thick,draw=black,fill=gray, fill opacity=0.2] (0,0) -- ++(2,0) -- ++(0.5,-0.5) -- ++(0,-3) -- ++(-2.0,0) -- ++(-0.5,0.5) -- cycle;
-    \draw[thick,draw=black,fill=\RCone] (0.5,0) -- ++(0,1)  -- node[above right,pos=0.5] {1-in} ++(0.75,0) -- ++(0,-1) -- cycle;
-    \draw[thick,draw=black,fill=\RCtwo] (0,-0.5) -- ++(-1,0)  -- node[below left] {0-in} ++(0,-0.75) -- ++(1,0) -- cycle;
-    \draw[thick,draw=black,fill=\RCone] (0.5,-3.5) -- ++(0,-1) -- ++(0.75,0) node[below right,pos=0.5] {1-out} -- ++(0,1) -- cycle;
-    \draw[thick,draw=black,fill=\RCtwo] (2.5,-0.5) -- ++(1,0) -- ++(-0,-0.75) node[right] {0-out}-- ++ (-1,0) -- cycle;
-    \draw[thick,draw=black,fill=\RCfour] (2.5,-2.75) -- ++(1,0) -- ++(-0,-0.75) node[right] {AND-out}-- ++ (-1,0) -- cycle;
+    \draw[thick,draw=black,fill=gray] (0.5,0) -- ++(0,1)  -- node[above right,pos=0.5] {1-in} ++(1,0) -- ++(0,-1) -- cycle;
+    \draw[thick,draw=black,fill=gray] (0,-0.7) -- ++(-1,0)  -- node[below left] {0-in} ++(0,-1) -- ++(1,0) -- cycle;
+    \draw[thick,draw=black,fill=gray] (0.5,-3.5) -- ++(0,-1) -- ++(1.5,0) node[below right,pos=0.5] {1-out} -- ++(0,1) -- cycle;
+    \draw[thick,draw=black,fill=gray] (2.5,-0.7) -- ++(1,0) -- ++(-0,-0.9) node[right] {0-out}-- ++ (-1,0) -- cycle;
+    \draw[thick,draw=black,fill=\RCfour] (2.5,-1.75) -- ++(1,0) -- ++(-0,-1) node[right] {AND-out}-- ++ (-1,0) -- cycle;
 
 }{%
 \end{TIKZP}
 }
+\newenvironment{Pixture}[3][width=1.0\textwidth]{%
+\begin{TIKZP}
+\node at (0,0)
+    {\includegraphics[#1]{#2/#3}}; 
+}{%
+\end{TIKZP}
+}
+\def\KetBra#1#2{\ket{#1}\bra{#2}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}

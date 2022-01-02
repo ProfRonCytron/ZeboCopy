@@ -10,10 +10,23 @@
 \end{itemize}
 \end{frame}
 
+\section*{Reversible computations}
+
+\begin{frame}{Reversible computing \LinkArrow{https://en.wikipedia.org/wiki/Reversible_computing}}{A brief history}
+\begin{itemize}[<+->]
+    \item A process that is reversible is \href{https://en.wikipedia.org/wiki/Isentropic_process}{isentropic}.
+    \item This means that the system requires no net input of energy, and that it requires no net disposition of energy (such as heat loss).
+    \item Long ago, such systems were \href{https://en.wikipedia.org/wiki/Charles_H._Bennett_(physicist)}{studied by scientists} because they had the potential to make computations more efficient.
+    \item From a practical point of view, the energy lost by non-reversible computing is small compared to other energy losses in a computing system.
+    \item However, quantum computing requires reversible gates.
+    \item We begin with a mechanical example of an \NamedGate{and} gate, implemented using billiard balls.
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When a single ball enters at a time}
 \TwoColumns{%
-Consider the mechanical \emph{and} gate shown here.
+Consider the mechanical \NamedGate{and} gate shown here.
 \begin{itemize}
     \item<1-> A ball entering from the top
     \only<2->{will emerge from the ``1-out'' hole.}
@@ -25,41 +38,59 @@ Consider the mechanical \emph{and} gate shown here.
 \Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
 \begin{ReverseDiag}
 \visible<1-2>{%
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
-\draw<2>[->,thick,dashed] (0.85,1.25) -- ++(0,-6.25);
-\visible<2>{\fill[\RCthree,fill opacity=0.7] (.85,-5.25) circle(0.25);}}
+\visible<1>{\BBall{\RCone}{(1,1.5)}}
+\draw<2>[->,ultra thick,dashed] (1,1.25) -- ++(0,-6.5);
+\visible<2>{\BBall{\RCone}{(1,-5.75)}}}
 \visible<3-4>{%
-\visible<3>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
-\draw<4>[->,thick,dashed] (-1.5,-0.85) -- ++(5.5,0);
-\visible<4>{\fill[\RCthree,fill opacity=0.7] (4.25,-0.85) circle(0.25);}
+\visible<3>{\BBall{\RCtwo,}{(-1.75,-1.2)}}
+\draw<4>[->,ultra thick,dashed] (-1.5,-1.2) -- ++(5.5,0);
+\visible<4>{\BBall{\RCtwo,}{(4.5,-1.2)}}
 }
 \end{ReverseDiag}}
 
 }
-\only<5->{
+\visible<5->{
 \MedSkip{}No energy is put in or taken out of the system.  The ball has its own energy, maintained throughout its motion through the box.}
     
 \end{frame}
 
 \begin{frame}{The \href{https://en.wikipedia.org/wiki/Billiard-ball_computer}{billiard ball computer}}{When two balls enter simultaneously}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-Here, two balls enter, one from the top, and one from the left
+\Vskip{-3em}\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
+Here, two balls enter simultaneously, \ColorOne{one from the top}, and \ColorTwo{one from the left}
 \begin{itemize}
-    \item<1-> A ball entering from the top and a ball entering from the left at the same time
-    \only<2->{will \alert<2>{collide here}.}
-    \item<3-> They bounce internally at the same time.
-    \item<4-> One ball emerges from the ``AND-output'' chute and the other emerges from the ``1-out'' chute.
+    \item<1-> The balls' first collision \visible<2->{is here.}
+    \item<3-> They collide internally one more time.
+    \item<4-> \ColorOne{One ball} emerges from the ``AND-output'' chute, \ColorTwo{the other} from the ``1-out'' chute.
     
 \end{itemize}
 }{%
 \Vskip{-2em}\adjustbox{width=0.8\textwidth}{%
 \begin{ReverseDiag}
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (.85,1.5) circle(0.25);}
-\visible<1>{\fill[\RCthree,fill opacity=0.7] (-1.75,-0.85) circle(0.25);}
+\visible<1>{%
+\BBall{\RCone}{(1,1.5)}
+\draw[->,ultra thick,\RCone] (1,1.5) -- ++(0,-2);
+\BBall{\RCtwo,}{(-1.75,-1.2)}
+\draw[->,ultra thick,\RCtwo] (-1.75,-1.2) -- ++(2.5,0);}
+\visible<2>{%
+\BBall{\RCone}{(1,-0.5)}
+\draw[->,ultra thick,\RCone] (1,-0.5) -- ++(1.0,0) -- ++(0,-2);
+\BBall{\RCtwo}{(0.5,-1.25)}
+\draw[->,ultra thick,\RCtwo] (0.5,-1.25) -- ++(0,-1.75) -- ++(1.25,0);
+}
+\visible<3>{%
+\BBall{\RCone}{(2,-2.25)}
+\draw[->,ultra thick,\RCone] (2,-2.25) -- ++(2,0);
+\BBall{\RCtwo}{(1.5,-3)}
+\draw[->,ultra thick,\RCtwo] (1.5,-3) -- ++(0,-2);
+}
+\visible<4->{%
+\BBall{\RCone}{(4.5,-2.25)}
+\BBall{\RCtwo}{(1.5,-5.5)}
+}
 \end{ReverseDiag}}
 }
-\only<5->{
-\SmallSkip{}Again, the energy of the box remains the same throughout.\Remark{It would take energy to \emph{stop} the ball from exiting the ``1-out'' chute.}}
+\visible<5->{
+\MedSkip{}Again, the energy of the box remains the same throughout.\Remark{It would take energy to \emph{stop} the ball from exiting the ``1-out'' chute.}}
 
     
 \end{frame}
@@ -207,6 +238,8 @@ $a$ & $c$  & $a$ & \Xor{c}{a} \\ \hline
 \end{frame}
 
 \begin{frame}{Generally reversible computation}{From \Kaye{} page 14}
-\ToDo{I need help reproducing this}
+\Vskip{-4em}\begin{center}
+\begin{Pixture}[width=0.7\textwidth]{02}{kayep14fig1.6.png}
+\end{Pixture}\end{center}
     
 \end{frame}
