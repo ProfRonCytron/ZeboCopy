@@ -374,9 +374,16 @@ For a state~\QState{} that arises in a quantum system,  the above expression is 
 \begin{itemize}[<+->]
     \item States of the computational basis are orthogonal.
     \item Thus, the \emph{inner product} \braket{i}{j} is either~$1$ or~$0$, if $i=j$ or $i\not=j$, respectively.
-    \item Because \bra{i} and \ket{j} are one-hot vectors, the outer product \KetBra{i}{j} creates a matrix with a~$1$ in row~$i$ and column~$j$.  All other entries are~$0$.
+    \item Because \bra{i} and \ket{j} are one-hot vectors, the outer product \KetBra{\ColorOne{i}}{\ColorTwo{j}} creates a matrix with a~$1$ in row~$i$ and column~$j$.  All other entries are~$0$.
     \item Example
-    \[ \CDQB{0}{0}{0}{1}\DQB{0}{0}{1}{0} =\]
+    \[ \ket{\ColorOne{2}}\bra{\ColorTwo{3}}=\DQB{0}{0}{\ColorOne{1}}{0}\CDQB{0}{0}{0}{\ColorTwo{1}} =
+    \begin{pmatrix*}[r]
+    0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & \textcolor{purple}{1} \\ 0 & 0 & 0 & 0\end{pmatrix*}\]
+    \item If the entries of a matrix are $m_{\ColorOne{i},\ColorOne{j}}$ then the matrix can be written as
+    \[
+    \sum_{\ColorOne{i}}\sum_{\ColorTwo{j}} m_{\ColorOne{i},\ColorTwo{j}} \ket{\ColorOne{i}}\bra{\ColorTwo{j}} 
+    \]
 \end{itemize}
 \end{frame}
 
