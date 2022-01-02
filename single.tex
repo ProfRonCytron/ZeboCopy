@@ -202,7 +202,7 @@
 \def\CQB#1#2{%
 \ensuremath{\begin{pmatrix*}[r] #1 #2\end{pmatrix*}}}
 \def\CDQB#1#2#3#4{%
-\ensuremath{\begin{pmatrix*}[r] #1 #2 #3 #4\end{pmatrix*}}}
+\ensuremath{\begin{pmatrix*}[r] #1 & #2 &#3 & #4\end{pmatrix*}}}
 \def\TZPointDiam{2pt}
 \def\TZPoint#1#2#3{%
 \draw[fill=black] (#1) circle (\TZPointDiam) node[#3] {#2} ;}
@@ -858,6 +858,7 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }{%
 \end{TIKZP}
 }
+\def\KetBra#1#2{\ket{#1}\bra{#2}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
@@ -865,5 +866,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{07}
+\include{01}
 \end{document}

@@ -355,9 +355,50 @@ The complete bra--ket of a state \QState{} is the inner product of its bra with 
 For a state~\QState{} that arises in a quantum system,  the above expression is expected to be~$1$.}\visible<8->{  The magnitude-squared of each component is the probability of observing its corresponding bit pattern on measurement.}\visible<9->{  In this example, we would see~\ColorOne{00} or~\ColorFour{11} with probability $\frac{1}{3}$}\visible<10->{, and see~\ColorTwo{01} or~\ColorThree{10} with probability $\frac{1}{6}$.}
 \end{frame}
 
+
+\section*{Outer products}
+
 \begin{frame}{Outer products}
-If we instead multiply a ket--bra pair, we obtain an \href{https://en.wikipedia.org/wiki/Outer_product}{outer product}.
-Outer products define a matrix based on where it sends basis vectors.  Suppose we want to build a quantum \emph{not} gate (Pauli \PauliX):
+\begin{itemize}
+    \item If we instead multiply a ket--bra pair, we obtain an \href{https://en.wikipedia.org/wiki/Outer_product}{outer product}.
+    \item Outer products can be used to generate matrices from vectors.
+    \item We look at two such uses of outer products:
+    \begin{itemize}
+        \item Building a gate using outer products, based on where we want to send basis vectors
+        \item Decomposing an arbitrary matrix using outer products
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Outer products of computational-basis vectors}{These generate a useful matrix}
+\begin{itemize}[<+->]
+    \item States of the computational basis are orthogonal.
+    \item Thus, the \emph{inner product} \braket{i}{j} is either~$1$ or~$0$, if $i=j$ or $i\not=j$, respectively.
+    \item Because \bra{i} and \ket{j} are one-hot vectors, the outer product \KetBra{i}{j} creates a matrix with a~$1$ in row~$i$ and column~$j$.  All other entries are~$0$.
+    \item Example
+    \[ \CDQB{0}{0}{0}{1}\DQB{0}{0}{1}{0} =\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recalling the behavior of the computational basis}{A basis vector selects a given column or row of a matrix}
+\begin{itemize}[<+->]
+    \item Define \bra{i} as a \href{https://en.wikipedia.org/wiki/One-hot}{one-hot} vector, with a~$1$ in entry~$i$ and zeros elsewhere.  
+    
+    For example, in a 3-qubit system, $\bra{6} = (0\ 0\ 0\ 0\ 0\ 0\ 1\ 0)$.  
+    
+    In binary notation, this state is \bra{110}.
+    \item Define \ket{i} similarly, as the analogous column vector.
+    \item Consider an $n$-qubit system with an operator $U$: a $2^{n}\times 2^{n}$ matrix.
+    \item Then $U\ket{i}$ returns column $i$ of $U$ by selection in the product.
+    \item Example:
+    \[ \CNOTMatrix\ket{2} = \CNOTMatrix\DQB{0}{0}{1}{0} = \DQB{0}{0}{0}{1}\]
+    \item Similarly, $\bra{i}U$ returns row~$i$ of $U$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Building a gate using outer products}{An example: the \PauliX{} gate}
+
+Suppose we want to build a quantum \emph{not} gate (Pauli \PauliX):
 \begin{itemize}
     \item<2-> \ColorThree{\ket{0}} maps to \ColorOne{\ket{1}}
     \item<3-> \ColorThree{\ket{1}} maps to \ColorTwo{\ket{0}}
