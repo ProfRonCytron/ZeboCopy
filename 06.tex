@@ -45,7 +45,7 @@ We next examine a more concise and visually compelling definition of a qubit.
     \item Write $\alpha = r_{a}\left(\cos\theta_{a}+\NiceI \sin\theta_{a}\right) = \Polar{r_{a}}{\theta_{a}}$
     \item Write $\beta = r_{b}\left(\cos\theta_{b}+\NiceI \sin\theta_{b}\right) = \Polar{r_{b}}{\theta_{b}}$
     \item Then \begin{eqnarray*} \ket{\psi} & = & \Polar{r_{a}}{\theta_{a}}\ket{0} + \Polar{r_{b}}{\theta_{b}}\ket{1} \\
-    & = & \visible<1>{\Exp{i \theta_{a}}}\left( \alert<4>{r_{a}}\ket{0} + \Polar{\alert<4>{r_{b}}}{
+    & = & \visible<1>{\ExpPhase{\theta_{a}}}\left( \alert<4>{r_{a}}\ket{0} + \Polar{\alert<4>{r_{b}}}{
     \only<1-2>{(\theta_{b}-\theta_{a})}
     \only<3->{\alert<4>{\phi}}
     }\ket{1} \right)
@@ -66,7 +66,7 @@ We next examine a more concise and visually compelling definition of a qubit.
 \begin{frame}{Can we do better?}{Yes!  It takes only two real parameters to denote the state of one qubit}
 \begin{itemize}
    \item We start with three real parameters:
-   \( \ket{\psi}= r_{a}\left( \ket{0} + r_{b}\Exp{i \phi}\ket{1}\right) \)
+   \( \ket{\psi}= r_{a}\left( \ket{0} + r_{b}\ExpPhase{\phi}\ket{1}\right) \)
    \item We have not yet accounted for the unit nature of \ket{\psi}.   
    \item We require $r_{a}^{2}+r_{b}^{2}=1$ which implies \And{r_{a}^{2} \leq 1}{r_{b}^{2} \leq 1}. 
    \item We can show $\Implies{x^{2}\leq 1}{-1 \leq x \leq 1}$.
