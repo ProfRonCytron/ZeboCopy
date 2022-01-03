@@ -272,7 +272,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 
 \begin{frame}{Entangling two qubits}{We use gates we have studied to create an interesting quantum state}
 
-\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
+\TwoUnequalColumns{0.32\textwidth}{0.68\textwidth}{%
 \adjustbox{valign=t}{\begin{quantikz}
 \lstick{\QZero{}}\slice{\alert<1>{\QState{0}}} &  \gate{H}\slice{\alert<2-5>{\QState{1}}} & \ctrl{1}\slice{\alert<7-8>{\QState{2}}} & \meter{\textcolor<8->{red}{0/1}}\\
 \lstick{\QZero{}} &   \qw    &  \targ{}  & \meter{\textcolor<8->{red}{0/1}}
@@ -286,7 +286,7 @@ We can do this because the qubits are acting independently at this point.  This 
 \Vskip{-2.5em}\begin{itemize}
     \item<1-> As before, our initial state $\QState{0}=\ket{00}=\DQB{1}{0}{0}{0}$
     \only<2-3>{%
-    \item<2-> To compute the state here, we can tensor the \Hadamard{} and \Identity{} gates, obtaining
+    \item<2-> To compute the state here, we can tensor the~\Hadamard{} and~\Identity{} gates, obtaining
     $\RootTwo{}\begin{pmatrix*}[r]
         1 & 0 & 1 & 0 \\
         0 & 1 & 0 & 1 \\
