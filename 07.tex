@@ -286,8 +286,8 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
 \only<1-7>{%
 \Vskip{-3.5em}\begin{itemize}[<+->]
     \item \href{https://en.wikipedia.org/wiki/Richard_Feynman}{Richard Feynman} gave \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{this famous lecture} in 1982, six years before his death, asking how quantum mechanics could be simulated on a classical computer.  That \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{link} includes a paper based on his talk, published in 1986.
-    \item The (column-vector) representation of a quantum system grows exponentially in the number of qubits.
-    \item Some of those systems are entangled, requiring a separate accounting of each of~$2^n$ possible measurements.
+    \item The (column-vector) representation of an $n$-qubit quantum system grows exponentially in the number of qubits.
+    \item Some of those systems are \href{https://en.wikipedia.org/wiki/Quantum_entanglement}{entangled}, requiring a separate accounting of each of the~$2^n$ possible measurements.
     \item A classical computer cannot efficiently simulate such systems.  For example, the \href{https://quantum-computing.ibm.com/lab/docs/iql/manage/simulator/}{IBM quantum simulators} currently limit programs to $32$~qubits.
     \item At $300$~qubits we exceed the number of atoms in the known universe.
     \item Feynman proposed that a programmable quantum computer could simulate quantum mechanics itself.  This would be nice for physicists.
@@ -303,7 +303,7 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
 \end{itemize}}
 \only<13->{%
 \begin{itemize}
-    \item<13-> Can quantum circuits be similarly created?  For example
+    \item<13-> Can quantum circuits be similarly created?  For example$\ldots$
     \item<14-> Does entangling $n$~qubits require \ColorOne{one large gate}?
     \adjustbox{scale=0.8,valign=m}{\begin{GateBox}{2}{2}{4}
       \Input{0}{$q_{1}$}
@@ -327,11 +327,14 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
 \end{itemize}}
 \end{frame}
 
+\begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+
+\end{frame}
+
 \begin{frame}{Some theoretical results}{From \Kaye{}}
 \end{frame}
 
 \begin{frame}{Universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
 
-
-    
 \end{frame}
