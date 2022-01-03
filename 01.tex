@@ -380,7 +380,7 @@ For a state~\QState{} that arises in a quantum system,  the above expression is 
     \item Define \ket{i} similarly, as the analogous column vector.
     \item Thus, the \emph{inner product} \braket{i}{j} is either~$1$ or~$0$, if $i=j$ or $i\not=j$, respectively.
     \item Because \bra{i} and \ket{j} are one-hot vectors, the outer product \KetBra{\ColorOne{i}}{\ColorTwo{j}} creates a matrix with a~$1$ in row~$i$ and column~$j$.  All other entries are~$0$:
-    \[ \ket{\ColorOne{2}}\bra{\ColorTwo{3}}=\DQB{0}{0}{\ColorOne{1}}{0}\CDQB{0}{0}{0}{\ColorTwo{1}} =
+    \[ \KetBra{\ColorOne{2}}{\ColorTwo{3}}=\DQB{0}{0}{\ColorOne{1}}{0}\CDQB{0}{0}{0}{\ColorTwo{1}} =
     \begin{pmatrix*}[r]
     0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
     0 & 0 & 0 & \textcolor{Purple}{\fbox{1}} \\ 0 & 0 & 0 & 0\end{pmatrix*}\]
