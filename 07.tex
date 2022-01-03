@@ -278,11 +278,22 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
     \item It turns out we can do that efficiently to a desired degree of accuracy.
     \item We were able to implement Boolean logic using only the \NamedGate{NAND} gate.
     \item What operations are needed to realize the approximation of a quantum gate?
+    \item We return to this general question after moving beyond one qubit.
 \end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{Universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
+\begin{frame}{Single qubit universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
+
+\TwoColumns{%
+Consider a one-qubit gate:
+\begin{align*}
+U =& \SQBG{}{\ColorOne{u_{0,0}}}{\ColorTwo{u_{0,1}}}{\ColorThree{u_{1,0}}}{\ColorFour{u_{1,1}}}\\
+=\ & \ColorOne{u_{0,0}}\KetBra{0}{0} + \ColorTwo{u_{0,1}}\KetBra{0}{1} \\
+ + &\ColorThree{u_{1,0}}\KetBra{1}{0} + \ColorFour{u_{1,1}}\KetBra{1}{1}
+\end{align*}
+}{%
+}
 
 \end{frame}
