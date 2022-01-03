@@ -267,6 +267,38 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
    \item The qiskit environment offers the \href{https://qiskit.org/documentation/stubs/qiskit.circuit.library.UGate.html}{\NamedGate{U}} gate, which is compiled into the necessary actions on a quantum device to realize the gate.
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Building an actual quantum gate}{This turns out to be impossible, but we shouldn't let that stop us}
+\begin{itemize}[<+->]
+    \item We can specify a gate mathematically using three \href{https://en.wikipedia.org/wiki/Real_number}{real} parameters $0 \leq \theta,\phi,\lambda < 2\pi$.  So that's nice, but how do we build a gate?
+    \item Suppose a device existed that could realize such a gate.  How would we communicate the three parameters to that device?
+    \item The reals are \href{https://en.wikipedia.org/wiki/Uncountable_set}{uncountable} (thanks, \href{https://en.wikipedia.org/wiki/Irrational_number}{irrationals}), so there is no way to express all possible values for the parameters in any language. The number of possible values exceeds the capacity of any naming convention.
+    \item The best we can hope to do is to \emph{approximate} a quantum gate.
+    \item It turns out we can do that efficiently to a desired degree of accuracy.
+    \item We were able to implement Boolean logic using only the \NamedGate{NAND} gate.
+    \item What operations are needed to realize the approximation of a quantum gate?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The programmable quantum computer}{Some background, with thanks to \href{http://www.thomaswong.net/}{Tom Wong} \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+\only<1-7>{%
+\begin{itemize}[<+->]
+    \item \href{https://en.wikipedia.org/wiki/Richard_Feynman}{Richard Feynman} gave \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{this famous lecture} in 1982, six years before his death, asking how quantum mechanics could be simulated on a classical computer 
+    \item That \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{link} includes a paper based on his talk, published in 1986.
+    \item The (column-vector) representation of a quantum system grows exponentially in the number of qubits.
+    \item Some of those systems are entangled, requiring a separate accounting of each of~$2^n$ possible measurements.
+    \item A classical computer cannot efficiently simulate such systems.  For example, the \href{https://quantum-computing.ibm.com/lab/docs/iql/manage/simulator/}{IBM quantum simulators} currently limit programs to $32$~qubits.
+    \item Feynman proposed that a programmable quantum computer could simulate quantum mechanics itself.  This would be nice for physicists.
+    \item We computer scientists are interested more generally in the kinds of problems such devices can solve efficiently.
+\end{itemize}}
+\only<8->{%
+\begin{itemize}
+    \item<8-> A \href{https://en.wikipedia.org/wiki/Quantum_Turing_machine}{quantum Turing machine} has been defined to reason about actions a quantum computer can take in a single step.
+    \item<9-> Problems that are undecidable, such as the halting problem, remain so even on a quantum computer.
+    \item<10-> Here we are more interested in the theory supporting the construction of a programmable quantum computer whose gates realize quantum operators approximately and well.
+\end{itemize}}
 
     
 \end{frame}
