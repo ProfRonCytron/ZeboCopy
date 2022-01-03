@@ -303,10 +303,26 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
 \end{itemize}}
 \only<13->{%
 \begin{itemize}
-    \item<13-> Can quantum circuits be similarly created?
-    \item<14-> For example, we will soon study the simple circuit that creates an entangled pair of qubits.  To spread the entanglement to other qubits, is a larger physical gate needed?
+    \item<13-> Can quantum circuits be similarly created?  For example
+    \item<14-> Does entangling $n$~qubits require \ColorOne{one large gate}?
+    \adjustbox{scale=0.8,valign=m}{\begin{GateBox}{2}{2}{4}
+      \Input{0}{$q_{1}$}
+      \Input{1}{$q_{2}$}
+      \Input{2}{\RVDots{}}
+      \Input{3}{$q_{n}$}
+      \BoxLabel{\ColorOne{Engtangler?}}
+      \Output{0}{$q_{1}$}
+      \Output{1}{$q_{2}$}
+      \Output{2}{\RVDots{}}
+      \Output{3}{$q_{n}$}
+    \end{GateBox}}
     
-    \item<15-> It turns out we \emph{can} create an arbitrarily large number of entangled qubits using (a linear amount of) fixed-size circuitry.
+    \item<15-> Or can we build it from \ColorTwo{smaller components}?
+    \adjustbox{scale=0.7}{\begin{quantikz}
+    \lstick{$q_1$} & \gate[wires=2]{\ColorTwo{E}} & \qw & \qw \\
+    \lstick{$q_2$} & & \gate[wires=2]{\ColorTwo{E}} & \qw\\
+    \lstick{$q_3$} &\qw & & \qw
+    \end{quantikz}}
     \item<16-> More generally, what kinds of components are needed to develop a programmable quantum device?
 \end{itemize}}
 \end{frame}
