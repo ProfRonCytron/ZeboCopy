@@ -589,6 +589,60 @@ U(\ket{+}) =
     
 \end{frame}
 
+\begin{frame}{The programmable quantum computer}{Some background, with thanks to \href{http://www.thomaswong.net/}{Tom Wong} \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+\only<1-7>{%
+\Vskip{-3.5em}\begin{itemize}[<+->]
+    \item \href{https://en.wikipedia.org/wiki/Richard_Feynman}{Richard Feynman} gave \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{this famous lecture} in 1982, six years before his death, asking how quantum mechanics could be simulated on a classical computer.  That \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{link} includes a paper based on his talk, published in 1986.
+    \item The (column-vector) representation of an $n$-qubit quantum system grows exponentially in the number of qubits.
+    \item Some of those systems are \href{https://en.wikipedia.org/wiki/Quantum_entanglement}{entangled}, requiring a separate accounting of each of the~$2^n$ possible measurements.
+    \item A classical computer cannot efficiently simulate such systems.  For example, the \href{https://quantum-computing.ibm.com/lab/docs/iql/manage/simulator/}{IBM quantum simulators} currently limit programs to $32$~qubits.
+    \item At $300$~qubits we exceed the number of atoms in the known universe.
+    \item Feynman proposed that a programmable quantum computer could simulate quantum mechanics itself.  This would be nice for physicists.
+    \item We computer scientists are interested more generally in the kinds of problems such devices can solve efficiently.
+\end{itemize}}
+\only<8-12>{%
+\begin{itemize}
+    \item<8-> A \href{https://en.wikipedia.org/wiki/Quantum_Turing_machine}{quantum Turing machine} has been defined to reason about actions a quantum computer can take in a single step.
+    \item<9-> Problems that are undecidable, such as the halting problem, remain so even on a quantum computer.  No magic there.
+    \item<10-> Here we are more interested in the theory supporting the construction of a programmable quantum computer whose components approximately realize quantum gates, expressed as we have studied.
+    \item<11-> That theory must support development of arbitrarily large quantum system from components that accommodate a fixed number of qubits.
+    \item<12-> For example, Boolean logic of arbitrary size can be constructed using only \NamedGate{NAND} gates.
+\end{itemize}}
+\only<13->{%
+\begin{itemize}
+    \item<13-> Can quantum circuits be similarly created?  For example$\ldots$
+    \item<14-> Does entangling $n$~qubits require \ColorOne{one large gate}?
+    \adjustbox{scale=0.8,valign=m}{\begin{GateBox}{2}{2}{4}
+      \Input{0}{$q_{1}$}
+      \Input{1}{$q_{2}$}
+      \Input{2}{\RVDots{}}
+      \Input{3}{$q_{n}$}
+      \BoxLabel{\ColorOne{Engtangler?}}
+      \Output{0}{$q_{1}$}
+      \Output{1}{$q_{2}$}
+      \Output{2}{\RVDots{}}
+      \Output{3}{$q_{n}$}
+    \end{GateBox}}
+    
+    \item<15-> Or can we build it from \ColorTwo{smaller components}?
+    \adjustbox{scale=0.7}{\begin{quantikz}
+    \lstick{$q_1$} & \gate[wires=2]{\ColorTwo{E}} & \qw & \qw \\
+    \lstick{$q_2$} & & \gate[wires=2]{\ColorTwo{E}} & \qw\\
+    \lstick{$q_3$} &\qw & & \qw
+    \end{quantikz}}
+    \item<16-> More generally, what kinds of components are needed to develop a programmable quantum device?
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+
+\end{frame}
+
+\begin{frame}{Some theoretical results}{From \Kaye{}}
+\end{frame}
+
 \begin{frame}{Summary}{What have we learned?}
 
 \begin{itemize}[<+->]
@@ -597,7 +651,7 @@ U(\ket{+}) =
   \item Others are entangled, and no  tensor-factoring of such states is possible.
   \item We cannot hope in general to clone an arbitrary, unknown quantum state.
   \item This has serious implications for fault tolerance.  Classically we can use redundancy to overcome faults, but in quantum computing we cannot duplicate an unknown state.
+  \item We can build a quantum computer out of fixed, small components that approximates quantum gates to a desired level of precision.
 \end{itemize}
     
 \end{frame}
-\frame{Assignment ps3}
