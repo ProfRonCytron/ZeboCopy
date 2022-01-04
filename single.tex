@@ -53,11 +53,11 @@
 \def\CNOT#1#2{%
 \ensuremath{\NamedGate{CNOT}(#1,#2)}}
 \def\CNOTMatrix{%
-\begin{pmatrix*}[r]
+\ensuremath{\begin{pmatrix*}[r]
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0\end{pmatrix*}%
+0 & 0 & 1 & 0\end{pmatrix*}}%
 }
 \def\CCNOT#1#2#3{%
 \ensuremath{\mbox{\NamedGate{CNOT}}(#1,#2,#3)}}
