@@ -630,8 +630,14 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
     \QState{} &= \QZero{} &\mbox{ with probability 0.5} \\
     &= \QOne{} &\mbox{ with probability 0.5}
 \end{align*}}}
-}
-\visible<4->{\Vskip{-2em}The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+}%
+\Vskip{-3.5em}
+\only<3>{%
+
+These states are indeed different.  Consider applying \Hadamard{} to the \ColorOne{left photon}.  You will get \QZero{}.  But applying \Hadamard{} to the \ColorTwo{right photon} yields \ket{+} or \ket{-}, each with probability~0.5.}%
+\only<4->{
+
+The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
     
 \end{frame}
 
