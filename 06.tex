@@ -615,7 +615,7 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \begin{TIKZP}[scale=1.0]
 \visible<1->{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
 \end{TIKZP}\end{center}
-\visible<2->{\[\QState{} = \QPlus{}\]}
+\visible<2->{\ColorOne{\[\QState{} = \QPlus{}\]}}
 }{%
 \begin{center}
 \begin{TIKZP}[scale=0.64]
@@ -626,12 +626,12 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \visible<1->{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<1->{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}\end{center}
-\visible<3->{\Vskip{-3em}\begin{align*}
+\visible<3->{\Vskip{-3em}\ColorTwo{\begin{align*}
     \QState{} &= \QZero{} &\mbox{ with probability 0.5} \\
     &= \QOne{} &\mbox{ with probability 0.5}
-\end{align*}}
+\end{align*}}}
 }
-\visible<4->{\Vskip{-2em}The left state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The right state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the right state is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+\visible<4->{\Vskip{-2em}The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
     
 \end{frame}
 
