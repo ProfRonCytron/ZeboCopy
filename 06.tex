@@ -609,13 +609,13 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \end{frame}
 
 \begin{frame}{Interior points of the Bloch sphere}{Representing mixed states}
-\Vskip{-2.2em}We now draw a distinction between the following two scenarios.  \visible<2->{On the left, we have an unpolarized photon.}  \visible<3->{On the right, we have a photon that is randomly polarized horizontally or vertically.}
+\Vskip{-2.2em}We now draw a distinction between the following two scenarios.  \visible<2->{On the left, we have an unpolarized photon.}  \visible<3->{On the right, we have a photon that is passed randomly through a horizontal or vertical polarizing filter.}
 \Vskip{-3em}\TwoColumns{%
 \begin{center}
 \begin{TIKZP}[scale=1.0]
 \visible<1->{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
 \end{TIKZP}\end{center}
-\visible<2->{\[\QState{} = \QPlus{}\]}
+\visible<2->{\ColorOne{\[\QState{} = \QPlus{}\]}}
 }{%
 \begin{center}
 \begin{TIKZP}[scale=0.64]
@@ -626,12 +626,18 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \visible<1->{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \visible<1->{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
 \end{TIKZP}\end{center}
-\visible<3->{\Vskip{-3em}\begin{align*}
+\visible<3->{\Vskip{-3em}\ColorTwo{\begin{align*}
     \QState{} &= \QZero{} &\mbox{ with probability 0.5} \\
     &= \QOne{} &\mbox{ with probability 0.5}
-\end{align*}}
-}
-\visible<4->{\Vskip{-2em}The left state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The right state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the right state is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+\end{align*}}}
+}%
+\Vskip{-3.5em}
+\only<3>{%
+
+These states are indeed different.  Consider applying \Hadamard{} to the \ColorOne{left photon}.  You will get \QZero{}.  But applying \Hadamard{} to the \ColorTwo{right photon} yields \ket{+} or \ket{-}, each with probability~0.5.}%
+\only<4->{
+
+The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
     
 \end{frame}
 
