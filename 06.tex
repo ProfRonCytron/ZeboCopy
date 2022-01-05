@@ -608,6 +608,33 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \visible<4>{\alert<4>{Given a state with real amplitudes ($\phi=0$ on the Bloch sphere), this rotation shifts probability between \ket{0} and \ket{1} while keeping the amplitudes real.}}
 \end{frame}
 
+\begin{frame}{Interior points of the Bloch sphere}{Representing mixed states}
+\Vskip{-2.2em}We now draw a distinction between the following two scenarios.  \visible<2->{On the left, we have an unpolarized photon.}  \visible<3->{On the right, we have a photon that is randomly polarized horizontally or vertically.}
+\Vskip{-3em}\TwoColumns{%
+\begin{center}
+\begin{TIKZP}[scale=1.0]
+\visible<1->{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\end{TIKZP}\end{center}
+\visible<2->{\[\QState{} = \QPlus{}\]}
+}{%
+\begin{center}
+\begin{TIKZP}[scale=0.64]
+\visible<1->{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<1->{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<1->{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}\end{center}
+\visible<3->{\Vskip{-3em}\begin{align*}
+    \QState{} &= \QZero{} &\mbox{ with probability 0.5} \\
+    &= \QOne{} &\mbox{ with probability 0.5}
+\end{align*}}
+}
+\visible<4->{\Vskip{-2em}The left state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The right state is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the right state is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+    
+\end{frame}
+
 \begin{frame}{Summary}
 
 \begin{itemize}
@@ -619,5 +646,6 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
         \item The \PauliX{}, \PauliY{}, and \PauliZ{} gates rotate state by $\pi$ radians about their respective axes.
     \end{itemize}
     \item There are matrices that describe arbitrary rotations about the Bloch axes. 
+    \item Interior points of the Bloch sphere represent mixed states.
 \end{itemize}
 \end{frame}
