@@ -4,3 +4,23 @@
 
 
 
+\begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+\Vskip{-2em}Using \href{https://www.youtube.com/watch?v=LVIaZSYLwtE}{calculatus eliminatus} we first considers sets of gates that \emph{cannot} work:
+\begin{description}
+\item<1->[no superposition]  The gate set \Set{\NamedGate{CNOT}} cannot create superposition on its own.  \only<1>{It maps basis states to other basis states, but cannot introduce superposition where there was none before. \begin{center}\CNOTMatrix\end{center}}
+\item<2->[no entanglement]  The set \Set{\Hadamard} creates superpositions, but not entanglement.\only<2>{  Any gate that operates only a single qubit cannot create entanglement.}
+\item<3->[no phasing]  \Set{\NamedGate{CNOT},\Hadamard} cannot introduce phase.\only<3>{ These gates create superpositions and entanglement, but given real inputs they can create only real outputs. A gate must be able to create \emph{complex outputs} from real inputs to introduce phase.}
+\item<4->[the stabilizer gates] \Set{\NamedGate{CNOT},\Hadamard,\NamedGate{S}} is not universal, where $\NamedGate{S}=\SQBG{}{1}{0}{0}{\NiceI}$.  This  set includes the \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Phase_shift_gates}{phase gate} \NamedGate{S}, so it has none of the above deficiencies, but it is not universal.  \only<4>{The \href{https://en.wikipedia.org/wiki/Gottesman\%E2\%80\%93Knill_theorem}{Gottesman--Knill theorem} proves that circuits comprised of these gates can be simulated classically in polynomial time, so they cannot capture problems for which quantum gives exponential speedup over classical computing.  We study this later.}
+
+\end{description}
+
+\end{frame}
+
+\begin{frame}{A simple, universal set of gates}{}
+\begin{itemize}
+    \item \Set{\CCNOT, \Hadamard, \NamedGate{P}} is a universal set of gates.
+    \item We can drop the \NamedGate{P} from the set if we keep track of the complex part of a state using an extra qubit
+\end{itemize}
+    
+\end{frame}

@@ -637,9 +637,9 @@ U(\ket{+}) =
 
 \begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
 
-Using \href{https://www.youtube.com/watch?v=LVIaZSYLwtE}{calculatus eliminatus} we first examine requirements and sets of gates that fail to meet those requirements:
+Using \href{https://www.youtube.com/watch?v=LVIaZSYLwtE}{calculatus eliminatus} we eliminate sets of gates that cannot work:
 \begin{description}
-\item[superposition]  The gate set \Set{\NamedGate{CNOT}} cannot create superposition on its own.  The gate (matrix) simply maps basis states to other basis states. \CNOTMatrix
+\item<1->[no superposition]  The gate set \Set{\NamedGate{CNOT}} cannot create superposition on its own.  The gate (matrix) simply maps basis states to other basis states. \only<1>{\begin{center}\CNOTMatrix\end{center}}
 
 \end{description}
 
