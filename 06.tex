@@ -641,6 +641,29 @@ The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#
     
 \end{frame}
 
+\begin{frame}{The Bloch sphere}{Inside and out}
+\TwoColumns{%
+\begin{itemize}[<+->]
+    \item A pure state can be written as a single wave function equation.  
+    \item Such states are found on the surface of the Bloch sphere.
+    \item A mixed state is a probability distribution of pure states.  
+    \item The vector sum of those states from the sphere center, each weighted by its probability in the mixture, locates the state \ColorOne{somewhere inside} the Bloch sphere.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{BlochSphere}[scale=1.2]{60}{115}
+    \only<4>{%
+    \fill[ball color = \RCone, opacity = 1.0] (0,0,0) circle (1cm);
+    }
+    \end{BlochSphere}
+\end{center}
+\visible<5->{%
+\BigSkip{}
+Thus, a mixed state of just a single pure state is located on the sphere's surface. 
+}
+}
+\end{frame}
+
 \begin{frame}{Summary}
 
 \begin{itemize}
