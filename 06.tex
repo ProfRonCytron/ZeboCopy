@@ -637,23 +637,24 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 These states are indeed different.  Consider applying \Hadamard{} to the \ColorOne{left photon}.  You will get \QZero{}.  But applying \Hadamard{} to the \ColorTwo{right photon} yields \ket{+} or \ket{-}, each with probability~0.5.}%
 \only<4->{
 
-The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum from the origin of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
     
 \end{frame}
 
 \begin{frame}{The Bloch sphere}{Inside and out}
 \TwoColumns{%
 \begin{itemize}[<+->]
-    \item A pure state can be written as a single wave function equation.  
+    \item A \ColorOne{pure state} can be written as a single wave function equation.  
     \item Such states are found on the surface of the Bloch sphere.
-    \item A mixed state is a probability distribution of pure states.  
-    \item The vector sum of those states from the sphere center, each weighted by its probability in the mixture, locates the state \ColorOne{somewhere inside} the Bloch sphere.
+    \item A \ColorTwo{mixed state} is a probability distribution of pure states.  
+    \item The vector sum of those states from the sphere center, each weighted by its probability in the mixture, locates the state \ColorTwo{somewhere inside} the Bloch sphere.
 \end{itemize}
 }{%
 \begin{center}
     \begin{BlochSphere}[scale=1.2]{60}{115}
-    \only<4>{%
-    \fill[ball color = \RCone, opacity = 1.0] (0,0,0) circle (1cm);
+    \visible<2>{\draw[ball color = \RCone, opacity = 0.5] (0,0,0) circle (1cm);}
+    \visible<4>{%
+    \fill[ball color = \RCtwo, opacity = 1.0] (0,0,0) circle (1cm);
     }
     \end{BlochSphere}
 \end{center}
