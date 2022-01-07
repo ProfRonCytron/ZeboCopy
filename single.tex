@@ -640,6 +640,8 @@
 \end{tikzpicture}%
 }%
 \def\SCirc{\FCirc{0.3}}%
+\def\CFCirc#1{%
+  \textcolor{#1}{\FCirc{0.30}}}
 \newenvironment{BBKey}[0]{%
 \def\STD{%
 \begin{tikzpicture}[scale=0.35]%
@@ -684,8 +686,6 @@ Basis & 0 & 1 \\
 }{%
 \relax%
 }
-\def\CFCirc#1{%
-  \textcolor{#1}{\FCirc{0.30}}}
 \def\Agree{%
   \textcolor{green}{\FCirc{0.30}}}%
 \def\DisAgree{%
