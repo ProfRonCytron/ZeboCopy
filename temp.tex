@@ -40,23 +40,26 @@
 \end{description}
 \end{frame}
 {
-\def\CC{\CFCirc{\RCone}}
+\def\CC{\alt<3>{$0$}{\CFCirc{\RCone}}}
+\def\CD{\alt<3>{\CFCirc{\RCtwo}}{\CFCirc{\RCone}}}
+\def\CE{\alt<3>{$1$}{\CFCirc{\RCone}}}
 \begin{frame}{Two-level quantum systems are exact and universal}{We do not need quantum gate with more than 2 inputs and outputs}
 
 \TwoColumns{%
 \begin{itemize}
     \item We begin with a quantum gate for an~$n$~qubit system.
     \item Conceptually this can be viewed as a~$2^{n}\times2^{n}$ matrix~$U$.
-    \item We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ to a form where it also operates only on $2$~qubits.
+    \item We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ \ColorTwo{to a form} where it also operates only on $2$~qubits.
 \end{itemize}
 }{%
-\only<2>{
+
 \[2^{n}\begin{pmatrix*}
- \CC & \CC &  \CC & \cdots& \CC \\
- \CC & \CC &  \CC & \cdots& \CC \\
- \CC & \CC &  \CC & \cdots& \CC \\
- \RVDots & \RVDots & \RVDots  & \RVDots & \RVDots \\
- \CC & \CC & \CC & \cdots& \CC
-\end{pmatrix*}\]}
+ \CE & \CC &  \CC & \cdots& \CC & \CC \\
+ \CC & \CE &  \CC & \cdots& \CC & \CC \\
+ \CC & \CC &  \CE & \cdots& \CC & \CC \\
+ \RVDots & \RVDots & \RVDots  & \RVDots & \RVDots  & \RVDots\\
+ \CC & \CC &  \CC & \cdots& \CD & \CD \\
+ \CC & \CC & \CC & \cdots& \CD & \CD
+\end{pmatrix*}\]
 }
 \end{frame}}
