@@ -18,27 +18,33 @@
     
 \end{frame}
 
-\section{Classical version}
+\section*{Classical version}
 
 \begin{frame}{The classical EV bomb}{Based on our previous interferometer}
 
 \Vskip{-3em}\TwoUnequalColumns{0.5\hsize}{0.5\hsize}{%
-\Vskip{-3em}\begin{itemize}
     \only<1>{%
+    \begin{itemize}
     \item Recall that the wave of a photon reflected twice in this diagram is shifted by $\pi$ radians.
     \item The resulting interference cancels any chance of measuring the photon at the
-    \textcolor{\RCtwo}{blue} sensor.}
+    \textcolor{\RCtwo}{blue} sensor.
+    \end{itemize}}%
     \only<2>{%
+    \begin{itemize}
     \item If we obstruct the bottom path as shown here, the interference cannot occur.  There are thus three possibilities.
     \begin{itemize}
         \item The photon is measured at the obstruction, which will occur $1/2$ the time.
         \item The photon is measured after passing through the first beam splitter.  From there it reaches either the \textcolor{orange}{orange} sensor or the \textcolor{\RCtwo}{blue} sensor.
     \end{itemize}
-    }
-    \only<3-5>{%
+    \end{itemize}
+    }%
+    \only<3-4>{%
+    \begin{itemize}
     \item Suppose the obstruction is a photon-activated bomb.  
-    \item<4-> If the photon is measured by the bomb, then it explodes, and the world as we know it ceases to exist.}
-    \only<5->{
+    \item<4-> If the photon is measured by the bomb, then it explodes, and the world as we know it ceases to exist.
+    \end{itemize}}%
+    \only<5->{%
+    \begin{itemize}
     \item With the bomb present:
     \begin{center}
     \begin{tabular}{lc}
@@ -58,8 +64,7 @@
      \end{tabular}
      \end{center}
      \item<6-> This is a bomb detection device!
-    }
-\end{itemize}
+    \end{itemize}}%
 }{%}
 \begin{TIKZP}[scale=0.7]
 \MZ{}
@@ -147,7 +152,7 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
   
 \end{frame}
 
-\section{Better version}
+\section*{Better version}
 
 \begin{frame}{A more careful approach}{An algorithm with arbitrarily high likelihood of detecting the bomb with no explosion}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
@@ -269,7 +274,7 @@ We will properly determine $\theta$ so that after $n$ rotations we either will s
 }
 \end{frame}
 
-\section{Analysis}
+\section*{Analysis}
 
 {%
 \def\ShowPhoton#1{%
@@ -412,7 +417,7 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 
 \begin{frame}{Achieving rotation with no bomb present}{The Bloch sphere and the physical rotation of a polarizing filter}
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
-\only<1-5>{%
+\Vskip{-3em}\only<1-5>{%
 \begin{itemize}
     \item<1-> The polarization of the photon rotates from
     \raisebox{-1em}{\begin{tikzpicture} \HPolar{}\end{tikzpicture}} \ket{0}
@@ -448,7 +453,6 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \RotateAroundCenter{0}{\begin{scope}[draw=\RCtwo]\PFilter{0}{0}{1}{1}{20}\end{scope}}
 \end{TIKZP}
 \end{center}
-}
 \only<2>{%
 \begin{center}
 \begin{TIKZP}
@@ -458,7 +462,7 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \draw[->,thick] (1.0,0.5) arc(0:90:0.5) node[above] {$\pi/2$ radians};
 \end{TIKZP}
 \end{center}
-}
+}}%
 \only<3->{%
 \Vskip{-1em}%
 \begin{BlochSphere}[scale=1.2]{60}{115}
@@ -507,7 +511,7 @@ Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
 }}
 \end{frame}
 
-\section{Implementation}
+\section*{Quantum circuit}
 
 \begin{frame}{Implementation}{Translating the idea into a qiskit program}
 \begin{itemize}

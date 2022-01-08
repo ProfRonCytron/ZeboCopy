@@ -1,0 +1,25 @@
+Exam questions
+\begin{frame}{Many names for this Bell state}{A \href{https://www.youtube.com/watch?v=f0YSUqhvNd0}{proof}}
+\Vskip{-4em}\begin{theorem}
+Let \QState{} be a single-qubit state and let $\QState{\perp}$ be orthogonal to \QState{}.  Then $\TwoSup{\Conj{\QName{}}\QName{}}{\Conj{\QName{\perp}}\QName{\perp}} = \TwoSup{00}{11}$.
+\visible<3>{\alert<3>{$\braket{\QName{\perp}}{\QName{}} = \CQB{\beta}{-\kern-3pt\alpha}\SQB{\alpha}{\beta}=0$}}
+\end{theorem}
+{\small
+\[\visible<2->{\alert<3>{\QState{}} = \SQB{\alpha}{\beta}  \ \ \ket{\Conj{\QName{}}} = \SQB{\Conj{\alpha}}{\Conj{\beta}}
+\ \ }\visible<3->{\alert<3>{\QState{\perp}} = \SQB{\Conj{\beta}}{-\Conj{\alpha}}  \ \ \ket{\Conj{\QName{\perp}}} = \SQB{\beta}{-\alpha}}\]
+\visible<4->{\[
+\TwoSup{\Conj{\QName{}}\QName{}}{\Conj{\QName{\perp}}\QName{\perp}} = \TwoSupOp{\DQB{\Conj{\alpha}\alpha}{\Conj{\alpha}\beta}{\Conj{\beta}\alpha}{\Conj{\beta}\beta}}{\DQB{\beta\Conj{\beta}}{-\beta\Conj{\alpha}}{-\alpha\Conj{\beta}}{\alpha\Conj{\alpha}}}{+}
+= \RootTwo{}\DQB{\Conj{\alpha}\alpha+\beta\Conj{\beta}}{0}{0}{\Conj{\beta}\beta+\alpha\Conj{\alpha}} = \RootTwo\DQB{\Prob{\alpha}+\Prob{\beta}}{0}{0}{\Prob{\alpha}+\Prob{\beta}}
+\]}
+}
+\end{frame}
+
+
+\begin{frame}{Frame Title}
+    Can you tell the difference between a pure state of \ket{+} and a mixed state of equal \QZero{} and \QOne{}?
+\end{frame}
+
+\begin{frame}{Frame Title}
+Explain using the Bloch sphere why x y z gates are not universal, assuming we start at the north pole \ket{+z}=\QZero{}
+    
+\end{frame}

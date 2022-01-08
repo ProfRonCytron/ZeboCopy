@@ -267,15 +267,88 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
    \item The qiskit environment offers the \href{https://qiskit.org/documentation/stubs/qiskit.circuit.library.UGate.html}{\NamedGate{U}} gate, which is compiled into the necessary actions on a quantum device to realize the gate.
 \end{itemize}
 
-
-    
 \end{frame}
 
-\begin{frame}{Some theoretical results}{From \Kaye{}}
+\begin{frame}{Building an actual quantum gate}{This turns out to be impossible, but we shouldn't let that stop us}
+\begin{itemize}[<+->]
+    \item We can specify a gate mathematically using three \href{https://en.wikipedia.org/wiki/Real_number}{real} parameters $0 \leq \theta,\phi,\lambda < 2\pi$.  So that's nice, but how do we build a gate?
+    \item Suppose a device existed that could realize such a gate.  How would we communicate the three parameters to that device?
+    \item The reals are \href{https://en.wikipedia.org/wiki/Uncountable_set}{uncountable} (thanks, \href{https://en.wikipedia.org/wiki/Irrational_number}{irrationals}), so there is no way to express all possible values for the parameters in any language. The number of possible values exceeds the capacity of any naming convention.
+    \item The best we can hope to do is to \emph{approximate} a quantum gate.
+    \item It turns out we can do that efficiently to a desired degree of accuracy.
+    \item We were able to implement Boolean logic using only the \NamedGate{NAND} gate.
+    \item What operations are needed to realize the approximation of a quantum gate?
+    \item We return to this general question after moving beyond one qubit.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
 
+{
+\def\UZZ{\ensuremath{\ColorOne{u_{0,0}}}}
+\def\UZN{\ensuremath{\ColorTwo{u_{0,1}}}}
+\def\UNZ{\ensuremath{\ColorThree{u_{1,0}}}}
+\def\UNN{\ensuremath{\ColorFour{u_{1,1}}}}
+\begin{frame}{Single qubit universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
 
-    
-\end{frame}
+\TwoColumns{%
+\Vskip{-2em}Consider a one-qubit gate:
+\Vskip{-1.5em}\begin{align*}
+U =& \SQBG{}{\UZZ}{\UZN}{\UNZ}{\UNN}\\
+\visible<2->{=\ & \UZZ\alt<5->{\alert<5>{\frac{\Identity+\PauliZ}{2}}}{\alert<4>{\KetBra{0}{0}}} + \UZN\alt<9->{\alert<9>{\frac{\Complex{\PauliX}{\PauliY}}{2}}}{\alert<8>{\KetBra{0}{1}}} \\
+ + &\UNZ\alt<11->{\alert<11>{\frac{\ComplexDiff{\PauliX}{\PauliY}}{2}}}{\alert<10>{\KetBra{1}{0}}} + \UNN\alt<7->{\alert<7>{\frac{\Identity-\PauliZ}{2}}}{\alert<6>{\KetBra{1}{1}}}}
+\end{align*}%
+\visible<8-11>{%
+\Vskip{-1.5em}We use the following identities:
+\Vskip{-2em}\begin{align*}
+    \alert<10-11>{\PauliX\QZero} =& \alert<10-11>{\QOne} &
+    \alert<10-11>{\PauliX\PauliZ}=& \alert<10-11>{-\NiceI\PauliY} \\
+    \alert<8-9>{\PauliZ\PauliX} =& \alert<8-9>{\NiceI\PauliY}&
+    \alert<8-9>{\bra{0}\PauliX} =& \alert<8-9>{\bra{1}}
+\end{align*}
+}
+}{%
+\only<1-5>{%
+\begin{itemize}
+    \item Recall we can express $U$ \visible<2->{as the weighted sum of outer products.}
+    \item<3-> We can then express the outer products as follows:
+\end{itemize}}
+\only<4-5>{%
+    \begin{align*}
+        \alert<4>{\KetBra{0}{0}} & = \frac{1}{2}\left[\IMatrix + \ZMatrix \right]\\
+        &= \alert<4-5>{\frac{\Identity+\PauliZ}{2}}
+    \end{align*}
+}%
+\only<6-7>{%
+\begin{align*}
+        \alert<6>{\KetBra{1}{1}} &= \frac{1}{2}\left[\IMatrix - \ZMatrix \right]\\
+        &= \alert<6-7>{\frac{\Identity-\PauliZ}{2}}
+    \end{align*}
+}%
+\only<8-9>{%
+\begin{align*}
+    \alert<8>{\KetBra{0}{1}} =& \KetBra{0}{0}\PauliX \\
+    = & \frac{1}{2}(\Identity+\PauliZ)\PauliX 
+    = \alert<8-9>{\frac{\Complex{\PauliX}{\PauliY}}{2}}
+\end{align*}%
+}%
+\only<10-11>{%
+\begin{align*}
+    \alert<10>{\KetBra{1}{0}} =& \PauliX\KetBra{0}{0}\\
+    = & \PauliX\ \frac{1}{2}(\Identity+\PauliZ)
+    = \alert<10-11>{\frac{\ComplexDiff{\PauliX}{\PauliY}}{2}}
+\end{align*}%
+}%
+\only<12->{%
+\begin{align*}
+   \visible<12->{ = & \frac{\UZZ+\UNN}{2}&\Identity \\}
+   \visible<13->{ + & \frac{\UZN+\UNZ}{2}&\PauliX \\}
+   \visible<14->{+ &\frac{\UZN-\UNZ}{2}\NiceI & \PauliY \\}
+   \visible<15->{+ & \frac{\UZZ-\UNN}{2} & \PauliZ}
+\end{align*}
+}
+}
+\only<16->{%
+
+Thus, any single-qubit gate can be realized using only the three Pauli gates.}
+
+\end{frame}}

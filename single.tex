@@ -53,11 +53,11 @@
 \def\CNOT#1#2{%
 \ensuremath{\NamedGate{CNOT}(#1,#2)}}
 \def\CNOTMatrix{%
-\begin{pmatrix*}[r]
+\ensuremath{\begin{pmatrix*}[r]
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0\end{pmatrix*}%
+0 & 0 & 1 & 0\end{pmatrix*}}%
 }
 \def\CCNOT#1#2#3{%
 \ensuremath{\mbox{\NamedGate{CNOT}}(#1,#2,#3)}}
@@ -70,6 +70,7 @@
 \mbox{\bfseries{\textrm{#1}}}}
 \def\Identity{\NamedGate{I}}
 \def\Hadamard{\NamedGate{H}}
+\def\CCNOT{\NamedGate{CCNOT}}
 \def\PauliX{\NamedGate{X}}
 \def\PauliY{\NamedGate{Y}}
 \def\PauliZ{\NamedGate{Z}}
@@ -606,7 +607,7 @@
         \draw[dashed, gray] (0,0,0) -- (0,0,-1);
         
         \draw[-stealth] (0,0,0) -- (1.30,0,0);
-        \draw (1.45,0,0) node {$x$};
+        \draw (1.45,0,0) node[below left] {$x$};
         \draw[-stealth] (0,0,0) -- (0,1.30,0);
         \draw(0,1.45,0) node {$y$};
         \draw[-stealth] (0,0,0) -- (0,0,1.30);
@@ -639,6 +640,8 @@
 \end{tikzpicture}%
 }%
 \def\SCirc{\FCirc{0.3}}%
+\def\CFCirc#1{%
+  \textcolor{#1}{\FCirc{0.30}}}
 \newenvironment{BBKey}[0]{%
 \def\STD{%
 \begin{tikzpicture}[scale=0.35]%
@@ -683,8 +686,6 @@ Basis & 0 & 1 \\
 }{%
 \relax%
 }
-\def\CFCirc#1{%
-  \textcolor{#1}{\FCirc{0.30}}}
 \def\Agree{%
   \textcolor{green}{\FCirc{0.30}}}%
 \def\DisAgree{%
@@ -858,7 +859,7 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }{%
 \end{TIKZP}
 }
-\def\KetBra#1#2{\ket{#1}\bra{#2}}
+\def\KetBra#1#2{\ensuremath{\ket{#1}\kern-3pt\bra{#2}}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}

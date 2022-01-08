@@ -503,6 +503,8 @@ $\PauliZ{}=\ZMatrix{}$
 %%
 %% End of stuff that might move to module 12
 %%
+
+\section{General rotations}
 {%
 \def\Redify#1{\textcolor{RedOrange}{#1}}%
 \def\Bluify#1{\textcolor{\RCtwo}{#1}}%
@@ -608,6 +610,65 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
 \visible<4>{\alert<4>{Given a state with real amplitudes ($\phi=0$ on the Bloch sphere), this rotation shifts probability between \ket{0} and \ket{1} while keeping the amplitudes real.}}
 \end{frame}
 
+\section{Mixed states}
+
+\begin{frame}{Interior points of the Bloch sphere}{Representing mixed states}
+\Vskip{-2.2em}We now draw a distinction between the following two scenarios.  \visible<2->{On the left, we have an unpolarized photon.}  \visible<3->{On the right, we have a photon that is passed randomly through a horizontal or vertical polarizing filter.}
+\Vskip{-3em}\TwoColumns{%
+\begin{center}
+\begin{TIKZP}[scale=1.0]
+\visible<1->{\RadiantArrows{22.5}{->,color=BrickRed,thick}}
+\end{TIKZP}\end{center}
+\visible<2->{\ColorOne{\[\QState{} = \QPlus{}\]}}
+}{%
+\begin{center}
+\begin{TIKZP}[scale=0.64]
+\visible<1->{
+\draw[->,ultra thick] (0,0) -- (1,0) node[right] {\ \ket{0}};
+\draw[->,ultra thick] (0,0) -- (0,1) node[above] {\ket{1}};
+}
+\visible<1->{\begin{scope}[draw=\RCtwo,rotate=90]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\visible<1->{\begin{scope}[draw=\RCthree]\PFilter{-1}{-1.2}{1}{1.2}{20}\end{scope}}
+\end{TIKZP}\end{center}
+\visible<3->{\Vskip{-3em}\ColorTwo{\begin{align*}
+    \QState{} &= \QZero{} &\mbox{ with probability 0.5} \\
+    &= \QOne{} &\mbox{ with probability 0.5}
+\end{align*}}}
+}%
+\Vskip{-3.5em}
+\only<3>{%
+
+These states are indeed different.  Consider applying \Hadamard{} to the \ColorOne{left photon}.  You will get \QZero{}.  But applying \Hadamard{} to the \ColorTwo{right photon} yields \ket{+} or \ket{-}, each with probability~0.5.}%
+\only<4->{
+
+The \ColorOne{left state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Pure_states}{pure}, and is found on the surface of the Bloch sphere as \ket{+x}.   The \ColorTwo{right state} is \href{https://en.wikipedia.org/wiki/Quantum_state\#Mixed_states}{mixed}. Recalling \QZero{} and \QOne{} are the north and south poles, respectively, the \ColorTwo{right state} is the vector sum from the origin of~0.5\QZero{} and~0.5\QOne{}, which places it statistically at the center of the sphere.}
+    
+\end{frame}
+
+\begin{frame}{The Bloch sphere}{Inside and out}
+\TwoColumns{%
+\begin{itemize}[<+->]
+    \item A \ColorOne{pure state} can be written as a single wave function equation.  
+    \item Such states are found \ColorOne{on the surface} of the Bloch sphere.
+    \item A \ColorTwo{mixed state} is a probability distribution of pure states.  
+    \item The vector sum of those states from the sphere center, each weighted by its probability in the mixture, locates the state \ColorTwo{somewhere inside} the Bloch sphere.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{BlochSphere}[scale=1.2]{60}{115}
+    \visible<2>{\draw[ball color = \RCone, opacity = 0.5] (0,0,0) circle (1cm);}
+    \visible<4>{%
+    \fill[ball color = \RCtwo, opacity = 1.0] (0,0,0) circle (1cm);
+    }
+    \end{BlochSphere}
+\end{center}
+\visible<5->{%
+\BigSkip{}
+Thus, a mixed state of just a single pure state is located on the sphere's surface. 
+}
+}
+\end{frame}
+
 \begin{frame}{Summary}
 
 \begin{itemize}
@@ -615,9 +676,10 @@ R_{z}(\theta) = & \ExpNegPhase{\left(\frac{\theta}{2}\right)\,\PauliZ{}}%
     \item The Bloch sphere is a convenient visualization of a single qubit's state.
     \item We have studied four gates of interest so far:
     \begin{itemize}
-        \item The Hadamard gate creates a uniform superposition of \ket{0} and \ket{1} given the input \ket{0}.
+        \item The Hadamard gate (\Hadamard) creates a uniform superposition of \ket{0} and \ket{1} given the input \ket{0}.
         \item The \PauliX{}, \PauliY{}, and \PauliZ{} gates rotate state by $\pi$ radians about their respective axes.
     \end{itemize}
     \item There are matrices that describe arbitrary rotations about the Bloch axes. 
+    \item Interior points of the Bloch sphere represent mixed states.
 \end{itemize}
 \end{frame}
