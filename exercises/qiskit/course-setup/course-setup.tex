@@ -44,14 +44,14 @@ Run \texttt{python --version} and \texttt{conda --version} again to ensure the i
 
 
 \section{Conda environment}
-Using conda, we can create a Python environment which manages the necessary Python packages for this class. To set up the environment:
+Using conda, we can create a Python environment which manages the necessary Python packages for this class. Here is a \href{https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html}{useful guide} for getting started with conda. To set up the environment:
 \begin{enumerate}
-    \item Download the \href{FIXME}{cse468\_env\_setup.yml} file.
+    \item Download the \href{FIXME}{cse468\_env\_setup.yml} file from Canvas.
     \item Run \texttt{conda env create -f cse468\_env\_setup.yml}
     \item Run \texttt{conda activate cse468}
 \end{enumerate}
 
-\textbf{\underline{Each time you work on a notebook assignment}}, you should run \\ \texttt{conda activate cse468}. Optionally, run \texttt{conda info --envs} and you should see ``cse468" listed with an asterisk next to it, indicating that it's the active environment. Proceed to your assignment by running \texttt{jupyter notebook}. Here is a \href{https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html}{useful guide} for getting started with conda.
+\textbf{\underline{Each time you work on a notebook assignment}}, you should run \\ \texttt{conda activate cse468}. For Windows, this should be done in ``Anaconda Prompt", an app installed by your conda distribution. Optionally, run \texttt{conda info --envs} and you should see ``cse468" listed with an asterisk next to it, indicating that it's the active environment. Proceed to your assignment by running \texttt{jupyter notebook}.
 
 %% DW 1/11/2022: Pretty sure we don't require these anymore with the new version of otter but keeping these around just in case
 
@@ -66,7 +66,7 @@ Using conda, we can create a Python environment which manages the necessary Pyth
 Sometimes the installation process seems to work but something is still broken. If no useful errors occurred while installing the software, there are a few things to try:
 \begin{enumerate}
 \item Close and then reopen your terminal. Try running the command again and see if the output is different.
-\item Conda seems to be particularly finicky on Windows. Try using the ``Anaconda Prompt (miniconda3)" app installed by your conda distribution.
+\item Conda seems to be particularly finicky on Windows. If it isn't working in CMD or Powershell, try  ``Anaconda Prompt".
 \item Add the program's root directory to your PATH manually.
 
 On MacOS, run \texttt{sudo vim /etc/paths}, add a line with the root directory, save the file, and restart the terminal.
