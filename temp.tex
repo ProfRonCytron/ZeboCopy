@@ -40,9 +40,13 @@
 \end{description}
 \end{frame}
 {
-\def\CC{\alt<3->{$0$}{\CFCirc{\RCone}}}
-\def\CD{\alt<3->{\CFCirc{\RCtwo}}{\CFCirc{\RCone}}}
-\def\CE{\alt<3->{$1$}{\CFCirc{\RCone}}}
+\def\CC{\alt<3->{$\textcolor<5>{\RCone}{0}$}{\CFCirc{\RCone}}}
+\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCthree}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
+\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
+\def\CDc{\alt<3->{\alt<8>{\CFCirc{\RCone}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
+\def\CDd{\alt<3->{\alt<8>{\CFCirc{\RCtwo}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
+\def\CE{\alt<3->{$\textcolor<5>{\RCone}{1}$}{\CFCirc{\RCone}}}
+\def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
 \begin{frame}{Two-level quantum systems are exact and universal}{We do not need quantum gate with more than 2 inputs and outputs}
 
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
@@ -55,8 +59,13 @@
 \end{itemize}}%
 \only<5->{%
 \begin{itemize}
-    \item<5-> The matrix on the right acts as identity for every basis vector \emph{except} \ket{\TensSupProd{0}{n-1}0} and \ket{\TensSupProd{0}{n-1}1}.
-    \item<6-> If we look at the first $n-1$~qubits, if they are any pattern \emph{except} \TensSupProd{0}{n-1}, then the unitary gate corresponding to the matrix does not act on any qubit.
+    \item<5-> For all but two basis states, \ColorOne{$U$ acts as the identity matrix}.
+    \item<6-> However, the matrix \ColorTwo{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}.
+    \item<7-> \begin{align*}
+U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
+  \end{align*}
+    \item<8-> $U\ket{\TensSupProd{1}{n-1}1} = \CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1}$
 \end{itemize}
 }
 }{%
@@ -65,9 +74,9 @@
  \CE & \CC &  \CC & \cdots& \CC & \CC \\
  \CC & \CE &  \CC & \cdots& \CC & \CC \\
  \CC & \CC &  \CE & \cdots& \CC & \CC \\
- \RVDots & \RVDots & \RVDots  & \RVDots & \RVDots  & \RVDots\\
- \CC & \CC &  \CC & \cdots& \CD & \CD \\
- \CC & \CC & \CC & \cdots& \CD & \CD
+ \CCRVDots & \CCRVDots & \CCRVDots  & \CCRVDots & \CCRVDots  & \CCRVDots\\
+ \CC & \CC &  \CC & \cdots& \CDa & \CDc \\
+ \CC & \CC & \CC & \cdots& \CDb & \CDd
 \end{pmatrix*}\]
 }
 \end{frame}}
