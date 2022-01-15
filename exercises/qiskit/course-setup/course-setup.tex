@@ -16,14 +16,13 @@
 }
 \setlength{\parindent}{0pt} 
 
-\title{Course Setup Guide}
+\title{Qiskit Environment Setup Guide}
 \author{CSE 468}
-\date{August 2021}
+\date{\today}
 
 \begin{document}
 
 \maketitle
-
 \tableofcontents
 \newpage
 \section{Python \& Miniconda}
@@ -43,34 +42,41 @@ Linux users should find the link specific to their distro \href{https://repo.ana
 
 Run \texttt{python --version} and \texttt{conda --version} again to ensure the installation was successful.
 
-\section{conda environment}
-Using conda, we can create a Python environment which contains the necessary Python packages for this class. To set up the environment:
+
+\section{Conda environment}
+Using conda, we can create a Python environment which manages the necessary Python packages for this class. Here is a \href{https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html}{useful guide} for getting started with conda. To set up the environment:
 \begin{enumerate}
-    \item Download the \href{FIXME}{cse468\_env\_setup.yml} file.
+    \item Download the \href{FIXME}{cse468\_env\_setup.yml} file from Canvas.
     \item Run \texttt{conda env create -f cse468\_env\_setup.yml}
     \item Run \texttt{conda activate cse468}
 \end{enumerate}
 
-\textbf{\underline{Each time you work on a notebook assignment}}, you should run \\ \texttt{conda activate cse468}. Optionally, run \texttt{conda info --envs} and you should see ``cse468" listed with an asterisk next to it, indicating that it's the active environment. Proceed to your assignment by running \texttt{jupyter notebook}.
+\textbf{\underline{Each time you work on a notebook assignment}}, you should run \\ \texttt{conda activate cse468}. For Windows, this should be done in ``Anaconda Prompt", an app installed by your conda distribution. Optionally, run \texttt{conda info --envs} and you should see ``cse468" listed with an asterisk next to it, indicating that it's the active environment. Proceed to your assignment by running \texttt{jupyter notebook}.
 
+%% DW 1/11/2022: Pretty sure we don't require these anymore with the new version of otter but keeping these around just in case
 
-\section{TeX}
-Some diagrams in your assignments will require TeX to render properly. Follow directions \href{https://nbconvert.readthedocs.io/en/latest/install.html#installing-tex}{at this link} to download TeX for your specific OS. These packages are large so this process may take some time. Run \texttt{tex --version} to ensure the installation was successful. 
+% \section{TeX}
+% Some diagrams in your assignments will require TeX to render properly. Follow directions \href{https://nbconvert.readthedocs.io/en/latest/install.html#installing-tex}{at this link} to download TeX for your specific OS. These packages are large so this process may take some time. Run \texttt{tex --version} to ensure the installation was successful. 
 
-\section{pandoc}
-pandoc will be used to generate PDFs for your final submissions.
-OS specific downloads are available \href{https://pandoc.org/installing.html}{from this link}. Run \texttt{pandoc --version} to ensure the installation was successful.
+% \section{pandoc}
+% pandoc will be used to generate PDFs for your final submissions.
+% OS specific downloads are available \href{https://pandoc.org/installing.html}{from this link}. Run \texttt{pandoc --version} to ensure the installation was successful.
 
 \section{Troubleshooting}
-Sometimes the installation process seems to work but checking via the command line (e.g. \texttt{pandoc --version}) seems to indicate otherwise. If no obvious errors occurred while installing the software, there are a couple of things to try:
+Sometimes the installation process seems to work but something is still broken. If no useful errors occurred while installing the software, there are a few things to try:
 \begin{enumerate}
 \item Close and then reopen your terminal. Try running the command again and see if the output is different.
-\item Add the program's location to PATH. For example, if pandoc is not on your PATH, you may not be able to run a command without providing the full path (e.g. \texttt{/usr/local/bin/pandoc --version}) via the command line. Adding it to PATH enables you to type just \texttt{pandoc --version}. 
+\item Conda seems to be particularly finicky on Windows. If it isn't working in CMD or Powershell, try  ``Anaconda Prompt".
+\item Add the program's root directory to your PATH manually.
 
-On MacOS, this can be done by running \texttt{sudo vi /etc/paths} and then adding a line with ``/usr/local/bin", saving the file, and restarting the terminal. 
+On MacOS, run \texttt{sudo vim /etc/paths}, add a line with the root directory, save the file, and restart the terminal.
 
-For Windows, search for ``Environment Variables". Under ``System Variables", find the PATH environment variable, select it, and click ``Edit" to add the corresponding path. 
+For Windows, search for ``Environment Variables". Under ``System Variables", find the PATH environment variable, select it, and click ``Edit" to add to the user variables. 
 
+\item Google problems and try to work through them with your peers.
+\item Come to office hours.
 
 \end{enumerate}
+
+If you are able to successfully troubleshoot an issue, please let the professor or a TA know the problem and solution so we can improve this guide for future semesters. Thanks!
 \end{document}
