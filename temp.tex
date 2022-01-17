@@ -57,16 +57,34 @@
     \item<3-> We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ \ColorTwo{to a form} where it also operates only on $2$~qubits.
     \item<4-> The matrix is \emph{not} necessarily tensor-factorable (the \NamedGate{CNOT} gate is an example), so in what sense does it operate only on 2~qubits?
 \end{itemize}}%
-\only<5->{%
-\begin{itemize}
+\only<5-8>{%
+\Vskip{-3em}\begin{itemize}
     \item<5-> For all but two basis states, \ColorOne{$U$ acts as the identity matrix}.
     \item<6-> However, the matrix \ColorTwo{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}.
-    \item<7-> \begin{align*}
+    \visible<7->{\begin{align*}
 U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
    = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
-  \end{align*}
-    \item<8-> $U\ket{\TensSupProd{1}{n-1}1} = \CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1}$
+  \end{align*}}
+  \visible<8->{\Vskip{-3em}\begin{align*}
+U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCone}\QZero{} + \CFCirc{\RCtwo}\QOne{}\right)}
+  \end{align*}}
+    
 \end{itemize}
+}%
+\only<9->{%
+\begin{itemize}
+    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate \SQBG{\relax}{\CFCirc{\RCthree}}{\CFCirc{\RCone}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}.
+    \item<10-> This is a \emph{conditional} gate and can be represented by the circuit:
+\end{itemize}
+    \visible<10->{\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw \\
+    \lstick{$q_2$} & \qw \\
+    \lstick{$\RVDots$} & \qw  \\
+    \lstick{$q_{n-1}$} & \qw \\
+    \lstick{$q_n$} & \qw 
+\end{quantikz}}}
 }
 }{%
 
