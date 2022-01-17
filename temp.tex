@@ -74,17 +74,17 @@ U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CF
 }%
 \only<9->{%
 \begin{itemize}
-    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate \SQBG{\relax}{\CFCirc{\RCthree}}{\CFCirc{\RCone}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}.
+    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate $U=\SQBG{\relax}{\CFCirc{\RCthree}}{\CFCirc{\RCone}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}$.
     \item<10-> This is a \emph{conditional} gate and can be represented by the circuit:
 \end{itemize}
-    \visible<10->{\adjustbox{scale=0.8,valign=t}{%
+    \visible<10->{\begin{center}\adjustbox{scale=0.8,valign=t}{%
 \begin{quantikz}
-    \lstick{$q_1$} & \qw \\
-    \lstick{$q_2$} & \qw \\
-    \lstick{$\RVDots$} & \qw  \\
-    \lstick{$q_{n-1}$} & \qw \\
-    \lstick{$q_n$} & \qw 
-\end{quantikz}}}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$q_n$} & \qw & \gate{U} & \qw
+\end{quantikz}}\end{center}}
 }
 }{%
 
