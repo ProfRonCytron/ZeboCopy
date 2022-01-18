@@ -41,10 +41,10 @@
 \end{frame}
 {
 \def\CC{\alt<3->{$\textcolor<5>{\RCone}{0}$}{\CFCirc{\RCone}}}
-\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCthree}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
-\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
-\def\CDc{\alt<3->{\alt<8>{\CFCirc{\RCone}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
-\def\CDd{\alt<3->{\alt<8>{\CFCirc{\RCtwo}}{\CFCirc{\RCtwo}}}{\CFCirc{\RCone}}}
+\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCthree}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
+\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
+\def\CDc{\alt<3->{\alt<8->{\CFCirc{\RCone}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
+\def\CDd{\alt<3->{\alt<8->{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
 \def\CE{\alt<3->{$\textcolor<5>{\RCone}{1}$}{\CFCirc{\RCone}}}
 \def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
 \begin{frame}{Two-level quantum systems are exact and universal}{We do not need quantum gate with more than 2 inputs and outputs}
@@ -54,13 +54,13 @@
 \begin{itemize}
     \item<1-> We begin with a quantum gate for an~$n$~qubit system.
     \item<2-> Conceptually this can be viewed as a~$2^{n}\times2^{n}$ matrix~$U$.
-    \item<3-> We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ \ColorTwo{to a form} where it also operates only on $2$~qubits.
+    \item<3-> We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ \ColorFive{to a form} where it also operates only on $2$~qubits.
     \item<4-> The matrix is \emph{not} necessarily tensor-factorable (the \NamedGate{CNOT} gate is an example), so in what sense does it operate only on 2~qubits?
 \end{itemize}}%
 \only<5-8>{%
 \Vskip{-3em}\begin{itemize}
     \item<5-> For all but two basis states, \ColorOne{$U$ acts as the identity matrix}.
-    \item<6-> However, the matrix \ColorTwo{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}.
+    \item<6-> However, the matrix \ColorFive{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}:
     \visible<7->{\begin{align*}
 U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
    = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
@@ -73,7 +73,7 @@ U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CF
 \end{itemize}
 }%
 \only<9->{%
-\begin{itemize}
+\Vskip{-3em}\begin{itemize}
     \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate $U=\SQBG{\relax}{\CFCirc{\RCthree}}{\CFCirc{\RCone}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}$.
     \item<10-> This is a \emph{conditional} gate and can be represented by the circuit:
 \end{itemize}
@@ -87,7 +87,7 @@ U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CF
 \end{quantikz}}\end{center}}
 }
 }{%
-
+\Vskip{-4em}
 \[2^{n}\begin{pmatrix*}
  \CE & \CC &  \CC & \cdots& \CC & \CC \\
  \CC & \CE &  \CC & \cdots& \CC & \CC \\
@@ -96,5 +96,7 @@ U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CF
  \CC & \CC &  \CC & \cdots& \CDa & \CDc \\
  \CC & \CC & \CC & \cdots& \CDb & \CDd
 \end{pmatrix*}\]
+\visible<11>{%
+\MedSkip{}We must show that we can implement \NamedGate{C\mbox{$\,^{n-1}$}NOT} using gates with only two inputs. This will be an exercise.}%
 }
 \end{frame}}
