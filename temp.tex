@@ -96,7 +96,10 @@ U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CF
  \CC & \CC &  \CC & \cdots& \CDa & \CDc \\
  \CC & \CC & \CC & \cdots& \CDb & \CDd
 \end{pmatrix*}\]
-\visible<11>{%
-\MedSkip{}We must show that we can implement \NamedGate{C\mbox{$\,^{n-1}$}NOT} using gates with only two inputs. This will be an exercise.}%
+\only<11>{%
+In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_1, \ldots, q_{n-1}$ are all~$1$, in which case $U$ is applied to $q_{n}$.  This is exactly the behavior specified by the above matrix.
+}%
+\only<12>{%
+\SmallSkip{}We must show that we can implement \NamedGate{C\mbox{$\,^{n-1}$}U} using only \NamedGate{CCNOT}~gates, extra qubits, and a  controlled-\NamedGate{U} gate. This will be an exercise.}%
 }
 \end{frame}}
