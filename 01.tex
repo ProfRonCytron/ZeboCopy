@@ -104,6 +104,27 @@ $\Xor{(\Xor{x}{y})}{x} = y$
 }
 \end{frame}
 
+\begin{frame}{Universality}{Why is this of interest?}
+
+\only<1>{%
+\begin{itemize}
+    \item Suppose you want to open a paint store and want to sell paint of any color.
+    \item You might think you need to stock each color separately.
+    \item This thinking implies stocking thousands, if not millions, of paint cans of different colors.
+    \item However, if you stock only \textcolor{Red}{red}, \textcolor{Yellow}{yellow}, and \textcolor{Blue}{blue}, you can create practically any color from those, \href{https://en.wikipedia.org/wiki/Primary_color\#Traditional_red,_yellow,_and_blue_primary_colors}{but not every color}.
+    \item You thus obtain (approximate) \emph{universality} of colors by having just those three colors.
+\end{itemize}}
+\only<2>{%
+\begin{itemize}
+    \item What components do we need to create a classical Boolean circuit?  We look at that next.
+    \item This is interesting, because as with colors, it would be helpful to be able to construct anything from as few components as possible.
+    \item For quantum computing, there is an \href{https://en.wikipedia.org/wiki/Uncountable_set}{uncountably infinite} number of possible gates.
+    \item If we start now and build one such gate a second, there are some gates we will \emph{never} build, even given an unbounded amount of time.
+    \item So universality for quantum circuits seems harder.  It turns out we can successfully approximate any quantum gate using very few components.  We study this later.
+\end{itemize}}
+    
+\end{frame}
+
 \begin{frame}{Universality}{Theoretically, what operators are needed at a minimum?}
 \TwoColumns{
 Consider again a general Boolean function of two inputs:
@@ -266,7 +287,7 @@ Multiplication and Conjugation
     \item<1-> Given $z_{1}=\Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_{1}}}$ and $z_{2}=\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_{2}}}$
     \item<2-> $z_{1}z_{2} = \Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_1}}\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_2}}$
     \item<3-> $z_1z_2 = \Polar{\ColorOne{r_{1}}\ColorThree{r_{2}}}{(\ColorTwo{\theta_1}+\ColorFour{\theta_2})}$
-    \item<4-> Given $a=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
+    \item<4-> Given $z=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
     \item<4-> $\Conj{z} = \Conj{(\Polar{r}{\theta})}$
     \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+\NiceI\sin{\theta})}$
     \item<4-> $\Conj{z} = r(\cos{\theta}-\NiceI\sin{\theta})$
