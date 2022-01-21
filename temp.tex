@@ -47,15 +47,15 @@
 \def\CDd{\alt<3->{\alt<8->{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
 \def\CE{\alt<3->{$\textcolor<5>{\RCone}{1}$}{\CFCirc{\RCone}}}
 \def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
-\begin{frame}{Two-level quantum systems are exact and universal}{We do not need quantum gate with more than 2 inputs and outputs}
+\begin{frame}{Two-level quantum systems}{These affect (under control) only a single qubit}
 
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
 \only<1-4>{%
 \begin{itemize}
     \item<1-> We begin with a quantum gate for an~$n$~qubit system.
     \item<2-> Conceptually this can be viewed as a~$2^{n}\times2^{n}$ matrix~$U$.
-    \item<3-> We apply transformations to $U$, each of which operates only on 2~qubits at a time, to reduce $U$ \ColorFive{to a form} where it also operates only on $2$~qubits.
-    \item<4-> The matrix is \emph{not} necessarily tensor-factorable (the \NamedGate{CNOT} gate is an example), so in what sense does it operate only on 2~qubits?
+    \item<3-> We apply transformations to $U$, each of which affects only a single qubit at a time, to reduce $U$ \ColorFive{to a form} where it also affects only a single qubit.
+    \item<4-> The matrix is \emph{not} necessarily tensor-factorable (the \NamedGate{CNOT} gate is an example), so in what sense does it affect only a single qubit?
 \end{itemize}}%
 \only<5-8>{%
 \Vskip{-3em}\begin{itemize}
@@ -103,3 +103,83 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \SmallSkip{}We must show that we can implement \NamedGate{C\mbox{$\,^{n-1}$}U} using only \NamedGate{CCNOT}~gates, extra qubits, and a  controlled-\NamedGate{U} gate. This will be an exercise.}%
 }
 \end{frame}}
+
+\begin{frame}{Generalizing to other qubits}{For now they differ only in one position}
+
+\Vskip{-4em}\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> The example from the previous slide requires qubits $q_{1},q_{2},\ldots,q_{n-1}$ to be~$1$ to activate $U$.
+    \item<2-> We want to generalize this in two ways:
+    \begin{enumerate}
+        \item We wish to move $U$ to act on a qubit other than the bottom one, such as $q_i$.
+        \item We wish to activate $U$ on any arbitrary bit pattern of the other qubits.
+    \end{enumerate}
+\end{itemize}
+\only<3>{%
+\begin{itemize}
+ \item<3-> The first generalization is easily accomplished by redrawing the diagram, controlling $U$ from any of the other $n-1$ qubits.  We could also use a \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Swap_gate}{swap gate} if $U$ were physically restricted to acting only on the bottom qubit.
+ \item<3-> When all other qubits are~$1$, gate $U$ acts on~$q_i$.
+\end{itemize}}}
+\only<4->{%
+\begin{itemize}
+    \item<4-> How do we activate $U$ on a bit pattern other than all-$1$s?
+    \item<5-> If we want $q_n$ to be~$0$ instead of~$1$, we need only compliment it prior and after the $U$ gate, as shown here.
+    \item<6-> A shorthand for this is to use an open circle on such control bits, as shown here.
+    \item<7-> $U$ is now activated on $q_i$ when 
+    \begin{itemize}
+        \item $q_{1}, q_{2},\ldots,q_{i-1}, q_{i+1},\ldots,q_{n-1}$ are~$1$
+        \item $q_n$ is~$0$.
+    \end{itemize}
+    \item<8-> We can apply this idea to any of the qubits to trigger $U$ exactly when desired.
+\end{itemize}
+}
+}{%
+\only<1-2>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \ctrl{1} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw& \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_n$} & \qw & \gate{U} & \qw& \qw
+\end{quantikz}}\end{center}}
+\only<3-4>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw& \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_n$} & \qw & \ctrl{-1} & \qw& \qw
+\end{quantikz}}\end{center}}
+\only<5>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{\alert<5>{$q_n$}} & \gate{\alert<5>{X}} & \ctrl{-1} & \gate{\alert<5>{X}}& \qw
+\end{quantikz}}\end{center}}
+\only<6->{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{\alert<6>{$q_n$}} & \qw & \octrl{-1} & \qw& \qw
+\end{quantikz}}\end{center}}
+}
+
+    
+\end{frame}
