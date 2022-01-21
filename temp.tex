@@ -183,3 +183,89 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 
     
 \end{frame}
+
+{
+\def\C#1{\makebox[1.5ex]{\hss #1\hss}}
+\def\CN{\C{$1$}}
+\def\CZ{\C{$0$}}
+\def\CI{\textcolor<3-8>{\RCone}{\C{$0$}}}
+\def\CII{\alt<5->{\C{\CFCirc{\RCone}}}{\textcolor<3->{\RCone}{\C{$1$}}}}
+\def\CJ{\textcolor<4-8>{\RCtwo}{\C{$0$}}}
+\def\CJJ{\alt<8->{\C{\CFCirc{\RCtwo}}}{\textcolor<4->{\RCtwo}{\C{$1$}}}}
+\def\CIJ{\alt<6->{\C{\CFCirc{\RCthree}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
+\def\CJI{\alt<7->{\C{\CFCirc{\RCfour}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
+\begin{frame}{Two-level matrices}{Definition}
+
+\TwoColumns{%
+\only<1-9>{
+\begin{itemize}[<+->]
+    \item A \emph{two-level unitary matrix} is a matrix that acts nontrivially on two-or-fewer vector components~(\MikeIke{}).
+    \item To obtain such a matrix, initialize $M$ to the identity matrix.
+    \item Pick matrix index \ColorOne{$i$}. Here, $\ColorOne{i}=2$.
+    \item WLOG pick matrix index $\ColorTwo{j}, \ColorTwo{j}>\ColorOne{i}$.  Here, $\ColorTwo{j}=5$.
+    \item Replace entries $\ColorOne{m_{ii}}\visible<6->{, \ColorThree{m_{ij}}}\visible<7->{, \ColorFour{m_{ji}}}\visible<8->{, \ColorTwo{m_{jj}}}$ with any values that preserve unitarity.
+\end{itemize}}
+\only<10->{%
+\begin{itemize}
+    \item<10-> $\Prob{\CFCirc{\RCone}} + \Prob{\CFCirc{\RCthree}}=1$
+    \item<11-> $\Prob{\CFCirc{\RCfour}} + \Prob{\CFCirc{\RCtwo}}=1$
+    \item<12-> $\Prob{\CFCirc{\RCone}} + \Prob{\CFCirc{\RCfour}}=1$
+    \item<13-> $\Prob{\CFCirc{\RCthree}} + \Prob{\CFCirc{\RCtwo}}=1$
+    \item<14-> The columns form an orthonormal basis: $\Conj{M}M=\Identity{}$
+    \item<15-> The rows form an orthonormal basis: $M\Conj{M}=\Identity{}$
+\end{itemize}}
+}{%
+\[
+\begin{pmatrix*}
+\CN & \CI & \CZ & \CZ & \CJ & \CZ & \CZ & \CZ \\
+\CI & \CII & \CI & \CI & \CIJ & \CI & \CI & \CI \\
+\CZ & \CI & \CN & \CZ & \CJ & \CZ & \CZ & \CZ \\
+\CZ & \CI & \CZ & \CN & \CJ & \CZ & \CZ & \CZ \\
+\CJ & \CJI & \CJ & \CJ & \CJJ & \CJ & \CJ & \CJ \\
+\CZ & \CI & \CZ & \CZ & \CJ & \CN & \CZ & \CZ \\
+\CZ & \CI & \CZ & \CZ & \CJ & \CZ & \CN & \CZ \\
+\CZ & \CI & \CZ & \CZ & \CJ & \CZ & \CZ & \CN 
+\end{pmatrix*}\]%
+\visible<9->{%
+\SmallSkip{}
+Any such matrix is a two-level unitary matrix.  Unitarity significantly constrains the possibilities for the four values.}
+}
+    
+\end{frame}}
+
+{
+\def\C#1{\makebox[1.5ex]{\hss #1\hss}}
+\def\CR{\C{\CFCirc{\RCone}}}
+\def\CZ#1{\alt<#1->{\C{$0$}}{\CR}}
+\def\CG#1{\alt<#1->{\C{\ColorThree{$0$}}}{\CR}}
+\def\CN#1{\alt<#1->{\C{\ColorTwo{$1$}}}{\CR}}
+\begin{frame}{Obtaining two-level matrices}{Series of transformations to obtain the desired form}
+
+\Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{itemize}
+    \item<1-> We begin with a unitary matrix.
+    \item<2-> We find unitary, two-level $U_{1}$ so that $U_{1}U$ has a~$0$ as shown.
+    \item<3-> We find unitary, two-level $U_{2}$ so that $U_{2}U_{1}U$ is as shown.
+    \item<4-> We continue down the column.
+    \item<5-> Unitarity guarantees this \ColorTwo{1}.
+    \item<6-> Unitarity guarantees these \ColorThree{0} entries.
+    \item<7-> We then recursively apply this procedure to the \ColorOne{submatrix}.
+\end{itemize}
+}{%
+\[
+\visible<4->{U_{7}U_{6}U_{5}U_{4}U_{3}}\visible<3->{U_2}\visible<2->{U_1}U =
+\]
+\[
+\begin{pmatrix*}
+\CN{5} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} \\
+\CZ{2} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{3} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR 
+\end{pmatrix*}\]
+}
+    
+\end{frame}}
