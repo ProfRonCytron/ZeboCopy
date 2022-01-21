@@ -67,6 +67,8 @@ Sometimes the installation process seems to work but something is still broken. 
 \begin{enumerate}
 \item Close and then reopen your terminal. Try running the command again and see if the output is different.
 \item Conda seems to be particularly finicky on Windows. If it isn't working in CMD or Powershell, try  ``Anaconda Prompt".
+\item If you see an error related to a ``pip subprocess" or Git on a Mac, try running \texttt{xcode-select --install} to install some necessary developer tools. Remove the broken environment with \texttt{conda env remove -n cse468}, quit your terminal, and retry installation.
+
 \item Add the program's root directory to your PATH manually.
 
 On MacOS, run \texttt{sudo vim /etc/paths}, add a line with the root directory, save the file, and restart the terminal.
