@@ -269,3 +269,32 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
 }
     
 \end{frame}}
+
+
+{
+\def\I{\NiceI}
+\def\A#1{\ColorOne{\ensuremath{#1}}}
+\def\B#1{\ColorTwo{\ensuremath{#1}}}
+\def\R#1{\ColorFive{\ensuremath{#1}}}
+\def\C#1{\ColorThree{\ensuremath{#1}}}
+\def\D#1{\ColorFour{\ensuremath{#1}}}
+\begin{frame}{Worked example}{From \MikeIke{} Exercise 4.37}
+\TwoColumns{%
+}{%
+\begin{align*}
+    U = \frac{1}{2}\begin{pmatrix*}[r]
+    \A{1} & \C{1} & 1 & 1 \\
+    \B{1} & \D{\I} & -1 & -\I \\
+    1 & -1 & 1 & -1 \\
+    1 & -\I & -1 & \I
+    \end{pmatrix*}
+\end{align*}}
+\SmallSkip{}We develop a two-level unitary matrix $U_1$ based on the highlighted entries so that $U_{1}U$ has zero in the \ColorTwo{lower left} entry.  Throughout, we name the values we need:
+\begin{description}
+   \item[\A{a}] is \ColorOne{this} value
+   \item[\B{b}] is \ColorTwo{this} value
+   \item[\R{r}] is a scaling factor computed as
+   \( \sqrt{\Prob{\A{a}} + \Prob{\B{b}}} \)
+\end{description}
+
+\end{frame}}
