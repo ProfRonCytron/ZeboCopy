@@ -253,14 +253,14 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 }{%
 \[
 \begin{pmatrix*}
-\CN & \CI & \CZ & \CZ & \CJ & \CZ & \CZ & \CZ \\
+\CN & \CI  & \CZ & \CZ & \CJ  & \CZ & \CZ & \CZ \\
 \CI & \CII & \CI & \CI & \CIJ & \CI & \CI & \CI \\
-\CZ & \CI & \CN & \CZ & \CJ & \CZ & \CZ & \CZ \\
-\CZ & \CI & \CZ & \CN & \CJ & \CZ & \CZ & \CZ \\
+\CZ & \CI  & \CN & \CZ & \CJ  & \CZ & \CZ & \CZ \\
+\CZ & \CI  & \CZ & \CN & \CJ  & \CZ & \CZ & \CZ \\
 \CJ & \CJI & \CJ & \CJ & \CJJ & \CJ & \CJ & \CJ \\
-\CZ & \CI & \CZ & \CZ & \CJ & \CN & \CZ & \CZ \\
-\CZ & \CI & \CZ & \CZ & \CJ & \CZ & \CN & \CZ \\
-\CZ & \CI & \CZ & \CZ & \CJ & \CZ & \CZ & \CN 
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CN & \CZ & \CZ \\
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CZ & \CN & \CZ \\
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CZ & \CZ & \CN 
 \end{pmatrix*}\]%
 \visible<9->{%
 \only<9-16>{%
@@ -295,7 +295,7 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
     \item<1-> We begin with a unitary matrix.
-    \item<2-> We find unitary, two-level $U_{1}$ so that $U_{1}U$ has a~$0$ as shown.
+    \item<2-> We find unitary, two-level $U_{1}$ so that $U_{1}U$ has a~$0$ as shown.  Throughout, if the entry is already~$0$, then we pick $U_{i}=\Identity$.
     \item<3-> We find unitary, two-level $U_{2}$ so that $U_{2}U_{1}U$ is as shown.
     \item<4-> We continue down the column.
     \item<5-> Unitarity guarantees this \ColorTwo{1}.
