@@ -199,7 +199,9 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \def\A{\ColorOne{\ensuremath{a}}}
 \def\AC{\ColorOne{\ensuremath{\Conj{a}}}}
 \def\BC{\ColorThree{\ensuremath{\Conj{b}}}}
+\def\BCUnconj{\ColorThree{\ensuremath{b}}}
 \def\B{\ColorFour{\ensuremath{b}}}
+\def\BConj{\ColorFour{\ensuremath{\Conj{b}}}}
 
 
 \begin{frame}{Two-level matrices}{Definition}
@@ -238,8 +240,8 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \Next{\One}{\Prob{\BC/r}+\Prob{\MA/r} &= 1}
 }%
 \ScrollProof{21}{22}{%
-\Next{\Two}{\CQB{\A}{\B}\times\SQB{\B}{\MA}&=0 \\}
-\Next{\One}{\CQB{\A}{\BC}\times\SQB{\B}{\MA}&=0}
+\Next{\Two}{\CQB{\AC}{\BC}\times\SQB{\BConj}{\MAC}&=0 \\}
+\Next{\One}{\CQB{\A}{\BConj}\times\SQB{\BC}{\MA}&=0}
 }
 }
 }{%
@@ -259,6 +261,8 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \SmallSkip{}
 Any such matrix is a two-level unitary matrix.  Unitarity significantly constrains the possibilities for the four values.}%
 \only<17->{%
+Verify unitary properties:
+
 \begin{Reasoning}
 \Reason{17}{Top row}%
 \Reason{18}{Bottom row}%
