@@ -39,14 +39,18 @@
   \end{itemize}}
 \end{description}
 \end{frame}
+
+
 {
-\def\CC{\alt<3->{$\textcolor<5>{\RCone}{0}$}{\CFCirc{\RCone}}}
-\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCthree}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
-\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
-\def\CDc{\alt<3->{\alt<8->{\CFCirc{\RCone}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
-\def\CDd{\alt<3->{\alt<8->{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}{\CFCirc{\RCone}}}
-\def\CE{\alt<3->{$\textcolor<5>{\RCone}{1}$}{\CFCirc{\RCone}}}
+\def\CC{\alt<3->{$\textcolor<5>{Red}{0}$}{\CFCirc{Black}}}
+\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCone}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDc{\alt<3->{\alt<8->{\CFCirc{\RCthree}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDd{\alt<3->{\alt<8->{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CE{\alt<3->{$\textcolor<5>{Red}{1}$}{\CFCirc{Black}}}
 \def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
+
+
 \begin{frame}{Two-level quantum systems}{These affect (under control) only a single qubit}
 
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
@@ -59,22 +63,22 @@
 \end{itemize}}%
 \only<5-8>{%
 \Vskip{-3em}\begin{itemize}
-    \item<5-> For all but two basis states, \ColorOne{$U$ acts as the identity matrix}.
+    \item<5-> For all but two basis states, \textcolor{Red}{$U$ acts as the identity matrix}.
     \item<6-> However, the matrix \ColorFive{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}:
     \visible<7->{\begin{align*}
-U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
-   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
+U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCone}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
   \end{align*}}
   \visible<8->{\Vskip{-3em}\begin{align*}
-U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1} \\
-   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCone}\QZero{} + \CFCirc{\RCtwo}\QOne{}\right)}
+U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCtwo}\QOne{}\right)}
   \end{align*}}
     
 \end{itemize}
 }%
 \only<9->{%
 \Vskip{-3em}\begin{itemize}
-    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate $U=\SQBG{\relax}{\CFCirc{\RCthree}}{\CFCirc{\RCone}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}$.
+    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate $U=\SQBG{\relax}{\CFCirc{\RCone}}{\CFCirc{\RCthree}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}$.
     \item<10-> This is a \emph{conditional} gate and can be represented by the circuit:
 \end{itemize}
     \visible<10->{\begin{center}\adjustbox{scale=0.8,valign=t}{%
@@ -286,7 +290,7 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
 
 {
 \def\C#1{\makebox[1.5ex]{\hss #1\hss}}
-\def\CR{\C{\CFCirc{\RCone}}}
+\def\CR{\C{\CFCirc{\RCfive}}}
 \def\CZ#1{\alt<#1->{\C{$0$}}{\CR}}
 \def\CG#1{\alt<#1->{\C{\ColorThree{$0$}}}{\CR}}
 \def\CN#1{\alt<#1->{\C{\ColorTwo{$1$}}}{\CR}}
@@ -300,7 +304,7 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
     \item<4-> We continue down the column.
     \item<5-> Unitarity guarantees this \ColorTwo{1}.
     \item<6-> Unitarity guarantees these \ColorThree{0} entries.
-    \item<7-> We then recursively apply this procedure to the \ColorOne{submatrix}.
+    \item<7-> We then recursively apply this procedure to the \ColorFive{submatrix}.
 \end{itemize}
 }{%
 \[
