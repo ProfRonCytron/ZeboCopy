@@ -194,6 +194,14 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \def\CJJ{\alt<8->{\C{\CFCirc{\RCtwo}}}{\textcolor<4->{\RCtwo}{\C{$1$}}}}
 \def\CIJ{\alt<6->{\C{\CFCirc{\RCthree}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
 \def\CJI{\alt<7->{\C{\CFCirc{\RCfour}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
+\def\MA{\ColorTwo{\ensuremath{-a}}}
+\def\MAC{\ColorTwo{\ensuremath{\Conj{-a}}}}
+\def\A{\ColorOne{\ensuremath{a}}}
+\def\AC{\ColorOne{\ensuremath{\Conj{a}}}}
+\def\BC{\ColorThree{\ensuremath{\Conj{b}}}}
+\def\B{\ColorFour{\ensuremath{b}}}
+
+
 \begin{frame}{Two-level matrices}{Definition}
 
 \TwoColumns{%
@@ -205,7 +213,7 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
     \item WLOG pick matrix index $\ColorTwo{j}, \ColorTwo{j}>\ColorOne{i}$.  Here, $\ColorTwo{j}=5$.
     \item Replace entries $\ColorOne{m_{ii}}\visible<6->{, \ColorThree{m_{ij}}}\visible<7->{, \ColorFour{m_{ji}}}\visible<8->{, \ColorTwo{m_{jj}}}$ with any values that preserve unitarity.
 \end{itemize}}
-\only<10->{%
+\only<10-15>{%
 \begin{itemize}
     \item<10-> $\Prob{\CFCirc{\RCone}} + \Prob{\CFCirc{\RCthree}}=1$
     \item<11-> $\Prob{\CFCirc{\RCfour}} + \Prob{\CFCirc{\RCtwo}}=1$
@@ -213,7 +221,27 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
     \item<13-> $\Prob{\CFCirc{\RCthree}} + \Prob{\CFCirc{\RCtwo}}=1$
     \item<14-> The columns form an orthonormal basis: $\Conj{M}M=\Identity{}$
     \item<15-> The rows form an orthonormal basis: $M\Conj{M}=\Identity{}$
-\end{itemize}}
+\end{itemize}}%
+\only<16->{%
+\Vskip{-3.5em}\begin{itemize}
+    \item Pick complex values $a$ and $b$ such that $\Prob{a}+\Prob{b}\leq 1$
+    \item Compute $r=\sqrt{\Prob{a}+\Prob{b}}$, and assign values as follows:
+    \Vskip{-1em}\[
+    \SQBG{}{\CFCirc{\RCone}}{\CFCirc{\RCthree}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}} = 
+    \SQBG{\frac{1}{r}}{\AC}{\BC}{\B}{\MA}
+    \]
+\end{itemize}
+\Vskip{-3em}\ScrollProof{17}{20}{%
+\Next{\Four}{\Prob{\AC/r}+\Prob{\BC/r}& =1 \\}
+\Next{\Three}{\Prob{\B/r}+\Prob{\MA/r}&= 1 \\}
+\Next{\Two}{\Prob{\AC/r}+\Prob{\B/r} &= 1 \\}
+\Next{\One}{\Prob{\BC/r}+\Prob{\MA/r} &= 1}
+}%
+\ScrollProof{21}{22}{%
+\Next{\Two}{\CQB{\A}{\B}\times\SQB{\B}{\MA}&=0 \\}
+\Next{\One}{\CQB{\A}{\BC}\times\SQB{\B}{\MA}&=0}
+}
+}
 }{%
 \[
 \begin{pmatrix*}
@@ -227,11 +255,24 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \CZ & \CI & \CZ & \CZ & \CJ & \CZ & \CZ & \CN 
 \end{pmatrix*}\]%
 \visible<9->{%
+\only<9-16>{%
 \SmallSkip{}
-Any such matrix is a two-level unitary matrix.  Unitarity significantly constrains the possibilities for the four values.}
+Any such matrix is a two-level unitary matrix.  Unitarity significantly constrains the possibilities for the four values.}%
+\only<17->{%
+\begin{Reasoning}
+\Reason{17}{Top row}%
+\Reason{18}{Bottom row}%
+\Reason{19}{Left column}%
+\Reason{20}{Right column}%
+\Reason{21}{Inner product of rows}%
+\Reason{22}{Inner product of columns}%
+\end{Reasoning}
+}
+}
 }
     
 \end{frame}}
+
 
 {
 \def\C#1{\makebox[1.5ex]{\hss #1\hss}}
