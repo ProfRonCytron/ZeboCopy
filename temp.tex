@@ -290,13 +290,19 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
 
 {
 \def\C#1{\makebox[1.5ex]{\hss #1\hss}}
-\def\CR{\C{\CFCirc{\RCfive}}}
+\def\CR{\alt<8->{$0$}{\C{\CFCirc{\RCfive}}}}
 \def\CZ#1{\alt<#1->{\C{$0$}}{\CR}}
 \def\CG#1{\alt<#1->{\C{\ColorThree{$0$}}}{\CR}}
 \def\CN#1{\alt<#1->{\C{\ColorTwo{$1$}}}{\CR}}
+\def\CRA{\alt<8->{\CFCirc{\RCone}}{\CR}}
+\def\CRB{\alt<8->{\CFCirc{\RCthree}}{\CR}}
+\def\CRC{\alt<8->{\CFCirc{\RCfour}}{\CR}}
+\def\CRD{\alt<8->{\CFCirc{\RCtwo}}{\CR}}
+\def\DD{\alt<8->{$1$}{\CR}}
 \begin{frame}{Obtaining two-level matrices}{Series of transformations to obtain the desired form}
 
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\only<1-7>{%
 \begin{itemize}
     \item<1-> We begin with a unitary matrix.
     \item<2-> We find unitary, two-level $U_{1}$ so that $U_{1}U$ has a~$0$ as shown.  Throughout, if the entry is already~$0$, then we pick $U_{i}=\Identity$.
@@ -305,21 +311,35 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
     \item<5-> Unitarity guarantees this \ColorTwo{1}.
     \item<6-> Unitarity guarantees these \ColorThree{0} entries.
     \item<7-> We then recursively apply this procedure to the \ColorFive{submatrix}.
+\end{itemize}}%
+\only<8->{%
+\begin{itemize}
+    \item<8-> We stop at this point and set the final $U_{z}$ to the conjugate transpose of the result shown on the right. $U_z$ is thus also a two-level matrix.
+    \item<9-> We finally obtain
+    \Vskip{-2.2em}\begin{align*}
+    U_{z}\cdots U_{2} U_{1} U &= \Identity \\
+    \visible<10->{\Conj{U_z} U_{z}\cdots U_{2} U_{1} U &= \Conj{U_z}\Identity{} \\}
+    \visible<11->{\Conj{U_2}U_{2}U_{1} U &= \Conj{U_2}\cdots\Conj{U_z} \\}
+    \visible<12->{\Conj{U_1}U_{1}U &= \Conj{U_1}\Conj{U_2}\cdots\Conj{U_z} \\}
+    \visible<13->{U &= \Conj{U_1}\Conj{U_2}\cdots\Conj{U_z}}
+    \end{align*}
+    \visible<14->{so we can write $U$ as the product of two-level matrices.}
 \end{itemize}
+}
 }{%
 \[
-\visible<4->{U_{7}U_{6}U_{5}U_{4}U_{3}}\visible<3->{U_2}\visible<2->{U_1}U =
+\visible<8->{\cdots}\visible<4->{U_{7}U_{6}U_{5}U_{4}U_{3}}\visible<3->{U_2}\visible<2->{U_1}U =
 \]
 \[
 \begin{pmatrix*}
 \CN{5} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} \\
-\CZ{2} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{3} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR \\
-\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CR & \CR 
+\CZ{2} & \DD & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{3} & \CR & \DD & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \DD & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \DD & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \DD & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CRA & \CRB \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CRC & \CRD 
 \end{pmatrix*}\]
 }
     
