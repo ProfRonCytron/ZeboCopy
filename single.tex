@@ -860,6 +860,68 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \end{TIKZP}
 }
 \def\KetBra#1#2{\ensuremath{\ket{#1}\kern-3pt\bra{#2}}}
+%%
+%% #1 -- how many rows and columns
+%% #2 -- i, the first row
+%% #3 -- j, the second row
+%% #4 --  ii
+%% #5 --  ij
+%% #6 --  ji
+%% #7 --  jj
+%% #8 -- default diagonal value
+%% #9 -- default off-diagonal value
+%%
+\newcounter{TLAi}
+\newcounter{TLAj}
+\newenvironment{TLArray}[9]{%
+\setcounter{TLAi}{1}
+\setcounter{TLAj}{1}
+\def\TE{%
+%%
+%%
+\ifnum\value{TLAi}=\value{TLAj}%
+%%
+%%  diagonal
+    \ifnum\value{TLAi}=#2\relax%
+       \ColorOne{#4}%
+    \else%
+       \ifnum\value{TLAi}=#3\relax%
+          \ColorTwo{#7}%
+       \else%
+          #8%
+       \fi
+    \fi
+%%  off diag
+\else
+    \ifnum\value{TLAi}=#2\relax%
+       \ifnum\value{TLAj}=#3\relax%
+          \ColorThree{#5}%
+       \else%
+           #9%
+       \fi
+    \else
+       \ifnum\value{TLAj}=#2\relax%
+          \ifnum\value{TLAi}=#3\relax%
+             \ColorFour{#6}%
+          \else%
+             #9%
+          \fi%
+       \else%
+          #9%
+       \fi%
+    \fi%
+\fi%
+% (\arabic{TLAi},\arabic{TLAj})%
+%%
+%%
+\stepcounter{TLAj}%
+\ifnum\value{TLAj}>#1%
+  \setcounter{TLAj}{1}%
+  \stepcounter{TLAi}%
+\else\fi%
+}%
+}{%
+}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
@@ -867,5 +929,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{13}
+\include{temp}
 \end{document}

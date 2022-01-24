@@ -2,8 +2,20 @@
 
 
 
-
+\def\GenTLArray#1#2#3#4#5#6{%
+\begin{TLArray}{4}{#1}{#2}{#3}{#4}{#5}{#6}{1}{0}
+\ensuremath{\begin{pmatrix*}[r]
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE \\
+\end{pmatrix*}}
+\end{TLArray}}
 
 \begin{frame}{testing}{testing}
+
+
+\GenTLArray{2}{4}{a}{b}{c}{d}
+
 
 \end{frame}
