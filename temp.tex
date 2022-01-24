@@ -17,7 +17,58 @@
 
 \GenTLArray{2}{4}{a}{b}{c}{d}
 
-\GenTLArray{1}{4}{a}{b}{c}{d}
+\GenTLArray{1}{4}{\RootTwo{}}{b}{c}{d}
 
 
 \end{frame}
+
+{
+\def\I{\NiceI}
+\def\A#1{\ColorOne{\ensuremath{#1}}}
+\def\B#1{\ColorFour{\ensuremath{#1}}}
+\def\R#1{\ColorFive{\ensuremath{#1}}}
+\def\ABR#1#2#3{\hbox to \textwidth{%
+\hss\Adef{#1}\hss\Bdef{#2}\hss\Rdef{#3}\hss}}
+\def\Adef#1{\ensuremath{\ColorOne{a} = #1}}
+\def\Bdef#1{\ensuremath{\ColorFour{b} = #1}}
+\def\Rdef#1{\ensuremath{\ColorFive{r} = #1}}
+\begin{frame}{Worked example}{From \MikeIke{} Exercise 4.37}
+\TwoColumns{%
+\[ U_{1} = \]
+\begin{center}
+\GenTLArray{1}{2}{a}{c}{b}{d}
+\end{center}
+}{%
+\[ U = \]
+\begin{align*}
+    \frac{1}{2}\begin{pmatrix*}[r]
+    \A{1} & 1 & 1 & 1 \\
+    \B{1} & \I & -1 & -\I \\
+    1 & -1 & 1 & -1 \\
+    1 & -\I & -1 & \I
+    \end{pmatrix*}
+\end{align*}}
+\TwoColumns{%
+    \ABR{1/2}{1/2}{1/\sqrt{2}}
+   \TwoColumns{%
+      \begin{align*}
+          \Adef{1/2} \\
+          \Bdef{1/2}
+      \end{align*}}{%
+      \begin{align*}
+          c &= d\\
+          c &= d
+      \end{align*}}%
+}{%
+\[ U_{1}U = \]
+\begin{align*}
+    \frac{1}{2}\begin{pmatrix*}[r]
+    1 & 1 & 1 & 1 \\
+    1 & \I & -1 & -\I \\
+    1 & -1 & 1 & -1 \\
+    1 & -\I & -1 & \I
+    \end{pmatrix*}
+\end{align*}
+}
+
+\end{frame}}
