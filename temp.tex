@@ -1,19 +1,20 @@
 \SetTitle{99}{temp}{faster}{99}
 
 
-
+\def\AllTE{%
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE \\
+\TE & \TE & \TE & \TE }%
 \def\GenTLArray#1#2#3#4#5#6{%
 \begin{TLArray}{4}{#1}{#2}{#3}{#4}{#5}{#6}{1}{0}
 \ensuremath{\begin{pmatrix*}
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE \\
+\AllTE
 \end{pmatrix*}}
 \end{TLArray}}
 
-\begin{frame}{testing}{testing}
 
+\begin{frame}{testing}{testing}
 
 \GenTLArray{2}{4}{a}{b}{c}{d}
 
@@ -22,6 +23,33 @@
 
 \end{frame}
 
+{
+%%
+%%  #1 - the number for this one
+%%  #2 - i
+%%  #3 - j
+%%
+\newenvironment{TLExample}[0]{%
+   \def\ABR##1##2##3{%
+      \def\TLA{##1}\def\TLB{##2}\def\TLR{##3}}%
+   \def\Params##1##2##3{%
+      \def\TLnum{##1}\def\TLi{##2}\def\TLj{##3}}
+}{%
+\hbox to \textwidth{%
+\hss\TLA\hss\TLB\hss\TLR\hss}%
+\TLnum
+\TLi
+\TLj
+}
+
+\begin{frame}{test}
+\begin{TLExample}
+    \ABR{a}{b}{c}
+    \Params{1}{2}{4}
+\end{TLExample}
+    
+\end{frame}
+}
 {
 \def\I{\NiceI}
 \def\A#1{\ColorOne{\ensuremath{#1}}}
