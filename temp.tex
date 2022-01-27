@@ -1,17 +1,56 @@
 \SetTitle{99}{temp}{faster}{99}
 
 
+\begin{frame}{iter}
+\begin{TDIter}{10}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+
+\end{TDIter}
+
+\begin{TDIter}{10}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+\arabic{TDIi}\ \arabic{TDIj}\TDINext{}
+
+\end{TDIter}
+    
+\end{frame}
+
+{
+\def\X#1#2{#1{#2}}
+\begin{frame}{tester}
+\X{\textsl}{hi}
+    
+\end{frame}}
+
+\def\TX#1{\TE}
 \def\AllTE{%
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE \\
-\TE & \TE & \TE & \TE }%
-\def\GenTLArray#1#2#3#4#5#6{%
+\TX{1,1} & \TX{1,2} & \TX{1,3} & \TX{1,4} \\
+\TX{2,1} & \TX{2,2} & \TX{2,3} & \TX{2,4} \\
+\TX{3,1} & \TX{3,2} & \TX{3,3} & \TX{3,4} \\
+\TX{4,1} & \TX{4,2} & \TX{4,3} & \TX{4,4} }%
+\def\GenTLArray#1#2#3#4#5#6{{%
+
 \begin{TLArray}{4}{#1}{#2}{#3}{#4}{#5}{#6}{1}{0}
 \ensuremath{\begin{pmatrix*}
 \AllTE
 \end{pmatrix*}}
-\end{TLArray}}
+\end{TLArray}}}
 
 
 \begin{frame}{testing}{testing}
@@ -24,33 +63,34 @@
 \end{frame}
 
 {
-%%
-%%  #1 - the number for this one
-%%  #2 - i
-%%  #3 - j
-%%
-\newenvironment{TLExample}[0]{%
-   \def\ABR##1##2##3{%
-      \def\TLA{##1}\def\TLB{##2}\def\TLR{##3}}%
-   \def\Params##1##2##3{%
-      \def\TLnum{##1}\def\TLi{##2}\def\TLj{##3}}
-}{%
-\hbox to \textwidth{%
-\hss\TLA\hss\TLB\hss\TLR\hss}%
-\TLnum
-\TLi
-\TLj
-}
+\def\HF#1{\ensuremath{\frac{#1}{2}}}
+\def\U{%
+\E{\HF{1}} & \E{\HF{1}} & \E{\HF{1}} & \E{\HF{1}} \\
+\E{\HF{1}} & \E{\HF{\I}} & \E{-\HF{1}} & \E{-\HF{\I}} \\
+\E{\HF{1}} & \E{-\HF{1}} & \E{\HF{1}} & \E{-\HF{1}} \\
+\E{\HF{1}} & \E{-\HF{\I}} & \E{-\HF{1}} & \E{\HF{\I}}}
+\def\I{\NiceI}
+\def\E#1{\TE{#1}}
 
 \begin{frame}{test}
-\begin{TLExample}
-    \ABR{a}{b}{c}
-    \Params{1}{2}{4}
-\end{TLExample}
+\ensuremath{
+\def\arraystretch{1.4}
+\begin{SpotArray}{4}{2}{2}{\ColorTwo}{\ColorOne}
+\begin{pmatrix*}[r]
+\U
+\end{pmatrix*}
+\end{SpotArray}
+}
     
 \end{frame}
 }
 {
+\def\HF#1{\ensuremath{\frac{#1}{2}}}
+\def\U{%
+\E{\HF{1}} & \E{\HF{1}} & \E{\HF{1}} & \E{\HF{1}} \\
+\E{\HF{1}} & \E{\HF{\I}} & \E{\HF{11}} & \E{\HF{-\I}} \\
+\E{\HF{1}} & \E{\HF{-1}} & \E{\HF{1}} & \E{\HF{-1}} \\
+\E{\HF{1}} & \E{\HF{-\I}} & \E{\HF{-1}} & \E{\HF{\I}}}
 \def\I{\NiceI}
 \def\A#1{\ColorOne{\ensuremath{#1}}}
 \def\B#1{\ColorFour{\ensuremath{#1}}}

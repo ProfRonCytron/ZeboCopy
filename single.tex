@@ -860,6 +860,23 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \end{TIKZP}
 }
 \def\KetBra#1#2{\ensuremath{\ket{#1}\kern-3pt\bra{#2}}}
+
+\newcounter{TDIi}
+\newcounter{TDIj}
+%%
+%% #1 -- the upper bound on the inner loop before incrementing the outer
+%%
+\newenvironment{TDIter}[1]{%
+\setcounter{TDIi}{1}%
+\setcounter{TDIj}{1}%
+\def\TDINext{%
+   \stepcounter{TDIj}%
+   \ifnum\value{TDIj}>#1%
+      \setcounter{TDIj}{1}%
+      \stepcounter{TDIi}%
+   \else\fi}%
+}{%
+}
 %%
 %% This is driven by calls to \TE which cycle through the
 %% matrix entries.
@@ -874,56 +891,72 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% #8 -- default diagonal value
 %% #9 -- default off-diagonal value
 %%
-\newcounter{TLAi}
-\newcounter{TLAj}
 \newenvironment{TLArray}[9]{%
-\setcounter{TLAi}{1}
-\setcounter{TLAj}{1}
+\def\II##1{\ColorOne{##1}}\def\IJ##1{\ColorThree{##1}}\def\JI##1{\ColorFour{##1}}\def\JJ##1{\ColorTwo{##1}}\def\DD##1{##1}\def\OD##1{##1}
+\begin{TDIter}{#1}
 \def\TE{%
 %%
 %%
-\ifnum\value{TLAi}=\value{TLAj}%
+\ifnum\value{TDIi}=\value{TDIj}%
 %%
 %%  diagonal
-    \ifnum\value{TLAi}=#2\relax%
-       \ColorOne{#4}%
+    \ifnum\value{TDIi}=#2\relax%
+       \II{#4}%
     \else%
-       \ifnum\value{TLAi}=#3\relax%
-          \ColorTwo{#7}%
+       \ifnum\value{TDIi}=#3\relax%
+          \JJ{#7}%
        \else%
-          #8%
+          \DD{#8}%
        \fi
     \fi
 %%  off diag
 \else
-    \ifnum\value{TLAi}=#2\relax%
-       \ifnum\value{TLAj}=#3\relax%
-          \ColorThree{#5}%
+    \ifnum\value{TDIi}=#2\relax%
+       \ifnum\value{TDIj}=#3\relax%
+          \IJ{#5}%
        \else%
-           #9%
+           \OD{#9}%
        \fi
     \else
-       \ifnum\value{TLAj}=#2\relax%
-          \ifnum\value{TLAi}=#3\relax%
-             \ColorFour{#6}%
+       \ifnum\value{TDIj}=#2\relax%
+          \ifnum\value{TDIi}=#3\relax%
+             \JI{#6}%
           \else%
-             #9%
+             \OD{#9}%
           \fi%
        \else%
-          #9%
+          \OD{#9}%
        \fi%
     \fi%
 \fi%
-% (\arabic{TLAi},\arabic{TLAj})%
-%%
-%%
-\stepcounter{TLAj}%
-\ifnum\value{TLAj}>#1%
-  \setcounter{TLAj}{1}%
-  \stepcounter{TLAi}%
-\else\fi%
+\TDINext{}
 }%
 }{%
+\end{TDIter}
+}
+%%
+%%  #1 -- how many rows and columns
+%%  #2 -- i coordinate to call out
+%%  #3 -- j coordinate to call out
+%%  #4 -- command to spotlight
+%%  #5 -- command for not spotlighted
+%%
+\newenvironment{SpotArray}[5]{%
+\begin{TDIter}{#1}
+\def\TE##1{%
+    \ifnum\value{TDIi}=#2\relax%
+       \ifnum\value{TDIj}=#3\relax%
+          #4{##1}%
+       \else%
+          #5{##1}%
+       \fi
+    \else%
+       #5{##1}%
+    \fi%
+    \TDINext{}
+}%
+}{%
+\end{TDIter}
 }
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
