@@ -23,7 +23,7 @@
 \begin{center}
 \ensuremath{%
 \def\arraystretch{1.4}%
-\begin{SpotArray}{4}{#1}{#2}{\ColorOne}{\ColorTwo}{#3}
+\begin{SpotArray}{4}{#1}{#2}{\ColorTwo}{\ColorOne}{#3}
 \begin{pmatrix*}[r]
 #4
 \end{pmatrix*}
@@ -55,6 +55,9 @@
 \E{0}            & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+i}} \\
 \E{\HF{1}}       & \E{-\HF{1}} & \E{\HF{1}} & \E{-\HF{1}} \\
 \E{\HF{1}}       & \E{-\HF{\I}} & \E{-\HF{1}} & \E{\HF{\I}}}
+
+\def\UbUaU{%
+}
 
 
 
@@ -88,6 +91,8 @@
 \end{frame}
 }
 \GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArray{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArray{2}{1}{0}{\UaU}}{Example}{Step 1}
+
+\GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArray{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArray{2}{1}{0}{\UaU}}{Example}{Step 2}
 
 \begin{frame}{first}
 \Vskip{-3em}\TwoColumns{%
