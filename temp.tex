@@ -79,21 +79,27 @@
 %%  #8 - title
 %%  #9 - subtitle
 \def\GenSlide#1#2#3#4#5#6#7#8#9{%
+%%
+%% Have to do this before frame, because
+%%    \visible runs the frame multiple times
+%%
+\edef\PrevName{\RMatrix{}}%
+\xdef\RMatrix{$U_{#1}$\RMatrix}%
+\edef\NextName{\RMatrix{}}%
 \begin{frame}{#8}{#9}
 \Vskip{-3em}\TwoColumns{%
-\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{
+\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{\visible<3->{%
 \[U_{#1}=\]
-#6}{%
-\ABR{#2}{#3}{#4}
+#6}}{%
+\visible<2->{\ABR{#2}{#3}{#4}}
 }
 }{%
-\hbox to \textwidth{\hss\RMatrix{} =\hbox to 3em{\hss}}
-#5
+\visible<1->{\hbox to \textwidth{\hss\PrevName{} =\hbox to 3em{\hss}}
+#5}
 }
-\Vskip{-3em}\begin{center}
-\xdef\RMatrix{$U_{#1}$\RMatrix}
- \RMatrix = #7
-\end{center}
+\visible<4->{\Vskip{-3em}\begin{center}
+ \NextName{} = #7
+\end{center}}
 \end{frame}
 }
 \GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArray{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArray{2}{1}{0}{\UaU}}{Example}{Step 1}
