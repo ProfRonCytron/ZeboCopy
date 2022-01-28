@@ -50,7 +50,7 @@
 
 \def\GenericStart{%
 \E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
-\E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
 \E{\alt<3>{0}{\SCirc}} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
 \E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc}}
 
@@ -146,7 +146,7 @@
 \Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \only<1-6>{%
 \begin{itemize}
-    \item<1-> The current matrix is shown on the right, with two distinguished entries:
+    \item<1-> The matrix in progress is shown on the right, with one entry already eliminated.  There are two distinguished entries:
 \end{itemize}
     \begin{description}
        \item<2->[\CFCirc{\RCone}] is the top-left entry for the portion of the matrix undergoing transformation.
@@ -159,7 +159,7 @@
 \only<7->{%
 \BigSkip{}
 \only<7-9>{\GenTLArray{1}{3}{\Conj{a}/r}{\Conj{b}/r}{a/r}{-b/r}}
-\only<10->{\visible<10>{\GenTLArray{2}{4}{\Conj{a}/r}{\Conj{b}/r}{a/r}{-b/r}}}
+\only<10->{\visible<10>{\GenTLArray{2}{3}{\Conj{a}/r}{\Conj{b}/r}{a/r}{-b/r}}}
 
 \begin{itemize}
 \item <8-> The result of multiplying these two matrices is finally shown at the bottom center of the slide.
@@ -172,8 +172,8 @@
 \visible<4-10>{\ABR{\CFCirc{\RCone}}{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}
 }{%
 \only<1-9>{\GenSpotArrayAB{3}{1}{1}{\GenericStart}}
-\only<10-11>{\GenSpotArrayAB{4}{2}{2}{\GenericMiddle}}
-\only<12->{\GenSpotArrayAB{0}{0}{0}{\GenericFinal}}
+\only<10>{\GenSpotArrayAB{3}{2}{2}{\GenericMiddle}}
+\only<11->{\GenSpotArrayAB{0}{0}{0}{\GenericFinal}}
 }%
 \only<6-10>{
 \visible<6->{%
