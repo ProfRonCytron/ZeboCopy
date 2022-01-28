@@ -277,7 +277,15 @@ which are deployed in the two-level array shown to the left.}
 \def\E#1{#1}
 \begin{frame}{Final step}{To obtain the identity matrix}
 
-\GenSpotArrayZeroed{0}{0}{\FinalConjTranspose}
+\begin{center}
+$\visible<2->{\begin{pmatrix*}
+\FinalConjTranspose
+\end{pmatrix*}}\visible<3->{\times} \visible<1->{\begin{pmatrix*}\UeUdUcUbUaU\end{pmatrix*}}\visible<3->{=\Identity}$\end{center}
+\begin{itemize}
+    \item<1-> We take the final result \NextName{},
+    \item<2-> compute its conjugate transpose---call this $U_6$.
+    \item<3-> We multiply them to obtain the identity matrix.
+\end{itemize}
 
 
 
