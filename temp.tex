@@ -66,6 +66,17 @@
 \E{0} & \E{0} & \E{\SCirc} & \E{\SCirc} \\
 \E{0} & \E{0} & \E{\SCirc} & \E{\SCirc}}
 
+%% #1 -- range
+%% #2 -- value to become
+\def\GN#1#2{%
+\alt<#1->{#2}{\SCirc}}
+
+\def\GenericWorking{%
+\E{\GN{4}{1}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} \\
+\E{\GN{2}{0}} & \E{\GN{7}{1}} & \E{\GN{7}{0}} & \E{\GN{7}{0}} \\
+\E{\GN{3}{0}} & \E{\GN{6}{0}} & \E{\SCirc} & \E{\SCirc} \\
+\E{\GN{4}{0}} & \E{\GN{7}{0}} & \E{\SCirc} & \E{\SCirc}}
+
 \def\U{%
 \E{\HF{1}} & \E{\HF{1}}   & \E{\HF{1}}  & \E{\HF{1}}    \\
 \E{\HF{1}} & \E{\HF{\I}}  & \E{-\HF{1}} & \E{-\HF{\I}}  \\
@@ -176,6 +187,23 @@ which are deployed in the two-level array shown to the left.}
 }}
     
 \end{frame}
+
+{
+\def\GenStep#1#2#3#4{%
+\only<#1>{\GenSpotArrayAB{#2}{#3}{#4}{\GenericWorking}}}
+\begin{frame}{Tracing the example}{Without values to show the flow}
+\TwoColumns{%
+}{%}
+\GenStep{1}{2}{1}{1}%
+\GenStep{2}{3}{1}{1}%
+\GenStep{3}{4}{1}{1}%
+\GenStep{4}{0}{0}{0}%
+\GenStep{5}{3}{2}{2}%
+\GenStep{6}{4}{2}{2}%
+\GenStep{7}{0}{0}{0}%
+}
+\end{frame}}
+
 \GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArrayAB{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArrayZeroed{2}{1}{\UaU}}{Example}{Step 1}
 
 \GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArrayAB{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{3}{1}{\UbUaU}}{Example}{Step 2}
