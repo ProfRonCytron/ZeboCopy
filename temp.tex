@@ -122,6 +122,34 @@
 \E{\HF{1}} & \E{-\HF{i}} & \E{-\HF{1}} & \E{\HF{\I}}
 }
 
+\def\UcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+\I}} \\
+\E{0} & \E{\Tf{3+\I}} & \E{-\Tf{2}} & \E{\Tf{3-\I}} \\
+\E{0} & \E{\Tw{2\I}} & \E{\Tw{2}} & \E{-\Tw{2\I}}
+}
+
+\def\UdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\frac{\sqrt{2}}{\sqrt{3}}} & \E{\frac{\I}{\sqrt{6}}} & \E{\frac{1}{\sqrt{6}}} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{\frac{\I}{\sqrt{3}}} & \E{\frac{1}{\sqrt{3}}} & \E{-\frac{\I}{\sqrt{3}}}
+}
+
+\def\UeUdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{0} & \E{-\RootTwo} & \E{\frac{\I}{\sqrt{2}}}
+}
+
+\def\FinalConjTranspose{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} &  \E{-\RootTwo} \\
+\E{0} & \E{0} & \E{-\frac{\I}{\sqrt{2}}} & \E{-\frac{\I}{\sqrt{2}}}
+}
+
 
 
 \xdef\RMatrix{\ensuremath{U}}
@@ -148,8 +176,8 @@
 %%
 \def\GenSlideHelper#1#2#3#4#5#6#7#8#9{%
 \begin{frame}{#8}{#9}
-\Vskip{-3em}\TwoColumns{%
-\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{\visible<3->{%
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{\visible<3->{%
 \[U_{#1}=\]
 #6}}{%
 \visible<2->{\ABR{#2}{#3}{#4}}
@@ -180,8 +208,8 @@
 \end{itemize}}
 \only<7->{%
 \BigSkip{}
-\only<7-9>{\GenTLArray{1}{3}{\Conj{a}/r}{\Conj{b}/r}{a/r}{-b/r}}
-\only<10->{\visible<10>{\GenTLArray{2}{3}{\Conj{a}/r}{\Conj{b}/r}{a/r}{-b/r}}}
+\only<7-9>{\GenTLArray{1}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}
+\only<10->{\visible<10>{\GenTLArray{2}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}}
 
 \begin{itemize}
 \item <8-> The result of multiplying these two matrices is finally shown at the bottom center of the slide (not shown here).
@@ -203,7 +231,7 @@ To obtain our two-level array, we compute
 \Vskip{-3em}\begin{eqnarray*}
     \ColorOne{\Conj{a}}/\ColorFive{r} &
     \ColorTwo{\Conj{b}}/\ColorFive{r} \\
-    \ColorOne{a}/\ColorFive{r} & -\ColorTwo{b}/\ColorFive{r}
+    \ColorTwo{b}/\ColorFive{r} & \ColorOne{-a}/\ColorFive{r}
 \end{eqnarray*}
 which are deployed in the two-level array shown to the left.}
 }}
@@ -238,6 +266,23 @@ which are deployed in the two-level array shown to the left.}
 \GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArrayAB{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArrayZeroed{2}{1}{\UaU}}{Example}{Step 1}
 
 \GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArrayAB{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{3}{1}{\UbUaU}}{Example}{Step 2}
+
+\GenSlide{3}{\Tw{3}}{\HF{1}}{1}{\GenSpotArrayAB{4}{1}{1}{\UbUaU}}{\GenTLArray{1}{4}{\Tw{3}}{\HF{1}}{\HF{1}}{-\Tw{3}}}{\GenSpotArrayZeroed{3}{1}{\UcUbUaU}}{Example}{Step 3}
+
+\GenSlide{4}{\RootEt{1-\I}}{\Tf{3+\I}}{\frac{\sqrt{2}}{\sqrt{3}}}{\GenSpotArrayAB{3}{2}{2}{\UcUbUaU}}{\GenTLArray{2}{3}{\frac{\sqrt{3}}{4}(1+\I)}{\frac{3-\I}{4}}{\frac{3+\I}{4}}{\frac{\sqrt{3}}{4}(\I-1)}}{\GenSpotArrayZeroed{3}{2}{\UdUcUbUaU}}{Example}{Step 4}
+
+\GenSlide{5}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{1}{\GenSpotArrayAB{4}{2}{2}{\UdUcUbUaU}}{\GenTLArray{2}{4}{\frac{\sqrt{2}}{\sqrt{3}}}{-\frac{\I}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{4}{2}{\UeUdUcUbUaU}}{Example}{Step 5}
+
+{
+\def\E#1{#1}
+\begin{frame}{Final step}{To obtain the identity matrix}
+
+\GenSpotArrayZeroed{0}{0}{\FinalConjTranspose}
+
+
+
+
+\end{frame}}
 
 
 
