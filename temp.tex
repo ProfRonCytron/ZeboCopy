@@ -18,12 +18,16 @@
       \end{pmatrix*}}
 \end{TLArray}\end{center}}%
 %%
-\def\GenSpotArray#1#2#3#4{%
+\def\GenSpotArrayAB#1#2#3#4{%
+  \GenSpotArrayHelper{#1}{#2}{#3}{#4}{\ColorTwo}}
+\def\GenSpotArrayZeroed#1#2#3{%
+  \GenSpotArrayHelper{#1}{#2}{0}{#3}{\ColorFour}}
+\def\GenSpotArrayHelper#1#2#3#4#5{%
 {%
 \begin{center}
 \ensuremath{%
 \def\arraystretch{1.4}%
-\begin{SpotArray}{4}{#1}{#2}{\ColorTwo}{\ColorOne}{#3}
+\begin{SpotArray}{4}{#1}{#2}{#5}{\ColorOne}{#3}
 \begin{pmatrix*}[r]
 #4
 \end{pmatrix*}
@@ -68,7 +72,7 @@
 
 
 \xdef\RMatrix{\ensuremath{U}}
-
+%%
 %%  #1 - U number for the two level array for this slide
 %%  #2 - a
 %%  #3 - b
@@ -86,6 +90,8 @@
 \edef\PrevName{\RMatrix{}}%
 \xdef\RMatrix{$U_{#1}$\RMatrix}%
 \edef\NextName{\RMatrix{}}%
+%%
+%%
 \begin{frame}{#8}{#9}
 \Vskip{-3em}\TwoColumns{%
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{\visible<3->{%
@@ -102,26 +108,9 @@
 \end{center}}
 \end{frame}
 }
-\GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArray{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArray{2}{1}{0}{\UaU}}{Example}{Step 1}
+\GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArrayAB{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArrayZeroed{2}{1}{\UaU}}{Example}{Step 1}
 
-\GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArray{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArray{3}{1}{0}{\UbUaU}}{Example}{Step 2}
-
-\begin{frame}{first}
-\Vskip{-3em}\TwoColumns{%
-\Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{
-\[U_{1}=\]
-\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{%
-\ABR{\HF{1}}{\HF{1}}{\RootTwo}
-}
-}{%
-\hbox to \textwidth{\hss\RMatrix{} =\hbox to 3em{\hss}}
-\GenSpotArray{2}{1}{1}{\U}
-}
-\Vskip{-3em}\begin{center}
-\xdef\RMatrix{$U_1$\RMatrix}
- \RMatrix = \GenSpotArray{2}{1}{0}{\UaU}
-\end{center}
-\end{frame}
+\GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArrayAB{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{3}{1}{\UbUaU}}{Example}{Step 2}
 
 
 
