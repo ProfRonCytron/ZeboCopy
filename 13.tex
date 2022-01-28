@@ -46,6 +46,7 @@
 \def\CE{\alt<3->{$\textcolor<5>{Red}{1}$}{\CFCirc{Black}}}
 \def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
 
+\section{Two-level quantum systems}
 
 \begin{frame}{Two-level quantum systems}{These affect (under control) only a single qubit}
 
@@ -203,7 +204,7 @@ In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_
 \def\B{\ColorFour{\ensuremath{b}}}
 \def\BConj{\ColorFour{\ensuremath{\Conj{b}}}}
 
-
+\section{Two-level matrices}
 \begin{frame}{Two-level matrices}{Definition and synthesis}
 
 \TwoColumns{%
@@ -340,6 +341,323 @@ Any such matrix is a two-level unitary matrix.  Unitarity significantly constrai
 }
     
 \end{frame}}
+
+
+\section{Example}
+
+{
+%%
+%% #1 i first row
+%% #2 j second row
+%% #3 ii
+%% #4 ij
+%% #5 ji
+%% #6 jj
+%%
+\def\GenTLArray#1#2#3#4#5#6{%
+   \begin{center}\begin{TLArray}{4}{#1}{#2}{#3}{#4}{#5}{#6}{1}{0}
+      \ensuremath{\begin{pmatrix*}
+         \GenFourByFour{}
+      \end{pmatrix*}}
+\end{TLArray}\end{center}}%
+%%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - top row number in process
+%% #4 - contents of the array
+%%
+\def\GenSpotArrayAB#1#2#3#4{%
+  \GenSpotArrayHelper{#1}{#2}{#3}{#4}{\ColorTwo}}
+%%
+%%  Spotlights only the specified cell using \ColorFour
+%%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - contents of the array
+%%
+\def\GenSpotArrayZeroed#1#2#3{%
+  \GenSpotArrayHelper{#1}{#2}{0}{#3}{\ColorFour}}
+%% 
+%% #1 - i coordinate to call out
+%% #2 - j coordinate to call out
+%% #3 - top row number
+%% #4 - contents of array
+%% #5 - \command to apply to spotlighted cell
+%%
+\def\GenSpotArrayHelper#1#2#3#4#5{%
+{%
+\begin{center}
+\ensuremath{%
+\def\arraystretch{1.4}%
+\begin{SpotArray}{4}{#1}{#2}{#5}{\ColorOne}{#3}
+\begin{pmatrix*}[r]
+#4
+\end{pmatrix*}
+\end{SpotArray}
+}
+\end{center}
+}}%
+%%
+%% #1 - a
+%% #2 - b
+%% #3 - r
+\def\ABR#1#2#3{%
+{\small
+\begin{align*}
+\ColorOne{a} &= \ColorOne{#1} \\
+\ColorTwo{b} &= \ColorTwo{#2} \\
+\ColorFive{r} &= \ColorFive{#3}
+\end{align*}}}
+\def\HF#1{\ensuremath{\frac{#1}{2}}}
+\def\RootEt#1{\ensuremath{\frac{#1}{\sqrt{8}}}}
+\def\I{\NiceI}
+\def\E#1{\TE{#1}}
+
+\def\GenericStart{%
+\E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{\alt<3>{0}{\SCirc}} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc}}
+
+\def\GenericMiddle{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc}}
+
+\def\GenericFinal{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{0} & \E{\SCirc} & \E{\SCirc}}
+
+%% #1 -- range
+%% #2 -- value to become
+\def\GN#1#2{%
+\alt<#1->{#2}{\SCirc}}
+
+\def\GenericWorking{%
+\E{\GN{4}{1}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} \\
+\E{\GN{2}{0}} & \E{\GN{7}{1}} & \E{\GN{7}{0}} & \E{\GN{7}{0}} \\
+\E{\GN{3}{0}} & \E{\GN{6}{0}} & \E{\SCirc} & \E{\SCirc} \\
+\E{\GN{4}{0}} & \E{\GN{7}{0}} & \E{\SCirc} & \E{\SCirc}}
+
+\def\U{%
+\E{\HF{1}} & \E{\HF{1}}   & \E{\HF{1}}  & \E{\HF{1}}    \\
+\E{\HF{1}} & \E{\HF{\I}}  & \E{-\HF{1}} & \E{-\HF{\I}}  \\
+\E{\HF{1}} & \E{-\HF{1}}  & \E{\HF{1}}  & \E{-\HF{1}}   \\
+\E{\HF{1}} & \E{-\HF{\I}} & \E{-\HF{1}}  & \E{\HF{\I}}}
+
+\def\UaU{%
+\E{\RootTwo} & \E{\RootEt{1+\I}} & \E{0} & \E{\RootEt{1-\I}} \\
+\E{0}            & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+i}} \\
+\E{\HF{1}}       & \E{-\HF{1}} & \E{\HF{1}} & \E{-\HF{1}} \\
+\E{\HF{1}}       & \E{-\HF{\I}} & \E{-\HF{1}} & \E{\HF{\I}}}
+
+
+\def\Tw#1{\frac{#1}{\sqrt{12}}}
+\def\Tf#1{\frac{#1}{\sqrt{24}}}
+
+\def\UbUaU{%
+\E{\Tw{3}} & \E{\Tw{\I}} & \E{\Tw{1}} & \E{-\Tw{i}} \\
+\E{0} & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+\I}} \\
+\E{0} & \E{\Tf{3+\I}} & \E{-\Tf{2}} & \E{\Tf{3-\I}} \\
+\E{\HF{1}} & \E{-\HF{i}} & \E{-\HF{1}} & \E{\HF{\I}}
+}
+
+\def\UcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+\I}} \\
+\E{0} & \E{\Tf{3+\I}} & \E{-\Tf{2}} & \E{\Tf{3-\I}} \\
+\E{0} & \E{\Tw{2\I}} & \E{\Tw{2}} & \E{-\Tw{2\I}}
+}
+
+\def\UdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\frac{\sqrt{2}}{\sqrt{3}}} & \E{\frac{\I}{\sqrt{6}}} & \E{\frac{1}{\sqrt{6}}} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{\frac{\I}{\sqrt{3}}} & \E{\frac{1}{\sqrt{3}}} & \E{-\frac{\I}{\sqrt{3}}}
+}
+
+\def\UeUdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{0} & \E{-\RootTwo} & \E{\frac{\I}{\sqrt{2}}}
+}
+
+\def\FinalConjTranspose{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} &  \E{-\RootTwo} \\
+\E{0} & \E{0} & \E{-\frac{\I}{\sqrt{2}}} & \E{-\frac{\I}{\sqrt{2}}}
+}
+
+
+
+\xdef\RMatrix{\ensuremath{U}}
+%%
+%%  #1 - U number for the two level array for this slide
+%%  #2 - a
+%%  #3 - b
+%%  #4 - r
+%%  #5 - Old
+%%  #6 - Two level
+%%  #7 - new
+%%  #8 - title
+%%  #9 - subtitle
+\def\GenSlide#1#2#3#4#5#6#7#8#9{%
+%%
+%% Have to do this before frame, because
+%%    \visible runs the frame multiple times
+%%
+\edef\PrevName{\RMatrix{}}%
+\xdef\RMatrix{$U_{#1}$\RMatrix}%
+\edef\NextName{\RMatrix{}}%
+\GenSlideHelper{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}
+%%
+%%
+\def\GenSlideHelper#1#2#3#4#5#6#7#8#9{%
+\begin{frame}{#8}{#9}
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{\visible<3->{%
+\[U_{#1}=\]
+#6}}{%
+\visible<2->{\ABR{#2}{#3}{#4}}
+}
+}{%
+\visible<1->{\hbox to \textwidth{\hss\PrevName{} =\hbox to 3em{\hss}}
+#5}
+}
+\visible<4->{\Vskip{-3em}\begin{center}
+ \NextName{} = #7
+\end{center}}
+\end{frame}
+}
+
+\begin{frame}{Overview of example}{Each slide will look like this}
+\Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> The matrix in progress is shown on the right, with one entry already eliminated.  There are two distinguished entries:
+\end{itemize}
+    \begin{description}
+       \item<2->[\CFCirc{\RCone}] is the top-left entry for the portion of the matrix undergoing transformation.
+       \item<3->[\CFCirc{\RCtwo}] is the entry which we are now eliminating (obtaining~$0$).
+    \end{description}
+\begin{itemize}
+    \item<4-> These correspond to the values \ColorOne{$a$} and \ColorTwo{$b$} shown in the center of the slide.
+    \item<5-> \ColorFive{$r$} is computed as \ColorFive{$\sqrt{\Prob{\CFCirc{\RCone}}+\Prob{\CFCirc{\RCtwo}}}$}
+\end{itemize}}
+\only<7->{%
+\BigSkip{}
+\only<7-9>{\GenTLArray{1}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}
+\only<10->{\visible<10>{\GenTLArray{2}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}}
+
+\begin{itemize}
+\item <8-> The result of multiplying these two matrices is finally shown at the bottom center of the slide (not shown here).
+\item <9-> That matrix becomes the top right matrix on the next slide, as we continue to eliminate almost all entries in the lower triangle.
+\item<11-> Until we obtain this result, which we eliminate using its conjugate transpose.
+\end{itemize}
+}
+}{%
+\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\visible<4-10>{\ABR{\CFCirc{\RCone}}{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}
+}{%
+\only<1-9>{\GenSpotArrayAB{3}{1}{1}{\GenericStart}}
+\only<10>{\GenSpotArrayAB{3}{2}{2}{\GenericMiddle}}
+\only<11->{\GenSpotArrayAB{0}{0}{0}{\GenericFinal}}
+}%
+\only<6-10>{
+\visible<6->{%
+To obtain our two-level array, we compute
+\Vskip{-3em}\begin{eqnarray*}
+    \ColorOne{\Conj{a}}/\ColorFive{r} &
+    \ColorTwo{\Conj{b}}/\ColorFive{r} \\
+    \ColorTwo{b}/\ColorFive{r} & \ColorOne{-a}/\ColorFive{r}
+\end{eqnarray*}
+which are deployed in the two-level array shown to the left.}
+}}
+    
+\end{frame}
+
+{
+\def\GenStepA#1#2#3{%
+\only<#1>{\GenTLArray{#2}{#3}{\SCirc}{\SCirc}{\SCirc}{\SCirc}}}
+\def\GenStepB#1#2#3#4{%
+\only<#1>{\GenSpotArrayAB{#2}{#3}{#4}{\GenericWorking}}}
+\begin{frame}{Tracing the example}{Without values to show the flow}
+\TwoColumns{%
+\GenStepA{1}{2}{1}%
+\GenStepA{2}{3}{1}%
+\GenStepA{3}{4}{1}%
+\only<4>{The left column is finished}%
+\GenStepA{5}{3}{2}%
+\GenStepA{6}{4}{2}%
+\only<7>{These steps are complete.  We multiply the resulting matrix by its conjugate transpose to obtainthe identity matrix (not shown here).}
+}{%}
+\GenStepB{1}{2}{1}{1}%
+\GenStepB{2}{3}{1}{1}%
+\GenStepB{3}{4}{1}{1}%
+\GenStepB{4}{0}{0}{0}%
+\GenStepB{5}{3}{2}{2}%
+\GenStepB{6}{4}{2}{2}%
+\GenStepB{7}{0}{0}{0}%
+}
+\end{frame}}
+
+\GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArrayAB{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArrayZeroed{2}{1}{\UaU}}{Example}{Step 1}
+
+\GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArrayAB{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{3}{1}{\UbUaU}}{Example}{Step 2}
+
+\GenSlide{3}{\Tw{3}}{\HF{1}}{1}{\GenSpotArrayAB{4}{1}{1}{\UbUaU}}{\GenTLArray{1}{4}{\Tw{3}}{\HF{1}}{\HF{1}}{-\Tw{3}}}{\GenSpotArrayZeroed{3}{1}{\UcUbUaU}}{Example}{Step 3}
+
+\GenSlide{4}{\RootEt{1-\I}}{\Tf{3+\I}}{\frac{\sqrt{2}}{\sqrt{3}}}{\GenSpotArrayAB{3}{2}{2}{\UcUbUaU}}{\GenTLArray{2}{3}{\frac{\sqrt{3}}{4}(1+\I)}{\frac{3-\I}{4}}{\frac{3+\I}{4}}{\frac{\sqrt{3}}{4}(\I-1)}}{\GenSpotArrayZeroed{3}{2}{\UdUcUbUaU}}{Example}{Step 4}
+
+\GenSlide{5}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{1}{\GenSpotArrayAB{4}{2}{2}{\UdUcUbUaU}}{\GenTLArray{2}{4}{\frac{\sqrt{2}}{\sqrt{3}}}{-\frac{\I}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{4}{2}{\UeUdUcUbUaU}}{Example}{Step 5}
+
+{
+\def\E#1{#1}
+\begin{frame}{Final step}{To obtain the identity matrix}
+
+\begin{center}
+$\visible<2->{\ColorTwo{\begin{pmatrix*}
+\FinalConjTranspose
+\end{pmatrix*}}}\visible<3->{\times} \visible<1->{\ColorOne{\begin{pmatrix*}\UeUdUcUbUaU\end{pmatrix*}}}\visible<3->{=\Identity}$\end{center}
+\begin{itemize}
+    \item<1-> We take the final result \ColorOne{\NextName{}},
+    \item<2-> compute its conjugate transpose---call this \ColorTwo{$U_6$}.
+    \item<3-> We multiply them to obtain the identity matrix.
+    \item<4-> We thus obtain \ColorTwo{$U_6$}\ColorOne{\NextName{}}=\Identity
+    \item<5-> So $U=\Conj{U_1}\Conj{U_2}\Conj{U_3}\Conj{U_4}\Conj{U_5}\Conj{U_6}$, which is the product of two-level matrices.
+\end{itemize}
+
+
+
+
+\end{frame}}
+
+
+
+
+}
+
+\section{Circuit implementation}
+
+\begin{frame}{Implementation}{Of the two-level arrays}
+    
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Any quantum system of $n$ qubits can theoretically be decomposed into the product of two-level matrices, each of size $2^{n}\times 2^{n}$.  Each such matrix acts on a single qubit under control from the other qubits.
+    \item For a $d\times d$ matrix, the number of two-level matrices needed grows as $\Theta(d^{2})$, since we need one for each element of the original matrix's lower triangle.
+    \item We obtain an exact solution, but the number of such gates is impractical.
+    
+\end{itemize}
+    
+\end{frame}
 
 
 
