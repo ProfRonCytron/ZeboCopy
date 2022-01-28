@@ -893,6 +893,11 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %%
 \newenvironment{TLArray}[9]{%
 \def\II##1{\ColorOne{##1}}\def\IJ##1{\ColorThree{##1}}\def\JI##1{\ColorFour{##1}}\def\JJ##1{\ColorTwo{##1}}\def\DD##1{##1}\def\OD##1{##1}
+\def\GenFourByFour{%
+\TE  & \TE & \TE & \TE \\
+\TE  & \TE & \TE & \TE \\
+\TE  & \TE & \TE & \TE \\
+\TE  & \TE & \TE & \TE}%
 \begin{TDIter}{#1}
 \def\TE{%
 %%
@@ -939,19 +944,24 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %%  #2 -- i coordinate to call out
 %%  #3 -- j coordinate to call out
 %%  #4 -- command to spotlight
-%%  #5 -- command for not spotlighted
+%%  #5 -- command for top row entry
+%%  #6 -- top row number
 %%
-\newenvironment{SpotArray}[5]{%
+\newenvironment{SpotArray}[6]{%
 \begin{TDIter}{#1}
 \def\TE##1{%
-    \ifnum\value{TDIi}=#2\relax%
-       \ifnum\value{TDIj}=#3\relax%
-          #4{##1}%
+   \ifnum\value{TDIj}=#3\relax%      column
+      \ifnum\value{TDIi}=#2\relax%   row
+           #4{##1}%
        \else%
-          #5{##1}%
+          \ifnum\value{TDIi}=#6\relax%  top row
+             #5{##1}
+          \else%
+             ##1
+          \fi%
        \fi
     \else%
-       #5{##1}%
+       ##1%
     \fi%
     \TDINext{}
 }%
