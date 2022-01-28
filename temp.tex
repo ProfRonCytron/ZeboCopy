@@ -189,18 +189,27 @@ which are deployed in the two-level array shown to the left.}
 \end{frame}
 
 {
-\def\GenStep#1#2#3#4{%
+\def\GenStepA#1#2#3{%
+\only<#1>{\GenTLArray{#2}{#3}{\SCirc}{\SCirc}{\SCirc}{\SCirc}}}
+\def\GenStepB#1#2#3#4{%
 \only<#1>{\GenSpotArrayAB{#2}{#3}{#4}{\GenericWorking}}}
 \begin{frame}{Tracing the example}{Without values to show the flow}
 \TwoColumns{%
+\GenStepA{1}{2}{1}%
+\GenStepA{2}{3}{1}%
+\GenStepA{3}{4}{1}%
+\only<4>{The left column is finished}%
+\GenStepA{5}{3}{2}%
+\GenStepA{6}{4}{2}%
+\only<7>{These steps are complete.  We multiply the resulting matrix by its conjugate transpose to obtainthe identity matrix (not shown here).}
 }{%}
-\GenStep{1}{2}{1}{1}%
-\GenStep{2}{3}{1}{1}%
-\GenStep{3}{4}{1}{1}%
-\GenStep{4}{0}{0}{0}%
-\GenStep{5}{3}{2}{2}%
-\GenStep{6}{4}{2}{2}%
-\GenStep{7}{0}{0}{0}%
+\GenStepB{1}{2}{1}{1}%
+\GenStepB{2}{3}{1}{1}%
+\GenStepB{3}{4}{1}{1}%
+\GenStepB{4}{0}{0}{0}%
+\GenStepB{5}{3}{2}{2}%
+\GenStepB{6}{4}{2}{2}%
+\GenStepB{7}{0}{0}{0}%
 }
 \end{frame}}
 
