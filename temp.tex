@@ -18,10 +18,29 @@
       \end{pmatrix*}}
 \end{TLArray}\end{center}}%
 %%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - top row number in process
+%% #4 - contents of the array
+%%
 \def\GenSpotArrayAB#1#2#3#4{%
   \GenSpotArrayHelper{#1}{#2}{#3}{#4}{\ColorTwo}}
+%%
+%%  Spotlights only the specified cell using \ColorFour
+%%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - contents of the array
+%%
 \def\GenSpotArrayZeroed#1#2#3{%
   \GenSpotArrayHelper{#1}{#2}{0}{#3}{\ColorFour}}
+%% 
+%% #1 - i coordinate to call out
+%% #2 - j coordinate to call out
+%% #3 - top row number
+%% #4 - contents of array
+%% #5 - \command to apply to spotlighted cell
+%%
 \def\GenSpotArrayHelper#1#2#3#4#5{%
 {%
 \begin{center}
@@ -36,6 +55,9 @@
 \end{center}
 }}%
 %%
+%% #1 - a
+%% #2 - b
+%% #3 - r
 \def\ABR#1#2#3{%
 {\small
 \begin{align*}
