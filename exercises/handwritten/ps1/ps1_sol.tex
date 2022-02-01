@@ -20,10 +20,40 @@
     \item \begin{enumerate}
         \item \[\includegraphics[scale=0.6]{easyFilter-sol}\]
         \item Use a sequence of k filters with the initial filter rotated 45 degrees relative to the photon source and then rotate each additional filter by another 45 degrees.
-        \item \begin{pmatrix}
+        \item Consider trying to build a matrix that exhibits the behavior of a vertical filter. Start with just a variable matrix: 
+        \[\begin{pmatrix}
+            a & b \\ c & d
+        \end{pmatrix}\]
+        We know how a vertical filter should handle a completely horizontal input (nothing should pass through). This tells us:
+        \[\begin{pmatrix}
+            a & b \\ c & d
+        \end{pmatrix}
+        \begin{pmatrix}
+        1 \\ 0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        0 \\ 0
+        \end{pmatrix}
+        \]
+        So $a = c = 0$. Next we know how a vertical filter should handle a completely vertical input (everything should pass through). This tells us:
+        \[
+        \begin{pmatrix}
+            0 & b \\ 0 & d
+        \end{pmatrix}
+        \begin{pmatrix}
+        0\\ 1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        0\\ 1
+        \end{pmatrix}
+        \]
+        Thus $b = 0, d = 1$ and the final result is
+        \[\begin{pmatrix}
                 0 & 0 \\
                 0 & 1
-                \end{pmatrix}
+                \end{pmatrix}\]
         \item $\sin^2{\theta}$
         \item \begin{pmatrix}
                 \cos^2{\theta} & \cos{\theta}\sin{\theta} \\
