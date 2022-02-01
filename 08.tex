@@ -34,7 +34,7 @@
     \item If we obstruct the bottom path as shown here, the interference cannot occur.  There are thus three possibilities.
     \begin{itemize}
         \item The photon is measured at the obstruction, which will occur $1/2$ the time.
-        \item The photon is measured after passing through the first beam splitter.  From there it reaches either the \textcolor{orange}{orange} sensor or the \textcolor{\RCtwo}{blue} sensor.
+        \item The photon is measured after passing through the first beam splitter.  From there it reaches either the \textcolor{\RCone}{pink} sensor or the \textcolor{\RCtwo}{blue} sensor.
     \end{itemize}
     \end{itemize}
     }%
@@ -50,7 +50,7 @@
     \begin{tabular}{lc}
        Observation & How often? \\\hline
        \alert<8>{Explosion} & \alert<8>{50\%} \\
-       \textcolor{orange}{Orange sensor} & 25\% \\
+       \textcolor{\RCone}{Pink sensor} & 25\% \\
        \textcolor{\RCtwo}{Blue sensor} & 25\%
      \end{tabular}
      \end{center}
@@ -59,7 +59,7 @@
     \begin{tabular}{lc}
        Observation & How often? \\\hline
        Explosion & 0\% \\
-       \textcolor{orange}{Orange sensor} & 100\% \\
+       \textcolor{\RCone}{Pink sensor} & 100\% \\
        \textcolor{\RCtwo}{Blue sensor} & 0\%
      \end{tabular}
      \end{center}
@@ -73,7 +73,7 @@
 \only<1>{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);}
 \only<2->{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
 \only<4>{\draw[ultra thick,color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
 \draw<2->[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
 \visible<2-3,5->{\Shift{4}{-2}{\EVBomb{}}}
 \visible<3->{\draw[white] (4.5,-1.5) node {{\tiny\bf Bomb!}};}
@@ -85,10 +85,10 @@
 \end{TIKZP}%
 \MedSkip{}
 \only<2>{Even if the photon isn't measured at the obstruction, its presence prevents interference.}
-\only<5>{Recall that without the obstruction, all photons are measured only at the \textcolor{orange}{orange sensor}.}
+\only<5>{Recall that without the obstruction, all photons are measured only at the \textcolor{\RCone}{pink sensor}.}
 \only<6->{%
 If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb is there, and we live to tell the tale.}
-\only<7->{Detection at the \textcolor{orange}{orange sensor} tells us nothing.} \only<8->{\alert{Oh, and half the time we die if the bomb is there.}}
+\only<7->{Detection at the \textcolor{\RCone}{pink sensor} tells us nothing.} \only<8->{\alert{Oh, and half the time we die if the bomb is there.}}
 }%
 \end{frame}
 
@@ -96,9 +96,9 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
 
 \begin{itemize}
     \item If the bomb is there, we detect it 25\% of the time without blowing up.
-    \item We can never be absolutely certain of the bomb's absence, because all photons would be measured by the \textcolor{orange}{orange sensor}, which could happen when the bomb is present.
-    \item After many tries, we can claim with some probability that there is no bomb present.  The probability that we measure $n$ successive photons at the \textcolor{orange}{orange sensor} with a bomb present is $\left(\frac{1}{4}\right)^{n}$.
-    \item Our belief that there is no bomb thus grows exponentially in the number of photons that continue to be observed at the \textcolor{orange}{orange sensor}.
+    \item We can never be absolutely certain of the bomb's absence, because all photons would be measured by the \textcolor{\RCone}{pink sensor}, which could happen when the bomb is present.
+    \item After many tries, we can claim with some probability that there is no bomb present.  The probability that we measure $n$ successive photons at the \textcolor{\RCone}{pink sensor} with a bomb present is $\left(\frac{1}{4}\right)^{n}$.
+    \item Our belief that there is no bomb thus grows exponentially in the number of photons that continue to be observed at the \textcolor{\RCone}{pink sensor}.
 \end{itemize}
     
 \end{frame}
@@ -106,7 +106,7 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
 \begin{frame}{Troubling questions}{Quantum is strange}
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}
-    \item<1-3> Interference that produces photons only at the \textcolor{orange}{orange sensor} requires that superposition persists up to the second beam splitter.
+    \item<1-3> Interference that produces photons only at the \textcolor{\RCone}{pink sensor} requires that superposition persists up to the second beam splitter.
     \item<2-3> It's understandable that the obstruction blocks the superposition, so that a photon can now reach either sensor.
     \item<3> However, it seems impossible that, in its superposition, the photon does not cause the bomb to explode.
 \end{itemize}
@@ -117,7 +117,7 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
 \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
 \only<1>{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);}
 \only<2->{\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);}
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
 \draw<2->[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
 \visible<2-3>{\Shift{4}{-2}{\EVBomb{}}}
 \visible<3->{\fill[red] (4.5,-1.5) circle(0.25);}
@@ -137,7 +137,7 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
 \draw[color=purple] (2.5,0.5) -- ++(4,0) -- ++(0,-2);
 %\draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(4,0);
 \draw[color=\RCthree] (2.5,0.5) -- ++(0,-2) -- ++(2,0);
-\draw[->,color=orange] (6.5,-1.5) -- ++(1.5,0);
+\draw[->,color=\RCone] (6.5,-1.5) -- ++(1.5,0);
 \draw[->,color=\RCtwo] (6.5,-1.5) -- ++(0,-1.5);
 \Shift{4}{-2}{\EVBomb{}}
 \fill[red] (4.5,-1.5) circle(0.25);
@@ -145,7 +145,7 @@ If we ever see a photon at the \textcolor{\RCtwo}{blue sensor} we know the bomb 
 \end{center}
 }
   \begin{description}
-     \item<1->[\href{https://en.wikipedia.org/wiki/Copenhagen_interpretation}{Copenhagen}] Until measurement, the superposition exhibits wave behavior.  Upon measurement, the quantum system collapses.  The history up to the collapse will be particle-behavior-consistent with the measurement.  So if the photon is measured by the \textcolor{orange}{orange} or
+     \item<1->[\href{https://en.wikipedia.org/wiki/Copenhagen_interpretation}{Copenhagen}] Until measurement, the superposition exhibits wave behavior.  Upon measurement, the quantum system collapses.  The history up to the collapse will be particle-behavior-consistent with the measurement.  So if the photon is measured by the \textcolor{\RCone}{pink} or
      \textcolor{\RCtwo}{blue} sensor, no explosion occurs.
      \item<2>[\href{https://en.wikipedia.org/wiki/Many-worlds_interpretation}{Many worlds}] The wave nature of the photon persists.  At each point where superposition is introduced, multiple worlds are created, one for each possible outcome.  We happen to be entangled with the world we observe at measurement.  Other worlds have the other measurements.
   \end{description}
