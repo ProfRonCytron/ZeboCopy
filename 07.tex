@@ -311,12 +311,35 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
 \end{itemize}
 \end{frame}
 
-
 {
 \def\UZZ{\ensuremath{\ColorOne{u_{0,0}}}}
 \def\UZN{\ensuremath{\ColorTwo{u_{0,1}}}}
 \def\UNZ{\ensuremath{\ColorThree{u_{1,0}}}}
 \def\UNN{\ensuremath{\ColorFour{u_{1,1}}}}
+\begin{frame}{Outer products}{Review}
+
+\TwoColumns{%
+\begin{itemize}
+    \item $\KetBra{0}{0} = \SQB{1}{0}\times\CQB{1}{0} = \ColorOne{\SQBG{}{1}{0}{0}{0}}$
+    \Vskip{1em}
+    \item $\KetBra{1}{0} = \SQB{0}{1}\times\CQB{1}{0} = \ColorThree{\SQBG{}{0}{0}{1}{0}}$
+\end{itemize}
+}{%
+\begin{itemize}
+    \item $\KetBra{0}{1} = \SQB{1}{0}\times\CQB{0}{1} = \ColorTwo{\SQBG{}{0}{1}{0}{0}}$
+    \Vskip{1em}
+    \item $\KetBra{1}{1} = \SQB{0}{1}\times\CQB{0}{1} = \ColorFour{\SQBG{}{0}{0}{0}{1}}$
+\end{itemize}
+}
+\BigSkip{}
+\[
+\SQBG{}{\UZZ}{\UZN}{\UNZ}{\UNN} = 
+\UZZ\KetBra{0}{0} + \UZN\KetBra{0}{1}
++ \UNZ\KetBra{1}{0} + \UNN\KetBra{1}{1}
+\]
+    
+\end{frame}
+
 \begin{frame}{Single qubit universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
 
 \TwoColumns{%
