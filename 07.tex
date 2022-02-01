@@ -1,5 +1,34 @@
 \SetTitle{7}{Universal quantum gates}{Several approaches, culminating in the qiskit U gate}{07}
 
+\begin{frame}{Overview}{What will we study here?}
+\begin{itemize}
+    \item We recap the postulates of quantum computing.
+    \item A qubit can be described by two real parameters (recall the Bloch sphere).  Here we see that a quantum gate can be described by three such parameters.
+    \item We look at how to use those three parameters, in qiskit in particular, to specify a quantum gate.
+    \item We defer studying theoretical considerations of universality, but will eventually show that all quantum circuits can be realized by gate that act on only two inputs.
+    \item We show that any quantum gate can be decomposed into a sum of Pauli gates, so they serve as a \emph{basis} for quantum gates.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Postulates of quantum computing}{Brazenly borrowed from quantum mechanics}
+
+The \href{https://en.wikipedia.org/wiki/Axiom}{postulates (axioms)} of quantum computing~(\MikeIke{}):
+\only<1-3>{%
+\begin{enumerate}
+    \item<1-> The state space of a quantum system is a complex \href{https://en.wikipedia.org/wiki/Hilbert\_space}{Hilbert space}).  The state of the system is described by a \href{https://en.wikipedia.org/wiki/Unit\_vector}{unit} state vector in that space.
+    
+    Our state space is a set of qubits.
+    \item <2->The evolution of a closed quantum system is described by a unitary transformation.  For us, these are the gates of a quantum computation.
+    \item<3-> Quantum measurements are described by a collection of (not necessarily unitary) measurement operators.  We are mostly concerned with measurement in the computational basis.  A qubit in state $\psi=\alpha\QZero{}+\beta\QOne{}$ is measured as \QZero{} with probability $\Prob{\alpha}$ and as \QOne{} with probability $\Prob{\beta}$.  After measurement, the state of the system is the state obtained by measurement. For any measurement operator $M, M^{2}=M$.
+\end{enumerate}}
+\only<4->{%
+\begin{enumerate}
+\setcounter{enumi}{3}
+   \item The state space of a composite physical system is the \href{https://en.wikipedia.org/wiki/Tensor_product}{tensor product} of the state spaces of the component physical systems. Moreover, if we have systems numbered $1$ through $n$, and system number $i$ is prepared in the state \QState{i}, then the joint state of the total system is $\QState{1}\TensOp\QState{2}\TensOp\cdots\TensOp\QState{n}$.
+\end{enumerate}}
+\end{frame}
+
+
 \begin{frame}{Universality}{Some initial thoughts}
 
 \begin{itemize}[<+->]
