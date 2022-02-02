@@ -539,4 +539,17 @@ Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
    \item That algorithm shares many qualities with algorithms we study in this course.
    \end{itemize}
 \end{frame}
-\frame{Programming assignment q2}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}[<+->]
+    \item While the Elitzur--Vaidman bomb is only a thought experiment, it serves to spotlight much about what is novel and interesting about quantum computing.
+    \item We can use destructive interference constructively.  With no bomb present, only one sensor receives each photon.
+    \item Measurement changes quantum state, and we can take advantage of that.
+    \item There is a control parameter $\theta$ that we can vary in the computation to control the probability of a \emph{good} outcome.
+    \item Designing a gate for qiskit is a matter of deciding the entries and then computing the entries for the qiskit \NamedGate{U} gate.
+    \item To obtain the correct result, we must run the circuit many times to overcome the (small) probability of any bad outcome.
+    \item We can never be totally sure of avoiding bad outcomes, but probability is in our favor.
+\end{itemize}
+    
+\end{frame}
