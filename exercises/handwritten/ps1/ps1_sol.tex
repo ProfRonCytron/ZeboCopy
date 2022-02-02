@@ -54,11 +54,25 @@
                 0 & 0 \\
                 0 & 1
                 \end{pmatrix}\]
-        \item $\sin^2{\theta}$
-        \item \begin{pmatrix}
+        \item  $\sin^2{\theta}$
+        \item I honestly forget my reasoning when I initially solved this problem, if anyone has a better solution please let me know. - Will
+        \\
+        Take a general state $\ket{\psi}$ and outer product it with itself:
+        \[
+        \ket{\psi}\bra{\psi} = 
+        \begin{pmatrix}
+        \cos{\theta} \\ \sin{\theta}
+        \end{pmatrix}
+        \begin{pmatrix}
+        \cos{\theta} & \sin{\theta}
+        \end{pmatrix}
+        \]
+        \[
+        = \begin{pmatrix}
                 \cos^2{\theta} & \cos{\theta}\sin{\theta} \\
                 \sin{\theta}\cos{\theta} & \sin^2{\theta}
                 \end{pmatrix}
+        \]
         \item Begin with a photon oriented completely in the vertical direction so we have $\begin{pmatrix} 0 \\ 1 \end{pmatrix}$. We then apply a filter oriented 45 degrees ($\frac{\pi}{4}$ radians) from the x-axis. This is represented by the following operation:
         \[\begin{pmatrix}
                 \cos^2{(\frac{\pi}{4})} & \cos{(\frac{\pi}{4})}\sin{(\frac{\pi}{4})} \\
