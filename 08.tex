@@ -472,7 +472,7 @@ On the Bloch sphere, we need to traverse $\pi$ radians (from \ket{0} to \ket{1})
 \end{BlochSphere}
 }%
 \only<5->{%
-Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
+\href{https://en.wikipedia.org/wiki/Bloch_sphere\#Rotation_operators_about_the_Bloch_basis}{Recall}: rotation of $\theta$ radians about the $y$ axis, $R_{y}(\theta)=$
 \SmallSkip{}
 \SQBG{\relax}{\cos\left(\theta/2\right)}{-\sin\left(\theta/2\right)}{\sin\left(\theta/2\right)}{\cos\left(\theta/2\right)}
 }
@@ -503,9 +503,9 @@ Rotate $\theta$ radians about the $y$ axis of the Bloch sphere:
 }{%
 \begin{itemize}
     \item<5-> For an angle $x\geq 0$ in radians
-   \[  \sin x \leq x\mbox{, so }\alert<6>{\sin^{2}x \leq x^{2}} \]
+   \[  \sin x \leq x\mbox{, so }\alert<6>{\sin^{2}x} \leq \textcolor<6>{\RCtwo}{x^{2}} \]
    \item<6-> The chance of blowing up on each try is no more than
-   \[ {\left(\frac{\pi}{2n}\right)}^{2} \]
+   \[ \ColorTwo{{\left(\frac{\pi}{2n}\right)}^{2}} \]
   \item<8-> \only<8-10>{While the chance of some explosion grows \textcolor<8>{\RCone}{linearly with $n$}, the chance of a single explosion grows as \textcolor<8>{\RCtwo}{$1/n^2$}.} \only<11>{\alert{The chance of an explosion can be made \emph{arbitrarily small}.}}
 \end{itemize}
 }}
