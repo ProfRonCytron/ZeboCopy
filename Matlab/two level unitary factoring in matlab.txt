@@ -1,0 +1,60 @@
+syms a b d
+U = sym([1/2 1/2 1/2 1/2; 
+         1/2 i/2 -1/2 -i/2; 
+         1/2 -1/2 1/2 -1/2; 
+         1/2 -i/2 -1/2 i/2])
+a = U(1,1)
+b = U(2,1)
+d = sqrt(abs(a)^2+abs(b)^2)
+U1 = sym([conj(a)/d conj(b)/d 0 0;
+          b/d       -a/d      0 0;
+          0          0        1 0;
+          0          0        0 1])
+U1U = U1*U
+a = U1U(1,1)
+b = U1U(3,1)
+d = sqrt(abs(a)^2+abs(b)^2)
+U2 = sym([conj(a)/d 0 conj(b)/d 0;
+          0       1   0    0;
+          b/d     0  -a/d  0;
+          0       0   0    1])
+U2U1U = U2*U1U
+a = U2U1U(1,1)
+b = U2U1U(4,1)
+d = sqrt(abs(a)^2+abs(b)^2)
+U3 = sym([conj(a)/d  0   0  conj(b)/d;
+           0         1   0     0;
+           0         0   1     0;
+           b/d       0   0    -a/d])
+U3U2U1U = U3*U2U1U
+prev = U3U2U1U
+a = prev(2,2)
+b = prev(3,2)
+d = sqrt(abs(a)^2+abs(b)^2)
+U4 = sym([1    0   0   0;
+          0   conj(a)/d conj(b)/d 0;
+          0    b/d    -a/d     0;
+          0     0      0       1])
+U4U3U2U1U = U4*prev
+prev = U4U3U2U1U
+a = prev(2,2)
+b = prev(4,2)
+d = sqrt(abs(a)^2+abs(b)^2)
+U5 = sym([ 1     0    0   0;
+           0     conj(a)/d 0  conj(b)/d;
+           0         0          1      0;
+           0         b/d   0   -a/d])
+U5U4U3U2U1U = U5*prev
+prev = U5U4U3U2U1U
+a = prev(3,3)
+b = prev(4,3)
+d = sqrt(abs(a)^2+abs(b)^2)
+U6 = sym([1 0 0 0;
+          0  1 0 0;
+          0  0 conj(prev(3,3)) conj(prev(4,3));
+          0  0 conj(prev(3,4)) conj(prev(4,4))])
+U6U5U4U3U2U1U = U6*prev
+
+idcheck = U6*(U5*(U4*(U3*(U2*(U1*U)))))
+ucheck = U1'*(U2'*(U3'*(U4'*(U5'*U6'))))
+
