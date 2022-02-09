@@ -104,23 +104,22 @@
 \begin{frame}{Harnessing entanglement}{Achieving teleportation, almost}
 \Vskip{-3.5em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
 \only<1-2>{%
-\adjustbox{valign=t}{\begin{quantikz}
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
 \lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\
 \lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
 \end{quantikz}}}%
 \only<3>{%
-\adjustbox{valign=t}{\begin{quantikz}
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
 \lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\[2em]
 \lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
 \end{quantikz}}}%
 \only<4->{%
-\adjustbox{valign=t,scale=0.95}{\begin{quantikz}
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
 \lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \gate{U}\slice{\QState{2}} & \qw  \rstick{\QState{A}}\\[2em]
 \lstick{\QZero{}} &   \qw    &  \targ{}  & \qw & \qw  \rstick{\QState{B}}
 \end{quantikz}}}%
 \visible<9->{%
 
-\BigSkip{}
 {\small\setlength{\tabcolsep}{2pt}
 \begin{tabular}{r@{\mbox{ }}rlcrl}
 \QState{A} & \multicolumn{5}{l}{$\sqrt{2}\QState{B}$} \\
@@ -146,10 +145,10 @@
     \[\NamedGate{U} = \UGate{} \]
 \end{itemize}}%
 \only<7-8>{%
-\Vskip{-3em}\begin{align*}
-    \QState{2} & = \left(\TensProd{\NamedGate{U}}{\NamedGate{I}}\right) \RootTwo\DQB{1}{0}{0}{1}\\
-    & = \RootTwo{}\DQB{\UGateA{}}{\UGateB{}}{\UGateC{}}{\UGateD{}}
-\end{align*}
+\Vskip{-3em}{\small\begin{align*}
+    \QState{2} & = \left(\TensProd{\NamedGate{U}}{\NamedGate{I}}\right) \RootTwo\DQB{\ColorOne{1}}{0}{0}{\ColorTwo{1}}\\
+    & = \RootTwo{}\DQB{\ColorOne{\UGateA{}}}{\ColorTwo{\UGateB{}}}{\ColorOne{\UGateC{}}}{\ColorTwo{\UGateD{}}}
+\end{align*}}
 }%
 \only<9-12>{%
 \Vskip{-2.5em}\begin{itemize}
@@ -169,18 +168,18 @@
 }
 \only<6-7>{%
 \small{%
-\Vskip{-3em}\[
+\Vskip{-2em}\[
 \TensProd{\NamedGate{U}}{\NamedGate{I}} =
 \begin{pmatrix*}[r]
-\UGateA{} & 0 & \UGateB{}  & 0 \\
-0 & \UGateA{} & 0 & \UGateB{} \\
-\UGateC{} & 0 & \UGateD{}  & 0 \\
-0 & \UGateC{} & 0 & \UGateD{}
+\ColorOne{\UGateA{}} & 0 & \UGateB{}  & \ColorTwo{0} \\
+\ColorOne{0} & \UGateA{} & 0 & \ColorTwo{\UGateB{}} \\
+\ColorOne{\UGateC{}} & 0 & \UGateD{}  & \ColorTwo{0} \\
+\ColorOne{0} & \UGateC{} & 0 & \ColorTwo{\UGateD{}}
 \end{pmatrix*}
 \]}}%
 \only<8-12>{%
 {\setlength{\tabcolsep}{3pt}
-\[
+\Vskip{-2em}\[
     \sqrt{2}\QState{2} = 
     \begin{tabular}{crlcrl} 
     \visible<8-11>{ & \UGateA{} &\ket{\alert<9>{0}0} & $+$
