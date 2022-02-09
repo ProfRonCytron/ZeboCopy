@@ -99,16 +99,24 @@ The resulting state is
 \end{frame}
 
 \begin{frame}{Properties of tensor products}{There are more, but these are important for quantum computing}
-\begin{itemize}
-    \item If $a \in \Co{}$ and $v$ and $w$ are quantum states, then
+\Vskip{-3.5em}\begin{itemize}[<+->]
+    \item If $a \in \Co{}$ and $\ket{v}$ and $\ket{w}$ are quantum states, then
     \[ 
-       \TensProd{(av)}{w} = \TensProd{v}{(aw)} = a\,(\TensProd{v}{w})
+       \TensProd{(a\ket{v})}{\ket{w}} = \TensProd{\ket{v}}{(a\ket{w})} = a\,(\TensProd{\ket{v}}{\ket{w}}) = a\ket{vw}
     \]
-    \item Tensor products distribute over superpositions.  If $v_{1}$, $v_{2}$, and $w$ are quantum states, then
-    \begin{align*}
-       \TensProd{(v_{1}+v_{2})}{w} = & \TensProd{v_{1}}{w} + \TensProd{v_{2}}{w} \\
-       \TensProd{w}{(v_{1}+v_{2})} = & \TensProd{w}{v_{1}} + \TensProd{w}{v_{2}}
+    \item So
+    \Vskip{-3em}\begin{align*}
+        \TensProd{\RootTwo{\ket{v}}}{\RootTwo\ket{w}} &= \frac{1}{2}\TensProd{\ket{v}}{\ket{w}} = \frac{1}{2} \ket{vw}
     \end{align*}
+    \item Tensor products distribute over superpositions.  If $v_{1}$, $v_{2}$, and $w$ are quantum states (dropping ket notation to avoid clutter), then
+    \begin{align*}
+       \TensProd{(v_{1}+v_{2})}{w} = & \TensProd{v_{1}}{w} + \TensProd{v_{2}}{w}\\
+       \TensProd{w}{(v_{1}+v_{2})} = & \TensProd{w}{v_{1}} + \TensProd{w}{v_{2}} 
+    \end{align*}
+    \item If $v$, $w$, $x$, and $y$ are quantum states and $\cdot$ is matrix multiplication, then
+\begin{align*}
+    (\TensProd{v}{w}) \cdot (\TensProd{x}{y}) &= \TensProd{(v\cdot x)}{(w\cdot y)}
+\end{align*}
 \end{itemize}
 \end{frame}
 
