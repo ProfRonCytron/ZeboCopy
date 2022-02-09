@@ -191,7 +191,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 \only<18-19>{%
 \begin{itemize}
 \item<18-> This gate can then be applied to any two-qubit state. 
-\item<19-> If that state is \TensProd{\QState{a}}{\QState{b}}, then the result will be as if \PauliZ{} and \Hadamard{} acted separately on each input.
+\item<19-> If that state is \TensProd{\QState{a}}{\QState{b}}, then the result will be as if \PauliZ{} and \Hadamard{} acted separately on each input, because this is a \href{https://en.wikipedia.org/wiki/Separable_state}{product, or separable state}.
 \[
 (\TensProd{\PauliZ{}}{\Hadamard{}})\,\ket{\QName{a}\QName{b}} = \TensProd{(\PauliZ{}\QState{a})}{(\Hadamard{}\QState{b})}
 \]
@@ -202,7 +202,7 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 
 \item Why compute the tensor product of the two gates if the result can be computed separately?
 
-\item There are some two-qubit states that cannot be written as any \TensProd{\QState{a}}{\QState{b}}.  Such entangled states require using the gates' tensor product.
+\item There are some two-qubit states that cannot be written as any \TensProd{\QState{a}}{\QState{b}}.  Such entangled states require using the gates' tensor product (more later).
 \end{itemize}}
 
 \end{frame}
@@ -367,7 +367,7 @@ We can do this because the qubits are acting independently at this point.  This 
 \begin{itemize}
     \item The qubits' entanglement persists in any basis.
     \item No unitary action taken on them separately can disentangle them.
-    \item If they were brought back together and run through a \NamedGate{CNOT} gate again, then they would disentangle.  \NamedGate{CNOT} is its own inverse.
+    \item If they were brought back together and run through a \NamedGate{CNOT} gate again, then they would disentangle, because \NamedGate{CNOT} is its own inverse.
 \end{itemize}
 }
 \MedSkip{}
@@ -381,7 +381,7 @@ Entanglement defies classical physics and logic and affords advantages for games
 
 \begin{itemize}
     \item<1-> Upon measurement, our entangled qubits collapse unpredictably to the same value, instantaneously, even if they are separated by light years.
-    \item<2-> Einstein regarded this \textit{spukhafte Fernwirkung} (spooky action at a distance) as evidence that quantum theory is incomplete.
+    \item<2-> Einstein regarded this \textit{spukhafte Fernwirkung} (spooky action at a distance) as evidence that quantum theory is \emph{incomplete}.
     \item<3-> For example, local \href{https://en.wikipedia.org/wiki/Hidden-variable_theory}{hidden variables} would explain how qubits manage to provide the same measurement after entanglement.
     \item<6-> Thanks to Bell, we shall soon rule out local hidden variables.
     \item<7-> Perhaps there are \href{https://en.wikipedia.org/wiki/Principle_of_locality}{nonlocal} hidden variables, but how would we prove this?
@@ -471,7 +471,7 @@ This violates belief in locality and realism.}}
     \[
      \ket{\QName{a}\QName{b}} = \TensProd{\SQB{\alpha}{\beta}}{\SQB{\alpha}{\beta}} = \DQB{\alpha^{2}}{\alpha\beta}{\alpha\beta}{\beta^{2}}
     \]
-    \item<4> We will show this is not generally possible:  we can clone \QState{a} only if we know $\alpha$ and $\beta$.
+    \item<4> We will show this is not generally possible:  we can clone \QState{a} only if we know~$\alpha$ and $\beta$.
 \end{itemize}
 
 \end{frame}
