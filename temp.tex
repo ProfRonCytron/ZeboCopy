@@ -1,2 +1,32 @@
 \SetTitle{99}{temp}{faster}{99}
 
+\begin{frame}{Measurement in a basis other than the computational basis}{Overview}
+
+\begin{itemize}[<+->]
+    \item Qiskit, in emulation and on the available hardware, performs measurements only in the computational basis.
+    \item Recall that \QZero{} and \QOne{} are the North and South poles of the Bloch sphere, respectively.
+    \item Some computations require measuring in a \emph{different} basis.
+    \item How are we to achieve that?
+    \item We can rotate from our desired basis to the computational basis.
+    \item We then measure in the computational basis, which causes collapse upon measurement to~\QZero{} or~\QOne{}
+    \item If there is more to the computation, then we must rotate back so that we are in the corresponding eigenstate of our desired basis.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Example}{Measurement in the \NamedGate{X} (Hadamard) basis}
+\Vskip{-4em}\TwoColumns{%
+\begin{itemize}
+    \item<1-> Consider the observable \PauliX{} with eigenvectors \visible<2->{\alert<2>{\ket{+}}} \visible<3->{and \alert<3>{\ket{-}}.}
+    \item<4-> If we had an \NamedGate{X} measurement device, then the measured qubit would collapse to~\alert<4>{\ket{+}} \visible<5->{ or~\alert<5>{\ket{-}}}
+    \item<6-> The detector reports the corresponding \ColorTwo{eigenvalue}, revealing the qubit's collapsed state.
+    \item<7-> \PauliX{} is both a unitary gate and a measurement operator.
+\end{itemize}
+}{%
+\Vskip{-2em}\begin{alignat*}{5}
+    \visible<2->{\XMatrix{} & \alert<2>{\PHad{}} & \mbox{ = } & \ColorTwo{+1}  & \alert<2,4>{\PHad{}}  \\}
+    \visible<3->{\XMatrix{} & \alert<3>{\PHadm{}} & \mbox{ = } & \ColorTwo{-1}  & \alert<3,5>{\PHadm{}} }
+\end{alignat*}
+}
+    
+\end{frame}
