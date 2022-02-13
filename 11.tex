@@ -494,9 +494,9 @@ The circuit:
 \only<5-7>{%
 Scenario 1
 \begin{itemize}
-    \item<5-> Alice and Bob publish their bases, but do nothing to their qubits after they were measured for the protocol.
+    \item<5-> Alice and Bob publish their bases, which Eve can now see.
     \item<6-> Eve can now construct the shared key perfectly and secretly, by measuring (her \Quote{copy} of) each qubit used to construct the shared key in its disclosed basis.
-    \item<7-> To avoid this possibility, Alice and Bob must destroy (change the state) of their qubits after measuring them but before disclosing their sequence of bases.
+    \item<7-> Sadly there is nothing Alice and Bob can do about this, as the entanglement has collapsed.
 \end{itemize}
 }%
 \only<8->{%
@@ -656,7 +656,7 @@ Then \TensProd{\Identity{}}{U} is
 Let
 \Vskip{-3em}\begin{align*}
    \QState{1} & = \TwoSup{0}{1} \\[1.1em]
-   \QState{i} & = \left(\TensProd{\TensSupProd{\Identity}{i-1}}{\NamedGate{CNOT}}\right) \left(\TensProd{\QState{i-1}}{\ket{0}}\right) \\[1.1em]
+   \QState{i+1} & = \left(\TensProd{\TensSupProd{\Identity}{i-1}}{\NamedGate{CNOT}}\right) \left(\TensProd{\QState{i}}{\ket{0}}\right) \\[1.1em]
    P(k) &= \left[\  \QState{k} = \TwoSup{0^k}{1^k}\  \right]
 \end{align*}
 then
