@@ -576,6 +576,49 @@ Scenario 2}%
 
 \end{frame}
 
+\begin{frame}{Pondering entangling an additional bit}{How many of the original qubits are needed to do this?}
+
+\Vskip{-4em}\TwoColumns{%
+\begin{itemize}[<+->]
+    \item Suppose we have an EPR pair \[\TwoSup{\ColorOne{00}}{\ColorOne{11}}\]
+    \item We want to add a \ColorTwo{third qubit} to obtain \[\TwoSup{\ColorOne{00}\ColorTwo{0}}{\ColorOne{11}\ColorTwo{1}}\]
+    \item Do we need \ColorOne{both} original qubits?
+    \item Or can we create the new state using just one of the original qubits?
+\end{itemize}
+}{%
+\Vskip{2em}
+\only<1>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw & \qw \rstick{\ColorOne{a}}\\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw & \qw \rstick{\ColorOne{b}}
+\end{quantikz}}}%
+\only<2>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw & \qw \rstick{\ColorOne{a}} \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw & \qw \rstick{\ColorOne{b}} \\
+\lstick{\QZero{}} &   \qw    &  \qw     & \qw & \qw \rstick{\ColorTwo{e}}
+\end{quantikz}}}%
+\only<3>{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \gate[wires=3]{?} &\qw \rstick{\ColorOne{a}} \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \qw & \qw \rstick{\ColorOne{b}} \\
+\lstick{\QZero{}} &   \qw    &  \qw     & \qw & \qw \rstick{\ColorTwo{e}}
+\end{quantikz}}}%
+\only<4->{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&  \gate{H} & \ctrl{1} & \qw &\qw \rstick{\ColorOne{a}} \\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \gate[wires=2]{?} & \qw \rstick{\ColorOne{b}} \\
+\lstick{\QZero{}} &   \qw    &  \qw     & \qw & \qw \rstick{\ColorTwo{e}}
+\end{quantikz}}}%
+\BigSkip{}
+\visible<5->{%
+More generally, if we have $k$ entangled qubits, are they \ColorOne{all} needed to entangle \ColorTwo{one more qubit}, or could any one of them suffice to create the new state?
+}
+}%
+
+
+\end{frame}
+
 \begin{frame}{A quorus of entangled qubits}{Creating qubit entanglements incrementally:  one qubit at a time}
 \Vskip{-3.5em}\TwoUnequalColumns{0.42\textwidth}{0.58\textwidth}{%
 \only<1,5>{%
@@ -662,6 +705,8 @@ Let
 then
 \[ \Forall{n\geq 1}{P(n)} \]
 \end{theorem}
+\alert{To avoid clutter,
+here I write $0^{k}$ \textit{etc.} where I should write \TensSupProd{0}{k} \textit{etc}.}
 \end{frame}
 
 \begin{frame}{Proof}{By induction, base case}
@@ -686,11 +731,21 @@ then
     \left(\ket{\textcolor<4->{\RCthree}{1^{k}0}}\right)}} \\
     \visible<4->{& = \TwoSup{\textcolor{\RCtwo}{0^{k+1}}}{\textcolor{\RCthree}{1^{k+1}}} = \QState{k+1}}
 \end{align*}}
-\QED{}
+\visible<4->{\Vskip{-4em}\QED{}}
 
-\Vskip{-3em}\only<5->{Note that it doesn't matter which of the top $k$ wires \NamedGate{CNOT} uses as its control qubit, because they are identical.}
+\Vskip{-2em}\only<5->{Note that it doesn't matter which of the top $k$ wires \NamedGate{CNOT} uses as its control qubit, because they are identical.}
 \end{frame}
 
+\begin{frame}{Pondering disentanglement}{What is necessary to restore state just prior to entanglement?}
+
+\begin{itemize}
+    \item If we have $k$ entangled qubits in the state $\TwoSup{0^{k}}{1^{k}}$, how can we \emph{undo} the entanglement of just one of the qubits?
+    \item Measurement would collapse the system into $\ket{0^k}$ or $\ket{1^k}$, affecting all qubits and not necessarily restoring them to their state prior to entanglement.
+    \item Can we restore a single qubit to its state just prior to entanglement?
+    \item If so, which qubits are needed to accomplish the disentanglement?
+\end{itemize}
+    
+\end{frame}
 
 \begin{frame}{Summary}{What have we learned?}
 \begin{itemize}
