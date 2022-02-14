@@ -122,7 +122,7 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
          \end{tabular}
     \end{center}
     \item The resulting matrix $T$ is shown to the right, and its inverse is its transpose.
-    \item The operator that produces these eigenvalues is shown as well.  Unsurprisingly it is \TensProd{\PauliZ}{\PauliZ}.
+    \item The operator that produces these eigenvalues is shown as well.  Unsurprisingly it is \TensProd{\PauliX}{\PauliX}, which is its own inverse.
     
 \end{itemize}
 }{%
@@ -135,12 +135,12 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
 \end{pmatrix*}
 \]\SmallSkip{}
 \[
-ZZ = 
+\TensProd{\PauliX}{\PauliX} = 
 \begin{pmatrix*}[r]
-1 & 0 & 0 & 0 \\
-0 & -1 & 0 & 0 \\
-0 & 0 & -1 & 0 \\
-0 & 0 & 0 & 1
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
 \end{pmatrix*}
 \]
 }
