@@ -1,2 +1,159 @@
 \SetTitle{99}{temp}{faster}{99}
 
+\begin{frame}{Overview of the approach}{We review some background first}
+
+\begin{itemize}
+    \item We consider a system of $n$ qubits.
+    \item We find $2^n$ orthonormal eigenstates in our desired basis.
+    \item We form a matrix $T$ whose columns are the eigenstates.  The matrix must be unitary:
+    \begin{itemize}
+        \item It is halfway there, as the columns are orthonormal.  
+        \item If the rows are not orthonormal, then we must use other eigenstates.
+    \end{itemize}
+    \item This matrix maps the comuputational basis to eigenstates of our desired basis.
+    \item The matrix's inverse performs the mapping in the other direction.
+    \item Because the matrix is unitary, its conjugate transpose is its inverse.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Measurement operators}{Review of the computational basis}
+
+\begin{itemize}
+    \item An operator representing measurement outcomes in some basis must have the following properties.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Reconstructing the computational basis}{A single qubit}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-2>{\begin{itemize}
+    \item<1-> We have a device that performs measurements, collpasing state as follows with the associated eigenvalues:
+       \begin{center}
+        \begin{tabular}{cc}
+        Eigentate & Eigenvalue \\
+        \ColorOne{\QZero} & \ColorThree{$+1$} \\
+        \ColorTwo{\QOne} & \ColorFour{$-1$} 
+        \end{tabular}\end{center}
+    \item<2-> The matrix $T$ containing those eigenstates as columns transforms the current basis into the computational basis, which is also known as the identity matrix 
+
+
+\end{itemize}}
+\only<3->{\begin{itemize}
+    \item The associated \emph{measurement} operator~$M$ is formed as follows:
+    \[
+    M = T\times D \times \Conj{T}
+    \]
+    where $D$ is a diagonal matrix containing the eigenvalues in order:
+    \begin{align*}
+        D =& \SQBG{\relax}{\ColorThree{+1}}{0}{0}{\ColorFour{-1}} \\
+        \visible<4->{M = & \ColorFive{\ZMatrix}}
+    \end{align*}
+\end{itemize}}
+}{%
+\visible<4->{\begin{align*}
+    \ColorFive{\ZMatrix{}}\ColorOne{\PZero{}} &= \ColorThree{+1}\PZero{} \\
+    \ColorFive{\ZMatrix{}}\ColorTwo{\POne{}} &= \ColorFour{-1}\POne{}
+\end{align*}}
+\only<1-4>{%
+\SmallSkip{}
+\visible<2->{\[T =
+\IMatrix
+\]}}%
+\only<5->{%
+
+$M$ is our familiar \ColorFive{Z} matrix, which we have been claiming as our measurement operator for the computational basis.
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Reconstructing the computational basis}{Two qubits}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item<1-> If \PauliZ{} is our operator for one qubit, then we expect \TensProd{\PauliZ}{\PauliZ} to be the measurement operator for two qubits.
+    \item<2-> Its eigenstates and their eigenvalues are:
+    \begin{center}
+        \begin{tabular}{cc}
+        State & Eigenvalue \\
+        \ket{00} & $+1$ \\
+        \ket{01} & $-1$ \\
+        \ket{10} & $-1$ \\
+        \ket{11} & $+1$
+         \end{tabular}
+    \end{center}
+    \item<3-> The matrix of its eigenvalues is again \Identity.
+\end{itemize}
+}{%
+\[
+\TensProd{\PauliZ}{\PauliZ} = 
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]
+\SmallSkip\visible<3->{\[T =
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]}
+}
+\end{frame}
+
+\begin{frame}{Generally}{For $n$ qubits}
+\begin{theorem}
+In the computational basis of an $n$-qubit system, the operator \TensSupProd{\PauliZ}{n} has $2^n$ eigenstates: $\ket{x}\ |\ \AllBits{x}{n}$.
+\SmallSkip{}
+Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity of $x$:  even-parity states have eigenvalue $+1$ and odd-parity states have eigenvalue $-1$.
+\end{theorem}
+    
+\end{frame}
+
+\begin{frame}{Mapping from other bases}
+\end{frame}
+
+\begin{frame}{Example 1}{The computational basis for two qubits}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item Our orthonormal eigenstates and their eigenvalues are:
+    \begin{center}
+        \begin{tabular}{cc}
+        State & Eigenvalue \\
+        \ket{00} & $+1$ \\
+        \ket{01} & $-1$ \\
+        \ket{10} & $-1$ \\
+        \ket{11} & $+1$
+         \end{tabular}
+    \end{center}
+    \item The resulting matrix $T$ is shown to the right, and it is of course its own inverse.
+    \item The operator that produces these eigenvalues is shown as well.  Unsurprisingly it is \TensProd{\PauliZ}{\PauliZ}.
+    
+\end{itemize}
+}{%
+\[T =
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]\SmallSkip{}
+\[
+ZZ = 
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]
+}
+    
+\end{frame}
