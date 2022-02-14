@@ -78,12 +78,10 @@ C(XX,YY)
 Op = inline("M*diag([ev1,ev2,ev3,ev4])*M'",'M','ev1','ev2','ev3','ev4')
 
 r3eig = horzcat(r31, r32, r33, r34)
-r3op1 = Op(r3eig, 1,1,-1,-1)
-r3op2 = Op(r3eig, 1,-1,1,-1)
-r3op3 = Op(r3eig, 1,-1,-1,1)
 
-c3eig = horzcat(c31, c32, c33, c34)
-c3op1 = Op(c3eig, 1, 1, -1, -1)
-c3op2 = Op(c3eig, 1, -1, 1, -1)
-c3op3 = Op(c3eig, -1, 1, 1, -1)
+r3m1 = Op(r3eig, 1, 1, -1, -1)
+r3m2 = Op(r3eig, 1, -1, 1, -1)
+r3m3 = Op(r3eig, 1, -1, -1, 1)
 
+swap24 = horzcat(ZeZe, OnOn, OnZe, ZeOn)
+swap34 = horzcat(ZeZe, ZeOn, OnOn, OnZe)
