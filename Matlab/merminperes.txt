@@ -32,12 +32,58 @@ PlZe = kron(Pl,Ze)
 MiZe = kron(Mi,Ze)
 PlOn = kron(Pl,On)
 MiOn = kron(Mi,On)
+%%
+%% Third row
+%%
 r31 = s*(ZePl + OnMi)
 r32 = s*(ZePl - OnMi)
 r33 = s*(OnPl + ZeMi)
 r34 = s*(OnPl - ZeMi)
+%%
+%% Third col
+%%
 c31 = s*(ZeZe + OnOn)
 c32 = s*(ZeZe - OnOn)
 c33 = s*(ZeOn + OnZe)
 c34 = s*(ZeOn - OnZe)
+%%
+%% Check commutativity
+%%
+C = inline('a*b-b*a', 'a', 'b')
+%% r1
+C(ZI,IZ)
+C(ZI,ZZ)
+C(IZ,ZZ)
+%% r2
+C(IX,XI)
+C(IX,XX)
+C(XI,XX)
+%% r3
+C(ZX,XZ)
+C(ZX,YY)
+C(XZ,YY)
+%% c1
+C(ZI,IX)
+C(ZI,ZX)
+C(IX,ZX)
+%% c2
+C(IZ,XI)
+C(IZ,XZ)
+C(XI,XZ)
+%% c3
+C(ZZ,XX)
+C(ZZ,YY)
+C(XX,YY)
+
+Op = inline("M*diag([ev1,ev2,ev3,ev4])*M'",'M','ev1','ev2','ev3','ev4')
+
+r3eig = horzcat(r31, r32, r33, r34)
+r3op1 = Op(r3eig, 1,1,-1,-1)
+r3op2 = Op(r3eig, 1,-1,1,-1)
+r3op3 = Op(r3eig, 1,-1,-1,1)
+
+c3eig = horzcat(c31, c32, c33, c34)
+c3op1 = Op(c3eig, 1, 1, -1, -1)
+c3op2 = Op(c3eig, 1, -1, 1, -1)
+c3op3 = Op(c3eig, -1, 1, 1, -1)
 
