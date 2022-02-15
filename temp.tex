@@ -1,5 +1,6 @@
 \SetTitle{99}{temp}{faster}{99}
 
+\section*{The Z basis}
 \begin{frame}{Reconstructing the computational basis}{A single qubit}
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
@@ -90,7 +91,26 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
     
 \end{frame}
 
-\begin{frame}{Mapping from other bases}{Overview}
+\section*{Measurement in another basis}
+
+\begin{frame}{Measurement in a basis other than the computational basis}{Overview}
+
+\begin{itemize}[<+->]
+    \item Qiskit, in emulation and on the available hardware, performs measurements only in the computational basis.
+    \item Recall that for a single qubit, \QZero{} and \QOne{} are the North and South poles of the Bloch sphere, respectively.
+    \item How can we measure that qubit in a \emph{different} basis?
+    \begin{enumerate}
+    \item We can transform state from our desired basis to the computational basis.
+    \item We then measure in the computational basis, which causes collapse upon measurement to~\QZero{} or~\QOne{}
+    \item If there is more to the computation, then we must translate back so that we are in the corresponding eigenstate of our desired basis.
+    \end{enumerate}
+    \item In this discussion it is helpful to keep in mind the basis under consideration.  For example, we know
+    \(\ket{+} = \QPlus \).  These are two names for the same state but the right-hand side is expressed in the computational basis.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Transforming state to and from another basis}{Overview}
 
 \begin{itemize}
     \item We consider a system of $n$ qubits.
@@ -143,6 +163,71 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
 1 & 0 & 0 & 0
 \end{pmatrix*}
 \]
+}
+    
+\end{frame}
+
+
+\begin{frame}{Example}{Measurement in the \NamedGate{X} (Hadamard) basis}
+\Vskip{-4em}\TwoColumns{%
+\only<1-8>{\begin{itemize}
+    \item<1-> Consider the observable \PauliX{} with eigenvectors \visible<2->{\ColorOne{\ket{+}}} \visible<3->{and \ColorTwo{\ket{-}}.}
+    \item<4-> If we had an \NamedGate{X} measurement device, then the measured qubit would collapse to~\ColorOne{\ket{+}} \visible<5->{ or~\ColorTwo{\ket{-}}}
+    \item<6-> The detector reports the corresponding \ColorThree{eigenvalue}, revealing the qubit's collapsed state.
+    \item<7-> \PauliX{} is both a unitary gate and a measurement operator.
+\end{itemize}}%
+\only<9-13>{%
+\begin{itemize}
+    \item<9-> Thanks to linearity we can map the \PauliX{} basis to the computational basis.
+    \item<10-> Given state \QState{}, we require a transformation that maps
+    \begin{center}
+    \begin{tabular}{r@{$\mapsto$}l}
+       \ColorOne{\ket{+}} & \QZero{} \\
+       \ColorTwo{\ket{-}} & \QOne{}
+    \end{tabular}\end{center}
+    \item<11-> The \ColorFive{\Hadamard{}} gate performs this mapping.
+    \item<12-> Measurement in the computational basis now yields the correct result.
+    \item<13-> However, the qubit collapses to~\ket{0} or~\ket{1}; neither is a valid state after measurement in the \PauliX{} basis.
+\end{itemize}
+}%
+\only<14->{%
+\begin{itemize}
+    \item<14-> Recall \Hadamard{} is its own inverse.
+    \item<15-> Thus, after we measure, we apply another \Hadamard{} operator to obtain the correct state for further computation, if necessary.
+    \item<16-> This is demonstrated in the \texttt{MeasureH} notebook.
+\end{itemize}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\begin{TIKZP}
+\alert<8-9>{\draw[->,thick] (0,0) -- (1,0) node[right] {\ \ket{1}};}
+\alert<8-9>{\draw[->,thick] (0,0) -- (0,1) node[above] {\ket{0}};}
+\textcolor<2,4,10->{\RCone}{\draw[->,thick] (0,0) -- (45:1) node[above] {\ket{+}};}
+\textcolor<3,5,10->{\RCtwo}{\draw[->,thick] (0,0) -- (-45:1) node[below] {\ket{-}};}
+\end{TIKZP}
+\end{center}
+\Vskip{-2.5em}\only<1-6>{\begin{alignat*}{5}
+    \visible<2->{\XMatrix{} & \textcolor<2>{\RCone}{\PHad{}} & \mbox{ = } & \ColorThree{+1}  & \textcolor<2,4>{\RCone}{\PHad{}}  \\}
+    \visible<3->{\XMatrix{} & \textcolor<3>{\RCtwo}{\PHadm{}} & \mbox{ = } & \ColorThree{-1}  & \textcolor<3,5>{\RCtwo}{\PHadm{}} }
+\end{alignat*}}%
+\only<8>{%
+\SmallSkip{}
+
+If we can measure only in the \alert{computational basis}, how do we perform measurements in the \PauliX{} basis?
+}%
+\only<11-14>{%
+\begin{align*}
+    \ColorFive{\HMatrix{}}\ColorOne{\PPlus{}} &= \PZero{} \\
+    \ColorFive{\HMatrix{}}\ColorTwo{\PMinus{}} &= \POne{}
+\end{align*}
+}%
+\only<15->{%
+\begin{align*}
+    \ColorFive{\HMatrix{}}\PZero{} &= \ColorOne{\PPlus{}} \\
+    \ColorFive{\HMatrix{}}\POne{} &= \ColorTwo{\PMinus{}}
+\end{align*}
+}
 }
     
 \end{frame}
