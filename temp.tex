@@ -135,63 +135,23 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
 
 \begin{frame}{Transforming state to and from another basis}{Overview}
 
-\begin{itemize}
-    \item We consider a system of $n$ qubits.
-    \item We find $2^n$ orthonormal eigenstates in our desired basis. These are the collapsed outcomes we expect from measurement in that basis.
+\begin{itemize}[<+->]
+    \item For an $n$-qubit system, consider a measurement in our \emph{desired} basis.
+    \item We find $2^n$ orthonormal eigenstates in our desired basis. These are the distinct, collapsed outcomes we expect from measurement in our basis.
     \item Because these will eventually map to the computational basis, we must determine that half of our eigenstates have eigenvalue~$+1$ and the other half~$-1$.
     \item We form a matrix $T$ whose columns are those eigenstates.  The matrix must be unitary:
     \begin{itemize}
         \item It is halfway there, as the columns are orthonormal.  
-        \item If the rows are not orthonormal, then we must use other eigenstates.
+        \item We verify $\Conj{T}T=\Identity$.
     \end{itemize}
-    \item This matrix maps the comuputational basis to eigenstates of our desired basis.
+    \item Matrix $T$ maps the computational basis to eigenstates of our desired basis.
     \item The matrix's inverse performs the mapping in the other direction.
-    \item Because the matrix is unitary, its conjugate transpose is its inverse.
+    \item Because the matrix is unitary, \Conj{T} is its inverse.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Translation to and from the \PauliX{} basis}{An example where we already know the outcome}
 
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\Vskip{-3em}\begin{itemize}
-    \item Our orthonormal eigenstates and their eigenvalues are:
-    \begin{center}
-        \begin{tabular}{cc}
-        Eigenstate & Eigenvalue \\
-        \ket{++} & $+1$ \\
-        \ket{+-} & $-1$ \\
-        \ket{-+} & $-1$ \\
-        \ket{--} & $+1$
-         \end{tabular}
-    \end{center}
-    \item The resulting matrix $T$ is shown to the right, and its inverse is its transpose.
-    \item The operator that produces these eigenvalues is shown as well.  Unsurprisingly it is \TensProd{\PauliX}{\PauliX}, which we know has the above kets as its eigenstates.
-    
-\end{itemize}
-}{%
-\[T =
-\frac{1}{2}\begin{pmatrix*}[r]
-1 & 1 & 1 & 1 \\
-1 & -1 & 1 & -1 \\
-1 & 1 & -1 & -1 \\
-1 & -1 & -1 & 1
-\end{pmatrix*}
-\]\SmallSkip{}
-\[
-\TensProd{\PauliX}{\PauliX} = 
-\begin{pmatrix*}[r]
-0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0 \\
-0 & 1 & 0 & 0 \\
-1 & 0 & 0 & 0
-\end{pmatrix*}
-\]
-}
-    
-\end{frame}
-
-
-\begin{frame}{Visual interpretation}{Measurement in the \NamedGate{X} (Hadamard) basis}
+\begin{frame}{Visual interpretation for a single qubit}{Measurement in the \NamedGate{X} (Hadamard) basis}
 \Vskip{-4em}\TwoColumns{%
 \only<1-8>{\begin{itemize}
     \item<1-> Consider the observable \PauliX{} with eigenvectors \visible<2->{\ColorOne{\ket{+}}} \visible<3->{and \ColorTwo{\ket{-}}.}
@@ -254,3 +214,48 @@ If we can measure only in the \alert{computational basis}, how do we perform mea
 }
     
 \end{frame}
+
+\begin{frame}{Example using two qubits}{Translation to and from the \PauliX{} basis}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> A proposed mapping maintains eigenvalues:
+    \begin{center}
+        \begin{tabular}{cc@{\ $\rightarrow$\ }c}
+        \multicolumn{2}{c}{Our basis} &
+        \multicolumn{1}{c}{\PauliZ{} basis} \\
+        Eigenstate & Eigenvalue & Eigenstate \\ \hline
+        \ColorOne{\ket{++}} & $+1$ & \ket{00} \\
+        \ColorTwo{\ket{+-}} & $-1$ & \ket{01} \\
+        \ColorThree{\ket{-+}} & $-1$ & \ket{10} \\
+        \ColorFour{\ket{--}} & $+1$ & \ket{11}
+         \end{tabular}
+    \end{center}
+    \item<2-> $T$ is comprised of our eigenstates.
+    \item<4-> As expected, \TensProd{\PauliX}{\PauliX} is the measurement operator, but we do not use it.
+    \item<5-> We only need \Conj{T} (and $T$) to transform from (and into) our basis.
+    
+\end{itemize}
+}{%
+\visible<2->{\[T =
+\frac{1}{2}\begin{pmatrix*}[r]
+\alt<2>{\ColorOne{\ket{++}} \ColorTwo{\ket{+-}}\ColorThree{\ket{-+}}\ColorFour{\ket{--}}}{%
+\ColorOne{1} & \ColorTwo{1} & \ColorThree{1} & \ColorFour{1} \\
+\ColorOne{1} & \ColorTwo{-1} & \ColorThree{1} & -\ColorFour{1} \\
+\ColorOne{1} & \ColorTwo{1} & \ColorThree{-1} & \ColorFour{-1} \\
+\ColorOne{1} & \ColorTwo{-1} & \ColorThree{-1} & \ColorFour{1}}
+\end{pmatrix*}
+\]}\SmallSkip{}
+\visible<4->{\[
+\TensProd{\PauliX}{\PauliX} = 
+\begin{pmatrix*}[r]
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix*}
+\]}
+}
+    
+\end{frame}
+
