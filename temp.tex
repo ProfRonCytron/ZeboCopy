@@ -110,6 +110,29 @@ Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity o
     
 \end{frame}
 
+\begin{frame}{More detail}{On the three steps}
+
+\Vskip{-3em}\begin{enumerate}
+    \item Transform our state into the computational basis.  This means establishing a mapping between the basis vectors of our state and the computational basis vectors.  All states then transform correctly by linearity.
+    
+    For example, we might transform from the \TensProd{\PauliX}{\PauliX} to \TensProd{\PauliZ}{\PauliZ} as follows:
+    \begin{center}
+        \begin{tabular}{cc}
+        Our state & \TensProd{\PauliZ}{\PauliZ} state \\
+        \hline
+        \ket{++} & \ket{00} \\
+        \ket{+-} & \ket{01} \\
+        \ket{-+} & \ket{10} \\
+        \ket{--} & \ket{11}
+        \end{tabular}
+    \end{center}
+    Any such mapping suffices, but the above mapping is somewhat standard.  If we know the mapping, then we know how to interpret the measurements properly in our basis.  A measurement of \ket{10} is \ket{-+} in our basis.
+    \item We can then measure in the computational basis.
+    \item To transform back, we use the inverse of the above mapping.
+\end{enumerate}
+    
+\end{frame}
+
 \begin{frame}{Transforming state to and from another basis}{Overview}
 
 \begin{itemize}
