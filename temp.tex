@@ -277,11 +277,11 @@ If we can measure only in the \alert{computational basis}, how do we perform mea
 \only<1-6>{%
 \begin{itemize}
     \item<1-> Our desired circuit is as shown on the left, with measurements in the \PauliX{} basis.
-    \item<2-> The \ColorOne{first measurement} will collapse state into \ColorOne{\ket{+}} or \ColorOne{\ket{-}} with equal likelihood.
-    \item<3-> The \PauliZ{} gate will then cause the current state to flip from \ket{+} to \ket{-}, or \textit{vice versa} (recall the Bloch sphere).
-    \item<4-> The \ColorTwo{second measurement} will measure and report that state in the \PauliX{} basis as~\ColorTwo{\ket{+}} or~\ColorTwo{\ket{-}}.
-    \item<5-> Lacking the ability to measure in the \PauliX{} basis, we must measure in the computational basis, suitably transforming before \emph{and after} the measurement.
-    \item<6-> If we fail to restore state after measurement, the subsequent \PauliZ{} gate cannot do its job properly.  Let's look at how that could happen.
+    \item<2-> The \ColorOne{first measurement} collapses state into \ColorOne{\ket{+}} or \ColorOne{\ket{-}} with equal likelihood.
+    \item<3-> The \PauliZ{} gate flips the current state from~\ket{+} to~\ket{-}, or \textit{vice~versa} (recall the Bloch sphere).
+    \item<4-> The \ColorTwo{second measurement} reports that state in the \PauliX{} basis as~\ColorTwo{\ket{+}} or~\ColorTwo{\ket{-}}.  The only possible measurements we can see are \ket{\ColorOne{+}\ColorTwo{-}} and \ket{\ColorOne{-}\ColorTwo{+}}.
+    \item<5-> However, lacking ability to measure in the \PauliX{} basis, we must measure in the computational basis, suitably transforming before \emph{and after} the measurement.
+    \item<6-> If we fail to restore state after the first measurement, the subsequent \PauliZ{} gate produces the wrong output.  Let's examine how that could happen.
 \end{itemize}}%
 \only<7->{%
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
