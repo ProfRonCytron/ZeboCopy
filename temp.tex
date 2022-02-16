@@ -259,3 +259,39 @@ If we can measure only in the \alert{computational basis}, how do we perform mea
     
 \end{frame}
 
+\begin{frame}{Computations with measurements in another basis}{Transform$\ldots$measure$\ldots$untransform}
+
+\TwoUnequalColumns{0.372\textwidth}{0.628\textwidth}{%
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+\lstick{\QZero{}} & \meter{\ColorOne{\ket{+}/\ket{-}}} & \gate{\PauliZ} &   \meter{\ColorTwo{\ket{+}/\ket{-}}}&\qw
+\end{quantikz}}%
+}{%
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+\lstick{\QZero{}} & \gate{\visible<3->{\ColorOne{H}}} & \meter{\ColorOne{\visible<3->{\QZero{}/\QOne{}}}} & \gate{\visible<3->{\ColorOne{H}}} & \gate{\PauliZ} &   \gate{\ColorTwo{H}} & \meter{\ColorTwo{\QZero{}/\QOne{}}} & \gate{\ColorTwo{H}} &\qw
+\end{quantikz}}%
+}
+\BigSkip{}
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> Our desired circuit is as shown on the left, with measurements in the \PauliX{} basis.
+    \item<2-> The \ColorOne{first measurement} will collapse state into \ColorOne{\ket{+}} or \ColorOne{\ket{-}} with equal likelihood.
+    \item<3-> The \PauliZ{} gate will then cause the current state to flip from \ket{+} to \ket{-}, or \textit{vice versa} (recall the Bloch sphere).
+    \item<4-> The \ColorTwo{second measurement} will measure and report that state in the \PauliX{} basis as~\ColorTwo{\ket{+}} or~\ColorTwo{\ket{-}}.
+    \item<5-> Lacking the ability to measure in the \PauliX{} basis, we must measure in the computational basis, suitably transforming before \emph{and after} the measurement.
+    \item<6-> If we fail to restore state after measurement, the subsequent \PauliZ{} gate cannot do its job properly.  Let's look at how that could happen.
+\end{itemize}}%
+\only<7->{%
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\begin{itemize}
+    \item Here is the matrix \Hadamard{} that transforms from the computational basis into \PauliX{}, so $\PauliZ\mapsto \PauliX$.
+    \item<8-> It happens to be its own inverse, but let's regard \Conj{T} properly as transforming $\PauliX\mapsto \PauliZ$
+\end{itemize}
+}{%
+\[T = \HMatrix \visible<8->{=\Conj{T}}\]
+}
+}
+    
+\end{frame}
+
