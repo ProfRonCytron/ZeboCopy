@@ -264,13 +264,14 @@ If we can measure only in the \alert{computational basis}, how do we perform mea
 \TwoUnequalColumns{0.372\textwidth}{0.628\textwidth}{%
 \adjustbox{scale=0.8,valign=t}{%
 \begin{quantikz}
-\lstick{\QZero{}} & \meter{\ColorOne{\ket{+}/\ket{-}}} & \gate{\PauliZ} &   \meter{\ColorTwo{\ket{+}/\ket{-}}}&\qw
+\lstick{\QZero{}} & \meter{\ColorOne{\ket{+}/\ket{-}}} & \gate{\alert<12-14>{\PauliZ}} &   \meter{\ColorTwo{\ket{+}/\ket{-}}}&\qw
 \end{quantikz}}%
 }{%
-\adjustbox{scale=0.8,valign=t}{%
+\visible<9->{%
+\adjustbox{scale=0.77,valign=t}{%
 \begin{quantikz}
-\lstick{\QZero{}} & \gate{\visible<3->{\ColorOne{H}}} & \meter{\ColorOne{\visible<3->{\QZero{}/\QOne{}}}} & \gate{\visible<3->{\ColorOne{H}}} & \gate{\PauliZ} &   \gate{\ColorTwo{H}} & \meter{\ColorTwo{\QZero{}/\QOne{}}} & \gate{\ColorTwo{H}} &\qw
-\end{quantikz}}%
+\lstick{\QZero{}} & \gate{\visible<9->{\ColorOne{\Conj{T}}}} & \meter{\ColorOne{\visible<10->{\QZero{}/\QOne{}}}} & \gate{\visible<11->{\ColorOne{T}}} & \gate{\alert<12-14>{\PauliZ}} &   \gate{\ColorTwo{\visible<17->{\Conj{T}}}} & \meter{\ColorTwo{\visible<18->{\QZero{}/\QOne{}}}} & \gate{\ColorTwo{\visible<19->{\ColorTwo{T}}}} &\qw
+\end{quantikz}}}%
 }
 \BigSkip{}
 \only<1-6>{%
@@ -284,10 +285,48 @@ If we can measure only in the \alert{computational basis}, how do we perform mea
 \end{itemize}}%
 \only<7->{%
 \TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<7-8>{%
 \begin{itemize}
-    \item Here is the matrix \Hadamard{} that transforms from the computational basis into \PauliX{}, so $\PauliZ\mapsto \PauliX$.
-    \item<8-> It happens to be its own inverse, but let's regard \Conj{T} properly as transforming $\PauliX\mapsto \PauliZ$
+    \item Here is the matrix \Hadamard{} our transformation from the computational basis into \PauliX{}: $\PauliZ\mapsto \PauliX$. Each column is an eigenvector of \PauliX.
+    \item<8-> It happens to be its own inverse, but let's regard~\Conj{T} properly as transforming $\PauliX\mapsto\PauliZ$.
+\end{itemize}}%
+\only<9-11>{%
+ \begin{itemize}
+     \item<9-> We wish to measure our initial state in the \PauliX{} basis, so we first transform $\PauliX\mapsto\PauliZ$ using~\ColorOne{\Conj{T}}.
+     \item<10-> Now we \ColorOne{measure} in the computational (\PauliZ) basis.  We have arranged $T$ so that:
+     \begin{center}
+         \begin{tabular}{cc}
+           Observe &  Interpret \\\hline
+           \QZero & \ket{+} \\
+           \QOne  & \ket{-}
+         \end{tabular}
+     \end{center}
+     \item<11-> Now we transform $\PauliZ\mapsto\PauliX$ back to our basis using~\ColorOne{$T$}.  This restores the state to either~\ket{+} or~\ket{-} based on the measurement.
+ \end{itemize}
+}%
+\only<12-15>{%
+Ahead is our \alert<12-14>{\PauliZ{}} gate.  It acts on states of interest as follows:
+\Vskip{-2.5em}\begin{center}
+    \begin{tabular}{r@{$\rightarrow$}l|r@{$\rightarrow$}l}
+         \QZero &  No change &
+         \QOne  &  No change \\
+         \ket{+} & \ket{-} & \ket{-} & \ket{+}
+    \end{tabular}
+\end{center}
+\begin{itemize}
+    \item<13-> The computational-basis measurement leaves us in state \QZero{} or \QOne{}.
+    \item<14-> If we fail to transform back to \PauliX{}, the \alert<12-14>{\PauliZ{}} gate will have no effect on state.
+    \item<15-> \ColorOne{$T$} is necessary to transform the standard-basis measurement into our \PauliX{} basis.
 \end{itemize}
+}%
+\only<16->{%
+\begin{itemize}
+    \item<16-> Our \ColorTwo{second measurement} should confirm that the state switched in the \PauliX{} basis.
+    \item<17-> We prepare for the measurement using \ColorTwo{\Conj{T}} to effect $\PauliX\mapsto\PauliZ$.
+    \item<18-> We measure in the computational basis, using the previous table to interpret the outcome.
+    \item<19-> We restore state using \ColorTwo{$T$} to effect $\PauliZ\mapsto\PauliX$. We don't really need that last gate because the computation is over.
+\end{itemize}
+}
 }{%
 \[T = \HMatrix \visible<8->{=\Conj{T}}\]
 }
