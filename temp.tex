@@ -3,7 +3,7 @@
 \section*{Magic square}
 {
 \def\MPC#1{\fbox{\hbox to 5ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
-\def\XP#1{\hbox to 3ex{\hss#1\hss 1}}%
+\def\XP#1{\hbox to 2ex{\hss#1\hss 1}}%
 \def\PP{%
 \XP{$+$}}%
 \def\MM{%
@@ -209,13 +209,41 @@ The results of \Mtwo{} and \Mthree{} are determined by \QState{}, the result of~
 }%
 \only<18->{%
 \SmallSkip{}A pair of operators \Set{A,B} commutes if
-\[ A\times B - B\times A = 0 \]
-where $0$ is the all-zero matrix.}%
+\[ \left(A\times B\right) - \left(B\times A\right) = \ZeroMatrix \]
+where \ZeroMatrix{} is the all-zero matrix.}%
+}
+    
+\end{frame}
+
+\def\B#1{\hbox to 1.2em{\hss\ensuremath{#1}}}
+\begin{frame}{Example of three commuting operators}
+
+\Vskip{-4em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
+}{%
+\begin{align*}
+    \Mone =& \ColorThree{\TensProd{\Identity}{\PauliZ}} =& \ColorThree{\begin{pmatrix*}[r]
+     \B{1}  &   \B{0}  &   \B{0}   &  \B{0} \\
+     \B{0}  &  \B{-1}  &   \B{0}   &  \B{0} \\
+     \B{0}  &   \B{0}  &   \B{1}   &  \B{0} \\
+     \B{0}  &   \B{0}  &   \B{0}   & \B{-1}
+    \end{pmatrix*}} \\
+    \Mtwo =& \ColorFour{\TensProd{\PauliX}{\Identity}} =& \ColorFour{\begin{pmatrix*}[r]
+     \B{0}   &  \B{0}  &   \B{1}   &  \B{0} \\
+     \B{0}   &  \B{0}  &   \B{0}   &  \B{1} \\
+     \B{1}   &  \B{0}  &   \B{0}   &  \B{0} \\
+     \B{0}   &  \B{1}  &   \B{0}   &  \B{0}
+    \end{pmatrix*}} \\
+    \Mthree =& \ColorFive{\TensProd{\PauliX}{\PauliZ}} =& \ColorFive{\begin{pmatrix*}[r]
+     \B{0} &     \B{0} &     \B{1} &     \B{0} \\
+     \B{0} &     \B{0} &     \B{0} &    \B{-1} \\
+     \B{1} &     \B{0} &     \B{0} &     \B{0} \\
+     \B{0} &    \B{-1} &     \B{0} &     \B{0}
+    \end{pmatrix*}}
+\end{align*}
 }
     
 \end{frame}
 }
-
 
 \begin{frame}{Quantum-based solution}{We use two EPR pairs}
 
