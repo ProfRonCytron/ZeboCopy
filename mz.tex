@@ -1,0 +1,336 @@
+\SetTitle{99}{Measurements}{In any basis}{99}
+
+\section*{The Z basis}
+\begin{frame}{Reconstructing the computational basis}{A single qubit}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-2>{\begin{itemize}
+    \item<1-> We have a device that performs measurements, collpasing state as follows with the associated eigenvalues:
+       \begin{center}
+        \begin{tabular}{cc}
+        Eigentate & Eigenvalue \\
+        \ColorOne{\QZero} & \ColorThree{$+1$} \\
+        \ColorTwo{\QOne} & \ColorFour{$-1$} 
+        \end{tabular}\end{center}
+    \item<2-> The matrix $T$ containing those eigenstates as columns transforms the current basis into the computational basis, which is the identity matrix, since the bases are the same.
+
+
+\end{itemize}}
+\only<3->{\begin{itemize}
+    \item The associated \emph{measurement} operator~$M$ is formed as follows:
+    \[
+    M = T\times D \times \Conj{T}
+    \]
+    where $D$ is a diagonal matrix containing the eigenvalues in order:
+    \begin{align*}
+        D =& \SQBG{\relax}{\ColorThree{+1}}{0}{0}{\ColorFour{-1}} \\
+        \visible<4->{M = & \ColorFive{\ZMatrix}}
+    \end{align*}
+\end{itemize}}
+}{%
+\visible<4->{\begin{align*}
+    \ColorFive{\ZMatrix{}}\ColorOne{\PZero{}} &= \ColorThree{+1}\PZero{} \\
+    \ColorFive{\ZMatrix{}}\ColorTwo{\POne{}} &= \ColorFour{-1}\POne{}
+\end{align*}}
+\only<1-4>{%
+\SmallSkip{}
+\visible<2->{\[T =
+\IMatrix
+\]}}%
+\only<5->{%
+
+$M$ is our familiar \ColorFive{Z} matrix, which we have been claiming as our measurement operator for the computational basis.
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Reconstructing the computational basis}{Two qubits}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item<1-> If \PauliZ{} is our operator for one qubit, then we expect \TensProd{\PauliZ}{\PauliZ} to be the measurement operator for two qubits.
+    \item<2-> Its eigenstates and their eigenvalues are:
+    \begin{center}
+        \begin{tabular}{cc}
+        State & Eigenvalue \\
+        \ket{00} & $+1$ \\
+        \ket{01} & $-1$ \\
+        \ket{10} & $-1$ \\
+        \ket{11} & $+1$
+         \end{tabular}
+    \end{center}
+    \item<3-> The matrix of its eigenvalues is again \Identity.
+\end{itemize}
+}{%
+\[
+\TensProd{\PauliZ}{\PauliZ} = 
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]
+\SmallSkip\visible<3->{\[T =
+\begin{pmatrix*}[r]
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix*}
+\]}
+}
+\end{frame}
+
+\begin{frame}{Generally}{For $n$ qubits}
+\begin{theorem}
+In the computational basis of an $n$-qubit system, the operator \TensSupProd{\PauliZ}{n} has $2^n$ eigenstates: $\ket{x}\ |\ \AllBits{x}{n}$.
+\SmallSkip{}
+Eigenstate $\ket{x}$ has eigenvalue $\pm 1$ that is consistent with the parity of $x$:  even-parity states have eigenvalue $+1$ and odd-parity states have eigenvalue $-1$.
+\end{theorem}
+    
+\end{frame}
+
+\section*{Measurement in another basis}
+
+\begin{frame}{Measurement in a basis other than the computational basis}{Overview}
+
+\begin{itemize}[<+->]
+    \item Qiskit, in emulation and on the available hardware, performs measurements only in the computational basis.
+    \item Recall that for a single qubit, \QZero{} and \QOne{} are the North and South poles of the Bloch sphere, respectively.
+    \item How can we measure that qubit in a \emph{different} basis?
+    \begin{enumerate}
+    \item We can transform state from our desired basis to the computational basis.
+    \item We then measure in the computational basis, which causes collapse upon measurement to~\QZero{} or~\QOne{}
+    \item If there is more to the computation, then we must transform back so that we are in the corresponding eigenstate of our desired basis.
+    \end{enumerate}
+    \item In this discussion it is helpful to keep in mind the basis under consideration.  For example, we know
+    \(\ket{+} = \QPlus \).  These are two names for the same state but the right-hand side is expressed in the computational basis.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{More detail}{On the three steps}
+
+\Vskip{-3em}\begin{enumerate}
+    \item<1-> Transform our state into the computational basis.  We establish a mapping between our basis vectors and the computational basis vectors.  All states then transform correctly by linearity.
+    
+    For example, we might transform from the \TensProd{\PauliX}{\PauliX} to \TensProd{\PauliZ}{\PauliZ} as follows:
+    \begin{center}
+        \begin{tabular}{c@{\ $\alt<3>{\leftarrow}{\rightarrow}$\ }c}
+        Our state & \TensProd{\PauliZ}{\PauliZ} state \\
+        \hline
+        \ColorOne{\ket{++}} & \ColorOne{\ket{00}} \\
+        \ColorTwo{\ket{+-}} & \ColorTwo{\ket{01}} \\
+        \ColorThree{\ket{-+}} & \ColorThree{\ket{10}} \\
+        \ColorFour{\ket{--}} & \ColorFour{\ket{11}}
+        \end{tabular}
+    \end{center}
+    Any such mapping suffices, but the above mapping is somewhat standard.  
+    \item<2-> We measure in the computational basis, using the mapping to interpret the results in our basis.  Measuring \ColorThree{\ket{10}} is akin to measuring \ColorThree{\ket{-+}} in our basis.
+    \item<3-> To transform back, we use the inverse of the above mapping, creating the measurement outcome in our basis.
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Transforming state to and from another basis}{Overview}
+
+\begin{itemize}[<+->]
+    \item For an $n$-qubit system, consider a measurement in our \emph{desired} basis.
+    \item We find $2^n$ orthonormal eigenstates in our desired basis. These are the distinct, collapsed outcomes we expect from measurement in our basis.
+    \item Because these will eventually map to the computational basis, we must determine that half of our eigenstates have eigenvalue~$+1$ and the other half~$-1$.
+    \item We form a matrix $T$ whose columns are those eigenstates.  The matrix must be unitary:
+    \begin{itemize}
+        \item It is halfway there, as the columns are orthonormal.  
+        \item We verify $\Conj{T}T=\Identity$.
+    \end{itemize}
+    \item Matrix $T$ maps the computational basis to eigenstates of our desired basis.
+    \item The matrix's inverse performs the mapping in the other direction.
+    \item Because the matrix is unitary, \Conj{T} is its inverse.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Visual interpretation for a single qubit}{Measurement in the \NamedGate{X} (Hadamard) basis}
+\Vskip{-4em}\TwoColumns{%
+\only<1-8>{\begin{itemize}
+    \item<1-> Consider the observable \PauliX{} with eigenvectors \visible<2->{\ColorOne{\ket{+}}} \visible<3->{and \ColorTwo{\ket{-}}.}
+    \item<4-> If we had an \NamedGate{X} measurement device, then the measured qubit would collapse to~\ColorOne{\ket{+}} \visible<5->{ or~\ColorTwo{\ket{-}}}
+    \item<6-> The detector reports the corresponding \ColorThree{eigenvalue}, revealing the qubit's collapsed state.
+    \item<7-> \PauliX{} is both a unitary gate and a measurement operator.
+\end{itemize}}%
+\only<9-13>{%
+\begin{itemize}
+    \item<9-> Thanks to linearity we can map the \PauliX{} basis to the computational basis.
+    \item<10-> Given state \QState{}, we require a transformation that maps
+    \begin{center}
+    \begin{tabular}{r@{$\mapsto$}l}
+       \ColorOne{\ket{+}} & \QZero{} \\
+       \ColorTwo{\ket{-}} & \QOne{}
+    \end{tabular}\end{center}
+    \item<11-> The \ColorFive{\Hadamard{}} gate performs this mapping.
+    \item<12-> Measurement in the computational basis now yields the correct result.
+    \item<13-> However, the qubit collapses to~\ket{0} or~\ket{1}; neither is a valid state after measurement in the \PauliX{} basis.
+\end{itemize}
+}%
+\only<14->{%
+\begin{itemize}
+    \item<14-> Recall \Hadamard{} is its own inverse.
+    \item<15-> Thus, after we measure, we apply another \Hadamard{} operator to obtain the correct state for further computation, if necessary.
+    \item<16-> This is demonstrated in the \texttt{MeasureH} notebook.
+\end{itemize}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\begin{TIKZP}
+\alert<8-9>{\draw[->,thick] (0,0) -- (1,0) node[right] {\ \ket{1}};}
+\alert<8-9>{\draw[->,thick] (0,0) -- (0,1) node[above] {\ket{0}};}
+\textcolor<2,4,10->{\RCone}{\draw[->,thick] (0,0) -- (45:1) node[above] {\ket{+}};}
+\textcolor<3,5,10->{\RCtwo}{\draw[->,thick] (0,0) -- (-45:1) node[below] {\ket{-}};}
+\end{TIKZP}
+\end{center}
+\Vskip{-2.5em}\only<1-6>{\begin{alignat*}{5}
+    \visible<2->{\XMatrix{} & \textcolor<2>{\RCone}{\PHad{}} & \mbox{ = } & \ColorThree{+1}  & \textcolor<2,4>{\RCone}{\PHad{}}  \\}
+    \visible<3->{\XMatrix{} & \textcolor<3>{\RCtwo}{\PHadm{}} & \mbox{ = } & \ColorThree{-1}  & \textcolor<3,5>{\RCtwo}{\PHadm{}} }
+\end{alignat*}}%
+\only<8>{%
+\SmallSkip{}
+
+If we can measure only in the \alert{computational basis}, how do we perform measurements in the \PauliX{} basis?
+}%
+\only<11-14>{%
+\begin{align*}
+    \ColorFive{\HMatrix{}}\ColorOne{\PPlus{}} &= \PZero{} \\
+    \ColorFive{\HMatrix{}}\ColorTwo{\PMinus{}} &= \POne{}
+\end{align*}
+}%
+\only<15->{%
+\begin{align*}
+    \ColorFive{\HMatrix{}}\PZero{} &= \ColorOne{\PPlus{}} \\
+    \ColorFive{\HMatrix{}}\POne{} &= \ColorTwo{\PMinus{}}
+\end{align*}
+}
+}
+    
+\end{frame}
+
+\begin{frame}{Example using two qubits}{Translation to and from the \PauliX{} basis}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> A proposed mapping maintains eigenvalues:
+    \begin{center}
+        \begin{tabular}{cc@{\ $\rightarrow$\ }c}
+        \multicolumn{2}{c}{Our basis} &
+        \multicolumn{1}{c}{\PauliZ{} basis} \\
+        Eigenstate & Eigenvalue & Eigenstate \\ \hline
+        \ColorOne{\ket{++}} & $+1$ & \ket{00} \\
+        \ColorTwo{\ket{+-}} & $-1$ & \ket{01} \\
+        \ColorThree{\ket{-+}} & $-1$ & \ket{10} \\
+        \ColorFour{\ket{--}} & $+1$ & \ket{11}
+         \end{tabular}
+    \end{center}
+    \item<2-> $T$ is comprised of our eigenstates.
+    \item<4-> As expected, \TensProd{\PauliX}{\PauliX} is the measurement operator, but we do not use it.
+    \item<5-> We only need \Conj{T} (and $T$) to transform from (and into) our basis.
+    
+\end{itemize}
+}{%
+\visible<2->{\[T =
+\frac{1}{2}\begin{pmatrix*}[r]
+\alt<2>{\ColorOne{\ket{++}} \ColorTwo{\ket{+-}}\ColorThree{\ket{-+}}\ColorFour{\ket{--}}}{%
+\ColorOne{1} & \ColorTwo{1} & \ColorThree{1} & \ColorFour{1} \\
+\ColorOne{1} & \ColorTwo{-1} & \ColorThree{1} & -\ColorFour{1} \\
+\ColorOne{1} & \ColorTwo{1} & \ColorThree{-1} & \ColorFour{-1} \\
+\ColorOne{1} & \ColorTwo{-1} & \ColorThree{-1} & \ColorFour{1}}
+\end{pmatrix*}
+\]}\SmallSkip{}
+\visible<4->{\[
+\TensProd{\PauliX}{\PauliX} = 
+\begin{pmatrix*}[r]
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix*}
+\]}
+}
+    
+\end{frame}
+
+\begin{frame}{Computations with measurements in another basis}{Transform$\ldots$measure$\ldots$untransform}
+
+\TwoUnequalColumns{0.372\textwidth}{0.628\textwidth}{%
+\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+\lstick{\QZero{}} & \meter{\ColorOne{$+$\,/\,$-$}} & \gate{\alert<12-14>{\PauliZ}} &   \meter{\ColorTwo{$+$\,/\,$-$}}&\qw
+\end{quantikz}}%
+}{%
+\visible<9->{%
+\adjustbox{scale=0.77,valign=t}{%
+\begin{quantikz}
+\lstick{\QZero{}} & \gate{\visible<9->{\ColorOne{\Conj{T}}}} & \meter{\ColorOne{\visible<10->{0\,/\,1}}} & \gate{\visible<11->{\ColorOne{T}}} & \gate{\alert<12-14>{\PauliZ}} &   \gate{\ColorTwo{\visible<17->{\Conj{T}}}} & \meter{\ColorTwo{\visible<18->{0\,/\,1}}} & \gate{\ColorTwo{\visible<19->{\ColorTwo{T}}}} &\qw
+\end{quantikz}}}%
+}
+\BigSkip{}
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> Our desired circuit is as shown on the left, with measurements in the \PauliX{} basis.
+    \item<2-> The \ColorOne{first measurement} collapses state into \ColorOne{\ket{+}} or \ColorOne{\ket{-}} with equal likelihood.
+    \item<3-> The \PauliZ{} gate flips the current state from~\ket{+} to~\ket{-}, or \textit{vice~versa} (recall the Bloch sphere).
+    \item<4-> The \ColorTwo{second measurement} reports that state in the \PauliX{} basis as~\ColorTwo{\ket{+}} or~\ColorTwo{\ket{-}}.  The only possible measurements we can see are \ket{\ColorOne{+}\ColorTwo{-}} and \ket{\ColorOne{-}\ColorTwo{+}}.
+    \item<5-> However, lacking ability to measure in the \PauliX{} basis, we must measure in the computational basis, suitably transforming before \emph{and after} the measurement.
+    \item<6-> If we fail to restore state after the first measurement, the subsequent \PauliZ{} gate produces the wrong output.  Let's examine how that could happen.
+\end{itemize}}%
+\only<7->{%
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<7-8>{%
+\begin{itemize}
+    \item The matrix \Hadamard{} is our transformation from the computational basis into \PauliX{}: $\PauliZ\mapsto \PauliX$. Each column is an eigenvector of \PauliX.
+    \item<8-> $T$ happens to be its own inverse, but let's regard~\Conj{T} properly as transforming $\PauliX\mapsto\PauliZ$.
+\end{itemize}}%
+\only<9-11>{%
+ \begin{itemize}
+     \item<9-> We wish to measure our initial state in the \PauliX{} basis, so we first transform $\PauliX\mapsto\PauliZ$ using~\ColorOne{\Conj{T}}.
+     \item<10-> Now we \ColorOne{measure} in the computational (\PauliZ) basis.  We have arranged $T$ so that:
+     \begin{center}
+         \begin{tabular}{cc}
+           Observe &  Interpret \\\hline
+           \QZero & \ket{+} \\
+           \QOne  & \ket{-}
+         \end{tabular}
+     \end{center}
+     \item<11-> Now we transform $\PauliZ\mapsto\PauliX$ back to our basis using~\ColorOne{$T$}.  This restores the state to either~\ket{+} or~\ket{-} based on the measurement.
+ \end{itemize}
+}%
+\only<12-15>{%
+Ahead is our \alert<12-14>{\PauliZ{}} gate.  It acts on states of interest as follows:
+\Vskip{-3em}\begin{center}
+    \begin{tabular}{r@{$\rightarrow$}l|r@{$\rightarrow$}l}
+         \QZero &  No change &
+         \QOne  &  No change \\
+         \ket{+} & \ket{-} & \ket{-} & \ket{+}
+    \end{tabular}
+\end{center}
+\begin{itemize}
+    \item<13-> The computational-basis measurement leaves us in state \QZero{} or \QOne{}.
+    \item<14-> If we forget to transform $\PauliZ\mapsto\PauliX$, the \alert<12-14>{\PauliZ{}} gate produces the wrong answer: \QZero{} or \QOne{} instead of~\ket{+} or~\ket{-}.
+    \item<15-> \ColorOne{$T$} is necessary to transform the standard-basis measurement into our \PauliX{} basis.
+\end{itemize}
+}%
+\only<16->{%
+\begin{itemize}
+    \item<16-> Our \ColorTwo{second measurement} should confirm that the state switched in the \PauliX{} basis.
+    \item<17-> We prepare for the measurement using \ColorTwo{\Conj{T}} to effect $\PauliX\mapsto\PauliZ$.
+    \item<18-> We measure in the computational basis, using the previous table to interpret the outcome.
+    \item<19-> We restore state using \ColorTwo{$T$} to effect $\PauliZ\mapsto\PauliX$. We don't really need that last gate because the computation is over.
+\end{itemize}
+}
+}{%
+\[T = \HMatrix \visible<8->{=\Conj{T}}\]
+}
+}
+    
+\end{frame}
+
