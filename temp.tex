@@ -218,8 +218,25 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \def\B#1{\hbox to 1.2em{\hss\ensuremath{#1}}}
 \begin{frame}{Example of three commuting operators}
 
-\Vskip{-4em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
+\Vskip{-5em}\TwoUnequalColumns{0.455\textwidth}{0.545\textwidth}{%
+\begin{itemize}
+    \item<1-> We need to find an eigenbasis common to all three operators.
+    \item<2-> \texttt{MATLAB} provides this common eigenbasis for \Mone{} and \Mtwo{} \visible<3->{and their eigenvalues.}
+    \item<4-> Here are their product states after normalization.
+\end{itemize}
+\Vskip{-3em}\begin{center}\small
+    \begin{tabular}{cccc}
+    \QState{1} & \QState{2} & \QState{3} & \QState{4} \\
+     \visible<3->{$1$ & $-1$ & $-1$ & $1$ \\}
+     \DQB{-1}{0}{-1}{0}
+           & \DQB{-1}{0}{1}{0}
+           & \DQB{0}{-1}{0}{-1}
+           & \DQB{0}{-1}{0}{1} \\[2em]
+        \visible<4->{   \ket{\ColorOne{+}\ColorTwo{0}} & \ket{\ColorOne{-}\ColorTwo{0}}& \ket{\ColorOne{+}\ColorTwo{1}} &\ket{\ColorOne{-}\ColorTwo{1}}}
+    \end{tabular}
+\end{center}
 }{%
+\only<1-4>{%
 \begin{align*}
     \Mone =& \ColorThree{\TensProd{\Identity}{\PauliZ}} =& \ColorThree{\begin{pmatrix*}[r]
      \B{1}  &   \B{0}  &   \B{0}   &  \B{0} \\
@@ -239,7 +256,13 @@ where \ZeroMatrix{} is the all-zero matrix.}%
      \B{1} &     \B{0} &     \B{0} &     \B{0} \\
      \B{0} &    \B{-1} &     \B{0} &     \B{0}
     \end{pmatrix*}}
+\end{align*}}
+\only<5->{%
+\begin{align*}
+\DQB{-1}{0}{-1}{0} &\equiv \RootTwo{}\DQB{1}{0}{1}{0} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\PZero}} \\[2em]
+\visible<6->{\DQB{-1}{0}{1}{0} &\equiv \RootTwo{}\DQB{1}{0}{-1}{0} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\PZero}}}
 \end{align*}
+}
 }
     
 \end{frame}
