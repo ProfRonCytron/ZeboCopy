@@ -12,10 +12,10 @@
 {%
     \setlength{\tabcolsep}{0pt}%
     \adjustbox{valign=t}{\begin{tabular}{rrccc}
-   \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $Bob$\ \downarrow$} \\
+   \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $\ColorTwo{Bob}$\ \downarrow$} \\
     & & 1 & 2 & 3 \\
         $\rightarrow\ $ & \ 1\ \ & \MPC{#1} & \MPC{#2} & \MPC{#3} \\
-        \mbox{Alice }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
+        \mbox{\ColorOne{Alice} }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
         $\rightarrow\ $&\ 3\ \ & \MPC{#7} & \MPC{#8} & \MPC{#9} \\
     \end{tabular}}}}
 \def\VS#1#2{\visible<#1>{#2}}
