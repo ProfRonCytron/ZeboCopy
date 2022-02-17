@@ -179,7 +179,7 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 \begin{itemize}
     \item<15-> We regard the puzzle's solution in two ways:
     \begin{itemize}
-        \item<16-> A single measurement of the two qubits is performed to obtain \alert<16>{\QState{}}, which determines the outcome of \Mone, \Mtwo, and \Mthree.  Those eigenvalues' product will yield the desired result.
+        \item<16-> A single measurement of the two qubits is performed to obtain eigenstate \alert<16>{\QState{}}, which determines the outcome of \Mone, \Mtwo, and \Mthree.  Those eigenvalues' product will yield the desired result.
         \item<17-> Three successive measurements are made, but the \alert<17>{first outcome} determines the other two outcomes.  The product of the three eigenvalues will also be as desired.
     \end{itemize}
     \item<18-> Linear algebra teaches that if each pair of operators in \Set{\Mone, \Mtwo, \Mthree} \emph{commutes}, then there is a common eigenbasis for the three operators.
@@ -207,7 +207,7 @@ The results of \Mtwo{} and \Mthree{} are determined by \QState{}, the result of~
       \item \ColorTwo{\MM{}} for \ColorTwo{Bob}'s columns
     \end{itemize}
 }%
-\only<19->{%
+\only<18->{%
 \SmallSkip{}A pair of operators \Set{A,B} commutes if
 \[ A\times B - B\times A = 0 \]
 where $0$ is the all-zero matrix.}%
