@@ -366,14 +366,21 @@ $T$ is its own conjugate transpose, so:}
 
 \def\MPSoln{%
 {\small%
-\MPSquare{\TP{\PauliZ}{\Identity}}{\TP{\Identity}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\Identity}{\PauliX}}{\TP{\PauliX}{\Identity}}{\TP{\PauliX}{\PauliX}}{$-$\TP{\PauliZ}{\PauliX}}{$-$\TP{\PauliX}{\PauliZ}}{\TP{\PauliY}{\PauliY}}}}
-\def\TP#1#2{{\scriptsize\ensuremath{#1\!\otimes\! #2}}}
+\MPSquare{\TP{\PauliZ}{\alert<2>{\Identity}}}{\TP{\alert<2>{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\alert<2>{\Identity}}{\PauliX}}{\TP{\PauliX}{\alert<2>{\Identity}}}{\TP{\PauliX}{\PauliX}}{\alert<3>{\Not{\TP{\PauliZ}{\PauliX}}}}{\alert<3>{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}}
+\def\TP#1#2{{\small\TensProd{#1}{#2}}}% \ensuremath{#1\!\otimes\! #2}}}
 
 \begin{frame}{Solution}{Expressed in measurement operators}
 
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item<1-> Each square shows the measurement operators used by Bob or Alice in that square.  The operators' result is the product of the resulting eigenvalues, $\pm 1$.
+    \item<2-> The \alert<2>{\Identity{}} measurement operator has an eigenvalue of $+1$.
+    \item<3-> The \alert<3>{bottom left two entries} are marked so that their outcome is complimented.
+\end{itemize}
+}{%
 \begin{center}
     \MPSoln{}
-\end{center}
+\end{center}}
     
 \end{frame}
 
