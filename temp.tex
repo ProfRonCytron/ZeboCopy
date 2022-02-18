@@ -230,10 +230,10 @@ where \ZeroMatrix{} is the all-zero matrix.}%
     \begin{tabular}{cccc}
     \alert<5>{\QState{1}} & \alert<6>{\QState{2}} & \alert<7>{\QState{3}} & \alert<8>{\QState{4}} \\
      \visible<3->{$1$ & $-1$ & $-1$ & $1$ \\}
-     \DQB{-1}{0}{-1}{0}
-           & \DQB{0}{-1}{0}{-1}
-           & \DQB{-1}{0}{1}{0}
-           & \DQB{0}{-1}{0}{1} \\[2em]
+     \alert<5>{\DQB{-1}{0}{-1}{0}}
+           & \alert<6>{\DQB{0}{-1}{0}{-1}}
+           & \alert<7>{\DQB{-1}{0}{1}{0}}
+           & \alert<8>{\DQB{0}{-1}{0}{1}} \\[2em]
         \visible<5->{   \ket{\ColorOne{+}\ColorTwo{0}}} & \visible<6->{\ket{\ColorOne{+}\ColorTwo{1}}}& \visible<7->{\ket{\ColorOne{-}\ColorTwo{0}}} &\visible<8->{\ket{\ColorOne{-}\ColorTwo{1}}}
     \end{tabular}
 \end{center}}}%
@@ -289,14 +289,14 @@ $T$ and \Conj{T} can now be implemented separately on each qubit, as shown above
 \end{align*}}
 \only<5-6>{%
 \begin{align*}
-\DQB{-1}{0}{-1}{0} &\equiv \RootTwo{}\DQB{1}{0}{1}{0} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\PZero}} \\[2em]
-\visible<6->{\DQB{-1}{0}{1}{0} &\equiv \RootTwo{}\DQB{1}{0}{-1}{0} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\PZero}}}
+\alert<5>{\DQB{-1}{0}{-1}{0}} &\equiv \RootTwo{}\DQB{1}{0}{1}{0} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\PZero}} \\[2em]
+\visible<6->{\alert<6>{\DQB{-1}{0}{1}{0}} &\equiv \RootTwo{}\DQB{1}{0}{-1}{0} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\PZero}}}
 \end{align*}
 }%
 \only<7-8>{%
 \begin{align*}
-\DQB{0}{-1}{0}{-1} &\equiv \RootTwo{}\DQB{0}{1}{0}{1} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\POne}} \\[2em]
-\visible<8->{\DQB{0}{-1}{0}{1} &\equiv \RootTwo{}\DQB{0}{1}{0}{-1} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\POne}}}
+\alert<7>{\DQB{0}{-1}{0}{-1}} &\equiv \RootTwo{}\DQB{0}{1}{0}{1} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\POne}} \\[2em]
+\visible<8->{\alert<8>{\DQB{0}{-1}{0}{1}} &\equiv \RootTwo{}\DQB{0}{1}{0}{-1} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\POne}}}
 \end{align*}
 }%
 \only<9->{%
@@ -327,7 +327,7 @@ $T$ is its own conjugate transpose, so:}
 \only<11->{%
 \Vskip{-3em}\begin{itemize}
    \item<11-> Our $T$ matrix is factorable as \TensProd{\Hadamard}{\Identity}.
-   \item<12-> This maps into the \TensProd{\PauliX}{\PauliZ} basis, sending the top qubit into the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
+   \item<12-> This maps $\TensProd{\PauliZ}{\PauliZ}\leftrightarrow\TensProd{\PauliX}{\PauliZ}$ basis, sending the top qubit into the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
 \end{itemize}
 }
 }
