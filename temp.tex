@@ -219,10 +219,11 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \begin{frame}{Example of three commuting operators}
 
 \Vskip{-5em}\TwoUnequalColumns{0.455\textwidth}{0.545\textwidth}{%
+\only<1-10>{%
 \begin{itemize}
     \item<1-> We need to find an eigenbasis common to all three operators.
     \item<2-> \texttt{MATLAB} provides this common eigenbasis for \Mone{} and \Mtwo{} \visible<3->{and their eigenvalues.}
-    \item<4-> Here are their product states after normalization.
+    \item<4-> Here are their \TensProd{\PauliX}{\PauliZ} product states after normalization.
 \end{itemize}
 \Vskip{-3em}\begin{center}\small
     \begin{tabular}{cccc}
@@ -234,7 +235,25 @@ where \ZeroMatrix{} is the all-zero matrix.}%
            & \DQB{0}{-1}{0}{1} \\[2em]
         \visible<4->{   \ket{\ColorOne{+}\ColorTwo{0}} & \ket{\ColorOne{-}\ColorTwo{0}}& \ket{\ColorOne{+}\ColorTwo{1}} &\ket{\ColorOne{-}\ColorTwo{1}}}
     \end{tabular}
-\end{center}
+\end{center}}%
+\only<11->{%
+\begin{center}
+\adjustbox{scale=0.75,valign=t}{%
+\begin{quantikz} 
+\qw & \gate[wires=2]{\mbox{$\Conj{T}$}} & \qw & \meter{0\,/\,1} & \qw & \gate[wires=2]{\mbox{$T$}} & \qw \\
+\qw & \qw & \qw & \meter{0\,/\,1} & \qw & \qw & \qw
+\end{quantikz}}\end{center}%
+\begin{itemize}
+    \item<11-> The circuit above uses a single measurement to capture an observation in the \TensProd{\PauliX}{\PauliZ} basis.
+    \item<12-> Based on the order of eigenstates in $T$, we decode the result as follows:
+    \begin{center}
+        \begin{tabular}{c@{$\mapsto$}c|c@{$\mapsto$}c}
+        \ket{00} & \ket{+0} & \ket{01} & \ket{-0} \\
+        \ket{10} & \ket{+1} & \ket{11}& \ket{-1}
+         \end{tabular}
+    \end{center}
+\end{itemize}
+}
 }{%
 \only<1-4>{%
 \begin{align*}
@@ -272,7 +291,32 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \only<9->{%
 \SmallSkip{}
 
-This serves as an eigenbasis also for \Mthree, so we can now construct our matrices $T$ and \Conj{T}.
+This serves as an eigenbasis also for \Mthree, so we can now construct our matrices~$T$ and~\Conj{T}.
+\[
+T = \RootTwo{} \alt<9>{\begin{pmatrix*}
+\DQB{1}{0}{1}{0} & 
+\DQB{1}{0}{-1}{0} &
+\DQB{0}{1}{0}{1} &
+\DQB{0}{1}{0}{-1}
+\end{pmatrix*}}{%
+\begin{pmatrix*}[r]
+1 &1 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+1 & -1 & 0 & 0 \\
+0 & 0 & 1 & -1
+\end{pmatrix*}
+}
+\]
+\visible<10->{%
+\SmallSkip{}
+\[
+\Conj{T} = \RootTwo{}\begin{pmatrix*}[r]
+1 & 0 & 1 & 0 \\
+1 & 0 & -1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 0 & -1
+\end{pmatrix*}
+\]}
 
 }
 }
