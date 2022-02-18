@@ -243,6 +243,7 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \qw & \gate[wires=2]{\mbox{$\Conj{T}$}} & \qw & \meter{0\,/\,1} & \qw & \gate[wires=2]{\mbox{$T$}} & \qw \\
 \qw & \qw & \qw & \meter{0\,/\,1} & \qw & \qw & \qw
 \end{quantikz}}\end{center}%
+\only<11-12>{%
 \begin{itemize}
     \item<11-> The circuit above uses a single measurement to capture an observation in the \TensProd{\PauliX}{\PauliZ} basis.
     \item<12-> Based on the order of eigenstates in $T$, we decode the result as follows:
@@ -252,7 +253,16 @@ where \ZeroMatrix{} is the all-zero matrix.}%
         \ket{10} & \ket{-0} & \ket{11}& \ket{-1}
          \end{tabular}
     \end{center}
-\end{itemize}
+\end{itemize}}%
+\only<13->{%
+\begin{center}
+\adjustbox{scale=0.75,valign=t}{%
+\begin{quantikz} 
+\qw & \gate{\Hadamard} & \qw & \meter{0\,/\,1} & \qw & \gate{\Hadamard} & \qw \\
+\qw & \qw & \qw & \meter{0\,/\,1} & \qw & \qw & \qw
+\end{quantikz}}\end{center}%
+$T$ and \Conj{T} can now be implemented separately on each qubit, as shown above, using an \Hadamard{} and \Identity{} (nothing) gate.
+}
 }
 }{%
 \only<1-4>{%
@@ -313,7 +323,12 @@ $T$ is its own conjugate transpose, so:}
 \[
 \Conj{T} = T
 \]}
-
+\only<11->{%
+\Vskip{-3em}\begin{itemize}
+   \item<11-> Our $T$ matrix is factorable as \TensProd{\Hadamard}{\Identity}.
+   \item<12-> This maps into the \TensProd{\PauliX}{\PauliZ} basis, sending the top qubit into the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
+\end{itemize}
+}
 }
 }
     
