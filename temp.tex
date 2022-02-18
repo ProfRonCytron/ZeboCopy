@@ -2,7 +2,7 @@
 
 \section*{Magic square}
 {
-\def\MPC#1{\fbox{\hbox to 5ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
+\def\MPC#1{\fbox{\hbox to 6ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
 \def\XP#1{\hbox to 2ex{\hss#1\hss 1}}%
 \def\PP{%
 \XP{$+$}}%
@@ -327,7 +327,7 @@ $T$ is its own conjugate transpose, so:}
 \only<11->{%
 \Vskip{-3em}\begin{itemize}
    \item<11-> Our $T$ matrix is factorable as \TensProd{\Hadamard}{\Identity}.
-   \item<12-> This maps $\TensProd{\PauliZ}{\PauliZ}\leftrightarrow\TensProd{\PauliX}{\PauliZ}$ basis, sending the top qubit into the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
+   \item<12-> This more clearly maps $\TensProd{\PauliZ}{\PauliZ}\leftrightarrow\TensProd{\PauliX}{\PauliZ}$ basis, sending the top qubit into and out of the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
 \end{itemize}
 }
 }
@@ -338,9 +338,22 @@ $T$ is its own conjugate transpose, so:}
 
 \begin{frame}{Quantum-based solution}{We use two EPR pairs}
 
+\Vskip{-4em}\begin{center}
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_1$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\ColorTwo{\mbox{$b_1$}}} 
+\end{quantikz}}%
+\hbox to 3ex{\hss}%
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_2$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\ColorTwo{\mbox{$b_2$}}} 
+\end{quantikz}}\end{center}%
+
 \begin{itemize}[<+->]
-    \item Alice and Bob begin with two EPR pairs, each in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
-    \item When they separate, they take one half of each pair with them.
+    \item Two EPR pairs are created, each in state \TwoSup{00}{11}.
+    \item \ColorOne{Alice} receives~\ColorOne{\QState{a}=\ket{a_{1}a_{2}}} and \ColorTwo{Bob} receives~\ColorTwo{\QState{b}=\ket{b_{1}b_{2}}}
     \item Depending on the row (for Alice) and the column (for Bob), they will carry out measurements based on a table, in a basis related to their particular row or column.
     \item We will prove that they
     \begin{itemize}
@@ -348,6 +361,19 @@ $T$ is its own conjugate transpose, so:}
         \item obtain the necessary row and column products.
     \end{itemize}
 \end{itemize}
+    
+\end{frame}
+
+\def\MPSoln{%
+{\small%
+\MPSquare{\TP{\PauliZ}{\Identity}}{\TP{\Identity}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\Identity}{\PauliX}}{\TP{\PauliX}{\Identity}}{\TP{\PauliX}{\PauliX}}{$-$\TP{\PauliZ}{\PauliX}}{$-$\TP{\PauliX}{\PauliZ}}{\TP{\PauliY}{\PauliY}}}}
+\def\TP#1#2{{\scriptsize\ensuremath{#1\!\otimes\! #2}}}
+
+\begin{frame}{Solution}{Expressed in measurement operators}
+
+\begin{center}
+    \MPSoln{}
+\end{center}
     
 \end{frame}
 
