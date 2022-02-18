@@ -226,7 +226,7 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \end{itemize}
 \Vskip{-3em}\begin{center}\small
     \begin{tabular}{cccc}
-    \QState{1} & \QState{2} & \QState{3} & \QState{4} \\
+    \alert<5>{\QState{1}} & \alert<6>{\QState{2}} & \alert<7>{\QState{3}} & \alert<8>{\QState{4}} \\
      \visible<3->{$1$ & $-1$ & $-1$ & $1$ \\}
      \DQB{-1}{0}{-1}{0}
            & \DQB{-1}{0}{1}{0}
@@ -257,11 +257,21 @@ where \ZeroMatrix{} is the all-zero matrix.}%
      \B{0} &    \B{-1} &     \B{0} &     \B{0}
     \end{pmatrix*}}
 \end{align*}}
-\only<5->{%
+\only<5-6>{%
 \begin{align*}
 \DQB{-1}{0}{-1}{0} &\equiv \RootTwo{}\DQB{1}{0}{1}{0} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\PZero}} \\[2em]
 \visible<6->{\DQB{-1}{0}{1}{0} &\equiv \RootTwo{}\DQB{1}{0}{-1}{0} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\PZero}}}
 \end{align*}
+}%
+\only<7-8>{%
+\begin{align*}
+\DQB{0}{-1}{0}{-1} &\equiv \RootTwo{}\DQB{0}{1}{0}{1} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\POne}} \\[2em]
+\visible<8->{\DQB{0}{-1}{0}{1} &\equiv \RootTwo{}\DQB{0}{1}{0}{-1} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\POne}}}
+\end{align*}
+}%
+\only<9->{%
+\Vskip{3em}
+T and \Conj{T}
 }
 }
     
