@@ -223,8 +223,9 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \begin{itemize}
     \item<1-> We need to find an eigenbasis common to all three operators.
     \item<2-> \texttt{MATLAB} provides this common eigenbasis for \Mone{} and \Mtwo{} \visible<3->{and their eigenvalues.}
-    \item<4-> Here are their \TensProd{\PauliX}{\PauliZ} product states after normalization.
+    \item<4-> We next develop their \TensProd{\PauliX}{\PauliZ} product states  normalization.
 \end{itemize}
+\visible<2->{%
 \Vskip{-3em}\begin{center}\small
     \begin{tabular}{cccc}
     \alert<5>{\QState{1}} & \alert<6>{\QState{2}} & \alert<7>{\QState{3}} & \alert<8>{\QState{4}} \\
@@ -233,9 +234,9 @@ where \ZeroMatrix{} is the all-zero matrix.}%
            & \DQB{0}{-1}{0}{-1}
            & \DQB{-1}{0}{1}{0}
            & \DQB{0}{-1}{0}{1} \\[2em]
-        \visible<4->{   \ket{\ColorOne{+}\ColorTwo{0}} & \ket{\ColorOne{+}\ColorTwo{1}}& \ket{\ColorOne{-}\ColorTwo{0}} &\ket{\ColorOne{-}\ColorTwo{1}}}
+        \visible<5->{   \ket{\ColorOne{+}\ColorTwo{0}}} & \visible<6->{\ket{\ColorOne{+}\ColorTwo{1}}}& \visible<7->{\ket{\ColorOne{-}\ColorTwo{0}}} &\visible<8->{\ket{\ColorOne{-}\ColorTwo{1}}}
     \end{tabular}
-\end{center}}%
+\end{center}}}%
 \only<11->{%
 \begin{center}
 \adjustbox{scale=0.75,valign=t}{%
