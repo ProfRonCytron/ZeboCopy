@@ -230,10 +230,10 @@ where \ZeroMatrix{} is the all-zero matrix.}%
     \alert<5>{\QState{1}} & \alert<6>{\QState{2}} & \alert<7>{\QState{3}} & \alert<8>{\QState{4}} \\
      \visible<3->{$1$ & $-1$ & $-1$ & $1$ \\}
      \DQB{-1}{0}{-1}{0}
-           & \DQB{-1}{0}{1}{0}
            & \DQB{0}{-1}{0}{-1}
+           & \DQB{-1}{0}{1}{0}
            & \DQB{0}{-1}{0}{1} \\[2em]
-        \visible<4->{   \ket{\ColorOne{+}\ColorTwo{0}} & \ket{\ColorOne{-}\ColorTwo{0}}& \ket{\ColorOne{+}\ColorTwo{1}} &\ket{\ColorOne{-}\ColorTwo{1}}}
+        \visible<4->{   \ket{\ColorOne{+}\ColorTwo{0}} & \ket{\ColorOne{+}\ColorTwo{1}}& \ket{\ColorOne{-}\ColorTwo{0}} &\ket{\ColorOne{-}\ColorTwo{1}}}
     \end{tabular}
 \end{center}}%
 \only<11->{%
@@ -248,8 +248,8 @@ where \ZeroMatrix{} is the all-zero matrix.}%
     \item<12-> Based on the order of eigenstates in $T$, we decode the result as follows:
     \begin{center}
         \begin{tabular}{c@{$\mapsto$}c|c@{$\mapsto$}c}
-        \ket{00} & \ket{+0} & \ket{01} & \ket{-0} \\
-        \ket{10} & \ket{+1} & \ket{11}& \ket{-1}
+        \ket{00} & \ket{+0} & \ket{01} & \ket{+1} \\
+        \ket{10} & \ket{-0} & \ket{11}& \ket{-1}
          \end{tabular}
     \end{center}
 \end{itemize}
@@ -289,33 +289,29 @@ where \ZeroMatrix{} is the all-zero matrix.}%
 \end{align*}
 }%
 \only<9->{%
-\SmallSkip{}
+\SmallSkip{}\only<9>{
 
-This serves as an eigenbasis also for \Mthree, so we can now construct our matrices~$T$ and~\Conj{T}.
+This serves as an eigenbasis also for \Mthree, so we can now construct our matrices~$T$ and~\Conj{T}.}
 \[
 T = \RootTwo{} \alt<9>{\begin{pmatrix*}
 \DQB{1}{0}{1}{0} & 
-\DQB{1}{0}{-1}{0} &
 \DQB{0}{1}{0}{1} &
+\DQB{1}{0}{-1}{0} &
 \DQB{0}{1}{0}{-1}
 \end{pmatrix*}}{%
 \begin{pmatrix*}[r]
-1 &1 & 0 & 0 \\
-0 & 0 & 1 & 1 \\
-1 & -1 & 0 & 0 \\
-0 & 0 & 1 & -1
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 &-1 & 0 \\
+0 & 1 & 0 &-1
 \end{pmatrix*}
 }
 \]
-\visible<10->{%
-\SmallSkip{}
+\only<10->{%
+\SmallSkip{}\only<10>{
+$T$ is its own conjugate transpose, so:}
 \[
-\Conj{T} = \RootTwo{}\begin{pmatrix*}[r]
-1 & 0 & 1 & 0 \\
-1 & 0 & -1 & 0 \\
-0 & 1 & 0 & 1 \\
-0 & 1 & 0 & -1
-\end{pmatrix*}
+\Conj{T} = T
 \]}
 
 }
