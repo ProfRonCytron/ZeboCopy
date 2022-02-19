@@ -401,10 +401,20 @@ $T$ is its own conjugate transpose, so:}
 \def\MyMarkupSquareI#1{#1}
 \begin{frame}{Proof of this solution}{Overview of three approaches}
 
-\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-2>{Obligation:
+\begin{itemize}
+    \item<1-> We must show that for any row, \ColorOne{Alice}'s results multiply to~$+1$ and \ColorTwo{Bob}'s results multiply to~$-1$.
+    \item<2-> We must show that for the square in common for a given round of the game, the players agree on the value there.
+\end{itemize}}%
+\only<3->{%
 \begin{enumerate}
-    \item<1-> We can show algebraically that the products in the rows are~$+1$ and the products in the columns are~$-1$.
-\end{enumerate}
+    \item<3-> We can show algebraically that the products in the rows are~$+1$ and the products in the columns are~$-1$.
+    \begin{itemize}
+        \item This shows that the results should be correct.
+        \item But it fails to consider square-by-square what \ColorOne{Alice} or \ColorTwo{Bob} should say for each result.
+    \end{itemize}
+\end{enumerate}}
 }{%
 \begin{center}
     \MPSoln{}
