@@ -366,22 +366,51 @@ $T$ is its own conjugate transpose, so:}
 
 \def\MPSoln{%
 {\small%
-\MPSquare{\TP{\PauliZ}{\alert<2>{\Identity}}}{\TP{\alert<2>{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\alert<2>{\Identity}}{\PauliX}}{\TP{\PauliX}{\alert<2>{\Identity}}}{\TP{\PauliX}{\PauliX}}{\alert<3>{\Not{\TP{\PauliZ}{\PauliX}}}}{\alert<3>{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}}
-\def\TP#1#2{{\small\TensProd{#1}{#2}}}% \ensuremath{#1\!\otimes\! #2}}}
+\MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}}
+\def\TP#1#2{{\small\TensProd{#1}{#2}}}
+\def\MyMarkupSquareComp#1{\alert<3,4,10>{#1}}
+\def\MyMarkupSquareI#1{\alert<2>{#1}}
 
 \begin{frame}{Solution}{Expressed in measurement operators}
 
-\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-4>{%
 \begin{itemize}
-    \item<1-> Each square shows the measurement operators used by Bob or Alice in that square.  The operators' result is the product of the resulting eigenvalues, $\pm 1$.
-    \item<2-> The \alert<2>{\Identity{}} measurement operator has an eigenvalue of $+1$.
+    \item<1-> Each square shows the measurement operators used by a player on two qubits.  
+    \item<2-> The \alert<2>{\Identity{}} measurement operator has an eigenvalue of $+1$, regardless of its input.
     \item<3-> The \alert<3>{bottom left two entries} are marked so that their outcome is complimented.
+    \item<4-> The result reported in a given square by a player is the eigenvalue associated with the two-qubit measurement performed by \ColorOne{her} or \ColorTwo{him}, complimented in \alert<4>{these} two squares.
+\end{itemize}}
+\only<5->{%
+\begin{itemize}
+   \item<5-> Each square's operator is already expressed as a product of two gates.
+   \item<6-> A two-qubit measurement can be performed separately on each qubit, \emph{unless} the inputs are entangled.
+   \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
+   \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
 \end{itemize}
+}
 }{%
 \begin{center}
     \MPSoln{}
-\end{center}}
-    
+\end{center}
+}
+
 \end{frame}
+
+\def\MyMarkupSquareComp#1{#1}
+\def\MyMarkupSquareI#1{#1}
+\begin{frame}{Proof of this solution}{Overview of three approaches}
+
+\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{enumerate}
+    \item<1-> We can show algebraically that the products in the rows are~$+1$ and the products in the columns are~$-1$.
+\end{enumerate}
+}{%
+\begin{center}
+    \MPSoln{}
+\end{center}
+}
+\end{frame}
+
 
 }
