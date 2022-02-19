@@ -1,24 +1,9 @@
 \SetTitle{99}{temp}{faster}{99}
 
 \section*{Magic square}
-{
-\def\MPC#1{\fbox{\hbox to 6ex{\hss\mbox{#1}\vrule width 0pt height 3ex depth 2ex\hss}}}
-\def\XP#1{\hbox to 2ex{\hss#1\hss 1}}%
-\def\PP{%
-\XP{$+$}}%
-\def\MM{%
-\XP{$-$}}%
-\def\MPSquare#1#2#3#4#5#6#7#8#9{%
-{%
-    \setlength{\tabcolsep}{0pt}%
-    \adjustbox{valign=t}{\begin{tabular}{rrccc}
-   \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $\ColorTwo{Bob}$\ \downarrow$} \\
-    & & 1 & 2 & 3 \\
-        $\rightarrow\ $ & \ 1\ \ & \MPC{#1} & \MPC{#2} & \MPC{#3} \\
-        \mbox{\ColorOne{Alice} }& \ 2\ \ & \MPC{#4} & \MPC{#5} & \MPC{#6} \\
-        $\rightarrow\ $&\ 3\ \ & \MPC{#7} & \MPC{#8} & \MPC{#9} \\
-    \end{tabular}}}}
-\def\VS#1#2{\visible<#1>{#2}}
+
+
+
 \begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}}
 
 \begin{itemize}[<+->]
@@ -33,6 +18,7 @@
 
 \begin{frame}{How is the game played?}
 \Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{MPSquareEnv}
 \only<1-6>{%
 \begin{itemize}
     \item<1-> After enjoying some time together, Alice and Bob separate and cannot communicate with each other.
@@ -47,9 +33,13 @@
     \item<10-> The product of \textcolor{\RCtwo}{his entries} must be~\MM{}.
 \end{itemize}
 }
+\end{MPSquareEnv}
 }{%
 \begin{center}
+\begin{MPSquareEnv}
+\def\VS####1####2{\visible<####1>{####2}}
 \MPSquare{\VS{7-}{\textcolor{\RCtwo}{\PP}}}{ }{ }{\only<3-7>{\VS{3-}{\textcolor{\RCone}{\PP}}}\only<8->{\VS{3-}{\textcolor{Purple}{\PP}}}}{\VS{4-}{\textcolor{\RCone}{\MM}}}{\VS{5-}{\textcolor{\RCone}{\MM}}}{\VS{9-}{\textcolor{\RCtwo}{\MM}}}{ }{ }
+\end{MPSquareEnv}
 \end{center}
 }%
 \end{frame}
@@ -57,6 +47,7 @@
 \begin{frame}{Best classical solution}{They can agree to respond as shown on this slide, winning $8$ of $9$ games on average}
 
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
 \only<1-6>{%
 \begin{itemize}[<+->]
     \item Before separating, Alice and Bob can agree to respond as shown here.
@@ -75,9 +66,12 @@
     \item<10-> But first let's rule out the possibility of any always-win classical solution.
 \end{itemize}
 }
+\end{MPSquareEnv}
 }{%
 \Vskip{-3em}\begin{center}
+\begin{MPSquareEnv}
 \MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\only<1-3,6-8>{\alert{\textbf{?}}}\only<4>{\ColorOne{\MM{}}}\only<5>{\ColorTwo{\PP{}}}}
+\end{MPSquareEnv}
 \end{center}
 \visible<6->{%
 \alert{They lose only when \emph{both} the third row and column are designated.  Is there a way to win always?}}
@@ -88,6 +82,7 @@
 \begin{frame}{Proof of no static solution}{We cannot place values in each cell that always work}
 
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
 \Vskip{-3em}\begin{itemize}
     \item<1-> Each row's product is~\PP{} so the three rows' products is also~\PP{}.
     \item<2-> Each column's product is~\MM{} so the three columns' products is also~\MM{}.
@@ -101,46 +96,57 @@
     \visible<3->{\ColorOne{abcdefghk} & \neq \ColorTwo{abcdefghk}}
 \end{align*}
 \visible<3->{\Vskip{-4em}\QED}
-
+\end{MPSquareEnv}
 }{%
 \Vskip{-3em}\begin{center}
+\begin{MPSquareEnv}
 \MPSquare{$a$}{$b$}{$c$}{$d$}{$e$}{$f$}{$g$}{$h$}{$k$}
+\end{MPSquareEnv}
 \end{center}
 }
     
 \end{frame}
 
-\begin{frame}{Variaton 1}{All products are the same except one}
+\begin{frame}{Variation 1}{All products are the same except one}
 \Vskip{-5em}\TwoUnequalColumns{0.53\textwidth}{0.47\textwidth}{%
+\begin{MPSquareEnv}
 \begin{itemize}[<+->]
     \item In the version we consider, we require the product of each row's entries to be \PP{} and the product of each column's entries to be \MM{}.
     \item In another version, the product of each row's and each column's entries is \PP{}, \emph{except} the product of the third column's entries is \MM{}.
     \item A solution to the first form can be reduced from a solution to the second form by always negating the values as shown.
     \item The proof of no static solution is the same.
 \end{itemize}
+\end{MPSquareEnv}
 }{%
 \Vskip{-1em}\begin{center}
+\begin{MPSquareEnv}
 \MPSquare{ }{ }{ }{ }{ }{ }{\visible<3->{\alert{$-$}}}{\visible<3->{\alert{$-$}}}{ }
+\end{MPSquareEnv}
 \end{center}
 \visible<4->{%
-This causes columns~1 and~2 to have product~\MM{}.  The third row still has a positive product because the two negations cancel.
+\begin{MPSquareEnv}%
+This causes columns~1 and~2 to have product~\MM{}.  The third row still has a positive product because the two negations cancel.\end{MPSquareEnv}
 }
 }
 \end{frame}
 
 \begin{frame}{Variation 2}{Using sums instead of products}
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
 \begin{itemize}
     \item<1-> Here is the original formulation
     \item<2-> In this variation, \ColorOne{Alice}'s rows must have even parity, and \ColorTwo{Bob}'s columns must have odd parity.
     \item<3-> The \PP{} and \MM{} of the original version are mapped to $0$ and $1$, respectively.
     \item<4-> Of course there is still no solution classically for every square.
 \end{itemize}
+\end{MPSquareEnv}
 }{%
 \Vskip{-3em}\begin{center}
-\alt<1>{\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\alert{?}}}{%
+\alt<1>{%
+\begin{MPSquareEnv}\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\alert{?}}\end{MPSquareEnv}}{%
+\begin{MPSquareEnv}
 \MPSquare{$0$}{$0$}{$0$}{$0$}{$1$}{$1$}{$1$}{$0$}{\alert{?}}
-}
+\end{MPSquareEnv}}
 \end{center}
 }
 
@@ -201,11 +207,11 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 The results of \Mtwo{} and \Mthree{} are determined by \QState{}, the result of~\Mone.}
 }%
 \only<14>{%
-\SmallSkip{}We can choose operators such that for any eigenstate~\QState{} common to the three operators, we obtain products as follows: 
+\begin{MPSquareEnv}\SmallSkip{}We can choose operators such that for any eigenstate~\QState{} common to the three operators, we obtain products as follows: 
     \begin{itemize}
       \item \ColorOne{\PP{}} for \ColorOne{Alice's rows}
       \item \ColorTwo{\MM{}} for \ColorTwo{Bob's columns}
-    \end{itemize}
+    \end{itemize}\end{MPSquareEnv}
 }%
 \only<18->{%
 \SmallSkip{}A pair of operators \Set{A,B} commutes if
@@ -364,9 +370,10 @@ $T$ is its own conjugate transpose, so:}
     
 \end{frame}
 
+{
 \def\MPSoln{%
-{\small%
-\MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}}
+\begin{MPSquareEnv}\small
+\MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}\end{MPSquareEnv}}
 \def\TP#1#2{{\small\TensProd{#1}{#2}}}
 \def\MyMarkupSquareComp#1{\alert<3,4,10>{#1}}
 \def\MyMarkupSquareI#1{\alert<2>{#1}}
@@ -409,11 +416,13 @@ $T$ is its own conjugate transpose, so:}
 \end{itemize}}%
 \only<3->{%
 \begin{enumerate}
-    \item<3-> We can show algebraically that the products in the rows are~$+1$ and the products in the columns are~$-1$.
+    \item<3-> We can show algebraically that the products in the \ColorOne{rows} are~$+1$ and the products in the \ColorTwo{columns} are~$-1$.
     \begin{itemize}
-        \item This shows that the results should be correct.
-        \item But it fails to consider square-by-square what \ColorOne{Alice} or \ColorTwo{Bob} should say for each result.
+        \item This results at the end are correct.
+        \item But no square-by-square account is given.
     \end{itemize}
+    \item<4-> Based on a \ColorOne{row} (or \ColorTwo{column}), one two-qubit measurement is made in a prescribed basis.  That result determines what is reported in each square in that \ColorOne{row} (or \ColorTwo{column}).
+    \item<5-> \ColorOne{Alice} and \ColorTwo{Bob} make and report a measurement in each square of their \ColorOne{row} or \ColorTwo{column}.
 \end{enumerate}}
 }{%
 \begin{center}
@@ -421,6 +430,4 @@ $T$ is its own conjugate transpose, so:}
 \end{center}
 }
 \end{frame}
-
-
 }
