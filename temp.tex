@@ -453,7 +453,7 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \Reason{3}{Row 3}
 \end{Reasoning}
 \begin{align*}
-(\TensProd{\PauliZ}{\PauliZ})\cdot (\TensProd{\Identity}{\PauliZ})\cdot (\TensProd{\PauliZ}{\Identity}) =& \TensProd{\PauliZ\Identity\PauliZ}{\PauliZ\PauliZ\Identity} \\
+(\ColorThree{\TensProd{\PauliZ}{\PauliZ}})\cdot (\ColorFour{\TensProd{\Identity}{\PauliZ}})\cdot (\ColorFive{\TensProd{\PauliZ}{\Identity}}) =& \TensProd{\ColorThree{\PauliZ}\ColorFour{\Identity}\ColorFive{\PauliZ}}{\ColorThree{\PauliZ}\ColorFour{\PauliZ}\ColorFive{\Identity}} \\
 =& \TensProd{\Identity}{\Identity} \\
 \visible<2->{(\TensProd{\PauliX}{\PauliX})\cdot (\TensProd{\PauliX}{\Identity})\cdot (\TensProd{\Identity}{\PauliX}) =& \TensProd{\PauliX\PauliX\Identity}{\PauliX\Identity\PauliX} \\
 =& \TensProd{\Identity}{\Identity}} \\
@@ -464,6 +464,49 @@ When operators are applied left-to-right in a circuit, their associated matrices
 }{%
 \begin{center}
 \adjustbox{scale=0.7}{\begin{MPSquareEnv}
+    \def\TpRt####1{\textcolor<1>{\RCthree}{####1}}%
+    \def\TpCt####1{\textcolor<1>{\RCfour}{####1}}%
+    \def\TpLf####1{\textcolor<1>{\RCfive}{####1}}%
+    \def\MdRt####1{\textcolor<2>{\RCthree}{####1}}%
+    \def\MdCt####1{\textcolor<2>{\RCfour}{####1}}%
+    \def\MdLf####1{\textcolor<2>{\RCfive}{####1}}%
+    \def\BtRt####1{\textcolor<3>{\RCthree}{####1}}%
+    \def\BtCt####1{\textcolor<3>{\RCfour}{####1}}%
+    \def\BtLf####1{\textcolor<3>{\RCfive}{####1}}%
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Columns}{Algebraic proof}
+\Vskip{-3em}\TwoUnequalColumns{0.71\textwidth}{0.29\textwidth}{%
+\begin{Reasoning}
+\Reason{1}{Column 1}
+\Reason{2}{Column 2}
+\Reason{3}{Column 3}
+\end{Reasoning}
+\begin{align*}
+(\Not{\TensProd{\PauliZ}{\PauliX}})\cdot (\TensProd{\Identity}{\PauliX})\cdot (\TensProd{\PauliZ}{\Identity}) =& \alert{-} \TensProd{\PauliZ\Identity\PauliZ}{\PauliX\PauliX\Identity} \\
+=& \alert{-}(\TensProd{\Identity}{\Identity}) \\
+\visible<2->{(\Not{\TensProd{\PauliX}{\PauliZ}})\cdot (\TensProd{\PauliX}{\Identity})\cdot (\TensProd{\Identity}{\PauliZ}) =& \alert{-}\TensProd{\PauliX\PauliX\Identity}{\PauliZ\Identity\PauliZ} \\
+=& \alert{-}(\TensProd{\Identity}{\Identity}}) \\
+\visible<3->{(\TensProd{\PauliY}{\PauliY})\cdot (\TensProd{\PauliX}{\PauliX})\cdot (\TensProd{\PauliZ}{\PauliZ}) =& (\TensProd{\PauliY\PauliX\PauliZ}{\PauliY\PauliX\PauliZ}) \\
+=& \TensProd{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}}{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}} \\
+=& -(\TensProd{\Identity}{\Identity})}
+\end{align*}
+}{%
+\begin{center}
+\adjustbox{scale=0.6}{\begin{MPSquareEnv}
+    \def\BtLf####1{\textcolor<1>{\RCthree}{####1}}%
+    \def\MdLf####1{\textcolor<1>{\RCfour}{####1}}%
+    \def\TpLf####1{\textcolor<1>{\RCfive}{####1}}%
+    \def\BtCt####1{\textcolor<2>{\RCthree}{####1}}%
+    \def\MdCt####1{\textcolor<2>{\RCfour}{####1}}%
+    \def\TpCt####1{\textcolor<2>{\RCfive}{####1}}%
+    \def\BtRt####1{\textcolor<3>{\RCthree}{####1}}%
+    \def\MdRt####1{\textcolor<3>{\RCfour}{####1}}%
+    \def\TpRt####1{\textcolor<3>{\RCfive}{####1}}%
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}

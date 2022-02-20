@@ -977,15 +977,24 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \XP{$+$}}%
 \def\MM{%
 \XP{$-$}}%
+\def\TpLf##1{##1}%
+\def\TpCt##1{##1}%
+\def\TpRt##1{##1}%
+\def\MdLf##1{##1}%
+\def\MdCt##1{##1}%
+\def\MdRt##1{##1}%
+\def\BtLf##1{##1}%
+\def\BtCt##1{##1}%
+\def\BtRt##1{##1}%
 \def\MPSquare##1##2##3##4##5##6##7##8##9{%
 {%
     \setlength{\tabcolsep}{0pt}%
     \adjustbox{valign=t}{\begin{tabular}{rrccc}
    \multicolumn{1}{c}{ } & \multicolumn{1}{c}{ } & \multicolumn{3}{c}{$\downarrow\ $\ColorTwo{Bob}$\ \downarrow$} \\
     & & 1 & 2 & 3 \\
-        $\rightarrow\ $ & \ 1\ \ & \MPC{##1} & \MPC{##2} & \MPC{##3} \\
-        \mbox{\ColorOne{Alice} }& \ 2\ \ & \MPC{##4} & \MPC{##5} & \MPC{##6} \\
-        $\rightarrow\ $&\ 3\ \ & \MPC{##7} & \MPC{##8} & \MPC{##9} \\
+        $\rightarrow\ $ & \ 1\ \ & \MPC{\TpLf{##1}} & \MPC{\TpCt{##2}} & \MPC{\TpRt{##3}} \\
+        \mbox{\ColorOne{Alice} }& \ 2\ \ & \MPC{\MdLf{##4}} & \MPC{\MdCt{##5}} & \MPC{\MdRt{##6}} \\
+        $\rightarrow\ $&\ 3\ \ & \MPC{\BtLf{##7}} & \MPC{\BtCt{##8}} & \MPC{\BtRt{##9}} \\
     \end{tabular}}}}%
 \def\TP##1##2{{\small\TensProd{##1}{##2}}}%
 \def\MyMarkupSquareComp##1{##1}
