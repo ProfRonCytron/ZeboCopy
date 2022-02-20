@@ -144,12 +144,19 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \end{frame}
 
 \begin{frame}{Covering the bases}{For each row and column}
-\TwoColumns{%
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{MPbasis}
+\def\A{\Col{1}{0}{0}{0}}
+\def\B{\Col{0}{1}{0}{0}}
+\def\C{\Col{0}{0}{1}{0}}
+\def\D{\Col{0}{0}{0}{1}}
+\Bases
+\end{MPbasis}
 }{%
-\begin{center}
-\begin{MPSquareEnv}
+\Vskip{-4em}\begin{center}
+\adjustbox{scale=0.6}{\begin{MPSquareEnv}
     \MPSoln{}
-\end{MPSquareEnv}
+\end{MPSquareEnv}}
 \end{center}}
     
 \end{frame}
