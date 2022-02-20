@@ -428,3 +428,45 @@ $T$ is its own conjugate transpose, so:}
 }
 \end{frame}
 
+\begin{frame}{Algebraic proof}{A sequence of measurements would culminate in the correct result}
+
+Recall
+\[ (\TensProd{A}{D}) \times (\TensProd{B}{E}) = \TensProd{(A\cdot B)}{(D\cdot E)} \]
+and this extends to three product terms:
+\[
+(\TensProd{A}{D}) \times (\TensProd{B}{E}) \times (\TensProd{C}{F}) = \TensProd{(A\cdot B\cdot C)}{(D\cdot E\cdot F)}
+\]
+We consider each \ColorOne{row} and \ColorTwo{column} of the solution and show that
+\begin{itemize}
+    \item The product matrix of each row is \Identity, whose measurement always yields $+1$ regardless of input state.
+    \item The product matrix of each column is $-\Identity$ (or \Not{\Identity}), whose measurement always yields $-1$ regardless of input state.
+\end{itemize}
+When operators are applied left-to-right in a circuit, their associated matrices are multipled from right-to-left.
+
+\end{frame}
+
+\begin{frame}{Rows}{Algebraic proof}
+\TwoUnequalColumns{0.68\textwidth}{0.32\textwidth}{%
+\begin{Reasoning}
+\Reason{1}{Row 1}
+\Reason{2}{Row 2}
+\Reason{3}{Row 3}
+\end{Reasoning}
+\begin{align*}
+(\TensProd{\PauliZ}{\PauliZ})\cdot (\TensProd{\Identity}{\PauliZ})\cdot (\TensProd{\PauliZ}{\Identity}) =& \TensProd{\PauliZ\Identity\PauliZ}{\PauliZ\PauliZ\Identity} \\
+=& \TensProd{\Identity}{\Identity} \\
+\visible<2->{(\TensProd{\PauliX}{\PauliX})\cdot (\TensProd{\PauliX}{\Identity})\cdot (\TensProd{\Identity}{\PauliX}) =& \TensProd{\PauliX\PauliX\Identity}{\PauliX\Identity\PauliX} \\
+=& \TensProd{\Identity}{\Identity}} \\
+\visible<3->{(\TensProd{\PauliY}{\PauliY})\cdot (\Not{\TensProd{\PauliX}{\PauliZ}})\cdot (\Not{\TensProd{\PauliZ}{\PauliX}}) =& \alert{- -} (\TensProd{\PauliY\PauliX\PauliZ}{\PauliY\PauliZ\PauliX}) \\
+=& \TensProd{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}}{\SQBG{\relax}{\NiceI}{0}{0}{\NiceI}} \\
+=& \TensProd{\Identity}{\Identity}}
+\end{align*}
+}{%
+\begin{center}
+\adjustbox{scale=0.7}{\begin{MPSquareEnv}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}
+}
+\end{frame}
+
