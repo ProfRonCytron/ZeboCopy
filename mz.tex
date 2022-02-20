@@ -334,3 +334,24 @@ Ahead is our \alert<12-14>{\PauliZ{}} gate.  It acts on states of interest as fo
     
 \end{frame}
 
+\begin{frame}{The \Identity{} gate}{As a measurement operator}
+
+\TwoColumns{%
+\begin{itemize}
+    \item<1-> We have seen the \Identity{} gate:
+    \[ \Identity = \IMatrix \]
+    \item<2-> The gate preserves any state:
+    \[ \alert<5>{\Forall{\QState{}}{\IMatrix\QState{} = \QState{}}}\]
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<3-> We can also regard the \Identity{} gate as a \emph{measurement operator}.
+    \item<4-> Recall that a measurement operator yields an eigenstate of the matrix, with the the associated eigenvalue reported as the outcome.
+    \item<5-> The \Identity{} operator has \emph{every} state as an eigenstate, each with eigenvalue $+1$.
+\end{itemize}
+}%
+\visible<6->{%
+When the \Identity{} operator serves for measurement, the result is always $+1$ and the qubit remains in the state of its input to the operator.}
+
+\end{frame}
+
