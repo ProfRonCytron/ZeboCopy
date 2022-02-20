@@ -455,9 +455,9 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \begin{align*}
 (\ColorThree{\TensProd{\PauliZ}{\PauliZ}})\cdot (\ColorFour{\TensProd{\Identity}{\PauliZ}})\cdot (\ColorFive{\TensProd{\PauliZ}{\Identity}}) =& \TensProd{\ColorThree{\PauliZ}\ColorFour{\Identity}\ColorFive{\PauliZ}}{\ColorThree{\PauliZ}\ColorFour{\PauliZ}\ColorFive{\Identity}} \\
 =& \TensProd{\Identity}{\Identity} \\
-\visible<2->{(\TensProd{\PauliX}{\PauliX})\cdot (\TensProd{\PauliX}{\Identity})\cdot (\TensProd{\Identity}{\PauliX}) =& \TensProd{\PauliX\PauliX\Identity}{\PauliX\Identity\PauliX} \\
+\visible<2->{(\ColorThree{\TensProd{\PauliX}{\PauliX}})\cdot (\ColorFour{\TensProd{\PauliX}{\Identity}})\cdot (\ColorFive{\TensProd{\Identity}{\PauliX}}) =& \TensProd{\ColorThree{\PauliX}\ColorFour{\PauliX}\ColorFive{\Identity}}{\ColorThree{\PauliX}\ColorFour{\Identity}\ColorFive{\PauliX}} \\
 =& \TensProd{\Identity}{\Identity}} \\
-\visible<3->{(\TensProd{\PauliY}{\PauliY})\cdot (\Not{\TensProd{\PauliX}{\PauliZ}})\cdot (\Not{\TensProd{\PauliZ}{\PauliX}}) =& \alert{- -} (\TensProd{\PauliY\PauliX\PauliZ}{\PauliY\PauliZ\PauliX}) \\
+\visible<3->{(\ColorThree{\TensProd{\PauliY}{\PauliY}})\cdot (\alert{\Not{\ColorFour{\TensProd{\PauliX}{\PauliZ}}}})\cdot (\alert{\Not{\ColorFive{\TensProd{\PauliZ}{\PauliX}}}}) =& \alert{- -} (\TensProd{\ColorThree{\PauliY}\ColorFour{\PauliX}\ColorFive{\PauliZ}}{\ColorThree{\PauliY}\ColorFour{\PauliZ}\ColorFive{\PauliX}}) \\
 =& \TensProd{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}}{\SQBG{\relax}{\NiceI}{0}{0}{\NiceI}} \\
 =& \TensProd{\Identity}{\Identity}}
 \end{align*}
