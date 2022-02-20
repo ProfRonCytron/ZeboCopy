@@ -89,8 +89,8 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \begin{frame}{Summary}{Up to this point}
 \begin{itemize}[<+->]
     \item The results we have obtained hold for any initial state.
-    \item For \ColorOne{Alice}, the product of measurements along any row is~$+1$.
-    \item For \ColorTwo{Bob}, the product of measurements along any column is~$-1$.
+    \item For \Alice{}, the product of measurements along any row is~$+1$.
+    \item For \Bob{}, the product of measurements along any column is~$-1$.
     \item While the final results are confirmed, the proof is not instructive concerning the three measurements each player is supposed to report.
     \item This is akin to deciding not to play the game at all, because they know they should win, if only they knew how to play the game.
 \end{itemize}
@@ -99,21 +99,58 @@ When operators are applied left-to-right in a circuit, their associated matrices
 
 \begin{frame}{Actually playing the game}{Making only one measurement}
 
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-Idea based on \href{http://philsci-archive.pitt.edu/18398/}{this paper}:
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this paper}:
+\only<1-5>{%
 \begin{itemize}
-    \item<1-> \ColorOne{Alice} measures her two qubits \emph{once}, in a basis prescribed for her row.
+    \item<1-> \Alice{} measures her two qubits \emph{once}, in a basis prescribed for her row.
     \item<2-> State \QState{} after measurement is an eigenstate for each operator in her row.
     \item<3-> However, each operator may have a \emph{different eigenvalue} associated with \QState{}.
     \item<4-> Alice reports the eigenvalue for each operator in her row, knowing their product is~$+1$.
-    \item<5-> \ColorTwo{Bob} uses a different basis prescribed for his column, with his eigenvalues multiplying to~$-1$.
-\end{itemize}
+    \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~$-1$.
+\end{itemize}}
+\only<6-10>{%
+\begin{itemize}
+    \item<6-> \Alice{} knows the operators of her rows.
+    \item<7-> She uses \texttt{MATLAB} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{1},\QState{2},\QState{3},\QState{4}}.
+    \item<8-> The matrix (gate) $T$ that transforms the standard basis to \NamedBasis{B} has those states as its columns.
+    \item<9-> The gate \Conj{T} transforms from \NamedBasis{B} to the standard basis.
+    \item<10-> Because we perform only one measurement, we need only \Conj{T} followed by a measurement in the standard basis.
+\end{itemize}}%
+\only<11-13>{%
+\begin{itemize}
+    \item<11-> For each row, \Alice{} has a table that provides the eigenvalue for each square.
+    \item<12-> The algebraic proof guarantees that those will multiply to~$+1$.
+    \item<13-> The proof holds for \emph{any} initial state, but measurement in \NamedBasis{B} causes \Alice{} to report the same result as \Bob{} in their shared square.
+    \end{itemize}}
+    \only<14->{%
+    \begin{itemize}
+    \item<14-> Recall that each of \Alice's qubits is entangled with one of \Bob's qubits.  Each such pair is in the state \TwoSup{00}{11}.
+    \item<15-> As a example where careless measurements cause problems, suppose
+    \begin{itemize}
+        \item \Alice{} has row 1 and measures her first qubit in the standard (\PauliZ) basis.
+        \item \Bob{} has column 1 but measures his first qubit (thanks to Alice, now in state~\QZero{} or~\QOne{}) in the~\PauliX{} basis.
+    \end{itemize}
+    \item<16->\Bob{} is equally likely to see \QZero{} or \QOne{}, which could contradict \Alice's measurement.
+\end{itemize}}
+}{%
+\begin{center}
+\begin{MPSquareEnv}
+    \def\TpLf####1{\textcolor<14-16>{\RCfive}{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}
+\end{center}
+}
+\end{frame}
+
+\begin{frame}{Covering the bases}{For each row and column}
+\TwoColumns{%
 }{%
 \begin{center}
 \begin{MPSquareEnv}
     \MPSoln{}
 \end{MPSquareEnv}
-\end{center}
-}
+\end{center}}
+    
 \end{frame}
 

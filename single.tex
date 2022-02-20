@@ -68,6 +68,7 @@
 \def\Quote#1{``#1''}
 \def\NamedGate#1{%
 \mbox{\bfseries{\textrm{#1}}}}
+\def\NamedBasis#1{\NamedGate{#1}}
 \def\Identity{\NamedGate{I}}
 \def\Hadamard{\NamedGate{H}}
 \def\CCNOT{\NamedGate{CCNOT}}
@@ -1003,6 +1004,8 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
     \MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}
 }{%
 }
+\def\Alice{\ColorOne{Alice}}
+\def\Bob{\ColorTwo{Bob}}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
