@@ -370,14 +370,6 @@ $T$ is its own conjugate transpose, so:}
     
 \end{frame}
 
-{
-\def\MPSoln{%
-\begin{MPSquareEnv}\small
-\MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}\end{MPSquareEnv}}
-\def\TP#1#2{{\small\TensProd{#1}{#2}}}
-\def\MyMarkupSquareComp#1{\alert<3,4,10>{#1}}
-\def\MyMarkupSquareI#1{\alert<2>{#1}}
-
 \begin{frame}{Solution}{Expressed in measurement operators}
 
 \Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
@@ -398,14 +390,17 @@ $T$ is its own conjugate transpose, so:}
 }
 }{%
 \begin{center}
+    \begin{MPSquareEnv}
+    \def\MyMarkupSquareComp####1{\alert<3,4,10>{####1}}
+    \def\MyMarkupSquareI####1{\alert<2>{####1}}
     \MPSoln{}
+    \end{MPSquareEnv}
 \end{center}
 }
 
 \end{frame}
 
-\def\MyMarkupSquareComp#1{#1}
-\def\MyMarkupSquareI#1{#1}
+
 \begin{frame}{Proof of this solution}{Overview of three approaches}
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
@@ -426,8 +421,10 @@ $T$ is its own conjugate transpose, so:}
 \end{enumerate}}
 }{%
 \begin{center}
+\begin{MPSquareEnv}
     \MPSoln{}
+\end{MPSquareEnv}
 \end{center}
 }
 \end{frame}
-}
+

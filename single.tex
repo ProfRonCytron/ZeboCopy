@@ -986,7 +986,12 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
         $\rightarrow\ $ & \ 1\ \ & \MPC{##1} & \MPC{##2} & \MPC{##3} \\
         \mbox{\ColorOne{Alice} }& \ 2\ \ & \MPC{##4} & \MPC{##5} & \MPC{##6} \\
         $\rightarrow\ $&\ 3\ \ & \MPC{##7} & \MPC{##8} & \MPC{##9} \\
-    \end{tabular}}}}
+    \end{tabular}}}}%
+\def\TP##1##2{{\small\TensProd{##1}{##2}}}%
+\def\MyMarkupSquareComp##1{##1}
+\def\MyMarkupSquareI##1{##1}
+\def\MPSoln{%
+    \MPSquare{\TP{\PauliZ}{\MyMarkupSquareI{\Identity}}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliZ}}{\TP{\PauliZ}{\PauliZ}}{\TP{\MyMarkupSquareI{\Identity}}{\PauliX}}{\TP{\PauliX}{\MyMarkupSquareI{\Identity}}}{\TP{\PauliX}{\PauliX}}{\MyMarkupSquareComp{\Not{\TP{\PauliZ}{\PauliX}}}}{\MyMarkupSquareComp{\Not{\TP{\PauliX}{\PauliZ}}}}{\TP{\PauliY}{\PauliY}}}
 }{%
 }
 
@@ -996,5 +1001,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{mz}
+\include{temp}
 \end{document}
