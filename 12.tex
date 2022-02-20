@@ -188,3 +188,430 @@ The quantum approach wins $\sim 85\%$ of the time, while classically we win at b
 \end{frame}
 }
 
+\section*{Magic square}
+
+
+
+\begin{frame}{Introduction to the \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{Mermin--Peres magic square}}{This game is due to \href{https://en.wikipedia.org/wiki/N._David_Mermin}{David Mermin} and \href{https://en.wikipedia.org/wiki/Asher_Peres}{Asher Peres}}
+
+\begin{itemize}[<+->]
+    \item With CHSH, a quantum approach is probabilistically better than any classical approach but does not guarantee to win the game.
+    \item The Mermin--Peres magic square is a puzzle that Alice and Bob can win at best $\frac{8}{9}$ of the time, but a quantum approach on a reliable quantum computer can always win.
+    \item Alice and Bob share two EPR pairs, each initially in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
+    \item Variations of the game we consider also go by the same name, and they are equivalent in difficulty and in the approach to a quantum-based solution.
+    \item We follow the game as specified in the Wikipedia \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{article}.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{How is the game played?}
+\Vskip{-3em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{MPSquareEnv}
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> After enjoying some time together, Alice and Bob separate and cannot communicate with each other.
+    \item<2-> A referee chooses a \textcolor{\RCone}{row number for Alice (2)} and a \textcolor{\RCtwo}{column number for Bob (1)}.
+    \item<3-> Alice must respond with an entry for each cell of \textcolor{\RCone}{her designated row}, choosing~\PP{} or~\MM{}.
+    \item<6-> The product of \textcolor{\RCone}{her entries} must be~\PP{}.
+\end{itemize}}
+\only<7->{%
+\begin{itemize}
+    \item<7-> Bob must do the same for \textcolor{\RCtwo}{his designated column}.
+    \item<8-> Where the row and column \textcolor{Purple}{intersect}, Alice and Bob must agree on the value, or they lose.
+    \item<10-> The product of \textcolor{\RCtwo}{his entries} must be~\MM{}.
+\end{itemize}
+}
+\end{MPSquareEnv}
+}{%
+\begin{center}
+\begin{MPSquareEnv}
+\def\VS####1####2{\visible<####1>{####2}}
+\MPSquare{\VS{7-}{\textcolor{\RCtwo}{\PP}}}{ }{ }{\only<3-7>{\VS{3-}{\textcolor{\RCone}{\PP}}}\only<8->{\VS{3-}{\textcolor{Purple}{\PP}}}}{\VS{4-}{\textcolor{\RCone}{\MM}}}{\VS{5-}{\textcolor{\RCone}{\MM}}}{\VS{9-}{\textcolor{\RCtwo}{\MM}}}{ }{ }
+\end{MPSquareEnv}
+\end{center}
+}%
+\end{frame}
+
+\begin{frame}{Best classical solution}{They can agree to respond as shown on this slide, winning $8$ of $9$ games on average}
+
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
+\only<1-6>{%
+\begin{itemize}[<+->]
+    \item Before separating, Alice and Bob can agree to respond as shown here.
+    \item We can verify that for the first two rows and columns, they always agree on the common value and the products are correct.
+    \item For row or column three, Alice and Bob would have to complete their response in a way that creates the correct product.
+    \begin{description}
+      \item[\ColorOne{Alice}] must respond \ColorOne{\MM{}} so that her row's product is \PP{}.
+      \item[\ColorTwo{Bob}] must respond \ColorTwo{\PP{}} so that his column's product is \MM{}.
+    \end{description}
+\end{itemize}}%
+\only<7->{%
+\begin{itemize}
+    \item<7-> While other static solutions are possible, each would have at least one square where Alice and Bob cannot agree classically on an entry.
+    \item<8-> As with previous games, we will use measurements of entangled qubits to influence choices made by \textit{incommunicado} Alice and Bob.
+    \item<9-> With quantum computing, they can always win.
+    \item<10-> But first let's rule out the possibility of any always-win classical solution.
+\end{itemize}
+}
+\end{MPSquareEnv}
+}{%
+\Vskip{-3em}\begin{center}
+\begin{MPSquareEnv}
+\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\only<1-3,6-8>{\alert{\textbf{?}}}\only<4>{\ColorOne{\MM{}}}\only<5>{\ColorTwo{\PP{}}}}
+\end{MPSquareEnv}
+\end{center}
+\visible<6->{%
+\alert{They lose only when \emph{both} the third row and column are designated.  Is there a way to win always?}}
+}
+    
+\end{frame}
+
+\begin{frame}{Proof of no static solution}{We cannot place values in each cell that always work}
+
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
+\Vskip{-3em}\begin{itemize}
+    \item<1-> Each row's product is~\PP{} so the three rows' products is also~\PP{}.
+    \item<2-> Each column's product is~\MM{} so the three columns' products is also~\MM{}.
+    \item<3-> This is a contradiction.
+\end{itemize}
+\begin{align*}
+    \visible<1>{a b c = d e f = g h k &= \PP{} \\}
+    \visible<1,3>{\ColorOne{a b c \times d e f \times g h k} & = \PP{} \\}
+    \visible<2>{a d g = b e h = c f k &= \MM{} \\}
+    \visible<2->{\ColorTwo{a d g \times b e h \times c f k} & = \MM{} \\}
+    \visible<3->{\ColorOne{abcdefghk} & \neq \ColorTwo{abcdefghk}}
+\end{align*}
+\visible<3->{\Vskip{-4em}\QED}
+\end{MPSquareEnv}
+}{%
+\Vskip{-3em}\begin{center}
+\begin{MPSquareEnv}
+\MPSquare{$a$}{$b$}{$c$}{$d$}{$e$}{$f$}{$g$}{$h$}{$k$}
+\end{MPSquareEnv}
+\end{center}
+}
+    
+\end{frame}
+
+\begin{frame}{Variation 1}{All products are the same except one}
+\Vskip{-5em}\TwoUnequalColumns{0.53\textwidth}{0.47\textwidth}{%
+\begin{MPSquareEnv}
+\begin{itemize}[<+->]
+    \item In the version we consider, we require the product of each row's entries to be \PP{} and the product of each column's entries to be \MM{}.
+    \item In another version, the product of each row's and each column's entries is \PP{}, \emph{except} the product of the third column's entries is \MM{}.
+    \item A solution to the first form can be reduced from a solution to the second form by always negating the values as shown.
+    \item The proof of no static solution is the same.
+\end{itemize}
+\end{MPSquareEnv}
+}{%
+\Vskip{-1em}\begin{center}
+\begin{MPSquareEnv}
+\MPSquare{ }{ }{ }{ }{ }{ }{\visible<3->{\alert{$-$}}}{\visible<3->{\alert{$-$}}}{ }
+\end{MPSquareEnv}
+\end{center}
+\visible<4->{%
+\begin{MPSquareEnv}%
+This causes columns~1 and~2 to have product~\MM{}.  The third row still has a positive product because the two negations cancel.\end{MPSquareEnv}
+}
+}
+\end{frame}
+
+\begin{frame}{Variation 2}{Using sums instead of products}
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{MPSquareEnv}
+\begin{itemize}
+    \item<1-> Here is the original formulation
+    \item<2-> In this variation, \ColorOne{Alice}'s rows must have even parity, and \ColorTwo{Bob}'s columns must have odd parity.
+    \item<3-> The \PP{} and \MM{} of the original version are mapped to $0$ and $1$, respectively.
+    \item<4-> Of course there is still no solution classically for every square.
+\end{itemize}
+\end{MPSquareEnv}
+}{%
+\Vskip{-3em}\begin{center}
+\alt<1>{%
+\begin{MPSquareEnv}\MPSquare{\PP{}}{\PP{}}{\PP{}}{\PP{}}{\MM{}}{\MM{}}{\MM{}}{\PP{}}{\alert{?}}\end{MPSquareEnv}}{%
+\begin{MPSquareEnv}
+\MPSquare{$0$}{$0$}{$0$}{$0$}{$1$}{$1$}{$1$}{$0$}{\alert{?}}
+\end{MPSquareEnv}}
+\end{center}
+}
+
+\end{frame}
+
+{
+\def\M#1#2{\mbox{#1{\ensuremath{\mathcal{M}_{#2}}}}}
+\def\Mone{\M{\ColorThree}{1}}
+\def\Mtwo{\M{\ColorFour}{2}}
+\def\Mthree{\M{\ColorFive}{3}}
+\begin{frame}{Successive measurements}{These are reliable if there is a common eigenbasis}
+\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-8>{%
+\begin{itemize}
+    \item<1-> The boxes represent measurement operators applied to the two-qubit circuit.
+    \item<2-> Recall that the operators are implemented by 
+    \Vskip{-2em}\begin{enumerate}
+        \item transformation into \PauliZ{}
+        \item measurement in the \PauliZ{} basis
+        \item transformation out of \PauliZ{}
+    \end{enumerate}
+    but to avoid clutter we show this using the measurement operators.
+    \item<3-> After \Mone, the quantum system's state must be an eigenstate of \Mone.
+    \item<4-> If \Mtwo{} and \Mthree{} share an eigenbasis with \Mone, then the outcome of their measurements is determined solely by \Mone.
+\end{itemize}}%
+\only<9-14>{%
+\begin{itemize}
+    \item<9-> Suppose we change the sequence of measurements, so that \Mtwo{} is first.
+    \item<10-> While \Mtwo's results could be unpredictable, the resulting eigenstate \QState{} \emph{completely determines} the outcomes of \Mone{} and \Mthree.
+    \item<11-> Suppose we prepare eigenstate~\QState{} by measuring in the common eigenbasis.  Then \Mtwo's outcome is also determined.
+    \item<12-> Each outcome is $\pm 1$: the eigenvalue associated with \QState{} for each operator.
+    \item<13-> Let the cummulative result of the three operators be the \emph{product} of their measured eigenvalues.
+\end{itemize}
+}%
+\only<15->{%
+\begin{itemize}
+    \item<15-> We regard the puzzle's solution in two ways:
+    \begin{itemize}
+        \item<16-> A single measurement of the two qubits is performed to obtain eigenstate \alert<16>{\QState{}}, which determines the outcome of \Mone, \Mtwo, and \Mthree.  Those eigenvalues' product will yield the desired result.
+        \item<17-> Three successive measurements are made, but the \alert<17>{first outcome} determines the other two outcomes.  The product of the three eigenvalues will also be as desired.
+    \end{itemize}
+    \item<18-> Linear algebra teaches that if each pair of operators in \Set{\Mone, \Mtwo, \Mthree} \emph{commutes}, then there is a common eigenbasis for the three operators.
+\end{itemize}
+}
+}{%
+\begin{center}
+\adjustbox{scale=0.75,valign=t}{%
+\begin{quantikz}[row sep=-12pt] \lstick[wires=2]{\mbox{\visible<11-14,16>{\alert<16>{\QState{}}}}}\qw & \gate[wires=2]{\alt<9-14>{\Mtwo}{\Mone}}\slice{\mbox{\visible<1-10,17->{\alert<17>{\QState{}}}}} & \qw & \gate[wires=2]{\alt<9-14>{\Mone}{\Mtwo}} & \qw & \gate[wires=2]{\Mthree} & \qw \\
+\qw & \qw & \qw & \qw & \qw & \qw & \qw
+\end{quantikz}}\end{center}%
+\only<1-8>{%
+\begin{itemize}
+    \item<5-> Suppose the outcome of \Mone{} is \QState{}, an eigenstate of \Mtwo{}.
+    \item<6-> Then $\Mtwo\QState{}=\pm 1\QState{}$, an eigenstate of \Mthree.
+    \item<7-> Then $\Mthree\QState{}=\pm 1\QState{}$.
+\end{itemize}
+\SmallSkip{}\visible<8->{%
+The results of \Mtwo{} and \Mthree{} are determined by \QState{}, the result of~\Mone.}
+}%
+\only<14>{%
+\begin{MPSquareEnv}\SmallSkip{}We can choose operators such that for any eigenstate~\QState{} common to the three operators, we obtain products as follows: 
+    \begin{itemize}
+      \item \ColorOne{\PP{}} for \ColorOne{Alice's rows}
+      \item \ColorTwo{\MM{}} for \ColorTwo{Bob's columns}
+    \end{itemize}\end{MPSquareEnv}
+}%
+\only<18->{%
+\SmallSkip{}A pair of operators \Set{A,B} commutes if
+\[ \left(A\times B\right) - \left(B\times A\right) = \ZeroMatrix \]
+where \ZeroMatrix{} is the all-zero matrix.}%
+}
+    
+\end{frame}
+
+\def\B#1{\hbox to 1.2em{\hss\ensuremath{#1}}}
+\begin{frame}{Example of three commuting operators}
+
+\Vskip{-5em}\TwoUnequalColumns{0.455\textwidth}{0.545\textwidth}{%
+\only<1-10>{%
+\begin{itemize}
+    \item<1-> We need to find an eigenbasis common to all three operators.
+    \item<2-> \texttt{MATLAB} provides this common eigenbasis for \Mone{} and \Mtwo{} \visible<3->{and their eigenvalues.}
+    \item<4-> We next develop their \TensProd{\PauliX}{\PauliZ} product states  normalization.
+\end{itemize}
+\visible<2->{%
+\Vskip{-3em}\begin{center}\small
+    \begin{tabular}{cccc}
+    \alert<5>{\QState{1}} & \alert<6>{\QState{2}} & \alert<7>{\QState{3}} & \alert<8>{\QState{4}} \\
+     \visible<3->{$1$ & $-1$ & $-1$ & $1$ \\}
+     \alert<5>{\DQB{-1}{0}{-1}{0}}
+           & \alert<6>{\DQB{0}{-1}{0}{-1}}
+           & \alert<7>{\DQB{-1}{0}{1}{0}}
+           & \alert<8>{\DQB{0}{-1}{0}{1}} \\[2em]
+        \visible<5->{   \ket{\ColorOne{+}\ColorTwo{0}}} & \visible<6->{\ket{\ColorOne{+}\ColorTwo{1}}}& \visible<7->{\ket{\ColorOne{-}\ColorTwo{0}}} &\visible<8->{\ket{\ColorOne{-}\ColorTwo{1}}}
+    \end{tabular}
+\end{center}}}%
+\only<11->{%
+\begin{center}
+\adjustbox{scale=0.75,valign=t}{%
+\begin{quantikz} 
+\qw & \gate[wires=2]{\mbox{$\Conj{T}$}} & \qw & \meter{0\,/\,1} & \qw & \gate[wires=2]{\mbox{$T$}} & \qw \\
+\qw & \qw & \qw & \meter{0\,/\,1} & \qw & \qw & \qw
+\end{quantikz}}\end{center}%
+\only<11-12>{%
+\begin{itemize}
+    \item<11-> The circuit above uses a single measurement to capture an observation in the \TensProd{\PauliX}{\PauliZ} basis.
+    \item<12-> Based on the order of eigenstates in $T$, we decode the result as follows:
+    \begin{center}
+        \begin{tabular}{c@{$\mapsto$}c|c@{$\mapsto$}c}
+        \ket{00} & \ket{+0} & \ket{01} & \ket{+1} \\
+        \ket{10} & \ket{-0} & \ket{11}& \ket{-1}
+         \end{tabular}
+    \end{center}
+\end{itemize}}%
+\only<13->{%
+\begin{center}
+\adjustbox{scale=0.75,valign=t}{%
+\begin{quantikz} 
+\qw & \gate{\Hadamard} & \qw & \meter{0\,/\,1} & \qw & \gate{\Hadamard} & \qw \\
+\qw & \qw & \qw & \meter{0\,/\,1} & \qw & \qw & \qw
+\end{quantikz}}\end{center}%
+$T$ and \Conj{T} can now be implemented separately on each qubit, as shown above, using an \Hadamard{} and \Identity{} (nothing) gate.
+}
+}
+}{%
+\only<1-4>{%
+\begin{align*}
+    \Mone =& \ColorThree{\TensProd{\Identity}{\PauliZ}} =& \ColorThree{\begin{pmatrix*}[r]
+     \B{1}  &   \B{0}  &   \B{0}   &  \B{0} \\
+     \B{0}  &  \B{-1}  &   \B{0}   &  \B{0} \\
+     \B{0}  &   \B{0}  &   \B{1}   &  \B{0} \\
+     \B{0}  &   \B{0}  &   \B{0}   & \B{-1}
+    \end{pmatrix*}} \\
+    \Mtwo =& \ColorFour{\TensProd{\PauliX}{\Identity}} =& \ColorFour{\begin{pmatrix*}[r]
+     \B{0}   &  \B{0}  &   \B{1}   &  \B{0} \\
+     \B{0}   &  \B{0}  &   \B{0}   &  \B{1} \\
+     \B{1}   &  \B{0}  &   \B{0}   &  \B{0} \\
+     \B{0}   &  \B{1}  &   \B{0}   &  \B{0}
+    \end{pmatrix*}} \\
+    \Mthree =& \ColorFive{\TensProd{\PauliX}{\PauliZ}} =& \ColorFive{\begin{pmatrix*}[r]
+     \B{0} &     \B{0} &     \B{1} &     \B{0} \\
+     \B{0} &     \B{0} &     \B{0} &    \B{-1} \\
+     \B{1} &     \B{0} &     \B{0} &     \B{0} \\
+     \B{0} &    \B{-1} &     \B{0} &     \B{0}
+    \end{pmatrix*}}
+\end{align*}}
+\only<5-6>{%
+\begin{align*}
+\alert<5>{\DQB{-1}{0}{-1}{0}} &\equiv \RootTwo{}\DQB{1}{0}{1}{0} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\PZero}} \\[2em]
+\visible<6->{\alert<6>{\DQB{-1}{0}{1}{0}} &\equiv \RootTwo{}\DQB{1}{0}{-1}{0} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\PZero}}}
+\end{align*}
+}%
+\only<7-8>{%
+\begin{align*}
+\alert<7>{\DQB{0}{-1}{0}{-1}} &\equiv \RootTwo{}\DQB{0}{1}{0}{1} &=\TensProd{\ColorOne{\PPlus}}{\ColorTwo{\POne}} \\[2em]
+\visible<8->{\alert<8>{\DQB{0}{-1}{0}{1}} &\equiv \RootTwo{}\DQB{0}{1}{0}{-1} &= \TensProd{\ColorOne{\PMinus}}{\ColorTwo{\POne}}}
+\end{align*}
+}%
+\only<9->{%
+\SmallSkip{}\only<9>{
+
+This serves as an eigenbasis also for \Mthree, so we can now construct our matrices~$T$ and~\Conj{T}.}
+\[
+T = \RootTwo{} \alt<9>{\begin{pmatrix*}
+\DQB{1}{0}{1}{0} & 
+\DQB{0}{1}{0}{1} &
+\DQB{1}{0}{-1}{0} &
+\DQB{0}{1}{0}{-1}
+\end{pmatrix*}}{%
+\begin{pmatrix*}[r]
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 &-1 & 0 \\
+0 & 1 & 0 &-1
+\end{pmatrix*}
+}
+\]
+\only<10->{%
+\SmallSkip{}\only<10>{
+$T$ is its own conjugate transpose, so:}
+\[
+\Conj{T} = T
+\]}
+\only<11->{%
+\Vskip{-3em}\begin{itemize}
+   \item<11-> Our $T$ matrix is factorable as \TensProd{\Hadamard}{\Identity}.
+   \item<12-> This more clearly maps $\TensProd{\PauliZ}{\PauliZ}\leftrightarrow\TensProd{\PauliX}{\PauliZ}$ basis, sending the top qubit into and out of the \PauliX{} basis and leaving the bottom qubit undisturbed in the \PauliZ{} basis.
+\end{itemize}
+}
+}
+}
+    
+\end{frame}
+}
+
+\begin{frame}{Quantum-based solution}{We use two EPR pairs}
+
+\Vskip{-4em}\begin{center}
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_1$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\ColorTwo{\mbox{$b_1$}}} 
+\end{quantikz}}%
+\hbox to 3ex{\hss}%
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_2$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\ColorTwo{\mbox{$b_2$}}} 
+\end{quantikz}}\end{center}%
+
+\begin{itemize}[<+->]
+    \item Two EPR pairs are created, each in state \TwoSup{00}{11}.
+    \item \ColorOne{Alice} receives~\ColorOne{\QState{a}=\ket{a_{1}a_{2}}} and \ColorTwo{Bob} receives~\ColorTwo{\QState{b}=\ket{b_{1}b_{2}}}
+    \item Depending on the row (for Alice) and the column (for Bob), they will carry out measurements based on a table, in a basis related to their particular row or column.
+    \item We will prove that they
+    \begin{itemize}
+        \item agree on a value at the cell intersecting the row and column, and
+        \item obtain the necessary row and column products.
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Solution}{Expressed in measurement operators}
+
+\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> Each square shows the measurement operators used by a player on two qubits.  
+    \item<2-> The \alert<2>{\Identity{}} measurement operator has an eigenvalue of $+1$, regardless of its input.
+    \item<3-> The \alert<3>{bottom left two entries} are marked so that their outcome is complimented.
+    \item<4-> The result reported in a given square by a player is the eigenvalue associated with the two-qubit measurement performed by \ColorOne{her} or \ColorTwo{him}, complimented in \alert<4>{these} two squares.
+\end{itemize}}
+\only<5->{%
+\begin{itemize}
+   \item<5-> Each square's operator is already expressed as a product of two gates.
+   \item<6-> A two-qubit measurement can be performed separately on each qubit, \emph{unless} the inputs are entangled.
+   \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
+   \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
+\end{itemize}
+}
+}{%
+\begin{center}
+    \begin{MPSquareEnv}
+    \def\MyMarkupSquareComp####1{\alert<3,4,10>{####1}}
+    \def\MyMarkupSquareI####1{\alert<2>{####1}}
+    \MPSoln{}
+    \end{MPSquareEnv}
+\end{center}
+}
+
+\end{frame}
+
+
+\begin{frame}{Proof of this solution}{Overview of three approaches}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-2>{Obligation:
+\begin{itemize}
+    \item<1-> We must show that for any row, \ColorOne{Alice}'s results multiply to~$+1$ and \ColorTwo{Bob}'s results multiply to~$-1$.
+    \item<2-> We must show that for the square in common for a given round of the game, the players agree on the value there.
+\end{itemize}}%
+\only<3->{%
+\begin{enumerate}
+    \item<3-> We can show algebraically that the products in the \ColorOne{rows} are~$+1$ and the products in the \ColorTwo{columns} are~$-1$.
+    \begin{itemize}
+        \item This results at the end are correct.
+        \item But no square-by-square account is given.
+    \end{itemize}
+    \item<4-> Based on a \ColorOne{row} (or \ColorTwo{column}), one two-qubit measurement is made in a prescribed basis.  That result determines what is reported in each square in that \ColorOne{row} (or \ColorTwo{column}).
+    \item<5-> \ColorOne{Alice} and \ColorTwo{Bob} make and report a measurement in each square of their \ColorOne{row} or \ColorTwo{column}.
+\end{enumerate}}
+}{%
+\begin{center}
+\begin{MPSquareEnv}
+    \MPSoln{}
+\end{MPSquareEnv}
+\end{center}
+}
+\end{frame}
