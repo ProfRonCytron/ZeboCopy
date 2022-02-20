@@ -487,11 +487,11 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \Reason{3}{Column 3}
 \end{Reasoning}
 \begin{align*}
-(\Not{\TensProd{\PauliZ}{\PauliX}})\cdot (\TensProd{\Identity}{\PauliX})\cdot (\TensProd{\PauliZ}{\Identity}) =& \alert{-} \TensProd{\PauliZ\Identity\PauliZ}{\PauliX\PauliX\Identity} \\
+(\alert{\Not{\ColorThree{\TensProd{\PauliZ}{\PauliX}}}})\cdot (\ColorFour{\TensProd{\Identity}{\PauliX}})\cdot (\ColorFive{\TensProd{\PauliZ}{\Identity}}) =& \alert{-} \TensProd{\ColorThree{\PauliZ}\ColorFour{\Identity}\ColorFive{\PauliZ}}{\ColorThree{\PauliX}\ColorFour{\PauliX}\ColorFive{\Identity}} \\
 =& \alert{-}(\TensProd{\Identity}{\Identity}) \\
-\visible<2->{(\Not{\TensProd{\PauliX}{\PauliZ}})\cdot (\TensProd{\PauliX}{\Identity})\cdot (\TensProd{\Identity}{\PauliZ}) =& \alert{-}\TensProd{\PauliX\PauliX\Identity}{\PauliZ\Identity\PauliZ} \\
-=& \alert{-}(\TensProd{\Identity}{\Identity}}) \\
-\visible<3->{(\TensProd{\PauliY}{\PauliY})\cdot (\TensProd{\PauliX}{\PauliX})\cdot (\TensProd{\PauliZ}{\PauliZ}) =& (\TensProd{\PauliY\PauliX\PauliZ}{\PauliY\PauliX\PauliZ}) \\
+\visible<2->{(\alert{\Not{\ColorThree{\TensProd{\PauliX}{\PauliZ}}}})\cdot (\ColorFour{\TensProd{\PauliX}{\Identity}})\cdot (\ColorFive{\TensProd{\Identity}{\PauliZ}}) =& \alert{-}\TensProd{\ColorThree{\PauliX}\ColorFour{\PauliX}\ColorFive{\Identity}}{\ColorThree{\PauliZ}\ColorFour{\Identity}\ColorFive{\PauliZ}} \\
+=& \alert{-}(\TensProd{\Identity}{\Identity})} \\
+\visible<3->{(\ColorThree{\TensProd{\PauliY}{\PauliY}})\cdot (\ColorFour{\TensProd{\PauliX}{\PauliX}})\cdot (\ColorFive{\TensProd{\PauliZ}{\PauliZ}}) =& (\TensProd{\ColorThree{\PauliY}\ColorFour{\PauliX}\ColorFive{\PauliZ}}{\ColorThree{\PauliY}\ColorFour{\PauliX}\ColorFive{\PauliZ}}) \\
 =& \TensProd{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}}{\SQBG{\relax}{-\NiceI}{0}{0}{-\NiceI}} \\
 =& -(\TensProd{\Identity}{\Identity})}
 \end{align*}
@@ -511,5 +511,16 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \end{MPSquareEnv}}
 \end{center}
 }
+\end{frame}
+
+\begin{frame}{Summary}{Up to this point}
+\begin{itemize}[<+->]
+    \item The results we have obtained hold for any initial state.
+    \item For \ColorOne{Alice}, the product of measurements along any row is~$+1$.
+    \item For \ColorTwo{Bob}, the product of measurements along any column is~$-1$.
+    \item While the final results are confirmed, the proof is not instructive concerning the three measurements each player is supposed to report.
+    \item This is akin to deciding not to play the game at all because they know they should win, if only they knew how to play the game.
+\end{itemize}
+    
 \end{frame}
 
