@@ -1,6 +1,7 @@
 \documentclass[aspectratio=169,t,13pt,usenames,dvipsnames]{beamer}
 \usetheme[lily]{PaloAlto}
 \usecolortheme{dolphin}
+\usepackage{blkarray}
 \usepackage{mathtools}
 \usepackage{lmodern}
 \usepackage{tikz}
@@ -1028,10 +1029,12 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
       \ColorSix{\QState{4}} & \visible<5->{\EigD} \\
    \end{tabular}\end{center}
 }%
-\def\Bases{%
-\ensuremath{T=\begin{pmatrix*}
+\def\Bases##1{%
+\ensuremath{T=##1\begin{blockarray}{cccc}
+\alert{\ket{00}} & \alert{\ket{01}} &\alert{\ket{10}} &\alert{\ket{11}} \\
 \ColorThree{\QState{1}} & \ColorFour{\QState{2}} & \ColorFive{\QState{3}} & \ColorSix{\QState{4}} \\
-\visible<2->{\ColorThree{\A}} & \visible<3->{\ColorFour{\B}} & \visible<4->{\ColorFive{\C}} & \visible<5->{\ColorSix{\D}}\end{pmatrix*}}}
+\begin{block}{(cccc)}
+\visible<2->{\ColorThree{\A}} & \visible<3->{\ColorFour{\B}} & \visible<4->{\ColorFive{\C}} & \visible<5->{\ColorSix{\D}}\\\end{block}\end{blockarray}}}
 }{%
 }
 
