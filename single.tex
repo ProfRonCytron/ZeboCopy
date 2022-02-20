@@ -1008,12 +1008,30 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }
 \def\Alice{\ColorOne{Alice}}
 \def\Bob{\ColorTwo{Bob}}
-\newenvironment{MPbasis}{%
+
+
+\newenvironment{MPbasis}[3]{%
+\def\XP##1{\hbox to 3ex{\hss##1\hss 1}}%
+\def\PP{%
+\XP{$+$}}%
+\def\MM{%
+\XP{$-$}}%
 \def\Col##1##2##3##4{\ensuremath{\begin{matrix} ##1\\##2\\##3\\##4\end{matrix}}}
+\def\Row##1##2##3{\ensuremath{##1} & \ensuremath{##2} & \ensuremath{##3}}
+\def\Eigs{%
+  \begin{center}
+  \begin{tabular}{c|ccc}
+      & #1 & #2 & #3 \\\hline
+      \ColorThree{\QState{1}} & \visible<2->{\EigA} \\
+      \ColorFour{\QState{2}} & \visible<3->{\EigB} \\
+      \ColorFive{\QState{3}} & \visible<4->{\EigC} \\
+      \ColorSix{\QState{4}} & \visible<5->{\EigD} \\
+   \end{tabular}\end{center}
+}%
 \def\Bases{%
-\ensuremath{\begin{pmatrix*}
+\ensuremath{T=\begin{pmatrix*}
 \ColorThree{\QState{1}} & \ColorFour{\QState{2}} & \ColorFive{\QState{3}} & \ColorSix{\QState{4}} \\
-\ColorThree{\A} & \ColorFour{\B} & \ColorFive{\C} & \ColorSix{\D}\end{pmatrix*}}}
+\visible<2->{\ColorThree{\A}} & \visible<3->{\ColorFour{\B}} & \visible<4->{\ColorFive{\C}} & \visible<5->{\ColorSix{\D}}\end{pmatrix*}}}
 }{%
 }
 
