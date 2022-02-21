@@ -184,7 +184,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 
 \begin{frame}{Alice}{Row 2, using the \TensProd{\PauliX}{\PauliX} basis}
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
-\begin{MPbasis}{\TensProd{\Identity}{\PauliX}}{\TensProd{\PauliX}{\Identity}}{\TensProd{\PauliX}{\PauliX}}
+\Vskip{-2em}\begin{MPbasis}{\TensProd{\Identity}{\PauliX}}{\TensProd{\PauliX}{\Identity}}{\TensProd{\PauliX}{\PauliX}}
 \def\A{\Col{1}{1}{1}{1}}
 \def\B{\Col{1}{-1}{1}{-1}}
 \def\C{\Col{1}{1}{-1}{-1}}
@@ -203,8 +203,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \end{MPbasis}
 \only<6->{%
 \begin{itemize}
-    \item The column entries correspond to \ColorThree{\ket{++}}, \ColorFour{\ket{+-}}, \ColorFive{\ket{-+}}, and \ColorSix{\ket{--}}.
-    \item Note $T$ is \TensProd{\Hadamard}{\Hadamard} and $T=\Conj{T}$.
+    \item Note $T=\TensProd{\Hadamard}{\Hadamard}$ and $T=\Conj{T}$.
     \item This is as expected to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliX}{\PauliX})$
 \end{itemize}
 }
@@ -287,8 +286,7 @@ The columns of $T$ can also be expressed as:
 \only<6->{%
 
 \begin{itemize}
-    \item The column entries correspond to \ColorThree{\ket{0+}}, \ColorFour{\ket{0-}}, \ColorFive{\ket{1+}}, and \ColorSix{\ket{1-}}.
-    \item Note $T$ is \TensProd{\Identity}{\Hadamard} and $T=\Conj{T}$.
+    \item Note $T=\TensProd{\Identity}{\Hadamard}$ and $T=\Conj{T}$.
     \item This is as expected to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliZ}{\PauliX})$
 \end{itemize}
 }
@@ -308,3 +306,85 @@ The columns of $T$ can also be expressed as:
     
 \end{frame}
 
+\begin{frame}{Bob}{Column 2, using basis \TensProd{\PauliZ}{\PauliX}}
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
+\begin{MPbasis}{\TensProd{\PauliZ}{\Identity}}{\TensProd{\Identity}{\PauliX}}{\Not{\TensProd{\PauliZ}{\PauliX}}}
+\def\A{\Col{1}{0}{1}{0}}
+\def\B{\Col{0}{1}{0}{1}}
+\def\C{\Col{1}{0}{-1}{0}}
+\def\D{\Col{0}{1}{0}{-1}}
+\def\EigA{\Row{\PP}{\PP}{\MM}}
+\def\EigB{\Row{\MM}{\PP}{\PP}}
+\def\EigC{\Row{\PP}{\MM}{\PP}}
+\def\EigD{\Row{\MM}{\MM}{\MM}}
+\def\AltA{\ket{+0}}
+\def\AltB{\ket{+1}}
+\def\AltC{\ket{-0}}
+\def\AltD{\ket{-1}}
+\Bases{\RootTwo{}}
+
+\only<1-5>{\Eigs}
+\end{MPbasis}
+\only<6->{%
+
+\begin{itemize}
+    \item Note $T=\TensProd{\Hadamard}{\Identity}$ and $T=\Conj{T}$.
+    \item This is as expected to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliX}{\PauliZ})$
+\end{itemize}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}\adjustbox{scale=0.7}{%
+\begin{MPSquareEnv}
+    \def\TpCt####1{\ColorTwo{####1}}
+    \def\MdCt####1{\TpCt{####1}}
+    \def\BtCt####1{\TpCt{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}}
+    
+\end{frame}
+
+\begin{frame}{Bob}{Column 3, using an entangled basis}
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
+\begin{MPbasis}{\TensProd{\PauliZ}{\PauliX}}{\TensProd{\PauliX}{\PauliZ}}{\TensProd{\PauliY}{\PauliY}}
+\def\A{\Col{1}{0}{0}{1}}
+\def\B{\Col{1}{0}{0}{-1}}
+\def\C{\Col{0}{1}{1}{0}}
+\def\D{\Col{0}{1}{-1}{0}}
+\def\EigA{\Row{\PP}{\PP}{\MM}}
+\def\EigB{\Row{\PP}{\MM}{\PP}}
+\def\EigC{\Row{\MM}{\PP}{\PP}}
+\def\EigD{\Row{\MM}{\MM}{\MM}}
+\Bases{\RootTwo{}}
+
+\only<1-5>{\Eigs}
+\end{MPbasis}
+\only<6->{%
+
+The columns of $T$ can also be expressed as:
+\begin{center}\begin{tabular}{cc}
+\ColorThree{\QState{0}} & \TwoSup{00}{11} \\
+\ColorFour{\QState{1}} & \TwoSupOp{\ket{00}}{\ket{11}}{-} \\
+\ColorFive{\QState{2}} & \TwoSup{01}{10} \\
+\ColorSix{\QState{3}} & \TwoSupOp{\ket{01}}{\ket{10}}{-}
+\end{tabular}\end{center}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}\adjustbox{scale=0.7}{%
+\begin{MPSquareEnv}
+    \def\TpRt####1{\ColorTwo{####1}}
+    \def\MdRt####1{\TpRt{####1}}
+    \def\BtRt####1{\TpRt{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}}
+    
+\end{frame}
