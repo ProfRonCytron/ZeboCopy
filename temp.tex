@@ -199,9 +199,9 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \end{MPbasis}
 \only<6->{%
 \begin{itemize}
-    \item Note $T$ is \TensProd{\Hadamard}{\Hadamard} and $T=\Conj{T}$.
     \item The column entries correspond to \ColorThree{\ket{++}}, \ColorFour{\ket{+-}}, \ColorFive{\ket{-+}}, and \ColorSix{\ket{--}}.
-    \item This is what we expect to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliX}{\PauliX})$
+    \item Note $T$ is \TensProd{\Hadamard}{\Hadamard} and $T=\Conj{T}$.
+    \item This is as expected to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliX}{\PauliX})$
 \end{itemize}
 }
 }{%
@@ -255,6 +255,45 @@ The columns of $T$ can also be expressed as:
     \def\BtLf####1{\ColorOne{####1}}
     \def\BtCt####1{\BtLf{####1}}
     \def\BtRt####1{\BtLf{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}}
+    
+\end{frame}
+
+\begin{frame}{Bob}{Column 1, using basis \TensProd{\PauliZ}{\PauliX}}
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
+\begin{MPbasis}{\TensProd{\PauliZ}{\Identity}}{\TensProd{\Identity}{\PauliX}}{\Not{\TensProd{\PauliZ}{\PauliX}}}
+\def\A{\Col{1}{1}{0}{0}}
+\def\B{\Col{1}{-1}{0}{0}}
+\def\C{\Col{0}{0}{1}{1}}
+\def\D{\Col{0}{0}{1}{-1}}
+\def\EigA{\Row{\PP}{\PP}{\PP}}
+\def\EigB{\Row{\PP}{\MM}{\PP}}
+\def\EigC{\Row{\MM}{\PP}{\MM}}
+\def\EigD{\Row{\MM}{\MM}{\MM}}
+\Bases{\RootTwo{}}
+
+\only<1-5>{\Eigs}
+\end{MPbasis}
+\only<6->{%
+
+\begin{itemize}
+    \item The column entries correspond to \ColorThree{\ket{0+}}, \ColorFour{\ket{0-}}, \ColorFive{\ket{1+}}, and \ColorSix{\ket{1-}}.
+    \item Note $T$ is \TensProd{\Identity}{\Hadamard} and $T=\Conj{T}$.
+    \item This is as expected to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliZ}{\PauliX})$
+\end{itemize}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}\adjustbox{scale=0.7}{%
+\begin{MPSquareEnv}
+    \def\TpLf####1{\ColorTwo{####1}}
+    \def\MdLf####1{\TpLf{####1}}
+    \def\BtLf####1{\TpLf{####1}}
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}}
