@@ -1010,8 +1010,19 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \def\Alice{\ColorOne{Alice}}
 \def\Bob{\ColorTwo{Bob}}
 
-
+%%
+%% Thanks, stackexchange
+%%
+\newlength\stextwidth
+\newcommand\MakeSameWidth[3][c]{%
+  \settowidth{\stextwidth}{#2}%
+  \makebox[\stextwidth][#1]{#3}%
+}
 \newenvironment{MPbasis}[3]{%
+\def\AltA{\QState{0}}
+\def\AltB{\QState{0}}
+\def\AltC{\QState{0}}
+\def\AltD{\QState{0}}
 \def\XP##1{\hbox to 3ex{\hss##1\hss 1}}%
 \def\PP{%
 \XP{$+$}}%
@@ -1019,6 +1030,9 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \XP{$-$}}%
 \def\Col##1##2##3##4{\ensuremath{\begin{matrix*}[r] ##1\\##2\\##3\\##4\end{matrix*}}}
 \def\Row##1##2##3{\ensuremath{##1} & \ensuremath{##2} & \ensuremath{##3}}
+%%
+%%  The eigenvalues associated with measurements
+%%
 \def\Eigs{%
   \begin{center}
   \begin{tabular}{c|ccc}
@@ -1029,10 +1043,13 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
       \ColorSix{\QState{3}} & \visible<5->{\EigD} \\
    \end{tabular}\end{center}
 }%
+%%
+%% The eigenstates basis
+%%
 \def\Bases##1{%
 \adjustbox{valign=t}{\ensuremath{T=##1\ \begin{blockarray}{cccc}
 \alert{\ket{00}} & \alert{\ket{01}} &\alert{\ket{10}} &\alert{\ket{11}} \\
-\ColorThree{\QState{0}} & \ColorFour{\QState{1}} & \ColorFive{\QState{2}} & \ColorSix{\QState{3}} \\
+\ColorThree{\alt<1>{\MakeSameWidth{\AltA}{\QState{0}}}{\AltA}} & \ColorFour{\alt<1-2>{\MakeSameWidth{\AltB}{\QState{1}}}{\AltB}} & \ColorFive{\alt<1-3>{\MakeSameWidth{\AltC}{\QState{2}}}{\AltC}} & \ColorSix{\alt<1-4>{\MakeSameWidth{\AltD}{\QState{3}}}{\AltD}} \\
 \begin{block}{(cccc)}
 \visible<2->{\ColorThree{\A}} & \visible<3->{\ColorFour{\B}} & \visible<4->{\ColorFive{\C}} & \visible<5->{\ColorSix{\D}}\\\end{block}\end{blockarray}}}%
 }
