@@ -1030,13 +1030,19 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
    \end{tabular}\end{center}
 }%
 \def\Bases##1{%
-\ensuremath{T=##1\begin{blockarray}{cccc}
+\ensuremath{T=##1\ \begin{blockarray}{cccc}
 \alert{\ket{00}} & \alert{\ket{01}} &\alert{\ket{10}} &\alert{\ket{11}} \\
 \ColorThree{\QState{1}} & \ColorFour{\QState{2}} & \ColorFive{\QState{3}} & \ColorSix{\QState{4}} \\
 \begin{block}{(cccc)}
 \visible<2->{\ColorThree{\A}} & \visible<3->{\ColorFour{\B}} & \visible<4->{\ColorFive{\C}} & \visible<5->{\ColorSix{\D}}\\\end{block}\end{blockarray}}}
 }{%
 }
+\def\MPCircuit{%
+\begin{quantikz} 
+\qw & \gate[wires=2]{\mbox{$\Conj{T}$}} & \qw & \meter{\alert{0\,/\,1}} & \qw & \\
+\qw & \qw & \qw & \meter{\alert{0\,/\,1}} & \qw 
+\end{quantikz}
+}%
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}

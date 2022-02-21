@@ -144,7 +144,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \end{frame}
 
 \begin{frame}{Alice}{Row 1}
-\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
 \begin{MPbasis}{\TensProd{\PauliZ}{\Identity}}{\TensProd{\Identity}{\PauliZ}}{\TensProd{\PauliZ}{\PauliZ}}
 \def\A{\Col{1}{0}{0}{0}}
 \def\B{\Col{0}{1}{0}{0}}
@@ -159,8 +159,12 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \Eigs
 \end{MPbasis}
 }{%
-\Vskip{-5em}\begin{center}
-\adjustbox{scale=0.6}{\begin{MPSquareEnv}
+\Vskip{-5em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}
+\adjustbox{scale=0.7}{\begin{MPSquareEnv}
     \def\TpLf####1{\ColorOne{####1}}
     \def\TpCt####1{\TpLf{####1}}
     \def\TpRt####1{\TpLf{####1}}
@@ -171,23 +175,27 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \end{frame}
 
 \begin{frame}{Alice}{Row 2}
-\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
 \begin{MPbasis}{\TensProd{\Identity}{\PauliX}}{\TensProd{\PauliX}{\Identity}}{\TensProd{\PauliX}{\PauliX}}
-\def\A{\Col{1}{0}{0}{0}}
-\def\B{\Col{0}{1}{0}{0}}
-\def\C{\Col{0}{0}{1}{0}}
-\def\D{\Col{0}{0}{0}{1}}
+\def\A{\Col{1}{1}{1}{1}}
+\def\B{\Col{1}{-1}{1}{-1}}
+\def\C{\Col{1}{1}{-1}{-1}}
+\def\D{\Col{1}{-1}{-1}{1}}
 \def\EigA{\Row{\PP}{\PP}{\PP}}
 \def\EigB{\Row{\PP}{\MM}{\PP}}
 \def\EigC{\Row{\MM}{\PP}{\MM}}
 \def\EigD{\Row{\MM}{\MM}{\PP}}
-\Bases{\RootTwo}
+\Bases{\frac{1}{2}}
 
 \Eigs
 \end{MPbasis}
 }{%
-\Vskip{-5em}\begin{center}
-\adjustbox{scale=0.6}{\begin{MPSquareEnv}
+\Vskip{-5em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}\adjustbox{scale=0.7}{%
+\begin{MPSquareEnv}
     \def\MdLf####1{\ColorOne{####1}}
     \def\MdCt####1{\MdLf{####1}}
     \def\MdRt####1{\MdLf{####1}}
