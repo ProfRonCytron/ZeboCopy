@@ -112,7 +112,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \only<6-10>{%
 \begin{itemize}
     \item<6-> \Alice{} knows the operators of her rows.
-    \item<7-> She uses \texttt{MATLAB} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{1},\QState{2},\QState{3},\QState{4}}.
+    \item<7-> She uses \texttt{MATLAB} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{0},\QState{1},\QState{2},\QState{3}}.
     \item<8-> The matrix (gate) $T$ that transforms the standard basis to \NamedBasis{B} has those states as its columns.
     \item<9-> The gate \Conj{T} transforms from \NamedBasis{B} to the standard basis.
     \item<10-> Because we perform only one measurement, we need only \Conj{T} followed by a measurement in the standard basis.
@@ -143,7 +143,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 }
 \end{frame}
 
-\begin{frame}{Alice}{Row 1}
+\begin{frame}{Alice}{Row 1, using the \TensProd{\PauliZ}{\PauliZ} basis}
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
 \begin{MPbasis}{\TensProd{\PauliZ}{\Identity}}{\TensProd{\Identity}{\PauliZ}}{\TensProd{\PauliZ}{\PauliZ}}
 \def\A{\Col{1}{0}{0}{0}}
@@ -154,12 +154,20 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \def\EigB{\Row{\PP}{\MM}{\PP}}
 \def\EigC{\Row{\MM}{\PP}{\MM}}
 \def\EigD{\Row{\MM}{\MM}{\PP}}
-\Bases{}
+\only<1-5>{\Bases{}}
 
 \Eigs
-\end{MPbasis}
+\end{MPbasis}%
+\only<6->{%
+
+\begin{itemize}
+    \item If \Alice{} measures binary value $b$ then she uses the table, row~$b$, to report her results.
+    \item For example, if \Alice{} measures \alert{\ket{10}}, then she reports the results in row \ColorFive{\QState{2}} for the three squares, left to right.  And of course, their product is $+1$.
+\end{itemize}
+
+}
 }{%
-\Vskip{-5em}
+\Vskip{-2em}
 \begin{center}
 \adjustbox{scale=0.8}{\MPCircuit}
 \end{center}
@@ -174,7 +182,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
     
 \end{frame}
 
-\begin{frame}{Alice}{Row 2}
+\begin{frame}{Alice}{Row 2, using the \TensProd{\PauliX}{\PauliX} basis}
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
 \begin{MPbasis}{\TensProd{\Identity}{\PauliX}}{\TensProd{\PauliX}{\Identity}}{\TensProd{\PauliX}{\PauliX}}
 \def\A{\Col{1}{1}{1}{1}}
@@ -187,10 +195,17 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \def\EigD{\Row{\MM}{\MM}{\PP}}
 \Bases{\frac{1}{2}}
 
-\Eigs
+\only<1-5>{\Eigs}
 \end{MPbasis}
+\only<6->{%
+\begin{itemize}
+    \item Note $T$ is \TensProd{\Hadamard}{\Hadamard} and $T=\Conj{T}$.
+    \item The column entries correspond to \ColorThree{\ket{++}}, \ColorFour{\ket{+-}}, \ColorFive{\ket{-+}}, and \ColorSix{\ket{--}}.
+    \item This is what we expect to map $(\TensProd{\PauliZ}{\PauliZ})\mapsto(\TensProd{\PauliX}{\PauliX})$
+\end{itemize}
+}
 }{%
-\Vskip{-5em}
+\Vskip{-2em}
 \begin{center}
 \adjustbox{scale=0.8}{\MPCircuit}
 \end{center}
@@ -199,6 +214,47 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
     \def\MdLf####1{\ColorOne{####1}}
     \def\MdCt####1{\MdLf{####1}}
     \def\MdRt####1{\MdLf{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}}
+    
+\end{frame}
+
+\begin{frame}{Alice}{Row 3, using an entangled basis}
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
+\begin{MPbasis}{\Not{\TensProd{\PauliZ}{\PauliX}}}{\Not{\TensProd{\PauliX}{\PauliZ}}}{\TensProd{\PauliY}{\PauliY}}
+\def\A{\Col{1}{1}{1}{-1}}
+\def\B{\Col{1}{1}{-1}{1}}
+\def\C{\Col{1}{-1}{1}{1}}
+\def\D{\Col{-1}{1}{1}{1}}
+\def\EigA{\Row{\MM}{\MM}{\PP}}
+\def\EigB{\Row{\MM}{\PP}{\MM}}
+\def\EigC{\Row{\PP}{\MM}{\MM}}
+\def\EigD{\Row{\PP}{\PP}{\PP}}
+\Bases{\frac{1}{2}}
+
+\only<1-5>{\Eigs}
+\end{MPbasis}
+\only<6->{%
+
+The columns of $T$ can also be expressed as:
+\begin{center}\begin{tabular}{cc}
+\ColorThree{\QState{0}} & \TwoSup{0+}{1-} \\
+\ColorFour{\QState{1}} & \TwoSupOp{\ket{0+}}{\ket{1-}}{-} \\
+\ColorFive{\QState{2}} & \TwoSup{1+}{0-} \\
+\ColorSix{\QState{3}} & \TwoSupOp{\ket{1+}}{\ket{0-}}{-}
+\end{tabular}\end{center}
+}
+}{%
+\Vskip{-2em}
+\begin{center}
+\adjustbox{scale=0.8}{\MPCircuit}
+\end{center}
+\begin{center}\adjustbox{scale=0.7}{%
+\begin{MPSquareEnv}
+    \def\BtLf####1{\ColorOne{####1}}
+    \def\BtCt####1{\BtLf{####1}}
+    \def\BtRt####1{\BtLf{####1}}
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}}
