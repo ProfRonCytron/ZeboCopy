@@ -428,14 +428,14 @@
 \newenvironment{ProtocolDialog}[3]{%
 \def\Incr{\stepcounter{ProtocolDialogStep}}
 \def\Ref##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{\relax}{\relax}}%
-\def\Alice##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\arabic{ProtocolDialogStep}. \ColorOne{##1}}{\relax}}%
+\def\Alice##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
 \def\AliceBob##1##2{\All{}{##1}{##2}}
 \def\All##1##2##3{%
 \Incr{}
-\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{\ColorOne{##2}}{\ColorTwo{##3}}
+\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{##2}{##3}
 }
 \def\Bob##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\relax}{
-\arabic{ProtocolDialogStep}. \ColorTwo{##1}}}%
+\arabic{ProtocolDialogStep}. ##1}}%
 \setcounter{ProtocolDialogStep}{0}%
 \ThreeUnequalColumns{#1}{#2}{#3}{\textbf{Ref}}{\textbf{\ColorOne{Alice}}}{\textbf{\ColorTwo{Bob}}}
 }{%
