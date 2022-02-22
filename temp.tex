@@ -1,3 +1,23 @@
 \SetTitle{99}{temp}{faster}{99}
 
 
+\begin{frame}{Scenarios with the square}{To build intuiton}
+
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
+\Ref{Alice row 1}
+\Ref{Bob row 2}
+\Alice{alice}
+\Bob{bob}
+\end{ProtocolDialog}
+}{%
+\begin{center}\adjustbox{scale=0.6}{%
+\begin{MPSquareEnv}
+    \def\TpRt####1{\ColorTwo{####1}}
+    \def\MdRt####1{\TpRt{####1}}
+    \def\BtRt####1{\TpRt{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}
+}
+\end{frame}

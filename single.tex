@@ -428,15 +428,15 @@
 \newenvironment{ProtocolDialog}[3]{%
 \def\Incr{\stepcounter{ProtocolDialogStep}}
 \def\Ref##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{\relax}{\relax}}%
-\def\Alice##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\arabic{ProtocolDialogStep}. ##1}{\relax}}%
+\def\Alice##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\arabic{ProtocolDialogStep}. \ColorOne{##1}}{\relax}}%
 \def\All##1##2##3{%
 \Incr{}
-\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{##2}{##3}
+\ThreeUnequalColumns{#1}{#2}{#3}{\arabic{ProtocolDialogStep}. ##1}{\ColorOne{##2}}{\ColorTwo{##3}}
 }
 \def\Bob##1{\Incr{}\ThreeUnequalColumns{#1}{#2}{#3}{\relax}{\relax}{
-\arabic{ProtocolDialogStep}. ##1}}%
+\arabic{ProtocolDialogStep}. \ColorTwo{##1}}}%
 \setcounter{ProtocolDialogStep}{0}%
-\ThreeUnequalColumns{#1}{#2}{#3}{\textbf{Ref}}{\textbf{Alice}}{\textbf{Bob}}
+\ThreeUnequalColumns{#1}{#2}{#3}{\textbf{Ref}}{\textbf{\ColorOne{Alice}}}{\textbf{\ColorTwo{Bob}}}
 }{%
 }
 %% #1 -- options
@@ -1068,5 +1068,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{12}
+\include{temp}
 \end{document}
