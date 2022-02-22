@@ -1,48 +1,57 @@
 \SetTitle{99}{temp}{faster}{99}
 
-
+{
+\def\Aone{\ColorSix{\mbox{$a_1$}}}\def\AoneColor{\ColorSix}
+\def\Atwo{\ColorThree{\mbox{$a_2$}}}\def\AtwoColor{\ColorThree}
+\def\Bone{\ColorFour{\mbox{$b_1$}}}\def\BoneColor{\ColorFour}
+\def\Btwo{\ColorFive{\mbox{$b_2$}}}\def\BtwoColor{\ColorFive}
+\def\IColor{\ColorBlack}
+\def\Ambig#1{\fbox{#1}}
+\def\Report#1{\mbox{\Large$#1$}}
 \begin{frame}{Scenarios with the square}{To build intuiton}
 
 \TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \Vskip{-4em}\begin{center}
 \adjustbox{valign=t,scale=0.8}{%
 \begin{quantikz}
-\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_1$}}} \\
-\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\ColorTwo{\mbox{$b_1$}}}
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\Aone} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\Bone}
 \end{quantikz}}%
 \hbox to 3ex{\hss}%
 \adjustbox{valign=t,scale=0.8}{%
 \begin{quantikz}
-\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_2$}}} \\
-\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\ColorTwo{\mbox{$b_2$}}}
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\Atwo} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\Btwo}
 \end{quantikz}}\end{center}%
 \visible<1->{
-\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
-\visible<2->{\All{\ColorOne{R 1} \ColorTwo{C 1}}{Measure in \TensProd{\PauliZ}{\PauliZ}}{Measure in \TensProd{\PauliZ}{\PauliX}}}
-\visible<3->{\AliceBob{Measure $a_1$=\QOne}{\alert{Collapse} $b_1$=\QOne}}
-\visible<4->{\AliceBob{\alert{Collapse} $a_2$=\ket{+}}{Measure $b_2$=\ket{+}}}
-\visible<5->{\Alice{alice}}
-\visible<6->{\Alice{alice}}
-\visible<7->{\Bob{bob}}
-\visible<8->{\Bob{bob}}
-\visible<9->{\Bob{bob}}
+\Vskip{-2em}\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
+\visible<2->{\All{{\small\ColorOne{Row 1} \visible<3->{\ColorTwo{Col 1}}}}{Measure in \TensProd{\PauliZ}{\PauliZ}}{\visible<3->{Measure in \TensProd{\PauliZ}{\PauliX}}}}
+\visible<4->{\AliceBob{Measure \AoneColor{\Aone{}=\QOne}}{\alert{Collapse} \BoneColor{\Bone{}=\QOne}}}
+\visible<5->{\AliceBob{\alert{Collapse} \AtwoColor{\Atwo{}=\ket{+}}}{Measure \BtwoColor{\Btwo{}=\ket{+}}}}
+\visible<6->{\Alice{\textsl{Report $\AoneColor{-1}\times \IColor{1}$}}}
+\visible<7->{\Alice{Report $\IColor{1}\times \AtwoColor{\Ambig{1}}$}}
+\visible<8->{\Alice{Report $\AoneColor{-1}\times \AtwoColor{\Ambig{1}}$}}
+\visible<10->{\Bob{\textsl{Report $\BoneColor{-1}\times\IColor{1}$}}}
+\visible<11->{\Bob{Report $\IColor{1}\times\BtwoColor{1}$}}
+\visible<12->{\Bob{Report $\alert{-}(\BoneColor{-1}\times\BtwoColor{1})$}}
 \end{ProtocolDialog}}
 }{%
 \Vskip{-2.5em}\begin{itemize}
-    \item \Alice{} has \ColorOne{$a_1$} and \ColorOne{$a_2$}
-    \item \Bob{} has \ColorTwo{$b_1$} and \ColorTwo{$b_2$}
+    \item \Alice{} has \Aone{} and \Atwo.
+    \item \MakeSameWidth[l]{Alice}{\Bob{}} has \Bone{} and \Btwo.
     \item $\QZero{} = +1$
     \item $\QOne{} = -1$
 \end{itemize}
 \begin{center}\adjustbox{scale=0.6}{%
 \begin{MPSquareEnv}
-    \def\TpLf####1{\alt<7>{\textcolor<7>{\RCtwo}{####1}}{\textcolor<4>{\RCone}{####1}}}
-    \def\TpCt####1{\textcolor<5>{\RCone}{####1}}
-    \def\TpRt####1{\textcolor<6>{\RCone}{####1}}
-    \def\MdLf####1{\textcolor<8>{\RCtwo}{####1}}
-    \def\BtLf####1{\textcolor<9>{\RCtwo}{####1}}
+    \def\TpLf####1{\only<2>{\ColorOne{####1}}\only<3,9>{\ColorTwo{####1}}\only<1,4-5>{####1}\only<6-8>{\ColorOne{\Report{-1}}}\only<10->{\ColorTwo{\Report{-1}}}}
+    \def\TpCt####1{\only<2>{\ColorOne{####1}}\only<1,3-6,9->{####1}\only<7-8>{\ColorOne{\Report{+1}}}}
+    \def\TpRt####1{\only<2>{\ColorOne{####1}}\only<1,3-7,9->{####1}\only<8>{\ColorOne{\Report{-1}}}}
+    \def\MdLf####1{\only<3>{\ColorTwo{####1}}\only<1-2,4-10>{####1}\only<11->{\ColorTwo{\Report{+1}}}}
+    \def\BtLf####1{\only<3>{\ColorTwo{####1}}\only<1-2,4-12>{####1}\only<13->{\ColorTwo{\Report{+1}}}}
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}
 }
 \end{frame}
+}
