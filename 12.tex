@@ -562,7 +562,7 @@ $T$ is its own conjugate transpose, so:}
     \item Two EPR pairs are created, each in state \TwoSup{00}{11}.
     \item \ColorOne{Alice} receives~\ColorOne{\QState{a}=\ket{a_{1}a_{2}}} and \ColorTwo{Bob} receives~\ColorTwo{\QState{b}=\ket{b_{1}b_{2}}}
     \item Depending on the row (for Alice) and the column (for Bob), they will carry out measurements based on a table, in a basis related to their particular row or column.
-    \item We will prove that they
+    \item We must prove that they
     \begin{itemize}
         \item agree on a value at the cell intersecting the row and column, and
         \item obtain the necessary row and column products.
@@ -584,7 +584,7 @@ $T$ is its own conjugate transpose, so:}
 \only<5->{%
 \begin{itemize}
    \item<5-> Each square's operator is already expressed as a product of two gates.
-   \item<6-> A two-qubit measurement can be performed separately on each qubit, \emph{unless} the inputs are entangled.
+   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the inputs are entangled.}
    \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
    \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
 \end{itemize}
@@ -602,7 +602,7 @@ $T$ is its own conjugate transpose, so:}
 \end{frame}
 
 
-\begin{frame}{Proof of this solution}{Overview of three approaches}
+\begin{frame}{Three possible proof approaches}{We do two of them here}
 
 \TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \only<1-2>{Obligation:
@@ -631,7 +631,7 @@ $T$ is its own conjugate transpose, so:}
 
 \begin{frame}{Algebraic proof}{A sequence of measurements would culminate in the correct result}
 
-Recall
+Recall ($\times$ and $\cdot$ both mean matrix multiply):
 \[ (\TensProd{A}{D}) \times (\TensProd{B}{E}) = \TensProd{(A\cdot B)}{(D\cdot E)} \]
 and this extends to three product terms:
 \[
