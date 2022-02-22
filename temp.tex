@@ -1,2 +1,48 @@
 \SetTitle{99}{temp}{faster}{99}
 
+
+\begin{frame}{Scenarios with the square}{To build intuiton}
+
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\Vskip{-4em}\begin{center}
+\adjustbox{valign=t,scale=0.8}{%
+\begin{quantikz}
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_1$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\ColorTwo{\mbox{$b_1$}}}
+\end{quantikz}}%
+\hbox to 3ex{\hss}%
+\adjustbox{valign=t,scale=0.8}{%
+\begin{quantikz}
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_2$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\ColorTwo{\mbox{$b_2$}}}
+\end{quantikz}}\end{center}%
+\visible<1->{
+\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
+\visible<2->{\All{\ColorOne{R 1} \ColorTwo{C 1}}{Measure in \TensProd{\PauliZ}{\PauliZ}}{Measure in \TensProd{\PauliZ}{\PauliX}}}
+\visible<3->{\AliceBob{Measure $a_1$=\QOne}{\alert{Collapse} $b_1$=\QOne}}
+\visible<4->{\AliceBob{\alert{Collapse} $a_2$=\ket{+}}{Measure $b_2$=\ket{+}}}
+\visible<5->{\Alice{alice}}
+\visible<6->{\Alice{alice}}
+\visible<7->{\Bob{bob}}
+\visible<8->{\Bob{bob}}
+\visible<9->{\Bob{bob}}
+\end{ProtocolDialog}}
+}{%
+\Vskip{-2.5em}\begin{itemize}
+    \item \Alice{} has \ColorOne{$a_1$} and \ColorOne{$a_2$}
+    \item \Bob{} has \ColorTwo{$b_1$} and \ColorTwo{$b_2$}
+    \item $\QZero{} = +1$
+    \item $\QOne{} = -1$
+\end{itemize}
+\begin{center}\adjustbox{scale=0.6}{%
+\begin{MPSquareEnv}
+    \def\TpLf####1{\alt<7>{\textcolor<7>{\RCtwo}{####1}}{\textcolor<4>{\RCone}{####1}}}
+    \def\TpCt####1{\textcolor<5>{\RCone}{####1}}
+    \def\TpRt####1{\textcolor<6>{\RCone}{####1}}
+    \def\MdLf####1{\textcolor<8>{\RCtwo}{####1}}
+    \def\BtLf####1{\textcolor<9>{\RCtwo}{####1}}
+    \MPSoln{}
+\end{MPSquareEnv}}
+\end{center}
+}
+\end{frame}

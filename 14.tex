@@ -1,1 +1,725 @@
-\SetTitle{14}{Gottesman--Knill theorem}{Efficient simulation of some quantum circuits}{14}
+\SetTitle{14}{Universal quantum gates}{Exact and approximate}{14}
+
+
+\begin{frame}{The programmable quantum computer}{Some background, with thanks to \href{http://www.thomaswong.net/}{Tom Wong} \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+\only<1-7>{%
+\Vskip{-3.5em}\begin{itemize}[<+->]
+    \item \href{https://en.wikipedia.org/wiki/Richard_Feynman}{Richard Feynman} gave \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{this famous lecture} in 1982, six years before his death, asking how quantum mechanics could be simulated on a classical computer.  That \href{http://physics.whu.edu.cn/dfiles/wenjian/1_00_QIC_Feynman.pdf}{link} includes a paper based on his talk, published in 1986.
+    \item The (column-vector) representation of an $n$-qubit quantum system grows exponentially in the number of qubits.
+    \item Some of those systems are \href{https://en.wikipedia.org/wiki/Quantum_entanglement}{entangled}, requiring a separate accounting of each of the~$2^n$ possible measurements.
+    \item A classical computer cannot efficiently simulate such systems.  For example, the \href{https://quantum-computing.ibm.com/lab/docs/iql/manage/simulator/}{IBM quantum simulators} currently limit programs to $32$~qubits.
+    \item At $300$~qubits we exceed the number of atoms in the known universe.
+    \item Feynman proposed that a programmable quantum computer could simulate quantum mechanics itself.  This would be nice for physicists.
+    \item We computer scientists are interested more generally in the kinds of problems such devices can solve efficiently.
+\end{itemize}}
+\only<8-12>{%
+\begin{itemize}
+    \item<8-> A \href{https://en.wikipedia.org/wiki/Quantum_Turing_machine}{quantum Turing machine} has been defined to reason about actions a quantum computer can take in a single step.
+    \item<9-> Problems that are undecidable, such as the halting problem, remain so even on a quantum computer.  No magic there.
+    \item<10-> Here we are more interested in the theory supporting the construction of a programmable quantum computer whose components approximately realize quantum gates, expressed as we have studied.
+    \item<11-> That theory must support development of arbitrarily large quantum system from components that accommodate a fixed number of qubits.
+    \item<12-> For example, Boolean logic of arbitrary size can be constructed using only \NamedGate{NAND} gates.
+\end{itemize}}
+\only<13->{%
+\begin{itemize}
+    \item<13-> Can quantum circuits be similarly created?  For example$\ldots$
+    \item<14-> Does entangling $n$~qubits require \ColorOne{one large gate}?
+    \adjustbox{scale=0.8,valign=m}{\begin{GateBox}{2}{2}{4}
+      \Input{0}{$q_{1}$}
+      \Input{1}{$q_{2}$}
+      \Input{2}{\RVDots{}}
+      \Input{3}{$q_{n}$}
+      \BoxLabel{\ColorOne{Engtangler?}}
+      \Output{0}{$q_{1}$}
+      \Output{1}{$q_{2}$}
+      \Output{2}{\RVDots{}}
+      \Output{3}{$q_{n}$}
+    \end{GateBox}}
+    
+    \item<15-> Or can we build it from \ColorTwo{smaller components}?
+    \adjustbox{scale=0.7}{\begin{quantikz}
+    \lstick{$q_1$} & \gate[wires=2]{\ColorTwo{E}} & \qw & \qw \\
+    \lstick{$q_2$} & & \gate[wires=2]{\ColorTwo{E}} & \qw\\
+    \lstick{$q_3$} &\qw & & \qw
+    \end{quantikz}}
+    \item<16-> More generally, what kinds of components are needed to develop a programmable quantum device?
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+Using \href{https://www.youtube.com/watch?v=LVIaZSYLwtE}{calculatus eliminatus} we eliminate sets of gates that cannot work:
+\begin{description}
+\item<1->[no superposition]  The gate set \Set{\NamedGate{CNOT}} cannot create superposition on its own.  The gate (matrix) simply maps basis states to other basis states. \only<1>{\begin{center}\CNOTMatrix\end{center}}
+
+\end{description}
+
+\end{frame}
+
+\begin{frame}{Some theoretical results}{From \Kaye{}}
+\end{frame}
+
+\begin{frame}{On the nature of a universal set of gates}{Some thoughts \LinkArrow{https://www.scottaaronson.com/qclec/16.pdf}}
+
+\Vskip{-2em}Using \href{https://www.youtube.com/watch?v=LVIaZSYLwtE}{calculatus eliminatus} we first considers sets of gates that \emph{cannot} work:
+\begin{description}
+\item<1->[no superposition]  The gate set \Set{\NamedGate{CNOT}} cannot create superposition on its own.  \only<1>{It maps basis states to other basis states, but cannot introduce superposition where there was none before. \begin{center}\CNOTMatrix\end{center}}
+\item<2->[no entanglement]  The set \Set{\Hadamard} creates superpositions, but not entanglement.\only<2>{  Any gate that operates only a single qubit cannot create entanglement.}
+\item<3->[no phasing]  \Set{\NamedGate{CNOT},\Hadamard} cannot introduce phase.\only<3>{ These gates create superpositions and entanglement, but given real inputs they can create only real outputs. A gate must be able to create \emph{complex outputs} from real inputs to introduce phase.}
+\item<4->[the \emph{stabilizer} gates] \Set{\NamedGate{CNOT},\Hadamard,\NamedGate{S}}, where $\NamedGate{S}=\SQBG{}{1}{0}{0}{\NiceI}$.  This  set includes the \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Phase_shift_gates}{phase gate} \NamedGate{S}, so it has none of the above deficiencies, but it is not universal.  \only<4>{The \href{https://en.wikipedia.org/wiki/Gottesman\%E2\%80\%93Knill_theorem}{Gottesman--Knill theorem} proves that circuits comprised of these gates can be simulated classically in polynomial time, so they cannot capture problems for which quantum gives exponential speedup over classical computing.  We study this later.}
+
+\end{description}
+
+\end{frame}
+
+\begin{frame}{Towards a universal gate set}{What are our concerns?}
+\begin{description}
+  \item[size] How many inputs must a quantum gate accept?
+  \only<1>{%
+\begin{itemize}
+    \item Consider a unitary transformation on $n$ qubits, where arbitrary entanglement might be a pre- or post-condition of the transformation.
+    \item Must we realize this using a gate that handles $n$~qubits?
+    \item As a classical version of this problem, consider computing a function of $n$~bits that is true if and only if all the $n$~bits are true: $\mbox{And}\left(q_{1},  q_{2}, \ldots, q_{n}\right)$.
+    \item We might think that this operation must take in all the bits to produce an answer, but we know we can break this down into operations involving only two bits at a time.
+\end{itemize}}
+  \item[accuracy] How closely can we approximate a quantum computation?
+  \only<2>{%
+  \begin{itemize}
+      \item Quantum systems (states and gates) can be specified using irrational constants.
+      \item The number of such components is thus uncountably infinite.
+      \item We necessarily approximate the behavior of such systems.
+      \item How well do measurements of a finite quantum system approximate measurements of its ideal system?
+      \item As a classical version of this problem, consider decisions based on real arithmetic
+      \item On a computer this is carried out in (finite) floating-point.  How does that approximation affect decisions?
+  \end{itemize}}
+\end{description}
+\end{frame}
+
+
+{
+\def\CC{\alt<3->{$\textcolor<5>{Red}{0}$}{\CFCirc{Black}}}
+\def\CDa{\alt<3->{\alt<7->{\CFCirc{\RCone}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDb{\alt<3->{\alt<7->{\CFCirc{\RCfour}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDc{\alt<3->{\alt<8->{\CFCirc{\RCthree}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CDd{\alt<3->{\alt<8->{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}{\CFCirc{Black}}}
+\def\CE{\alt<3->{$\textcolor<5>{Red}{1}$}{\CFCirc{Black}}}
+\def\CCRVDots{\textcolor<5>{\RCone}{\RVDots}}
+
+\section{Two-level quantum systems}
+
+\begin{frame}{Two-level quantum systems}{These affect (under control) only a single qubit}
+
+\TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> We begin with a quantum gate for an~$n$~qubit system.
+    \item<2-> Conceptually this can be viewed as a~$2^{n}\times2^{n}$ matrix~$U$.
+    \item<3-> We apply transformations to $U$, each of which affects only a single qubit at a time, to reduce $U$ \ColorFive{to a form} where it also affects only a single qubit.
+    \item<4-> The matrix is \emph{not} necessarily tensor-factorable (the \NamedGate{CNOT} gate is an example), so in what sense does it affect only a single qubit?
+\end{itemize}}%
+\only<5-8>{%
+\Vskip{-3em}\begin{itemize}
+    \item<5-> For all but two basis states, \textcolor{Red}{$U$ acts as the identity matrix}.
+    \item<6-> However, the matrix \ColorFive{can act differently on basis states~\ket{\TensSupProd{1}{n-1}0} and \ket{\TensSupProd{1}{n-1}1}}:
+    \visible<7->{\begin{align*}
+U\ket{\TensSupProd{1}{n-1}0} = &\CFCirc{\RCone}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCfour}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCone}\QZero{} + \CFCirc{\RCfour}\QOne{}\right)}
+  \end{align*}}
+  \visible<8->{\Vskip{-3em}\begin{align*}
+U\ket{\TensSupProd{1}{n-1}1} = &\CFCirc{\RCthree}\ket{\TensSupProd{1}{n-1}0} + \CFCirc{\RCtwo}\ket{\TensSupProd{1}{n-1}1} \\
+   = &\TensProd{\TensSupProd{1}{n-1}}{\left(\CFCirc{\RCthree}\QZero{} + \CFCirc{\RCtwo}\QOne{}\right)}
+  \end{align*}}
+    
+\end{itemize}
+}%
+\only<9->{%
+\Vskip{-3em}\begin{itemize}
+    \item<9-> Thus, when the input's left $n-1$ bits are all~$1$, we can act on the rightmost bit applying the unitary gate $U=\SQBG{\relax}{\CFCirc{\RCone}}{\CFCirc{\RCthree}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}}$.
+    \item<10-> This is a \emph{conditional} gate and can be represented by the circuit:
+\end{itemize}
+    \visible<10->{\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{1} & \qw \\
+    \lstick{$q_n$} & \qw & \gate{U} & \qw
+\end{quantikz}}\end{center}}
+}
+}{%
+\Vskip{-4em}
+\[2^{n}\begin{pmatrix*}
+ \CE & \CC &  \CC & \cdots& \CC & \CC \\
+ \CC & \CE &  \CC & \cdots& \CC & \CC \\
+ \CC & \CC &  \CE & \cdots& \CC & \CC \\
+ \CCRVDots & \CCRVDots & \CCRVDots  & \CCRVDots & \CCRVDots  & \CCRVDots\\
+ \CC & \CC &  \CC & \cdots& \CDa & \CDc \\
+ \CC & \CC & \CC & \cdots& \CDb & \CDd
+\end{pmatrix*}\]
+\only<11>{%
+In terms of basis states, this circuit acts as identity \emph{unless} qubits $q_1, \ldots, q_{n-1}$ are all~$1$, in which case $U$ is applied to $q_{n}$.  This is exactly the behavior specified by the above matrix.
+}%
+\only<12>{%
+\SmallSkip{}We must show that we can implement \NamedGate{C\mbox{$\,^{n-1}$}U} using only \NamedGate{CCNOT}~gates, extra qubits, and a  controlled-\NamedGate{U} gate. This will be an exercise.}%
+}
+\end{frame}}
+
+\begin{frame}{Generalizing to other qubits}{For now they differ only in one position}
+
+\Vskip{-4em}\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> The example from the previous slide requires qubits $q_{1},q_{2},\ldots,q_{n-1}$ to be~$1$ to activate $U$.
+    \item<2-> We want to generalize this in two ways:
+    \begin{enumerate}
+        \item We wish to move $U$ to act on a qubit other than the bottom one, such as $q_i$.
+        \item We wish to activate $U$ on any arbitrary bit pattern of the other qubits.
+    \end{enumerate}
+\end{itemize}
+\only<3>{%
+\begin{itemize}
+ \item<3-> The first generalization is easily accomplished by redrawing the diagram, controlling $U$ from any of the other $n-1$ qubits.  We could also use a \href{https://en.wikipedia.org/wiki/Quantum_logic_gate\#Swap_gate}{swap gate} if $U$ were physically restricted to acting only on the bottom qubit.
+ \item<3-> When all other qubits are~$1$, gate $U$ acts on~$q_i$.
+\end{itemize}}}
+\only<4->{%
+\begin{itemize}
+    \item<4-> How do we activate $U$ on a bit pattern other than all-$1$s?
+    \item<5-> If we want $q_n$ to be~$0$ instead of~$1$, we need only compliment it prior and after the $U$ gate, as shown here.
+    \item<6-> A shorthand for this is to use an open circle on such control bits, as shown here.
+    \item<7-> $U$ is now activated on $q_i$ when 
+    \begin{itemize}
+        \item $q_{1}, q_{2},\ldots,q_{i-1}, q_{i+1},\ldots,q_{n-1}$ are~$1$
+        \item $q_n$ is~$0$.
+    \end{itemize}
+    \item<8-> We can apply this idea to any of the qubits to trigger $U$ exactly when desired.
+\end{itemize}
+}
+}{%
+\only<1-2>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \ctrl{1} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw& \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_n$} & \qw & \gate{U} & \qw& \qw
+\end{quantikz}}\end{center}}
+\only<3-4>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw& \qw \\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_n$} & \qw & \ctrl{-1} & \qw& \qw
+\end{quantikz}}\end{center}}
+\only<5>{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{\alert<5>{$q_n$}} & \gate{\alert<5>{X}} & \ctrl{-1} & \gate{\alert<5>{X}}& \qw
+\end{quantikz}}\end{center}}
+\only<6->{%
+\begin{center}\adjustbox{scale=0.8,valign=t}{%
+\begin{quantikz}
+    \lstick{$q_1$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_2$} & \qw & \ctrl{1} & \qw & \qw\\
+    \lstick{$\RVDots$} & \qw  & \ctrl{1} & \qw & \qw\\
+    \lstick{$q_i$}  & \qw & \gate{U} & \qw & \qw\\
+     \lstick{$\RVDots$} & \qw  & \ctrl{-1} & \qw & \qw\\
+    \lstick{$q_{n-1}$} & \qw & \ctrl{-1} & \qw & \qw\\
+    \lstick{\alert<6>{$q_n$}} & \qw & \octrl{-1} & \qw& \qw
+\end{quantikz}}\end{center}}
+}
+
+    
+\end{frame}
+
+{
+\def\C#1{\makebox[1.5ex]{\hss #1\hss}}
+\def\CN{\C{$1$}}
+\def\CZ{\C{$0$}}
+\def\CI{\textcolor<3-8>{\RCone}{\C{$0$}}}
+\def\CII{\alt<5->{\C{\CFCirc{\RCone}}}{\textcolor<3->{\RCone}{\C{$1$}}}}
+\def\CJ{\textcolor<4-8>{\RCtwo}{\C{$0$}}}
+\def\CJJ{\alt<8->{\C{\CFCirc{\RCtwo}}}{\textcolor<4->{\RCtwo}{\C{$1$}}}}
+\def\CIJ{\alt<6->{\C{\CFCirc{\RCthree}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
+\def\CJI{\alt<7->{\C{\CFCirc{\RCfour}}}{\alt<1-2>{\C{$0$}}{\alt<3>{\ColorOne{\C{$0$}}}{\ColorFive{\C{$0$}}}}}}
+\def\MA{\ColorTwo{\ensuremath{-a}}}
+\def\MAC{\ColorTwo{\ensuremath{\Conj{-a}}}}
+\def\A{\ColorOne{\ensuremath{a}}}
+\def\AC{\ColorOne{\ensuremath{\Conj{a}}}}
+\def\BC{\ColorThree{\ensuremath{\Conj{b}}}}
+\def\BCUnconj{\ColorThree{\ensuremath{b}}}
+\def\B{\ColorFour{\ensuremath{b}}}
+\def\BConj{\ColorFour{\ensuremath{\Conj{b}}}}
+
+\section{Two-level matrices}
+\begin{frame}{Two-level matrices}{Definition and synthesis}
+
+\TwoColumns{%
+\only<1-9>{
+\begin{itemize}[<+->]
+    \item A \emph{two-level unitary matrix} is a matrix that acts nontrivially on two-or-fewer vector components~(\MikeIke{}).
+    \item To obtain such a matrix, initialize $M$ to the identity matrix.
+    \item Pick matrix index \ColorOne{$i$}. Here, $\ColorOne{i}=2$.
+    \item WLOG pick matrix index $\ColorTwo{j}, \ColorTwo{j}>\ColorOne{i}$.  Here, $\ColorTwo{j}=5$.
+    \item Replace entries $\ColorOne{m_{ii}}\visible<6->{, \ColorThree{m_{ij}}}\visible<7->{, \ColorFour{m_{ji}}}\visible<8->{, \ColorTwo{m_{jj}}}$ with any values that preserve unitarity.
+\end{itemize}}
+\only<10-15>{%
+\begin{itemize}
+    \item Sanity checks
+\begin{itemize}
+    \item<10-> $\Prob{\CFCirc{\RCone}} + \Prob{\CFCirc{\RCthree}}=1$
+    \item<11-> $\Prob{\CFCirc{\RCfour}} + \Prob{\CFCirc{\RCtwo}}=1$
+    \item<12-> $\Prob{\CFCirc{\RCone}} + \Prob{\CFCirc{\RCfour}}=1$
+    \item<13-> $\Prob{\CFCirc{\RCthree}} + \Prob{\CFCirc{\RCtwo}}=1$
+\end{itemize}
+\item Suffices to show:
+\begin{itemize}
+    \item<14-> The columns form an orthonormal basis: $\Conj{M}M=\Identity{}$
+    \item<15-> The rows form an orthonormal basis: $M\Conj{M}=\Identity{}$
+\end{itemize}
+\end{itemize}}%
+\only<16->{%
+\Vskip{-3.5em}\begin{itemize}
+    \item Pick complex values $a$ and $b$ such that $\Prob{a}+\Prob{b}\leq 1$
+    \item Compute $r=\sqrt{\Prob{a}+\Prob{b}}$, and assign values as follows:
+    \Vskip{-0.75em}\[
+    \SQBG{}{\CFCirc{\RCone}}{\CFCirc{\RCthree}}{\CFCirc{\RCfour}}{\CFCirc{\RCtwo}} = 
+    \SQBG{\frac{1}{r}}{\AC}{\BC}{\B}{\MA}
+    \]
+\end{itemize}
+\Vskip{-2.4em}\ScrollProof{17}{20}{%
+\Next{\Four}{\Prob{\AC/r}+\Prob{\BC/r}& =1 \\}
+\Next{\Three}{\Prob{\B/r}+\Prob{\MA/r}&= 1 \\}
+\Next{\Two}{\Prob{\AC/r}+\Prob{\B/r} &= 1 \\}
+\Next{\One}{\Prob{\BC/r}+\Prob{\MA/r} &= 1}
+}%
+\ScrollProof{21}{22}{%
+\Next{\Two}{\SQBG{\frac{1}{r}}{\A}{\BConj}{\BCUnconj}{\MAC}\SQBG{\frac{1}{r}}{\AC}{\BC}{\B}{\MA}&=\Identity \\}
+\Next{\One}{\SQBG{\frac{1}{r}}{\AC}{\BC}{\B}{\MA}\SQBG{\frac{1}{r}}{\A}{\BConj}{\BCUnconj}{\MAC}&=\Identity}
+}
+}
+}{%
+\[
+\begin{pmatrix*}
+\CN & \CI  & \CZ & \CZ & \CJ  & \CZ & \CZ & \CZ \\
+\CI & \CII & \CI & \CI & \CIJ & \CI & \CI & \CI \\
+\CZ & \CI  & \CN & \CZ & \CJ  & \CZ & \CZ & \CZ \\
+\CZ & \CI  & \CZ & \CN & \CJ  & \CZ & \CZ & \CZ \\
+\CJ & \CJI & \CJ & \CJ & \CJJ & \CJ & \CJ & \CJ \\
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CN & \CZ & \CZ \\
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CZ & \CN & \CZ \\
+\CZ & \CI  & \CZ & \CZ & \CJ  & \CZ & \CZ & \CN 
+\end{pmatrix*}\]%
+\visible<9->{%
+\only<9-16>{%
+\SmallSkip{}
+Any such matrix is a two-level unitary matrix.  Unitarity significantly constrains the possibilities for the four values.}%
+\only<17->{%
+\alt<17-20>{Sanity checks:}{Show unitarity:}
+
+\begin{Reasoning}
+\Reason{17}{Top row normal}%
+\Reason{18}{Bottom row normal}%
+\Reason{19}{Left column normal }%
+\Reason{20}{Right column normal}%
+\Reason{21}{Columns form an orthonormal basis}%
+\Reason{22}{Rows form an orthonormal basis}%
+\end{Reasoning}
+}
+}
+}
+    
+\end{frame}}
+
+
+{
+\def\C#1{\makebox[1.5ex]{\hss #1\hss}}
+\def\CR{\alt<8->{$0$}{\C{\CFCirc{\RCfive}}}}
+\def\CZ#1{\alt<#1->{\C{$0$}}{\CR}}
+\def\CG#1{\alt<#1->{\C{\ColorThree{$0$}}}{\CR}}
+\def\CN#1{\alt<#1->{\C{\ColorTwo{$1$}}}{\CR}}
+\def\CRA{\alt<8->{\CFCirc{\RCone}}{\CR}}
+\def\CRB{\alt<8->{\CFCirc{\RCthree}}{\CR}}
+\def\CRC{\alt<8->{\CFCirc{\RCfour}}{\CR}}
+\def\CRD{\alt<8->{\CFCirc{\RCtwo}}{\CR}}
+\def\DD{\alt<8->{$1$}{\CR}}
+\begin{frame}{Obtaining two-level matrices}{Series of transformations to obtain the desired form}
+
+\Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\only<1-7>{%
+\begin{itemize}
+    \item<1-> We begin with a unitary matrix.
+    \item<2-> We find unitary, two-level $U_{1}$ so that $U_{1}U$ has a~$0$ as shown.  Throughout, if the entry is already~$0$, then we pick $U_{i}=\Identity$.
+    \item<3-> We next find unitary, two-level $U_{2}$ so that $U_{2}U_{1}U$ is as shown.
+    \item<4-> We continue down the column.
+    \item<5-> Unitarity guarantees this \ColorTwo{1}.
+    \item<6-> Unitarity guarantees these \ColorThree{0} entries.
+    \item<7-> We recursively treat the \ColorFive{submatrix}.
+\end{itemize}}%
+\only<8->{%
+\begin{itemize}
+    \item<8-> We stop at this point and set the final $U_{z}$ to the conjugate transpose of the result shown on the right. $U_z$~is thus also a two-level matrix.
+    \item<9-> We finally obtain
+    \Vskip{-2.2em}\begin{align*}
+    U_{z}\cdots U_{2} U_{1} U &= \Identity \\
+    \visible<10->{\alert<11>{\Conj{U_z} U_{z}}\cdots U_{2} U_{1} U &= \Conj{U_z}\Identity{} \\}
+    \visible<11->{\alert<12>{\Conj{U_2}U_{2}}U_{1} U &= \Conj{U_2}\cdots\Conj{U_z} \\}
+    \visible<12->{\alert<13>{\Conj{U_1}U_{1}}U &= \Conj{U_1}\Conj{U_2}\cdots\Conj{U_z} \\}
+    \visible<13->{U &= \Conj{U_1}\Conj{U_2}\cdots\Conj{U_z}}
+    \end{align*}
+    \visible<14->{so we can write $U$ as the product of two-level matrices.}
+\end{itemize}
+}
+}{%
+\[
+\visible<8->{\cdots}\visible<4->{U_{7}U_{6}U_{5}U_{4}U_{3}}\visible<3->{U_2}\visible<2->{U_1}U =
+\]
+\[
+\begin{pmatrix*}
+\CN{5} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} & \CG{6} \\
+\CZ{2} & \DD & \CR & \CR & \CR & \CR & \CR & \CR \\
+\CZ{3} & \CR & \DD & \CR & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \DD & \CR & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \DD & \CR & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \DD & \CR & \CR \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CRA & \CRB \\
+\CZ{4} & \CR & \CR & \CR & \CR & \CR & \CRC & \CRD 
+\end{pmatrix*}\]
+}
+    
+\end{frame}}
+
+
+\section{Example}
+
+{
+%%
+%% #1 i first row
+%% #2 j second row
+%% #3 ii
+%% #4 ij
+%% #5 ji
+%% #6 jj
+%%
+\def\GenTLArray#1#2#3#4#5#6{%
+   \begin{center}\begin{TLArray}{4}{#1}{#2}{#3}{#4}{#5}{#6}{1}{0}
+      \ensuremath{\begin{pmatrix*}
+         \GenFourByFour{}
+      \end{pmatrix*}}
+\end{TLArray}\end{center}}%
+%%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - top row number in process
+%% #4 - contents of the array
+%%
+\def\GenSpotArrayAB#1#2#3#4{%
+  \GenSpotArrayHelper{#1}{#2}{#3}{#4}{\ColorTwo}}
+%%
+%%  Spotlights only the specified cell using \ColorFour
+%%
+%% #1 - i coordinate
+%% #2 - j coordinate
+%% #3 - contents of the array
+%%
+\def\GenSpotArrayZeroed#1#2#3{%
+  \GenSpotArrayHelper{#1}{#2}{0}{#3}{\ColorFour}}
+%% 
+%% #1 - i coordinate to call out
+%% #2 - j coordinate to call out
+%% #3 - top row number
+%% #4 - contents of array
+%% #5 - \command to apply to spotlighted cell
+%%
+\def\GenSpotArrayHelper#1#2#3#4#5{%
+{%
+\begin{center}
+\ensuremath{%
+\def\arraystretch{1.4}%
+\begin{SpotArray}{4}{#1}{#2}{#5}{\ColorOne}{#3}
+\begin{pmatrix*}[r]
+#4
+\end{pmatrix*}
+\end{SpotArray}
+}
+\end{center}
+}}%
+%%
+%% #1 - a
+%% #2 - b
+%% #3 - r
+\def\ABR#1#2#3{%
+{\small
+\begin{align*}
+\ColorOne{a} &= \ColorOne{#1} \\
+\ColorTwo{b} &= \ColorTwo{#2} \\
+\ColorFive{r} &= \ColorFive{#3}
+\end{align*}}}
+\def\HF#1{\ensuremath{\frac{#1}{2}}}
+\def\RootEt#1{\ensuremath{\frac{#1}{\sqrt{8}}}}
+\def\I{\NiceI}
+\def\E#1{\TE{#1}}
+
+\def\GenericStart{%
+\E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{\alt<3>{0}{\SCirc}} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{\SCirc} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc}}
+
+\def\GenericMiddle{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{\SCirc} & \E{\SCirc} & \E{\SCirc}}
+
+\def\GenericFinal{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\SCirc} & \E{\SCirc} \\
+\E{0} & \E{0} & \E{\SCirc} & \E{\SCirc}}
+
+%% #1 -- range
+%% #2 -- value to become
+\def\GN#1#2{%
+\alt<#1->{#2}{\SCirc}}
+
+\def\GenericWorking{%
+\E{\GN{4}{1}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} & \E{\GN{4}{0}} \\
+\E{\GN{2}{0}} & \E{\GN{7}{1}} & \E{\GN{7}{0}} & \E{\GN{7}{0}} \\
+\E{\GN{3}{0}} & \E{\GN{6}{0}} & \E{\SCirc} & \E{\SCirc} \\
+\E{\GN{4}{0}} & \E{\GN{7}{0}} & \E{\SCirc} & \E{\SCirc}}
+
+\def\U{%
+\E{\HF{1}} & \E{\HF{1}}   & \E{\HF{1}}  & \E{\HF{1}}    \\
+\E{\HF{1}} & \E{\HF{\I}}  & \E{-\HF{1}} & \E{-\HF{\I}}  \\
+\E{\HF{1}} & \E{-\HF{1}}  & \E{\HF{1}}  & \E{-\HF{1}}   \\
+\E{\HF{1}} & \E{-\HF{\I}} & \E{-\HF{1}}  & \E{\HF{\I}}}
+
+\def\UaU{%
+\E{\RootTwo} & \E{\RootEt{1+\I}} & \E{0} & \E{\RootEt{1-\I}} \\
+\E{0}            & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+i}} \\
+\E{\HF{1}}       & \E{-\HF{1}} & \E{\HF{1}} & \E{-\HF{1}} \\
+\E{\HF{1}}       & \E{-\HF{\I}} & \E{-\HF{1}} & \E{\HF{\I}}}
+
+
+\def\Tw#1{\frac{#1}{\sqrt{12}}}
+\def\Tf#1{\frac{#1}{\sqrt{24}}}
+
+\def\UbUaU{%
+\E{\Tw{3}} & \E{\Tw{\I}} & \E{\Tw{1}} & \E{-\Tw{i}} \\
+\E{0} & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+\I}} \\
+\E{0} & \E{\Tf{3+\I}} & \E{-\Tf{2}} & \E{\Tf{3-\I}} \\
+\E{\HF{1}} & \E{-\HF{i}} & \E{-\HF{1}} & \E{\HF{\I}}
+}
+
+\def\UcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\RootEt{1-\I}} & \E{\RootTwo} & \E{\RootEt{1+\I}} \\
+\E{0} & \E{\Tf{3+\I}} & \E{-\Tf{2}} & \E{\Tf{3-\I}} \\
+\E{0} & \E{\Tw{2\I}} & \E{\Tw{2}} & \E{-\Tw{2\I}}
+}
+
+\def\UdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{\frac{\sqrt{2}}{\sqrt{3}}} & \E{\frac{\I}{\sqrt{6}}} & \E{\frac{1}{\sqrt{6}}} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{\frac{\I}{\sqrt{3}}} & \E{\frac{1}{\sqrt{3}}} & \E{-\frac{\I}{\sqrt{3}}}
+}
+
+\def\UeUdUcUbUaU{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} & \E{\frac{\I}{\sqrt{2}}} \\
+\E{0} & \E{0} & \E{-\RootTwo} & \E{\frac{\I}{\sqrt{2}}}
+}
+
+\def\FinalConjTranspose{%
+\E{1} & \E{0} & \E{0} & \E{0} \\
+\E{0} & \E{1} & \E{0} & \E{0} \\
+\E{0} & \E{0} & \E{\RootTwo} &  \E{-\RootTwo} \\
+\E{0} & \E{0} & \E{-\frac{\I}{\sqrt{2}}} & \E{-\frac{\I}{\sqrt{2}}}
+}
+
+
+
+\xdef\RMatrix{\ensuremath{U}}
+%%
+%%  #1 - U number for the two level array for this slide
+%%  #2 - a
+%%  #3 - b
+%%  #4 - r
+%%  #5 - Old
+%%  #6 - Two level
+%%  #7 - new
+%%  #8 - title
+%%  #9 - subtitle
+\def\GenSlide#1#2#3#4#5#6#7#8#9{%
+%%
+%% Have to do this before frame, because
+%%    \visible runs the frame multiple times
+%%
+\edef\PrevName{\RMatrix{}}%
+\xdef\RMatrix{$U_{#1}$\RMatrix}%
+\edef\NextName{\RMatrix{}}%
+\GenSlideHelper{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}}
+%%
+%%
+\def\GenSlideHelper#1#2#3#4#5#6#7#8#9{%
+\begin{frame}{#8}{#9}
+\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.8\textwidth}{0.2\textwidth}{\visible<3->{%
+\[U_{#1}=\]
+#6}}{%
+\visible<2->{\ABR{#2}{#3}{#4}}
+}
+}{%
+\visible<1->{\hbox to \textwidth{\hss\PrevName{} =\hbox to 3em{\hss}}
+#5}
+}
+\visible<4->{\Vskip{-3em}\begin{center}
+ \NextName{} = #7
+\end{center}}
+\end{frame}
+}
+
+\begin{frame}{Overview of example}{Each slide will look like this}
+\Vskip{-5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-6>{%
+\begin{itemize}
+    \item<1-> The matrix in progress is shown on the right, with one entry already eliminated.  There are two distinguished entries:
+\end{itemize}
+    \begin{description}
+       \item<2->[\CFCirc{\RCone}] is the top-left entry for the portion of the matrix undergoing transformation.
+       \item<3->[\CFCirc{\RCtwo}] is the entry which we are now eliminating (obtaining~$0$).
+    \end{description}
+\begin{itemize}
+    \item<4-> These correspond to the values \ColorOne{$a$} and \ColorTwo{$b$} shown in the center of the slide.
+    \item<5-> \ColorFive{$r$} is computed as \ColorFive{$\sqrt{\Prob{\CFCirc{\RCone}}+\Prob{\CFCirc{\RCtwo}}}$}
+\end{itemize}}
+\only<7->{%
+\BigSkip{}
+\only<7-9>{\GenTLArray{1}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}
+\only<10->{\visible<10>{\GenTLArray{2}{3}{\Conj{a}/r}{\Conj{b}/r}{b/r}{-a/r}}}
+
+\begin{itemize}
+\item <8-> The result of multiplying these two matrices is finally shown at the bottom center of the slide (not shown here).
+\item <9-> That matrix becomes the top right matrix on the next slide, as we continue to eliminate almost all entries in the lower triangle.
+\item<11-> Until we obtain this result, which we eliminate using its conjugate transpose.
+\end{itemize}
+}
+}{%
+\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\visible<4-10>{\ABR{\CFCirc{\RCone}}{\CFCirc{\RCtwo}}{\CFCirc{\RCfive}}}
+}{%
+\only<1-9>{\GenSpotArrayAB{3}{1}{1}{\GenericStart}}
+\only<10>{\GenSpotArrayAB{3}{2}{2}{\GenericMiddle}}
+\only<11->{\GenSpotArrayAB{0}{0}{0}{\GenericFinal}}
+}%
+\only<6-10>{
+\visible<6->{%
+To obtain our two-level array, we compute
+\Vskip{-3em}\begin{eqnarray*}
+    \ColorOne{\Conj{a}}/\ColorFive{r} &
+    \ColorTwo{\Conj{b}}/\ColorFive{r} \\
+    \ColorTwo{b}/\ColorFive{r} & \ColorOne{-a}/\ColorFive{r}
+\end{eqnarray*}
+which are deployed in the two-level array shown to the left.}
+}}
+    
+\end{frame}
+
+{
+\def\GenStepA#1#2#3{%
+\only<#1>{\GenTLArray{#2}{#3}{\SCirc}{\SCirc}{\SCirc}{\SCirc}}}
+\def\GenStepB#1#2#3#4{%
+\only<#1>{\GenSpotArrayAB{#2}{#3}{#4}{\GenericWorking}}}
+\begin{frame}{Tracing the example}{Without values to show the flow}
+\TwoColumns{%
+\GenStepA{1}{2}{1}%
+\GenStepA{2}{3}{1}%
+\GenStepA{3}{4}{1}%
+\only<4>{The left column is finished}%
+\GenStepA{5}{3}{2}%
+\GenStepA{6}{4}{2}%
+\only<7>{These steps are complete.  We multiply the resulting matrix by its conjugate transpose to obtainthe identity matrix (not shown here).}
+}{%}
+\GenStepB{1}{2}{1}{1}%
+\GenStepB{2}{3}{1}{1}%
+\GenStepB{3}{4}{1}{1}%
+\GenStepB{4}{0}{0}{0}%
+\GenStepB{5}{3}{2}{2}%
+\GenStepB{6}{4}{2}{2}%
+\GenStepB{7}{0}{0}{0}%
+}
+\end{frame}}
+
+\GenSlide{1}{\HF{1}}{\HF{1}}{\RootTwo}{\GenSpotArrayAB{2}{1}{1}{\U}}{\GenTLArray{1}{2}{\RootTwo}{\RootTwo}{\RootTwo}{-\RootTwo}}{\GenSpotArrayZeroed{2}{1}{\UaU}}{Example}{Step 1}
+
+\GenSlide{2}{\RootTwo}{\HF{1}}{\HF{\sqrt{3}}}{\GenSpotArrayAB{3}{1}{1}{\UaU}}{\GenTLArray{1}{3}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{\frac{1}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{3}{1}{\UbUaU}}{Example}{Step 2}
+
+\GenSlide{3}{\Tw{3}}{\HF{1}}{1}{\GenSpotArrayAB{4}{1}{1}{\UbUaU}}{\GenTLArray{1}{4}{\Tw{3}}{\HF{1}}{\HF{1}}{-\Tw{3}}}{\GenSpotArrayZeroed{3}{1}{\UcUbUaU}}{Example}{Step 3}
+
+\GenSlide{4}{\RootEt{1-\I}}{\Tf{3+\I}}{\frac{\sqrt{2}}{\sqrt{3}}}{\GenSpotArrayAB{3}{2}{2}{\UcUbUaU}}{\GenTLArray{2}{3}{\frac{\sqrt{3}}{4}(1+\I)}{\frac{3-\I}{4}}{\frac{3+\I}{4}}{\frac{\sqrt{3}}{4}(\I-1)}}{\GenSpotArrayZeroed{3}{2}{\UdUcUbUaU}}{Example}{Step 4}
+
+\GenSlide{5}{\frac{\sqrt{2}}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{1}{\GenSpotArrayAB{4}{2}{2}{\UdUcUbUaU}}{\GenTLArray{2}{4}{\frac{\sqrt{2}}{\sqrt{3}}}{-\frac{\I}{\sqrt{3}}}{\frac{\I}{\sqrt{3}}}{-\frac{\sqrt{2}}{\sqrt{3}}}}{\GenSpotArrayZeroed{4}{2}{\UeUdUcUbUaU}}{Example}{Step 5}
+
+{
+\def\E#1{#1}
+\begin{frame}{Final step}{To obtain the identity matrix}
+
+\begin{center}
+$\visible<2->{\ColorTwo{\begin{pmatrix*}
+\FinalConjTranspose
+\end{pmatrix*}}}\visible<3->{\times} \visible<1->{\ColorOne{\begin{pmatrix*}\UeUdUcUbUaU\end{pmatrix*}}}\visible<3->{=\Identity}$\end{center}
+\begin{itemize}
+    \item<1-> We take the final result \ColorOne{\NextName{}},
+    \item<2-> compute its conjugate transpose---call this \ColorTwo{$U_6$}.
+    \item<3-> We multiply them to obtain the identity matrix.
+    \item<4-> We thus obtain \ColorTwo{$U_6$}\ColorOne{\NextName{}}=\Identity
+    \item<5-> So $U=\Conj{U_1}\Conj{U_2}\Conj{U_3}\Conj{U_4}\Conj{U_5}\Conj{U_6}$, which is the product of two-level matrices.
+\end{itemize}
+
+
+
+
+\end{frame}}
+
+
+
+
+}
+
+\section{Circuit implementation}
+
+\begin{frame}{Implementation}{Of the two-level arrays}
+    TBD
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Any quantum gate acting on $n$ qubits can theoretically be decomposed into the product of two-level matrices, each of size $2^{n}\times 2^{n}$.
+    \item For a $d\times d$ matrix, the number of two-level matrices needed grows as $\Theta(d^{2})$, since we need one for each element of the original matrix's lower triangle.
+    \item Each two-level matrix can be realized using \href{https://en.wikipedia.org/wiki/Gray_code}{Gray-code} logic to force the two-level matrix to act on a single qubit.
+    \item We obtain an exact solution, but the number of such gates is impractical.
+    \item Moreover, there is an uncountably infinite number of  two-level gates.
+    \item We examine next how approximations of just a few simple gates suffice to obtain quantum systems that produce the results we need.
+\end{itemize}
+    
+\end{frame}
+
+
+
