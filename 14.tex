@@ -1,4 +1,67 @@
-\SetTitle{14}{The Mermin--Peres game}{Proofs}{14}
+\SetTitle{14}{The Mermin--Peres game}{Solution and Proofs}{14}
+
+\section*{Solution}
+
+\begin{frame}{Quantum-based solution}{We use two EPR pairs}
+
+\Vskip{-4em}\begin{center}
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_1$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw \rstick{\ColorTwo{\mbox{$b_1$}}} 
+\end{quantikz}}%
+\hbox to 3ex{\hss}%
+\adjustbox{valign=t}{%
+\begin{quantikz} 
+\lstick{\QZero}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\ColorOne{\mbox{$a_2$}}} \\
+\lstick{\QZero}\qw & \qw & \targ{} & \qw\rstick{\ColorTwo{\mbox{$b_2$}}} 
+\end{quantikz}}\end{center}%
+
+\begin{itemize}[<+->]
+    \item Two EPR pairs are created, each in state \TwoSup{00}{11}.
+    \item \ColorOne{Alice} receives~\ColorOne{\QState{a}=\ket{a_{1}a_{2}}} and \ColorTwo{Bob} receives~\ColorTwo{\QState{b}=\ket{b_{1}b_{2}}}
+    \item Depending on the row (for Alice) and the column (for Bob), they will carry out measurements based on a table, in a basis related to their particular row or column.
+    \item We must prove that they
+    \begin{itemize}
+        \item agree on a value at the cell intersecting the row and column, and
+        \item obtain the necessary row and column products.
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Solution}{Expressed in measurement operators}
+
+\Vskip{-4.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\only<1-4>{%
+\begin{itemize}
+    \item<1-> Each square shows the measurement operators used by a player on two qubits.  
+    \item<2-> The \alert<2>{\Identity{}} measurement operator has an eigenvalue of $+1$, regardless of its input.
+    \item<3-> The \alert<3>{bottom left two entries} are marked so that their outcome is complimented.
+    \item<4-> The result reported in a given square by a player is the eigenvalue associated with the two-qubit measurement performed by \ColorOne{her} or \ColorTwo{him}, complimented in \alert<4>{these} two squares.
+\end{itemize}}
+\only<5->{%
+\begin{itemize}
+   \item<5-> Each square's operator is already expressed as a product of two gates.
+   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the inputs are entangled.}
+   \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
+   \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
+\end{itemize}
+}
+}{%
+\begin{center}
+    \begin{MPSquareEnv}
+    \def\MyMarkupSquareComp####1{\alert<3,4,10>{####1}}
+    \def\MyMarkupSquareI####1{\alert<2>{####1}}
+    \MPSoln{}
+    \end{MPSquareEnv}
+\end{center}
+}
+
+\end{frame}
+
+
+
 
 \begin{frame}{Three possible proof approaches}{We do two of them here}
 
@@ -26,6 +89,8 @@
 \end{center}
 }
 \end{frame}
+
+\section*{Algebraic proof}
 
 \begin{frame}{Algebraic proof}{A sequence of measurements would culminate in the correct result}
 
@@ -122,6 +187,8 @@ When operators are applied left-to-right in a circuit, their associated matrices
 \end{itemize}
     
 \end{frame}
+
+\section*{One measurement each}
 
 \begin{frame}{Actually playing the game}{Making only one measurement}
 
