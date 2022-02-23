@@ -6,7 +6,7 @@
 \def\Bone{\ColorFour{\mbox{$b_1$}}}\def\BoneColor{\ColorFour}
 \def\Btwo{\ColorFive{\mbox{$b_2$}}}\def\BtwoColor{\ColorFive}
 \def\IColor{\ColorBlack}
-\def\Ambig#1{\fbox{#1}}
+\def\Ambig#1{\Ovalbox{#1}}
 \def\Answer#1{\mbox{\Large\ensuremath{#1}}}
 \def\Report#1{Report \ensuremath{#1}}
 \def\ReportCommon#1{\textbf{\alert{Report}} \ensuremath{#1}}
@@ -38,13 +38,14 @@
 \visible<17->{\Bob{\Report{\alert{-}(\BoneColor{-1}\times\BtwoColor{1})}}}
 \end{ProtocolDialog}}
 }{%
-\Vskip{-2.5em}\begin{itemize}
+\Vskip{-3em}\begin{itemize}
     \item \Alice{} has \Aone{} and \Atwo.
     \item \MakeSameWidth[l]{Alice}{\Bob{}} has \Bone{} and \Btwo.
     \item $\QZero{} = +1$
     \item $\QOne{} = -1$
+    \item \Ovalbox{$n$} indicates a random outcome of~$n$.
 \end{itemize}
-\begin{center}\adjustbox{scale=0.6}{%
+\Vskip{-4.5em}\begin{center}\adjustbox{scale=0.6}{%
 \begin{MPSquareEnv}
     \def\TpLf####1{\only<2,6>{\ColorOne{####1}}\only<3,12>{\ColorTwo{####1}}\only<1,4-5>{####1}\only<7-11>{\ColorOne{\Answer{-1}}}\only<13->{\ColorTwo{\Answer{-1}}}}
     \def\TpCt####1{\only<2,8>{\ColorOne{####1}}\only<1,3-7,12->{####1}\only<9-11>{\ColorOne{\Answer{+1}}}}
