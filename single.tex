@@ -1063,6 +1063,18 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \qw & \qw & \qw & \meter{\alert{0\,/\,1}} & \qw 
 \end{quantikz}
 }%
+\newenvironment{MPScene}{%
+\def\Aone{\ColorSix{\mbox{$a_1$}}}\def\AoneColor{\ColorSix}
+\def\Atwo{\ColorThree{\mbox{$a_2$}}}\def\AtwoColor{\ColorThree}
+\def\Bone{\ColorFour{\mbox{$b_1$}}}\def\BoneColor{\ColorFour}
+\def\Btwo{\ColorFive{\mbox{$b_2$}}}\def\BtwoColor{\ColorFive}
+\def\IColor{\ColorBlack}
+\def\Ambig##1{\Ovalbox{\ensuremath{##1}}}
+\def\Answer##1{\mbox{\Large\ensuremath{##1}}}
+\def\Report##1{Report \ensuremath{##1}}
+\def\ReportCommon##1{\textbf{\alert{Report}} \ensuremath{##1}}
+}{%
+}
 
 
 % \AtBeginLecture{\frame{\Large \insertlecture}}
@@ -1070,5 +1082,5 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 %% test
 %%
 \begin{document}
-\include{temp}
+\include{13}
 \end{document}
