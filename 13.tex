@@ -269,9 +269,9 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
     \item<1-> The boxes represent measurement operators applied to the two-qubit circuit.
     \item<2-> Recall that the operators are implemented by 
     \Vskip{-2em}\begin{enumerate}
-        \item transformation into \PauliZ{}
+        \item transformation into the \PauliZ{} basis
         \item measurement in the \PauliZ{} basis
-        \item transformation out of \PauliZ{}
+        \item transformation out of the \PauliZ{} basis
     \end{enumerate}
     but to avoid clutter we show this using the measurement operators.
     \item<3-> After \Mone, the quantum system's state must be an eigenstate of \Mone.
@@ -446,3 +446,15 @@ $T$ is its own conjugate transpose, so:}
     
 \end{frame}
 }
+
+\begin{frame}{Where are we?}{And what comes next?}
+
+\begin{itemize}
+    \item We have seen the Merim--Peres puzzle.
+    \item Classically we cannot hope to win always.
+    \item \Alice{} and \Bob{} cannot know the \ColorTwo{column} or \ColorOne{row} assigned to the other player.
+    \item However, due to entanglement and measurement in a predetermined basis, they can always win the game.
+    \item We next examine proofs of their ability to win every game.
+\end{itemize}
+    
+\end{frame}
