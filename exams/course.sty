@@ -1,0 +1,118 @@
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Page layout:
+%%
+%%
+%%
+\newdimen\margin    \margin    =  1.000in
+%%
+\newdimen\TopMargin \TopMargin =  0.500in
+
+                   \topmargin      = -1.0in % start flush
+                   \evensidemargin = -1.0in % start flush
+                   \oddsidemargin  = -1.0in % start flush
+%
+                   \advance\topmargin      by \TopMargin
+                   \headsep        =  2.5em
+                   \topskip        =  0.00in
+                   \advance\oddsidemargin  by \margin
+                   \advance\evensidemargin by \margin
+                   \textwidth      =  8.50in
+                   \advance\textwidth by -\margin
+                   \advance\textwidth by -\margin
+                   \parskip        = 1.5em plus0.5em minus0.25em
+
+\newbox\DateBox
+%
+\makeatletter
+\def\@oddhead{\ifnum\thepage=1\relax%
+   \hbox to \textwidth{\hss}\hss
+\else%
+\hbox to \textwidth{%
+   \Course \space (\Title)%
+   \hfill\hbox{--}\thepage\hbox{--}\hfill \copy\DateBox}\hss%
+\fi%
+}
+\newbox\footbox
+\setbox\footbox = \hbox{\hss}
+\let\@evenhead=\@oddhead
+\def\@oddfoot{\vbox{\hbox to \textwidth{\unhcopy\footbox}}}
+\let\@evenfoot=\@oddfoot
+\makeatother
+                     \headheight = 1.0em
+%                    \footheight = \ht\footbox
+%                    \footskip   = \headsep
+%                    \advance\footskip by\footheight
+                     \textheight = 11.0in
+                     \advance\textheight by -\TopMargin
+                     \advance\textheight by -\headheight
+                     \advance\textheight by -\headsep
+                     \advance\textheight by -\topskip
+                     \advance\textheight by -\footskip
+%                    \advance\textheight by -\footheight
+                     \advance\textheight by -\TopMargin
+
+\newenvironment{GenHandout}[2]{
+\def\Title{#1}
+% \overfullrule=12pt
+% \showboxdepth=1000\showboxbreadth=1000\relax
+\vbox{%
+\vskip -\headsep
+\vskip -\headheight
+\noindent\framebox[\textwidth]{%
+  \vbox {\baselineskip=0pt\hsize=0.97\textwidth%
+     \hbox to 0.97\textwidth{%
+        {\bf \Course\space%
+             \CourseName \hfill \CourseTime}%
+     }%
+     \vskip 1.0em %
+     \hbox to 0.97\textwidth{%
+         {\hfill \Large\Title\hfill}%
+     }%
+     \vskip 1.0em %
+     \hbox to 0.97\textwidth{%
+        {#2}
+     }%
+  }%
+}%
+}
+}{\newpage\setcounter{page}{1}}
+\newenvironment{assignment}[3]{%
+\setbox\DateBox=\hbox{Due by #3}
+\begin{GenHandout}{#1}{\large\sf Given: #2 \hfill Due: #3}
+}{\end{GenHandout}}
+\newenvironment{handout}[2]{%
+\setbox\DateBox=\hbox{#2}
+\begin{GenHandout}{#1}{\sf \hfill #2 \hfill}
+}{\end{GenHandout}}
+\def\Continued{%
+\vfill
+\begin{center}
+{\it Continued on next page\ldots}
+\end{center}
+\newpage
+}
+\def\LeaveSpace#1{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+\def\ItemSpace#1#2{%
+   \item #2
+   \vskip #1 plus 1fil\relax
+}
+\def\PSP#1#2#3{%
+Problem {#1} of Section {#2} (page {#3})%
+}
+\def\PP#1#2{%
+Problem {#1} (page {#2}).%
+}
+\def\ItemPoints#1{\item \Points{#1}}
+\def\Points#1{{\sf ({#1} points)\ }}
+\def\TILDE{\mbox{$\sim$}}
+\newcommand{\Bpage}{%
+\clearpage
+\def\Once{\hbox to \hsize{\hss\hbox{\vrule width 0pt height 1.7em\relax\vrule width 7in depth 0.5pt height 0pt}\hss}}
+\def\Twice{\Once\Once}
+\def\Four{\Twice\Twice}
+\Four\Four\Four\Four\Four\Four\Four\Twice
+\vfill
+}

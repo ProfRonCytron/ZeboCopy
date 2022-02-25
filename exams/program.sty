@@ -1,0 +1,462 @@
+%%
+%%  Programming language macros
+%%     Ron Cytron   PTRAN group   IBM Research  7 November 1990
+%%
+\def\pr{\tt}% We use the (monospaced) \tt font for programs.
+            % Addison-Wesley may change later to another typeface or font.
+            %
+\newif\ifShortProgram
+\ShortProgramfalse
+\def\PossiblePar{%
+  \ifShortProgram\relax\else
+
+  \fi%
+}
+\newlength{\smallerwidth}
+\newlength{\RefPush}
+\RefPush = 0pt
+\newcounter{algorithmnumber}
+\newcounter{resetalgorithmstep}
+\newcounter{algorithmstep}[resetalgorithmstep]
+\newcounter{algorithmlabel}[algorithmnumber]
+\newcommand{\RefFont}[0]{\footnotesize}
+\newcommand{\SET}[1]{\mbox{$\{\, #1 \,\}$}}
+\newcommand{\SEQ}[1]{\mbox{$[\, #1 \,]$}}
+\newcommand{\DV}[1]{\mbox{$(\, {#1} \,)$}}
+\newcommand{\TUPLE}[1]{\mbox{$[\, {#1} \,]$}}
+\newcommand{\RANGE}[1]{\mbox{$[\, #1 \,]$}}
+\newcommand{\TRUE}{\mbox{\bf true}}
+\newcommand{\BOOLAND}[2]{\mbox{${#1}${\bf\mbox{ and }}${#2}$}}
+\newcommand{\BOOLOR}[2]{\mbox{${#1}${\bf\mbox{ or }}${#2}$}}
+\newcommand{\BOOLNOT}[1]{\mbox{{\bf\mbox{not }}${#1}$}}
+\newcommand{\NEW}[1]{\mbox{{\bf\mbox{new }}$({#1})$}}
+\newcommand{\FALSE}{\mbox{\bf false}}
+\newcommand{\NULL}{\mbox{$\bot$}}
+\newcommand{\STEPREF}[1]{{\fboxsep=2.0pt\fbox{\RefFont\ref{#1}}}}
+\newcommand{\STEP}{
+   \refstepcounter{algorithmstep}
+
+   \item[{\makebox[0pt][l]{{\hspace{\RefPush}\fboxsep=2.0pt\RefFont$\Leftarrow$ \fbox{\thealgorithmstep}}}}]}
+\newcommand{\STEPCOPY}[1]{
+
+   \item[{\makebox[0pt][l]{{\hspace{\RefPush}\fboxsep=2.0pt\RefFont$\Leftarrow$\fbox{\ref{#1}}}}}]}
+\newcommand{\LABEL}{
+   \refstepcounter{algorithmlabel}
+
+  {\makebox[0pt][r]{\makebox[1 in][l]{\bf L\thealgorithmlabel:}
+                   }
+  }
+  \vspace{-\baselineskip}
+
+}
+\newcommand{\COMMENT}[1]{
+\ifShortProgram\mbox{/$\star$ {\sf #1} $\star$/}\else
+
+{\makebox[\smallerwidth][l]{/$\star$ \hfill {\sf #1} \hfill $\star$/\ \ \ }}
+
+\fi
+}
+\newcommand{\SCOMMENT}[1]{
+
+{\makebox[\smallerwidth][l]{/* {\it #1} */\ \ \ }}
+
+}
+\newlength\ProgIndent
+\ProgIndent=1.5em
+\newenvironment{STMTS}{
+ \begin{list}{\empty}{
+      \setlength{\leftmargin}{\ProgIndent}
+      \setlength{\parsep}{0.25 ex}
+      \setlength{\parskip}{0.25 ex}
+      \setlength{\partopsep}{0 ex}
+      \setlength{\topsep}{0 ex}
+      \setlength{\itemsep}{0 ex}
+      \setlength{\labelwidth}{0 em}
+      \setlength{\labelsep}{-\linewidth}
+      \addtolength{\labelsep}{5 em}
+      \setlength{\listparindent}{0 em}
+      \setlength{\itemindent}{0 em}
+      \setlength{\smallerwidth}{\linewidth}
+      \addtolength{\smallerwidth}{-5em}
+}
+    \item[] \ 
+    
+    \vspace{-\baselineskip}
+    }{\end{list}}
+
+\newenvironment{ANTISTMTS}{
+ \begin{list}{\empty}{
+      \setlength{\leftmargin}{-1.5 em}
+      \setlength{\parsep}{0.25 ex}
+      \setlength{\parskip}{0.25 ex}
+      \setlength{\partopsep}{0 ex}
+      \setlength{\topsep}{0 ex}
+      \setlength{\itemsep}{0 ex}
+      \setlength{\labelwidth}{0 em}
+      \setlength{\labelsep}{-\linewidth}
+      \addtolength{\labelsep}{5 em}
+      \setlength{\listparindent}{0 em}
+      \setlength{\itemindent}{0 em}
+      \setlength{\smallerwidth}{\linewidth}
+      \addtolength{\smallerwidth}{-5em}
+}
+    \item[] \ 
+    
+    \vspace{-\baselineskip}
+    }{\end{list}}
+
+\newcommand{\PROGRAM}[1]{
+\stepcounter{resetalgorithmstep}
+
+  \begin{STMTS}
+      #1
+  \end{STMTS}
+
+% \ \\[1 em]
+}
+
+\newcommand{\MOREPROGRAM}[1]{
+
+  \begin{STMTS}
+      #1
+  \end{STMTS}
+
+% \ \\[1 em]
+}
+
+\newcommand{\ALGORITHM}[2]{
+\stepcounter{resetalgorithmstep}
+\refstepcounter{algorithmnumber}
+\noindent
+{\bf Algorithm[\thealgorithmnumber] #1}
+
+  \begin{STMTS}
+      #2
+  \end{STMTS}
+
+\noindent
+{\bf end}
+}
+
+\newcommand{\MOREALGORITHM}[2]{
+\refstepcounter{algorithmnumber}
+\noindent
+{\bf Algorithm[\thealgorithmnumber] #1}
+
+  \begin{STMTS}
+      #2
+  \end{STMTS}
+
+\noindent
+{\bf end}
+}
+
+\newcommand{\PROCEDURE}[2]{
+
+\noindent
+{\bf Procedure $#1$}
+
+  \begin{STMTS}
+      #2
+  \end{STMTS}
+
+\noindent
+{\bf end}
+}
+
+\newcommand{\ALGINPUT}[1]{
+
+\end{STMTS}
+   {\bf Input:}
+   {#1}
+\begin{STMTS}
+
+}
+
+\newcommand{\ALGOUTPUT}[1]{
+
+\end{STMTS}
+   {\bf Output:}
+   #1
+\begin{STMTS}
+
+}
+
+\newcommand{\ALGMETHOD}{
+
+\end{STMTS}
+   {\bf Method:}
+\begin{STMTS}
+
+}
+
+\newcommand{\FUNCTION}[3]{
+\noindent
+{\bf Function $#1$ : $#2$}
+
+  \begin{STMTS}
+      #3
+  \end{STMTS}
+
+\noindent
+{\bf end}
+}
+
+\newcommand{\ASSIGNED}{\mbox{$\;\leftarrow\;$}}
+
+
+\newcommand{\GETS}[2]{
+   \mbox{{$#1 \ASSIGNED #2$}}
+}
+
+\newcommand{\ASSIGN}[2]{
+\PossiblePar%  
+   \GETS{#1}{#2}
+\PossiblePar%
+}
+\newcommand{\FIRSTASSIGN}[2]{
+\PossiblePar% 
+   \GETS{#1}{#2};
+}
+\newcommand{\LASTASSIGN}[2]{
+   \GETS{#1}{#2}
+\PossiblePar%   
+}
+\newcommand{\MOREASSIGN}[2]{
+   \GETS{#1}{#2};
+}
+\newcommand{\INCREMENT}[1]{\ASSIGN{#1}{#1 + 1}}
+\newcommand{\DECREMENT}[1]{\ASSIGN{#1}{#1 - 1}}
+
+\newcommand{\CALL}[1]{
+\PossiblePar%
+   \mbox{\bf call {$#1$}}
+\PossiblePar%
+}
+
+\newcommand{\GOTO}[1]{
+\PossiblePar%
+   \mbox{\bf goto {\bf L\ref{#1}}}
+\PossiblePar%
+}
+
+\newcommand{\RETURN}[1]{
+\PossiblePar%
+   {\bf return} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}}
+\PossiblePar%
+}
+
+\newcommand{\IFTHEN}[2]{
+
+   {\bf if} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf then}
+
+  \begin{STMTS}
+      #2
+  \end{STMTS}
+
+{\bf fi}
+
+}
+
+\newcommand{\SHORTIFTHEN}[2]{
+
+\bgroup%
+\ShortProgramtrue%
+   {\bf if} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf then}
+      #2
+   {\bf fi}
+\egroup
+
+}
+
+\newcommand{\IFGOTO}[2]{
+\PossiblePar%
+   {\bf if} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf then}
+      \mbox{\bf goto {\bf L\ref{#2}}}
+\PossiblePar%
+}
+
+\newcommand{\IFTHENELSE}[3]{
+
+   {\bf if} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf then}
+
+  \begin{STMTS}
+      #2
+  \end{STMTS}
+
+{\bf else}
+
+  \begin{STMTS}
+      #3
+  \end{STMTS}
+
+{\bf fi}
+
+}
+
+\newcommand{\SHORTIFTHENELSE}[3]{
+
+\bgroup%
+\ShortProgramtrue%
+   {\bf if} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf then}
+      #2
+{\bf else}
+      #3
+{\bf fi}
+\egroup
+
+}
+
+\newcommand{\SWITCH}[2]{
+
+  {\bf switch} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}}
+
+  \begin{STMTS}
+      #2
+   \end{STMTS}
+
+{\bf endswitch}
+
+}
+
+
+\newcommand{\CASE}[2]{
+
+  {\bf case} {{\(\displaystyle \mbox{{$#1$}}  \):}}
+
+  \begin{STMTS}
+      #2
+   \end{STMTS}
+
+}
+
+\newcommand{\WHILEDO}[2]{
+
+   {\bf while} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf do}
+
+  \begin{STMTS}
+      #2
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\FORREPEAT}[4]{
+
+   {\bf for} {{\(\displaystyle \mbox{{$\left( #1=#2 \right) \mbox{ \bf repeat(}#3{\bf )}$}} \)}} {\bf do}
+
+  \begin{STMTS}
+      #4
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\REPEATUNTIL}[2]{
+
+  {\bf repeat}
+
+  \begin{STMTS}
+      #1
+  \end{STMTS}
+
+ {\bf until} {{\(\displaystyle \left( \mbox{{$#2$}} \right) \)}}
+
+}
+
+\newcommand{\FOREACHDO}[2]{
+
+   {\bf foreach} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf do}
+
+  \begin{STMTS}
+      #2
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\SHORTFOREACHDO}[2]{
+
+\bgroup%
+\ShortProgramtrue%
+   {\bf foreach} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} {\bf do}
+      #2
+{\bf od}
+\egroup
+
+}
+
+\newcommand{\FOREACHORDERDO}[3]{
+
+   {\bf foreach} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}} 
+         {\bf order} {{\(\displaystyle \left( \mbox{{$#2$}} \right) \)}} 
+         {\bf do}
+
+  \begin{STMTS}
+      #3
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\TREEWALK}[4]{
+
+   {\bf traverse} {\bf tree} {{\(\displaystyle \left( \mbox{{$#1$}} \right) \)}}
+         {\bf order} {{\(\displaystyle \left( \mbox{{#2}} \right) \)}} 
+         {\bf at node} {{\(\displaystyle \left( \mbox{{$#3$}} \right) \)}} 
+         {\bf do}
+
+  \begin{STMTS}
+      #4
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\FORDO}[4]{
+
+   {\bf for} {{\(\displaystyle \mbox{{$#1=#2 \mbox{ \bf to } #3$}} \)}} {\bf do}
+
+  \begin{STMTS}
+      #4
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\FORDOWNDO}[4]{
+
+   {\bf for} {{\(\displaystyle \mbox{{$#1=#2 \mbox{ \bf downto } #3$}} \)}} {\bf do}
+
+  \begin{STMTS}
+      #4
+   \end{STMTS}
+
+{\bf od}
+
+}
+
+\newcommand{\DECLARE}[1]{
+
+   {\bf declare}
+
+  \begin{STMTS}
+    \begin{tabular}{ll}
+         #1
+    \end{tabular}
+  \end{STMTS}
+\ %
+}
+\newcommand{\INTEGER}[1]{
+   #1  & {\bf integer} \\
+}
+\newcommand{\RECORD}[2]{
+   #1  & {\bf record(}$#2${\bf )} \\
+}
+
