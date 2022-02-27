@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\usepackage{hyperref}
+%%
+%%
+\newcommand{\Blank}{\mbox{\hskip 4pt\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+
+\title{Thoughtful Questions from Students}
+\author{CSE 468 Spring Semester 2022}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent This is a compilation of student-submitted question ideas from the Spring semester of CSE 468. (I pulled any bonus questions that got 2 or 3 points that I really liked off Gradescope.)
+
+\noindent \textbf{Problem Set 1}
+\begin{itemize}
+    \item Ari Cotler - Suppose your polarizing filters are on motors and rotate based on some time $t$ variable. Describe the time $t$ at which the light intensity is minimized/maximized.
+    \item Jinhao Zhao - Given a few different setups, which system will see the most/least probability at the receiver?
+    \item Sri Gadde - Should you have an odd number or even number of sugar solutions before a polarizing beam splitter if you want to see probabilities in both receivers?
+    \item Rohan Srivastava - Suppose we place 5 successive polarizing filters at angles $\theta_{1} .. \theta_{5}$ where each $\theta_{i}$ is uniformly randomly distributed between 0 degrees and 180 degrees. What percentage of light should we expect to pass through this set of filters?
+\end{itemize}
+\noindent \textbf{Problem Set 2}
+\begin{itemize}
+    \item Byung Ha - Express the $\mathbf{X}$ gate in terms of $\mathbf{Z}$ and $\mathbf{H}$ gates.
+    \item Jackie Zhong - What is the maximum number of unique states we can reach starting from an arbitrary state $\ket{\psi}$ on the Bloch sphere using only Pauli gates?
+    \item David Buckley - Suppose $\mathbf{X}^{a}\mathbf{Y}^{b}\mathbf{Z}^{c}\ket{0} \equiv \ket{1}$. What values of $a,b,c$ make this true?
+    \item Jake Browning - When looking at the Bloch sphere with the positive x-axis ($\ket{+x}$) pointed directly at you, does the rotation matrix $R_{x}(\theta)$ rotate the sphere clockwise or counter-clockwise?
+    \item Haneen Alfauri - Prove that if $U$ is a unitary gate on a single qubit then there exist unitary operators $D,E,F$ on a single qubit such that $DEF = \mathbf{I}$ and $U = e^{i\phi}DEF$ where $\phi$ is the overall phase factor.
+    \item Rohan Srivastava - What assumption do we have to make to get that we can apply a quantum gate to get from any point on the Bloch sphere to any other point on the Bloch sphere?
+\end{itemize}
+
+\noindent \textbf{Problem Set 3}
+\begin{itemize}
+    \item Eli Boshara - Give the matrix that described the controlled U gate.
+    \item Jake Browning - Give 2 unitary matrices $A$ and $B$ such that $A \not\equiv B$ and $AB \equiv BA$. How can you use this property when computing states in a circuit?
+\end{itemize}
+
+\noindent \textbf{Problem Set 4}
+\begin{itemize}
+    \item Jinhao Zhao - A thougtful way of solving what action Bob must take given some arbitrary EPR pair.
+    \item Jake Browning - A thoughtful question about the analogies between entanglement and probability.
+    \item Will Roskiewicz - Why are the bits destroyed on the sender's side of teleportation? 
+\end{itemize}
+
+\end{document}

@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{braket}
+\graphicspath{ {./ps4-assets/}{./exercises/handwritten/ps4/ps4-assets/} }
 
 \title{Problem Set 4 Solutions}
 \author{CSE 468}
@@ -85,7 +86,7 @@
     \[ae = 1, ah = 1, de = 1, dh = -1\]
     \[aedh = -1 \neq 1 = ahde\]
     \item \begin{enumerate}
-        \item 50\%. Bob still has no idea what the other bit is and so must guess what procedure to apply and hope he gets lucky.
+        \item \[\includegraphics[scale=0.8]{teleport-action}\] 50\%. If Alice sends Bob a zero, he knows there's a 50\% chance that $\ket{xy} = \ket{00}$ and so he should do nothing and will obtain the correct state 50\% of the time. Similarly if Alice sends Bob a 1 he knows there's a 50\% chance that $\ket{xy} = \ket{11}$ and so he should do \mathbf{X} then \mathbf{Z} and will obtain the correct state 50\% of the time.
         \item If Bob knows the first qubit's value he knows if his state needs to experience a phase shift (a Z gate). If the value is 0 no phase shift is needed. If the value is 1 he knows he will need to apply a Z gate. He does not know if he needs to apply a X gate first though.
         \item If Bob knows the second qubit's value he knows if his amplitudes need to be flipped or not (a X gate). If the value is 0 no flip is needed. If the value is 1 he knows he will need to apply a X gate. He does not know if he needs to apply a Z gate though.
         \item He would want the second qubit. See (c).
