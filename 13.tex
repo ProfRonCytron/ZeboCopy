@@ -11,6 +11,7 @@
     \item Alice and Bob share two EPR pairs, each initially in the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.
     \item Variations of the game we consider also go by the same name, and they are equivalent in difficulty and in the approach to a quantum-based solution.
     \item We follow the game as specified in the Wikipedia \href{https://en.wikipedia.org/wiki/Quantum_pseudo-telepathy\#The_Mermin\%E2\%80\%93Peres_magic_square_game}{article}.
+    \item It is lacking in significant details.
 \end{itemize}
     
 \end{frame}
@@ -255,7 +256,7 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 \end{MPScene}
 \end{frame}
 
-
+\section*{Successive measurements}
 
 {
 \def\M#1#2{\mbox{#1{\ensuremath{\mathcal{M}_{#2}}}}}
@@ -281,7 +282,7 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 \begin{itemize}
     \item<9-> Suppose we change the sequence of measurements, so that \Mtwo{} is first.
     \item<10-> While \Mtwo's results could be unpredictable, the resulting eigenstate \QState{} \emph{completely determines} the outcomes of \Mone{} and \Mthree.
-    \item<11-> Suppose we prepare eigenstate~\QState{} by measuring in the common eigenbasis.  Then \Mtwo's outcome is also determined.
+    \item<11-> If we prepare eigenstate~\QState{} by measuring in the common eigenbasis of the operators, then \Mtwo's outcome is also determined.
     \item<12-> Each outcome is $\pm 1$: the eigenvalue associated with \QState{} for each operator.
     \item<13-> Let the cummulative result of the three operators be the \emph{product} of their measured eigenvalues.
 \end{itemize}
@@ -326,8 +327,10 @@ where \ZeroMatrix{} is the all-zero matrix.}%
     
 \end{frame}
 
+\section*{Commuting operators}
+
 \def\B#1{\hbox to 1.2em{\hss\ensuremath{#1}}}
-\begin{frame}{Example of three commuting operators}
+\begin{frame}{Example of three commuting operators}{Column 2 of the square's solution}
 
 \Vskip{-5em}\TwoUnequalColumns{0.455\textwidth}{0.545\textwidth}{%
 \only<1-10>{%
