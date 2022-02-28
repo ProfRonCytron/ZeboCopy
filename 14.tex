@@ -140,6 +140,7 @@ When operators are applied left-to-right in a circuit, their associated matrices
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}
+We perform operations left-to-right in a row.  Note that the matrices multiply in the opposite order.
 }
 \end{frame}
 
@@ -174,12 +175,14 @@ When operators are applied left-to-right in a circuit, their associated matrices
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}
+We perform operations top-down in a column.  Note that the matrices multiply in the opposite order.
 }
 \end{frame}
 
 \begin{frame}{Summary}{Up to this point}
 \begin{itemize}[<+->]
-    \item The results we have obtained hold for any initial state.
+    \item The results we have obtained hold for \emph{any} initial state.
+    \item The game's initial states, each \TwoSup{00}{11}, are special because they cause \Alice{} and \Bob{} to agree on a value in their common square.
     \item For \Alice{}, the product of measurements along any row is~$+1$.
     \item For \Bob{}, the product of measurements along any column is~$-1$.
     \item While the final results are confirmed, the proof is not instructive concerning the three measurements each player is supposed to report.
@@ -199,8 +202,8 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
     \item<1-> \Alice{} measures her two qubits \emph{once}, in a basis prescribed for her row.
     \item<2-> State \QState{} after measurement is an eigenstate for each operator in her row.
     \item<3-> However, each operator may have a \emph{different eigenvalue} associated with \QState{}.
-    \item<4-> Alice reports the eigenvalue for each operator in her row, knowing their product is~$+1$.
-    \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~$-1$.
+    \item<4-> \Alice{} reports the eigenvalue for each operator in her row, knowing their product is~\ColorOne{$+1$}.
+    \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~\ColorTwo{$-1$}.
 \end{itemize}}
 \only<6-10>{%
 \begin{itemize}
