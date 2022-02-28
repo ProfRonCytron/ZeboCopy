@@ -1,17 +1,40 @@
 \documentclass[12pt]{article}
 \usepackage[margin=0.5in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
-\usepackage[braket,qm]{qcircuit}
 \usepackage{course}
 \usepackage{cse468-Spring22}
 \usepackage{program}
 \usepackage{fancybox}
+\usepackage{adjustbox}
+\usepackage{quantikz}
+\def\Gate#1{\textbf{#1}}
+\def\X{\Gate{X}}
+\def\Z{\Gate{Z}}
+\def\I{\Gate{I}}
+\def\H{\Gate{H}}
+\def\QZero{\ket{0}}
+\def\QState#1{\ensuremath{\psi_{#1}}}
 
-
-\def\TF{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss}}~\textbf{true}
+\def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
+\def\TFMarked#1#2{\stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
+\def\TF{\TFMarked{\relax}{\relax}}
 \def\exp#1{\ensuremath{e^{#1}}}
-\newcommand{\Blank}{\mbox{\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
+\def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
+
 \def\Tall{\vrule width 0pt height 2em depth 0.5em}
+
+\def\SQB#1#2{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
+
+\def\SQBB{\SQB{\Blank[2em]}{\Blank[2em]}}
+
+\def\DQB#1#2#3#4{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
+\def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
+
 \begin{document}
 
 \begin{assignment}{Exam I}{9 March 2022}{End of class}
@@ -52,9 +75,47 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{30} 
-blah blah \TF{}
-Recall we defined the state \ket{y} on the Bloch Sphere as follows:
+\item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.
+\begin{itemize}
+    \item All unitary gates have an inverse, which is that gate's conjugate transpose \TF{}
+    \item On the Bloch sphere, recall that~$\theta$ is the angle off the $z$-zxis and~$\phi$ is the angle off the $x$-axis.  Consider a state \[ \ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
+    where $\alpha$ and $\beta$ are \emph{real} (no imaginary component).
+    Locating that state on the Bloch sphere, we must have $\phi=0$ \TF{}
+    \item 
+\end{itemize}
+
+\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.
+\begin{itemize}
+    \item The minimum number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
+    \item The minimum number of real parameters needed to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
+    \item On the Bloch sphere, \ket{0} is the \Blank{} pole.
+    \item The states \ket{+} and \ket{-} are found on which axis of the Bloch sphere? \Blank{}
+    \item Consider a state $\psi$ on the Block sphere which is an eigenstate of some unitary gate~$U$.  The maximum angular distance between~$\psi$ and~$U(\psi)$ is~\Blank{}~radians.
+    \item $\X\ket{0}=\BlQb$
+    \item $\Z\ket{+}=\BlQb$
+    \item $\H{\ket{0}}=\BlQb$
+    \item Consider this circuit:
+    
+    \adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}&\gate{X}\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \gate{H}\slice{\QState{1}}  & \qw\\
+\lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw
+\end{quantikz}}
+
+Fill in the column vectors to show your analysis of the states at the indicated positions of the circuit.
+
+$\QState{0}=\DQBB{}$  $\QState{1}=\DQBB{}$  $\QState{2}=\DQBB{}$
+
+Scratch space for your work:
+
+\vskip 2in
+\item Express \QState{2} as the product of two 1-quibit states:
+
+\[\QState{2} = \SQBB \otimes \SQBB \]
+
+\end{itemize}
+
+\item\Points{??}
 \begin{itemize}
 \item
 $\theta=\pi/2$ 
