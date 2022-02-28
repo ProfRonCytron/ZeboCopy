@@ -7,7 +7,7 @@
 \usepackage{fancybox}
 \usepackage{adjustbox}
 \usepackage{quantikz}
-\def\Gate#1{\textbf{#1}}
+\def\Gate#1{\mbox{\textbf{#1}}}
 \def\X{\Gate{X}}
 \def\Z{\Gate{Z}}
 \def\I{\Gate{I}}
@@ -21,6 +21,8 @@
 \def\exp#1{\ensuremath{e^{#1}}}
 \newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
 \def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
+\newcommand{\Blanket}[1][3em]{%
+\mbox{\ensuremath{|\,\Blank[#1]\,\rangle}}}
 
 \def\Tall{\vrule width 0pt height 2em depth 0.5em}
 
@@ -41,7 +43,7 @@
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
-work on your own without contact or conversations with other students.
+work on your own without contact or conversations with any person.
 Because this exam is given in a somewhat distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on us to be fair and flexible, especially if we have been unclear.
 
 
@@ -79,9 +81,9 @@ sure you filled in your information in the box above!)
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.
 \begin{itemize}
     \item All unitary gates have an inverse, which is that gate's conjugate transpose \TF{}
-    \item On the Bloch sphere, recall that~$\theta$ is the angle off the $z$-zxis and~$\phi$ is the angle off the $x$-axis.  Consider a state \[ \ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
+    \item On the Bloch sphere, recall that~$\theta$ is the angle off the $z$-axis and~$\phi$ is the angle off the $x$-axis.  Consider a state \[ \ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
     where $\alpha$ and $\beta$ are \emph{real} (no imaginary component).
-    Locating that state on the Bloch sphere, we must have $\phi=0$ \TF{}
+    Locating \QState{} on the Bloch sphere, we must have $\phi=0$. \TF{}
     \item 
 \end{itemize}
 
@@ -115,57 +117,7 @@ Scratch space for your work:
 
 \end{itemize}
 
-\item\Points{??}
-\begin{itemize}
-\item
-$\theta=\pi/2$ 
-\item  $\phi=\pi/2$.
-\end{itemize}
-\begin{enumerate}
-  \item\Points{2} What is \ket{y} in the standard basis?
-\begin{eqnarray*}
-   \ket{y} & = & \Blank \ket{0} + \Blank \ket{1}
-\end{eqnarray*}
-  \item\Points{2}  What is \ket{y}'s antipodal state (let's call that
-state $\ket{-y}$) in the standard
-basis?
-\begin{eqnarray*}
-   \ket{-y} & = & \Blank \ket{0} + \Blank \ket{1}
-\end{eqnarray*}
-  \item\Points{2} Show that \ket{y} and $\ket{-y}$ are orthogonal\footnote{%
-Remember to conjugate and transpose a ket to obtain its bra.}:
-\LeaveSpace{1in}
-  \item\Points{2} Show that \ket{y} is a unit vector:
-\LeaveSpace{1in}
-  \item\Points{2} The probability of measuring \ket{0} for state \ket{y} is~\Blank{}.
-\end{enumerate}
 
-\clearpage\item\Points{10}
-Consider the following matrix
-\[
-A_{\theta}=
-\begin{bmatrix}
-\cos{\theta} & \sin{\theta} \\
-\sin{\theta} & \cos{\theta}
-\end{bmatrix}
-\]
-In this problem you will analyze whether $A_{\theta}$ is suitable as a unitary quantum
-gate.
-\begin{enumerate}
- \item\Points{1} Is each column and row of $A_\theta$ a unit vector for all
-$\theta$?\Blank{}
- \item\Points{2} Show your work in support of your claim.
-\LeaveSpace{2cm}
- \item\Points{1} Are the columns of $A_\theta$ orthogonal for all $\theta$?\Blank{}
- \item\Points{2} Show your work in support of your claim.
-\LeaveSpace{2cm}
- \item\Points{1} Are the rows of $A_\theta$ orthogonal for all $\theta$?\Blank{}
- \item\Points{2} Show your work in support of your claim.
-\LeaveSpace{2cm}
-  \item\Points{1} Below explain why $A_\theta$ is or is not suitable as a
-unitary quantum gate.
-\LeaveSpace{2cm}
-\end{enumerate}
 \clearpage\item\Points{10}
 Consider the Elitzur--Vaidman bomb, but with a small change.  The
 polarizing filter attached to the bomb is
@@ -203,103 +155,51 @@ explaining carefully and clearly what is happening at each step.  Because
 this is a take-home exam, you are expected to draw and explain clearly and
 carefully in the space below.
 
-\clearpage\item\Points{5} Consider the following state expressed in
-the standard basis:
-\[ \ket{\psi} = \frac{1}{2}\left( \ket{00} + \ket{01} + \ket{10} + \ket{11} \right)
-\]
+\clearpage\item\Points{10} Block Sphere Orientiering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
 
-\begin{enumerate}
-  \item\Points{1} Can this be factored into the tensor product of two
-qubits?\Blank{}
-  \item\Points{4} Prove or disprove your claim below:
-\LeaveSpace{2cm}
-\end{enumerate}
 
-\item\Points{5} Consider the following state expressed in the standard
-basis:
-\[
-\ket{\psi} = 
-\frac{1}{\sqrt{2}}\ket{00} +
-\frac{1}{\sqrt{8}}\ket{01} +
-\frac{1}{\sqrt{8}}\ket{10} +
-\frac{1}{\sqrt{4}}\ket{11}
-\]
 
-\begin{enumerate}
-  \item\Points{1} Can this be factored into the tensor product of two
-qubits?\Blank{}
-  \item\Points{4} Prove or disprove your claim below:
-\LeaveSpace{2cm}
-\end{enumerate}
-\clearpage\item\Points{15}
-Recall the trigonometric identities:
-\begin{eqnarray*}
-   \sin(-\theta) & = & -\sin(\theta) \\
-   \cos(-\theta) & = & \ \ \,\cos(\theta)
-\end{eqnarray*}
-Recall the unitary gate for rotating by $\theta$ radians is:
-\[
-R_{\theta}=
-\begin{bmatrix}
-\cos{\theta} & -\sin{\theta} \\
-\sin{\theta} & \cos{\theta}
-\end{bmatrix}
-\]
-\begin{enumerate}
-  \item\Points{4} Fill in the matrix below to make a unitary gate that
-rotates by $-\theta$~radians, simplified using the above identities where
-possible:
-\[
-R_{-\theta}=
-\begin{bmatrix}
-\Blank{} & \Blank{} \\
-\Blank{} & \Blank{} 
-\end{bmatrix}
-\]
-\item\Points{6} Below show that $R_\theta$ and $R_{-\theta}$ are inverses
-of each other:
-\LeaveSpace{2cm}
-\item\Points{5} Consider a 2-qubit system in which one qubit is rotated by
-$\theta$~radians and the other is rotated by $-\theta$~radians.
-Below fill in the matrix that describes the effect of those rotations using
-a single $4\times4$ quantum gate on a two-qubit system.  Show your work below and
-fill in the matrix.
-\LeaveSpace{4cm}
-\[
-A=
-\begin{bmatrix}
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{} 
-\end{bmatrix}
-\]
-\end{enumerate}
+\begin{itemize}
+    \item We begin at the North pole of the Block sphere.
+    \item We are in state \BlQb{}.
+    \item We experience a \Gate{Y} gate.  We are now at \BlQb{}.
+    \item We return to the North pole.
+    \item We experience an \H{} gate.  We are now at \BlQb{}.
+    \item We experience a \Z{} gate.  We are now at state \BlQb{}.
+\end{itemize}
+
+
 \clearpage\item\Points{10}
-Recall the CNOT gate:
-\[
-CNOT =
-\begin{bmatrix}
-1 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0
-\end{bmatrix}
-\]
+Consider the following entangled state of three qubits:
+\[\frac{\ket{000}+\ket{111}}{\sqrt{2}}\]
+In lecture we studied how to entangle that third qubit with the first two.  In this problem we consider \emph{disentangling} the third qubit from the first two, without resorting to measurement.
+
+Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try useing the gate again to disentangle~$q_{3}$.
 \begin{enumerate}
-  \item\Points{3} Below fill in the matrix of the gate that is the \emph{inverse} of
-the CNOT gate:
-\[
-CNOT^{-1}=
-\begin{bmatrix}
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{}  \\
-\Blank{} & \Blank{} & \Blank{} & \Blank{} 
-\end{bmatrix}
-\]
- \item\Points{7} Below prove or disprove that the CNOT gate can be written as the
-tensor product of two $2\times2$ single qubit gates:
+  \item\Points{3} 
+  \[(\I\otimes\Gate{CNOT})(\ket{000}) = \Blanket{}\]
+\item\Points{3} 
+  \[(\I\otimes\Gate{CNOT})(\ket{111} = \Blanket{}\]
+\item By linearity,
+\[(\I\otimes\Gate{CNOT})\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right) = \frac{\Blank[4em]+\Blank[4em]}{\sqrt{2}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} \otimes \Blanket{}\]
+\item Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
+\item Measuring $q_3$ causes collapse of the other two qubits? \TF{}
+\item delete this and ask about measurements of all three. Prior to disentanglement, if $q_3$ is the first qubit to be measured, we expect to see the following value for $q_3$'s measurement how often?
+\begin{center}
+\begin{tabular}{c|c}
+Measures as &  What percent of the time? \\
+\ket{0} & \Blank \\
+\ket{1} & \Blank
+\end{tabular}
+\end{center}
+\item After disentanglement, we can achieve that same result for $q_3$ by placing which gate in the unmarked box?~\Blank{}
+\item The outcomes at this point seem identical:
+\begin{itemize}
+    \item Prior to entanglement, measurement of any qubit would yield either \ket{000} or \ket{111}.  The value of $q_3$ was equally likely to be \ket{0} or \ket{1}.  
+    \item After entanglement, with your gate in place above, we are equally likely to measure \ket{0} and \ket{1} for $q_3$.
+\end{itemize}
+\item Let's see if the states are the same.  What is the state of the system at \QState{x}?  Write your answer in the space below:
+
 \end{enumerate}
 
 \end{enumerate}
