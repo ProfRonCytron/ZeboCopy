@@ -7,7 +7,10 @@
 \usepackage{fancybox}
 \usepackage{adjustbox}
 \usepackage{quantikz}
-\usepackage{../../bbkey}
+\usepackage{../bbkey}
+\def\SquareOutline{%
+\path (0,0) rectangle (1,1);%
+}%
 \def\Gate#1{\mbox{\textbf{#1}}}
 \def\X{\Gate{X}}
 \def\Z{\Gate{Z}}
@@ -102,11 +105,11 @@ sure you filled in your information in the box above!)
 
 \clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
 \begin{itemize}
-    \item As evident on the Block sphere, the number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
+    \item As evident on the Bloch sphere, the number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
     \item As refleced in qiskit's \Gate{U} gate, the  number of real parameters necessary to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
     \item On the Bloch sphere, \ket{0} is the \Blank{} pole.
     \item The states \ket{+} and \ket{-} are found on which axis ($x$, $y$, or $z$) of the Bloch sphere?~\Blank{}
-    \item Consider a state $\psi$ on the Block sphere which is an eigenstate of some unitary gate~$U$.  The minimum nonnegative angular distance between~$\psi$ and~$U(\psi)$ on the Block sphere is~\Blank{}~radians.
+    \item Consider a state $\psi$ on the Bloch sphere which is an eigenstate of some unitary gate~$U$.  The minimum nonnegative angular distance between~$\psi$ and~$U(\psi)$ on the Bloch sphere is~\Blank{}~radians.
     \item $\X\ket{0}=\BlQb$
     \item $\Z\ket{+}=\BlQb$
     \item $\H{\ket{0}}=\BlQb$
@@ -148,12 +151,12 @@ or complete the proof below to show that it cannot be factored:
 
 
 
-\clearpage\item\Points{10} Block Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
+\clearpage\item\Points{10} Bloch Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
 
 
 
 \begin{itemize}
-    \item We begin at the North pole of the Block sphere.
+    \item We begin at the North pole of the Bloch sphere.
     \item We are in state \BlQb{}.
     \item We experience a \Gate{Y} gate.  We are now at \BlQb{}.
     \item We return to the North pole.
@@ -161,7 +164,48 @@ or complete the proof below to show that it cannot be factored:
     \item We experience a \Z{} gate.  We are now at state \BlQb{}.
 \end{itemize}
 
-\clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.
+\clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
+\begin{BBKey}
+\begin{center}
+\BBBasis{}
+\end{center}
+\end{BBKey}
+\def\RowU#1#2#3#4{%
+\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & &  \\ \hline}
+\def\Row#1#2#3{%
+\RowU{\STD}{#1}{#2}{#3}}
+\def\RowX#1#2#3{%
+\RowU{\HDM}{#1}{#2}{#3}}
+
+Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note:
+\begin{description}
+  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), if any, would Alice and Bob believe they share.
+  \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
+\end{description}
+
+\begin{BBKey}
+\begin{center}\Large
+\begin{tabular}{c|c||c|c||c|c||c}
+\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
+Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
+\Row{\BBRt}{\STD}{\BBRt}
+\Row{\BBUp}{\STD}{\BBUp}
+\Row{\BBRt}{\STD}{\BBRt}
+\Row{\BBUp}{\HDM}{\BBNe}
+\Row{\BBRt}{\HDM}{\BBSe}
+\RowX{\BBNe}{\HDM}{\BBSe}
+\RowX{\BBSe}{\HDM}{\BBSe}
+\RowX{\BBNe}{\HDM}{\BBNe}
+\RowX{\BBNe}{\HDM}{\BBNe}
+
+\end{tabular}
+\end{center}
+\end{BBKey}
+\begin{itemize}
+    \item Alice thinks the shared key is~\Blank[4in]{}
+    \item Bob thinks the shared key is~\Blank[4in]{}
+    \item Eve could have been detected in how many rows of your table?~\Blank{}
+\end{itemize}
 
 \clearpage\item\Points{10}
 Consider the following entangled state of three qubits:
