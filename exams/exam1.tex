@@ -98,9 +98,11 @@ sure you filled in your information in the box above!)
 \begin{itemize}
     \item All unitary gates have an inverse, which is that gate's conjugate transpose \TF{}
     \item On the Bloch sphere, recall that~$\theta$ is the angle off the $z$-axis and~$\phi$ is the angle off the $x$-axis.  Consider a state \[ \ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
-    where $\alpha$ and $\beta$ are \emph{real} (no imaginary component).
-    Locating \QState{} on the Bloch sphere, we must have $\phi=0$. \TF{}
-    \item Measurement operators are necessarily unitary. \TF{}
+    where $\alpha$ and $\beta$ are strictly \emph{real} (no imaginary component).
+    Locating \QState{} on the Bloch sphere, we must have $\phi=0$.~\TF{}
+    \item The states $\alpha\ket{0}+\beta\ket{1}$ and $\alpha\ket{0}-\beta\ket{1}$ differ only by a global phase.~\TF{}
+    \item The states $\alpha\ket{0}-\beta\ket{1}$ and $-\alpha\ket{0}+\beta\ket{1}$ differ only by a global phase.~\TF{}
+    \item The conjugate transpose of \SQB{1}{i} is $(1\ \  i)$.~\TF{}
 \end{itemize}
 
 \clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
@@ -114,6 +116,11 @@ sure you filled in your information in the box above!)
     \item $\Z\ket{+}=\BlQb$
     \item $\H{\ket{0}}=\BlQb$
     \item Suppose a single-qubit quantum system is measured ``using'' an operator $M$.  Then the quantum system collapses into a state \QState{}, where \QState{} is an~\Blank{} of~$M$.
+    \item Complete the matrix below so that it is unitary:
+    \[ \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
+        1 & \Blank[2em]{} \\
+        -i & 1
+    \end{pmatrix*} \]
 \end{itemize}
 \clearpage\item\Points{20}
 %%%
@@ -222,21 +229,6 @@ Recall that we entangle the third new qubit $q_{3}$ with those that came before 
 \[(\I\otimes\Gate{CNOT})\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right) = \frac{\Blank[4em]+\Blank[4em]}{\sqrt{2}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} \otimes \Blanket{}\]
 \item Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
 \item Measuring $q_3$ causes collapse of the other two qubits? \TF{}
-\item delete this and ask about measurements of all three. Prior to disentanglement, if $q_3$ is the first qubit to be measured, we expect to see the following value for $q_3$'s measurement how often?
-\begin{center}
-\begin{tabular}{c|c}
-Measures as &  What percent of the time? \\
-\ket{0} & \Blank \\
-\ket{1} & \Blank
-\end{tabular}
-\end{center}
-\item After disentanglement, we can achieve that same result for $q_3$ by placing which gate in the unmarked box?~\Blank{}
-\item The outcomes at this point seem identical:
-\begin{itemize}
-    \item Prior to entanglement, measurement of any qubit would yield either \ket{000} or \ket{111}.  The value of $q_3$ was equally likely to be \ket{0} or \ket{1}.  
-    \item After entanglement, with your gate in place above, we are equally likely to measure \ket{0} and \ket{1} for $q_3$.
-\end{itemize}
-\item Let's see if the states are the same.  What is the state of the system at \QState{x}?  Write your answer in the space below:
 
 \end{enumerate}
 
