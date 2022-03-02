@@ -20,7 +20,7 @@
 \def\QState#1{\ensuremath{\psi_{#1}}}
 
 \def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
-\def\TFMarked#1#2{\stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
+\def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
 \def\TF{\TFMarked{\relax}{\relax}}
 \def\exp#1{\ensuremath{e^{#1}}}
 \newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
@@ -43,11 +43,11 @@
 
 \def\FactorProof{%
 \begin{align*}
-\SQB{a}{b} \otimes \SQB{c}{d} &= \DQBB{} \mbox{ (copy this from your answer above)}\\
-a\cdot c &= \Blank \\
-a\cdot d &= \Blank \\
-b\cdot c &= \Blank \\
-b\cdot d &= \Blank
+\SQB{a}{b} \otimes \SQB{c}{d} &= \DQBB{} \mbox{ (copy this from your \QState{2} answer above)}\\
+a\cdot c &= \Blank[3em] \\
+a\cdot d &= \Blank[3em] \\
+b\cdot c &= \Blank[3em] \\
+b\cdot d &= \Blank[3em]
 \end{align*}
 What is the contradiction, if any?
 \LeaveSpace{2in}
@@ -66,6 +66,8 @@ Because this exam is given in a somewhat distributed manner, no questions will b
 Your work must be legible.  Work that is
 difficult to read will receive no credit.  There is a blank page at the end
 if you want to show extra work there.
+
+There are 118 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -94,24 +96,33 @@ sure you filled in your information in the box above!)
 \clearpage
 \begin{enumerate}
 \item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
-\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
+
+Each response is worth~3 points. You can miss any two responses and still get full credit for this portion.
 \begin{itemize}
-    \item All unitary gates have an inverse, which is that gate's conjugate transpose \TF{}
-    \item On the Bloch sphere, recall that~$\theta$ is the angle off the $z$-axis and~$\phi$ is the angle off the $x$-axis.  Consider a state \[ \ket{\psi}=\alpha\ket{0}+\beta\ket{1}\]
-    where $\alpha$ and $\beta$ are strictly \emph{real} (no imaginary component).
-    Locating \QState{} on the Bloch sphere, we must have $\phi=0$.~\TF{}
+    \item Every unitary matrix has an inverse, which is that matrix's conjugate transpose.~\TF{}
     \item The states $\alpha\ket{0}+\beta\ket{1}$ and $\alpha\ket{0}-\beta\ket{1}$ differ only by a global phase.~\TF{}
     \item The states $\alpha\ket{0}-\beta\ket{1}$ and $-\alpha\ket{0}+\beta\ket{1}$ differ only by a global phase.~\TF{}
-    \item The conjugate transpose of \SQB{1}{i} is $(1\ \  i)$.~\TF{}
+    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-i}$ differ only by a global phase.~\TF{}
+    \item Consider a state $\QState{}=\alpha\ket{0}+\beta\ket{1}$, and let $\QState{}^{\star}$ denote the conjugate transpose of \QState{}.   Then $\QState{}^{\star}\times\QState{}=0$.~\TF{}
+    \item The conjugate transpose of \SQB{1}{i} is $\left(1\ \  i\right)$.~\TF{}
+    \item The actions of any sequence of unitary gates applied to a single qubit can be represented by a single, unitary matrix.~\TF{}
+    \item If the gate $A$ is applied to $\QState{}$ and the resulting state is then processed by gate $B$, the result is $A(B(\QState{}))$~\TF{}
+    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}=\Gate{X}$~\TF{}
+    \item The column vector for representing the state of an $n$-qubit system has $n$ entries.~\TF{}
+    \item Given the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$, measuring either qubit determines the value of the other qubit.~\TF{}
+    \item The state $\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ is an entangled state.~\TF{}
 \end{itemize}
 
-\clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
+\clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
+
+Each response is worth~2 points.  You can miss one response and get full credit for this portion.
 \begin{itemize}
     \item As evident on the Bloch sphere, the number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
-    \item As refleced in qiskit's \Gate{U} gate, the  number of real parameters necessary to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
+    \item As reflected in qiskit's \Gate{U} gate, the  number of real parameters necessary to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
     \item On the Bloch sphere, \ket{0} is the \Blank{} pole.
     \item The states \ket{+} and \ket{-} are found on which axis ($x$, $y$, or $z$) of the Bloch sphere?~\Blank{}
-    \item Consider a state $\psi$ on the Bloch sphere which is an eigenstate of some unitary gate~$U$.  The minimum nonnegative angular distance between~$\psi$ and~$U(\psi)$ on the Bloch sphere is~\Blank{}~radians.
+    \item Consider a state $\psi$ on the Bloch sphere which \underline{is an eigenstate} of some unitary gate~$U$.  The minimum (angular) distance between~$\psi$ and~$U(\psi)$ on the Bloch sphere is~\Blank{}~radians.
     \item $\X\ket{0}=\BlQb$
     \item $\Z\ket{+}=\BlQb$
     \item $\H{\ket{0}}=\BlQb$
@@ -120,7 +131,12 @@ sure you filled in your information in the box above!)
     \[ \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
         1 & \Blank[2em]{} \\
         -i & 1
-    \end{pmatrix*} \]
+    \end{pmatrix*} \hbox to 4in{\hss}\]
+    \item Complete the matrix below so that it yields the result shown and so the matrix is unitary:
+    \[
+    \begin{pmatrix*}[r] 1 & \Blank[1.5em] \\ 0& \Blank[1.5em]\end{pmatrix*} \frac{1}{\sqrt{2}}\SQB{1}{1} = \frac{1}{\sqrt{2}}\SQB{1}{i}\hbox to 3in{\hss}
+    \]
+    \item For all $\theta$, $\left|e^{i\ \theta}\right|=\Blank$
 \end{itemize}
 \clearpage\item\Points{20}
 %%%
@@ -160,6 +176,8 @@ or complete the proof below to show that it cannot be factored:
 
 \clearpage\item\Points{10} Bloch Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
 
+Each response is worth 1 point.
+
 
 
 \begin{itemize}
@@ -168,7 +186,8 @@ or complete the proof below to show that it cannot be factored:
     \item We experience a \Gate{Y} gate.  We are now at \BlQb{}.
     \item We return to the North pole.
     \item We experience an \H{} gate.  We are now at \BlQb{}.
-    \item We experience a \Z{} gate.  We are now at state \BlQb{}.
+    \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
+    \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
 \end{itemize}
 
 \clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
