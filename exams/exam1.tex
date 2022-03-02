@@ -240,14 +240,14 @@ In lecture we studied how to entangle that third qubit with the first two.  In t
 
 Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try useing the gate again to disentangle~$q_{3}$.
 \begin{enumerate}
-  \item\Points{3} 
+  \item\Points{2} 
   \[(\I\otimes\Gate{CNOT})(\ket{000}) = \Blanket{}\]
-\item\Points{3} 
+\item\Points{2} 
   \[(\I\otimes\Gate{CNOT})(\ket{111} = \Blanket{}\]
-\item By linearity,
+\item \Points{3} By linearity,
 \[(\I\otimes\Gate{CNOT})\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right) = \frac{\Blank[4em]+\Blank[4em]}{\sqrt{2}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} \otimes \Blanket{}\]
-\item Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
-\item Measuring $q_3$ causes collapse of the other two qubits? \TF{}
+\item \Points{2} Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
+\item \Points{1} Measuring $q_3$ causes collapse of the other two qubits? \TF{}
 
 \end{enumerate}
 
