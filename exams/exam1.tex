@@ -238,7 +238,7 @@ Consider the following entangled state of three qubits:
 \[\frac{\ket{000}+\ket{111}}{\sqrt{2}}\]
 In lecture we studied how to entangle that third qubit with the first two.  In this problem we consider \emph{disentangling} the third qubit from the first two, without resorting to measurement.
 
-Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try useing the gate again to disentangle~$q_{3}$.
+Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try using the gate again to disentangle~$q_{3}$.
 \begin{enumerate}
   \item\Points{2} 
   \[(\I\otimes\Gate{CNOT})(\ket{000}) = \Blanket{}\]
