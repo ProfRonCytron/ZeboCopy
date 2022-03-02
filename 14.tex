@@ -43,7 +43,7 @@
 \only<5->{%
 \begin{itemize}
    \item<5-> Each square's operator is already expressed as a product of two gates.
-   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the inputs are entangled.}
+   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the input or measurement basis is entangled.}
    \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
    \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
 \end{itemize}
@@ -200,7 +200,6 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \only<1-5>{%
 \begin{itemize}
     \item<1-> \Alice{} measures her two qubits \emph{once}, in a basis prescribed for her row.
-    \item<2-> State \QState{} after measurement is an eigenstate for each operator in her row.
     \item<3-> However, each operator may have a \emph{different eigenvalue} associated with \QState{}.
     \item<4-> \Alice{} reports the eigenvalue for each operator in her row, knowing their product is~\ColorOne{$+1$}.
     \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~\ColorTwo{$-1$}.
