@@ -5,6 +5,7 @@
 *.toc
 *.out
 /*.pdf
+/exams/*.pdf
 /exercises/*.pdf
 /exercises/qiskit/course-setup/*.pdf
 /exercises/qiskit/q*/q*-dist
