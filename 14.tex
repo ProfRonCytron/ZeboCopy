@@ -43,7 +43,7 @@
 \only<5->{%
 \begin{itemize}
    \item<5-> Each square's operator is already expressed as a product of two gates.
-   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the inputs are entangled.}
+   \item<6-> A two-qubit measurement can be performed separately on each qubit\visible<7->{, \emph{unless} the input or measurement basis is entangled.}
    \item<8-> A player's qubits are not initially entangled with each other!  Each is entangled with one of the \emph{other player's} qubits.
    \item<9-> When measured separately, the overall square's result is the product of the measurements' eigenvalues\visible<10->{, \alert<10>{possibly complimented}.}
 \end{itemize}
@@ -140,6 +140,7 @@ When operators are applied left-to-right in a circuit, their associated matrices
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}
+We perform operations left-to-right in a row.  Note that the matrices multiply in the opposite order.
 }
 \end{frame}
 
@@ -174,12 +175,14 @@ When operators are applied left-to-right in a circuit, their associated matrices
     \MPSoln{}
 \end{MPSquareEnv}}
 \end{center}
+We perform operations top-down in a column.  Note that the matrices multiply in the opposite order.
 }
 \end{frame}
 
 \begin{frame}{Summary}{Up to this point}
 \begin{itemize}[<+->]
-    \item The results we have obtained hold for any initial state.
+    \item The results we have obtained hold for \emph{any} initial state.
+    \item The game's initial states, each \TwoSup{00}{11}, are special because they cause \Alice{} and \Bob{} to agree on a value in their common square.
     \item For \Alice{}, the product of measurements along any row is~$+1$.
     \item For \Bob{}, the product of measurements along any column is~$-1$.
     \item While the final results are confirmed, the proof is not instructive concerning the three measurements each player is supposed to report.
@@ -197,15 +200,14 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \only<1-5>{%
 \begin{itemize}
     \item<1-> \Alice{} measures her two qubits \emph{once}, in a basis prescribed for her row.
-    \item<2-> State \QState{} after measurement is an eigenstate for each operator in her row.
     \item<3-> However, each operator may have a \emph{different eigenvalue} associated with \QState{}.
-    \item<4-> Alice reports the eigenvalue for each operator in her row, knowing their product is~$+1$.
-    \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~$-1$.
+    \item<4-> \Alice{} reports the eigenvalue for each operator in her row, knowing their product is~\ColorOne{$+1$}.
+    \item<5-> \Bob{} uses a different basis prescribed for his column, with his eigenvalues multiplying to~\ColorTwo{$-1$}.
 \end{itemize}}
 \only<6-10>{%
 \begin{itemize}
     \item<6-> \Alice{} knows the operators of her rows.
-    \item<7-> She uses \texttt{MATLAB} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{0},\QState{1},\QState{2},\QState{3}}.
+    \item<7-> She uses \MATLAB{} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{0},\QState{1},\QState{2},\QState{3}}.
     \item<8-> The matrix (gate) $T$ that transforms the standard basis to \NamedBasis{B} has those states as its columns.
     \item<9-> The gate \Conj{T} transforms from \NamedBasis{B} to the standard basis.
     \item<10-> Because we perform only one measurement, we need only \Conj{T} followed by a measurement in the standard basis.
@@ -258,12 +260,12 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \only<1>{%
 \begin{itemize}
     \item The matrix $T$ is formed from the common eigenbasis of three operators in a given \ColorOne{row} or \ColorTwo{column}.
-    \item We can verify that $T$ is unitary and that each column is an eigenvector for each of the three operators.
+    \item \MATLAB{} can verify that $T$ is unitary and that each column is an eigenvector for each of the three operators.
 \end{itemize}}%
 \only<2>{%
 \begin{itemize}
     \item A table of eigenvalues is given for each of the three operators and each of the four basis states.
-    \item We can verify the entries are correct.
+    \item \MATLAB{} can verify the entries are correct.
     \item The entries for a given basis state multiply to~$+1$ for \Alice{} and to~$-1$ for \Bob. 
 \end{itemize}
 }
@@ -285,7 +287,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \def\C{\Col{0}{0}{1}{0}}
 \def\D{\Col{0}{0}{0}{1}}
 \def\EigA{\Row{\PP}{\PP}{\PP}}
-\def\EigB{\Row{\PP}{\MM}{\PP}}
+\def\EigB{\Row{\PP}{\MM}{\MM}}
 \def\EigC{\Row{\MM}{\PP}{\MM}}
 \def\EigD{\Row{\MM}{\MM}{\PP}}
 \only<1-5>{\Bases{}}

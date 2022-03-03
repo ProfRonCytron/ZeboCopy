@@ -1,0 +1,259 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage{course}
+\usepackage{cse468-Spring22}
+\usepackage{program}
+\usepackage{fancybox}
+\usepackage{adjustbox}
+\usepackage{quantikz}
+\usepackage{../bbkey}
+\def\SquareOutline{%
+\path (0,0) rectangle (1,1);%
+}%
+\def\Gate#1{\mbox{\textbf{#1}}}
+\def\X{\Gate{X}}
+\def\Z{\Gate{Z}}
+\def\I{\Gate{I}}
+\def\H{\Gate{H}}
+\def\QZero{\ket{0}}
+\def\QState#1{\ensuremath{\psi_{#1}}}
+
+\def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
+\def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
+\def\TF{\TFMarked{\relax}{\relax}}
+\def\exp#1{\ensuremath{e^{#1}}}
+\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
+\def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
+\newcommand{\Blanket}[1][3em]{%
+\mbox{\ensuremath{|\,\Blank[#1]\,\rangle}}}
+
+\def\Tall{\vrule width 0pt height 2em depth 0.5em}
+
+\def\SQB#1#2{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
+
+\def\SQBB{\SQB{\Blank[2em]}{\Blank[2em]}}
+
+\def\DQB#1#2#3#4{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
+\def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
+
+\def\FactorProof{%
+\begin{align*}
+\SQB{a}{b} \otimes \SQB{c}{d} &= \DQBB{} \mbox{ (copy this from your \QState{2} answer above)}\\
+a\cdot c &= \Blank[3em] \\
+a\cdot d &= \Blank[3em] \\
+b\cdot c &= \Blank[3em] \\
+b\cdot d &= \Blank[3em]
+\end{align*}
+What is the contradiction, if any?
+\LeaveSpace{2in}
+}
+
+\begin{document}
+
+\begin{assignment}{Exam I}{9 March 2022}{End of class}
+
+{\small {\large \fbox{READ THIS before starting!}}
+This exam is open-book, open-notes, open-Internet, but you must do this
+work on your own without contact or conversations with any person.
+Because this exam is given in a somewhat distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on us to be fair and flexible, especially if we have been unclear.
+
+
+Your work must be legible.  Work that is
+difficult to read will receive no credit.  There is a blank page at the end
+if you want to show extra work there.
+
+There are 118 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+
+You must sign the pledge below for your exam to count.  Any cheating will
+cause the students involved to receive an F for this course. Other unpleasant
+actions
+may be taken.
+
+You must fill in your identifying information correctly.  
+}
+
+\begin{center}\large
+\begin{tabular}{|c|c|c|} \hline
+\multicolumn{3}{|c|}{{\bf Print  clearly} the following information:}  \\ \hline
+\multicolumn{3}{|l|}{Name (print clearly):\Tall{}\hbox to 3in{\hss}}  \\ \hline
+\multicolumn{3}{|l|}{Student 6-digit ID (print {\it really} clearly):\Tall{}\hbox to 3in{\hss}} \\ \hline
+\end{tabular}
+\end{center}
+
+{\bf Pledge:} On my honor, I have neither
+given nor received any unauthorized aid on this exam.
+
+Signed:  \Blank\Blank\Blank\Blank \\ \hbox to 5em{\hss}(Be 
+sure you filled in your information in the box above!)
+%
+%
+%
+\clearpage
+\begin{enumerate}
+\item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
+
+Each response is worth~3 points. You can miss any two responses and still get full credit for this portion.
+\begin{itemize}
+    \item Every unitary matrix has an inverse, which is that matrix's conjugate transpose.~\TF{}
+    \item The states $\alpha\ket{0}+\beta\ket{1}$ and $\alpha\ket{0}-\beta\ket{1}$ differ only by a global phase.~\TF{}
+    \item The states $\alpha\ket{0}-\beta\ket{1}$ and $-\alpha\ket{0}+\beta\ket{1}$ differ only by a global phase.~\TF{}
+    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-i}$ differ only by a global phase.~\TF{}
+    \item Consider a state $\QState{}=\alpha\ket{0}+\beta\ket{1}$, and let $\QState{}^{\star}$ denote the conjugate transpose of \QState{}.   Then $\QState{}^{\star}\times\QState{}=0$.~\TF{}
+    \item The conjugate transpose of \SQB{1}{i} is $\left(1\ \  i\right)$.~\TF{}
+    \item The actions of any sequence of unitary gates applied to a single qubit can be represented by a single, unitary matrix.~\TF{}
+    \item If the gate $A$ is applied to $\QState{}$ and the resulting state is then processed by gate $B$, the result is $A(B(\QState{}))$~\TF{}
+    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}=\Gate{X}$~\TF{}
+    \item The column vector for representing the state of an $n$-qubit system has $n$ entries.~\TF{}
+    \item Given the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$, measuring either qubit determines the value of the other qubit.~\TF{}
+    \item The state $\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ is an entangled state.~\TF{}
+\end{itemize}
+
+\clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
+
+Each response is worth~2 points.  You can miss one response and get full credit for this portion.
+\begin{itemize}
+    \item As evident on the Bloch sphere, the number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
+    \item As reflected in qiskit's \Gate{U} gate, the  number of real parameters necessary to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
+    \item On the Bloch sphere, \ket{0} is the \Blank{} pole.
+    \item The states \ket{+} and \ket{-} are found on which axis ($x$, $y$, or $z$) of the Bloch sphere?~\Blank{}
+    \item Consider a state $\psi$ on the Bloch sphere which \underline{is an eigenstate} of some unitary gate~$U$.  The minimum (angular) distance between~$\psi$ and~$U(\psi)$ on the Bloch sphere is~\Blank{}~radians.
+    \item $\X\ket{0}=\BlQb$
+    \item $\Z\ket{+}=\BlQb$
+    \item $\H{\ket{0}}=\BlQb$
+    \item Suppose a single-qubit quantum system is measured ``using'' an operator $M$.  Then the quantum system collapses into a state \QState{}, where \QState{} is an~\Blank{} of~$M$.
+    \item Complete the matrix below so that it is unitary:
+    \[ \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
+        1 & \Blank[2em]{} \\
+        -i & 1
+    \end{pmatrix*} \hbox to 4in{\hss}\]
+    \item Complete the matrix below so that it yields the result shown and so the matrix is unitary:
+    \[
+    \begin{pmatrix*}[r] 1 & \Blank[1.5em] \\ 0& \Blank[1.5em]\end{pmatrix*} \frac{1}{\sqrt{2}}\SQB{1}{1} = \frac{1}{\sqrt{2}}\SQB{1}{i}\hbox to 3in{\hss}
+    \]
+    \item For all $\theta$, $\left|e^{i\ \theta}\right|=\Blank$
+\end{itemize}
+\clearpage\item\Points{20}
+%%%
+%%%
+\long\def\CircProb#1{%
+    \item\Points{10} Consider this circuit:
+\begin{center}   
+    \adjustbox{valign=t,scale=1.5}{\begin{quantikz}
+#1
+\end{quantikz}}\end{center}
+
+Fill in the column vectors to show your analysis of the states at the indicated positions of the circuit.  The rest of this page is scratch space:  \textbf{the parts to fill in are on the next page}.
+\Continued{}
+
+$\QState{0}=\DQBB{}$  $\QState{1}=\DQBB{}$  $\QState{2}=\DQBB{}$
+
+\item Either Express \QState{2} as the product of two 1-quibit states:
+
+\[\QState{2} = \SQBB \otimes \SQBB \]
+or complete the proof below to show that it cannot be factored:
+\FactorProof{}
+}
+%%%
+%%%
+\begin{itemize}
+\CircProb{\lstick{\QZero{}}&\gate{X}\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \gate{H}\slice{\QState{1}}  & \qw\\
+\lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw}
+
+\CircProb{
+\lstick{\QZero{}}&\gate{H}\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \gate{X}\slice{\QState{1}}  & \qw\\
+\lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw}
+
+\end{itemize}
+
+
+
+
+\clearpage\item\Points{10} Bloch Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
+
+Each response is worth 1 point.
+
+
+
+\begin{itemize}
+    \item We begin at the North pole of the Bloch sphere.
+    \item We are in state \BlQb{}.
+    \item We experience a \Gate{Y} gate.  We are now at \BlQb{}.
+    \item We return to the North pole.
+    \item We experience an \H{} gate.  We are now at \BlQb{}.
+    \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
+    \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
+\end{itemize}
+
+\clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
+\begin{BBKey}
+\begin{center}
+\BBBasis{}
+\end{center}
+\end{BBKey}
+\def\RowU#1#2#3#4{%
+\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & &  \\ \hline}
+\def\Row#1#2#3{%
+\RowU{\STD}{#1}{#2}{#3}}
+\def\RowX#1#2#3{%
+\RowU{\HDM}{#1}{#2}{#3}}
+
+Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note:
+\begin{description}
+  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), if any, would Alice and Bob believe they share.
+  \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
+\end{description}
+
+\begin{BBKey}
+\begin{center}\Large
+\begin{tabular}{c|c||c|c||c|c||c}
+\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
+Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
+\Row{\BBRt}{\STD}{\BBRt}
+\Row{\BBUp}{\STD}{\BBUp}
+\Row{\BBRt}{\STD}{\BBRt}
+\Row{\BBUp}{\HDM}{\BBNe}
+\Row{\BBRt}{\HDM}{\BBSe}
+\RowX{\BBNe}{\HDM}{\BBSe}
+\RowX{\BBSe}{\HDM}{\BBSe}
+\RowX{\BBNe}{\HDM}{\BBNe}
+\RowX{\BBNe}{\HDM}{\BBNe}
+
+\end{tabular}
+\end{center}
+\end{BBKey}
+\begin{itemize}
+    \item Alice thinks the shared key is~\Blank[4in]{}
+    \item Bob thinks the shared key is~\Blank[4in]{}
+    \item Eve could have been detected in how many rows of your table?~\Blank{}
+\end{itemize}
+
+\clearpage\item\Points{10}
+Consider the following entangled state of three qubits:
+\[\frac{\ket{000}+\ket{111}}{\sqrt{2}}\]
+In lecture we studied how to entangle that third qubit with the first two.  In this problem we consider \emph{disentangling} the third qubit from the first two, without resorting to measurement.
+
+Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try using the gate again to disentangle~$q_{3}$.
+\begin{enumerate}
+  \item\Points{2} 
+  \[(\I\otimes\Gate{CNOT})(\ket{000}) = \Blanket{}\]
+\item\Points{2} 
+  \[(\I\otimes\Gate{CNOT})(\ket{111} = \Blanket{}\]
+\item \Points{3} By linearity,
+\[(\I\otimes\Gate{CNOT})\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right) = \frac{\Blank[4em]+\Blank[4em]}{\sqrt{2}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} \otimes \Blanket{}\]
+\item \Points{2} Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
+\item \Points{1} Measuring $q_3$ causes collapse of the other two qubits? \TF{}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{assignment}
+\Bpage{}
+
+\end{document}
