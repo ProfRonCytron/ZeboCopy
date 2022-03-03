@@ -1,2 +1,4 @@
+For E91, be more quantitative about probability of seeing the various outcomes
+
 Cover measurement earlier
 Not sure physics stuff plays well with CSE students
