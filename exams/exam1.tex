@@ -151,22 +151,22 @@ Each response is worth~2 points.  You can miss one response and get full credit 
 Fill in the column vectors to show your analysis of the states at the indicated positions of the circuit.  The rest of this page is scratch space:  \textbf{the parts to fill in are on the next page}.
 \Continued{}
 
-$\QState{0}=\DQBB{}$  $\QState{1}=\DQBB{}$  $\QState{2}=\DQBB{}$
+$\ket{\QState{0}}=\DQBB{}$  $\ket{\QState{1}}=\DQBB{}$  $\ket{\QState{2}}=\DQBB{}$
 
-\item Either Express \QState{2} as the product of two 1-quibit states:
+\item Either Express \ket{\QState{2}} as the product of two 1-quibit states:
 
-\[\QState{2} = \SQBB \otimes \SQBB \]
+\[\ket{\QState{2}} = \SQBB \otimes \SQBB \]
 or complete the proof below to show that it cannot be factored:
 \FactorProof{}
 }
 %%%
 %%%
 \begin{itemize}
-\CircProb{\lstick{\QZero{}}&\gate{X}\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \gate{H}\slice{\QState{1}}  & \qw\\
+\CircProb{\lstick{\QZero{}}&\gate{X}\slice{\ket{\QState{0}}} & \ctrl{1}\slice{\ket{\QState{1}}} & \gate{H}\slice{\ket{\QState{2}}}  & \qw\\
 \lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw}
 
 \CircProb{
-\lstick{\QZero{}}&\gate{H}\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \gate{X}\slice{\QState{1}}  & \qw\\
+\lstick{\QZero{}}&\gate{H}\slice{\ket{\QState{0}}} & \ctrl{1}\slice{\ket{\QState{1}}} & \gate{X}\slice{\ket{\QState{2}}}  & \qw\\
 \lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw}
 
 \end{itemize}
@@ -197,7 +197,7 @@ Each response is worth 1 point.
 \end{center}
 \end{BBKey}
 \def\RowU#1#2#3#4{%
-\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & &  \\ \hline}
+\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & & & {\small\TF{}}  \\ \hline}
 \def\Row#1#2#3{%
 \RowU{\STD}{#1}{#2}{#3}}
 \def\RowX#1#2#3{%
@@ -205,7 +205,7 @@ Each response is worth 1 point.
 
 Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note:
 \begin{description}
-  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), if any, would Alice and Bob believe they share.
+  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), \emph{if any}, would Alice and Bob each believe they share.
   \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
 \end{description}
 
@@ -228,8 +228,8 @@ Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
 \end{center}
 \end{BBKey}
 \begin{itemize}
-    \item Alice thinks the shared key is~\Blank[4in]{}
-    \item Bob thinks the shared key is~\Blank[4in]{}
+    \item Alice believes the shared key is~\Blank[4in]{}
+    \item Bob believes the shared key is\ \ ~\Blank[4in]{}
     \item Eve could have been detected in how many rows of your table?~\Blank{}
 \end{itemize}
 
