@@ -257,16 +257,17 @@ How much should they publish?
 }
 \end{frame}
 
+\section*{Catching Eve}
+
 \begin{frame}{Analysis for detecting Eve}
 \Vskip{-3em}\begin{itemize}[<+->]
-    \item Suppose Alice and Bob publish $n$ measurements from states where they agreed on basis.  They essentially disclose $n$ bits from their agreed-upon key.
-    \item For each one of those bits, the probability of Eve agreeing (or disagreeing) on basis while intercepting is $\frac{1}{2}$.
-    \item The probability of Eve being that lucky (picking the same basis as Alice and Bob) for $n$ such measurements is thus $\left(\frac{1}{2}\right)^{n}$.
+    \item Suppose Alice and Bob disclose $n$ bits from their agreed-upon key.
+    \item When Eve agrees with Alice's basis, probability~$\frac{1}{2}$, she is undetectable.
+    \item In the other $\frac{1}{2}$ of the cases, her measurement changes basis. If Bob agrees with Alice's basis, he measures the bit (0 or 1) Alice sent $\frac{1}{2}$ the time.
+    \item The probability of Eve being lucky (picking the same basis as Alice and Bob, or differing in basis but Bob can't tell) for $n$ such measurements is thus $\left(\frac{3}{4}\right)^{n}$.
     \item The probability of catching Eve after $n$ disclosed bits is thus
-    \[ 1 - \left(\frac{1}{2}\right)^{n} \]
-    \begin{itemize}
-    \item They can be 99\% certain of Eve's absence if they find no discrepancy after disclosing $7$ measurements. 
-    \end{itemize}
+    \[ 1 - \left(\frac{3}{4}\right)^{n} \]
+    They can be 99\% certain of Eve's absence if they find no discrepancy after disclosing $17$ measurements. 
     \item To make sure Eve is surprised, the disclosed measurements should be randomly drawn from the mutual key.  Alice and Bob can discard those disclosed bits.
 \end{itemize}
 
