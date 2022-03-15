@@ -6,7 +6,7 @@
    \item The technique we study here is a useful and common trick for analyzing function values in superposition.
    \item The effect is not something that is obvious or directly seen in the circuit.
    \item It follows from mathematical analysis of state---analysis we have performed all semester.
-   \item The surprise is that the state of the bottom qubit has an interesting effect on the to qubit(s).
+   \item The surprise is that the state of the bottom qubit has an interesting effect on the top qubit(s).
 \end{itemize}
 
 \end{frame}
@@ -17,6 +17,7 @@
 \begin{Oracle}[scale=0.75]{$U_f$}{\alert<1>{$x$}}{\alert<2,5>{$y$}}{\alert<4,5>{$x$}}{\alert<3>{\Xor{y}{f(x)}}}
 \end{Oracle}
 }{%
+Here is what we saw:
 \begin{itemize}[<+->]
     \item The input $x$ is the uniform superposition of all values.
     \item The input $y$ is \ket{-}.
@@ -93,8 +94,8 @@ Case $f(x)=1$
 = \TensProd{\alert<19-20>{\NegF{x}}\ket{x}}{\ket{-}}\]}
 \begin{itemize}
     \item<20-> Phase kickback associates the function result as the \emph{sign} on the state \ket{x\,-}.
-    \item<21-> That sign is \emph{not} a global phase, with bottom qubit result \QMinus{}.
-    \item<22-> The sign imposes a phase change relative to the \QZero{} and \QOne{} terms.
+    \item<21-> When $x$ is a superposition, that sign is \emph{not} a global phase.
+    \item<22-> The sign can impose a phase change relative to the \QZero{} and \QOne{} terms.
 \end{itemize}
 }
     
