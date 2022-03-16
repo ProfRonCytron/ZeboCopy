@@ -226,62 +226,62 @@ A given $f(x)$ induces a unique signature of signs on the output basis states.}
 \Vskip{-3em}
 \only<1-4>{%
 \begin{itemize}[<+->]
-    \item The top qubit is $\ket{+}=\Hadamard\QZero{}=\QPlus{}$.
-    \item The bottom qubit is in state \QState{}, which is an eigenstate of the arbitrary unitary gate~\NamedGate{U}.
+    \item The top qubit is $\ket{+}=\Hadamard\QZero{}=\TwoSupOp{\ColorOne{\QZero}}{\ColorTwo{\QOne}}{+}$.
+    \item The bottom qubit is in state \ColorThree{\QState{}}, which is an eigenstate of the arbitrary unitary gate~\ColorFour{\NamedGate{U}}.
     \item We thus have
-    \(\NamedGate{U}\QState{} = \lambda \QState{} \)
+    \(\ColorFour{\NamedGate{U}}\ColorThree{\QState{}} = \lambda \ColorThree{\QState{}} \)
     \item This implies $\Mag{\lambda}=1$ so the result can be written:
-    \[ \NamedGate{U}\QState{} = \ExpPhase{\theta}\QState{}\]
-    with $\ExpPhase{\theta}$  as a \emph{global phase} on state~\QState{}.
+    \[ \ColorFour{\NamedGate{U}}\ColorThree{\QState{}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]
+    with \ColorFour{$\ExpPhase{\theta}$}  as a \emph{global phase} on state~\ColorThree{\QState{}}.
 \end{itemize}}%
 \ScrollProof{5}{8}{%
 \Next{\Four}{\QState{0} &= \TensProd{\ket{+}}{\QState{}}\\
-&= \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ColorTwo{\QOne}}{+}}{\QState{}}\\}
-\Next{\Three}{&= \TwoSupOp{\ColorOne{\QZero}\QState{}}{\ColorTwo{\QOne}\QState{}}{+} \\}
-\Last{\QState{1} &= \TwoSupOp{\ColorOne{\QZero}\QState{}}{\ColorTwo{\QOne}\NamedGate{U}\QState{}}{+}}
+&= \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ColorTwo{\QOne}}{+}}{\ColorThree{\QState{}}}\\}
+\Next{\Three}{&= \TwoSupOp{\ColorOne{\QZero}\ColorThree{\QState{}}}{\ColorTwo{\QOne}\ColorThree{\QState{}}}{+} \\}
+\Last{\QState{1} &= \TwoSupOp{\ColorOne{\QZero}\ColorThree{\QState{}}}{\ColorTwo{\QOne}\ColorFour{\NamedGate{U}\ColorThree{\QState{}}}}{+}}
 }%
 \ScrollProof{9}{12}{%
-\Next{\Four}{\QState{1} &= \TwoSupOp{\ColorOne{\QZero}\QState{}}{\ColorTwo{\QOne}\NamedGate{U}\QState{}}{+} \\}
-\Next{\Three}{&= \TwoSupOp{\ColorOne{\QZero}\QState{}}{\ColorTwo{\QOne}\ExpPhase{\theta}\QState{}}{+} \\}
-\Next{\Two}{&= \TwoSupOp{\ColorOne{\QZero}\QState{}}{\ExpPhase{\theta}\ColorTwo{\QOne}\QState{}}{+} \\}
-\Next{\One}{&= \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ExpPhase{\theta}\ColorTwo{\QOne}}{+}}{\QState{}}}
+\Next{\Four}{\QState{1} &= \TwoSupOp{\ColorOne{\QZero}\ColorThree{\QState{}}}{\ColorTwo{\QOne}\ColorFour{\NamedGate{U}\ColorThree{\QState{}}}}{+} \\}
+\Next{\Three}{&= \TwoSupOp{\ColorOne{\QZero}\ColorThree{\QState{}}}{\ColorTwo{\QOne}\ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}}{+} \\}
+\Next{\Two}{&= \TwoSupOp{\ColorOne{\QZero}\ColorThree{\QState{}}}{\ColorFour{\ExpPhase{\theta}}\ColorTwo{\QOne}\ColorThree{\QState{}}}{+} \\}
+\Next{\One}{&= \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ColorFour{\ExpPhase{\theta}}\ColorTwo{\QOne}}{+}}{\ColorThree{\QState{}}}}
 }%
 \only<13->{%
 \[
-\QState{1} = \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ExpPhase{\theta}\ColorTwo{\QOne}}{+}}{\QState{}}
+\QState{1} = \TensProd{\TwoSupOp{\ColorOne{\QZero}}{\ColorFour{\ExpPhase{\theta}}\ColorTwo{\QOne}}{+}}{\ColorThree{\QState{}}}
 \]
 \only<14-18>{%
 \begin{itemize}
-    \item<14-> The global phase $\ExpPhase{\theta}$ on the bottom qubit has been kicked back (up) to the top qubit.
+    \item<14-> The global phase \ColorFour{$\ExpPhase{\theta}$} on the bottom qubit has been kicked back (up) to the top qubit.
     \item<15-> It now manifests as a local phase on \ColorTwo{\QOne} as compared with \ColorOne{\QZero}.
-    \item<16-> Further processing can approximate or perhaps identify $\theta$
+    \item<16-> Further processing can approximate or perhaps identify~\ColorFour{$\theta$}.
     \item<17-> For example, if we know that either
     \begin{description}
-       \item[$\theta=0$] then $\QState{1}=\TensProd{\ket{+}}{\QState{}}$
-       \item[$\theta=\pi$] then $\QState{1}=\TensProd{\ket{-}}{\QState{}}$
+       \item[$\theta=0$] then $\QState{1}=\TensProd{\ket{+}}{\ColorThree{\QState{}}}$
+       \item[$\theta=\pi$] then $\QState{1}=\TensProd{\ket{-}}{\ColorThree{\QState{}}}$
     \end{description}
-    \item<18-> Applying \Hadamard{} to the top qubit determines $\theta$.
+    \item<18-> Applying \Hadamard{} to the top qubit determines \ColorFour{$\theta$}.
 \end{itemize}}%
 \only<19->{%
 \begin{itemize}
-    \item<19-> Consider $0\leq\theta\leq \pi$.
+    \item<19-> Consider $0\leq\ColorFour{\theta}\leq \pi$.
     \item<20-> The top qubit in the \PauliX{} basis can be expressed as
     \[
-    \cos(\theta/2)\ket{+} + \sin(\theta/2)\ket{-}
+    \cos(\ColorFour{\theta}/2)\ket{+} + \sin(\ColorFour{\theta}/2)\ket{-}
     \]
-    \item<21-> So we measure \ket{+} with probability $\cos^{2}(\theta/2)$ and \ket{-} with probability $\sin^{2}(\theta/2)$.
-    \item<22-> Assuming the circuit can be reconstructed and measured an arbitrary number of times, we can estimate $\theta$ with arbitrary precision.
+    \item<21-> So we measure \ket{+} with probability $\cos^{2}(\ColorFour{\theta}/2)$ and \ket{-} with probability $\sin^{2}(\ColorFour{\theta}/2)$.
+    \item<22-> Assuming the circuit can be reconstructed and measured an arbitrary number of times, we can estimate \ColorFour{$\theta$} with arbitrary precision.
 \end{itemize}
 }
 }
 }{%
 \begin{center}
 \adjustbox{scale=1.0}{\begin{quantikz}
-    \lstick{\ket{+}} & \qw\slice{\QState{0}} & \ctrl{1}\slice{\QState{1}} & \qw & \qw \\
-    \lstick{\QState{}} & \qw & \gate{\NamedGate{U}} & \qw & \qw
+    \lstick{\ket{+}} & \qw\slice{\alert<5-7>{\QState{0}}} & \ctrl{1}\slice{\alert<8->{\QState{1}}} & \qw & \qw \\
+    \lstick{\ColorThree{\QState{}}} & \qw & \gate{\ColorFour{\NamedGate{U}}} & \qw & \qw
     \end{quantikz}}
 \end{center}
-\visible<4->{\[ \NamedGate{U}\QState{} = \ExpPhase{\theta}\QState{}\]}
+\visible<4->{\[ \ColorFour{\NamedGate{U}\ColorThree{\QState{}}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]}
 }
     
 \end{frame}
