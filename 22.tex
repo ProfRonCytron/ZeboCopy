@@ -267,9 +267,9 @@ A given $f(x)$ induces a unique signature of signs on the output basis states.}
     \item<19-> Consider $0\leq\ColorFour{\theta}\leq \pi$.
     \item<20-> The top qubit in the \PauliX{} basis can be expressed as
     \[
-    \cos(\ColorFour{\theta}/2)\ket{+} + \sin(\ColorFour{\theta}/2)\ket{-}
+    \cos\frac{\ColorFour{\theta}}{2}\ket{+} + \sin\frac{\ColorFour{\theta}}{2}\ket{-}
     \]
-    \item<21-> So we measure \ket{+} with probability $\cos^{2}(\ColorFour{\theta}/2)$ and \ket{-} with probability $\sin^{2}(\ColorFour{\theta}/2)$.
+    \item<21-> So we measure~\ket{+} with probability~$\cos^{2}\frac{\ColorFour{\theta}}{2}$ and~\ket{-} with probability~$\sin^{2}\frac{\ColorFour{\theta}}{2}$.
     \item<22-> Assuming the circuit can be reconstructed and measured an arbitrary number of times, we can estimate \ColorFour{$\theta$} with arbitrary precision.
 \end{itemize}
 }
@@ -283,5 +283,16 @@ A given $f(x)$ induces a unique signature of signs on the output basis states.}
 \end{center}
 \visible<4->{\[ \ColorFour{\NamedGate{U}\ColorThree{\QState{}}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]}
 }
+    
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Phase kickback transfers phase from the bottom qubit onto the top qubit(s).
+    \item Sometimes this effect manifests as sign changes on terms of the top qubit(s).
+    \item We can use the sign changes to create interference.
+    \item We can estimate the phase with arbitrary precision if we can run the circuit an arbitrary number of times.
+\end{itemize}
     
 \end{frame}
