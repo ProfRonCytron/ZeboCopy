@@ -28,6 +28,8 @@
     
 \end{frame}
 
+\section*{Oracles}
+
 \begin{frame}{Oracles}{Boxes that provide answers}
 \Vskip{-4em}\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
 \begin{itemize}[<+->]
@@ -53,6 +55,13 @@
 }
 \end{frame}
 
+\section*{Realizing classical gates}
+
+{
+\def\AlpZer{\ColorOne{\mbox{$\alpha_0$}}}
+\def\AlpOne{\ColorTwo{\mbox{$\alpha_1$}}}
+\def\BetZer{\ColorThree{\mbox{$\beta_0$}}}
+\def\BetOne{\ColorFour{\mbox{$\beta_1$}}}
 \begin{frame}{Universal gates}{For combinational logic in quantum circuits}
 
 \TwoColumns{%
@@ -82,10 +91,10 @@ We explore this idea with the simpler \NamedGate{CNOT} gate:
 \visible<13->{%
 The result
 {\small\[
-\alpha_{0}\beta_{0}\ket{00} +
-  \alpha_{0}\beta_{1}\ket{01} +
-  \alpha_{1}\beta_{1}\ket{10} +
-  \alpha_{1}\beta_{0}\ket{11}
+\AlpZer{}\BetZer{}\ket{00} +
+  \AlpZer{}\BetOne{}\ket{01} +
+  \AlpOne{}\BetOne{}\ket{10} +
+  \AlpOne{}\BetZer{}\ket{11}
 \]}%
 can be an entangled state: it cannot necessarily be written as the tensor product of two one-qubit states.}
 }
@@ -109,20 +118,21 @@ can be an entangled state: it cannot necessarily be written as the tensor produc
 We can thus realize a combinational circuit using quantum qubits and gates.}}%
 \only<11->{%
 \Vskip{-3em}\begin{itemize}
-  \item<11-> Consider \CNOT{a}{b} with $a=\alpha_{0}\ket{0}+\alpha_{1}\ket{1}$ and $b=\beta_{0}\ket{0}+\beta_{1}\ket{1}$
+  \item<11-> Consider \CNOT{a}{b} with $a=\AlpZer{}\ket{0}+\AlpOne{}\ket{1}$ and $b=\BetZer{}\ket{0}+\BetOne{}\ket{1}$
   \item<11-> The input is the tensor product
-  $\alpha_{0}\beta_{0}\ket{00} +
-  \alpha_{0}\beta_{1}\ket{01} +
-  \alpha_{1}\beta_{0}\ket{10} +
-  \alpha_{1}\beta_{1}\ket{11}
+  $\AlpZer{}\BetZer{}\ket{00} +
+  \AlpZer{}\BetOne{}\ket{01} +
+  \AlpOne{}\BetZer{}\ket{10} +
+  \AlpOne{}\BetOne{}\ket{11}
   $
   \item<12-> So we compute {\small
-  \[ \CNOTMatrix{}\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{0}}{\alpha_{1}\beta_{1}}=\DQB{\alpha_{0}\beta_{0}}{\alpha_{0}\beta_{1}}{\alpha_{1}\beta_{1}}{\alpha_{1}\beta_{0}} \]}
+  \[ \CNOTMatrix{}\DQB{\AlpZer{}\BetZer{}}{\AlpZer{}\BetOne{}}{\AlpOne{}\BetZer{}}{\AlpOne{}\BetOne{}}=\DQB{\AlpZer{}\BetZer{}}{\AlpZer{}\BetOne{}}{\AlpOne{}\BetOne{}}{\AlpOne{}\BetZer{}} \]}
 \end{itemize}
 }
 }
 
 \end{frame}
+}
 
 {
 \def\V#1#2{\visible<#1->{\textcolor{#2}{\FCirc{0.30}}}}
