@@ -2,28 +2,36 @@
 
 \begin{frame}{Deutsch's problem}{Formulation}
 
-\begin{itemize}
+\begin{itemize}[<+->]
     \item We are given an oracle $f(x): \Set{0,1} \mapsto \Set{0,1}$
     \item We can characterize $f(x)$ as follows:
     \begin{description}
         \item[constant]   \Forall{x}{f(x)=k}, where $k$ is $0$ or $1$
         \item[balanced]   For half of its inputs, $f(x)=1$ and for the other half $f(x)=0$
     \end{description}
-    \item Given the domain and range of $f(x)$, the function must be one of the above.
+    \item Promise: given the domain and range of $f(x)$, the function must be one of the above.
+    \item For this problem, it is impossible to break the promise.
+    \item This is not a particularly expensive problem to solve classically.
+    \item But we shall see that we can solve it more quickly on a quantum computer.
+    \item And it is the beginning of a series of problems of increasing difficulty for a classical computer.
 \end{itemize}
     
 \end{frame}
 
 \begin{frame}{Possible functions}{There are only four}
 
-\TwoColumns{%
-\visible<2->{\begin{center}\alert{Constant}\end{center}}
-\SBitTable{A}{0}{0}{1}{0}
-\SBitTable{B}{0}{1}{1}{1}
+\begin{itemize}
+    \item Our function $f(x)$ has only two choices concerning where to send each of its two inputs $x$.  
+    \item There are therefore only four possible  functions, two of which are \alert{constant} and two of which are \alert{balanced}.
+\end{itemize}
+\Vskip{-4em}\TwoColumns{%
+\visible<2->{\begin{center}\alert{constant}\end{center}}
+\visible<3->{\SBitTable{A}{0}{0}{1}{0}}
+\visible<4->{\SBitTable{B}{0}{1}{1}{1}}
 }{%
-\visible<3>{\begin{center}\alert{Balanced}\end{center}}
-\SBitTable{C}{0}{0}{1}{1}
-\SBitTable{D}{0}{1}{1}{0}
+\visible<2->{\begin{center}\alert{balanced}\end{center}}
+\visible<6->{\SBitTable{C}{0}{0}{1}{1}}
+\visible<7->{\SBitTable{D}{0}{1}{1}{0}}
 }
     
 \end{frame}
