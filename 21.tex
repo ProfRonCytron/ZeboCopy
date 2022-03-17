@@ -37,14 +37,14 @@
 \end{frame}
 
 \begin{frame}{Form of the oracle}{It has to be reversible}
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-4em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{itemize}[<+->]
     \item We consider a quantum gate $U_f$ that implements $f(x)$.
     \item It accepts $x$ and an \href{https://en.wikipedia.org/wiki/Ancilla_bit}{ancillary} input $y$.
     \item It copies $x$ onto the top output qubit.
     \item It computes \alert{\Xor{y}{f(x)}} on the bottom output qubit.
-    \item When $y=\QZero{}$ the bottom qubit is $\Xor{0}{f(x)}=f(x)$.
-    \item When $y=\QOne{}$ the bottom qubit is $\Xor{1}{f(x)}=\Not{f(x)}$.
+    \item When $y=\QZero{}$ the bottom qubit is \Vskip{-1em}\[\Xor{0}{f(x)}=f(x)\]
+    \item When $y=\QOne{}$ the bottom qubit is \Vskip{-1em}\[\Xor{1}{f(x)}=\Not{f(x)}\]
 \end{itemize}
 }{%
 \BigSkip{}
@@ -64,7 +64,7 @@
 \begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QZero{}}{$x$}{$f(x)$}
 \end{Oracle}}%
 \only<6>{%
-\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QOne{}}{$x$}{\Not{$f(x)$}}
+\begin{Oracle}[scale=0.75]{$U_f$}{$x$}{\QOne{}}{$x$}{\Not{f(x)}}
 \end{Oracle}}%
 }    
 \end{frame}
