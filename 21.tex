@@ -83,7 +83,7 @@
 \BigSkip{}
 \visible<2->{%
 \begin{center}
-\begin{UTable}{$U_A$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\begin{UTable}{$U_A$}{$x$}{$y$}{$f(x)$}{$x$}{\alt<3->{\alert<3>{$y$}}{\alert<2>{\Xor{y}{f(x)}}}}
 \URow{}{0}{0}{0}{0}{0}
 \URow{}{0}{1}{0}{0}{1}
 \URow{}{1}{0}{0}{1}{0}
@@ -95,7 +95,7 @@
 
 \BigSkip{}
 \visible<3->{%
-\Forall{x}{f(x)=0}, so $\Xor{y}{f(x)}=\Xor{y}{0}=y$.  
+\Forall{x}{f(x)=0}, so $\alert<3>{\Xor{y}{f(x)}}=\Xor{y}{0}=\alert<3>{y}$.  
 \MedSkip{}
 Thus, $U_A$ is just the identity function, so our quantum circuit doesn't have to do anything with its inputs to realize $U_A$.}
 
@@ -123,7 +123,7 @@ Thus, $U_A$ is just the identity function, so our quantum circuit doesn't have t
 \BigSkip{}
 \visible<2->{%
 \begin{center}
-\begin{UTable}{$U_B$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\begin{UTable}{$U_B$}{$x$}{$y$}{$f(x)$}{$x$}{\alt<3->{\alert<3>{\Not{y}}}{\alert<2>{\Xor{y}{f(x)}}}}
 \URow{}{0}{0}{1}{0}{1}
 \URow{}{0}{1}{1}{0}{0}
 \URow{}{1}{0}{1}{1}{1}
@@ -135,7 +135,7 @@ Thus, $U_A$ is just the identity function, so our quantum circuit doesn't have t
 
 \BigSkip{}
 \visible<3->{%
-\Forall{x}{f(x)=1}, so $\Xor{y}{f(x)}=\Xor{y}{1}=\Not{y}$.  
+\Forall{x}{f(x)=1}, so $\alert<3>{\Xor{y}{f(x)}}=\Xor{y}{1}=\alert<3>{\Not{y}}$.  
 \MedSkip{}
 Thus, $U_B$ is realized by complementing $y$.}
 
@@ -163,7 +163,7 @@ Thus, $U_B$ is realized by complementing $y$.}
 \BigSkip{}
 \visible<2->{%
 \begin{center}
-\begin{UTable}{$U_C$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\begin{UTable}{$U_C$}{$x$}{$y$}{$f(x)$}{$x$}{\alt<3->{\alert<3>{\Xor{y}{x}}}{\alert<2>{\Xor{y}{f(x)}}}}
 \URow{}{0}{0}{0}{0}{0}
 \URow{}{0}{1}{0}{0}{1}
 \URow{}{1}{0}{1}{1}{1}
@@ -175,7 +175,7 @@ Thus, $U_B$ is realized by complementing $y$.}
 
 \BigSkip{}
 \visible<3->{%
-\Forall{x}{f(x)=x}, so $\Xor{y}{f(x)}=\Xor{y}{x}$.}%
+\Forall{x}{f(x)=x}, so $\alert<3>{\Xor{y}{f(x)}}=\alert<3>{\Xor{y}{x}}$.}%
 
 \BigSkip{}
 \only<3>{%
@@ -206,7 +206,7 @@ Thus, a \NamedGate{CNOT} gate will flip $y$ when $x$ is~$1$:
 \BigSkip{}
 \visible<2->{%
 \begin{center}
-\begin{UTable}{$U_D$}{$x$}{$y$}{$f(x)$}{$x$}{\Xor{y}{f(x)}}
+\begin{UTable}{$U_D$}{$x$}{$y$}{$f(x)$}{$x$}{\alt<3->{\alert<3>{\Not{\Xor{y}{x}}}}{\alert<2>{\Xor{y}{f(x)}}}}
 \URow{}{0}{0}{1}{0}{1}
 \URow{}{0}{1}{1}{0}{0}
 \URow{}{1}{0}{0}{1}{0}
@@ -218,7 +218,7 @@ Thus, a \NamedGate{CNOT} gate will flip $y$ when $x$ is~$1$:
 
 \BigSkip{}
 \visible<3->{%
-\Forall{x}{f(x)=\Not{x}}, so $\Xor{y}{f(x)}=\Xor{y}{\Not{x}}=\Not{\Xor{y}{x}}$.}%
+\Forall{x}{f(x)=\Not{x}}, so $\alert<3>{\Xor{y}{f(x)}}=\Xor{y}{\Not{x}}=\alert<3>{\Not{\Xor{y}{x}}}$.}%
 
 \BigSkip{}
 \only<3>{%
