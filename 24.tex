@@ -4,7 +4,7 @@
 
 \begin{frame}{Overview}{What will we learn here?}
 
-\begin{itemize}
+\begin{itemize}[<+->]
     \item In the Deutsch--Jozsa problem, a function promised to be constant or balanced.
     \item To obtain an exact solution, a classical approach required $\Theta(2^{n})$ queries while a quantum approach took only $\Theta(1)$ queries.
     \item We now look at a problem due to \href{https://en.wikipedia.org/wiki/Ethan_Bernstein}{Bernstein} and \href{https://en.wikipedia.org/wiki/Umesh_Vazirani}{Vazirani}.
@@ -101,5 +101,15 @@ $x$  & \And{x}{s} & \DotP{x}{s} \\ \hline
                \visible<6->{= \TensProd{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}{\ket{-}} \\}
     \visible<7->{\QState{3} =& \TensProd{\TensSupProd{\Hadamard}{n}\left(\textcolor<8>{\RCthree}{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}\right)}{\ket{-}}} \visible<8->{= \TensProd{\textcolor<9>{\RCthree}{\TensSupProd{\Hadamard}{n}(\textcolor<8>{\RCthree}{\TensSupProd{\Hadamard}{n}(\ket{s})})}}{\ket{-}} }\visible<9->{= \TensProd{\textcolor<9>{\RCthree}{\alert<10>{\ket{s}}}}{\ket{-}}}
 \end{align*}
+    
+\end{frame}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item The same circuit that computed the solution for the problem of Deutsch--Jozsa solves the Bernstein--Vazirani problem.
+    \item The solution is a consequence of how the $n$-way Hadamard transformation products its output from some basis state.
+    \item The savings here is more modest than Deutsch--Jozsa, taking a single query when $n$ are needed to solve this problem classically.
+\end{itemize}
     
 \end{frame}
