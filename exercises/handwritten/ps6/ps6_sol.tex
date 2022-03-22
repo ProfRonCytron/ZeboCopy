@@ -14,9 +14,8 @@
 \maketitle
 
 \begin{enumerate}[font=\bfseries]
-    \item Placeholder
     \item \begin{enumerate}
-        \item $\ket{-}$. Suppose $f(0) = f(1) = 0$
+        \item In both cases the state of the bottom qubit is $\ket{-}$. Suppose $f(0) = f(1) = 0$.
         \[\ket{\psi_2} = \ket{+} \otimes (\ket{0} - \ket{1}) = \ket{+-}\]
         Similarly obtained for $f(0) = f(1) = 1$. Don't forget to ignore global phase.
         Now suppose $f(0) = 0, f(1) = 1$.
@@ -25,12 +24,18 @@
         \item 50\% time see $\ket{0}$ and 50\% time see $\ket{1}$
         \item $\ket{1}$
     \end{enumerate}
-    \item I first work through the analysis in Lecture 22 with $y=\ket{+}$.
-    \[U_f = U_f(\ket{x}\otimes\ket{+}) = U_f(\ket{x}\otimes\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}))\]
-    \[=U_f(\frac{1}{\sqrt{2}}(\ket{x0}+\ket{x1})) = 
-    \frac{1}{\sqrt{2}}(\ket{x(0\oplus f(x))}+ \ket{x(1\oplus f(x))})\]
-    \[= \frac{1}{\sqrt{2}}(\ket{xf(x)}+\ket{x\overline{f(x)}})\]
-    If we consider $f(x) = 0$ and $f(x) = 1$ (Deutsch problem) the outputs are identical and so we cannot distinguish between the two cases. More generally we do not have the form $U_f(\ket{x+}) = (-1)^{f(x)} \ket{x} \otimes \ket{+}$. And so the function result is not "kicked" onto the basis state which makes the phase kickback trick "useless" with $y = \ket{+}$ as the input. add more here?
+    \item \begin{enumerate}
+        \item $k = 0.5$
+    \item \begin{itemize}
+        \item $\ket{00}$ has amplitude 0.5 (see above)
+        \item $\ket{01}$ has amplitude x
+        \item $\ket{10}$ has amplitude x
+        \item $\ket{11}$ has amplitude x
+    \end{itemize}
+    \item $(\frac{1}{2})^2 = \frac{1}{4}$. Probability = amplitude squared. 
+    \item $1 - \frac{1}{4} = \frac{3}{4}$
+    \item 
+    \end{enumerate}
 \end{enumerate}
 
 
