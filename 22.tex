@@ -21,7 +21,7 @@ Here is what we saw:
 \begin{itemize}[<+->]
     \item The input $x$ is the uniform superposition of all values.
     \item The input $y$ is \ket{-}.
-    \item The bottom qubit has a constant value, regardless of $f(x)$.
+    \item The bottom qubit's output has a constant value, regardless of $f(x)$.
     \item However, the top qubit is a superpositon of terms, each term with a sign related to the function $f$ evaluated on that term.
     \item This is \emph{phase kickback}:  The bottom qubit's input, when \ket{-}, kicks phase changes up to the top qubit's output.
 \end{itemize}
@@ -94,10 +94,10 @@ Case $f(x)=1$
 \BigSkip{}
 \visible<19->{\[ U_f(\ket{x\,-}) \only<19>{= \alert<19-20>{\NegF{x}}\ket{x\,-}}
 = \TensProd{\alert<19-20>{\NegF{x}}\ket{x}}{\ket{-}}\]}
-\begin{itemize}
+\Vskip{-3em}\begin{itemize}
     \item<20-> Phase kickback associates the function result as the \emph{sign} on the state \ket{x\,-}.
     \item<21-> When $x$ is a superposition, that sign is \emph{not} a global phase.
-    \item<22-> The sign can impose a phase change relative to the \QZero{} and \QOne{} terms.
+    \item<22-> For example, the sign can impose a phase change relative to the \QZero{} and \QOne{} terms for a single qubit.
 \end{itemize}
 }
     
@@ -218,7 +218,7 @@ Output
     \left.\right)
 \end{align*}
 \visible<14->{%
-A given $f(x)$ induces a unique signature of signs on the output basis states.}
+$f(x)$ induces a signature of signs on the output basis states.}
 }
 }
 
@@ -287,7 +287,9 @@ A given $f(x)$ induces a unique signature of signs on the output basis states.}
     \lstick{\ColorThree{\QState{}}} & \qw & \gate{\ColorFour{\NamedGate{U}}} & \qw & \qw
     \end{quantikz}}
 \end{center}
-\visible<4->{\[ \ColorFour{\NamedGate{U}\ColorThree{\QState{}}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]}
+\visible<4->{\[ \ColorFour{\NamedGate{U}\ColorThree{\QState{}}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]}%
+\visible<22->{%
+We will study a more rigorous approach to phase estimation.}
 }
     
 \end{frame}
