@@ -444,7 +444,7 @@ The columns of $T$ can also be expressed as:
 
 \begin{frame}{Bob}{Column 2, using basis \TensProd{\PauliZ}{\PauliX}}
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
-\begin{MPbasis}{\TensProd{\PauliZ}{\Identity}}{\TensProd{\Identity}{\PauliX}}{\Not{\TensProd{\PauliZ}{\PauliX}}}
+\begin{MPbasis}{\TensProd{\Identity}{\PauliZ}}{\TensProd{\PauliX}{\Identity}}{\Not{\TensProd{\PauliX}{\PauliZ}}}
 \def\A{\Col{1}{0}{1}{0}}
 \def\B{\Col{0}{1}{0}{1}}
 \def\C{\Col{1}{0}{-1}{0}}
@@ -486,7 +486,7 @@ The columns of $T$ can also be expressed as:
 
 \begin{frame}{Bob}{Column 3, using an entangled basis}
 \TwoUnequalColumns{0.63\textwidth}{0.37\textwidth}{%
-\begin{MPbasis}{\TensProd{\PauliZ}{\PauliX}}{\TensProd{\PauliX}{\PauliZ}}{\TensProd{\PauliY}{\PauliY}}
+\begin{MPbasis}{\TensProd{\PauliZ}{\PauliZ}}{\TensProd{\PauliX}{\PauliX}}{\TensProd{\PauliY}{\PauliY}}
 \def\A{\Col{1}{0}{0}{1}}
 \def\B{\Col{1}{0}{0}{-1}}
 \def\C{\Col{0}{1}{1}{0}}
