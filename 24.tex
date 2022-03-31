@@ -99,8 +99,21 @@ $x$  & \And{x}{s} & \DotP{x}{s} \\ \hline
 \begin{align*}
     \visible<5->{\QState{2} =& \TensProd{\SumBV{x}{n} \NegF{x} \ket{x}}{\ket{-}}} 
                \visible<6->{= \TensProd{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}{\ket{-}} \\}
-    \visible<7->{\QState{3} =& \TensProd{\TensSupProd{\Hadamard}{n}\left(\textcolor<8>{\RCthree}{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}\right)}{\ket{-}}} \visible<8->{= \TensProd{\textcolor<9>{\RCthree}{\TensSupProd{\Hadamard}{n}(\textcolor<8>{\RCthree}{\TensSupProd{\Hadamard}{n}(\ket{s})})}}{\ket{-}} }\visible<9->{= \TensProd{\textcolor<9>{\RCthree}{\alert<10>{\ket{s}}}}{\ket{-}}}
+    \visible<7->{\QState{3} =& \TensProd{\TensSupProd{\Hadamard}{n}\left(\textcolor<8->{\RCthree}{\SumBV{x}{n} \NegOneExp{\DotP{x}{s}} \ket{x}}\right)}{\ket{-}}} \visible<8->{= \TensProd{\TensSupProd{\Hadamard}{n}(\textcolor<8->{\RCthree}{\TensSupProd{\Hadamard}{n}(\ket{s})})}{\ket{-}} }\visible<9->{= \TensProd{\textcolor<9>{\RCthree}{\alert<10>{\ket{s}}}}{\ket{-}}}
 \end{align*}
+    
+\end{frame}
+
+\begin{frame}{Extra material about this on the board}{No slides yet}
+
+\begin{itemize}
+    \item How do we create oracles for this problem?
+    \item All instances of this problem create balanced functions.
+    \item There are $2^{n}-1$ such functions, which correspond to all values of $s\not=0$.
+    \item Proof that the parity function over $n$ bits is balanced.
+    \item Corollary that the parity function over any nonempty subset of those bits is also balanced.
+    \item In the Deutsch--Jozsa problem, all weight for such functions is concentrated on a single term.  Thus, only one measurement is possible.
+\end{itemize}
     
 \end{frame}
 
