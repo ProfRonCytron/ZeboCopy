@@ -98,13 +98,13 @@ sure you filled in your information in the box above!)
 \item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
 
-Each response is worth~3 points. You can miss any two responses and still get full credit for this portion.
+Below, the term \emph{exactly} means that we are guaranteed a solution in the specified time.
 \begin{itemize}
-    \item Every unitary matrix has an inverse, which is that matrix's conjugate transpose.~\TF{}
-    \item The states $\alpha\ket{0}+\beta\ket{1}$ and $\alpha\ket{0}-\beta\ket{1}$ differ only by a global phase.~\TF{}
-    \item The states $\alpha\ket{0}-\beta\ket{1}$ and $-\alpha\ket{0}+\beta\ket{1}$ differ only by a global phase.~\TF{}
-    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-i}$ differ only by a global phase.~\TF{}
-    \item Consider a state $\QState{}=\alpha\ket{0}+\beta\ket{1}$, and let $\QState{}^{\star}$ denote the conjugate transpose of \QState{}.   Then $\QState{}^{\star}\times\QState{}=0$.~\TF{}
+    \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes exponential time on a classical computer to solve exactly.~\TF{}
+    \item With a single query, a classical computer can solve Deutsch--Jozsa problems half the time.~\TF{}
+    \item An $n$-bit instance of Bernstein--Vazirani can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
+    \item An $n$-bit instance of Simon's problem can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
+    \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani, then the circuit's measurements will yield a unique result in the computational basis.~\TF{}
     \item The conjugate transpose of \SQB{1}{i} is $\left(1\ \  i\right)$.~\TF{}
     \item The actions of any sequence of unitary gates applied to a single qubit can be represented by a single, unitary matrix.~\TF{}
     \item If the gate $A$ is applied to $\QState{}$ and the resulting state is then processed by gate $B$, the result is $A(B(\QState{}))$~\TF{}
@@ -114,7 +114,7 @@ Each response is worth~3 points. You can miss any two responses and still get fu
     \item The state $\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ is an entangled state.~\TF{}
 \end{itemize}
 
-\clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
+\clearpage\item\Points{10} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
 
 \begin{itemize}
@@ -154,7 +154,7 @@ Consider a 2-qubit instance of Grover with the secret value $\ket{00}$.  The cir
 \lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
 \end{quantikz}}
 
-\item\clearpage\Points{10}
+\clearpage\item\Points{10}
 Recall for Grover's problem that when an oracle provided a single secret, we obtained $\ket{w}$ as a column vector of all zeros, but with a 1 in the location of the secret.   For example, for a two-qubit problem ($N=4$) with secret $\ket{00}$ 
 \[ \ket{w} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix} \]
 Suppose the oracle instead provides \emph{two} secret values, $\ket{00}$ and $\ket{11}$.  If Grover's algorithm could reach $\ket{w}$ and we performed a measurement of $\ket{w}$ we would be satisfied at measuring \emph{either} secret ($\ket{00}$ or $\ket{11}$).
