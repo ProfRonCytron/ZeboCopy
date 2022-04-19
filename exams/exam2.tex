@@ -123,17 +123,17 @@ Each response is worth~3 points. You can miss any two responses and still get fu
     \includegraphics[scale=0.4]{bv.png}
     
     What is the secret $s$ here? \Blank[2in]{}
-    \item If this oracle is used in the complete Deutsch--Jozsa algorithm, what possible amplitude(s) can be measured on $\ket{00000000}$?
+    \item If this oracle is used in the Deutsch--Jozsa algorithm, what possible amplitude(s) can be measured on $\ket{00000000}$?
     
     \Blank[4in]{}
-    \item What other computational basis vector(s), if any, will have non-zero amplitude for Deutsch--Jozsa if the above oracleis used?  
+    \item What other computational basis vector(s), if any, will have non-zero amplitude for Deutsch--Jozsa if the above oracle is used?  
     
     \Blank[4in]{}
 \end{itemize}
 
 \clearpage\item\Points{10}
 
-Complete the circuit below so that it is an oracle for Grover's algorithm on a 5-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret $x$ is $10101$.  Below you provide only the oracle, not any other portions of the circuit.
+Complete the circuit below so that it is an oracle for Grover's algorithm on a 5-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret is $10101$.  Below you provide only the oracle, not any other portions of the circuit.
 
 \adjustbox{valign=t,scale=3.0}{\begin{quantikz}
 \lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
@@ -145,14 +145,39 @@ Complete the circuit below so that it is an oracle for Grover's algorithm on a 5
 \end{quantikz}}
 
 \item\Points{10}
-Consider a 2-qubit instance of Grover with the secret $x$ value $\ket{00}$.  The circuit up to the point of the diffusion step is specified.  Complete the circuit by adding the diffusion (also called reflection about $\ket{s}$) step.
+Consider a 2-qubit instance of Grover with the secret value $\ket{00}$.  The circuit up to the point of the diffusion step is specified.  Complete the circuit by adding the diffusion (also called reflection about $\ket{s}$) step.
 
-\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
-\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{2} & \gate{X} & \qw\\
-\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw\\
-\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw\\
+\adjustbox{valign=t,scale=1.3}{\begin{quantikz}
+\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{2} & \gate{X} & \qw
+& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
 \end{quantikz}}
 
+\item\clearpage\Points{10}
+Recall for Grover's problem that when an oracle provided a single secret, we obtained $\ket{w}$ as a column vector of all zeros, but with a 1 in the location of the secret.   For example, for a two-qubit problem ($N=4$) with secret $\ket{00}$ 
+\[ \ket{w} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix} \]
+Suppose the oracle instead provides \emph{two} secret values, $\ket{00}$ and $\ket{11}$.  If Grover's algorithm could reach $\ket{w}$ and we performed a measurement of $\ket{w}$ we would be satisfied at measuring \emph{either} secret ($\ket{00}$ or $\ket{11}$).
+
+We begin as before with
+\[ \ket{s} = \frac{1}{2}\begin{pmatrix} 1 \\ 1 \\ 1 \\ 1\end{pmatrix} \]
+
+But for this problem with the two secret values $\ket{00}$ and $\ket{11}$ (fill in the blanks):
+\[ \ket{w} = \frac{1}{\sqrt{2}}\begin{pmatrix} \Blank[2em]{} \\ \Blank[2em]{} \\\Blank[2em]{} \\\Blank[2em]{} \end{pmatrix} \]
+and thus $\ket{s'}$ which must be orthogonal to $\ket{w}$ is (fill in the blanks):
+\[ s' = \frac{1}{\sqrt{2}}\begin{pmatrix} \Blank[2em]{} \\ \Blank[2em]{} \\\Blank[2em]{} \\\Blank[2em]{} \end{pmatrix} \]
+The inner product of $\ket{s}$ and $\ket{s'}$ is then
+\( \braket{s}{s'} = \frac{\Blank[2em]{}}{\sqrt{4}} \) (fill in the numerator)
+
+Generally, for an $n$~qubit instance of Grover ($N=2^n$), where $\ket{w}$ represents $k$ acceptable secret values, what is the inner product of the resulting $\ket{s}$ and $\ket{s'}$? $\frac{\Blank[2em]{}}{\sqrt{N}}$
+
+Complete the circuit below so that it is an oracle for Grover's algorithm on a 2-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret value is either $00$ or $11$.  Below you provide only the oracle, not any other portions of the circuit.
+
+\adjustbox{valign=t,scale=3.0}{\begin{quantikz}
+\lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$x_2$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
+\end{quantikz}}
 
 \clearpage\item\Points{20}
 
@@ -174,28 +199,6 @@ If we wanted to restore the top qubit to its state prior to applying $U$, what g
 The algorithm we studied for phase estimation applies gates and measures the qubits of a quantum system, thus transforming and then collapsing each qubit's state.
 
 Based on the above and on your knowledge of how phase estimation is performed, describe how we could perform phase estimation on an $n$-qubit system, but now with $n$~ancillary (extra, additional) qubits, and now restoring the $n$ primary bits to their state prior to the actions performed for phase estimation.
-\clearpage\item\Points{20}
-%%%
-%%%
-
-
-
-Fill in the column vectors to show your analysis of the states at the indicated positions of the circuit.  The rest of this page is scratch space:  \textbf{the parts to fill in are on the next page}.
-\Continued{}
-
-$\ket{\QState{0}}=\DQBB{}$  $\ket{\QState{1}}=\DQBB{}$  $\ket{\QState{2}}=\DQBB{}$
-
-\item Either Express \ket{\QState{2}} as the product of two 1-quibit states:
-
-\[\ket{\QState{2}} = \SQBB \otimes \SQBB \]
-or complete the proof below to show that it cannot be factored:
-\FactorProof{}
-
-%%%
-%%%
-
-
-
 
 
 \clearpage\item\Points{10} Using Shor's algorithm, let's try to factor the number~24 using the following table of values for
@@ -214,70 +217,14 @@ or complete the proof below to show that it cannot be factored:
     \item $17$ is a suitable base for using Shor's algorithm to factor~24 because the period of $17^{i}\mbox{ mod 24}$ is even~\TF{}.
     \item To find the factors of 24 we would perform the following computations:
     
-     GCD(\Blank{},24)
-        and GCD(\Blank{},24)
+     GCD(\Blank[3em]{},24) = \Blank[3em]{}
+        
+        and 
+        
+        GCD(\Blank[3em]{},24) = \Blank[3em]{}
     
 \end{itemize}
-\clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
-\begin{BBKey}
-\begin{center}
-\BBBasis{}
-\end{center}
-\end{BBKey}
-\def\RowU#1#2#3#4{%
-\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & & & {\vrule width 0pt depth 13pt\small\TF{}}  \\ \hline}
-\def\Row#1#2#3{%
-\RowU{\STD}{#1}{#2}{#3}}
-\def\RowX#1#2#3{%
-\RowU{\HDM}{#1}{#2}{#3}}
 
-Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note the following:
-\begin{description}
-  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), \textbf{IF ANY}, would Alice and Bob each believe they share, assuming they do not believe Eve is present.
-  \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
-\end{description}
-
-\begin{BBKey}
-\begin{center}\Large
-\begin{tabular}{c|c||c|c||c|c||c}
-\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
-Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
-\Row{\BBRt}{\STD}{\BBRt}
-\Row{\BBUp}{\STD}{\BBUp}
-\Row{\BBRt}{\STD}{\BBRt}
-\Row{\BBUp}{\HDM}{\BBNe}
-\Row{\BBRt}{\HDM}{\BBSe}
-\RowX{\BBNe}{\HDM}{\BBSe}
-\RowX{\BBSe}{\HDM}{\BBSe}
-\RowX{\BBNe}{\HDM}{\BBNe}
-\RowX{\BBNe}{\HDM}{\BBNe}
-
-\end{tabular}
-\end{center}
-\end{BBKey}
-\begin{itemize}
-    \item Alice believes the shared key is~\Blank[4in]{}
-    \item Bob believes the shared key is\ \ ~\Blank[4in]{}
-    \item Eve could have been detected in how many rows of your table?~\Blank{}
-\end{itemize}
-
-\clearpage\item\Points{10}
-Consider the following entangled state of three qubits:
-\[\frac{\ket{000}+\ket{111}}{\sqrt{2}}\]
-In lecture we studied how to entangle that third qubit with the first two.  In this problem we consider \emph{disentangling} the third qubit from the first two, without resorting to measurement.
-
-Recall that we entangle the third new qubit $q_{3}$ with those that came before ($q_{1}, q_{2}$) using a \Gate{CNOT} gate, controlled by either $q_{1}$ or $q_{2}$, and applied to $q_{3}$ which is initialized to~\ket{0}.  Because \Gate{CNOT} is its own inverse, we try using the gate again to disentangle~$q_{3}$.
-\begin{enumerate}
-  \item\Points{2} 
-  \[(\I\otimes\Gate{CNOT})(\ket{000}) = \Blanket{}\]
-\item\Points{2} 
-  \[(\I\otimes\Gate{CNOT})(\ket{111} = \Blanket{}\]
-\item \Points{3} By linearity,
-\[(\I\otimes\Gate{CNOT})\left(\frac{\ket{000}+\ket{111}}{\sqrt{2}}\right) = \frac{\Blank[4em]+\Blank[4em]}{\sqrt{2}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} \otimes \Blanket{}\]
-\item \Points{2} Qubit $q_3$ is now disentangled and in its current state it measures as~$\Blanket{}$.
-\item \Points{1} Measuring $q_3$ causes collapse of the other two qubits? \TF{}
-
-\end{enumerate}
 
 \end{enumerate}
 
