@@ -131,6 +131,29 @@ Each response is worth~3 points. You can miss any two responses and still get fu
     \Blank[4in]{}
 \end{itemize}
 
+\clearpage\item\Points{10}
+
+Complete the circuit below so that it is an oracle for Grover's algorithm on a 5-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret $x$ is $10101$.  Below you provide only the oracle, not any other portions of the circuit.
+
+\adjustbox{valign=t,scale=3.0}{\begin{quantikz}
+\lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$x_2$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$x_3$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$x_4$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$x_5$} &  \qw & \qw & \qw & \qw & \qw\\
+\lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
+\end{quantikz}}
+
+\item\Points{10}
+Consider a 2-qubit instance of Grover with the secret $x$ value $\ket{00}$.  The circuit up to the point of the diffusion step is specified.  Complete the circuit by adding the diffusion (also called reflection about $\ket{s}$) step.
+
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{2} & \gate{X} & \qw\\
+\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw\\
+\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw\\
+\end{quantikz}}
+
+
 \clearpage\item\Points{20}
 
 Consider the circuit below where some arbitrary single-qubit gate $U$ acts on the top qubit.  Following that, a CNOT gate is applied from the top to the bottom qubit:
@@ -140,7 +163,9 @@ Consider the circuit below where some arbitrary single-qubit gate $U$ acts on th
 \lstick{$\ket{0}$} &   \qw  & \targ{} & \qw &\qw& \qw
 \end{quantikz}}
 
-While we know general cloning of a quantum state is impossible, there are exactly two states resulting from $U\ket{0}$ that are successfully cloned onto the bottom qubit using the above circuit.
+
+
+While we know general cloning of a quantum state is impossible, there are exactly two states resulting from $U\ket{0}$ that would be successfully cloned onto the bottom qubit using the above circuit.
 
 Those states are \Blank{} and \Blank{}.
 
@@ -173,22 +198,26 @@ or complete the proof below to show that it cannot be factored:
 
 
 
-\clearpage\item\Points{10} Bloch Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
-
-Each response is worth 1 point.
-
-
-
+\clearpage\item\Points{10} Using Shor's algorithm, let's try to factor the number~24 using the following table of values for
+\[ 17^{i} \mbox{ mod 24} \]
+\begin{center}
+\begin{tabular}{c|c}
+  $i$ & $17^{i}\mbox{ mod 24}$ \\\hline
+   1  &  17\\
+   2 &   1 \\
+   3 &   17 \\
+   4 &   1
+\end{tabular}
+\end{center}
 \begin{itemize}
-    \item We begin at the North pole of the Bloch sphere.
-    \item We are in state \BlQb{}.
-    \item We experience a \Gate{Y} gate.  We are now at \BlQb{}.
-    \item We return to the North pole.
-    \item We experience an \H{} gate.  We are now at \BlQb{}.
-    \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
-    \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
+    \item What is the period of this function?\Blank{}
+    \item $17$ is a suitable base for using Shor's algorithm to factor~24 because the period of $17^{i}\mbox{ mod 24}$ is even~\TF{}.
+    \item To find the factors of 24 we would perform the following computations:
+    
+     GCD(\Blank{},24)
+        and GCD(\Blank{},24)
+    
 \end{itemize}
-
 \clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
 \begin{BBKey}
 \begin{center}
