@@ -67,7 +67,7 @@ Your work must be legible.  Work that is
 difficult to read will receive no credit.  There is a blank page at the end
 if you want to show extra work there.
 
-There are 118 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+There are 121 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -98,21 +98,63 @@ sure you filled in your information in the box above!)
 \item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
 
-Below, the term \emph{exactly} means that we are guaranteed a solution in the specified time.
+Each response is worth 3 points and there are 6 points of extra credit available here.
 \begin{itemize}
-    \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes exponential time on a classical computer to solve exactly.~\TF{}
-    \item With a single query, a classical computer can solve Deutsch--Jozsa problems half the time.~\TF{}
+    \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes worst-case exponential time on a classical computer.~\TF{}
+    \item With a single query, a classical computer has at least a 50\% chance of determining the correct solution to a Deutsch--Jozsa problem.~\TF{}
     \item An $n$-bit instance of Bernstein--Vazirani can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
     \item An $n$-bit instance of Simon's problem can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
-    \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani, then the circuit's measurements will yield a unique result in the computational basis.~\TF{}
-    \item The conjugate transpose of \SQB{1}{i} is $\left(1\ \  i\right)$.~\TF{}
-    \item The actions of any sequence of unitary gates applied to a single qubit can be represented by a single, unitary matrix.~\TF{}
-    \item If the gate $A$ is applied to $\QState{}$ and the resulting state is then processed by gate $B$, the result is $A(B(\QState{}))$~\TF{}
-    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}=\Gate{X}$~\TF{}
-    \item The column vector for representing the state of an $n$-qubit system has $n$ entries.~\TF{}
-    \item Given the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$, measuring either qubit determines the value of the other qubit.~\TF{}
-    \item The state $\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ is an entangled state.~\TF{}
+    \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani with secret $s$, then the circuit's measurements will yield a unique result (depends only on $s$) in the computational basis.~\TF{}
+    \item If the entangled qubits for the CHSH game fail (they decohere and collapse into random values), Alice and Bob can at best win 75\% of the time.~\TF{}
+    \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, the values Alice reports for her assigned rows still multiply to $+1$, as they should.~\TF{}
+    \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, Alice and Bob would still agree on the value of their shared square, as they should.~\TF{}
+    \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
+    \item Shor's algorithm provides exponential speedup over the best-known approach for factoring large integers.~\TF{}
+    \item Grover's algorithm can solve the factoring problem as quickly as Shor's algorithm.~\TF{}
+    \item The university course evaluation for this course is worth one of the five points for participation in this class.  You agree to complete the evaluation by May~11.~\TF{}
 \end{itemize}
+
+\clearpage\item\Points{10} For the Mermin--Peres square problem, suppose Alice and Bob agree before they separate that
+\begin{itemize}
+    \item Alice will follow the protocol exactly as taught in class.
+    \item Bob will follow the protocol as taught in class, except that for each square in his column, he will negate the result he should have reported.   Where he should report $+1$, he would report $-1$;  where he should report $-1$ he will report $+1$.
+\end{itemize}
+With this change in protocol
+\begin{itemize}
+    \item The values in Alice's assigned row will continue to multiply to $+1$.~\TF{}
+    \item The values in Bob's assigned column will continue to multiply to $-1$.\TF{}
+    \item In the shared square for Alice and Bob, they will continue to report the same value.~\TF{}
+    \item In the shared square for Alice and Bob, they are guarantee to report different values.~\TF{}
+\end{itemize}
+
+\item\Points{10} Recall the Mermin--Peres square below.
+
+\begin{tabular}{cc}
+\begin{minipage}[t]{2.8in}\includegraphics[scale=0.6]{mp.png}\end{minipage} &
+\raisebox{1in}{\begin{minipage}[t]{3in}\raggedright If Alice measures her qubits as $\ket{00}$ and Bob measures his qubits as $\ket{0+}$, then what results do they report for row and column~1, respectively?\end{minipage}}
+\end{tabular}
+
+\begin{tabular}{cc}
+\begin{minipage}{3in}
+Alice row 1
+\begin{itemize}
+    \item Left square \Blank[4em]{}
+    \item Center square \Blank[4em]{}
+    \item Right square \Blank[4em]{}
+\end{itemize}
+\end{minipage}
+&
+\begin{minipage}{3in}
+Bob column 1
+\begin{itemize}
+    \item Top square \Blank[4em]{}
+    \item Middle square \Blank[4em]{}
+    \item Bottom square \Blank[4em]{}
+\end{itemize}
+\end{minipage}
+\end{tabular}
+
+In the above scenario, it is possible that Alice measures $\ket{00}$ and Bob measures $\ket{1+}$~\TF{}
 
 \clearpage\item\Points{10} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
@@ -132,7 +174,6 @@ Below, the term \emph{exactly} means that we are guaranteed a solution in the sp
 \end{itemize}
 
 \clearpage\item\Points{10}
-
 Complete the circuit below so that it is an oracle for Grover's algorithm on a 5-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret is $10101$.  Below you provide only the oracle, not any other portions of the circuit.
 
 \adjustbox{valign=t,scale=3.0}{\begin{quantikz}
@@ -149,12 +190,12 @@ Consider a 2-qubit instance of Grover with the secret value $\ket{00}$.  The cir
 
 \adjustbox{valign=t,scale=1.3}{\begin{quantikz}
 \lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{2} & \gate{X} & \qw
-& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
-\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
-\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw &\qw&\qw\\
+\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw&\qw&\qw\\
+\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw&\qw&\qw
 \end{quantikz}}
 
-\clearpage\item\Points{10}
+\clearpage\item\Points{10} (1 per blank)
 Recall for Grover's problem that when an oracle provided a single secret, we obtained $\ket{w}$ as a column vector of all zeros, but with a 1 in the location of the secret.   For example, for a two-qubit problem ($N=4$) with secret $\ket{00}$ 
 \[ \ket{w} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix} \]
 Suppose the oracle instead provides \emph{two} secret values, $\ket{00}$ and $\ket{11}$.  If Grover's algorithm could reach $\ket{w}$ and we performed a measurement of $\ket{w}$ we would be satisfied at measuring \emph{either} secret ($\ket{00}$ or $\ket{11}$).
@@ -171,7 +212,7 @@ The inner product of $\ket{s}$ and $\ket{s'}$ is then
 
 Generally, for an $n$~qubit instance of Grover ($N=2^n$), where $\ket{w}$ represents $k$ acceptable secret values, what is the inner product of the resulting $\ket{s}$ and $\ket{s'}$? $\frac{\Blank[2em]{}}{\sqrt{N}}$
 
-Complete the circuit below so that it is an oracle for Grover's algorithm on a 2-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret value is either $00$ or $11$.  Below you provide only the oracle, not any other portions of the circuit.
+\Points{5}Complete the circuit below so that it is an oracle for Grover's algorithm on a 2-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret value is either $00$ or $11$.  Below you provide only the oracle, not any other portions of the circuit.
 
 \adjustbox{valign=t,scale=3.0}{\begin{quantikz}
 \lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
@@ -179,7 +220,7 @@ Complete the circuit below so that it is an oracle for Grover's algorithm on a 2
 \lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
 \end{quantikz}}
 
-\clearpage\item\Points{20}
+\clearpage\item\Points{10}
 
 Consider the circuit below where some arbitrary single-qubit gate $U$ acts on the top qubit.  Following that, a CNOT gate is applied from the top to the bottom qubit:
 
@@ -201,7 +242,7 @@ The algorithm we studied for phase estimation applies gates and measures the qub
 Based on the above and on your knowledge of how phase estimation is performed, describe how we could perform phase estimation on an $n$-qubit system, but now with $n$~ancillary (extra, additional) qubits, and now restoring the $n$ primary bits to their state prior to the actions performed for phase estimation.
 
 
-\clearpage\item\Points{10} Using Shor's algorithm, let's try to factor the number~24 using the following table of values for
+\item\Points{10} Using Shor's algorithm, let's try to factor the number~24 using the following table of values for
 \[ 17^{i} \mbox{ mod 24} \]
 \begin{center}
 \begin{tabular}{c|c}
