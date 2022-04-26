@@ -40,7 +40,7 @@
 \visible<3>{%
    \TZPoint{1,0}{$\ExpPhase{0}=+1$}{above right}}
 \visible<4>{
-      \TZPoint{0,1}{$\ExpPhase{\pi/2}=i$}{above right}
+      \TZPoint{0,1}{$\ExpPhase{\pi/2}=\NiceI$}{above right}
       \draw[->,thick,\RCtwo] (1,0) arc (0:90:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);}
 \visible<5>{%
@@ -49,7 +49,7 @@
     \draw[thick,dotted] (0,0) -- (z);
     }
 \visible<6>{%
-      \TZPoint{0,-1}{$\ExpPhase{3\pi/2}=-i$}{below right}
+      \TZPoint{0,-1}{$\ExpPhase{3\pi/2}=-\NiceI$}{below right}
       \draw[->,thick,\RCtwo] (1,0) arc (0:270:1) coordinate (z) ;
     \draw[thick,dotted] (0,0) -- (z);
     }
@@ -640,7 +640,7 @@ Check our work:
     \item<3-> Write this in polar notation.  We rotate clockwise by $\pi/2$ radians.
     \item<4-> Now expressed as a fraction of $2\pi$ radians.
     \item<5-> This matrix rotates \ColorTwo{$w_2$}, the second bit from the binary point.
-    \item<6-> To rotate the $k$th bit from the binary point, use:
+    \item<6-> To rotate the $k$th bit from the binary point, use (\href{https://qiskit.org/textbook/ch-states/single-qubit-gates.html\#rzgate}{qiskit gate}):
     \[ U = \SQBG{\relax}{1}{0}{0}{\ExpNegPhase{2\pi\frac{1}{2^k}}} \]
 \end{itemize}
 }

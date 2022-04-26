@@ -299,12 +299,15 @@ Buddies \\[1em]
 \section*{Partial measurement}
 
 \begin{frame}{Analysis from \QState{3}}{The partial measurement does help, partially}
+\TwoUnequalColumns{0.3\textwidth}{0.7\textwidth}{%
+}{%
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
 \lstick{\ket{\TensSupProd{0}{n}}} & \qwbundle{n} & \qw\slice{\QState{0}}& \gate{\TensSupProd{\Hadamard}{n}}\slice{\QState{1}} & \gate[wires=2][5em]{\mbox{$U_f$}}\gateinput{$x$}\gateoutput{$x$}\slice{\alert<5>{\QState{2}}} &\qw\slice{\alert<6>{\QState{3}}}  & \gate{\TensSupProd{\Hadamard}{n}}\slice{\alert<7->{\QState{4}}} & \meter{} & \qw \\
 \lstick{\ket{\TensSupProd{0}{n-1}}} &  \qwbundle{n-1} & \qw & \qw   &  \qw\gateinput{$b$}\gateoutput{\Xor{b}{f(x)}} & \meter{} & \qw & \qw & \qw
 \end{quantikz}}
 \end{center}
+}
 \only<1-4>{%
 \begin{itemize}
     \item<1-> Measuring the bottom qubits yields some state \ket{f(x)} that we will ignore.
@@ -536,6 +539,7 @@ We are equally likely to see any outcome \ket{w} such that its dot product with~
 \TwoColumns{%
 \only<1-13>{%
 Suppose we see $w$ observations in the following order:
+\alert{Need to fix this -- the last observation isn't needed and is not linearly independent.}
 \begin{itemize}
     \item<2-> 0101
     \item<4-> 1010

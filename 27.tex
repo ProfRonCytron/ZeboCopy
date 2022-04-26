@@ -1,0 +1,49 @@
+\SetTitle{27}{Introduction to Shor's Algorithm}{The non-quantum part}{27}
+
+\begin{frame}{Overview}{What will we study here?}
+
+\begin{itemize}
+    \item Shor's algorithm solves a problem of great interest to the cryptographic community.
+    \item Given a large number that is the product of two large primes, what are those factors?
+    \item The hardness of this \emph{factoring problem} is not known.
+    \begin{itemize}
+        \item We do not know if this problem is \href{https://en.wikipedia.org/wiki/NP-completeness}{NP-Complete}
+        \item It is believed not to be NP-Complete.
+    \end{itemize}
+    \item However, to factor $N$, the best algorithms currently known must try all factors up to and including $\sqrt{N}$.
+    \item The speedup of Shor's algorithm using quantum computing is exponential compared with the best-known classical approach.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Use of factoring in cryptography}{One-way functions}
+
+\TwoColumns{%
+Easy in one direction
+\begin{itemize}
+    \item $2\times 3$
+    \item $97\times 59$
+    \item $1746860020068409\times 188748146801$
+\end{itemize}
+}{%
+Hard (as far as we know) in the other
+\begin{itemize}
+    \item 6
+    \item 5723
+    \item 329716591508669867994509609
+\end{itemize}
+}
+\BigSkip{}%
+Thanks to arbitrary precision packages, we can conveniently multiply large numbers.  Languages like python seamlessly use such packages on demand.
+\end{frame}
+
+\begin{frame}{Secret sauce}{Finding the period of a periodic function}
+\Vskip{-4em}\begin{center}
+$5^{x}\mbox{ mod 217}$\\
+\begin{Pixture}[width=0.5\textwidth]{27}{base5mod217.png}
+\end{Pixture}\end{center}
+\begin{itemize}
+    \item 
+\end{itemize}
+    
+\end{frame}
