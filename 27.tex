@@ -36,32 +36,33 @@ Hard (as far as we know) in the other
 \BigSkip{}%
 Thanks to arbitrary precision packages, we can conveniently multiply large numbers.  Languages like python seamlessly use such packages on demand.
 \end{frame}
-{
-\def\SMod#1{\mbox{\small\ \ColorThree{(mod #1)}}}
-\begin{frame}{Secret sauce}{Finding the period of a periodic function}
+
+\begin{frame}{Overview using an example}{Factoring 217 by finding the period of an apparently unrelated function}
 \TwoColumns{%
 \Vskip{-4em}\begin{center}
-{\scriptsize $g(x) = 5^{x}\mbox{ mod $217$}$}\\[-0.5em]
+{\scriptsize $g(x) = \ColorFour{5}^{x}\mbox{ mod $217$}$}\\[-0.5em]
 \begin{Pixture}[width=0.9\textwidth]{27}{base5mod217.png}
 \end{Pixture}\end{center}
 }{%
 \Vskip{-3em}\only<1-7>{\begin{itemize}
-    \item We are interested in finding the smallest $x'>0$ for which $g(x')=1$.
-    \item For any such function, $g(0)=1$, so finding $x'$ is the same problem as finding the period of the function.  In this example, the period is $6$, and so we find~$g(6)=1$.
+    \item We must find the smallest $x'>0$ for which $g(x')=1$.
+    \item For any such function, $g(0)=1$.
+    \item Finding $x'$ is the same problem as \alert{finding the period} of the function.  
+    \item In this example, the period is $6$, and so we find~$\ColorFour{5}^{6}=1\SMod{217}$.
 \end{itemize}}%
 \only<8->{%
 \begin{align*}
-    GCD(\ColorOne{124},217) &= 31 \\
-    GCD(\ColorTwo{126},217) &= 7
+    \SGCD{\ColorOne{124}}{217} &= \hbox to 1em{\hss 31} \\
+    \SGCD{\ColorTwo{126}}{217} &= \hbox to 1em{\hss 7}
 \end{align*}
-This discovers $31$ and $7$ as factors of $217$.
+\visible<9->{This discovers $31$ and $7$ as factors of $217$.}\visible<10->{  It turns out that the base, \ColorFour{$5$}, is just a guess.  Let's try this same example next but with a base of~$11$.}
 }
 }
 \Vskip{-4em}\TwoColumns{%
 \begin{align*}
-   \visible<2->{5^{6} &= 1\SMod{217} \\}
-    \visible<3->{5^{6}-1 &= 0\SMod{217}\\}
-    \visible<4->{{5^{3}}^{2}-1 &= 0\SMod{217}\\}
+   \visible<2->{\ColorFour{5}^{6} &= 1\SMod{217} \\}
+    \visible<3->{\ColorFour{5}^{6}-1 &= 0\SMod{217}\\}
+    \visible<4->{{\left(\ColorFour{5}^{3}\right)}^{2}-1 &= 0\SMod{217}\\}
 \end{align*}
 }{%
 \begin{align*}
@@ -72,4 +73,38 @@ This discovers $31$ and $7$ as factors of $217$.
 }
     
 \end{frame}
+
+
+\begin{frame}{Steps of the algorithm}{Factoring 217 using a base of 11 this time.}
+\Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
+\begin{itemize}
+    \item<1-> \alert{Find the period} \ColorFive{$r$} of $\ColorFour{b}^{x}\SMod{N}$.
+    \item<2-> If the period is not \emph{even}, abort.
+    \item<3-> Write $\ColorFour{b}^{\ColorFive{r}}$ as $\left(\ColorFour{b}^{\ColorFive{r}/2}\right)^{2}$
+    \item<4-> If $\ColorFour{b}^{\ColorFive{r}/2}=\pm 1\SMod{N}$, abort
+    \item<5-> Factor $\left(\ColorFour{b}^{\ColorFive{r}/2}\right)^{2}-1$ into $\ColorOne{\left(\ColorFour{b}^{\ColorFive{r}/2}-1\right)}\times \ColorTwo{\left(\ColorFour{b}^{\ColorFive{r}/2}+1\right)}$
+    \item<6-> Factors are
+    \begin{itemize}
+        \item $\SGCD{\ColorOne{\ColorFour{b}^{\ColorFive{r}/2}-1}}{N}$
+        \item $\SGCD{\ColorTwo{\ColorFour{b}^{\ColorFive{r}/2}+1}}{N}$
+    \end{itemize}
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<1-> The period of $\ColorFour{11}^{x}\SMod{217}$ is~\ColorFive{$30$}.
+    \item<2-> \ColorFive{$30$} is even, so we are good.
+    \item<3-> $\ColorFour{11}^{\ColorFive{30}} = \left(\ColorFour{11}^{\ColorFive{15}}\right)^{2}$
+    \item<4-> $\ColorFour{11}^{\ColorFive{15}}=92\SMod{217}$, so we are good.
+    \item<5-> $\ColorFour{11}^{\ColorFive{30}}-1 =\ColorOne{\left(\ColorFour{11}^{15}-1\right)}\times\ColorTwo{\left(\ColorFour{11}^{15}+1\right)}$
+    \item<6-> Factors are
+    \begin{itemize}
+        \item $\SGCD{\ColorOne{4177248169415650}}{217}=\hbox to 1em{\hss 7}$
+        \item $\SGCD{\ColorTwo{4177248169415652}}{217}=\hbox to 1em{\hss 31}$
+    \end{itemize}
+\end{itemize}
 }
+
+\BigSkip{}
+Throughout, \emph{abort} requires starting over with a new (guessed) value for the base.
+    
+\end{frame}
