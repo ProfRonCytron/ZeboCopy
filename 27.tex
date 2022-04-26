@@ -36,14 +36,40 @@ Hard (as far as we know) in the other
 \BigSkip{}%
 Thanks to arbitrary precision packages, we can conveniently multiply large numbers.  Languages like python seamlessly use such packages on demand.
 \end{frame}
-
+{
+\def\SMod#1{\mbox{\small\ \ColorThree{(mod #1)}}}
 \begin{frame}{Secret sauce}{Finding the period of a periodic function}
+\TwoColumns{%
 \Vskip{-4em}\begin{center}
-$5^{x}\mbox{ mod 217}$\\
-\begin{Pixture}[width=0.5\textwidth]{27}{base5mod217.png}
+{\scriptsize $g(x) = 5^{x}\mbox{ mod $217$}$}\\[-0.5em]
+\begin{Pixture}[width=0.9\textwidth]{27}{base5mod217.png}
 \end{Pixture}\end{center}
-\begin{itemize}
-    \item 
-\end{itemize}
+}{%
+\Vskip{-3em}\only<1-7>{\begin{itemize}
+    \item We are interested in finding the smallest $x'>0$ for which $g(x')=1$.
+    \item For any such function, $g(0)=1$, so finding $x'$ is the same problem as finding the period of the function.  In this example, the period is $6$, and so we find~$g(6)=1$.
+\end{itemize}}%
+\only<8->{%
+\begin{align*}
+    GCD(\ColorOne{124},217) &= 31 \\
+    GCD(\ColorTwo{126},217) &= 7
+\end{align*}
+This discovers $31$ and $7$ as factors of $217$.
+}
+}
+\Vskip{-4em}\TwoColumns{%
+\begin{align*}
+   \visible<2->{5^{6} &= 1\SMod{217} \\}
+    \visible<3->{5^{6}-1 &= 0\SMod{217}\\}
+    \visible<4->{{5^{3}}^{2}-1 &= 0\SMod{217}\\}
+\end{align*}
+}{%
+\begin{align*}
+    \visible<5->{{125}^{2} -1 &= 0\SMod{217}\\}
+    \visible<6->{\ColorOne{(125 -1)} \times \ColorTwo{(125+1)}&= 0\SMod{217}\\}
+    \visible<7->{\ColorOne{124} \times \ColorTwo{126}&= 0\SMod{217}}
+\end{align*}
+}
     
 \end{frame}
+}
