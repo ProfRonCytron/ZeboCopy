@@ -78,7 +78,7 @@ Thanks to arbitrary precision packages, we can conveniently multiply large numbe
 \begin{frame}{Factoring $N=217$ using a base $b=11$}{Throughout, \emph{abort} requires starting over with a new (guessed) value for the base}
 \Vskip{-4em}\TwoUnequalColumns{0.5\textwidth}{0.5\textwidth}{%
 \begin{itemize}
-    \item<1-> If $b$ divides $N$, return $b$ as a factor.
+    \item<1-> If \ColorFour{$b$} divides $N$, return \ColorFour{$b$} as a factor.
     \item<2-> \alert{Find the period} \ColorFive{$r$} of $\ColorFour{b}^{x}\SMod{N}$.
     \item<3-> If the period is not \emph{even}, abort.
     \item<4-> Write $\ColorFour{b}^{\ColorFive{r}}$ as $\left(\ColorFour{b}^{\ColorFive{r}/2}\right)^{2}$
@@ -92,7 +92,7 @@ Thanks to arbitrary precision packages, we can conveniently multiply large numbe
 \end{itemize}
 }{%
 \begin{itemize}
-    \item<1-> $11$ does not divide $217$
+    \item<1-> \ColorFour{$11$} does not divide $217$
     \item<2-> The period of $\ColorFour{11}^{x}\SMod{217}$ is~\ColorFive{$30$}.
     \item<3-> \ColorFive{$30$} is even, so we are good.
     \item<4-> $\ColorFour{11}^{\ColorFive{30}} = \left(\ColorFour{11}^{\ColorFive{15}}\right)^{2}$
