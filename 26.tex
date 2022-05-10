@@ -1,1 +1,53 @@
 \SetTitle{26}{Grover's Algorithm}{Unstructured search in $\sqrt{N}$ time}{26}
+
+\begin{frame}{Overview}{What do we study here?}
+
+\begin{itemize}
+    \item Some search problems have \emph{structure}, which can lead to efficient methods of solving the search problem.
+    \item For example, a sorted array of integers can be subject to binary search, discovering whether an integer is present in $\Theta(\log{N})$ time for an array of size~$N$.
+    \item An \emph{unstructured} search problem has no such advantage.  Classically, we may have to examine each of the $N$ items in a collection to find an object of interest.
+    \item Any problem in \href{https://complexityzoo.net/Complexity_Zoo:N\#np}{\CompClass{NP}} can be posed as unstructured search problem.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Oracle for a problem in \href{https://complexityzoo.net/Complexity_Zoo:N\#np}{\CompClass{NP}}}{We search for an $x$ such that $f(x)=1$}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{itemize}
+    \item We know how to create the superposition of all inputs.
+    \item Our oracle implements $f(x)$ so that its value, computed in polynomial time, is
+    \begin{itemize}
+      \item[0] if $x$ is not a solution to our problem
+      \item[1] if $x$ is a solution to our problem
+    \end{itemize}
+    \item Our unstructured search problem is to find $x\ |\ f(x)=1$.
+    \item Due to phase kickback, the output of the top~$n$ qubits is the superposition of all $f(x)$, each with sign $(-1)^{f(x)}$.  
+\end{itemize}
+}{%
+picture
+}
+    
+\end{frame}
+
+\begin{frame}{Examples}{Cryptographic and \href{https://complexityzoo.net/Complexity_Zoo:N\#npc}{\CompClass{NPC}}}
+
+\TwoColumns{%
+RSA
+\begin{itemize}
+    \item Consider two large primes $p$ and $q$ whose products are $r$.
+    \item Let $x$ have $n$ qubits, sufficient to encode $p$ and $q$: \[n=\Theta(\log{p}+\log{q})=\log{pq}\]
+    \item Given an input $x=pq$, our oracle returns $1$ if  $p\times q=r$. Otherwise, $0$ is returned.
+\end{itemize}
+}{%
+\href{https://en.wikipedia.org/wiki/Travelling\_salesman\_problem}{Traveling Salesperson}
+\begin{itemize}
+    \item Is there a tour of a given graph $G=(V,E)$ with cost (sum of weighted edges in the tour) $B$?
+    \item Let $x$ have $n$ qubits, sufficient to encode a list of elements in $V$:
+    \[n = \Theta(|V|\log{|V|})\]
+    \item The oracle returns $1$ if the cost of $x$ is $B$.  Otherwise, $0$ is returned.
+\end{itemize}
+}
+
+
+\end{frame}

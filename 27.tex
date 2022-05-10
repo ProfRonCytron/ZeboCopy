@@ -21,22 +21,45 @@
 \TwoColumns{%
 Easy in one direction
 \begin{itemize}
-    \item $2\times 3$
-    \item $97\times 59$
-    \item $1746860020068409\times 188748146801$
+    \item<2-> $2\times 3$
+    \item<4-> $97\times 59$
+    \item<6-> $1746860020068409\times 188748146801$
 \end{itemize}
 }{%
 Hard (as far as we know) in the other
 \begin{itemize}
-    \item 6
-    \item 5723
-    \item 329716591508669867994509609
+    \item<1-> 6
+    \item<3-> 5723
+    \item<5-> 329716591508669867994509609
 \end{itemize}
 }
 \BigSkip{}%
-Thanks to arbitrary precision packages, we can conveniently multiply large numbers.  Languages like python seamlessly use such packages on demand.
+\visible<7->{Thanks to arbitrary precision packages, we can conveniently multiply large numbers.  Languages like python seamlessly use such packages on demand.}
+\begin{itemize}
+    \item<8-> The \href{https://en.wikipedia.org/wiki/RSA\_(cryptosystem)}{RSA  cryptosystem} makes use of the apparent hardness of factoring.
+    \item<9-> RSA is named for
+    \begin{itemize}
+        \item \href{https://en.wikipedia.org/wiki/Ron\_Rivest}{Ron Rivest}
+        \item \href{https://en.wikipedia.org/wiki/Adi\_Shamir}{Adi Shamir}
+        \item \href{https://en.wikipedia.org/wiki/Leonard\_Adleman}{Leonard Adleman}
+    \end{itemize}
+    \item<10-> \href{https://en.wikipedia.org/wiki/Pretty_Good_Privacy}{PGP} and other systems also can rely on RSA.
+\end{itemize}
 \end{frame}
 
+\begin{frame}{Shor's algorithm}{Overview}
+
+\begin{itemize}
+    \item Shor turns the problem of factoring into the problem of \alert{finding the period} of a periodic function.
+    \item Finding the period is a task for a quantum computer, on which the solution can be achieved exponentially faster than on a classical computer.
+    \begin{itemize}
+    \item The speedup is due to Quantum Fourier Analysis, the technique for finding the period.
+    \end{itemize}
+    \item Once the period is found, Shor's algorithm applies classical mathematical reasoning to obtain the factors.
+    \item The entire approach hinges on a \emph{guess} at a base \ColorFour{$b$}.
+\end{itemize}
+    
+\end{frame}
 \begin{frame}{Overview using an example}{Factoring 217 by finding the period of an apparently unrelated function}
 \TwoColumns{%
 \Vskip{-4em}\begin{center}
@@ -45,7 +68,7 @@ Thanks to arbitrary precision packages, we can conveniently multiply large numbe
 \end{Pixture}\end{center}
 }{%
 \Vskip{-3em}\only<1-7>{\begin{itemize}
-    \item We must find the smallest $x'>0$ for which $g(x')=1$.
+    \item We seek the smallest $x'>0$ for which $g(x')=1$.
     \item For any such function, $g(0)=1$.
     \item Finding $x'$ is the same problem as \alert{finding the period} of the function.  
     \item In this example, the period is $6$, and so we find~$\ColorFour{5}^{6}=1\SMod{217}$.
