@@ -53,11 +53,27 @@ picture
 \begin{frame}{Orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
 
 \TwoColumns{%
-\begin{itemize}
-    \item We begin with the superposition of all inputs $\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$, which is $\TensSupProd{0}{n}$ in the \PauliX{} basis.
-    \item 
-\end{itemize}
+We begin with the superposition of all inputs $\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$, which is 
+    \[\ket{s} = \TensSupProd{\PPlus}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x}\] 
 }{%
+\visible<2->{%
+Let $T$ be the set of all solutions to an instance solved by Grover's algorithm.  Then the state we wish to create is
+    \[ \ket{w} = \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t}\]
+
+
+}}
+
+\BigSkip{}
+\visible<3->{Measurement must then yield some $t\in T$, a solution to the problem.}
+\BigSkip{}
+\only<4-5>{%
+
+Unfortunately, \ket{s} and \ket{w} are not orthogonal:
+\[
+\braket{s}{w} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} \ket{t}\visible<5->{ \alert{\not= 0}}
+\]}%
+\only<6->{%
+However, \ket{w} is orthogonal to \ket{r}, defined as follows:
+\[ \ket{r} = \frac{1}{k}\sum_{t \not\in T} \ket{t} \]
 }
-    
 \end{frame}
