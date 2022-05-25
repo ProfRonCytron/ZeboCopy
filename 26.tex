@@ -13,19 +13,36 @@
 
 \begin{frame}{Oracle for a problem in \href{https://complexityzoo.net/Complexity_Zoo:N\#np}{\CompClass{NP}}}{We search for an $x$ such that $f(x)=1$}
 
-\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
-\begin{itemize}
-    \item We know how to create the superposition of all inputs.
-    \item Our oracle implements $f(x)$ so that its value, computed in polynomial time, is
+\TwoColumns{%
+\begin{itemize}[<+->]
+    \item Input $x$ has $n$ qubits.
+    \item Another input is the usual $y$.
+    \item Input $x$ is copied to output.
+    \item $f(x)$ is computed in polynomial time with result
     \begin{itemize}
       \item[0] if $x$ is not a solution to our problem
       \item[1] if $x$ is a solution to our problem
     \end{itemize}
     \item Our unstructured search problem is to find $x\ |\ f(x)=1$.
-    \item Due to phase kickback, the output of the top~$n$ qubits is the superposition of all $f(x)$, each with sign $(-1)^{f(x)}$.  
+    \item There may be multiple solutions to this problem, but we assume there is at least one.  
 \end{itemize}
 }{%
-picture
+\begin{center}
+    \begin{GateBox}{2}{3}{5}
+      \visible<1->{%
+      \Input{0}{$x_{1}$}
+      \Input{1}{$x_{2}$}
+      \Input{2}{\RVDots}
+      \Input{3}{$x_{n}$}}
+      \visible<2->{\Input{4}{$y$}}
+      \visible<3->{\Output{0}{$x_{1}$}
+      \Output{1}{$x_{2}$}
+      \Output{2}{\RVDots}
+      \Output{3}{$x_{n}$}}
+      \visible<4->{\Output{4}{$\Xor{y}{f(x)}$}}
+      \BoxLabel{Oracle}
+    \end{GateBox}
+\end{center}
 }
     
 \end{frame}
@@ -37,7 +54,7 @@ picture
 \begin{itemize}
     \item Consider two large primes $p$ and $q$ whose products are $r$.
     \item Let $x$ have $n$ qubits, sufficient to encode $p$ and $q$: \[n=\Theta(\log{p}+\log{q})=\Theta(\log{pq})\]
-    \item Given an input $x=pq$, our oracle returns $1$ if  $p\times q=r$. Otherwise, $0$ is returned.
+    \item Given a suitably encoded input $x=pq$, our oracle returns $1$ if  $p\times q=r$. Otherwise, $0$ is returned.
 \end{itemize}
 }{%
 \href{https://en.wikipedia.org/wiki/Travelling\_salesman\_problem}{Traveling Salesperson}
@@ -70,10 +87,10 @@ Let $T$ be the set of all solutions to an instance solved by Grover's algorithm.
 
 Unfortunately, \ket{s} and \ket{w} are not orthogonal:
 \[
-\braket{s}{w} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} \ket{t}\visible<5->{ \alert{\not= 0}}
+\braket{s}{w} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
 \]}%
 \only<6->{%
 However, \ket{w} is orthogonal to \ket{r}, defined as follows:
-\[ \ket{r} = \frac{1}{k}\sum_{t \not\in T} \ket{t} \]
+\[ \ket{r} = \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t} \]
 }
 \end{frame}
