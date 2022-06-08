@@ -86,7 +86,7 @@ We next consider two examples.
 \Vskip{-4em}\begin{align*}
     \S &= \TensSupProd{\left(\PPlus\right)}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x} \\
     \visible<2->{\W &= \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t} \\}
-    \visible<6->{\R &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
+    \visible<5->{\R &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
 \end{align*}
 
 \BigSkip{}
@@ -94,7 +94,7 @@ We next consider two examples.
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=3]
     \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
-    \visible<6->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
+    \visible<5->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
 \end{TIKZP}
 \end{center}}
 \only<1>{We begin with the superposition of all inputs $\S=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
@@ -102,10 +102,16 @@ We next consider two examples.
 Let $T=\Set{t\ | n\ f(t)=1}$.   Measurement of \W{} obtains a solution to the problem.}
 
 \only<4-5>{%
-
 Unfortunately, \S{} and \W{} are not orthogonal:
 \(
-\braket{\ColorOne{s}}{\ColorThree{w}} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
+\braket{\ColorOne{s}}{\ColorThree{w}\textbf{}} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
 \)}%
+\only<5>{%
+
+But we can construct \R{} so that it is orthogonal to \W.}
+\only<6->{%
+
+Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, starting at \S{} and continuing until we are close to \W{}.
+}
 \end{frame}
 }
