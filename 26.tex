@@ -53,6 +53,7 @@ We next consider two examples.
     
 \end{frame}
 
+
 \begin{frame}{Examples}{Cryptographic and an \href{https://complexityzoo.net/Complexity_Zoo:N\#npc}{\CompClass{NPC}} application}
 
 \TwoColumns{%
@@ -75,31 +76,36 @@ We next consider two examples.
 }}
 \end{frame}
 
+{
+\def\S{\ColorOne{\ket{s}}}
+\def\W{\ColorThree{\ket{w}}}
+\def\R{\ColorTwo{\ket{r}}}
 \begin{frame}{A useful orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
 
 \TwoColumns{%
 \Vskip{-4em}\begin{align*}
-    \ColorOne{\ket{s}} &= \TensSupProd{\left(\PPlus\right)}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x} \\
-    \visible<2->{\ColorThree{\ket{w}} &= \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t} \\}
-    \visible<6->{\ColorTwo{\ket{r}} &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
+    \S &= \TensSupProd{\left(\PPlus\right)}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x} \\
+    \visible<2->{\W &= \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t} \\}
+    \visible<6->{\R &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
 \end{align*}
 
 \BigSkip{}
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=3]
-    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\ket{s}};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\ket{w}} ;}
-    \visible<6->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\ket{r}};}
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
+    \visible<6->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
 \end{TIKZP}
 \end{center}}
-\only<1>{We begin with the superposition of all inputs $\ColorOne{\ket{s}}=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
+\only<1>{We begin with the superposition of all inputs $\S=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
 \only<2>{%
-Let $T=\Set{t\ | n\ f(t)=1}$.   Measurement of \ColorThree{\ket{w}} obtains a solution to the problem.}
+Let $T=\Set{t\ | n\ f(t)=1}$.   Measurement of \W{} obtains a solution to the problem.}
 
 \only<4-5>{%
 
-Unfortunately, \ket{s} and \ket{w} are not orthogonal:
+Unfortunately, \S{} and \W{} are not orthogonal:
 \(
-\braket{s}{w} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
+\braket{\ColorOne{s}}{\ColorThree{w}} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
 \)}%
 \end{frame}
+}
