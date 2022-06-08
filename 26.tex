@@ -15,15 +15,15 @@
 
 \TwoColumns{%
 \begin{itemize}[<+->]
-    \item Input $x$ has $n$ qubits.
-    \item Another input is the usual $y$.
+    \item Input $x$ of $n$ qubits.
+    \item Another input is the \href{https://en.wikipedia.org/wiki/Ancilla\_bit}{ancilla} $y$.
     \item Input $x$ is copied to output.
     \item $f(x)$ is computed in polynomial time with result
     \begin{itemize}
-      \item[0] if $x$ is not a solution to our problem
-      \item[1] if $x$ is a solution to our problem
+      \item[0] if $x$ is not a solution
+      \item[1] if $x$ is a solution
     \end{itemize}
-    \item Our unstructured search problem is to find $x\ |\ f(x)=1$.
+    \item Our problem is to find $x\ |\ f(x)=1$.
     \item There may be multiple solutions to this problem, but we assume there is at least one.  
 \end{itemize}
 }{%
@@ -43,6 +43,12 @@
       \BoxLabel{Oracle}
     \end{GateBox}
 \end{center}
+
+\visible<9->{%
+Any search problem, including those that are computationally challenging, can be posed in the form of such a problem.
+
+We next consider two examples.
+}
 }
     
 \end{frame}
@@ -50,13 +56,15 @@
 \begin{frame}{Examples}{Cryptographic and an \href{https://complexityzoo.net/Complexity_Zoo:N\#npc}{\CompClass{NPC}} application}
 
 \TwoColumns{%
+\visible<1->{
 \href{https://en.wikipedia.org/wiki/RSA\_(cryptosystem)}{RSA}
 \begin{itemize}
     \item Consider two large primes $p$ and $q$ whose products are $r$.
     \item Let $x$ have $n$ qubits, sufficient to encode $p$ and $q$: \[n=\Theta(\log{p}+\log{q})=\Theta(\log{pq})\]
     \item Given a suitably encoded input $x=pq$, our oracle returns $1$ if  $p\times q=r$. Otherwise, $0$ is returned.
-\end{itemize}
+\end{itemize}}
 }{%
+\visible<2->{%
 \href{https://en.wikipedia.org/wiki/Travelling\_salesman\_problem}{Traveling Salesperson}
 \begin{itemize}
     \item Is there a tour of a given graph $G=(V,E)$ with cost (sum of weighted edges in the tour) $B$?
@@ -64,33 +72,34 @@
     \[n = \Theta(|V|\log{|V|})\]
     \item The oracle returns $1$ if the cost of $x$ is $B$.  Otherwise, $0$ is returned.
 \end{itemize}
-}
+}}
 \end{frame}
 
-\begin{frame}{Orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
+\begin{frame}{A useful orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
 
 \TwoColumns{%
-We begin with the superposition of all inputs $\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$, which is 
-    \[\ket{s} = \TensSupProd{\PPlus}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x}\] 
+\Vskip{-4em}\begin{align*}
+    \ColorOne{\ket{s}} &= \TensSupProd{\left(\PPlus\right)}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x} \\
+    \visible<2->{\ColorThree{\ket{w}} &= \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t} \\}
+    \visible<6->{\ColorTwo{\ket{r}} &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
+\end{align*}
+
+\BigSkip{}
 }{%
-\visible<2->{%
-Let $T$ be the set of all solutions to an instance solved by Grover's algorithm.  Then the state we wish to create is
-    \[ \ket{w} = \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t}\]
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=3]
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\ket{s}};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\ket{w}} ;}
+    \visible<6->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\ket{r}};}
+\end{TIKZP}
+\end{center}}
+\only<1>{We begin with the superposition of all inputs $\ColorOne{\ket{s}}=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
+\only<2>{%
+Let $T=\Set{t\ | n\ f(t)=1}$.   Measurement of \ColorThree{\ket{w}} obtains a solution to the problem.}
 
-
-}}
-
-\BigSkip{}
-\visible<3->{Measurement must then yield some $t\in T$, a solution to the problem.}
-\BigSkip{}
 \only<4-5>{%
 
 Unfortunately, \ket{s} and \ket{w} are not orthogonal:
-\[
+\(
 \braket{s}{w} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
-\]}%
-\only<6->{%
-However, \ket{w} is orthogonal to \ket{r}, defined as follows:
-\[ \ket{r} = \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t} \]
-}
+\)}%
 \end{frame}
