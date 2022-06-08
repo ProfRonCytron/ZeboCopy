@@ -94,7 +94,8 @@
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
-\def\RootTwo{\ensuremath{\frac{1}{\sqrt{2}}}}
+\def\RootN#1{\ensuremath{\frac{1}{\sqrt{#1}}}}
+\def\RootTwo{\RootN{2}}%\ensuremath{\frac{1}{\sqrt{2}}}}
 \def\TwoSupOp#1#2#3{%
 \ensuremath{\RootTwo{}\left(#1 #3 #2\right)}}
 \def\TwoSup#1#2{%
@@ -681,7 +682,7 @@
 \def\ColorBlack#1{\textcolor{black}{#1}}
 \def\NegF#1{\NegOneExp{f(#1)}}
 \def\NegOneExp#1{\ensuremath{(-1)^{#1}}}
-\def\RootTwoN#1{\ensuremath{\frac{1}{\sqrt{2^{#1}}}}}
+\def\RootTwoN#1{\RootN{2^{#1}}}% \ensuremath{\frac{1}{\sqrt{2^{#1}}}}}
 %%
 %% var, exponent
 %%
