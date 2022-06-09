@@ -93,7 +93,7 @@ We next consider two examples.
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=3]
-    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (7:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
     \visible<5->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
 \end{TIKZP}
 \end{center}}
@@ -145,11 +145,11 @@ Expressing \S{} in this basis:
 \end{align*}
 }%
 \only<6->{%
-\begin{itemize}
+\Vskip{-3em}\begin{itemize}
 \item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\BState{f}}.
 \item This is accomplished using the familiar phase-kickback trick, which flips the sign of the component \bra{x} if $f(x)=1$.
 \item<7-> The second step reflects the current state \ColorFour{\BState{f}} around \S{} to obtain \ColorFive{\BState{d}}.
-\item<7-> In this example, this yields \W.
+\item<7-> In this example, we obtain \W{} exactly.  Typically we must repeat the two steps of the algorithm to get close to \W.
 \end{itemize}
 }
 }{%
