@@ -137,12 +137,18 @@ Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, start
     \theta &= \frac{\pi}{6}
     }
 \end{align*}}%
-\only<5->{%
+\only<5>{%
 Expressing \S{} in this basis:
 \begin{align*}
     \S &= \cos{\theta}\R + \sin{\theta}\W \\
        &= \frac{1}{2}\CDQB{1}{1}{1}{1}
 \end{align*}
+}%
+\only<6>{%
+\begin{itemize}
+\item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\BState{f}}.
+\item This is accomplished using the familiar phase-kickback trick.
+\end{itemize}
 }
 }{%
 \Vskip{-3em}\begin{center}
@@ -153,6 +159,11 @@ Expressing \S{} in this basis:
     \visible<4->{
      \draw[->,thick] (1,0) arc (0:30:1);
      \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
+     }
+     \visible<6->{
+     \draw[->,thick] (1,0) arc (0:-30:1);
+     \draw (0.7,-0.17) node {$\theta=-\frac{\pi}{6}$};
+     \draw[->,thick,\RCfour] (0,0) -- (-30:1) node[right]{$\BState{f} = \RootTwoN{2}\CDQB{1}{1}{-1}{1}$};
      }
 \end{TIKZP}
 \end{center}
