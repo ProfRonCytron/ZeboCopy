@@ -90,25 +90,11 @@ We next consider two examples.
     \visible<5->{\R &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
 \end{align*}
 }%
-\only<7->{%
-Consider a two-qubit example with $f(x)=1$ only when $x=2$.  Then we have:
-\begin{align*}
-    \W &= \Conj{\CDQB{0}{0}{1}{0}}\\
-    \S &= \Conj{\RootTwoN{2}\CDQB{1}{1}{1}{1}}\mbox{ (always)} \\
-    \visible<8->{\R &= \Conj{\RootN{3}\CDQB{1}{1}{0}{1}} \\}
-    \visible<9->{\cos{\theta} &= \braket{\ColorOne{s}}{\ColorTwo{r}}=\frac{\sqrt{3}}{2} \\
-    \theta &= \frac{\pi}{6}
-    }
-\end{align*}}
 }{%
 \Vskip{-4em}\begin{center}
 \begin{TIKZP}[scale=3]
-    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (7:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
     \visible<5->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
-    \visible<9->{
-     \draw[->,thick] (1,0) arc (0:30:1);
-     \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
-     }
 \end{TIKZP}
 \end{center}}
 \only<1>{We begin with the superposition of all inputs $\S=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
@@ -127,5 +113,50 @@ But we can construct \R{} so that it is orthogonal to \W.}
 
 Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, starting at \S{} and moving iteratively toward \W{}.
 }
+\end{frame}
+}
+
+
+
+{
+\def\S{\ColorOne{\bra{s}}}
+\def\W{\ColorThree{\bra{w}}}
+\def\R{\ColorTwo{\bra{r}}}
+\begin{frame}{A two-qubit example to illustrate Grover's algorithm}{Oracle $f(x)=1$ only when $x=2$ (using bras instead of kets to save space here)}
+\TwoColumns{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> We begin at \S, the uniform superposition of all possible inputs.
+    \item<2-> Our secret \W{} captures $x=2$.
+    \item<3-> Here is \R, orthogonal to \W.
+\end{itemize}
+}%
+\only<4>{%
+\Vskip{-3em}\begin{align*}
+    \visible<4->{\cos{\theta} &= \braket{\ColorOne{s}}{\ColorTwo{r}} =\frac{\sqrt{3}}{2}\\
+    \theta &= \frac{\pi}{6}
+    }
+\end{align*}}%
+\only<5->{%
+Expressing \S{} in this basis:
+\begin{align*}
+    \S &= \cos{\theta}\R + \sin{\theta}\W \\
+       &= \frac{1}{2}\CDQB{1}{1}{1}{1}
+\end{align*}
+}
+}{%
+\Vskip{-3em}\begin{center}
+\begin{TIKZP}[scale=2.5]
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\CDQB{1}{1}{1}{1}$};} 
+    \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}$} ;}
+    \visible<3->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {$\R=\RootN{3}\CDQB{1}{1}{0}{1}$};}
+    \visible<4->{
+     \draw[->,thick] (1,0) arc (0:30:1);
+     \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
+     }
+\end{TIKZP}
+\end{center}
+}
+
 \end{frame}
 }
