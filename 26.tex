@@ -98,9 +98,9 @@ We next consider two examples.
 \end{TIKZP}
 \end{center}}
 \only<1>{We begin with the superposition of all inputs $\S=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
-\only<2>{%
-Let $T=\Set{t\ | n\ f(t)=1}$.   Measurement of \W{} obtains a solution to the problem.}
-
+\only<2-3>{%
+Let $T=\Set{t\ |\ f(t)=1}$.   \only<3>{Measurement of \W{} obtains a solution to the problem.}
+}
 \only<4-5>{%
 Unfortunately, \S{} and \W{} are not orthogonal:
 \(
@@ -141,6 +141,7 @@ Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, start
 Expressing \S{} in this basis:
 \begin{align*}
     \S &= \cos{\theta}\R + \sin{\theta}\W \\
+       &= \frac{\sqrt{3}}{2}\R + \frac{1}{2}\W \\
        &= \frac{1}{2}\CDQB{1}{1}{1}{1}
 \end{align*}
 }%
