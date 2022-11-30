@@ -1,1 +1,181 @@
 \SetTitle{26}{Grover's Algorithm}{Unstructured search in $\sqrt{N}$ time}{26}
+
+\begin{frame}{Overview}{What do we study here?}
+
+\begin{itemize}
+    \item Some search problems have \emph{structure}, which can lead to efficient methods of solving the search problem.
+    \item For example, a sorted array of integers can be subject to binary search, discovering whether an integer is present in $\Theta(\log{N})$ time for an array of size~$N$.
+    \item An \emph{unstructured} search problem has no such advantage.  Classically, we may have to examine each of the $N$ items in a collection to find an object of interest.
+    \item Any problem in \href{https://complexityzoo.net/Complexity_Zoo:N\#np}{\CompClass{NP}} can be posed as unstructured search problem.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Oracle for a problem in \href{https://complexityzoo.net/Complexity_Zoo:N\#np}{\CompClass{NP}}}{We search for an $x$ such that $f(x)=1$}
+
+\TwoColumns{%
+\begin{itemize}[<+->]
+    \item Input $x$ of $n$ qubits.
+    \item Another input is the \href{https://en.wikipedia.org/wiki/Ancilla\_bit}{ancilla} $y$.
+    \item Input $x$ is copied to output.
+    \item $f(x)$ is computed in polynomial time with result
+    \begin{itemize}
+      \item[0] if $x$ is not a solution
+      \item[1] if $x$ is a solution
+    \end{itemize}
+    \item Our problem is to find $x\ |\ f(x)=1$.
+    \item There may be multiple solutions to this problem, but we assume there is at least one.  
+\end{itemize}
+}{%
+\begin{center}
+    \begin{GateBox}{2}{3}{5}
+      \visible<1->{%
+      \Input{0}{$x_{1}$}
+      \Input{1}{$x_{2}$}
+      \Input{2}{\RVDots}
+      \Input{3}{$x_{n}$}}
+      \visible<2->{\Input{4}{$y$}}
+      \visible<3->{\Output{0}{$x_{1}$}
+      \Output{1}{$x_{2}$}
+      \Output{2}{\RVDots}
+      \Output{3}{$x_{n}$}}
+      \visible<4->{\Output{4}{$\Xor{y}{f(x)}$}}
+      \BoxLabel{Oracle}
+    \end{GateBox}
+\end{center}
+
+\visible<9->{%
+Any search problem, including those that are computationally challenging, can be posed in the form of such a problem.
+
+We next consider two examples.
+}
+}
+    
+\end{frame}
+
+
+\begin{frame}{Examples}{Cryptographic and an \href{https://complexityzoo.net/Complexity_Zoo:N\#npc}{\CompClass{NPC}} application}
+
+\TwoColumns{%
+\visible<1->{
+\href{https://en.wikipedia.org/wiki/RSA\_(cryptosystem)}{RSA}
+\begin{itemize}
+    \item Consider two large primes $p$ and $q$ whose products are $r$.
+    \item Let $x$ have $n$ qubits, sufficient to encode $p$ and $q$: \[n=\Theta(\log{p}+\log{q})=\Theta(\log{pq})\]
+    \item Given a suitably encoded input $x=pq$, our oracle returns $1$ if  $p\times q=r$. Otherwise, $0$ is returned.
+\end{itemize}}
+}{%
+\visible<2->{%
+\href{https://en.wikipedia.org/wiki/Travelling\_salesman\_problem}{Traveling Salesperson}
+\begin{itemize}
+    \item Is there a tour of a given graph $G=(V,E)$ with cost (sum of weighted edges in the tour) $B$?
+    \item Let $x$ have $n$ qubits, sufficient to encode a list of elements in $V$:
+    \[n = \Theta(|V|\log{|V|})\]
+    \item The oracle returns $1$ if the cost of $x$ is $B$.  Otherwise, $0$ is returned.
+\end{itemize}
+}}
+\end{frame}
+
+{
+\def\S{\ColorOne{\ket{s}}}
+\def\W{\ColorThree{\ket{w}}}
+\def\R{\ColorTwo{\ket{r}}}
+\begin{frame}{A useful orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
+
+\TwoColumns{%
+\only<1-6>{%
+\Vskip{-4em}\begin{align*}
+    \S &= \TensSupProd{\left(\PPlus\right)}{n} = \RootTwoN{n}\SumBV{x}{n}\ket{x} \\
+    \visible<2->{\W &= \frac{1}{\sqrt{\Mag{T}}}\sum_{t \in T} \ket{t} \\}
+    \visible<5->{\R &= \frac{1}{\sqrt{2^{n}-\Mag{T}}}\sum_{t \not\in T} \ket{t}}
+\end{align*}
+}%
+}{%
+\Vskip{-4em}\begin{center}
+\begin{TIKZP}[scale=3]
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
+    \visible<5->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
+\end{TIKZP}
+\end{center}}
+\only<1>{We begin with the superposition of all inputs $\S=\TensSupProd{\Hadamard}{n}\left(\TensSupProd{0}{n}\right)$}%
+\only<2-3>{%
+Let $T=\Set{t\ |\ f(t)=1}$.   \only<3>{Measurement of \W{} obtains a solution to the problem.}
+}
+\only<4-5>{%
+Unfortunately, \S{} and \W{} are not orthogonal:
+\(
+\braket{\ColorOne{s}}{\ColorThree{w}\textbf{}} = \frac{1}{\sqrt{2^{n}\Mag{T}}}\sum_{t \in T} 1\visible<5->{ \alert{\not= 0}}
+\)}%
+\only<5>{%
+
+But we can construct \R{} so that it is orthogonal to \W.}
+\only<6>{%
+
+Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, starting at \S{} and moving iteratively toward \W{}.
+}
+\end{frame}
+}
+
+
+
+{
+\def\S{\ColorOne{\bra{s}}}
+\def\W{\ColorThree{\bra{w}}}
+\def\R{\ColorTwo{\bra{r}}}
+\begin{frame}{A two-qubit example to illustrate Grover's algorithm}{Oracle $f(x)=1$ only when $x=2$ (using bras instead of kets to save space here)}
+\TwoColumns{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> We begin at \S, the uniform superposition of all possible inputs.
+    \item<2-> Our secret \W{} captures $x=2$.
+    \item<3-> Here is \R, orthogonal to \W.
+\end{itemize}
+}%
+\only<4>{%
+\Vskip{-3em}\begin{align*}
+    \visible<4->{\cos{\theta} &= \braket{\ColorOne{s}}{\ColorTwo{r}} =\frac{\sqrt{3}}{2}\\
+    \theta &= \frac{\pi}{6}
+    }
+\end{align*}}%
+\only<5>{%
+Expressing \S{} in this basis:
+\begin{align*}
+    \S &= \cos{\theta}\R + \sin{\theta}\W \\
+       &= \frac{\sqrt{3}}{2}\R + \frac{1}{2}\W \\
+       &= \frac{1}{2}\CDQB{1}{1}{1}{1}
+\end{align*}
+}%
+\only<6->{%
+\Vskip{-3em}\begin{itemize}
+\item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\BState{f}}.
+\item This is accomplished using the familiar phase-kickback trick, which flips the sign of the component \bra{x} if $f(x)=1$.
+\item<7-> The second step reflects the current state \ColorFour{\BState{f}} around \S{} to obtain \ColorFive{\BState{d}}.
+\item<7-> In this example, we obtain \W{} exactly.  Typically we must repeat the two steps of the algorithm to get close to \W.
+\end{itemize}
+}
+}{%
+\Vskip{-3em}\begin{center}
+\begin{TIKZP}[scale=2.5]
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\CDQB{1}{1}{1}{1}$};} 
+    \visible<2-6>{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
+    \visible<7->{\draw[->,thick,\RCfive] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
+    \visible<3->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {$\R=\RootN{3}\CDQB{1}{1}{0}{1}$};}
+    \visible<4-6>{
+     \draw[->,thick] (1,0) arc (0:30:1) coordinate(zz);
+     \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
+     }
+     \visible<6>{
+     \draw[->,thick] (1,0) arc (0:-30:1);
+     \draw (0.7,-0.17) node {$-\frac{\pi}{6}$};}
+     \visible<6->{
+     \draw[->,thick,\RCfour] (0,0) -- (-30:1) node[right]{$\BState{f} = \RootTwoN{2}\CDQB{1}{1}{-1}{1}$};
+     }
+     \visible<7>{\draw[->,thick,\RCfive] (zz) arc (30:90:1);
+     \draw (0.25,0.5) node {$2\times\frac{\pi}{6}$};
+     }
+\end{TIKZP}
+\end{center}
+}
+
+\end{frame}
+}

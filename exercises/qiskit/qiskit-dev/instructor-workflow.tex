@@ -18,7 +18,7 @@
 
 \subsection*{Create Assignment}
 \begin{enumerate}[font=\bfseries]
-    \item Create a homework assignment on Gradescope (create assignment, programming assignment). Enable manual grading. Fill in the autograder point total specified by the corresponding grading document. Configure other settings as desired.
+    \item Create a homework assignment on Gradescope for the manual portion and a programming assignment for the autograded portion. Fill in the autograder point total specified by the corresponding grading document. For the manual assignment, select the option for instructor-uploaded submissions (though this will be done automatically via otter).
     \item Obtain a token
     \begin{enumerate}
         \item Open a Python shell
@@ -32,17 +32,28 @@
 
 
 \subsection*{Build and Distribute Assignment}
-\begin{enumerate}[font=\bfseries]
-    \item Run all cells of the \texttt{q*.ipynb} and save.
-    \item Run \texttt{otter assign q*.ipynb q*-dist --v1}. You may get a number of warnings for otter syntax errors which will need to be fixed before the assignment can be generated. If everything goes smoothly, the command will print ``All tests passed!" at the end.
-    \item \texttt{cd} into \texttt{dist}. Note the respective \texttt{autograder} and \texttt{student} directories.
-    \item \texttt{cd} into \texttt{autograder}
-    \begin{enumerate}
-        \item Configure additional manual graded questions with their point values.
-        \item Add \texttt{autograder.zip} to the ``Configure Autograder" section of the Gradescope assignment. The Dockerfile will take some time to build.
+\begin{itemize}
+    \item Automated script version
+    \begin{enumerate}[font=\bfseries]
+        \item \texttt{cd} into the \texttt{/exercises/qiskit} directory
+        \item Run \texttt{./generate\_qiskit\_assignment.py}
+        \item The script will ask for the assignment number (e.g. 0 for assignment q0), course\_id, and assignment\_id. The latter two can be found by creating a new assignment on Gradescope for the manual portion (not auto), clicking into it from the assignments view, and reading off the numbers from the URL
+        \item See the assignment directory guide below for interpreting the otter-assign output
     \end{enumerate}
-    \item \texttt{cd} into \texttt{student}. The notebook file \texttt{q*.ipynb} in this folder is the one that should be distributed to students. Note that this is distinct from the master assignment with the same name in the root of the assignment folder.
-\end{enumerate}
+    \item Step by step version
+    \begin{enumerate}[font=\bfseries]
+        \item Run all cells of the \texttt{q*.ipynb} and save.
+        \item Run \texttt{otter assign q*.ipynb q*-dist --v1}. You may get a number of warnings for otter syntax errors which will need to be fixed before the assignment can be generated. If everything goes smoothly, the command will print ``All tests passed!" at the end.
+        \item \texttt{cd} into \texttt{dist}. Note the respective \texttt{autograder} and \texttt{student} directories.
+        \item \texttt{cd} into \texttt{autograder}
+        \begin{enumerate}
+            \item Configure additional manual graded questions with their point values.
+            \item Add \texttt{autograder.zip} to the ``Configure Autograder" section of the Gradescope assignment. The Dockerfile will take some time to build.
+        \end{enumerate}
+        \item \texttt{cd} into \texttt{student}. The notebook file \texttt{q*.ipynb} in this folder is the one that should be distributed to students. Note that this is distinct from the master assignment with the same name in the root of the assignment folder.
+    \end{enumerate}
+\end{itemize}
+
 \newpage
 \subsection*{Qiskit Assignment Directory Guide}
 \dirtree{%
