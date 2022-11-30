@@ -421,6 +421,20 @@ This is an ongoing debate in physics.  We run into this problem studying how a b
     
 \end{frame}
 
+\begin{frame}{Central dogma of quantum computing}{How do most quantum algorithms work?}
+\begin{description}
+    \item<1->[Input] We begin with a set of \emph{qubits} that are usually placed into a superposition that creates \emph{all} possible inputs. 
+    \item<2->[Gates] The qubits then experience (linear) transformations intended to emphasize the answer we seek and squash all imposters.  
+    
+    Some of these transformations create entanglement among the qubits.
+    \item<3->[Measurement] Measuring a qubit collapses it superposition, sometimes giving us the answer we seek, sometimes forcing other qubits to behave as we wish.
+\end{description}
+\visible<4->{%
+\BigSkip{}
+Quantum algorithms are necessarily probabilistic, which means we must run a given quantum circuit multiple times to obtain answer with any confidence.}
+    
+\end{frame}
+
 \section{Logistics}
 
 \begin{frame}{Course overview and logistics}{You are responsible for this knowledge}
