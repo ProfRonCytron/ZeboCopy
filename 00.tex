@@ -2,37 +2,9 @@
 
 \section{Foreword}
 
-\begin{frame}{Some notes about online learning for this course}{There are challenges but also some opportunities}
-
-\Vskip{-3.5em}
-\only<1-6>{\begin{itemize}[<+->]
-    \item We all wish we could be in person.  I was particularly looking forward to studying this material with you in person.  It's difficult to impart or sense amazement on \href{https://en.wikipedia.org/wiki/Zoom_Video_Communications}{zoom}.
-    \item While we are forced to study together on zoom, I ask the following of you:
-    \begin{itemize}
-        \item Your participation grade is partly based on attendance. I will have a form you use to sign in each class.  Beyond that part of your grade, your success in this class is likely improved by just \alert{showing up}.
-        \item Unless it would be improprietous, \alert{please leave your video on} so I can see your face.  Teaching on zoom otherwise is like teaching in a classroom where students have bags over their heads. 
-        \item I strongly encourage you to exercise curiosity and ask questions. If questions show up in chat, I may not see them while screen sharing.  \alert{Please interrupt me if you see a question that I haven't seen.}  Also feel free to \alert{ask questions out loud}.
-    \end{itemize}
-    \item It is challenging to give exams in an online course.  Please take note of my \href{https://wustl.instructure.com/courses/80191}{course policies}, especially regarding exams.  I will go over those today. 
-\end{itemize}}%
-\only<7>{%
-\begin{itemize}
-    \item However, there are some advantages.  One is that you can annotate the screen while I am sharing, to ask a question or to participate in a discussion.  Look for \texttt{View Options}$\ldots$\texttt{Annotate}$\ldots$\texttt{Draw}
-    \item Let's practice that now.  In the spirit of \href{https://admission.rice.edu/blog/in-the-know/your-application-checklist}{Rice's application Box}, please draw or write something \ColorOne{in the square below} now:
-\end{itemize}
-\ColorOne{\fbox{\hbox to 0.98\textwidth{\hss}\vrule width 0pt depth 1.5in}}}%
-\only<8->{%
-\begin{itemize}
-    \item When we return, hopefully, to in-person instruction, we have been asked to continue to post online recordings of lectures.
-    \item I have agreed to do that, based on a quick review of literature that shows outcomes improve when such material is available.
-    \item However, captures of live lectures are not the best way to present material online.
-    \item You are both encouraged and incentivized (class participation credit) to attend in-person whenever possible.
-    \item However, if you feel ill or are concerned about communicating COVID or other illness to yourself or others, please do not attend.
-    \item A form will be provided so you can receive credit for participation whether you are present or (with good reason) absent.
-\end{itemize}
-}
-    
-\end{frame}
+%%
+%% \input{onlineblurb}
+%% 
 
 \begin{frame}{Some notes about these slides}
 \begin{itemize}[<+->]
@@ -446,6 +418,20 @@ This is an ongoing debate in physics.  We run into this problem studying how a b
 
 \only<7>{
 \MedSkip{}Why do we care?  Harnessing these quantum effects allows us to solve some interesting problems in mere seconds that would take billions of years to solve on a classical computer.}
+    
+\end{frame}
+
+\begin{frame}{Central dogma of quantum computing}{How do most quantum algorithms work?}
+\begin{description}
+    \item<1->[Input] We begin with a set of \emph{qubits} that are usually placed into a superposition that creates \emph{all} possible inputs. 
+    \item<2->[Gates] The qubits then experience (linear) transformations intended to emphasize the answer we seek and squash all imposters.  
+    
+    Some of these transformations create entanglement among the qubits.
+    \item<3->[Measurement] Measuring a qubit collapses it superposition, sometimes giving us the answer we seek, sometimes forcing other qubits to behave as we wish.
+\end{description}
+\visible<4->{%
+\BigSkip{}
+Quantum algorithms are necessarily probabilistic, which means we must run a given quantum circuit multiple times to obtain answer with any confidence.}
     
 \end{frame}
 
