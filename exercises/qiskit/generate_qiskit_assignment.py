@@ -55,8 +55,9 @@ def main():
 def otter_version_warning():
     # otter v1 necessary to generate assignments properly
     # anything > 3.2.1 is fine but please update this warning
-    print("\tPlease check that your otter version is == 3.2.1 (and course virtual env is active)")
-    print("\tUpdate this guard clause if the course moves to a later version")
+    print("\tPlease check that your otter version is == 3.2.1")
+    print("\tThis warning usually occurs when the course virtual environment is not active")
+    print("\tTry running \"conda activate cse468\" before running this script")
 
 
 def assignment_info_prompt():
