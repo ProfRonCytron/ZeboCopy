@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{exercises/handwritten/handout}
+
 \usepackage{amssymb,mathrsfs, amsmath,amsfonts}
 \usepackage{mathtools}
 \usepackage{graphicx}
@@ -22,9 +24,8 @@
 
 \begin{document}
 
-\maketitle
-\tableofcontents
-\newpage
+\assignment{Qiskit Environment Setup Guide}
+
 \section{Python \& Miniconda}
 
 Run \texttt{python --version} to check whether you have Python 3.7.x installed and \texttt{conda --version} to check whether conda 4.9.2 is installed. If both requirements are satisfied, you can skip to the next section. Otherwise, use the links below to install them. Choose to ``Add to Path" where prompted. \newline
@@ -62,6 +63,7 @@ Using conda, we can create a Python environment which manages the necessary Pyth
 % pandoc will be used to generate PDFs for your final submissions.
 % OS specific downloads are available \href{https://pandoc.org/installing.html}{from this link}. Run \texttt{pandoc --version} to ensure the installation was successful.
 
+\newpage
 \section{Troubleshooting}
 Sometimes the installation process seems to work but something is still broken. If no useful errors occurred while installing the software, there are a few things to try:
 \begin{enumerate}
