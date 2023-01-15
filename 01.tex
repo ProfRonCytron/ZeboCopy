@@ -358,6 +358,23 @@ Quantum computing borrows notation from physics in using \href{https://en.wikipe
 }
 \end{frame}
 
+\begin{frame}{Kets as state vectors}{A column vector represents a state in quantum computing}
+
+\TwoUnequalColumns{0.85\textwidth}{0.15\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item<1-> Quantum computing deals greatly with probability distributions among states.
+    \item<2-> We use vectors to represent states, with an entry for every possible combination of observable outcomes.
+    \item<3-> So, the state of an $n$-qubit system is represented by a vector of $2^n$ entries.  On the right is a $2$-qubit system with~4 combinations of observables \visible<4->{\ColorOne{$00$}}\visible<5->{, \ColorTwo{$01$}}\visible<6->{, \ColorThree{$10$}}\visible<7->{, and~\ColorFour{$11$}.}
+    \item<8-> If the vector on the right contained probabilities, we would insist that they sum to~$1$.
+    \item<9-> In quantum computing, the entries are not probabilities. They are \href{https://en.wikipedia.org/wiki/Probability_amplitude}{probability amplitudes}, which can be negative.  The \href{https://en.wikipedia.org/wiki/Square_(algebra)\#Absolute_square}{modulus square} of such a quantity yields the probability of the corresponding observable's outcome.
+\end{itemize}%
+}{%
+\only<3->{%
+\[\DQB{\visible<4->{\CFCirc{\RCone}}}{\visible<5->{\CFCirc{\RCtwo}}}{\visible<6->{\CFCirc{\RCthree}}}{\visible<7->{\CFCirc{\RCfour}}}\]
+}%
+}
+\end{frame}
+
 \begin{frame}{Inner Products}
 The complete bra--ket of a state \QState{} is the inner product of its bra with the ket, which computes the magnitude of the state, squared:
 \Vskip{-2em}\begin{eqnarray*}
