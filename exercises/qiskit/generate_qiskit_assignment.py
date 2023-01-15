@@ -12,7 +12,7 @@ from os.path import isfile
 
 
 def main():
-    if otter.__version__ != "3.2.1":
+    if otter.__version__ != "4.2.1":
         otter_version_warning()
         return
 
@@ -42,7 +42,7 @@ def main():
             f.write(line)
         print(f"Updated master file written to {assignment_fp}")
     
-    job = sp.run(f"otter assign {assignment_fp} {assignment_dist_dir} --v1".split(" "))
+    job = sp.run(f"otter assign {assignment_fp} {assignment_dist_dir}".split(" "))
     try:
         job.returncode
     except sp.CalledProcessError as e:
@@ -54,8 +54,8 @@ def main():
 
 def otter_version_warning():
     # otter v1 necessary to generate assignments properly
-    # anything > 3.2.1 is fine but please update this warning
-    print("\tPlease check that your otter version is == 3.2.1")
+    # anything > 4.2.1 is fine but please update this warning
+    print("\tPlease check that your otter version is == 4.2.1")
     print("\tThis warning usually occurs when the course virtual environment is not active")
     print("\tTry running \"conda activate cse468\" before running this script")
 
