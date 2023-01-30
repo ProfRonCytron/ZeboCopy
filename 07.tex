@@ -1,5 +1,6 @@
 \SetTitle{7}{Universal quantum gates}{Several approaches, culminating in the qiskit U gate}{07}
 
+\section*{Overview}
 \begin{frame}{Overview}{What will we study here?}
 \begin{itemize}
     \item We recap the postulates of quantum computing.
@@ -9,6 +10,8 @@
     \item We show that any quantum gate can be decomposed into a sum of Pauli gates, so they serve as a \emph{basis} for quantum gates.
 \end{itemize}
 \end{frame}
+
+\section*{Postulates}
 
 \begin{frame}{Postulates of quantum computing}{Brazenly borrowed from quantum mechanics}
 
@@ -28,7 +31,7 @@ The \href{https://en.wikipedia.org/wiki/Axiom}{postulates (axioms)} of quantum c
 \end{enumerate}}
 \end{frame}
 
-
+\section*{Universality}
 \begin{frame}{Universality}{Some initial thoughts}
 
 \begin{itemize}[<+->]
@@ -63,6 +66,7 @@ These constraints will take us from 8 parameters to only 3.}
     
 \end{frame}
 
+\section*{Qiskit U gate}
 \begin{frame}{The Qiskit U gate}{Theorem statement}
 \begin{theorem}
    Up to a global phase, any $2\times 2$ unitary matrix can be expressed as
@@ -340,6 +344,8 @@ We need just these three parameters to determine a quantum gate: $\theta, \Phii,
     
 \end{frame}
 
+\section*{Pauli gate universality}
+
 \begin{frame}{Single qubit universality via Pauli gates}{Adapted from \href{https://qiskit.org/textbook/ch-gates/proving-universality.html\#pauli}{qiskit}}
 
 \TwoColumns{%
@@ -404,6 +410,8 @@ U =& \SQBG{}{\UZZ}{\UZN}{\UNZ}{\UNN}\\
 Thus, any single-qubit gate can be specified using only the three Pauli gates.}
 
 \end{frame}}
+
+\section*{Summary}
 
 \begin{frame}{Summary}{What have we learned?}
 
