@@ -405,11 +405,13 @@ rotates a state  by $\pi$ radians around the x~axis.
 \PauliY{} = \YMatrix{}
 \]
 \begin{itemize}
-    \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change: \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-\NiceI\beta}{i\alpha} = -\NiceI\SQB{\beta}{-\alpha} \equiv \SQB{\beta}{-\alpha} \]
-    \item<2-> The two eigenstates are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
-    \item<3-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
+    \item<1-> This transformation exchanges the amplitudes and imposes a relative sign change (combines \PauliX{} and \PauliZ{}): \[ \ApplyGate{\PauliY}{\SQB{\alpha}{\beta}} =  \SQB{-\NiceI\beta}{i\alpha} = -\NiceI\SQB{\beta}{-\alpha} \visible<2->{\alert{\equiv} \SQB{\beta}{-\alpha}} \]
+
+    \item<3-> The two eigenstates are \ket{+y} and \ket{-y}. \Exercise{unaffected points}{Define +y and -y in the standard basis and show that Paul Y doesn't affect +y or -y.}
+    \item<4-> This gate maps $\ket{0}\mapsto\ket{1}$ and \VV{}.
 \end{itemize}
 }{%
+\Vskip{-3em}
 \begin{center}
     \begin{BlochSphere}[scale=1]{60}{115}
     \BlochSpherePhiTheta{}
@@ -418,8 +420,9 @@ rotates a state  by $\pi$ radians around the x~axis.
     \end{BlochSphere}
 \end{center}
 \PauliY{} generally
-rotates a state  by $\pi$ radians around the y~axis.  
-\visible<3>{\MedSkip{}This gate also maps $\ket{+} \mapsto \ket{-}$ and \VV{}.}
+rotates a state  by $\pi$ radians around the y~axis.
+\visible<2->{\MedSkip{}The ``\alert{$\equiv$}'' notation means equal up to a global phase.}
+\visible<4>{\MedSkip{}This gate also maps $\ket{+} \mapsto \ket{-}$ and \VV{}.}
 }
 \end{frame}
 
@@ -442,6 +445,24 @@ $\PauliZ{}=\ZMatrix{}$
     \item Each matrix has \href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvalues} $\pm 1$.
     \item Each Pauli matrix rotates all states by $\pi$ radians about its associated axis, except the two states at the intercept of its axis with the unit Bloch sphere.  The eigenstates are therefore those intercepts.
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Matrices as quantum gates or as measurement operators}{The Pauli gates can be either}
+\Vskip{-4em}\TwoColumns{%
+\begin{center}\bf Quantum Gates\end{center}
+\begin{itemize}
+    \item The \PauliZ{} gate sends an arbitrary quantum state to another state, as computed by the matrix:
+    \[ \ApplyGate{\ZMatrix}{\SQB{\alpha}{\beta}}=\SQB{\alpha}{-\beta}
+    \]
+    \item The state after the gate is simply \[\SQB{\alpha}{-\beta}\]
+\end{itemize}
+}{%
+\begin{center}\bf Measurement Operators\end{center}
+\begin{itemize}
+    \item Given any input state $\SQB{\alpha}{\beta}$, \PauliZ{} as a measurement operator yields one of its eigenstates, namely \PZero{} or \POne{}.
+    \item This is clearly and intentionally not reversible.  More about this on the next slides.
+\end{itemize}
+}
 \end{frame}
 
 %%
@@ -469,7 +490,6 @@ $\PauliZ{}=\ZMatrix{}$
 \begin{itemize}
     \item<13-> Consider the observable \PauliX{} with eigenvectors \visible<14->{\alert<14>{\ket{+}}} \visible<15->{and \alert<15>{\ket{-}}.}
 \end{itemize}
-\alert{RC note to self to expand this section with more measurements, and to show how to convert basis for measuing in \PaulZ{}}
 }
 }{%
 \only<8-12>{%
@@ -498,6 +518,22 @@ $\PauliZ{}=\ZMatrix{}$
 \end{TIKZP}
 \end{center}
 }
+}
+\end{frame}
+\section*{Measurement in other bases}
+\begin{frame}{Measurement in other bases}{Of the Bloch sphere}
+\TwoColumns{%
+\begin{itemize}
+    \item Qiskit and actual quantum devices offer measurements in only one basis, the \PauliZ{} basis.
+    \item Proximity of a state to the North or South poles results in \ket{0} or \ket{1} as a result, respectively. 
+    \item If we pick another basis, say \PauliX{}, then on the Bloch sphere, the resulting measurement is based on state proximity to \ket{+} or \ket{-}.
+\end{itemize}
+}{%
+\begin{center}
+\begin{BlochSphere}[scale=1.8]{60}{115}
+    \BlochSpherePhiTheta{}
+\end{BlochSphere}
+\end{center}
 }
 
 \end{frame}
