@@ -523,11 +523,20 @@ $\PauliZ{}=\ZMatrix{}$
 \section*{Measurement in other bases}
 \begin{frame}{Measurement in other bases}{Of the Bloch sphere}
 \TwoColumns{%
+\only<1>{%
 \begin{itemize}
     \item Qiskit and actual quantum devices offer measurements in only one basis, the \PauliZ{} basis.
     \item Proximity of a state to the North or South poles results in \ket{0} or \ket{1} as a result, respectively. 
     \item If we pick another basis, say \PauliX{}, then on the Bloch sphere, the resulting measurement is based on state proximity to \ket{+} or \ket{-}.
+\end{itemize}}%
+\only<2>{%
+\begin{itemize}
+    \item We can measure in the \PauliX{} basis by first rotating the globe so \ket{+x} is at the North pole and \ket{-x} is at the South pole.
+    \item Then we do a measurement as usual, in the \PauliZ{} basis.
+    \item The result will be \QZero{} or \QOne{}, the North or South pole, respectively.
+    \item We then unrotate the globe back to its original position, with the current state now \ket{+} or \ket{-}.
 \end{itemize}
+}
 }{%
 \begin{center}
 \begin{BlochSphere}[scale=1.8]{60}{115}
