@@ -544,7 +544,21 @@ $\PauliZ{}=\ZMatrix{}$
 \end{BlochSphere}
 \end{center}
 }
-
+\end{frame}
+\begin{frame}{Measuring in non-\PauliZ{} basis}{Managing the transformations}
+\Vskip{-4em}
+\TwoColumns{%
+\begin{itemize}
+    \item First, conceive of the unrotation, namely mapping \PauliZ{} to your desired basis.  You must know where to send \ket{0} and \ket{1}:
+    \[\PZero{}\mapsto\ColorOne{\SQB{\alpha}{\beta}}\ \POne{}\mapsto\ColorTwo{\SQB{\gamma}{\delta}}
+    \]
+    \item The matrix to accomplish this mapping has each of those states as its columns:
+    \[
+      T = \SQBG{\relax}{\alpha}{\gamma}{\beta}{\delta}
+    \]
+\end{itemize}
+}{%
+}
 \end{frame}
 %%
 %% End of stuff that might move to module 12
