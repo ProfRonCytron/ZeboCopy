@@ -587,8 +587,8 @@ $\PauliZ{}=\ZMatrix{}$
 {%
 \def\Redify#1{\textcolor{RedOrange}{#1}}%
 \def\Bluify#1{\textcolor{\RCtwo}{#1}}%
-\def\Term#1{\frac{i^{#1}\theta^{#1}A^{#1}}{#1!}}%
-\def\TermA#1{\frac{i\theta^{#1}A}{#1!}}%
+\def\Term#1{\frac{\NiceI^{#1}\theta^{#1}A^{#1}}{#1!}}%
+\def\TermA#1{\frac{\NiceI{}\theta^{#1}A}{#1!}}%
 \def\TermI#1{\frac{\theta^{#1}\Identity{}}{#1!}}%
 \def\TermF#1{\frac{\theta^{#1}}{#1!}}%
 \begin{frame}{A useful theorem for expressing rotations}{A matrix extension of \href{https://en.wikipedia.org/wiki/Euler\%27s_formula}{Euler's formula}}
@@ -604,9 +604,9 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 \Redify{\cos(x)} = & \Redify{1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} +  \cdots} \\ 
 \Bluify{\sin(x)} = & \Bluify{\frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots}
 \only<2>{%
-\\ i^{2} = & -1 \\
-   i^{3} = & - i \\
-   i^{4} = & \ 1
+\\ \NiceI^{2} = & -1 \\
+   \NiceI^{3} = & - \NiceI{} \\
+   \NiceI^{4} = & \ 1
 }
 \end{align*}
 }{%
@@ -635,7 +635,7 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
    \Redify{\TermF{2}}  
   + \Redify{\TermF{4}} - \cdots\right]
   \\[0.5em] &
-  + i\,\left[
+  + \NiceI\,\left[
   \Bluify{\TermF{1}}
   - \Bluify{\TermF{3}} 
    + 
@@ -644,7 +644,7 @@ Recall the following \href{https://en.wikipedia.org/wiki/Taylor_series}{Taylor s
 \only<6>{%
 = {} & \Identity{}\left[ \Redify{\cos(\theta)} \right]
   \\[0.5em] &
-  + i\,\left[
+  + \NiceI\,\left[
   \Bluify{\sin(\theta)}\right]\,A \QEDsym{}
 }
 \end{align*}
