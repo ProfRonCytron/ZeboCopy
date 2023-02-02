@@ -548,16 +548,35 @@ $\PauliZ{}=\ZMatrix{}$
 \begin{frame}{Measuring in non-\PauliZ{} basis}{Managing the transformations}
 \Vskip{-4em}
 \TwoColumns{%
+\only<1-2>{%
 \begin{itemize}
     \item First, conceive of the unrotation, namely mapping \PauliZ{} to your desired basis.  You must know where to send \ket{0} and \ket{1}:
     \[\PZero{}\mapsto\ColorOne{\SQB{\alpha}{\beta}}\ \POne{}\mapsto\ColorTwo{\SQB{\gamma}{\delta}}
     \]
     \item The matrix to accomplish this mapping has each of those states as its columns:
     \[
-      T = \SQBG{\relax}{\alpha}{\gamma}{\beta}{\delta}
+      T = \SQBG{\relax}{\ColorOne{\alpha}}{\ColorTwo{\gamma}}{\ColorOne{\beta}}{\ColorTwo{\delta}}
+    \]
+\end{itemize}}%
+\only<3->{%
+\begin{itemize}
+    \item If $T$ unrotates out of the standard basis, then $\Inverse{T}$ performs the rotation we need \emph{into} the standard basis.
+    \item For unitary matrices, $\Inverse{T}=\Conj{T}$.
+    \item  Thus, if \[
+      T = \SQBG{\relax}{\ColorOne{\alpha}}{\ColorTwo{\gamma}}{\ColorOne{\beta}}{\ColorTwo{\delta}}
+    \] then
+       \[
+      \Conj{T} = \SQBG{\relax}{\ColorOne{\Conj{\alpha}}}{\ColorOne{\Conj{\beta}}}{\ColorTwo{\Conj{\gamma}}}{\ColorTwo{\Conj{\delta}}}
     \]
 \end{itemize}
+}
 }{%
+\begin{itemize}
+    \item<1-> To unrotate, sending \QZero{} to $\ket{+}$ and \QOne{} to $\ket{-}$, we use the familiar Hadamard matrix:
+    \[ \Hadamard{}=\HMatrix{} \]
+    \item<4-> To rotate, we simply compute $\Conj{\Hadamard}=\Hadamard{}$.
+    \item<4-> To summarize, we apply $\Conj{T}$, perform the measurement in the standard basis, and then apply $T$.
+\end{itemize}
 }
 \end{frame}
 %%
