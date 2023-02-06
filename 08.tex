@@ -18,6 +18,23 @@
     
 \end{frame}
 
+\begin{frame}{A note on the meanings of \emph{rotate}}{Sorry about this}
+
+\TwoUnequalColumns{0.6\hsize}{0.4\hsize}{%
+\Vskip{-11em}
+\begin{itemize}
+    \item We may be adding relative phase between the superpositions of a qubit.  This corresponds to rotations about the \PauliZ{} axis on the Bloch sphere, namely changes in~\ColorOne{$\phi$}.
+    \item We may be changing the magnitude of the wave amplitudes, to shift likely outcome between \QZero{} and \QOne{}.  This corresponds to rotations about the \PauliX{} or \PauliY{} axes, namely changes in~\ColorTwo{$\theta$}.
+    \item We may be speaking of rotation about an axis of the Bloch sphere, which is related to the above, but with attention to the actual sphere.
+\end{itemize}
+}{%
+\begin{BlochSphere}[scale=1.5]{60}{115}
+    \BlochSpherePhiTheta{}
+\end{BlochSphere}
+}
+    
+\end{frame}
+
 \section*{Classical version}
 
 \begin{frame}{The classical EV bomb}{Based on our previous interferometer}
