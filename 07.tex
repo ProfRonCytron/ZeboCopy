@@ -27,7 +27,9 @@ The \href{https://en.wikipedia.org/wiki/Axiom}{postulates (axioms)} of quantum c
 \only<4->{%
 \begin{enumerate}
 \setcounter{enumi}{3}
-   \item The state space of a composite physical system is the \href{https://en.wikipedia.org/wiki/Tensor_product}{tensor product} of the state spaces of the component physical systems. Moreover, if we have systems numbered $1$ through $n$, and system number $i$ is prepared in the state \QState{i}, then the joint state of the total system is $\QState{1}\TensOp\QState{2}\TensOp\cdots\TensOp\QState{n}$.
+   \item The state space of a composite physical system is the \href{https://en.wikipedia.org/wiki/Tensor_product}{tensor product} of the state spaces of the component physical systems. Moreover, if we have systems numbered $1$ through $n$, and system number $i$ is prepared in the state \QState{i}, then the joint state of the total system is \[\QState{1}\TensOp\QState{2}\TensOp\cdots\TensOp\QState{n}\]
+   which we usually write as
+   \[\ket{\QName{1}\QName{2}\cdots\QName{n}}\]
 \end{enumerate}}
 \end{frame}
 
@@ -35,7 +37,7 @@ The \href{https://en.wikipedia.org/wiki/Axiom}{postulates (axioms)} of quantum c
 \begin{frame}{Universality}{Some initial thoughts}
 
 \begin{itemize}[<+->]
-    \item We captured the essence of a single qubit using two real rotational parameters $\phi$ and $\theta$.  Those parameters describe points on the unit sphere, each point corresponding to a quantum state.
+    \item We captured the essence of a single qubit using two real rotational parameters~$\phi$ and~$\theta$.  Those parameters describe points on the unit sphere, each point corresponding to a quantum state.
     \item A quantum gate is a mapping from states to states.
     \item Because such gates must have inverses, the mapping established by such gates must be \href{https://en.wikipedia.org/wiki/Bijection}{bijective}.
     \item We can think of a gate as a permutation of states, or points, on the Bloch sphere.
