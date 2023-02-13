@@ -11,6 +11,17 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Some background for teleportation}{Why would you want to do that?}
+\begin{itemize}[<+->]
+    \item Suppose Alice has some state \QState{} that she wants to send to Bob.
+    \item If Alice knows the state, she could send Bob $\theta$ and $\phi$, the two parameters of a quantum state on the Bloch sphere.  He could create the state by rotations from \QZero{}.
+    \item More interesting is when Alice does not know \QState{}, such as when it is the result of a quantum algorithm.  For example, Alice may have quantum bits that represent a factor of a large number.  But such a result could be measured by Alice with outcomes that are sent classically to Bob.
+    \item More interesting still would be some unknown, intermediate quantum state of an algorithm, to be sent from Alice to Bob for further processing.
+    \item Finally, the theoretical idea of teleportation is interesting all on its own.
+\end{itemize}
+    
+\end{frame}
+
 \section*{Partial Measurement}
 
 \begin{frame}{Partial measurements}{What happens when some bits are measured, but not all?}
