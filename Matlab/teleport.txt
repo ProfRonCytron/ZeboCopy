@@ -2,3 +2,11 @@ s = 1/sqrt(2)
 H = [s s; s -s]
 I = [1 0;0 1]
 CNOT = [1 0 0 0; 0 1 0 0; 0 0 0 1; 0 0 1 0]
+Bell = s*[1 0 0 1]'
+syms alpha beta
+alice = [alpha; beta]
+s1 = kron(alice,Bell)
+CNOTtI = kron(CNOT,I)
+s2 = CNOTtI*s1
+HII = kron(kron(H,I),I)
+s3 = HII*s2
