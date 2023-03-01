@@ -1,0 +1,5 @@
+BB84 but use Standard basis and Y, would it work the same?
+BB84 use standard basis for one basis, how many others could be used with the same result finitely many, infinitely man, uncountably infinitely many
+
+Have them do |1> on the bottom bit to get the other bell state, show it is not factorable.
+

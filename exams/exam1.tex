@@ -2,7 +2,7 @@
 \usepackage[margin=0.5in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{course}
-\usepackage{cse468-Spring22}
+\usepackage{cse468-Spring23}
 \usepackage{program}
 \usepackage{fancybox}
 \usepackage{adjustbox}
@@ -55,7 +55,7 @@ What is the contradiction, if any?
 
 \begin{document}
 
-\begin{assignment}{Exam I}{9 March 2022}{End of class}
+\begin{assignment}{Exam I}{8 March 2023}{End of class}
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
@@ -214,14 +214,14 @@ Fill in the table below and be sure to put your final answer for grading in the 
 \begin{tabular}{c|c||c|c||c|c||c}
 \multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
 Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
-\Row{\BBRt}{\STD}{\BBRt}
+\RowX{\BBNe}{\HDM}{\BBNe}
 \Row{\BBUp}{\STD}{\BBUp}
+\RowX{\BBNe}{\HDM}{\BBSe}
 \Row{\BBRt}{\STD}{\BBRt}
 \Row{\BBUp}{\HDM}{\BBNe}
-\Row{\BBRt}{\HDM}{\BBSe}
-\RowX{\BBNe}{\HDM}{\BBSe}
+\Row{\BBUp}{\STD}{\BBUp}\Row{\BBRt}{\HDM}{\BBSe}
 \RowX{\BBSe}{\HDM}{\BBSe}
-\RowX{\BBNe}{\HDM}{\BBNe}
+\Row{\BBRt}{\STD}{\BBRt}
 \RowX{\BBNe}{\HDM}{\BBNe}
 
 \end{tabular}
