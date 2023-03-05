@@ -97,7 +97,7 @@ sure you filled in your information in the box above!)
 \clearpage
 \begin{enumerate}
 \item\Points{20} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
-\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  Each is worth 2 points, so there are 4 points of extra credit here.
 
 
 \begin{itemize}
@@ -109,8 +109,11 @@ sure you filled in your information in the box above!)
     \item For \emph{all} values of $\theta$, $|e^{i\,\theta}|=1$.\TF{}
     \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}\equiv\Gate{X}$~\TF{}
     \item The state \[\frac{\ket{10}+\ket{11}}{\sqrt{2}}\] is an entangled state.~\TF{}
-    \item blah
-    \item blah
+    \item The state obtained after measuring the left qubit of \[\frac{\ket{00}+\ket{11}}{\sqrt{2}}\] is an entangled state.~\TF{}
+    \item The state \[\Gate{CNOT}\left(\frac{\ket{00}+\ket{11}}{\sqrt{2}}\right)\] is an entangled state.~\TF{}
+    \item For all states $\psi$, $\Gate{X}\Gate{Y}\psi\equiv\Gate{Y}\Gate{X}\psi$~\TF{}
+       \item Following the measurement of a single qubit, the number of possible states of that qubit is uncountably infinite.~\TF{}
+
 \end{itemize}
 
 \clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
@@ -135,7 +138,7 @@ Each response is worth~2 points.  You can miss one response and get full credit 
     \[
     \begin{pmatrix*}[r] 1 & \Blank[1.5em] \\ 0& \Blank[1.5em]\end{pmatrix*} \frac{1}{\sqrt{2}}\SQB{1}{1} = \frac{1}{\sqrt{2}}\SQB{1}{i}\hbox to 3in{\hss}
     \]
-
+ 
 \end{itemize}
 \clearpage\item\Points{30}
 %%%
@@ -189,8 +192,8 @@ Each response is worth 1 point.
     \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
     \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
 \end{itemize}
-
-\clearpage\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
+\LeaveSpace{1in}
+\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
 \begin{BBKey}
 \begin{center}
 \BBBasis{}
@@ -202,7 +205,7 @@ Each response is worth 1 point.
 \RowU{\STD}{#1}{#2}{#3}}
 \def\RowX#1#2#3{%
 \RowU{\HDM}{#1}{#2}{#3}}
-
+\Continued{}
 Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note the following:
 \begin{description}
   \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), \textbf{IF ANY}, would Alice and Bob each believe they share, assuming they do not believe Eve is present.
@@ -210,7 +213,7 @@ Fill in the table below and be sure to put your final answer for grading in the 
 \end{description}
 
 \begin{BBKey}
-\begin{center}\large
+\begin{center}\Large
 \begin{tabular}{c|c||c|c||c|c||c}
 \multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
 Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
