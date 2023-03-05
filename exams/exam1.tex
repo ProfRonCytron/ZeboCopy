@@ -68,7 +68,7 @@ Your work must be legible.  Work that is
 difficult to read will receive no credit.  There is a blank page at the end
 if you want to show extra work there.
 
-There are 118FIXME points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+There are 108 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -96,7 +96,7 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{20} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\item\Points{20+4} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  Each is worth 2 points, so there are 4 points of extra credit here.
 
 
@@ -116,29 +116,32 @@ sure you filled in your information in the box above!)
 
 \end{itemize}
 
-\clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
+\clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
-Each response is worth~2 points.  You can miss one response and get full credit for this portion.
+Each response is worth~2 points, and there are 2 points of extra credit here.
 \begin{itemize}
-    \item As evident on the Bloch sphere, the number of real parameters necessary to describe an arbitrary state of a single qubit is~\Blank{}.
-    \item As reflected in qiskit's \Gate{U} gate, the  number of real parameters necessary to describe an arbitrary, single-qubit, unitary gate is~\Blank{}.
-    \item On the Bloch sphere, \ket{0} is the \Blank{} pole.
-    \item The states \ket{+} and \ket{-} are found on which axis ($x$, $y$, or $z$) of the Bloch sphere?~\Blank{}
-    \item Consider a state $\psi$ on the Bloch sphere which \underline{is an eigenstate} of some unitary gate~$U$.  The minimum (angular) distance between~$\psi$ and~$U(\psi)$ on the Bloch sphere is~\Blank{}~radians.
-    \item $\X\ket{0}=\BlQb$
-    \item $\Z\ket{+}=\BlQb$
-    \item $\H{\ket{0}}=\BlQb$
-    \item Suppose a single-qubit quantum system is measured ``using'' an operator $M$.  Then the quantum system collapses into a state \QState{}, where \QState{} is an~\Blank{} of~$M$.
-    \item Complete the matrix below so that it is unitary:
-    \[ \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
-        1 & \Blank[2em]{} \\
-        -i & 1
-    \end{pmatrix*} \hbox to 4in{\hss}\]
-    \item Complete the matrix below so that it yields the result shown and so the matrix is unitary:
-    \[
-    \begin{pmatrix*}[r] 1 & \Blank[1.5em] \\ 0& \Blank[1.5em]\end{pmatrix*} \frac{1}{\sqrt{2}}\SQB{1}{1} = \frac{1}{\sqrt{2}}\SQB{1}{i}\hbox to 3in{\hss}
+    \item When a qubit is measured in the \X{} basis, it collapses to an \Blank{}state of the Pauli \X{} matrix. Those states are \Blank{} and \Blank{}.
+    \item After a quantum bit is measured in the \X{} basis, suppose it is then measured in the standard (\Z{}) basis. The probability of measuring \ket{0} is \Blank{} and the probability of measuring \ket{1} is \Blank{}.
+    \item Recall that the formula for a state $\ket{\psi}$  on the Bloch sphere is
+    \[ \ket{\psi} = \cos(\theta/2) + e^{i\,\phi}sin(\theta/2)\]
+    Fill in the table using radians for angles:
+    \begin{center}
+        \begin{tabular}{ccc}
+        State & $\theta$ & $\phi$ \\
+        \ket{0} & \Blank & \Blank \\
+        \ket{+}=\ket{+x} &\Blank & \Blank \\
+        \ket{+y} & \Blank & \Blank
+        \end{tabular}
+    \end{center}
+    \item Fill in the blanks below to show the result of the tensor product: \[
+    \ket{+}\otimes\ket{+} = \frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em]
+    \end{pmatrix*}
     \]
- 
+
 \end{itemize}
 \clearpage\item\Points{30}
 %%%
@@ -224,7 +227,7 @@ Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
 \Row{\BBUp}{\HDM}{\BBNe}
 \Row{\BBUp}{\STD}{\BBUp}\Row{\BBRt}{\HDM}{\BBSe}
 \RowX{\BBSe}{\HDM}{\BBSe}
-\Row{\BBRt}{\STD}{\BBLt}
+\Row{\BBRt}{\STD}{\BBUp}
 \RowX{\BBNe}{\HDM}{\BBNe}
 
 \end{tabular}
