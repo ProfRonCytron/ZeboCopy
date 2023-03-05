@@ -13,6 +13,7 @@
 }%
 \def\Gate#1{\mbox{\textbf{#1}}}
 \def\X{\Gate{X}}
+\def\Y{\Gate{Y}}
 \def\Z{\Gate{Z}}
 \def\I{\Gate{I}}
 \def\H{\Gate{H}}
@@ -95,23 +96,21 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{30} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\item\Points{20} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
 
-Each response is worth~3 points. You can miss any two responses and still get full credit for this portion.
+
 \begin{itemize}
-    \item Every unitary matrix has an inverse, which is that matrix's conjugate transpose.~\TF{}
-    \item The states $\alpha\ket{0}+\beta\ket{1}$ and $\alpha\ket{0}-\beta\ket{1}$ differ only by a global phase.~\TF{}
-    \item The states $\alpha\ket{0}-\beta\ket{1}$ and $-\alpha\ket{0}+\beta\ket{1}$ differ only by a global phase.~\TF{}
-    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-i}$ differ only by a global phase.~\TF{}
-    \item Consider a state $\QState{}=\alpha\ket{0}+\beta\ket{1}$, and let $\QState{}^{\star}$ denote the conjugate transpose of \QState{}.   Then $\QState{}^{\star}\times\QState{}=0$.~\TF{}
-    \item The conjugate transpose of \SQB{1}{i} is $\left(1\ \  i\right)$.~\TF{}
-    \item The actions of any sequence of unitary gates applied to a single qubit can be represented by a single, unitary matrix.~\TF{}
-    \item If the gate $A$ is applied to $\QState{}$ and the resulting state is then processed by gate $B$, the result is $A(B(\QState{}))$~\TF{}
-    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}=\Gate{X}$~\TF{}
-    \item The column vector for representing the state of an $n$-qubit system has $n$ entries.~\TF{}
-    \item Given the state $\frac{\ket{00}+\ket{11}}{\sqrt{2}}$, measuring either qubit determines the value of the other qubit.~\TF{}
-    \item The state $\frac{\ket{01}+\ket{10}}{\sqrt{2}}$ is an entangled state.~\TF{}
+    \item When an unpolarized photon hits a polarizing filter, that constitutes a measurement of a photon's polarization.~\TF{}
+    \item Each of the Pauli matrices (\X, \Y, and \Z) is its own inverse.~\TF{}
+    \item The states $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ and $\ket{-}=\frac{1}{\sqrt{2}}\SQB{1}{-1}$ differ only by a global phase.~\TF{}
+    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-1}$ differ only by a global phase.~\TF{}
+    \item The conjugate transpose of \SQB{1}{i} is $\left(-1\ \  -i\right)$.~\TF{}
+    \item For \emph{all} values of $\theta$, $|e^{i\theta}|=1$.\TF{}
+    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}\equiv\Gate{X}$~\TF{}
+    \item The state \[\frac{\ket{10}+\ket{11}}{\sqrt{2}}\] is an entangled state.~\TF{}
+    \item blah
+    \item blah
 \end{itemize}
 
 \clearpage\item\Points{30} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
