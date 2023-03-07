@@ -6,7 +6,7 @@
 \usepackage{braket}
 \graphicspath{ {./ps4-assets/}{./exercises/handwritten/ps4/ps4-assets/} }
 
-\title{Problem Set 4 Solutions}
+\title{Problem Set 4 Solutions\\(published March 2023)}
 \author{CSE 468}
 \date{\today}
 
@@ -85,19 +85,28 @@
     This gives:
     \[ae = 1, ah = 1, de = 1, dh = -1\]
     \[aedh = -1 \neq 1 = ahde\]
-    \item \begin{enumerate}
-        \item \[\includegraphics[scale=0.8]{teleport-action}\] 50\%. If Alice sends Bob a zero, he knows there's a 50\% chance that $\ket{xy} = \ket{00}$ and so he should do nothing and will obtain the correct state 50\% of the time. Similarly if Alice sends Bob a 1 he knows there's a 50\% chance that $\ket{xy} = \ket{11}$ and so he should do \mathbf{X} then \mathbf{Z} and will obtain the correct state 50\% of the time.
-        \item If Bob knows the first qubit's value he knows if his state needs to experience a phase shift (a Z gate). If the value is 0 no phase shift is needed. If the value is 1 he knows he will need to apply a Z gate. He does not know if he needs to apply a X gate first though.
-        \item If Bob knows the second qubit's value he knows if his amplitudes need to be flipped or not (a X gate). If the value is 0 no flip is needed. If the value is 1 he knows he will need to apply a X gate. He does not know if he needs to apply a Z gate though.
+    \item \ %
+    \begin{enumerate}
+        \item \[\includegraphics[scale=0.8]{teleport-action}\] 
+        
+        RC: The analysis below is left over from last year, and I believe the question has changed since then.  What's below is true if we know the bit is the left bit.
+        
+        \begin{quote}
+        50\%. If Alice sends Bob a zero, he knows there's a 50\% chance that $\ket{xy} = \ket{00}$ and so he should do nothing and will obtain the correct state 50\% of the time. Similarly if Alice sends Bob a 1 he knows there's a 50\% chance that $\ket{xy} = \ket{11}$ and so he should do \mathbf{X} then \mathbf{Z} and will obtain the correct state 50\% of the time.
+        \end{quote}
+        
+        RC again: If we don't know which bit is sent, then receiving a 0 eliminates $\ket{11}$ giving Bob a $1/3$ chance of getting the state right.
+        
+        Similarly, if a 1 is received, then that eliminates $\ket{00}$ and Bob has still a $1/3$ chance of getting the state right if he applies, say, an \mathbf{X} gate.
+        
+        You would have gotten credit for either of the above, as you might have gotten advice based on the old question.
+        
+        \item If Bob knows the left qubit's value, he can tell whether he needs to apply a \mathbf{Z} gate, but he will not have the appropriate magnitudes on $\ket{0}$ and $\ket{1}$ since they may be flipped.   On measurement, he thus has a 50\% chance of getting the correct result. Moreover, if he knows the left qubit he has a 50\% chance of getting the state correct.  With 0, he does nothing. With 1 he applies a \mathbf{Z} gate.  And in each of those cases he has a 50\% chance of getting the state right.
+        \item If Bob knows the second qubit's value he knows if his amplitudes need to be flipped or not (a X gate). If the value is 0 no flip is needed. If the value is 1 he knows he will need to apply a X gate. He does not know if he needs to apply a Z gate though.  He can thus receive the probabilistically correct result on measurement as if he has the complete state.
         \item He would want the second qubit. See (c).
     \end{enumerate}
-    \item Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time.
-    \item I believe Cytron has a good proof. For now I provide a proof for a slightly different question. Proof by contradiction: Let $\ket{\psi_e}$ be some entangled state. Suppose there exists some set of single qubit unitary operations that when applied to $\ket{\psi_e}$ results in some non-entangled state $\ket{\psi_n}$. Call this set of operations $A \otimes B$. We can then write
-    \[\ket{\psi_n} = A(c_0\ket{0}+c_1\ket{1}) \otimes B(c_2\ket{0}+c_3\ket{1})\]
-    since $\ket{\psi_n}$ is a non-entangled state. We could then apply $A^{-1} \otimes B^{-1}$ to $\ket{\psi_n}$ to obtain $\ket{\psi_e}$ as so
-    \[(A^{-1} \otimes B^{-1})\ket{\psi_n} = A^{-1}A(c_0\ket{0}+c_1\ket{1}) \otimes B^{-1}B(c_2\ket{0}+c_3\ket{1})\]
-    \[= (c_0\ket{0}+c_1\ket{1}) \otimes (c_2\ket{0}+c_3\ket{1}) = \ket{\psi_e}\]
-    We observe above that $\ket{\psi_e}$ can be written as the tensor product of two states which contradicts our earlier assumption that $\ket{\psi_e}$ was an entangled state.
+    \item This comes from the notes, lecture 10, slide 8.  Bob must decide at random to apply ZX or not. He will obtain the correct state exactly half of the time.
+    \item See piazza post 234
     \item I follow along a similar analysis to Lecture 10 below:
     \[\ket{\psi_A\psi_B} = 
     \frac{1}{\sqrt{2}}
