@@ -366,7 +366,7 @@ We can do this because the qubits are acting independently at this point.  This 
 }{%
 \begin{itemize}
     \item The qubits' entanglement persists in any basis.
-    \item No unitary action taken on them separately can disentangle them.
+    \item No unitary action taken on them separately can disentangle them (see next frame).
     \item If they were brought back together and run through a \NamedGate{CNOT} gate again, then they would disentangle, because \NamedGate{CNOT} is its own inverse.
 \end{itemize}
 }
@@ -375,7 +375,94 @@ Entanglement defies classical physics and logic and affords advantages for games
     
 \end{frame}
 
-\section{EPR paradox}
+\begin{frame}{Entanglement persists}{No unitary action on a single qubit can disentangle them}
+
+
+\Vskip{-3.5em}\TwoUnequalColumns{0.45\textwidth}{0.55\textwidth}{%
+\only<1-2>{%
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\
+\lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
+\end{quantikz}}}%
+\only<3>{%
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\QState{1}} & \qw\rstick{\QState{A}} \\[2em]
+\lstick{\QZero{}} &   \qw  & \targ{} & \qw\rstick{\QState{B}}
+\end{quantikz}}}%
+\only<4->{%
+\adjustbox{valign=t,scale=0.8}{\begin{quantikz}
+\lstick{\QZero{}} &  \gate{H}& \ctrl{1}\slice{\alert<1-3>{\QState{1}}} & \gate{U}\slice{\alert<7-8>{\QState{2}}} & \qw  \rstick{\QState{A}}\\[2em]
+\lstick{\QZero{}} &   \qw    &  \targ{}  & \qw & \qw  \rstick{\QState{B}}
+\end{quantikz}}}%
+}{%
+\only<1-3>{%
+\begin{itemize}
+    \item<1-> We create the Bell state 
+    \[\QState{1} = \RootTwo{}\DQB{1}{0}{0}{1} \]
+    \item<2-> Alice takes the top qubit and Bob takes the bottom one.
+    \item<3-> They then separate, let's say by a very large distance.
+\end{itemize}
+}%
+\only<4-6>{%
+\begin{itemize}
+    \item<4-> Alice effects a change to her qubit, represented here by \NamedGate{U}.
+    \item<5-> Recall generally
+    \[\NamedGate{U} = \UGate{} \]
+\end{itemize}}%
+\only<7-8>{%
+\Vskip{-3em}{\small\begin{align*}
+    \QState{2} & = \left(\TensProd{\NamedGate{U}}{\NamedGate{I}}\right) \RootTwo\DQB{\ColorOne{1}}{0}{0}{\ColorTwo{1}}\\
+    & = \RootTwo{}\DQB{\ColorOne{\UGateA{}}}{\ColorTwo{\UGateB{}}}{\ColorOne{\UGateC{}}}{\ColorTwo{\UGateD{}}}
+\end{align*}}
+}%
+}
+\only<6-7>{%
+\small{%
+\Vskip{-2em}\[
+\TensProd{\NamedGate{U}}{\NamedGate{I}} =
+\begin{pmatrix*}[r]
+\ColorOne{\UGateA{}} & 0 & \UGateB{}  & \ColorTwo{0} \\
+\ColorOne{0} & \UGateA{} & 0 & \ColorTwo{\UGateB{}} \\
+\ColorOne{\UGateC{}} & 0 & \UGateD{}  & \ColorTwo{0} \\
+\ColorOne{0} & \UGateC{} & 0 & \ColorTwo{\UGateD{}}
+\end{pmatrix*}
+\]}}%
+\only<8->{%
+\begin{itemize}
+    \item It is an exercise to show that \QState{2} is not tensor factorable.
+    \item Thus, Alice's imposition of the \NamedGate{U} gate cannot disentangle the Bell state.  The entanglement persists, but in a different basis.
+\end{itemize}
+}%
+    
+\end{frame}
+
+\begin{frame}{Dealing with entanglement}{Circuit drawings are not always clear concerning entanglement}
+    
+\Vskip{-3.5em}\TwoUnequalColumns{0.2\textwidth}{0.8\textwidth}{%
+\adjustbox{valign=t,scale=1.0}{\begin{quantikz}
+\qw & \qw\slice{\QState{0}} &  \gate{\NamedGate{A}} \slice{\QState{1}}  & \qw  \\
+\qw & \qw &  \gate{\NamedGate{B}} &\qw
+\end{quantikz}}%
+}{%
+\begin{itemize}[<+->]
+    \item Physically, the circuit can be implemented as shown.  The following operations occur separately to the qubits:
+    \begin{itemize}
+        \item \NamedGate{A} is applied to the top qubit
+        \item \NamedGate{B} is applied to the bottom qubit
+    \end{itemize}
+    \visible<3->{The circuit works regardless of the entangled nature of \QState{0}.}
+    \item However, to \emph{model} the circuit mathematically, it helps to know whether \QState{0} is entangled or not:
+    \begin{itemize}
+        \item If it is not entangled, then \NamedGate{A} and \NamedGate{B} may be applied separately to their respective qubits, as shown, to compute \QState{1}.  This is easy and efficient.
+        \item But the circuit is misleading when \QState{0} might be entangled!
+        Then we must compute \TensProd{\NamedGate{A}}{\NamedGate{B}}, obtaining
+        \[
+        \QState{1} = \left(\TensProd{\NamedGate{A}}{\NamedGate{B}}\right)\QState{0}
+        \]
+    \end{itemize}
+\end{itemize}
+}
+\end{frame}
 
 \begin{frame}{Pondering entanglement}{Einstein regarded quantum theory as incomplete}
 
@@ -413,6 +500,8 @@ Entanglement defies classical physics and logic and affords advantages for games
 Gravitational attraction exists at arbitrary distances, but we seem OK with that.  Is it so strange that entanglement affects the fate of two qubits no matter their distance?}
     
 \end{frame}
+
+\section{EPR paradox}
 
 \begin{frame}{EPR ``paradox'' \LinkArrow{https://en.wikipedia.org/wiki/EPR_paradox}}{More on Einstein's disbelief}
 \begin{itemize}[<+->]
