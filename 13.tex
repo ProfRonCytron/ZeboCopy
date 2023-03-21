@@ -17,50 +17,7 @@
     
 \end{frame}
 
-\begin{frame}{What you already know, and must believe}{Be solid on these points and the material will make sense}
 
-\begin{itemize}[<+->]
-    \item Consider Bell State \(\frac{\ket{\ColorOne{0}\ColorTwo{0}}+\ket{\ColorOne{1}\ColorTwo{1}}}{\sqrt{2}}\)
-    where \ColorOne{Alice} has one qubit and \ColorTwo{Bob} has the other.
-    \item If measured in the usual (computational, \PauliZ{}) basis, the only outcomes are~\ColorOne{\QZero}\ColorTwo{\QZero} or~\ColorOne{\QOne}\ColorTwo{\QOne}.  We assume WLOG that \ColorOne{Alice} measures first.
-    \item The state collapses immediately to \emph{one} of the above two (unentangled) states.  
-    \item If \ColorOne{Alice} measures \ColorOne{her qubit} in any other basis, then with equal probability she will obtain one of the two eigenstates of that basis.
-    \item \ColorTwo{Bob's} qubit is then in exactly the same state as \ColorOne{Alice's} after she measures.
-    \item What \ColorTwo{Bob} observes upon measurement depends on the basis in which he measures \ColorTwo{his qubit}.
-    \begin{itemize}
-        \item If it's the same basis as \ColorOne{Alice}, then \ColorTwo{Bob} certainly obtains the same state as \ColorOne{Alice}.
-        \item Generally, his result's agreement with \ColorOne{Alice's} state depends on $\cos^{2}\theta$, where $\theta$ is the angle between \ColorTwo{Bob's} basis and \ColorOne{Alice's}.
-    \end{itemize}
-\end{itemize}
-    
-\end{frame}
-
-\begin{frame}{A recap}{Just to be sure}
-
-\begin{itemize}[<+->]
-    \item We begin with \[\frac{\ket{\ColorOne{0}\ColorTwo{0}}+\ket{\ColorOne{1}\ColorTwo{1}}}{\sqrt{2}}\]
-    \item \ColorOne{Alice} measures \ColorOne{her qubit} in some basis, obtaining state $\ket{\psi}$.  She was equally likely to obtain $\ket{\psi'}$ where $\braket{\psi}{\psi'}=\braket{\psi'}{\psi}=0$.
-    \item \textbf{The qubits are no longer entangled.}  \ColorOne{Alice's} subsequent actions on her qubit have no effect on \ColorTwo{Bob's}.
-    \item \ColorTwo{Bob's qubit} is in state $\ket{\psi}$.  Any actions \ColorTwo{Bob} takes on his qubit have no effect on \ColorOne{Alice's}.
-    \item If \ColorTwo{Bob} measures in some basis, the usual rules apply concerning the outcome of that measurement, which are based on the relationship of \ColorTwo{Bob's basis} to $\ket{\psi}$.
-\end{itemize}
-    
-\end{frame}
-
-\begin{frame}{Some discussion of simultaneity}{This has probably caused some discomfort}
-
-\begin{itemize}[<+->]
-    \item Throughout we have assumed \ColorOne{Alice} measures before \ColorTwo{Bob}.
-    \item The discussion is exactly the same if \ColorTwo{Bob} measures before \ColorOne{Alice}:  the players simply exchange roles in the discussion.
-    \item Let's consider what might happen if they measure simultaneously.  There are two possibilities:
-    \begin{itemize}
-        \item They measure in the same basis.  They will see the same state as a result, and we can't tell they measured simultaneously, or one before the other, since the outcome is the same.
-        \item They measure in different bases.  They may see the same outcome, or not, but since all four combinations are still possible, none of the outcomes can indicate that the measurement was simultaneous.
-    \end{itemize}
-    \item Practically speaking, there is no reason to consider simultaneous measurement.
-\end{itemize}
-    
-\end{frame}
 
 \section*{Magic square}
 
@@ -202,6 +159,51 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 \end{frame}
 
 \section*{Examples}
+
+\begin{frame}{What you already know, and must believe}{Be solid on these points and the material will make sense}
+
+\begin{itemize}[<+->]
+    \item Consider Bell State \(\frac{\ket{\ColorOne{0}\ColorTwo{0}}+\ket{\ColorOne{1}\ColorTwo{1}}}{\sqrt{2}}\)
+    where \ColorOne{Alice} has one qubit and \ColorTwo{Bob} has the other.
+    \item If measured in the usual (computational, \PauliZ{}) basis, the only outcomes are~\ColorOne{\QZero}\ColorTwo{\QZero} or~\ColorOne{\QOne}\ColorTwo{\QOne}.  We assume WLOG that \ColorOne{Alice} measures first.
+    \item The state collapses immediately to \emph{one} of the above two (unentangled) states.  
+    \item If \ColorOne{Alice} measures \ColorOne{her qubit} in any other basis, then with equal probability she will obtain one of the two eigenstates of that basis.
+    \item \ColorTwo{Bob's} qubit is then in exactly the same state as \ColorOne{Alice's} after she measures.
+    \item What \ColorTwo{Bob} observes upon measurement depends on the basis in which he measures \ColorTwo{his qubit}.
+    \begin{itemize}
+        \item If it's the same basis as \ColorOne{Alice}, then \ColorTwo{Bob} certainly obtains the same state as \ColorOne{Alice}.
+        \item Generally, his result's agreement with \ColorOne{Alice's} state depends on $\cos^{2}\theta$, where $\theta$ is the angle between \ColorTwo{Bob's} basis and \ColorOne{Alice's}.
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{A recap}{Just to be sure}
+
+\begin{itemize}[<+->]
+    \item We begin with \[\frac{\ket{\ColorOne{0}\ColorTwo{0}}+\ket{\ColorOne{1}\ColorTwo{1}}}{\sqrt{2}}\]
+    \item \ColorOne{Alice} measures \ColorOne{her qubit} in some basis, obtaining state $\ket{\psi}$.  She was equally likely to obtain $\ket{\psi'}$ where $\braket{\psi}{\psi'}=\braket{\psi'}{\psi}=0$.
+    \item \textbf{The qubits are no longer entangled.}  \ColorOne{Alice's} subsequent actions on her qubit have no effect on \ColorTwo{Bob's}.
+    \item \ColorTwo{Bob's qubit} is in state $\ket{\psi}$.  Any actions \ColorTwo{Bob} takes on his qubit have no effect on \ColorOne{Alice's}.
+    \item If \ColorTwo{Bob} measures in some basis, the usual rules apply concerning the outcome of that measurement, which are based on the relationship of \ColorTwo{Bob's basis} to $\ket{\psi}$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Some discussion of simultaneity}{This has probably caused some discomfort}
+
+\begin{itemize}[<+->]
+    \item Throughout we have assumed \ColorOne{Alice} measures before \ColorTwo{Bob}.
+    \item The discussion is exactly the same if \ColorTwo{Bob} measures before \ColorOne{Alice}:  the players simply exchange roles in the discussion.
+    \item Let's consider what might happen if they measure simultaneously.  There are two possibilities:
+    \begin{itemize}
+        \item They measure in the same basis.  They will see the same state as a result, and we can't tell they measured simultaneously, or one before the other, since the outcome is the same.
+        \item They measure in different bases.  They may see the same outcome, or not, but since all four combinations are still possible, none of the outcomes can indicate that the measurement was simultaneous.
+    \end{itemize}
+    \item Practically speaking, there is no reason to consider simultaneous measurement.
+\end{itemize}
+    
+\end{frame}
 
 \begin{frame}{Scenario with the square: Row 1 and Column 1}{To build intuition}
 \begin{MPScene}
