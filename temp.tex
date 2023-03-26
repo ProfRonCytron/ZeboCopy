@@ -8,23 +8,23 @@
 \Vskip{-4em}\begin{center}
 \adjustbox{valign=t,scale=0.8}{%
 \begin{quantikz}
-\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AoneColor{\Aone\visible<4->{=\QOne}}} \\
-\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw \rstick{\BoneColor{\Bone\visible<4->{=\QOne}}}
+\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AoneColor{\Aone\visible<4->{=\QZero}}} \\
+\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw \rstick{\BoneColor{\Bone\visible<4->{=\QZero}}}
 \end{quantikz}}%
 \hbox to 3ex{\hss}%
 \adjustbox{valign=t,scale=0.8}{%
 \begin{quantikz}
-\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AtwoColor{\Atwo\visible<5->{=\ket{+}}}} \\
-\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw\rstick{\BtwoColor{\Btwo\visible<5->{=\ket{+}}}}
+\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AtwoColor{\Atwo\visible<5->{=\QZero}}} \\
+\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw\rstick{\BtwoColor{\Btwo\visible<5->{=\QZero}}}
 \end{quantikz}}\end{center}%
 \visible<1->{
 \Vskip{-2em}\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
 \visible<2->{\All{{\small\ColorOne{Row 1} \visible<3->{\ColorTwo{Col 1}}}}{Measure in \TensProd{\AoneColor{\PauliZ}}{\AtwoColor{\PauliZ}}}{\visible<3->{Measure \NamedGate{Bell}(\BoneColor{$b_1$}, \BtwoColor{$b_2$})}}}
 \visible<4->{\AliceBob{Measure \AoneColor{\Aone{}=\QZero}}{\alert{Collapse} \BoneColor{\Bone{}=\QZero}}}
 \visible<5->{\AliceBob{Measure \AtwoColor{\Atwo{}=\QZero}}{\alert{Collapse} \BtwoColor{\Btwo{}=\QZero}}}
-\visible<7->{\Alice{\ReportCommon{\AoneColor{-1}\times \IColor{1}}}}
-\visible<9->{\Alice{\Report{\IColor{1}\times \AtwoColor{\Ambig{1}}}}}
-\visible<11->{\Alice{\Report{\AoneColor{-1}\times \AtwoColor{\Ambig{1}}}}}
+\visible<7->{\Alice{\ReportCommon{\AoneColor{1}\times \IColor{1}}}}
+\visible<9->{\Alice{\Report{\IColor{1}\times \AtwoColor{1}}}}
+\visible<11->{\Alice{\Report{\AoneColor{1}\times \AtwoColor{1}}}}
 \visible<13->{\Bob{\ReportCommon{\BoneColor{-1}\times\IColor{1}}}}
 \visible<15->{\Bob{\Report{\IColor{1}\times\BtwoColor{1}}}}
 \visible<17->{\Bob{\Report{\alert{-}(\BoneColor{-1}\times\BtwoColor{1})}}}
