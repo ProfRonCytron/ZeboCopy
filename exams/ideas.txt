@@ -4,3 +4,5 @@ BB84 use standard basis for one basis, how many others could be used with the sa
 Have them do |1> on the bottom bit to get the other bell state, show it is not factorable.
 
 Bob gets confused and does Z instead of X and X instead of Z -- for which 00 01 10 11 does this cause a problem in terms of receiving exactly the state Alice sent?
+
+Inner product of a state with itself goes wrong, what went wrong not to get 1?
