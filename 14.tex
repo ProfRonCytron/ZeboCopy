@@ -195,7 +195,7 @@ We perform operations top-down in a column.  Note that the matrices multiply in 
 
 \begin{frame}{Actually playing the game}{Making only one measurement}
 
-\Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3.5em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this paper}:
 \only<1-5>{%
 \begin{itemize}
@@ -207,7 +207,7 @@ Idea based on analysis from \href{http://philsci-archive.pitt.edu/18398/}{this p
 \only<6-10>{%
 \begin{itemize}
     \item<6-> \Alice{} knows the operators of her rows.
-    \item<7-> She uses \MATLAB{} to compute a row's operators' common eigenbasis \NamedBasis{B} \Set{\QState{0},\QState{1},\QState{2},\QState{3}}.
+    \item<7-> She uses \MATLAB{} to compute a row's operators' common eigenbasis \Vskip{-1em}\[\NamedBasis{B}= \Set{\QState{0},\QState{1},\QState{2},\QState{3}}\]
     \item<8-> The matrix (gate) $T$ that transforms the standard basis to \NamedBasis{B} has those states as its columns.
     \item<9-> The gate \Conj{T} transforms from \NamedBasis{B} to the standard basis.
     \item<10-> Because we perform only one measurement, we need only \Conj{T} followed by a measurement in the standard basis.
