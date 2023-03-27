@@ -1,0 +1,81 @@
+T = [1 0 0 0; 0 1 0 0 ; 0 0 1 0; 0 0 0 1]
+
+
+T'
+
+T*T'
+
+
+Z = [ 1 0; 0 -1]
+
+I = [1 0; 0 1]
+
+ZI = kron(Z,I)
+
+IZ = kron(I,Z)
+
+
+ZZ = kron(Z,Z)
+
+
+psi0 = [1 0 0 0]'
+
+
+ZI * psi0
+
+
+IZ*psi0
+
+
+ZZ*psi0
+
+psi2 = [ 0 0 1 0]'
+
+
+ZI*psi2
+
+IZ*psi2
+
+
+ZZ*psi2
+
+X = [0 1; 1 0]
+
+
+XX = kron(X,X)
+
+IX = kron(I,X)
+
+XI = kron(X,I)
+
+
+s = 1/sqrt(2)
+
+H = s*[1 1; 1 -1]
+
+T = kron(H,H)
+
+
+T'
+
+
+T-T'
+
+T*T'
+
+psi3 = 0.5*[1 -1 -1 1]'
+
+IX*psi3
+XI*psi3
+psi3
+XX*psi3
+T = s *[ 1 1 0 0; 0 0 1 1; 0 0 1 -1; 1 -1 0 0]
+
+T-T'
+
+T'
+T'*T
+
+bob = [1 0 0 0]'
+
+T'*bob
