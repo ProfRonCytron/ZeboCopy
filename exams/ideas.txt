@@ -1,8 +1,2 @@
-BB84 but use Standard basis and Y, would it work the same?
-BB84 use standard basis for one basis, how many others could be used with the same result finitely many, infinitely man, uncountably infinitely many
-
-Have them do |1> on the bottom bit to get the other bell state, show it is not factorable.
-
-Bob gets confused and does Z instead of X and X instead of Z -- for which 00 01 10 11 does this cause a problem in terms of receiving exactly the state Alice sent?
-
-Inner product of a state with itself goes wrong, what went wrong not to get 1?
+What does a column of H^n represent?
+Something about f(0)=1 for balanced but never B-V
