@@ -92,7 +92,7 @@ We next consider two examples.
 }%
 }{%
 \Vskip{-4em}\begin{center}
-\begin{TIKZP}[scale=3]
+\begin{TIKZP}[scale=2]
     \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};} \visible<2->{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;}
     \visible<5->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};}
 \end{TIKZP}
@@ -119,48 +119,63 @@ Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, start
 
 
 {
-\def\S{\ColorOne{\bra{s}}}
+\def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\bra{w}}}
 \def\R{\ColorTwo{\bra{r}}}
+\def\RK{\ColorTwo{\ket{r}}}
+\def\WK{\ColorThree{\ket{w}}}
+\def\F{\ColorFour{\QState{f}}}
 \begin{frame}{A two-qubit example to illustrate Grover's algorithm}{Oracle $f(x)=1$ only when $x=2$ (using bras instead of kets to save space here)}
-\TwoColumns{%
+\TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-3>{%
 \begin{itemize}
     \item<1-> We begin at \S, the uniform superposition of all possible inputs.
-    \item<2-> Our secret \W{} captures $x=2$.
+    \item<2-> Our secret \W{} captures $x=2$.  We do not create this state:  we seek to find it.
     \item<3-> Here is \R, orthogonal to \W.
 \end{itemize}
 }%
 \only<4>{%
 \Vskip{-3em}\begin{align*}
-    \visible<4->{\cos{\theta} &= \braket{\ColorOne{s}}{\ColorTwo{r}} =\frac{\sqrt{3}}{2}\\
+    \visible<4->{\cos{\theta} &= \braket{\ColorOne{s}}{\ColorTwo{r}} \\
+    & = \ColorOne{\RootTwoN{2}\DQB{1}{1}{1}{1}}\times\ColorTwo{\RootN{3}\CDQB{1}{1}{0}{1}}\\
+    &  =\frac{\sqrt{3}}{2}\\
     \theta &= \frac{\pi}{6}
     }
 \end{align*}}%
 \only<5>{%
 Expressing \S{} in this basis:
 \begin{align*}
-    \S &= \cos{\theta}\R + \sin{\theta}\W \\
-       &= \frac{\sqrt{3}}{2}\R + \frac{1}{2}\W \\
-       &= \frac{1}{2}\CDQB{1}{1}{1}{1}
+    \S &= \cos{\theta}\,\RK + \sin{\theta}\,\WK \\
+       &= \frac{\sqrt{3}}{2}\,\RK + \frac{1}{2}\,\WK \\
+       &= \ColorOne{\RootTwoN{2}\DQB{1}{1}{1}{1}}
 \end{align*}
 }%
-\only<6->{%
+\only<6-7>{%
 \Vskip{-3em}\begin{itemize}
-\item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\BState{f}}.
-\item This is accomplished using the familiar phase-kickback trick, which flips the sign of the component \bra{x} if $f(x)=1$.
-\item<7-> The second step reflects the current state \ColorFour{\BState{f}} around \S{} to obtain \ColorFive{\BState{d}}.
+\item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\QState{f}}.
+\item This is accomplished using the familiar phase-kickback trick, which \alert<6>{flips the sign of the component \ket{x} if $f(x)=1$}.
+\item<7-> The second step reflects the current state \ColorFour{\QState{f}} around \S{} to obtain \ColorFive{\BState{d}}.
 \item<7-> In this example, we obtain \W{} exactly.  Typically we must repeat the two steps of the algorithm to get close to \W.
+\end{itemize}
+}%
+\only<8->{%
+\Vskip{-3em}\begin{itemize}
+    \item For the second step, we transform to the \TensSupProd{\PauliX}{2} basis so that $\S{} \mapsto \ket{00}$, simplifying reflection about \S.
+    \item Applying $\TensSupProd{\Hadamard}{2}(\F)$ obtains
+    \( \RootTwoN{2}\DQB{1}{-1}{1}{1} \)
+    \item Sign change except \ket{00}: 
+    \ColorSix{\(\RootTwoN{2}{\DQB{1}{1}{-1}{-1}} \)}
+    \item $\TensSupProd{\Hadamard}{2}\ColorSix{(\ )}$ yields $\W=\CDQB{0}{0}{1}{0}\ColorFive{=\BState{d}}$
 \end{itemize}
 }
 }{%
-\Vskip{-3em}\begin{center}
+\Vskip{-4em}\hskip -3em\begin{center}
 \begin{TIKZP}[scale=2.5]
-    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\CDQB{1}{1}{1}{1}$};} 
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\DQB{1}{1}{1}{1}$};} 
     \visible<2-6>{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
     \visible<7->{\draw[->,thick,\RCfive] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
     \visible<3->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {$\R=\RootN{3}\CDQB{1}{1}{0}{1}$};}
-    \visible<4-6>{
+    \visible<4->{
      \draw[->,thick] (1,0) arc (0:30:1) coordinate(zz);
      \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
      }
@@ -168,9 +183,9 @@ Expressing \S{} in this basis:
      \draw[->,thick] (1,0) arc (0:-30:1);
      \draw (0.7,-0.17) node {$-\frac{\pi}{6}$};}
      \visible<6->{
-     \draw[->,thick,\RCfour] (0,0) -- (-30:1) node[right]{$\BState{f} = \RootTwoN{2}\CDQB{1}{1}{-1}{1}$};
+     \draw[->,thick,\RCfour] (0,0) -- (-30:1) node[right]{$\QState{f} = \RootTwoN{2}\DQB{1}{1}{\alert<6>{-1}}{1}$};
      }
-     \visible<7>{\draw[->,thick,\RCfive] (zz) arc (30:90:1);
+     \visible<7->{\draw[->,thick,\RCfive] (zz) arc (30:90:1);
      \draw (0.25,0.5) node {$2\times\frac{\pi}{6}$};
      }
 \end{TIKZP}
