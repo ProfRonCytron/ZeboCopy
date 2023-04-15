@@ -76,6 +76,54 @@ We next consider two examples.
 }}
 \end{frame}
 
+
+\begin{frame}{Some thoughts on the oracle}{Use Tofolli gates to realize combinational logic}
+
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+    \item Recall the \NamedGate{CCNOT}  (\href{https://en.wikipedia.org/wiki/Toffoli_gate}{Tofolli}) gate is universal.
+    \item The (\href{https://en.wikipedia.org/wiki/Combinational\_logic}{combinational}) logic of a one-way function $g(x)$ could be deployed in a quantum circuit.
+    \item To find $w\ |\ g(w)=z$, add logic to compute:
+    \begin{align*}
+      f(x) &= 1\mbox{ if $g(x)=z$}\\
+      & = 0\mbox{ otherwise}
+    \end{align*}
+    \item $f(x)$ is then the source of a \NamedGate{CNOT} gate targeting \ket{y} to produce \Xor{y}{f(x)}.
+\end{itemize}
+}{%
+\begin{center}
+    \begin{GateBox}{2}{3}{5}
+      \visible<1->{%
+      \Input{0}{$x_{1}$}
+      \Input{1}{$x_{2}$}
+      \Input{2}{\RVDots}
+      \Input{3}{$x_{n}$}}
+      \Input{4}{$y$}
+      \Output{0}{$x_{1}$}
+      \Output{1}{$x_{2}$}
+      \Output{2}{\RVDots}
+      \Output{3}{$x_{n}$}
+      \Output{4}{$\Xor{y}{f(x)}$}
+      \BoxLabel{Oracle}
+    \end{GateBox}
+\end{center}
+}
+    
+\end{frame}
+
+\begin{frame}{Modeling the secret value $w$}{So that we can experiment with Grover's algorithm}
+
+\TwoColumns{%
+\begin{itemize}
+    \item We can arrange for a controlled-\NamedGate{X} gate to depend on \emph{all} of the qubits for $x$.
+    \item The \href{https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.mcx.html}{\NamedGate{mcx}} gate accepts an array of control qubits.
+    \item To realize 
+\end{itemize}
+}{%
+}
+    
+\end{frame}
+
 {
 \def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\ket{w}}}
