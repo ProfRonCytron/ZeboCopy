@@ -374,3 +374,77 @@ See \href{https://learn.qiskit.org/course/ch-gates/basic-circuit-identities\#c-f
 \end{itemize}
     
 \end{frame}
+
+\begin{frame}{Putting it together}{Three iterations}
+
+\Vskip{-4em}\begin{center}
+\begin{Pixture}[width=0.97\textwidth]{26}{5bit1step.png}
+\end{Pixture}
+\end{center}
+\begin{itemize}
+    \item The secret here is \Quote{10111}.
+    \item The middle section is all diffuser, and is marked as such.
+    \item Why is there an \Hadamard{} gate prior to measurement on \ket{y}?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Putting it together}{Three iterations}
+
+\Vskip{-4em}\begin{center}
+\begin{Pixture}[width=0.8\textwidth]{26}{3bit3step.png}
+\end{Pixture}
+\end{center}
+\begin{itemize}
+    \item The secret here is \Quote{110}.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Playing with qiskit}{Try this}
+
+\Vskip{-3em}
+\TwoColumns{%
+\begin{center}\small
+    \begin{tabular}{ccr}
+     \#bits & \#steps & Prob \% \\ \hline
+     6 & 1 & 11 \\
+     6 & 2 & 40 \\
+     6 & 3 & 60 \\
+     6 & 4 & 84 \\
+     6 & 5 & 97 \\
+     6 & 6 & 99 \\
+     6 & 7 & 95 \\
+     6 & 8 & 68 \\ \hline
+     10 & 1 & 1 \\
+     10 & 5 & 10 \\
+     10 & 7 & 20 \\
+    \end{tabular}
+\end{center}
+}{%
+\begin{itemize}
+    \item At 10 qubits, emulation is very slow.
+    \item The time will roughly double with every qubit in emulation, but the quantum device will take no extra time, except for the extra iterations needed for Grover's algorithm.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Runs on the IBM Q}
+
+\TwoColumns{%
+Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state decohered, as in emulation it was solid, but results here are good enough.  This was just a single iteration.
+\begin{center}
+\begin{Pixture}[width=0.8\textwidth]{26}{2qreal.png}
+\end{Pixture}
+\end{center}
+}{%
+4-qubit problem, 97\% likely to see the correct result in emulation, but a mess on real hardware with 3~iterations (\texttt{lima}). Secret was \Quote{1101}.
+\begin{center}
+\begin{Pixture}[width=0.8\textwidth]{26}{4qrealc.png}
+\end{Pixture} \\
+\begin{Pixture}[width=0.7\textwidth]{26}{4qrealp.png}
+\end{Pixture}
+\end{center}
+}
+    
+\end{frame}
