@@ -118,8 +118,8 @@ We next consider two examples.
     \item We can arrange for a controlled-\NamedGate{X} gate to depend on \emph{all} of the qubits for $x$.
     \item The \href{https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.mcx.html}{\NamedGate{mcx}} gate accepts an array of control qubits.
     \item<2-> Here is an oracle that implements the secret of \Quote{1111}.  When all the $x_i$ bits are \ket{1}, the \NamedGate{CNOT} gate is applied to \ket{y}, exchanging its \ket{0} and \ket{1} amplitudes.
-    \item<3-> If instead we want to trigger the change on the \ket{0} state, we need only complement the incoming but using an \PauliX{} gate, as shown for $x_2$ and $x_3$.  
-    \item<4-> We must restore those bits after the \NamedGate{mcx} gate.  
+    \item<3-> If instead we want to trigger the change on the \ket{0} state, we need only complement the incoming qubit using an \PauliX{} gate, as shown for $x_2$ and $x_3$.  
+    \item<4-> Keeping the oracle's promise, we must restore those bits after the \NamedGate{mcx} gate.  
     \item<5-> This oracle simulates \Quote{1001} as the secret.
 \end{itemize}
 }{%
@@ -184,6 +184,8 @@ Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, start
 
 
 {
+\def\A{\ensuremath{\ColorOne{\alpha}}}
+\def\B{\ensuremath{\ColorTwo{\beta}}}
 \def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\bra{w}}}
 \def\R{\ColorTwo{\bra{r}}}
@@ -258,4 +260,117 @@ Expressing \S{} in this basis:
 }
 
 \end{frame}
+
+\begin{frame}{Step 1: Sign change on \ket{w}}{On board}
+
+\begin{itemize}
+    \item We use the phase-kickback trick:
+    \begin{itemize}
+        \item The $x$ qubits are placed in the uniform superposition of all possible values, using \Hadamard{} gates.
+        \item The $y$ qubit is initialized to $\ket{-}=\QMinus$ and remains in this state after each step.
+    \end{itemize}
+    \item Focusing only on the $x$ qubits, the prior state for this step is initially \S, but more generally, the input and output are
+    \begin{align*}
+      \QState{in} &=  \A \SumBV{x\neq w}{N} \ket{x} + \B\ket{w},\ \A,\B > 0 \\
+           \F &= \A \SumBV{x\neq w}{N} \ket{x} - \B\ket{w}
+    \end{align*}
+        so that the sign changes only for \ket{w}
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Progress of $\alpha$ and $\beta$}{We want $\beta$ to be as close to 1 as possible}
+\Vskip{-3em}    \begin{align*}
+      \QState{in} &=  \A \SumBV{x\neq w}{N} \ket{x} + \B\ket{w},\ \A,\B > 0 \\
+           \F &= \A \SumBV{x\neq w}{N} \ket{x} - \B\ket{w}
+    \end{align*}
+\begin{itemize}
+    \item Initially $\A=\B=\RootN{N}$ in \S.
+    \item As \B{} grows toward 1, we expect \A{} to diminish accordingly.
+    \item \A{} and \B{} must remain nonnegative.
+    \item We therefore obtain:
+    \begin{align*}
+        (N-1)\A^{2} &= 1 - \B^{2}\\
+        \A & = \sqrt{\frac{1-\B^{2}}{N-1}}
+    \end{align*}
+\end{itemize}
+\end{frame}
+\begin{frame}{Stage 2 (diffuser): Reflect \QState{f} about \ket{s}}{On board}
+
+\begin{itemize}
+    \item In 2D, reflection about either axis is a sign change on the other component.
+    \item This generalizes to multiple dimensions \#LinearAlgebra
+    \item \S{} is neither a horizontal nor veritical axis, so reflection about it seems hard.
+    \item If we can map \S{} to \ket{\TensSupProd{0}{n}}, taking all other states with us, then reflection in that basis will be easy: we just change sign on all components \emph{except} \ket{\TensSupProd{0}{n}}.
+    \item We know $\TensSupProd{\Hadamard}{n}\S = \TensSupProd{0}{n}$
+    \item We obtain $\TensSupProd{\Hadamard}{n}\F = \DQB{z_1}{z_2}{\RVDots}{z_N}$
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Stage 2}{The steps}
+\TwoColumns{%
+\begin{itemize}
+    \item Given $\TensSupProd{\Hadamard}{n}\F = \DQB{z_1}{z_2}{\RVDots}{z_N}$
+    \item We negate all but $z_1$
+    \(
+    \DQB{z_1}{-z_2}{\RVDots}{-z_N}
+    \)
+\end{itemize}
+}{%
+\begin{itemize}
+    \item That would require a huge gate. It is phase equivalent to negate \emph{only} $z_1$:
+        \(
+    \DQB{-z_1}{z_2}{\RVDots}{z_N}
+    \)
+    \item There is no gate to change sign on \ket{\TensSupProd{0}{n}} but we can change sign on the bottom component \ket{\TensSupProd{1}{n}}
+\end{itemize}
 }
+\end{frame}
+\begin{frame}{Accomplishing the sign change}{ket gymnastics}
+\TwoColumns{%
+\begin{itemize}
+    \item We need to get $z_1$ to the bottom in
+        \(
+    \DQB{z_1}{z_2}{\RVDots}{z_N}
+    \)
+    \item Applying \TensSupProd{\PauliX}{n} inverts the column obtaining
+      \(
+    \DQB{z_N}{z_{N-1}}{\RVDots}{z_1}
+    \)
+\end{itemize}
+}{%
+\begin{itemize}
+    \item We then use a multiple Control-\PauliZ{} gate to obtain 
+    \(
+    \DQB{z_N}{z_{N-1}}{\RVDots}{-z_1}
+    \)
+    \item Apply \TensSupProd{\PauliX}{n} to obtain 
+    \(
+    \DQB{-z_1}{z_2}{\RVDots}{z_N}
+    \)
+\end{itemize}
+}
+    
+\end{frame}
+\begin{frame}{Accomplishing the Control-\PauliZ}{We can build this using multiple Control-\PauliX{}}
+
+\begin{itemize}
+    \item There is no multi control \PauliZ{} gate
+    \item 
+See \href{https://learn.qiskit.org/course/ch-gates/basic-circuit-identities\#c-from-cnot}{here}
+\end{itemize}
+\end{frame}
+}
+
+\begin{frame}{Putting it together}{One iteration}
+
+\Vskip{-4em}\begin{center}
+\begin{Pixture}[width=0.97\textwidth]{26}{4bit1step.png}
+\end{Pixture}
+\end{center}
+\begin{itemize}
+    \item Th secret here is \Quote{10111}.
+    \item The middle section is all diffuser, and is marked as such.
+    \item Why is there an \Hadamard{} gate prior to measurement on \ket{y}?
+\end{itemize}
+    
+\end{frame}
