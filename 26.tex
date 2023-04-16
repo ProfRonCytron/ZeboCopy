@@ -117,9 +117,21 @@ We next consider two examples.
 \begin{itemize}
     \item We can arrange for a controlled-\NamedGate{X} gate to depend on \emph{all} of the qubits for $x$.
     \item The \href{https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.mcx.html}{\NamedGate{mcx}} gate accepts an array of control qubits.
-    \item To realize 
+    \item<2-> Here is an oracle that implements the secret of \Quote{1111}.
 \end{itemize}
 }{%
+\visible<2->{%
+\begin{center}
+\Vskip{-3em}\adjustbox{valign=t, width=0.5\textwidth}{\begin{quantikz}
+\lstick{$x_1$} & \qw & \ctrl{1}  & \qw & \qw\\ 
+\only<2>{\lstick{$x_2$} & \qw & \ctrl{1}  & \qw & \qw \\}
+\only<3>{\lstick{$x_2$} & \gate{X} & \ctrl{1}  & \gate{X} & \qw \\}
+\only<2>{\lstick{$x_3$} & \qw & \ctrl{1}  & \qw & \qw \\}
+\only<3>{\lstick{$x_3$} & \gate{X} & \ctrl{1}  & \gate{X} & \qw \\}
+\lstick{$x_4$} & \qw & \ctrl{1} & \qw & \qw \\[1em]
+\lstick{$y$}   & \qw  & \targ{} & \qw & \qw \\
+\end{quantikz}}
+\end{center}}
 }
     
 \end{frame}
