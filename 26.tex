@@ -431,15 +431,17 @@ See \href{https://learn.qiskit.org/course/ch-gates/basic-circuit-identities\#c-f
 
 \begin{frame}{Runs on the IBM Q}
 
-\TwoColumns{%
+\Vskip{-3em}\TwoColumns{%
 Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state decohered, as in emulation it was solid, but results here are good enough.  This was just a single iteration.
-\begin{center}
-\begin{Pixture}[width=0.8\textwidth]{26}{2qreal.png}
+\Vskip{-2em}\begin{center}
+\begin{Pixture}[width=0.8\textwidth]{26}{2qrealc.png}
+\end{Pixture} \\
+\begin{Pixture}[width=0.7\textwidth]{26}{2qrealp.png}
 \end{Pixture}
 \end{center}
 }{%
 4-qubit problem, 97\% likely to see the correct result in emulation, but a mess on real hardware with 3~iterations (\texttt{lima}). Secret was \Quote{1101}.
-\begin{center}
+\Vskip{-2em}\begin{center}
 \begin{Pixture}[width=0.8\textwidth]{26}{4qrealc.png}
 \end{Pixture} \\
 \begin{Pixture}[width=0.7\textwidth]{26}{4qrealp.png}
