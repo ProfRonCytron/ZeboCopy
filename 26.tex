@@ -119,21 +119,22 @@ We next consider two examples.
     \item The \href{https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.mcx.html}{\NamedGate{mcx}} gate accepts an array of control qubits.
     \item<2-> Here is an oracle that implements the secret of \Quote{1111}.  When all the $x_i$ bits are \ket{1}, the \NamedGate{CNOT} gate is applied to \ket{y}, exchanging its \ket{0} and \ket{1} amplitudes.
     \item<3-> If instead we want to trigger the change on the \ket{0} state, we need only complement the incoming but using an \PauliX{} gate, as shown for $x_2$ and $x_3$.  
-    \item<4-> We must restore those bits after the \NamedGate{mcx} gate.
+    \item<4-> We must restore those bits after the \NamedGate{mcx} gate.  
+    \item<5-> This oracle simulates \Quote{1001} as the secret.
 \end{itemize}
 }{%
 \visible<2->{%
 \begin{center}
-\Vskip{-3em}\adjustbox{valign=t, width=0.7\textwidth}{\begin{quantikz}
+\Vskip{-3em}\adjustbox{valign=t, width=0.9\textwidth}{\begin{quantikz}
 \lstick{$x_1$} & \qw & \ctrl{1}  & \qw & \qw\\ 
 \only<2>{\lstick{$x_2$} & \qw & \ctrl{1}  & \qw & \qw \\}
-\only<3>{\lstick{$x_2$} & \gate{X} & \ctrl{1}  & \qw & \qw \\}
-\only<4->{\lstick{$x_2$} & \gate{X} & \ctrl{1}  & \gate{X} & \qw \\}
+\only<3>{\lstick{$x_2$} & \gate{\alert<3>{X}} & \ctrl{1}  & \qw & \qw \\}
+\only<4->{\lstick{$x_2$} & \gate{X} & \ctrl{1}  & \gate{\alert<4>{X}} & \qw \\}
 \only<2>{\lstick{$x_3$} & \qw & \ctrl{1}  & \qw & \qw \\}
-\only<3>{\lstick{$x_3$} & \gate{X} & \ctrl{1}  & \qw & \qw \\}
-\only<4->{\lstick{$x_3$} & \gate{X} & \ctrl{1}  & \gate{X} & \qw \\}
+\only<3>{\lstick{$x_3$} & \gate{\alert<3>{X}} & \ctrl{1}  & \qw & \qw \\}
+\only<4->{\lstick{$x_3$} & \gate{X} & \ctrl{1}  & \gate{\alert<4>{X}} & \qw \\}
 \lstick{$x_4$} & \qw & \ctrl{1} & \qw & \qw \\[1em]
-\lstick{$y$}   & \qw  & \targ{} & \qw & \qw \\
+\lstick{$y$}   & \qw  & \targ{} & \qw & \qw\rstick{$\Xor{y}{f(x)}$} \\
 \end{quantikz}}
 \end{center}}
 }
@@ -228,8 +229,8 @@ Expressing \S{} in this basis:
     \item Applying $\TensSupProd{\Hadamard}{2}(\F)$ obtains
     \( \RootTwoN{2}\DQB{1}{-1}{1}{1} \)
     \item Sign change except \ket{00}: 
-    \ColorSix{\(\RootTwoN{2}{\DQB{1}{1}{-1}{-1}} \)}
-    \item $\TensSupProd{\Hadamard}{2}\ColorSix{(\ )}$ yields $\W=\CDQB{0}{0}{1}{0}\ColorFive{=\BState{d}}$
+    \ColorSix{\(t=\RootTwoN{2}{\DQB{1}{1}{-1}{-1}} \)}
+    \item $\TensSupProd{\Hadamard}{2}\ColorSix{(t)}$ yields $\W=\CDQB{0}{0}{1}{0}\ColorFive{=\BState{d}}$
 \end{itemize}
 }
 }{%
