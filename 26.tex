@@ -238,8 +238,8 @@ Expressing \S{} in this basis:
 \end{itemize}
 }
 }{%
-\Vskip{-4em}\hskip -3em\begin{center}
-\begin{TIKZP}[scale=2.5]
+\Vskip{-5em}\hskip -3em\begin{center}
+\begin{TIKZP}[scale=2.4]
     \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\DQB{1}{1}{1}{1}$};} 
     \visible<2-6>{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
     \visible<7->{\draw[->,thick,\RCfive] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
@@ -259,6 +259,11 @@ Expressing \S{} in this basis:
      }
 \end{TIKZP}
 \end{center}
+\visible<6>{%
+\Vskip{-4em}\begin{align*}
+\F &= \cos(+\theta)\RK - \sin(+\theta)\WK\\
+ &= \cos(-\theta)\RK + \sin(-\theta)\WK
+\end{align*}}
 }
 
 \end{frame}
