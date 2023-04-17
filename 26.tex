@@ -452,6 +452,8 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
 \Reason{15}{Collected coefficents on \ket{\TensSupProd{0}{n}}}
 \Reason{16}{Applying \Hadamard{} to return to our original basis, completing step 2}
 \Reason{19}{\S{} also contains \W{}}
+\Reason{20}{Separately accounting for \W}
+\Reason{21}{Simplifying}
 \end{Reasoning}
 
 \ScrollProof{1}{3}{%
@@ -474,7 +476,7 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
  \Next{\Four}{R\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{N}\ket{\TensSupProd{0}{n}} + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Three}{&=\left(1-\frac{4}{N}\right)\ket{\TensSupProd{0}{n}}  + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
- \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W}
+ \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{f}}
 }
 \ScrollProof{19}{21}{%
 \Next{\Three}{\QState{f} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
@@ -492,7 +494,7 @@ Recalling that $N=2^{n}$ is large
 \begin{itemize}
     \item The amplitude on \W{} has increased from \RootN{N} to nearly \ColorFour{$\frac{3}{\sqrt{N}}$}.
     \item The amplitude elsewhere is slightly reduced, from \RootN{N} to \ColorSix{$\frac{N-4}{N}\RootN{N}$}.
-    \item If we repeat this analysis, we see the amplitude on \W{} take on the series
+    \item If we repeat this analysis, we see the amplitude on \W{} take on the sequence:
     \[ \frac{1}{\sqrt{N}}, \ColorFour{\frac{3}{\sqrt{N}}}, \frac{5}{\sqrt{N}}, \ldots
     \]
     \item We therefore require $\Theta(\sqrt{N})$ iterations to observe \W{} for any size problem.
