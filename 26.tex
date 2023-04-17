@@ -476,10 +476,10 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
  \Next{\Four}{R\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{N}\ket{\TensSupProd{0}{n}} + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Three}{&=\left(1-\frac{4}{N}\right)\ket{\TensSupProd{0}{n}}  + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
- \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{f}}
+ \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
 }
 \ScrollProof{19}{21}{%
-\Next{\Three}{\QState{f} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
+\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
 \Next{\Two}{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{N-4+2N}{N}\RootN{N}\W \\}
 \Next{\One}{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
 }
@@ -488,7 +488,7 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
 \begin{frame}{Results from the first iteration}{Steps 1 and 2}
 
 \[
-\QState{f}  = \ColorSix{\frac{N-4}{N}}\RootN{N}\sum_{x\neq w} \ket{x} + \ColorFour{\frac{3N-4}{N}}\RootN{N}\W \]
+\QState{d}  = \ColorSix{\frac{N-4}{N}}\RootN{N}\sum_{x\neq w} \ket{x} + \ColorFour{\frac{3N-4}{N}}\RootN{N}\W \]
 
 Recalling that $N=2^{n}$ is large
 \begin{itemize}
