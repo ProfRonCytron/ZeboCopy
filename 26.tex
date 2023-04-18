@@ -270,34 +270,33 @@ Expressing \S{} in this basis:
 
 \begin{frame}{Step 1: Sign change on \ket{w}}{On board}
 
-\begin{itemize}
+\Vskip{-3em}\begin{itemize}
     \item We use the phase-kickback trick:
     \begin{itemize}
-        \item The $x$ qubits are placed in the uniform superposition of all possible values, using \Hadamard{} gates.
-        \item The $y$ qubit is initialized to $\ket{-}=\QMinus$ and remains in this state after each step.
+        \item The $x$ qubits are placed in uniform superposition using \Hadamard{} gates.
+        \item The $y$ qubit is initialized to $\ket{-}=\QMinus$ and stays $\ket{-}$ throughout.
     \end{itemize}
     \item Focusing only on the $x$ qubits, the prior state for this step is initially \S, but more generally, the input and output are
     \begin{align*}
-      \QState{in} &=  \A \SumBV{x\neq w}{N} \ket{x} + \B\ket{w},\ \A,\B > 0 \\
-           \F &= \A \SumBV{x\neq w}{N} \ket{x} - \B\ket{w}
+      \QState{in} &=  \B \left(\SumBV{x\neq w}{N} \ket{x}\right) + \A\ket{w},\ \A,\B > 0 \\
+           \F &= \B \left(\SumBV{x\neq w}{N} \ket{x}\right) - \A\ket{w}
     \end{align*}
         so that the sign changes only for \ket{w}
 \end{itemize}
     
 \end{frame}
-\begin{frame}{Progress of $\alpha$ and $\beta$}{We want $\beta$ to be as close to 1 as possible}
-\Vskip{-3em}    \begin{align*}
-      \QState{in} &=  \A \SumBV{x\neq w}{N} \ket{x} + \B\ket{w},\ \A,\B > 0 \\
-           \F &= \A \SumBV{x\neq w}{N} \ket{x} - \B\ket{w}
-    \end{align*}
+\begin{frame}{Progress of $\alpha$ and $\beta$}{We want $\alpha$ to be as close to $1$ as possible}
+\Vskip{-3em}    {\small\begin{align*}
+      \QState{in} &=  \B \left(\SumBV{x\neq w}{N} \ket{x}\right) + \A\ket{w},\ \A,\B > 0 \\
+           \F &= \B \left(\SumBV{x\neq w}{N} \ket{x}\right) - \A\ket{w}
+    \end{align*}}
 \begin{itemize}
-    \item Initially $\A=\B=\RootN{N}$ in \S.
-    \item As \B{} grows toward 1, we expect \A{} to diminish accordingly.
-    \item \A{} and \B{} must remain nonnegative.
-    \item We therefore obtain:
+    \item Initially $\A=\B=\RootN{N}$ in \S.  $\B,\A > 0$ throughout.
+    \item As \A{} increases toward 1, we expect \B{} to diminish accordingly.
+    \item After each iteration:
     \begin{align*}
-        (N-1)\ \A^{2} &= 1 - \B^{2}\\
-        \A & = \sqrt{\frac{1-\B^{2}}{N-1}}
+        (N-1)\ \B^{2} &= 1 - \A^{2}\\
+        \B & = \sqrt{\frac{1-\A^{2}}{N-1}}
     \end{align*}
 \end{itemize}
 \end{frame}
@@ -443,6 +442,44 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
 }
     
 \end{frame}
+
+{
+\def\S{\ColorOne{\ket{s}}}
+\def\W{\ColorThree{\ket{w}}}
+\def\R{\ColorTwo{\ket{r}}}
+\begin{frame}{Some notes}{Before the math}
+\Vskip{-4em}\TwoUnequalColumns{0.66\textwidth}{0.33\textwidth}{%
+  \TwoColumns{%
+  Picture
+\begin{center}
+\begin{TIKZP}[scale=2]
+    \visible<1->{\draw[->,thick,\RCone] (0,0) -- (15:1) node[right]{\S};}
+    \draw[->,thick,\RCthree] (0,0) -- (0,1) node[above]{\W} ;
+    \draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {\R};
+\end{TIKZP}
+\end{center}
+\ColorTwo{Oracle: Reflect about~\R{}}
+\MedSkip{}
+\ColorOne{Diffuser: Reflect about~\S{}}
+}{%
+  Circuit
+  
+\ColorTwo{We use phase-kickback to negate the amplitude of \W, leaving other amplitudes positive.}
+\MedSkip{}
+\ColorOne{Blah blah blah}
+
+  }%
+}{%
+\TwoUnequalColumns{\textwidth}{0pt}{%
+Math
+}{%
+}
+}
+    
+\end{frame}
+}
+
+
 {
 \def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\ket{w}}}
@@ -459,8 +496,9 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
 \Reason{15}{Collected coefficents on \ket{\TensSupProd{0}{n}}}
 \Reason{16}{Applying \Hadamard{} to return to our original basis, completing step 2}
 \Reason{19}{\S{} also contains \W{}}
-\Reason{20}{Separately accounting for \W}
-\Reason{21}{Simplifying}
+\Reason{20}{Preparing the fraction with a common denominator}
+\Reason{21}{Separately accounting for \W}
+\Reason{22}{Simplifying}
 \end{Reasoning}
 
 \ScrollProof{1}{3}{%
@@ -485,16 +523,17 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
  \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
  \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
 }
-\ScrollProof{19}{21}{%
-\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
-\Next{\Two}{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{N-4+2N}{N}\RootN{N}\W \\}
-\Next{\One}{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
+\ScrollProof{19}{23}{%
+\Next{\Four}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
+\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2\alert<20>{N}}{\alert<20>{N}\sqrt{N}}\W \\[1em]}
+\Next{\Two}{&= \frac{\alert<21>{N-4}}{N}\RootN{N}\sum_{\alert<21>{x\neq w}} \ket{x} + \frac{\alert<21>{N-4}+2N}{N}\RootN{N}\W \\}
+\Last{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
 }
     
 \end{frame}
 \begin{frame}{Results from the first iteration}{Steps 1 and 2}
 
-\[
+\Vskip{-3em}\[
 \QState{d}  = \ColorSix{\frac{N-4}{N}}\RootN{N}\sum_{x\neq w} \ket{x} + \ColorFour{\frac{3N-4}{N}}\RootN{N}\W \]
 
 Recalling that $N=2^{n}$ is large
@@ -504,8 +543,13 @@ Recalling that $N=2^{n}$ is large
     \item If we repeat this analysis, we see the amplitude on \W{} take on the sequence:
     \[ \frac{1}{\sqrt{N}}, \ColorFour{\frac{3}{\sqrt{N}}}, \frac{5}{\sqrt{N}}, \ldots
     \]
-    \item We therefore require $\Theta(\sqrt{N})$ iterations to observe \W{} for any size problem.
+    \item We apparently require $\Theta(\sqrt{N})$ iterations to observe \W{} with reasonable probability for a problem of size~$N$.
+    \item We show this next.
 \end{itemize}
     
 \end{frame}
 }
+
+\begin{frame}{To do}{The math of iterations needed}
+    
+\end{frame}
