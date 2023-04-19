@@ -94,7 +94,8 @@
 \def\SpecialX#1{\ensuremath{#1^{\star}}}
 \def\Forall#1#2{\ensuremath{\forall\ #1, #2}}
 \def\Degrees#1{\ensuremath{#1^{\circ}}}
-\def\RootN#1{\ensuremath{\frac{1}{\sqrt{#1}}}}
+\def\RootN#1{\RootUN{1}{#1}}
+\def\RootUN#1#2{\ensuremath{\frac{#1}{\sqrt{#2}}}}
 \def\RootTwo{\RootN{2}}
 \def\TwoSupOp#1#2#3{%
 \ensuremath{\RootTwo{}\left(#1 #3 #2\right)}}

@@ -2,52 +2,76 @@
 
 
 
-\begin{frame}{Scenario with the square: Row 1 and Column 3}{Alice's row number tells her what basis to use for measurement.\\Independently, Bob's column number tells him what basis to use.}
-\begin{MPScene}
-\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
-\Vskip{-4em}\begin{center}
-\adjustbox{valign=t,scale=0.8}{%
-\begin{quantikz}
-\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AoneColor{\Aone\visible<4->{=\QZero}}} \\
-\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw \rstick{\BoneColor{\Bone\visible<4->{=\QZero}}}
-\end{quantikz}}%
-\hbox to 3ex{\hss}%
-\adjustbox{valign=t,scale=0.8}{%
-\begin{quantikz}
-\lstick{\ColorOne{\QZero}}\qw &  \gate{\Hadamard} & \ctrl{1} & \qw\rstick{\AtwoColor{\Atwo\visible<5->{=\QZero}}} \\
-\lstick{\ColorTwo{\QZero}}\qw & \qw & \targ{} & \qw\rstick{\BtwoColor{\Btwo\visible<5->{=\QZero}}}
-\end{quantikz}}\end{center}%
-\visible<1->{
-\Vskip{-2em}\begin{ProtocolDialog}{0.25\textwidth}{0.375\textwidth}{0.375\textwidth}
-\visible<2->{\All{{\small\ColorOne{Row 1} \visible<3->{\ColorTwo{Col 1}}}}{Measure in \TensProd{\AoneColor{\PauliZ}}{\AtwoColor{\PauliZ}}}{\visible<3->{Measure \NamedGate{Bell}(\BoneColor{$b_1$}, \BtwoColor{$b_2$})}}}
-\visible<4->{\AliceBob{Measure \AoneColor{\Aone{}=\QZero}}{\alert{Collapse} \BoneColor{\Bone{}=\QZero}}}
-\visible<5->{\AliceBob{Measure \AtwoColor{\Atwo{}=\QZero}}{\alert{Collapse} \BtwoColor{\Btwo{}=\QZero}}}
-\visible<7->{\AliceBob{\ReportCommon{\AoneColor{1}\times \IColor{1}}}{$\ket{\BoneColor{0}\BtwoColor{0}}$ from \NamedGate{Bell} to \NamedGate{ZZ}}}
-\visible<9->{\AliceBob{\Report{\IColor{1}\times \AtwoColor{1}}}{is $\RootTwo(\ket{00}+\ket{01})$}}
-\visible<11->{\AliceBob{\Report{\AoneColor{1}\times \AtwoColor{1}}}{Bob measures \Ambig{\ket{\BoneColor{0}\BtwoColor{1}}}}}
-\visible<13->{\Bob{\ReportCommon{1}}}
-\visible<15->{\Bob{\Report{-1}}}
-\visible<17->{\Bob{\Report{1}}}
-\end{ProtocolDialog}}
-}{%
-\Vskip{-3em}\begin{itemize}\small
-    \item \Alice{} has \Aone{} and \Atwo.
-    \item \MakeSameWidth[l]{Alice}{\Bob{}} has \Bone{} and \Btwo.
-    \item $\QZero{} = +1$
-    \item $\QOne{} = -1$
-    \item \Ovalbox{$n$} random result~$n$
-    \item \ReportCommon{\mbox{agreement}}
-\end{itemize}
-\Vskip{-3.5em}\begin{center}\adjustbox{scale=0.75}{%
-\hskip -4em\begin{MPSquareEnv}
-    \def\TpLf####1{\only<2>{\ColorOne{####1}}\only<6>{\ColorOne{\TensProd{\AoneColor{\PauliZ}}{\AtwoColor{\Identity}}}}\only<1,3-5,12->{####1}\only<7-11>{\ColorOne{\Answer{+1}}}}
-    \def\TpCt####1{\only<8>{\ColorOne{\TensProd{\AoneColor{\Identity}}{\AtwoColor{\PauliZ}}}}\only<2>{\ColorOne{####1}}\only<1,3-7,12->{####1}\only<9-11>{\ColorOne{\Answer{+1}}}}
-    \def\TpRt####1{\only<12>{\ColorTwo{\TensProd{\BoneColor{\PauliZ}}{\BtwoColor{\PauliZ}}}}\only<2>{\ColorOne{####1}}\only<3>{\ColorTwo{####1}}\only<1,4-9>{####1}\only<10>{\ColorOne{\TensProd{\AoneColor{\PauliZ}}{\AtwoColor{\PauliZ}}}}\only<11>{\ColorOne{\Answer{+1}}}\only<13->{\ColorTwo{\Answer{+1}}}}
-    \def\MdRt####1{\only<14>{\ColorTwo{\TensProd{\BoneColor{\PauliX}}{\BtwoColor{\PauliX}}}}\only<3>{\ColorTwo{####1}}\only<1-2,4-13>{####1}\only<15->{\ColorTwo{\Answer{-1}}}}
-    \def\BtRt####1{\only<16>{\ColorTwo{\TensProd{\BoneColor{\PauliY}}{\BtwoColor{\PauliY}}}}\only<3>{\ColorTwo{####1}}\only<1-2,4-15>{####1}\only<17->{\ColorTwo{\Answer{+1}}}}
-    \MPSoln{}
-\end{MPSquareEnv}}
-\end{center}
+{
+\def\D{\QState{d}}
+\def\S{\ColorOne{\ket{s}}}
+\def\W{\ColorThree{\ket{w}}}
+\def\A{\ColorOne{\ensuremath{\alpha}}}
+\def\B{\ColorTwo{\ensuremath{\beta}}}
+\begin{frame}{The math}{Generally, with $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
+
+\begin{Reasoning}
+\Reason{2}{The column vector has $N$ entries, with $-1$ at entry \W}
+\Reason{3}{\Hadamard(\TensSupProd{0}{n}) produces \SumBV{x}{n} \ket{x}, so we take away an extra \RootN{N}\W{} to compensate}
+\Reason{4}{For step 2, we first apply \Hadamard{}}
+\Reason{6}{Next we expand \ColorTwo{\Hadamard} using our formula for a general basis state such as \W}
+\Reason{9}{Note that \ket{\TensSupProd{0}{n}} is contained in each of the two terms}
+\Reason{11}{$R$ is the reflection of all but the \ket{\TensSupProd{0}{n}} term}
+\Reason{12}{Making the summation complete again}
+\Reason{15}{Collected coefficents on \ket{\TensSupProd{0}{n}}}
+\Reason{16}{Applying \Hadamard{} to return to our original basis, completing step 2}
+\Reason{19}{\S{} also contains \W{}}
+\Reason{20}{Preparing the fraction with a common denominator}
+\Reason{21}{Separately accounting for \W}
+\Reason{22}{Simplifying}
+\end{Reasoning}
+
+\ScrollProof{1}{3}{%
+    \Next{\Three}{\D &= +\A\W + \RootN{N-1} \sum_{x\neq w} \B\ket{x}\\}
+   \Next{\Two}{U_{f}(\D) &=  -\A\W + \RootUN{\B}{N-1}\left(-\W +  \SumBV{x}{n}\ket{x}\right) \\}
+    \Last{&=  -\A\W + \RootUN{\B}{N-1}\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}
+}%
+\ScrollProof{4}{8}{%
+  \Next{\Four}{U_{f}(\S) &=\Hadamard(\ket{\TensSupProd{0}{n}}) - \frac{2}{\sqrt{N}} \W \\}
+  \Next{\Three}{\Hadamard(U_{f}(\S)) &= \Hadamard{}(\Hadamard(\ket{\TensSupProd{0}{n}})) - \frac{2}{\sqrt{N}} \Hadamard(\W) \\}
+  \Next{\Two}{ &= \ket{\TensSupProd{0}{n}} - \frac{2}{\sqrt{N}}\ \ColorTwo{\Hadamard(\W)}\\}
+  \Last{&= \ket{\TensSupProd{0}{n}} -\frac{2}{\sqrt{N}} \ \ColorTwo{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}}}
+}%
+\ScrollProof{9}{13}{%
+  \Next{\Four}{\Hadamard(U_{f}(\S)) &= \ket{\TensSupProd{0}{n}} -\frac{2}{\sqrt{N}} \ \ColorTwo{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}} \\}
+  \Next{\Three}{&= \left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{\sqrt{N}}\RootN{N} \sum_{x\neq \TensSupProd{0}{n}} \NegOneExp{\DotP{\ColorThree{w}}{x}} \ket{x} \\}
+  \Next{\Two}{\alert<11>{R}\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} \alert<11>{+} \frac{2}{\sqrt{N}}\RootN{N} \sum_{\alert<12>{x\neq \TensSupProd{0}{n}}} \NegOneExp{\DotP{\ColorThree{w}}{x}} \ket{x} \\}
+  \Last{&= \left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}}\alert<12>{- \frac{2}{N}\ket{\TensSupProd{0}{n}}} \alert<11>{+} \frac{2}{\sqrt{N}}\RootN{N}  \alert<12>{\NHadamard{\ColorThree{w}}{n}{x}}}
+}%
+\ScrollProof{14}{18}{%
+ \Next{\Four}{R\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{N}\ket{\TensSupProd{0}{n}} + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
+ \Next{\Three}{&=\left(1-\frac{4}{N}\right)\ket{\TensSupProd{0}{n}}  + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
+ \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
+ \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
 }
-\end{MPScene}
+\ScrollProof{19}{23}{%
+\Next{\Four}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
+\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2\alert<20>{N}}{\alert<20>{N}\sqrt{N}}\W \\[1em]}
+\Next{\Two}{&= \frac{\alert<21>{N-4}}{N}\RootN{N}\sum_{\alert<21>{x\neq w}} \ket{x} + \frac{\alert<21>{N-4}+2N}{N}\RootN{N}\W \\}
+\Last{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
+}
+    
 \end{frame}
+\begin{frame}{Results from the first iteration}{Steps 1 and 2}
+
+\Vskip{-3em}\[
+\QState{d}  = \ColorSix{\frac{N-4}{N}}\RootN{N}\sum_{x\neq w} \ket{x} + \ColorFour{\frac{3N-4}{N}}\RootN{N}\W \]
+
+Recalling that $N=2^{n}$ is large
+\begin{itemize}
+    \item The amplitude on \W{} has increased from \RootN{N} to nearly \ColorFour{$\frac{3}{\sqrt{N}}$}.
+    \item The amplitude elsewhere is slightly reduced, from \RootN{N} to \ColorSix{$\frac{N-4}{N}\RootN{N}$}.
+    \item If we repeat this analysis, we see the amplitude on \W{} take on the sequence:
+    \[ \frac{1}{\sqrt{N}}, \ColorFour{\frac{3}{\sqrt{N}}}, \frac{5}{\sqrt{N}}, \ldots
+    \]
+    \item We apparently require $\Theta(\sqrt{N})$ iterations to observe \W{} with reasonable probability for a problem of size~$N$.
+    \item We show this next.
+\end{itemize}
+    
+\end{frame}
+}
