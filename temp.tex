@@ -15,8 +15,7 @@
 \Reason{2}{The oracle $U_{f}$ reflects amplitude on \W, leaving all others alone}
 \Reason{3}{Completing the sum}
 \Reason{4}{\Hadamard(\TensSupProd{0}{n}) = \RootN{N}\SumBV{x}{n}\ket{x}}
-\Reason{5}{For step 2, we first apply \Hadamard{}}
-\Reason{6}{Next we expand \ColorTwo{\Hadamard} using our formula for a general basis state such as \W}
+\Reason{6}{Collect terms}
 \Reason{9}{Note that \ket{\TensSupProd{0}{n}} is contained in each of the two terms}
 \Reason{11}{$R$ is the reflection of all but the \ket{\TensSupProd{0}{n}} term}
 \Reason{12}{Making the summation complete again}
@@ -35,14 +34,14 @@
     \Last{&=  -\A\W + \RootUN{\B}{N-1}\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}
 }%
 \ScrollProof{6}{10}{%
-  \Next{\Four}{U_{f}(\S) &=\Hadamard(\ket{\TensSupProd{0}{n}}) - \frac{2}{\sqrt{N}} \W \\}
-  \Next{\Three}{\Hadamard(U_{f}(\S)) &= \Hadamard{}(\Hadamard(\ket{\TensSupProd{0}{n}})) - \frac{2}{\sqrt{N}} \Hadamard(\W) \\}
-  \Next{\Two}{ &= \ket{\TensSupProd{0}{n}} - \frac{2}{\sqrt{N}}\ \ColorTwo{\Hadamard(\W)}\\}
-  \Last{&= \ket{\TensSupProd{0}{n}} -\frac{2}{\sqrt{N}} \ \ColorTwo{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}}}
+  \Next{\Four}{U_{f}(\D) &=  -\A\W + \RootUN{\B}{N-1}\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right) \\}
+  \Next{\Three}{ &= \left(-\A-\RootUN{\B}{N-1}\right)\W + \left(\RootUN{\B\sqrt{N}}{N-1}\right) \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\\}
+  \Next{\Two}{ &= \left(-\A-\RootUN{\B}{N-1}\right)\W + \left(\RootUN{\B\sqrt{N}}{N-1}\right) \RootUN{\sqrt{N}}{N}\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\\}
+  \Last{&=\left(-\A-\RootUN{\B}{N-1}\right)\W + \left(\RootUN{\B\,N}{N-1}\right) \RootN{N}\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)}
 }%
 \ScrollProof{11}{15}{%
-  \Next{\Four}{\Hadamard(U_{f}(\S)) &= \ket{\TensSupProd{0}{n}} -\frac{2}{\sqrt{N}} \ \ColorTwo{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}} \\}
-  \Next{\Three}{&= \left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{\sqrt{N}}\RootN{N} \sum_{x\neq \TensSupProd{0}{n}} \NegOneExp{\DotP{\ColorThree{w}}{x}} \ket{x} \\}
+  \Next{\Four}{U_{f}(\D)&=\left(-\A-\RootUN{\B}{N-1}\right)\W + \left(\RootUN{\B\,N}{N-1}\right) \RootN{N}\Hadamard\left(\ket{\TensSupProd{0}{n}}\right) \\}
+  \Next{\Three}{\Hadamard\left(U_{f}(\D)\right) &= \left(-\A-\RootUN{\B}{N-1}\right)\Hadamard(\W) + \left(\RootUN{\B\,N}{N-1}\right) \S \\}
   \Next{\Two}{\alert<11>{R}\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} \alert<11>{+} \frac{2}{\sqrt{N}}\RootN{N} \sum_{\alert<12>{x\neq \TensSupProd{0}{n}}} \NegOneExp{\DotP{\ColorThree{w}}{x}} \ket{x} \\}
   \Last{&= \left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}}\alert<12>{- \frac{2}{N}\ket{\TensSupProd{0}{n}}} \alert<11>{+} \frac{2}{\sqrt{N}}\RootN{N}  \alert<12>{\NHadamard{\ColorThree{w}}{n}{x}}}
 }%
