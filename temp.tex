@@ -4,6 +4,7 @@
 
 {
 \def\D{\QState{d}}
+\def\F{\QState{f}}
 \def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\ket{w}}}
 \def\A{\ColorOne{\ensuremath{\alpha}}}
@@ -24,46 +25,41 @@
 \Reason{16}{We next negate all states except \ket{\TensSupProd{0}{n}}}
 \Reason{17}{We denote the reflection of all states except \ket{\TensSupProd{0}{n}} using $R$}
 \Reason{18}{Complete the summation}
-\Reason{19}{\S{} also contains \W{}}
-\Reason{20}{Preparing the fraction with a common denominator}
-\Reason{21}{Separately accounting for \W}
+\Reason{19}{We next collect coefficients of \ket{\TensSupProd{0}{n}}}
+\Reason{21}{Collected coefficients of \ket{\TensSupProd{0}{n}}}
 \Reason{22}{Simplifying}
 \Reason{23}{Recall $\S{}=\RootN{N}\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)$}
 \end{Reasoning}
 
 \ScrollProof{1}{5}{%
     \Next{\Four}{\D &= +\A\W +  \B\sum_{x\neq w} \ket{x}\\}
-    \Next{\Three}{U_{f}(\D) &= -\A\W + \B \sum_{x\neq w} \ket{x}\\}
-   \Next{\Two}{U_{f}(\D) &=  -\A\W + \B\left(-\W +  \SumBV{x}{n}\ket{x}\right) \\}
+    \Next{\Three}{\F = U_{f}(\D) &= -\A\W + \B \sum_{x\neq w} \ket{x}\\}
+   \Next{\Two}{ &=  -\A\W + \B\left(-\W +  \SumBV{x}{n}\ket{x}\right) \\}
     \Last{&=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}
 }%
 \ScrollProof{6}{10}{%
-  \Next{\Four}{U_{f}(\D) &=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right) \\}
+  \Next{\Four}{\F &=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right) \\}
   \Next{\Three}{ &= \left(-\A-\B\right)\W + \B\sqrt{N}\  \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\\}
-  \Next{\Two}{\alert<8>{\Hadamard}\left(U_{f}(\D)\right) &= \left(-\A-\B\right)\alert<8>{\Hadamard}\left(\W\right) + \B\sqrt{N}\  \ \alert<9>{\alert<8>{\Hadamard}\left(\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}\\}
+  \Next{\Two}{\alert<8>{\Hadamard}(\F) &= \left(-\A-\B\right)\alert<8>{\Hadamard}\left(\W\right) + \B\sqrt{N}\  \ \alert<9>{\alert<8>{\Hadamard}\left(\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}\\}
   \Last{&=\left(-\A-\B\right)\Hadamard\left(\W\right) + \B\,\sqrt{N}\, \alert<9>{\ket{\TensSupProd{0}{n}}}}
 }%
 \ScrollProof{11}{15}{%
-  \Next{\Four}{\Hadamard\left(U_{f}(\D)\right)&=\left(-\A-\B\right)\alert<12>{\Hadamard}\left(\W\right) + \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}} \\}
+  \Next{\Four}{\Hadamard(\F)&=\left(-\A-\B\right)\alert<12>{\Hadamard}\left(\W\right) + \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}} \\}
 %%
   \Next{\Three}{ &= \left(-\A-\B\right)\alert<12>{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}} + \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}}\\}
   \Next{\Two}{ &= \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}} - \left(\A+\B\right)\alert<12>{\RootN{N}\alert<13>{\NHadamard{\ColorThree{w}}{n}{x}}}\\}
   \Last{&= \left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} - \left(\A+\B\right)\RootN{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}}}
 }%
-\ScrollProof{16}{20}{%
- \Next{\Four}{\Hadamard\left(U_{f}(\D)\right) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{-} \left(\A+\B\right)\RootN{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}} \\}
- \Next{\Three}{R\left(\Hadamard\left(U_{f}(\D)\right)\right) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{+} \left(\A+\B\right)\RootN{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}}  \\}
+\ScrollProof{16}{19}{%
+ \Next{\Three}{\Hadamard(\F) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{-} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}} \\}
+ \Next{\Two}{\alert<17>{R}\left(\Hadamard(\F)\right) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{+} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{\alert<18>{x\neq\TensSupProd{0}{n}}}}}  \\}
  %% left off here
- \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
- \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
+ \Last{ &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{+} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{\alert<18>{\AllBits{x}{n}}}}}\\ & \hbox to 11em{\hss} \alert<18>{- \RootUN{\A+\B}{N}\ket{\TensSupProd{0}{n}}}
+}}%
+\ScrollProof{20}{25}{%
+  \Next{\Four}{R\left(\Hadamard(\F)\right) &= \left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} + \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\AllBits{x}{n}}}\\ & \hbox to 11em{\hss} - \RootUN{\A+\B}{N}\ket{\TensSupProd{0}{n}} \\[1em]}
+  \Next{\Three}{ &= \left(\RootUN{\B\,N-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x}}
 }
-\ScrollProof{19}{23}{%
-\Next{\Four}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
-\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2\alert<20>{N}}{\alert<20>{N}\sqrt{N}}\W \\[1em]}
-\Next{\Two}{&= \frac{\alert<21>{N-4}}{N}\RootN{N}\sum_{\alert<21>{x\neq w}} \ket{x} + \frac{\alert<21>{N-4}+2N}{N}\RootN{N}\W \\}
-\Last{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
-}
-    
 \end{frame}
 \begin{frame}{Results from the first iteration}{Steps 1 and 2}
 
