@@ -2,7 +2,7 @@
 \usepackage[margin=0.5in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{course}
-\usepackage{cse468-Spring22}
+\usepackage{cse468-Spring23}
 \usepackage{program}
 \usepackage{fancybox}
 \usepackage{adjustbox}
@@ -55,7 +55,7 @@ What is the contradiction, if any?
 
 \begin{document}
 
-\begin{assignment}{Exam II}{27 April 2022}{End of class}
+\begin{assignment}{Exam II}{26 April 2023}{End of class}
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
@@ -118,21 +118,39 @@ Each response is worth 3 points and there are 6 points of extra credit available
 
 \begin{tabular}{cc}
 \begin{minipage}[t]{2.8in}\includegraphics[scale=0.6]{mp.png}\end{minipage} &
-\raisebox{1in}{\begin{minipage}[t]{3in}\raggedright If Alice measures her qubits as $\ket{00}$ and Bob measures his qubits as $\ket{0+}$, then what results do they report for row and column~1, respectively?\end{minipage}}
+\raisebox{1.2in}{\begin{minipage}[t]{3in}\raggedright Alice, having traveled to Israel, decides to compute her squares' results \textbf{right to left}, while Bob, still in St.~Louis, reports his results top to bottom, as usual.\end{minipage}}
 \end{tabular}
+
+\begin{enumerate}
+
+\item\Points{2} With this change to Mermin--Peres, answer the following questions:
+
+\begin{itemize}
+    \item For any of her three rows, Alice \emph{always} reports values whose products are $+1$ as required.~\TF{}
+    \item Alice and Bob \emph{always} agree on a value in their common square.~\TF{}
+
+\end{itemize}
+\item\Points{4} Below, explain your answers to part~(a), by providing an example that makes a statement false, or by explaining why the statement is true.
+    \LeaveSpace{2in}
+
+\item\Points{4} Suppose Alice happens to measure first, measuring $\ket{++}$ for her $\X{}\otimes\X{}$ square.
+
+Fill in the blanks below showing \emph{all possible values} that could be reported following Alice's measurement.
+
+\medskip
 
 \begin{tabular}{cc}
 \begin{minipage}{3in}
-Alice row 1
+Alice row 2
 \begin{itemize}
-    \item Left square \Blank[4em]{}
-    \item Center square \Blank[4em]{}
     \item Right square \Blank[4em]{}
+    \item Center square \Blank[4em]{}
+    \item Left square \Blank[4em]{}
 \end{itemize}
 \end{minipage}
 &
 \begin{minipage}{3in}
-Bob column 1
+Bob column 2
 \begin{itemize}
     \item Top square \Blank[4em]{}
     \item Middle square \Blank[4em]{}
@@ -140,23 +158,7 @@ Bob column 1
 \end{itemize}
 \end{minipage}
 \end{tabular}
-
-In the above scenario, it is possible that Alice measures $\ket{00}$ and Bob measures $\ket{1+}$~\TF{}
-
-\item\Points{10} 
-
-For the Mermin--Peres square problem, suppose Alice and Bob agree before they separate that
-\begin{itemize}
-    \item Alice will follow the protocol exactly as taught in class.
-    \item Bob will follow the protocol as taught in class, except that for each square in his column, he will negate the result he should have reported.   Where he should report $+1$, he would report $-1$;  where he should report $-1$ he will report $+1$.
-\end{itemize}
-With this change in protocol
-\begin{itemize}
-    \item The values in Alice's assigned row will continue to multiply to $+1$.~\TF{}
-    \item The values in Bob's assigned column will continue to multiply to $-1$.\TF{}
-    \item In the shared square for Alice and Bob, they will continue to report the same value.~\TF{}
-    \item In the shared square for Alice and Bob, they are guaranteed to report different values.~\TF{}
-\end{itemize}
+\end{enumerate}
 
 
 \clearpage\item\Points{10} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
