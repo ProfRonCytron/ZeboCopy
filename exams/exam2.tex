@@ -177,7 +177,7 @@ All other aspects of the game are unchanged:
 \begin{itemize}
     \item Alice and Bob are provided colors that are chosen randomly and uniformly.
     \item The metric for success of the game is the \emph{average} rate at which Alice and Bob agree when they should, and disagree when they should, over all 4 possible combinations of colors they can be provided. 
-    \item In the original game, as taught, the success metric is approximately~85\%.
+    \item In the game's solution using the above diagram, as taught, the success metric is approximately~85\%.
 \end{itemize}
 Answer the following:
 \begin{itemize}
@@ -205,14 +205,14 @@ During an iteration of Grover, and after the first step (reflection) but before 
 
 \begin{enumerate}
     \item This is an instance of Grover for a function, where the input values are \Blank{} bits wide.
-    \item From $\ket{\psi_{f}}$ what is the secret \ket{w} (which input value is special here)?\Blank{}
+    \item From $\ket{\psi_{f}}$ what is the secret \ket{w} (the input value that is special here)?\Blank{}
     \item This is the first step of the \Blank{} iteration of the algorithm.
     \item When we complete this iteration by performing diffusion, the amplitude on \ket{w} will be approximately \Blank{}, because it increases each iteration by~\Blank{}.
     
     
 \end{enumerate}
 
-\clearpage\item\Points{5} You are at a party where everybody is talking about is quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
+\clearpage\item\Points{5} You are at a party where everybody is talking about quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
 \( f(x) = x \cdot s \),
 where $x$ and $s$ are each $n$ bits wide.  
 
@@ -234,6 +234,8 @@ You then draw the oracle for this function on a conveniently provided napkin (ju
 \lstick{$x$} &  \qw & \qw & \qw & \qw & \rstick{$x$}\\[1.5em]
 \lstick{$y$} &  \qw & \qw & \qw & \qw & \rstick{$y\oplus f(x)$}\\
 \end{quantikz}}\end{center}
+
+Be certain your oracle provides both of the outputs as required and shown above.
 
 
 
@@ -302,50 +304,37 @@ Generally, for an $n$~qubit instance of Grover ($N=2^n$), where $\ket{w}$ repres
 \lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
 \end{quantikz}}
 
-\clearpage\item
-Consider the circuit below where some arbitrary single-qubit gate $U$ acts on the top qubit.  Following that, a CNOT gate is applied from the top to the bottom qubit:
 
-\adjustbox{valign=t}{\begin{quantikz}
-\lstick{$\ket{0}$} &  \gate{U}& \ctrl{1} & \qw & \gate{?} & \qw \\
-\lstick{$\ket{0}$} &   \qw  & \targ{} & \qw &\qw& \qw
-\end{quantikz}}
-
-
-
-While we know general cloning of a quantum state is impossible, there are exactly two states resulting from $U\ket{0}$ that would be successfully cloned onto the bottom qubit using the above circuit.
-
-\Points{6} for blanks below, 2 points each.
-
-Those states are \Blank{} and \Blank{}.
-
-If we wanted to restore the top qubit to its state prior to applying $U$, what gate would we place in the ``?'' box? \Blank{}
-
-The algorithm we studied for phase estimation applies gates and measures the qubits of a quantum system, thus transforming and then collapsing each qubit's state.
-
-\Points{4} Based on the above and on your knowledge of how phase estimation is performed, describe how we could perform phase estimation on an $n$-qubit system, but now with $n$~ancillary (extra, additional) qubits, and now restoring the $n$ primary bits to their state prior to the actions performed for phase estimation.
-
-
-\clearpage\item\Points{10} Using Shor's algorithm, let's try to factor the number~24 using the following table of values for
-\[ 17^{i} \mbox{ mod 24} \]
+\clearpage\item\Points{5} Using Shor's algorithm, let's try to factor the number~35 using the following table of values for
+\[ 2^{i} \mbox{ mod 35} \]
 \begin{center}
 \begin{tabular}{c|c}
-  $i$ & $17^{i}\mbox{ mod 24}$ \\\hline
-   1  &  17\\
-   2 &   1 \\
-   3 &   17 \\
-   4 &   1
+  $i$ & $2^{i}\mbox{ mod 35}$ \\\hline
+  0 & 1 \\
+  1 &  2 \\
+2 &  4 \\
+3 &  8 \\
+4 &  16 \\
+5 &  32 \\
+6 &  29 \\
+7 &  23 \\
+8 & 11 \\
+9 &  22 \\
+10 &  9 \\
+11 & 18 \\
+12 &  1
 \end{tabular}
 \end{center}
 \begin{itemize}
     \item What is the period of this function?\Blank{}
-    \item $17$ is a suitable base for using Shor's algorithm to factor~24 because the period of $17^{i}\mbox{ mod 24}$ is even~\TF{}.
-    \item To find the factors of 24 we would perform the following computations:
+    \item $2$ is a suitable base for using Shor's algorithm to factor~35 because the period of $2^{i}\mbox{ mod 35}$ is even~\TF{}.
+    \item To find the factors of 35 we would perform the following computations:
     
-     GCD(\Blank[3em]{},24) = \Blank[3em]{}
+     GCD(\Blank[3em]{},35) = \Blank[3em]{}
         
         and 
         
-        GCD(\Blank[3em]{},24) = \Blank[3em]{}
+        GCD(\Blank[3em]{},35) = \Blank[3em]{}
     
 \end{itemize}
 
