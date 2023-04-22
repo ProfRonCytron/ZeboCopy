@@ -189,9 +189,9 @@ Answer the following:
 
 \clearpage\item\Points{10}
 
-During an iteration of Grover, and after the first step (reflection) but before the second step (diffusion), we have (approximately) obtained the following state:
+During an iteration of Grover, and after the first step (reflection) but before the second step (diffusion), we have obtained the following state:
 \[
-\ket{\psi_{f}} = \begin{pmatrix*}[r]
+\ket{\psi_{f}} \approx \begin{pmatrix*}[r]
    0.35 \\
    0.35 \\
    0.35 \\
@@ -204,24 +204,39 @@ During an iteration of Grover, and after the first step (reflection) but before 
 \]
 
 \begin{enumerate}
-    \item This is an instance of Grover for a function domain of \Blank{} bits.
-    \item What is the secret \ket{w}?\Blank{}
+    \item This is an instance of Grover for a function, where the input values are \Blank{} bits wide.
+    \item From $\ket{\psi_{f}}$ what is the secret \ket{w} (which input value is special here)?\Blank{}
     \item This is the first step of the \Blank{} iteration of the algorithm.
-    \item When we complete the first step by performing diffusion, the resulting state will become:
-    \[
-\ket{\psi_{f}} = \begin{pmatrix*}[r]
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{} \\
-   \Blank{}
-\end{pmatrix*}
-\]
+    \item When we complete this iteration by performing diffusion, the amplitude on \ket{w} will be approximately \Blank{}, because it increases each iteration by~\Blank{}.
+    
     
 \end{enumerate}
+
+\clearpage\item\Points{5} You are at a party where everybody is talking about is quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
+\( f(x) = x \cdot s \),
+where $x$ and $s$ are each $n$ bits wide.  
+
+After one too many Negronis, the person claims that \emph{all} values of $s$ lead to balanced functions for the Deutsch--Jozsa problem.
+
+Not so fast, you say.  That is almost true.  Yes, in terms of $n$ there are $\Theta\left(\mbox{\vrule width 0pt height 2em depth 0pt\raisebox{-1.5em}{\Blank[2.2em]}}\right)$ such functions, but for one value of $s$, namely $s=\Blank{}$, $f(x)=x\cdot s$ is not a balanced function; it is, in fact, constant.
+
+OK the pontificator concedes, you are right\footnote{At least, Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are no others.
+
+Thundering superpositions, you exclaim, that cannot be the case.  And you continue by providing a single-qubit example\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\cdot s$ for any $s$:
+\begin{align*}
+    f(0) &= \Blank{} \\
+    f(1) &= \Blank{}
+\end{align*}
+You then draw the oracle for this function on a conveniently provided napkin (just draw gates as needed over what you see below):
+
+\begin{center}
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$x$} &  \qw & \qw & \qw & \qw & \rstick{$x$}\\[1.5em]
+\lstick{$y$} &  \qw & \qw & \qw & \qw & \rstick{$y\oplus f(x)$}\\
+\end{quantikz}}\end{center}
+
+
+
 
 \clearpage\item\Points{10} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
