@@ -101,16 +101,16 @@ sure you filled in your information in the box above!)
 
 Each response is worth 3 points and there are 6 points of extra credit available here.
 \begin{itemize}
-    \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes worst-case exponential time on a classical computer.~\TF{}
+     \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, Alice and Bob would still agree on the value of their shared square, as they should.~\TF{}
+    \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, the values Alice reports for her assigned rows still multiply to $+1$, as they should.~\TF{}
+    \item Shor's algorithm provides exponential speedup over the best-known approach for factoring large integers.~\TF{}
     \item With a single query, a classical computer has at least a 50\% chance of determining the correct solution to a Deutsch--Jozsa problem.~\TF{}
+   \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes worst-case exponential time on a classical computer.~\TF{}
     \item An $n$-bit instance of Bernstein--Vazirani can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
     \item An $n$-bit instance of Simon's problem can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
+    \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
     \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani with secret $s$, then the circuit's measurements will yield a unique result (depends only on $s$) in the computational basis.~\TF{}
     \item If the entangled qubits for the CHSH game fail (they decohere and collapse into random values), Alice and Bob can at best win 75\% of the time.~\TF{}
-    \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, the values Alice reports for her assigned rows still multiply to $+1$, as they should.~\TF{}
-    \item In the Mermin--Peres square, each of Alice's qubits is entangled with one of Bob's qubits.  If that entanglement did not exist, Alice and Bob would still agree on the value of their shared square, as they should.~\TF{}
-    \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
-    \item Shor's algorithm provides exponential speedup over the best-known approach for factoring large integers.~\TF{}
     \item Grover's algorithm can solve the factoring problem as quickly as Shor's algorithm.~\TF{}
     \item The university course evaluation for this course is worth one of the five points for participation in this class.  You agree to complete the evaluation by May~9.~\TF{}
 \end{itemize}
@@ -122,9 +122,10 @@ Using the circuit diagram below, create a 3-bit oracle of your choice, and answe
     \item My oracle implements \[f(x)=\Blank[3in]{}\]
     or, if easier, describe your function in prose:
     \LeaveSpace{1.5in}
-    \item My oracle is suitable for use at least for the followings algorithm we have studied this semester: \Blank[4in]{}
+    \item My oracle is suitable for use in at least the followings algorithm we have studied this semester: \Blank[4in]{}
     \item And, at last, my oracle is:
     
+    \bigskip
     \begin{center}
 \adjustbox{valign=t,scale=2.0}{\begin{quantikz}
 \lstick{$x_0$} &  \qw & \qw & \qw & \qw  \rstick{$x_0$}\\
@@ -204,7 +205,7 @@ in the same way \Z{} is spanned by \ket{0} and \ket{1}, and \X{} is spanned by \
 
 Here we want to measure in the \Y{} basis.
 
-The matrix that transform state from the \Z{} basis to \Y{}, mapping \ket{0} to \ket{+y} and \ket{1} to \ket{-y} is (use the blank to the left of the matrix for a common fraction, if you like):
+The matrix that transforms state from the \Z{} basis to \Y{}, mapping \ket{0} to \ket{+y} and \ket{1} to \ket{-y} is (use the blank to the left of the matrix for a common fraction, if you like):
 \[
 \raisebox{-1em}{\Blank[2.5em]{}}\begin{pmatrix*}[r]
   \Blank[2em]{} & \Blank[2em]{} \\
@@ -220,7 +221,7 @@ and its inverse is (be sure to conjugate as needed):
 \]
 \item\Points{4} Measuring \( \ket{\psi} = \frac{1}{\sqrt{2}}\SQB{i}{1}\) in the \Y{} basis yields \Blank{}.
 \begin{quote}
-    Hint:  You can find this answer without performing any matrix multiplication.
+    Hint:  You can find this particular answer easily, without performing any matrix multiplication.  Hint: the trick rhymes with phrobal glaze.
 \end{quote}
 
 \end{enumerate}
@@ -232,14 +233,17 @@ and its inverse is (be sure to conjugate as needed):
 
 
 \begin{itemize}
-\item Recall that in the CHSH solution, the angle between adjacent rays in the picture above is $\pi/8$, so that the probability of agreement where it should happen is approximately~$85\%$.
+\item Recall that in the CHSH solution, the angle between adjacent rays in the picture above is $\pi/8$, so that the probability of agreement where it should happen is $\cos^{2}(\pi/8)$, which is approximately~$85\%$. In this solution, that same probability holds in the one case where (red) Alice and (green) Bob should disagree.
 \item Suppose the angle between each adjacent pair of rays is changed to $\pi/16$, so that when they should agree, their probability of agreement is now
 \[ \cos^{2}(\pi/16) \approx 96\% \]
-and some other computations:
+Here are similar computations, some of which you may find useful:
 \begin{align*}
-    \cos^{2}(2\pi/16) \approx 85\% \\
+    \cos^{2}(2\pi/16) \approx 85\% & &
     \cos^{2}(3\pi/16) \approx 70\% \\
-    \cos^{2}(4\pi/16) \approx 50\%
+    \cos^{2}(4\pi/16) \approx 50\% & &
+    \cos^{2}(5\pi/16) \approx 37\% \\
+    \cos^{2}(6\pi/16) \approx 15 \% & &
+    \cos^{2}(7\pi/16) \approx 04 \%
 \end{align*}
 \end{itemize}
 
@@ -303,7 +307,7 @@ Not so fast, you say.  That is almost true.  Yes, in terms of $n$ there are $\Th
 
 \item\Points{6} OK the pontificator concedes, you are right\footnote{At least, Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are no others.
 
-Thundering superpositions, you exclaim, that cannot be the case.  And you continue by providing a single-qubit example\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\cdot s$ for any $s$:
+``Thundering superpositions!'' you exclaim, that cannot be the case.  And you continue by providing a single-qubit counterexample\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\cdot s$ for any $s$:
 \begin{align*}
     f(0) &= \Blank{} \\
     f(1) &= \Blank{}
@@ -320,7 +324,7 @@ Thundering superpositions, you exclaim, that cannot be the case.  And you contin
 \lstick{$y$} &  \qw & \qw & \qw & \qw  \rstick{$y\oplus f(x)$}\\
 \end{quantikz}}\end{center}
 
-Be certain your oracle provides both of the outputs as required and shown above.
+Be certain your oracle provides both of the outputs, as required and shown above.
 \end{enumerate}
 
 
