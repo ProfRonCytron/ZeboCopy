@@ -13,6 +13,7 @@
 }%
 \def\Gate#1{\mbox{\textbf{#1}}}
 \def\X{\Gate{X}}
+\def\Y{\Gate{Y}}
 \def\Z{\Gate{Z}}
 \def\I{\Gate{I}}
 \def\H{\Gate{H}}
@@ -123,7 +124,7 @@ Each response is worth 3 points and there are 6 points of extra credit available
 
 \begin{enumerate}
 
-\item\Points{2} With this change to Mermin--Peres, answer the following questions:
+\item\Points{2} With this change to Mermin--Peres, answer the following questions, assuming error-free quantum computations:
 
 \begin{itemize}
     \item For any of her three rows, Alice \emph{always} reports values whose products are $+1$ as required.~\TF{}
@@ -135,7 +136,7 @@ Each response is worth 3 points and there are 6 points of extra credit available
 
 \item\Points{4} Alice and Bob are assigned row~2 and column~2, respectively. Suppose Alice happens to measure first, measuring $\ket{++}$ for her (first and rightmost) $\X{}\otimes\X{}$ square.
 
-Fill in the blanks below showing \emph{all possible values} that could be reported following Alice's measurement.
+Fill in the blanks below showing \emph{all possible values} that could be reported by Alice and Bob, as they examine their squares in the order below, following Alice's initial measurement of the rightmost square in row 2.
 
 \medskip
 
@@ -160,54 +161,109 @@ Bob column 2
 \end{tabular}
 \end{enumerate}
 
+\clearpage\item\Points{15}
+
+\begin{enumerate}
+Consider a qubit in state
+\( \ket{\psi} = \frac{1}{\sqrt{2}}\SQB{i}{1}\)
+
+\item\Points{3} We wish to measure this state in the \X{} basis, but alas we can only perform measurements on quantum computers in the computational (\Z) basis.  Put the following operations in the correct order (1, 2, 3) by writing the appropriate numerals in the blanks provided:
+\begin{itemize}
+    \item \Blank{} We map the \X{} basis to the \Z{} basis using an \H{} gate.
+
+    \item \Blank{} We map the \Z{} basis to the \X{} basis using an \H{} gate.
+        \item \Blank{} We measure in the computational basis.
+\end{itemize}
+\item\Points{8} For a nice change, suppose we want to measure state $\ket{\psi}$ in the Y{} basis. Recall that the \Y{} basis is spanned by 
+\[ \ket{+y} = \frac{1}{\sqrt{2}}\SQB{1}{i} \mbox{ and } \ket{-y} = \frac{1}{\sqrt{2}}\SQB{1}{-i} \]
+in the same way \Z{} is spanned by \ket{0} and \ket{1}, and \X{} is spanned by \ket{+} and \ket{-}.
+
+Here we want to measure in the \Y{} basis.
+
+The matrix that transform state from the \Z{} basis to \Y{}, mapping \ket{0} to \ket{+y} and \ket{1} to \ket{-y} is (use the blank to the left of the matrix for a common fraction, if you like):
+\[
+\raisebox{-1em}{\Blank[2.5em]{}}\begin{pmatrix*}[r]
+  \Blank[2em]{} & \Blank[2em]{} \\
+  \Blank[2em]{} & \Blank[2em]{} 
+\end{pmatrix*}
+\]
+and its inverse is (be sure to conjugate as needed):
+\[
+\raisebox{-1em}{\Blank[2.5em]{}}\begin{pmatrix*}[r]
+  \Blank[2em]{} & \Blank[2em]{} \\
+  \Blank[2em]{} & \Blank[2em]{} 
+\end{pmatrix*}
+\]
+\item\Points{4} Measuring \( \ket{\psi} = \frac{1}{\sqrt{2}}\SQB{i}{1}\) in the \Y{} basis yields \Blank{}.
+\begin{quote}
+    Hint:  You can find this answer without performing any matrix multiplication.
+\end{quote}
+
+\end{enumerate}
 \clearpage\item\Points{10}
 
-\begin{center}
+\mbox{}\vskip -5em\mbox{}\begin{center}
 \begin{minipage}[t]{2.8in}
-\includegraphics[scale=0.6]{chsh.png}\end{minipage}\end{center}
+\includegraphics[scale=0.65]{chsh.png}\end{minipage}\end{center}
 
 
 \begin{itemize}
 \item Recall that in the CHSH solution, the angle between adjacent rays in the picture above is $\pi/8$, so that the probability of agreement where it should happen is approximately~$85\%$.
 \item Suppose the angle between each adjacent pair of rays is changed to $\pi/16$, so that when they should agree, their probability of agreement is now
 \[ \cos^{2}(\pi/16) \approx 96\% \]
+and some other computations:
+\begin{align*}
+    \cos^{2}(2\pi/16) \approx 85\% \\
+    \cos^{2}(3\pi/16) \approx 70\% \\
+    \cos^{2}(4\pi/16) \approx 50\%
+\end{align*}
 \end{itemize}
 
 All other aspects of the game are unchanged:  
 \begin{itemize}
     \item Alice and Bob are provided colors that are chosen randomly and uniformly.
-    \item The metric for success of the game is the \emph{average} rate at which Alice and Bob agree when they should, and disagree when they should, over all 4 possible combinations of colors they can be provided. 
-    \item In the game's solution using the above diagram, as taught, the success metric is approximately~85\%.
+    \item The metric for \emph{success} of the game is the \emph{average} rate at which Alice and Bob agree when they should, and disagree when they should, over all 4 possible combinations of colors they can be provided. 
+    \item In the game's solution using the above diagram, as taught, the \emph{success} metric is approximately~85\%.
 \end{itemize}
 Answer the following:
 \begin{itemize}
-    \item\Points{1} This change improves the success of the game.~\TF{}.
+    \item\Points{1} This change improves the \emph{success} of the game.~\TF{}.
     \item\Points{5} What is the approximate success metric of the game with this change? (provide a numeric answer, such as ``85'' for ``85\%'') \Blank{}\%
     \item\Points{3} Show the math supporting your answers below:
     \LeaveSpace{2in}
 \end{itemize}
 
 \clearpage\item\Points{10}
-
 During an iteration of Grover, and after the first step (reflection) but before the second step (diffusion), we have obtained the following state:
 \[
-\ket{\psi_{f}} \approx \begin{pmatrix*}[r]
-   0.35 \\
-   0.35 \\
-   0.35 \\
-   0.35 \\
-   0.35 \\
-   -0.35 \\
-   0.35 \\
-   0.35
+\ket{\psi_{f}} = \begin{pmatrix*}[r]
+   0.25 \\
+   0.25 \\
+   0.25 \\
+   0.25 \\
+   0.25 \\
+   -0.25 \\
+   0.25 \\
+   0.25 \\
+     0.25 \\
+   0.25 \\
+   0.25 \\
+   0.25 \\
+     0.25 \\
+   0.25 \\
+   0.25 \\
+   0.25 
 \end{pmatrix*}
 \]
 
+\begin{quote}\bf
+Important:  The column's first index is 0 and its last index is 15.\end{quote}
+
 \begin{enumerate}
     \item This is an instance of Grover for a function, where the input values are \Blank{} bits wide.
-    \item From $\ket{\psi_{f}}$ what is the secret \ket{w} (the input value that is special here)?\Blank{}
+    \item From $\ket{\psi_{f}}$ shown above, what is the secret \ket{w} (the input value that Grover is trying to find)?~\Blank{}
     \item This is the first step of the \Blank{} iteration of the algorithm.
-    \item When we complete this iteration by performing diffusion, the amplitude on \ket{w} will be approximately \Blank{}, because it increases each iteration by~\Blank{}.
+    \item When we complete this iteration by performing diffusion, the amplitude on \ket{w} will be approximately \Blank{}, because it increases each iteration on a problem of this size by approximately~\Blank{}.
     
     
 \end{enumerate}
@@ -240,69 +296,6 @@ Be certain your oracle provides both of the outputs as required and shown above.
 
 
 
-\clearpage\item\Points{10} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
-
-
-\begin{itemize}
-    \item Consider the oracle portion of a circuit below for an $8$-bit instance of the Bernstein--Vazirani problem.  Recall the oracle computes $y=x\oplus s$ for a secret bit vector~$s$.
-    
-    \includegraphics[scale=0.4]{bv.png}
-    
-    What is the secret $s$ here? \Blank[2in]{}
-    \item If this oracle is used in the Deutsch--Jozsa algorithm, what possible amplitude(s) can be measured on $\ket{00000000}$?
-    
-    \Blank[4in]{}
-    \item What other computational basis vector(s), if any, will have non-zero amplitude for Deutsch--Jozsa if the above oracle is used?  
-    
-    \Blank[4in]{}
-\end{itemize}
-
-\clearpage\item\Points{10}
-Complete the circuit below so that it is an oracle for Grover's algorithm on a 5-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret is $10101$.  Below you provide only the oracle, not any other portions of the circuit.
-
-\adjustbox{valign=t,scale=3.0}{\begin{quantikz}
-\lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$x_2$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$x_3$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$x_4$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$x_5$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
-\end{quantikz}}
-
-\item\Points{5}
-Consider a 2-qubit instance of Grover with the secret value $\ket{00}$.  The circuit up to the point of the diffusion step is specified.  Complete the circuit by adding the diffusion (also called reflection about $\ket{s}$) step.
-
-\adjustbox{valign=t,scale=1.3}{\begin{quantikz}
-\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{2} & \gate{X} & \qw
-& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw &\qw&\qw\\
-\lstick{$\ket{0}$} & \qw      &  \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw&\qw&\qw\\
-\lstick{$\ket{0}$} & \gate{X} &  \gate{H} & \qw      & \targ{} & \qw & \qw& \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw&\qw&\qw
-\end{quantikz}}
-
-\clearpage\item\Points{10} (1 per blank)
-Recall for Grover's problem that when an oracle provided a single secret, we obtained $\ket{w}$ as a column vector of all zeros, but with a 1 in the location of the secret.   For example, for a two-qubit problem ($N=4$) with secret $\ket{00}$ 
-\[ \ket{w} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0\end{pmatrix} \]
-Suppose the oracle instead provides \emph{two} secret values, $\ket{00}$ and $\ket{11}$.  If Grover's algorithm could reach $\ket{w}$ and we performed a measurement of $\ket{w}$ we would be satisfied at measuring \emph{either} secret ($\ket{00}$ or $\ket{11}$).
-
-We begin as before with
-\[ \ket{s} = \frac{1}{2}\begin{pmatrix} 1 \\ 1 \\ 1 \\ 1\end{pmatrix} \]
-
-But for this problem with the two secret values $\ket{00}$ and $\ket{11}$ (fill in the blanks):
-\[ \ket{w} = \frac{1}{\sqrt{2}}\begin{pmatrix} \Blank[2em]{} \\ \Blank[2em]{} \\\Blank[2em]{} \\\Blank[2em]{} \end{pmatrix} \]
-and thus $\ket{s'}$ which must be orthogonal to $\ket{w}$ is (fill in the blanks):
-\[ s' = \frac{1}{\sqrt{2}}\begin{pmatrix} \Blank[2em]{} \\ \Blank[2em]{} \\\Blank[2em]{} \\\Blank[2em]{} \end{pmatrix} \]
-The inner product of $\ket{s}$ and $\ket{s'}$ is then
-\( \braket{s}{s'} = \frac{\Blank[2em]{}}{\sqrt{4}} \) (fill in the numerator)
-
-Generally, for an $n$~qubit instance of Grover ($N=2^n$), where $\ket{w}$ represents $k$ acceptable secret values, what is the inner product of the resulting $\ket{s}$ and $\ket{s'}$? $\frac{\Blank[2em]{}}{\sqrt{N}}$
-
-\Points{5}Complete the circuit below so that it is an oracle for Grover's algorithm on a 2-qubit instance, sending $\ket{xy}$ to $\ket{x\ \  y\oplus f(x)}$ where the secret value is either $00$ or $11$.  Below you provide only the oracle, not any other portions of the circuit.
-
-\adjustbox{valign=t,scale=3.0}{\begin{quantikz}
-\lstick{$x_1$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$x_2$} &  \qw & \qw & \qw & \qw & \qw\\
-\lstick{$y$} &  \qw & \qw & \qw & \qw & \qw\\
-\end{quantikz}}
 
 
 \clearpage\item\Points{5} Using Shor's algorithm, let's try to factor the number~35 using the following table of values for
