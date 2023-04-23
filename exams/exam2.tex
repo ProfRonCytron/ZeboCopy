@@ -42,17 +42,6 @@
 \begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
 \def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
 
-\def\FactorProof{%
-\begin{align*}
-\SQB{a}{b} \otimes \SQB{c}{d} &= \DQBB{} \mbox{ (copy this from your \QState{2} answer top of page)}\\
-a\cdot c &= \Blank[3em] \\
-a\cdot d &= \Blank[3em] \\
-b\cdot c &= \Blank[3em] \\
-b\cdot d &= \Blank[3em]
-\end{align*}
-What is the contradiction, if any?
-\LeaveSpace{2in}
-}
 
 \begin{document}
 
@@ -297,17 +286,17 @@ Important:  The column's first index is 0 and its last index is 15.\end{quote}
 \end{enumerate}
 
 \clearpage\item\Points{15} You are at a party where everybody is talking about quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
-\( f(x) = x \cdot s \),
+\( f(x) = x \bullet s \),
 where $x$ and $s$ are each $n$ bits wide.  
 
 \begin{enumerate}
 \item\Points{6} After one too many Negronis, the person claims that \emph{all} values of $s$ lead to balanced functions for the Deutsch--Jozsa problem.
 
-Not so fast, you say.  That is almost true.  Yes, in terms of $n$ there are $\Theta\left(\mbox{\vrule width 0pt height 2em depth 0pt\raisebox{-1.5em}{\Blank[2.2em]}}\right)$ such functions, but for one value of $s$, namely $s=\Blank{}$, $f(x)=x\cdot s$ is not a balanced function; it is, in fact, constant.
+Not so fast, you say.  That is almost true.  Yes, in terms of $n$ there are $\Theta\left(\mbox{\vrule width 0pt height 2em depth 0pt\raisebox{-1.5em}{\Blank[2.2em]}}\right)$ such functions, but for one value of $s$, namely $s=\Blank{}$, $f(x)=x\bullet s$ is not a balanced function; it is, in fact, constant.
 
-\item\Points{6} OK the pontificator concedes, you are right\footnote{At least, Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are no others.
+\item\Points{6} OK the pontificator concedes, you are right\footnote{At least, Ron Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are absolutely no others.
 
-``Thundering superpositions!'' you exclaim, that cannot be the case.  And you continue by providing a single-qubit counterexample\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\cdot s$ for any $s$:
+``Thundering superpositions!'' you exclaim, that cannot be the case.  And you continue by providing a single-qubit counterexample\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\bullet s$ for any $s$:
 \begin{align*}
     f(0) &= \Blank{} \\
     f(1) &= \Blank{}
