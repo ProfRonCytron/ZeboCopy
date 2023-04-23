@@ -112,7 +112,31 @@ Each response is worth 3 points and there are 6 points of extra credit available
     \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
     \item Shor's algorithm provides exponential speedup over the best-known approach for factoring large integers.~\TF{}
     \item Grover's algorithm can solve the factoring problem as quickly as Shor's algorithm.~\TF{}
-    \item The university course evaluation for this course is worth one of the five points for participation in this class.  You agree to complete the evaluation by May~11.~\TF{}
+    \item The university course evaluation for this course is worth one of the five points for participation in this class.  You agree to complete the evaluation by May~9.~\TF{}
+\end{itemize}
+
+\clearpage\item\Points{10}
+Using the circuit diagram below, create a 3-bit oracle of your choice, and answer the following questions.  To receive credit, your oracle must use at least one quantum gate.  In other words, don't provide $f(x)=0$. Any other function is acceptable.
+
+\begin{enumerate}
+    \item My oracle implements \[f(x)=\Blank[3in]{}\]
+    or, if easier, describe your function in prose:
+    \LeaveSpace{1.5in}
+    \item My oracle is suitable for use at least for the followings algorithm we have studied this semester: \Blank[4in]{}
+    \item And, at last, my oracle is:
+    
+    \begin{center}
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$x_0$} &  \qw & \qw & \qw & \qw  \rstick{$x_0$}\\
+\lstick{$x_1$} &  \qw & \qw & \qw & \qw  \rstick{$x_1$}\\
+\lstick{$x_2$} &  \qw & \qw & \qw & \qw  \rstick{$x_2$}\\[1.5em]
+\lstick{$y$} &  \qw & \qw & \qw & \qw  \rstick{$y\oplus f(x)$}\\
+\end{quantikz}}\end{center}
+\end{enumerate}
+Rubric:
+\begin{itemize}
+    \item Full credit if all parts agree, no matter how simple the oracle, providing you used at least one gate.
+    \item Partial credit available based on how closely your answers correspond with each other.
 \end{itemize}
 
 \clearpage\item\Points{10} Recall the Mermin--Peres square below.
@@ -174,7 +198,7 @@ Consider a qubit in state
     \item \Blank{} We map the \Z{} basis to the \X{} basis using an \H{} gate.
         \item \Blank{} We measure in the computational basis.
 \end{itemize}
-\item\Points{8} For a nice change, suppose we want to measure state $\ket{\psi}$ in the Y{} basis. Recall that the \Y{} basis is spanned by 
+\item\Points{8} For a nice change, suppose we want to measure state $\ket{\psi}$ in the \Y{} basis. Recall that the \Y{} basis is spanned by 
 \[ \ket{+y} = \frac{1}{\sqrt{2}}\SQB{1}{i} \mbox{ and } \ket{-y} = \frac{1}{\sqrt{2}}\SQB{1}{-i} \]
 in the same way \Z{} is spanned by \ket{0} and \ket{1}, and \X{} is spanned by \ket{+} and \ket{-}.
 
@@ -230,7 +254,7 @@ Answer the following:
     \item\Points{1} This change improves the \emph{success} of the game.~\TF{}.
     \item\Points{5} What is the approximate success metric of the game with this change? (provide a numeric answer, such as ``85'' for ``85\%'') \Blank{}\%
     \item\Points{3} Show the math supporting your answers below:
-    \LeaveSpace{2in}
+    \LeaveSpace{1in}
 \end{itemize}
 
 \clearpage\item\Points{10}
@@ -268,37 +292,43 @@ Important:  The column's first index is 0 and its last index is 15.\end{quote}
     
 \end{enumerate}
 
-\clearpage\item\Points{5} You are at a party where everybody is talking about quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
+\clearpage\item\Points{15} You are at a party where everybody is talking about quantum computing.  You overhear somebody pontificating about Bernstein--Vazirani problems of $n$ bits, namely functions of the form
 \( f(x) = x \cdot s \),
 where $x$ and $s$ are each $n$ bits wide.  
 
-After one too many Negronis, the person claims that \emph{all} values of $s$ lead to balanced functions for the Deutsch--Jozsa problem.
+\begin{enumerate}
+\item\Points{6} After one too many Negronis, the person claims that \emph{all} values of $s$ lead to balanced functions for the Deutsch--Jozsa problem.
 
 Not so fast, you say.  That is almost true.  Yes, in terms of $n$ there are $\Theta\left(\mbox{\vrule width 0pt height 2em depth 0pt\raisebox{-1.5em}{\Blank[2.2em]}}\right)$ such functions, but for one value of $s$, namely $s=\Blank{}$, $f(x)=x\cdot s$ is not a balanced function; it is, in fact, constant.
 
-OK the pontificator concedes, you are right\footnote{At least, Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are no others.
+\item\Points{6} OK the pontificator concedes, you are right\footnote{At least, Cytron hopes you got this right; sadly, he was not invited to this party}, but for all other values of $s$, the Bernstein--Vazirani functions provide \emph{all} oracles that are balanced to Deutsch--Jozsa: there are no others.
 
 Thundering superpositions, you exclaim, that cannot be the case.  And you continue by providing a single-qubit example\footnote{the crowd gasping in awe at the elegance and simplicity of your counterexample} of a function that is balanced, but not of the form $f(x)=x\cdot s$ for any $s$:
 \begin{align*}
     f(0) &= \Blank{} \\
     f(1) &= \Blank{}
 \end{align*}
-You then draw the oracle for this function on a conveniently provided napkin (just draw gates as needed over what you see below):
+\item\Points{3} You then draw the oracle for this function on a conveniently provided party napkin (just draw gates as needed over what you see below):
+
+\bigskip
+
+\bigskip
 
 \begin{center}
 \adjustbox{valign=t,scale=2.0}{\begin{quantikz}
-\lstick{$x$} &  \qw & \qw & \qw & \qw & \rstick{$x$}\\[1.5em]
-\lstick{$y$} &  \qw & \qw & \qw & \qw & \rstick{$y\oplus f(x)$}\\
+\lstick{$x$} &  \qw & \qw & \qw & \qw  \rstick{$x$}\\[1.5em]
+\lstick{$y$} &  \qw & \qw & \qw & \qw  \rstick{$y\oplus f(x)$}\\
 \end{quantikz}}\end{center}
 
 Be certain your oracle provides both of the outputs as required and shown above.
+\end{enumerate}
 
 
 
 
 
 
-\clearpage\item\Points{5} Using Shor's algorithm, let's try to factor the number~35 using the following table of values for
+\clearpage\item\Points{10} Using Shor's algorithm, let's try to factor the number~35 using the following table of values for
 \[ 2^{i} \mbox{ mod 35} \]
 \begin{center}
 \begin{tabular}{c|c}
@@ -318,10 +348,10 @@ Be certain your oracle provides both of the outputs as required and shown above.
 12 &  1
 \end{tabular}
 \end{center}
-\begin{itemize}
-    \item What is the period of this function?\Blank{}
-    \item $2$ is a suitable base for using Shor's algorithm to factor~35 because the period of $2^{i}\mbox{ mod 35}$ is even~\TF{}.
-    \item To find the factors of 35 we would perform the following computations:
+\begin{enumerate}
+    \item\Points{2} What is the period of this function?\Blank{}
+    \item\Points{2} $2$ is a suitable base for using Shor's algorithm to factor~35 because the period of $2^{i}\mbox{ mod 35}$ is even~\TF{}.
+    \item\Points{6} To find the factors of 35 we would perform the following computations:
     
      GCD(\Blank[3em]{},35) = \Blank[3em]{}
         
@@ -329,7 +359,7 @@ Be certain your oracle provides both of the outputs as required and shown above.
         
         GCD(\Blank[3em]{},35) = \Blank[3em]{}
     
-\end{itemize}
+\end{enumerate}
 
 
 \end{enumerate}
