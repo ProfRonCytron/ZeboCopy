@@ -7,13 +7,13 @@
 \def\F{\QState{f}}
 \def\S{\ColorOne{\ket{s}}}
 \def\W{\ColorThree{\ket{w}}}
-\def\A{\ColorOne{\ensuremath{\alpha}}}
+\def\A{\ColorFive{\ensuremath{\alpha}}}
 \def\B{\ColorTwo{\ensuremath{\beta}}}
 
 \begin{frame}{Setup}{For the math}
 \begin{itemize}
-    \item We have a problem of $n$ bits with $N=2^{n}$
-    \item We restrict the problem to just one secret, \W.
+    \item Our function's inputs are $n$ bits wide, with $N=2^{n}$
+    \item Our function has just one secret (special input value),  \W.
     \item \S{} is the uniform superposition of all possible function inputs:
     \[ \S = \RootN{N} \SumBV{x}{n} \ket{x} = \Hadamard\left(\TensSupProd{0}{n}\right)\]
     \item Throughout
