@@ -9,6 +9,24 @@
 \def\W{\ColorThree{\ket{w}}}
 \def\A{\ColorOne{\ensuremath{\alpha}}}
 \def\B{\ColorTwo{\ensuremath{\beta}}}
+
+\begin{frame}{Setup}{For the math}
+\begin{itemize}
+    \item We have a problem of $n$ bits with $N=2^{n}$
+    \item We restrict the problem to just one secret, \W.
+    \item \S{} is the uniform superposition of all possible function inputs:
+    \[ \S = \RootN{N} \SumBV{x}{n} \ket{x} = \Hadamard\left(\TensSupProd{0}{n}\right)\]
+    \item Throughout
+    \begin{description}
+      \item[\A] represents the amplitude on our special value \W.
+    \item[\B] represents the amplitude on each of the $N-1$ other states.
+    \end{description}
+    \item We therefore require
+    \[ \Prob{\A}  + (N-1)\,\Prob{\B} = 1\]
+    \item Initially $\A=\B=\RootN{N}$, so we begin at \S.
+\end{itemize}
+\end{frame}
+
 \begin{frame}{The math}{Generally, with $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
 
 \begin{Reasoning}
@@ -32,8 +50,8 @@
 \end{Reasoning}
 
 \ScrollProof{1}{5}{%
-    \Next{\Four}{\D &= +\A\W +  \B\sum_{x\neq w} \ket{x}\\}
-    \Next{\Three}{\F = U_{f}(\D) &= -\A\W + \B \sum_{x\neq w} \ket{x}\\}
+    \Next{\Four}{\D &= +\A\W +  \B\sum_{\AllBits{x}{n},\ x\neq w} \ket{x}\\}
+    \Next{\Three}{\F = U_{f}(\D) &= -\A\W + \B \sum_{\AllBits{x}{n},\ x\neq w} \ket{x}\\}
    \Next{\Two}{ &=  -\A\W + \B\left(-\W +  \SumBV{x}{n}\ket{x}\right) \\}
     \Last{&=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}
 }%
