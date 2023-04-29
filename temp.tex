@@ -92,27 +92,28 @@
 \Next{\Two}{ &=  \RootUN{\B\,(N-2)-2\A}{N}\RootN{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
 \Last{ &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W}
 }
-\ScrollProof{31}{34}{%
+\ScrollProof{31}{35}{%
 \Next{\Four}{\D  &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
 \Next{\Three}{ &=  \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left(\A+\B\right)\W +\frac{\B\,(N-2)-2\A}{N}\W \\}
-\Next{\Two}{& = \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \frac{N(2\B+\A)-2(\A+\B)}{N}\W}
+\Next{\Two}{& = \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \frac{N(2\B+\A)-2(\A+\B)}{N}\W \\}
+\Last{&=  \left(\B\,\left(1-\frac{2}{N}\right)-\frac{2\A}{N}\right)\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left((2\B+\A)-\frac{2}{N}(\A+\B)\right)\W}
 }
 \end{frame}
-\begin{frame}{Results from the first iteration}{Steps 1 and 2}
-
-\Vskip{-3em}\[
-\QState{d}  = \ColorSix{\frac{N-4}{N}}\RootN{N}\sum_{x\neq w} \ket{x} + \ColorFour{\frac{3N-4}{N}}\RootN{N}\W \]
-
-Recalling that $N=2^{n}$ is large
+\begin{frame}{The math}{Conclusion}
+\begin{align*}
+\D &=  \left(\B\,\left(1-\frac{2}{N}\right)-\frac{2\A}{N}\right)\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left((2\B+\A)-\frac{2}{N}(\A+\B)\right)\W \\
+&\approx\  \B\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + (2\B+\A)\W\mbox{, assuming $N$ is large compared to \A{} and \B}
+\end{align*}
+\visible<3->{%
 \begin{itemize}
-    \item The amplitude on \W{} has increased from \RootN{N} to nearly \ColorFour{$\frac{3}{\sqrt{N}}$}.
-    \item The amplitude elsewhere is slightly reduced, from \RootN{N} to \ColorSix{$\frac{N-4}{N}\RootN{N}$}.
-    \item If we repeat this analysis, we see the amplitude on \W{} take on the sequence:
-    \[ \frac{1}{\sqrt{N}}, \ColorFour{\frac{3}{\sqrt{N}}}, \frac{5}{\sqrt{N}}, \ldots
-    \]
-    \item We apparently require $\Theta(\sqrt{N})$ iterations to observe \W{} with reasonable probability for a problem of size~$N$.
-    \item We show this next.
+    \item Initially, $\A=\B=\RootN{N}$.
+    \item Each iteration
+    \begin{itemize}
+      \item The amplitude for \W{} at the start of each iteration is \[\RootUN{1}{N}, \RootUN{3}{N}, \RootUN{5}{N},\ldots\]
+      \item The amplitude for all other \ket{x} becomes slightly smaller.
+    \end{itemize}
 \end{itemize}
-    
+}
 \end{frame}
+
 }
