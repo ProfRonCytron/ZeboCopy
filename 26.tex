@@ -497,7 +497,7 @@ Math
 \Reason{16}{Applying \Hadamard{} to return to our original basis, completing step 2}
 \Reason{19}{\S{} also contains \W{}}
 \Reason{20}{Preparing the fraction with a common denominator}
-\Reason{21}{Separately accounting for \W}
+\Reason{21}{Separately accounting for \W.  Recall $\S=\RootN{N}\SumBV{x}{n}\ket{x}$}
 \Reason{22}{Simplifying}
 \end{Reasoning}
 
@@ -521,11 +521,11 @@ Math
  \Next{\Four}{R\left(\Hadamard(U_{f}(\S))\right) &=\left(1-\frac{2}{N}\right)\ket{\TensSupProd{0}{n}} - \frac{2}{N}\ket{\TensSupProd{0}{n}} + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Three}{&=\left(1-\frac{4}{N}\right)\ket{\TensSupProd{0}{n}}  + \frac{2}{\sqrt{N}}\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x} \\}
  \Next{\Two}{\Hadamard\left(R\left(\Hadamard(U_{f}(\S))\right)\right) &=\left(1-\frac{4}{N}\right)\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)  + \frac{2}{\sqrt{N}}\ \Hadamard\left(\RootN{N}  \NHadamard{\ColorThree{w}}{n}{x}\right) \\}
- \Last{&= \left(1-\frac{4}{N}\right)\RootN{N}\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
+ \Last{&= \left(1-\frac{4}{N}\right)\S + \frac{2}{\sqrt{N}}\W = \QState{d}}
 }
 \ScrollProof{19}{23}{%
-\Next{\Four}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
-\Next{\Three}{\QState{d} &= \frac{N-4}{N}\RootN{N}\S + \frac{2\alert<20>{N}}{\alert<20>{N}\sqrt{N}}\W \\[1em]}
+\Next{\Four}{\QState{d} &= \frac{N-4}{N}\S + \frac{2}{\sqrt{N}}\W \\[1em]}
+\Next{\Three}{\QState{d} &= \frac{N-4}{N}\S + \frac{2\alert<20>{N}}{\alert<20>{N}\sqrt{N}}\W \\[1em]}
 \Next{\Two}{&= \frac{\alert<21>{N-4}}{N}\RootN{N}\sum_{\alert<21>{x\neq w}} \ket{x} + \frac{\alert<21>{N-4}+2N}{N}\RootN{N}\W \\}
 \Last{&= \frac{N-4}{N}\RootN{N}\sum_{x\neq w} \ket{x} + \frac{3N-4}{N}\RootN{N}\W}
 }
