@@ -50,6 +50,7 @@
 \Reason{22}{Preparing for last \Hadamard}
 \Reason{24}{Final \Hadamard, returning to the $\R\times\W$ basis}
 \Reason{25}{Recall $\S{}=\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)$ and $\RootN{N}\Hadamard\left(\NHadamard{\ColorThree{w}}{n}{x}\right)=\W$}
+\Reason{27}{\S{} includes \W{}.  We next combine amplitudes for \W}
 \end{Reasoning}
 
 \ScrollProof{1}{5}{%
@@ -81,10 +82,20 @@
   \Next{\Two}{R\left(\Hadamard(\F)\right) &= \left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} + \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\AllBits{x}{n}}}\\ & \hbox to 11em{\hss} - \RootUN{\A+\B}{N}\ket{\TensSupProd{0}{n}} \\[1em]}
   \Last{ &= \left(\RootUN{\B\,(N-2)-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x}}
 }
-\ScrollProof{23}{27}{%
-  \Next{\Four}{R\left(\Hadamard(\F)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x} \\}
-  \Next{\Three}{\alert<24>{\Hadamard}\left(R\left(\Hadamard(\F)\right)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \alert<24>{\Hadamard}\left(\ket{\TensSupProd{0}{n}}\right) \\& \hbox to 12em{\hss}+\RootUN{\A+\B}{N}\alert<24>{\Hadamard}\left(\NHadamard{\ColorThree{w}}{n}{x}\right) \\}
-  \Next{\Two}{ &= \RootUN{\B\,(N-2)-2\A}{N}\S+\left(\A+\B\right)\W \\}
+\ScrollProof{23}{26}{%
+  \Next{\Three}{R\left(\Hadamard(\F)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x} \\}
+  \Next{\Two}{\alert<24>{\Hadamard}\left(R\left(\Hadamard(\F)\right)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \alert<24>{\Hadamard}\left(\ket{\TensSupProd{0}{n}}\right) \\& \hbox to 12em{\hss}+\RootUN{\A+\B}{N}\alert<24>{\Hadamard}\left(\NHadamard{\ColorThree{w}}{n}{x}\right) \\}
+  \Last{ &= \RootUN{\B\,(N-2)-2\A}{N}\S+\left(\A+\B\right)\W=\D }
+}%
+\ScrollProof{27}{30}{%
+\Next{\Three}{\D &= \RootUN{\B\,(N-2)-2\A}{N}\S+\left(\A+\B\right)\W \\}
+\Next{\Two}{ &=  \RootUN{\B\,(N-2)-2\A}{N}\RootN{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
+\Last{ &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W}
+}
+\ScrollProof{31}{34}{%
+\Next{\Four}{\D  &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
+\Next{\Three}{ &=  \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left(\A+\B\right)\W +\frac{\B\,(N-2)-2\A}{N}\W \\}
+\Next{\Two}{& = \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \frac{N(2\B+\A)-2(\A+\B)}{N}\W}
 }
 \end{frame}
 \begin{frame}{Results from the first iteration}{Steps 1 and 2}
