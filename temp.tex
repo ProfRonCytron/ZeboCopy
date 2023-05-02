@@ -203,17 +203,18 @@ with
 \[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
 \end{theorem}
 \begin{Reasoning}
-\Reason{1}{Outcome probabilities sum to 1}
+\Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
-\Next{\Four}{\Prob{\A_{i}} + (N-1)\Prob{\B_{i}} &= 1\\}
-\Next{\Three}{\Prob{\A_{i}}  &= 1 -(N-1)\Prob{\B_{i}} \\}
-\Next{\Two}{\frac{1}{2} \geq \Prob{\A_{i}}  &= 1 -(N-1)\Prob{\B_{i}} \\}
-\Last{\frac{1}{2} & \geq 1 -(N-1)\Prob{\B_{i}} \\}
+\Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
+\Next{\Three}{\Square{\A_{i}}  &= 1 -(N-1)\Square{\B_{i}} \\}
+\Next{\Two}{\Square{\left(\frac{1}{2}\right)} \geq \Square{\A_{i}}  &= 1 -(N-1)\Square{\B_{i}} \\}
+\Last{\frac{1}{4} & \geq 1 -(N-1)\Square{\B_{i}} \\}
 }%
 \ScrollProof{6}{10}{%
-\Next{\Four}{\frac{1}{2} & \geq 1 -(N-1)\Prob{\B_{i}} \\}
-\Next{\Three}{(N-1)\Prob{\B_{i}} & \geq 1-\frac{1}{2}\\}
+\Next{\Four}{\frac{1}{4} & \geq 1 -(N-1)\Square{\B_{i}} \\}
+\Next{\Three}{(N-1)\Square{\B_{i}} & \geq 1-\frac{1}{4}\\}
+\Next{\Two}{(N-1)\Square{\B_{i}} & \geq \frac{3}{4}\\}
 }
 
     
