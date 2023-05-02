@@ -177,9 +177,17 @@ with
 
 \end{frame}
 \begin{frame}{Proof: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
+\begin{Reasoning}
+\Reason{1}{Definition of average, computed after reflection but before diffusion}
+\Reason{3}{Common denominator}
+\Reason{4}{Rearrange}
+\Reason{7}{Apply division}
+\Reason{8}{From before, the formula for $\A_{i+1}$}
+\Reason{9}{QED}
+\end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\mu_{i} &= \frac{(N-1)\B_{i} -\A_{i}}{N}\\}
-\Next{\Three}{2\mu_{i}+\A_{i} &= \frac{2(N-1)\B_{i} -2\A_{i}}{N} + \frac{N\A_{i}}{N}\\}
+\Next{\Three}{2\mu_{i}+\A_{i} &= 2\left(\frac{(N-1)\B_{i} -\A_{i}}{N}\right) + \A_{i}\\}
 \Next{\Two}{&= \frac{2(N-1)\B_{i} -2\A_{i} +N\A_{i}}{N} \\}
 \Last{&= \frac{(2N\B_{i}+N\A_{i}) -2(\A_{i}+\B_{i})}{N}}
 }
@@ -198,7 +206,14 @@ with
 \Reason{1}{Outcome probabilities sum to 1}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
-\Next{\Four}{\Prob{\A_{i}} + (N-1)\Prob{\B_{i}} = 1}
+\Next{\Four}{\Prob{\A_{i}} + (N-1)\Prob{\B_{i}} &= 1\\}
+\Next{\Three}{\Prob{\A_{i}}  &= 1 -(N-1)\Prob{\B_{i}} \\}
+\Next{\Two}{\frac{1}{2} \geq \Prob{\A_{i}}  &= 1 -(N-1)\Prob{\B_{i}} \\}
+\Last{\frac{1}{2} & \geq 1 -(N-1)\Prob{\B_{i}} \\}
+}%
+\ScrollProof{6}{10}{%
+\Next{\Four}{\frac{1}{2} & \geq 1 -(N-1)\Prob{\B_{i}} \\}
+\Next{\Three}{(N-1)\Prob{\B_{i}} & \geq 1-\frac{1}{2}\\}
 }
 
     
