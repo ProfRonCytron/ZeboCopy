@@ -204,6 +204,7 @@ with
 \end{theorem}
 \begin{Reasoning}
 \Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
+\Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
@@ -215,8 +216,17 @@ with
 \Next{\Four}{\frac{1}{4} & \geq 1 -(N-1)\Square{\B_{i}} \\}
 \Next{\Three}{(N-1)\Square{\B_{i}} & \geq 1-\frac{1}{4}\\}
 \Next{\Two}{(N-1)\Square{\B_{i}} & \geq \frac{3}{4}\\}
+\Last{\B_{i} & \geq \sqrt{\frac{3}{4(N-1)}}}
+}%
+\ScrollProof{11}{14}{%
+\Next{\Three}{\alert<13>{\B_{i}} & \alert<13>{\geq \sqrt{\frac{3}{4(N-1)}}}\\}
+\Next{\Two}{\mu_{i} &=\frac{-\A_{i} + (N-1)\alert<13>{\B_{i}}}{N} \\}
+\Last{& \geq \frac{-\A_{i}+(N-1)\alert<13>{\sqrt{\frac{3}{4(N-1)}}}}{N}}
+}%
+\ScrollProof{15}{19}{%
+\Next{\Four}{\mu_{i} & \geq \frac{-\A_{i}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}\\}
+\Next{\Three}{ & \geq \frac{\alert<16>{-\frac{1}{2}}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}}
 }
 
-    
 \end{frame}
 }
