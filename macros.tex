@@ -47,8 +47,9 @@
 \def\Mag#1{%
 \ensuremath{{|\,#1\,|}}}
 \def\PNorm#1#2{\ensuremath{\Mag{\kern-2pt\Mag{#1}\kern-2pt}}_{#2}}
+\def\Square#1{\ensuremath{{#1}^{2}}}
 \def\Prob#1{%
-\ensuremath{\Mag{#1}^{2}}}
+\ensuremath{\Square{\Mag{#1}}}}
 \def\CNOT#1#2{%
 \ensuremath{\NamedGate{CNOT}(#1,#2)}}
 \def\CNOTMatrix{%
