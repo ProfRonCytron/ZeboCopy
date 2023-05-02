@@ -190,10 +190,13 @@ with
 \Next{\One}{\A_{i+1} &= 2\mu_{i} + \A_{i}}
 }
 \end{frame}
-\begin{frame}{Theorem: \A{} increases each iteration by at least \RootN{N}}{If it is not already too large, and we have a reasonably large problem to solve}
-\begin{theorem}
-\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}
+\begin{frame}{Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
+\Vskip{-3.7em}\begin{theorem}
+\[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
 \end{theorem}
+\begin{Reasoning}
+\Reason{1}{Outcome probabilities sum to 1}
+\end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Prob{\A_{i}} + (N-1)\Prob{\B_{i}} = 1}
 }
