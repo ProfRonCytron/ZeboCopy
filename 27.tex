@@ -9,6 +9,7 @@
 \def\A{\ColorFive{\ensuremath{\alpha}}}
 \def\B{\ColorTwo{\ensuremath{\beta}}}
 
+\section*{Setup}
 \begin{frame}{Setup}{For the math of each iteration}
 \begin{itemize}
     \item Our function's inputs are $n$ bits wide, with $N=2^{n}$
@@ -26,7 +27,9 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{The math}{Generally, with $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
+\section*{Amplitudes}
+
+\begin{frame}{Analysis of amplitudes in an arbitrary iteration}{With $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
 
 \begin{Reasoning}
 \Reason{1}{Prior to step 1, we have \A{} amplitude on \W, and \B{} amplitude on all other states}%
@@ -119,6 +122,8 @@
 \end{itemize}
 \end{frame}
 
+\subsection*{Recurrence}
+
 \begin{frame}{Recurrence defining the state at the end of iteration $i+1$}{Valid for $i\geq 0$}
 \Vskip{-3em}\[ \D_{i+1} = \B_{i+1} \hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \A_{i+1} \W\]
 where \visible<2->{\alert<2-3>{(approximations are for large $N$)}}
@@ -150,9 +155,6 @@ with
 \end{frame}
 
 
-\subsection*{Generally}
-
-
 \begin{frame}{How many iterations?}{Empirical determination}
 
 \begin{itemize}
@@ -168,6 +170,7 @@ with
     
 \end{frame}
 
+
 \begin{frame}{Another view of \A{} in terms of the average amplitude}{As measured after reflection and before diffusion}
 \begin{itemize}
     \item The average amplitude \alert{after the oracle step} (reflection about \R{}) and \alert{prior to the diffusion step} (reflection about \S{}) is
@@ -180,6 +183,8 @@ with
 \end{itemize}
 
 \end{frame}
+
+
 \begin{frame}{Lemma: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
 \begin{Reasoning}
 \Reason{1}{Definition of average, computed after reflection but before diffusion}%
@@ -212,6 +217,8 @@ Given a sufficiently large problem, $N\geq 16$:
     \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
 \end{frame}
+
+\subsection*{Lower bound}
 
 \begin{frame}{(1) Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
 \Vskip{-3.7em}\begin{theorem}
@@ -273,5 +280,12 @@ Given a sufficiently large problem, $N\geq 16$:
         \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
     \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
+\end{frame}
+
+
+\subsection*{Upper bound}
+
+\begin{frame}{blah}
+    
 \end{frame}
 }
