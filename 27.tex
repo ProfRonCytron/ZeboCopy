@@ -1,0 +1,272 @@
+\SetTitle{27}{Grover's Algorithm}{Analysis}{27}
+
+{
+\def\D{\QState{d}}
+\def\F{\QState{f}}
+\def\S{\ColorOne{\ket{s}}}
+\def\R{\ColorTwo{\ket{r}}}
+\def\W{\ColorThree{\ket{w}}}
+\def\A{\ColorFive{\ensuremath{\alpha}}}
+\def\B{\ColorTwo{\ensuremath{\beta}}}
+
+\begin{frame}{Setup}{For the math of each iteration}
+\begin{itemize}
+    \item Our function's inputs are $n$ bits wide, with $N=2^{n}$
+    \item Our function has just one secret (special input value),  \W.
+    \item \S{} is the uniform superposition of all possible function inputs:
+    \[ \S = \RootN{N} \SumBV{x}{n} \ket{x} = \Hadamard\left(\TensSupProd{0}{n}\right)\]
+    \item Throughout
+    \begin{description}
+      \item[\A] represents the amplitude on our special value \W.
+    \item[\B] represents the amplitude on each of the $N-1$ other states.
+    \end{description}
+    \item We therefore require
+    \[ \Prob{\A}  + (N-1)\,\Prob{\B} = 1\]
+    \item Initially $\A=\B=\RootN{N}$, so we begin at \S.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The math}{Generally, with $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
+
+\begin{Reasoning}
+\Reason{1}{Prior to step 1, we have \A{} amplitude on \W, and \B{} amplitude on all other states}
+\Reason{2}{In step 1, phase kickback causes the oracle $U_{f}$ to reflect amplitude only on \W}
+\Reason{3}{Completing the sum}
+\Reason{4}{\Hadamard(\TensSupProd{0}{n}) = \RootN{N}\SumBV{x}{n}\ket{x}}
+\Reason{6}{Collect terms in preparation for the upcoming \Hadamard{}}
+\Reason{7}{Collect the coefficients for \W}
+\Reason{8}{Apply \Hadamard{} to both sides}
+\Reason{9}{\Hadamard{} is its own inverse}
+\Reason{12}{Recall $\Hadamard\left(\W\right) = \RootN{N} \NHadamard{\ColorThree{w}}{n}{x}$}
+\Reason{13}{Rearrange. Note that \ket{\TensSupProd{0}{n}} appears in the summation}
+\Reason{14}{Collect coefficients for \ket{\TensSupProd{0}{n}}. $\B\,\sqrt{N}-\B\RootN{N} - \A\RootN{N}=\RootUN{\B(N-1)-\A}{N}$}
+\Reason{16}{We next negate all states except \ket{\TensSupProd{0}{n}}}
+\Reason{17}{We denote the reflection of all states except \ket{\TensSupProd{0}{n}} using $R$}
+\Reason{18}{Complete the summation}
+\Reason{19}{We next collect coefficients of \ket{\TensSupProd{0}{n}}}
+\Reason{21}{Collected coefficients of \ket{\TensSupProd{0}{n}}}
+\Reason{22}{Preparing for last \Hadamard}
+\Reason{24}{Final \Hadamard, returning to the $\R\times\W$ basis}
+\Reason{25}{Recall $\S{}=\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)$ and $\RootN{N}\Hadamard\left(\NHadamard{\ColorThree{w}}{n}{x}\right)=\W$}
+\Reason{27}{\S{} includes \W{}.  We next combine amplitudes for \W}
+\end{Reasoning}
+
+\ScrollProof{1}{5}{%
+    \Next{\Four}{\D &= +\A\W +  \B\sum_{\AllBits{x}{n},\ x\neq w} \ket{x}\\}
+    \Next{\Three}{\F = U_{f}(\D) &= -\A\W + \B \sum_{\AllBits{x}{n},\ x\neq w} \ket{x}\\}
+   \Next{\Two}{ &=  -\A\W + \B\left(-\W +  \SumBV{x}{n}\ket{x}\right) \\}
+    \Last{&=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}
+}%
+\ScrollProof{6}{10}{%
+  \Next{\Four}{\F &=  -\A\W + \B\left(-\W +  \sqrt{N}\ \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right) \\}
+  \Next{\Three}{ &= \left(-\A-\B\right)\W + \B\sqrt{N}\  \Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\\}
+  \Next{\Two}{\alert<8>{\Hadamard}(\F) &= \left(-\A-\B\right)\alert<8>{\Hadamard}\left(\W\right) + \B\sqrt{N}\  \ \alert<9>{\alert<8>{\Hadamard}\left(\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)\right)}\\}
+  \Last{&=\left(-\A-\B\right)\Hadamard\left(\W\right) + \B\,\sqrt{N}\, \alert<9>{\ket{\TensSupProd{0}{n}}}}
+}%
+\ScrollProof{11}{15}{%
+  \Next{\Four}{\Hadamard(\F)&=\left(-\A-\B\right)\alert<12>{\Hadamard\left(\W\right)} + \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}} \\}
+%%
+  \Next{\Three}{ &= \left(-\A-\B\right)\alert<12>{\RootN{N}\NHadamard{\ColorThree{w}}{n}{x}} + \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}}\\}
+  \Next{\Two}{ &= \B\,\sqrt{N}\, \ket{\TensSupProd{0}{n}} - \left(\A+\B\right)\alert<12>{\RootN{N}\alert<13>{\NHadamard{\ColorThree{w}}{n}{x}}}\\}
+  \Last{&= \left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} - \left(\A+\B\right)\RootN{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}}}
+}%
+\ScrollProof{16}{19}{%
+ \Next{\Three}{\Hadamard(\F) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{-} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{x\neq\TensSupProd{0}{n}}}} \\}
+ \Next{\Two}{\alert<17>{R}\left(\Hadamard(\F)\right) &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{+} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{\alert<18>{x\neq\TensSupProd{0}{n}}}}}  \\}
+ %% left off here
+ \Last{ &=\left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} \alert<17>{+} \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\alert<14>{\alert<18>{\AllBits{x}{n}}}}}\\ & \hbox to 11em{\hss} \alert<18>{- \RootUN{\A+\B}{N}\ket{\TensSupProd{0}{n}}}
+}}%
+\ScrollProof{20}{22}{%
+  \Next{\Two}{R\left(\Hadamard(\F)\right) &= \left(\RootUN{\B(N-1)-\A}{N}\right) \ket{\TensSupProd{0}{n}} + \RootUN{\A+\B}{N}\NHadamardS{\ColorThree{w}}{n}{x}{\sum_{\AllBits{x}{n}}}\\ & \hbox to 11em{\hss} - \RootUN{\A+\B}{N}\ket{\TensSupProd{0}{n}} \\[1em]}
+  \Last{ &= \left(\RootUN{\B\,(N-2)-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x}}
+}
+\ScrollProof{23}{26}{%
+  \Next{\Three}{R\left(\Hadamard(\F)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \ket{\TensSupProd{0}{n}} +\RootUN{\A+\B}{N}\NHadamard{\ColorThree{w}}{n}{x} \\}
+  \Next{\Two}{\alert<24>{\Hadamard}\left(R\left(\Hadamard(\F)\right)\right) &=\left(\RootUN{\B\,(N-2)-2\A}{N}\right) \alert<24>{\Hadamard}\left(\ket{\TensSupProd{0}{n}}\right) \\& \hbox to 12em{\hss}+\RootUN{\A+\B}{N}\alert<24>{\Hadamard}\left(\NHadamard{\ColorThree{w}}{n}{x}\right) \\}
+  \Last{ &= \RootUN{\B\,(N-2)-2\A}{N}\S+\left(\A+\B\right)\W=\D }
+}%
+\ScrollProof{27}{30}{%
+\Next{\Three}{\D &= \RootUN{\B\,(N-2)-2\A}{N}\S+\left(\A+\B\right)\W \\}
+\Next{\Two}{ &=  \RootUN{\B\,(N-2)-2\A}{N}\RootN{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
+\Last{ &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W}
+}
+\ScrollProof{31}{35}{%
+\Next{\Four}{\D  &=  \frac{\B\,(N-2)-2\A}{N}\SumBV{x}{n} \ket{x} + \left(\A+\B\right)\W \\}
+\Next{\Three}{ &=  \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left(\A+\B\right)\W +\frac{\B\,(N-2)-2\A}{N}\W \\}
+\Next{\Two}{& = \frac{\B\,(N-2)-2\A}{N}\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \frac{N(2\B+\A)-2(\A+\B)}{N}\W \\}
+\Last{&=  \left(\B\,\left(1-\frac{2}{N}\right)-\frac{2\A}{N}\right)\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left((2\B+\A)-\frac{2}{N}(\A+\B)\right)\W}
+}
+\end{frame}
+
+
+\begin{frame}{State $\D_{1}$ reached after the first iteration}{Provides a formula for all iterations}
+\begin{align*}
+\D_{1} &=  \left(\B\,\left(1-\frac{2}{N}\right)-\frac{2\A}{N}\right)\hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \left((2\B+\A)-\frac{2}{N}(\A+\B)\right)\W \\
+&= \B_{1} \hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \A_{1} \W
+\end{align*}
+\begin{itemize}
+  \item $\D_{1}$ is the state (above), obtained at the end of the first iteration.
+  \item By linearity, this same effect happens each iteration.
+  \item We thus extend this result to define the results of iteration $i+1$ in terms of
+  \begin{description}
+     \item[$\A_{i}$] the amplitude on \W{} at the end of iteration $i$, and
+     \item[$\B_{i}$] the amplitude on all other states at the end of iteration $i$.
+  \end{description}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recurrence defining the state at the end of iteration $i+1$}{Valid for $i\geq 0$}
+\Vskip{-3em}\[ \D_{i+1} = \B_{i+1} \hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \A_{i+1} \W\]
+where \visible<2->{\alert<2-3>{(approximations are for large $N$)}}
+\begin{align*}
+    \B_{i+1} &= \B_{i}\,\left(1-\frac{2}{\alert<2>{N}}\right)-\frac{2\A_{i}}{\alert<2>{N}} && \alert<3>{\visible<3->{\approx \B_{i}}} \\
+    \A_{i+1} &= (2\B_{i}+\A_{i})-\frac{2}{\alert<2>{N}}(\A_{i}+\B_{i}) && \alert<3>{\visible<3->{\approx 2\B_{i}+\A_{i}}}
+\end{align*}
+with
+\Vskip{-3em}\begin{align*}
+    \B_{0} = \B =\RootN{N} &&
+    \A_{0} = \A =\RootN{N}
+\end{align*}
+\visible<4->{The amplitude $\A_{i}$ for \W{} at the end of iteration $0, 1, 2, \ldots, i$ is approximately \[\RootUN{1}{N}, \RootUN{3}{N}, \RootUN{5}{N},\ldots, \RootUN{2i+1}{N}\]}
+\end{frame}
+
+
+
+\begin{frame}{Example of amplitudes for $n=5$ bits}{Using \href{https://docs.google.com/spreadsheets/d/1JCp9PKLTQ7q9jdvRwj-gXxL9jYvu1O-1wA2OnnEBB3s/edit?usp=sharing}{this} Google sheet}
+
+\Vskip{-4em}\begin{center}
+\begin{Pixture}[width=0.5\textwidth]{27}{5bitGrover.png}
+\end{Pixture}
+\end{center}
+\begin{itemize}
+    \item At first, \A{} increases linearly, but at some point \B{} becomes negative, diminishing \A{}.
+    \item How many iterations should we perform to have reasonable probability of seeing \W?
+\end{itemize}
+    
+\end{frame}
+
+
+\subsection*{Generally}
+
+
+\begin{frame}{How many iterations?}{Empirical determination}
+
+\begin{itemize}
+    \item We can use the recurrence to compute how many iterations are needed, for example, by a \href{https://docs.google.com/spreadsheets/d/1JCp9PKLTQ7q9jdvRwj-gXxL9jYvu1O-1wA2OnnEBB3s/edit?usp=sharing}{Google sheet}.
+    \item We need only reach a point where the probability of seeing \W{} is 10\% or better.
+   \begin{itemize}\item Then, with 40 trials, we are $98\%$ sure of finding \W.\end{itemize}
+     \item From the sequence that approximates $\A_{i}$
+    \(\RootUN{1}{N}, \RootUN{3}{N}, \RootUN{5}{N},\ldots, \RootUN{2i+1}{N}\)
+    we can see we need $\Theta(\sqrt{N})$ iterations to obtain an observable answer for any $N$.
+       \item Computing such a sheet is covered by this complexity.
+    \item We will, however, also determine an appropriate number of iterations mathematically.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Another view of \A{} in terms of the average amplitude}{As measured after reflection and before diffusion}
+\begin{itemize}
+    \item The average amplitude \alert{after the oracle step} (reflection about \R{}) and \alert{prior to the diffusion step} (reflection about \S{}) is
+    \[ \mu_{i} = \frac{(N-1)\B_{i} -\A_{i}}{N} \]
+    because \W{} has amplitude $-\A_{i}$ and all other states have amplitude $\B_{i}$.
+    \item We next show that $\A_{i+1}$ and $\A_{i}$ are related by $2\mu_{i} +\A_{i}$, namely:
+    \[\A_{i+1} = 2\mu_{i} + \A_{i}
+    \]
+    \item In other words, the amplitude on \W{} increases in step $i+1$ when $\mu_{i}$ is positive.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Lemma: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
+\begin{Reasoning}
+\Reason{1}{Definition of average, computed after reflection but before diffusion}%
+\Reason{3}{Common denominator}%
+\Reason{4}{Rearrange}%
+\Reason{7}{Apply division}%
+\Reason{8}{From before, the formula for $\A_{i+1}$}%
+\Reason{9}{QED}%
+\end{Reasoning}
+\ScrollProof{1}{5}{%
+\Next{\Four}{\mu_{i} &= \frac{(N-1)\B_{i} -\A_{i}}{N}\\}
+\Next{\Three}{2\mu_{i}+\A_{i} &= 2\left(\frac{(N-1)\B_{i} -\A_{i}}{N}\right) + \A_{i}\\}
+\Next{\Two}{&= \frac{2(N-1)\B_{i} -2\A_{i} +N\A_{i}}{N} \\}
+\Last{&= \frac{(2N\B_{i}+N\A_{i}) -2(\A_{i}+\B_{i})}{N}}
+}
+\ScrollProof{6}{9}{%
+\Next{\Four}{2\mu_{i}+\A_{i} &=\frac{(2N\B_{i}+N\A_{i}) -2(\A_{i}+\B_{i})}{N} \\}
+\Next{\Three}{&= (2\B_{i}+\A) -\frac{2}{N}(\A_{i}+\B_{i}) \\}
+\Next{\Two}{&= \A_{i+1} \\[2em]}
+\Next{\One}{\A_{i+1} &= 2\mu_{i} + \A_{i}}
+}
+\end{frame}
+
+\begin{frame}{Outline of analysis of \A}{Hang in there}
+Given a sufficiently large problem, $N\geq 16$:
+\begin{enumerate}
+   \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
+    \item \A{} increases each iteration by no more than \RootUN{2}{N}
+        \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+    \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{(1) Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
+\Vskip{-3.7em}\begin{theorem}
+\[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
+\end{theorem}
+\begin{Reasoning}
+\Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
+\Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}
+\Reason{24}{$\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}
+\Reason{30}{QED}
+\end{Reasoning}
+\ScrollProof{1}{5}{%
+\Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
+\Next{\Three}{\Square{\A_{i}}  &= 1 -(N-1)\Square{\B_{i}} \\}
+\Next{\Two}{\Square{\left(\frac{1}{2}\right)} \geq \Square{\A_{i}}  &= 1 -(N-1)\Square{\B_{i}} \\}
+\Last{\frac{1}{4} & \geq 1 -(N-1)\Square{\B_{i}} \\}
+}%
+\ScrollProof{6}{10}{%
+\Next{\Four}{\frac{1}{4} & \geq 1 -(N-1)\Square{\B_{i}} \\}
+\Next{\Three}{(N-1)\Square{\B_{i}} & \geq 1-\frac{1}{4}\\}
+\Next{\Two}{(N-1)\Square{\B_{i}} & \geq \frac{3}{4}\\}
+\Last{\B_{i} & \geq \sqrt{\frac{3}{4(N-1)}}}
+}%
+\ScrollProof{11}{14}{%
+\Next{\Three}{\alert<13>{\B_{i}} & \alert<13>{\geq \sqrt{\frac{3}{4(N-1)}}}\\}
+\Next{\Two}{\mu_{i} &=\frac{-\A_{i} + (N-1)\alert<13>{\B_{i}}}{N} \\}
+\Last{& \geq \frac{-\A_{i}+(N-1)\alert<13>{\sqrt{\frac{3}{4(N-1)}}}}{N}}
+}%
+\ScrollProof{15}{18}{%
+\Next{\Three}{\mu_{i} & \geq \frac{-\A_{i}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}\\}
+\Next{\Two}{ & \geq \frac{\alert<16>{-\frac{1}{2}}+(N-1)\sqrt{\frac{3}{\alert<17>{4}(N-1)}}}{N} \\}
+\Last{ & \geq \frac{\alert<16>{-\frac{1}{2}}+\alert<17>{\frac{1}{2}}(N-1)\sqrt{\frac{3}{(N-1)}}}{N}}
+}%
+\ScrollProof{19}{22}{%
+\Next{\Three}{\mu_{i} &\geq \frac{-\frac{1}{2}+\alert<17>{\frac{1}{2}}(N-1)\sqrt{\frac{3}{(N-1)}}}{N} \\}
+\Next{\Two}{& \geq \frac{1}{2}\frac{-1 + \sqrt{3N-3}}{N} \\}
+\Last{& \geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}}
+}
+\ScrollProof{23}{26}{%
+\Next{\Three}{\mu_{i} &\geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}\\}
+\Next{\Two}{& \geq \frac{1}{2}\frac{\sqrt{N}}{N} \\}
+\Last{& \geq \frac{1}{2}\RootN{N}}
+}%
+\ScrollProof{27}{30}{%
+\Next{\Four}{\mu_{i} & \geq \frac{1}{2}\RootN{N}\\}
+\Next{\Three}{\A_{i+1} &= 2\mu_{i} + \A_{i} \\}
+\Next{\Two}{ & \geq 2\left(\frac{1}{2}\RootN{N}\right) + \A_{i} \\[1.2em]}
+\Next{\One}{\A_{i+1} &\geq \A_{i} + \RootN{N}}
+}
+\end{frame}
+
+
+\begin{frame}{Outline of analysis of \A}{Hang in there}
+Given a sufficiently large problem, $N\geq 16$:
+\begin{enumerate}
+    \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
+    \alert{\item \A{} increases each iteration by no more than \RootUN{2}{N}}
+        \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+    \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
+\end{enumerate}
+\end{frame}
+}
