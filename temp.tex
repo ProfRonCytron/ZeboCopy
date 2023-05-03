@@ -202,10 +202,10 @@ with
 \begin{frame}{Outline of analysis of \A}{Hang in there}
 Given a sufficiently large problem, $N\geq 16$:
 \begin{enumerate}
-    \item \A{} increases each iteration by at least \RootN{N}
+   \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
     \item \A{} increases each iteration by no more than \RootUN{2}{N}
-    \item \A{} never exceeds $\frac{1}{2}$
-    \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+        \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+    \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
 \end{frame}
 
@@ -263,10 +263,10 @@ Given a sufficiently large problem, $N\geq 16$:
 \begin{frame}{Outline of analysis of \A}{Hang in there}
 Given a sufficiently large problem, $N\geq 16$:
 \begin{enumerate}
-    \item \A{} increases each iteration by at least \RootN{N}
+    \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
     \alert{\item \A{} increases each iteration by no more than \RootUN{2}{N}}
-    \item \A{} never exceeds $\frac{1}{2}$
-    \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+        \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+    \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
 \end{frame}
 }
