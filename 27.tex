@@ -29,26 +29,30 @@
 \begin{frame}{The math}{Generally, with $\alpha$ amplitude on \ket{w} and $\beta$ amplitude on all other values}
 
 \begin{Reasoning}
-\Reason{1}{Prior to step 1, we have \A{} amplitude on \W, and \B{} amplitude on all other states}
-\Reason{2}{In step 1, phase kickback causes the oracle $U_{f}$ to reflect amplitude only on \W}
-\Reason{3}{Completing the sum}
-\Reason{4}{\Hadamard(\TensSupProd{0}{n}) = \RootN{N}\SumBV{x}{n}\ket{x}}
-\Reason{6}{Collect terms in preparation for the upcoming \Hadamard{}}
-\Reason{7}{Collect the coefficients for \W}
-\Reason{8}{Apply \Hadamard{} to both sides}
-\Reason{9}{\Hadamard{} is its own inverse}
-\Reason{12}{Recall $\Hadamard\left(\W\right) = \RootN{N} \NHadamard{\ColorThree{w}}{n}{x}$}
-\Reason{13}{Rearrange. Note that \ket{\TensSupProd{0}{n}} appears in the summation}
-\Reason{14}{Collect coefficients for \ket{\TensSupProd{0}{n}}. $\B\,\sqrt{N}-\B\RootN{N} - \A\RootN{N}=\RootUN{\B(N-1)-\A}{N}$}
-\Reason{16}{We next negate all states except \ket{\TensSupProd{0}{n}}}
-\Reason{17}{We denote the reflection of all states except \ket{\TensSupProd{0}{n}} using $R$}
-\Reason{18}{Complete the summation}
-\Reason{19}{We next collect coefficients of \ket{\TensSupProd{0}{n}}}
-\Reason{21}{Collected coefficients of \ket{\TensSupProd{0}{n}}}
+\Reason{1}{Prior to step 1, we have \A{} amplitude on \W, and \B{} amplitude on all other states}%
+\Reason{2}{In step 1, phase kickback causes the oracle $U_{f}$ to reflect amplitude only on \W}%
+\Reason{3}{Completing the sum}%
+\Reason{4}{\Hadamard(\TensSupProd{0}{n}) = \RootN{N}\SumBV{x}{n}\ket{x}}%
+\Reason{6}{Collect terms in preparation for the upcoming \Hadamard{}}%
+\Reason{7}{Collect the coefficients for \W}%
+\Reason{8}{Apply \Hadamard{} to both sides}%
+\Reason{9}{\Hadamard{} is its own inverse}%
+\Reason{12}{Recall $\Hadamard\left(\W\right) = \RootN{N} \NHadamard{\ColorThree{w}}{n}{x}$}%
+\Reason{13}{Rearrange. Note that \ket{\TensSupProd{0}{n}} appears in the summation}%
+\Reason{14}{Collect coefficients for \ket{\TensSupProd{0}{n}}. $\B\,\sqrt{N}-\B\RootN{N} - \A\RootN{N}=\RootUN{\B(N-1)-\A}{N}$}%
+\Reason{16}{We next negate all states except \ket{\TensSupProd{0}{n}}}%
+\Reason{17}{We denote the reflection of all states except \ket{\TensSupProd{0}{n}} using $R$}%
+\Reason{18}{Complete the summation}%
+\Reason{19}{We next collect coefficients of \ket{\TensSupProd{0}{n}}}%
+\Reason{21}{Collected coefficients of \ket{\TensSupProd{0}{n}}}%
 \Reason{22}{Preparing for last \Hadamard}
-\Reason{24}{Final \Hadamard, returning to the $\R\times\W$ basis}
-\Reason{25}{Recall $\S{}=\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)$ and $\RootN{N}\Hadamard\left(\NHadamard{\ColorThree{w}}{n}{x}\right)=\W$}
-\Reason{27}{\S{} includes \W{}.  We next combine amplitudes for \W}
+\Reason{24}{Final \Hadamard, returning to the $\R\times\W$ basis}%
+\Reason{25}{Recall $\S{}=\Hadamard\left(\ket{\TensSupProd{0}{n}}\right)$ and $\RootN{N}\Hadamard\left(\NHadamard{\ColorThree{w}}{n}{x}\right)=\W$}%
+\Reason{27}{\S{} includes \W{}.  We next combine amplitudes for \W}%
+\Reason{28}{Expanding \S}%
+\Reason{32}{Pulling out the amplitude on \W{} from the summation}%
+\Reason{33}{Collecting amplitudes for \W{}}%
+\Reason{34}{The parenthesized expressions become our new \B{} and \A{} in the next iteration}%
 \end{Reasoning}
 
 \ScrollProof{1}{5}{%
@@ -214,10 +218,11 @@ Given a sufficiently large problem, $N\geq 16$:
 \[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
 \end{theorem}
 \begin{Reasoning}
-\Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
-\Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}
-\Reason{24}{$\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}
-\Reason{30}{QED}
+\Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop $\Mag{\cdots}$}%
+\Reason{3}{Applying hypothesis $\A_{i}\leq\frac{1}{2}$}
+\Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}%
+\Reason{24}{Hypothesis $\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}%
+\Reason{30}{QED}%
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
