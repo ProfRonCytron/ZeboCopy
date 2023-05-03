@@ -30,7 +30,7 @@
 
 \begin{Reasoning}
 \Reason{1}{Prior to step 1, we have \A{} amplitude on \W, and \B{} amplitude on all other states}
-\Reason{2}{The oracle $U_{f}$ reflects amplitude on \W, leaving all others alone}
+\Reason{2}{In step 1, phase kickback causes the oracle $U_{f}$ to reflect amplitude only on \W}
 \Reason{3}{Completing the sum}
 \Reason{4}{\Hadamard(\TensSupProd{0}{n}) = \RootN{N}\SumBV{x}{n}\ket{x}}
 \Reason{6}{Collect terms in preparation for the upcoming \Hadamard{}}
@@ -178,12 +178,12 @@ with
 \end{frame}
 \begin{frame}{Proof: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
 \begin{Reasoning}
-\Reason{1}{Definition of average, computed after reflection but before diffusion}
-\Reason{3}{Common denominator}
-\Reason{4}{Rearrange}
-\Reason{7}{Apply division}
-\Reason{8}{From before, the formula for $\A_{i+1}$}
-\Reason{9}{QED}
+\Reason{1}{Definition of average, computed after reflection but before diffusion}%
+\Reason{3}{Common denominator}%
+\Reason{4}{Rearrange}%
+\Reason{7}{Apply division}%
+\Reason{8}{From before, the formula for $\A_{i+1}$}%
+\Reason{9}{QED}%
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\mu_{i} &= \frac{(N-1)\B_{i} -\A_{i}}{N}\\}
@@ -198,6 +198,8 @@ with
 \Next{\One}{\A_{i+1} &= 2\mu_{i} + \A_{i}}
 }
 \end{frame}
+
+
 \begin{frame}{Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
 \Vskip{-3.7em}\begin{theorem}
 \[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
@@ -205,6 +207,7 @@ with
 \begin{Reasoning}
 \Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
 \Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}
+\Reason{24}{$\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
@@ -223,10 +226,20 @@ with
 \Next{\Two}{\mu_{i} &=\frac{-\A_{i} + (N-1)\alert<13>{\B_{i}}}{N} \\}
 \Last{& \geq \frac{-\A_{i}+(N-1)\alert<13>{\sqrt{\frac{3}{4(N-1)}}}}{N}}
 }%
-\ScrollProof{15}{19}{%
-\Next{\Four}{\mu_{i} & \geq \frac{-\A_{i}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}\\}
-\Next{\Three}{ & \geq \frac{\alert<16>{-\frac{1}{2}}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}}
+\ScrollProof{15}{18}{%
+\Next{\Three}{\mu_{i} & \geq \frac{-\A_{i}+(N-1)\sqrt{\frac{3}{4(N-1)}}}{N}\\}
+\Next{\Two}{ & \geq \frac{\alert<16>{-\frac{1}{2}}+(N-1)\sqrt{\frac{3}{\alert<17>{4}(N-1)}}}{N} \\}
+\Last{ & \geq \frac{\alert<16>{-\frac{1}{2}}+\alert<17>{\frac{1}{2}}(N-1)\sqrt{\frac{3}{(N-1)}}}{N}}
+}%
+\ScrollProof{19}{22}{%
+\Next{\Three}{\mu_{i} &\geq \frac{-\frac{1}{2}+\alert<17>{\frac{1}{2}}(N-1)\sqrt{\frac{3}{(N-1)}}}{N} \\}
+\Next{\Two}{& \geq \frac{1}{2}\frac{-1 + \sqrt{3N-3}}{N} \\}
+\Last{& \geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}}
 }
-
+\ScrollProof{23}{25}{%
+\Next{\Four}{\mu_{i} &\geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}\\}
+\Next{\Three}{& \geq \frac{1}{2}\frac{\sqrt{N}}{N} \\}
+\Next{\Two}{& \geq \frac{1}{2}\RootN{N}}
+}
 \end{frame}
 }
