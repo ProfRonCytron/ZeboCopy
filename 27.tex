@@ -212,7 +212,7 @@ with
 Given a sufficiently large problem, $N\geq 16$:
 \begin{enumerate}
    \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
-    \item \A{} increases each iteration by no more than \RootUN{2}{N}
+    \item \A{} increases each iteration by at most \RootUN{2}{N}
         \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
     \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
@@ -227,7 +227,7 @@ Given a sufficiently large problem, $N\geq 16$:
 \begin{Reasoning}
 \Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop $\Mag{\cdots}$}%
 \Reason{3}{Applying hypothesis $\A_{i}\leq\frac{1}{2}$}
-\Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}%
+\Reason{16}{From hypothesis: $-\A_{i}\geq -\frac{1}{2}$}%
 \Reason{24}{Hypothesis $\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}%
 \Reason{30}{QED}%
 \end{Reasoning}
@@ -276,7 +276,7 @@ Given a sufficiently large problem, $N\geq 16$:
 Given a sufficiently large problem, $N\geq 16$:
 \begin{enumerate}
     \item If $\A{} \leq \frac{1}{2}$, then \A{} increases each iteration by at least \RootN{N}
-    \alert{\item \A{} increases each iteration by no more than \RootUN{2}{N}}
+    \alert{\item \A{} increases each iteration by at most \RootUN{2}{N}}
         \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
     \item If we perform at most $\frac{\sqrt{N}}{8}$ iterations, then \A{} never exceeds $\frac{1}{2}$
 \end{enumerate}
@@ -285,7 +285,35 @@ Given a sufficiently large problem, $N\geq 16$:
 
 \subsection*{Upper bound}
 
-\begin{frame}{blah}
-    
+\begin{frame}{(2) Theorem: \A{} increases each iteration by at most \RootUN{2}{N}}
+\begin{theorem}
+    \[ \Implies{\A_{i}\geq 0}{\A_{i+1} \leq \A_{i}+\RootUN{2}{N}} \]
+\end{theorem}
+\begin{Reasoning}
+\Reason{1}{Definition of $\mu_{i}$}%
+\Reason{2}{$\A_{i} \geq 0$}%
+\end{Reasoning}
+\Vskip{-3em}\TwoColumns{%
+\ScrollProof{1}{3}{%
+\Next{\Two}{\mu_{i} &= \frac{-\A_{i} + (N-1)\B_{i}}{N}\\}
+\Last{\mu_{i}& \leq \frac{N-1}{N}\B_{i}\\}
+}%
+\only<4->{%
+\[ \mu_{i} \leq \frac{N-1}{N}\B_{i} \]
+}
+}{%
+\ScrollProof{1}{3}{%
+\Next{\Two}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\
+(N-1)\Square{\B_{i}} & \leq 1 \\}
+\Last{\B_{i}\leq \frac{1}{\sqrt{N-1}}}
+}%
+\only<4->{%
+\[ \B_{i} \leq \frac{1}{\sqrt{N-1}} \]
+}
+}%
+\Vskip{-3em}\ScrollProof{3}{5}{%
+\Next{\Four}{\A_{i+1} &= 2\mu_{i} + \A_{i} \\}
+\Next{\Three}{& \leq 2\left(\frac{N-1}{N}\B_{i}\right) + \A_{i}}
+}
 \end{frame}
 }
