@@ -166,7 +166,7 @@ with
 
 \begin{frame}{Another view of \A{} in terms of the average amplitude}{As measured after reflection and before diffusion}
 \begin{itemize}
-    \item The average amplitude \alert{after reflection} about \R{} and \alert{prior to diffusion} is
+    \item The average amplitude \alert{after the oracle step} (reflection about \R{}) and \alert{prior to the diffusion step} (reflection about \S{}) is
     \[ \mu_{i} = \frac{(N-1)\B_{i} -\A_{i}}{N} \]
     because \W{} has amplitude $-\A_{i}$ and all other states have amplitude $\B_{i}$.
     \item We next show that $\A_{i+1}$ and $\A_{i}$ are related by $2\mu_{i} +\A_{i}$, namely:
@@ -176,7 +176,7 @@ with
 \end{itemize}
 
 \end{frame}
-\begin{frame}{Proof: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
+\begin{frame}{Lemma: $\A_{i+1} = 2\mu_{i} + \A_{i}$}
 \begin{Reasoning}
 \Reason{1}{Definition of average, computed after reflection but before diffusion}%
 \Reason{3}{Common denominator}%
@@ -199,8 +199,17 @@ with
 }
 \end{frame}
 
+\begin{frame}{Outline of analysis of \A}{Hang in there}
+Given a sufficiently large problem, $N\geq 16$:
+\begin{enumerate}
+    \item \A{} increases each iteration by at least \RootN{N}
+    \item \A{} increases each iteration by no more than \RootUN{2}{N}
+    \item \A{} never exceeds $\frac{1}{2}$
+    \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+\end{enumerate}
+\end{frame}
 
-\begin{frame}{Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
+\begin{frame}{(1) Theorem: \A{} increases each iteration by at least \RootN{N}}{If \A{} is not already too large, and we have a reasonably large problem to solve}
 \Vskip{-3.7em}\begin{theorem}
 \[\Implies{\And{\A_{i}\leq \frac{1}{2}}{N\geq 4}}{{\A_{i+1}\geq \A_{i}+\RootN{N}}}\]
 \end{theorem}
