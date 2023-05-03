@@ -730,7 +730,7 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
    \setcounter{ScrollEThree}{#1}%
       \stepcounter{ScrollEThree}\stepcounter{ScrollEThree}%
    \setcounter{ScrollEFour}{#1}%
-      \stepcounter{ScrollEFour}\stepcounter{ScrollEFour}\stepcounter{ScrollEFour}
+      \stepcounter{ScrollEFour}\stepcounter{ScrollEFour}\stepcounter{ScrollEFour}%
    \def\Curr{\value{ScrollCounter}}%
    \def\One{\value{ScrollEOne}}%
    \def\Two{\value{ScrollETwo}}%
@@ -753,10 +753,10 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }
 \long\def\ScrollProof#1#2#3{%
 \only<#1-#2>{%
-\begin{ScrollingProof}[#1]
+\begin{ScrollingProof}[#1]%
 \begin{align*}
 #3
-\end{align*}
+\end{align*}%
 \end{ScrollingProof}}}
 \def\RVDots{\raisebox{0.5em}{\ensuremath{\vdots}}}
 %%

@@ -207,7 +207,8 @@ with
 \begin{Reasoning}
 \Reason{1}{Outcome probabilities sum to 1; both $\A_{i}$ and $\B_{i}$ are real, so we can drop \Mag{\bullet}}
 \Reason{16}{$-\A_{i}\geq -\frac{1}{2}$}
-\Reason{24}{$\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$}
+\Reason{24}{$\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}
+\Reason{30}{QED}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
@@ -236,10 +237,16 @@ with
 \Next{\Two}{& \geq \frac{1}{2}\frac{-1 + \sqrt{3N-3}}{N} \\}
 \Last{& \geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}}
 }
-\ScrollProof{23}{25}{%
-\Next{\Four}{\mu_{i} &\geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}\\}
-\Next{\Three}{& \geq \frac{1}{2}\frac{\sqrt{N}}{N} \\}
-\Next{\Two}{& \geq \frac{1}{2}\RootN{N}}
+\ScrollProof{23}{26}{%
+\Next{\Three}{\mu_{i} &\geq \frac{1}{2}\frac{\sqrt{3N-3}-1}{N}\\}
+\Next{\Two}{& \geq \frac{1}{2}\frac{\sqrt{N}}{N} \\}
+\Last{& \geq \frac{1}{2}\RootN{N}}
+}%
+\ScrollProof{27}{30}{%
+\Next{\Four}{\mu_{i} & \geq \frac{1}{2}\RootN{N}\\}
+\Next{\Three}{\A_{i+1} &= 2\mu_{i} + \A_{i} \\}
+\Next{\Two}{ & \geq 2\left(\frac{1}{2}\RootN{N}\right) + \A_{i} \\[1.2em]}
+\Next{\One}{\A_{i+1} &\geq \A_{i} + \RootN{N}}
 }
 \end{frame}
 }
