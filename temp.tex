@@ -258,4 +258,15 @@ Given a sufficiently large problem, $N\geq 16$:
 \Next{\One}{\A_{i+1} &\geq \A_{i} + \RootN{N}}
 }
 \end{frame}
+
+
+\begin{frame}{Outline of analysis of \A}{Hang in there}
+Given a sufficiently large problem, $N\geq 16$:
+\begin{enumerate}
+    \item \A{} increases each iteration by at least \RootN{N}
+    \alert{\item \A{} increases each iteration by no more than \RootUN{2}{N}}
+    \item \A{} never exceeds $\frac{1}{2}$
+    \item $\frac{\sqrt{N}}{8}$ iterations suffice to discover \W{}, with high probability, in a reasonable number of shots
+\end{enumerate}
+\end{frame}
 }
