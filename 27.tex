@@ -381,8 +381,36 @@ Given a sufficiently large problem, $N\geq 16$:
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{(4) Theorem: $\Implies{t=\frac{\sqrt{N}}{8}}{\Prob{\A_{t}}\geq 0.1}$}
-    
+\begin{frame}{(4) Theorem: $\Implies{t=\frac{\sqrt{N}}{8}\mbox{ iterations}}{\A_{t}\geq 0.1}$}
+\begin{Reasoning}
+\Reason{1}{case $N<16$}%
+\Reason{2}{case QED: we do not iterate at all}%
+\Reason{3}{case $N\geq 16$, using our lower bound corollary}%
+\Reason{5}{Substituting $t$}%
+\Reason{6}{case QED}%
+\end{Reasoning}
+\ScrollProof{1}{2}{%
+\Next{\Two}{N<16 &\rightarrow \A_{0} \geq \RootN{16}\\}
+\Next{\One}{ &\rightarrow \A_{0} \geq \frac{1}{4}}
+}%
+\ScrollProof{3}{7}{%
+\Next{\Four}{\And{N\geq 16}{t=\frac{\sqrt{N}}{8}}\rightarrow \A_{t} &\geq \RootUN{t+1}{N} \\}
+\Next{\Three}{& \geq \RootUN{t}{N} \\}
+\Next{\Two}{&\geq \RootN{N}\frac{\sqrt{N}}{8}\\}
+\Last{\A_{\frac{\sqrt{N}}{8}}&\geq \frac{1}{8}\geq \frac{1}{10}}
+}%
+\end{frame}
+
+\begin{frame}{Conclusion}
+\Vskip{-3em}\[ \A_{\frac{\sqrt{N}}{8}}\geq  \frac{1}{10} \]
+\begin{itemize}
+    \item If $\A{} \geq 0.1$, then the probability of measuring \W{} is at least~$0.1^{2}=0.01$
+    \item Let a single \emph{run} of Grover perform $\frac{\sqrt{N}}{8}$ iterations as described
+    \item In each complete run of Grover, the probability of \emph{not} measuring \W{} each time is $0.99$.
+    \item If we run Grover $k$ times, then the probability of not seeing \W{} in any of those runs is $\left(\frac{99}{100}\right)^{k}$
+    \item The probability of measuring \W{} sometime in $k$ runs is then \( 1-\left(\frac{99}{100}\right)^{k} \)
+    \item If we perform $110$~runs then we measure \W{} with approximate probability~$\frac{2}{3}$
+\end{itemize}
 \end{frame}
 
 }
