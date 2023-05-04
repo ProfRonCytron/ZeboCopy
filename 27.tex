@@ -406,11 +406,23 @@ Given a sufficiently large problem, $N\geq 16$:
 \begin{itemize}
     \item If $\A{} \geq 0.1$, then the probability of measuring \W{} is at least~$0.1^{2}=0.01$
     \item Let a single \emph{run} of Grover perform $\frac{\sqrt{N}}{8}$ iterations as described
-    \item In each complete run of Grover, the probability of \emph{not} measuring \W{} each time is $0.99$.
-    \item If we run Grover $k$ times, then the probability of not seeing \W{} in any of those runs is $\left(\frac{99}{100}\right)^{k}$
+    \item In one complete run of Grover, the probability of \emph{not} measuring \W{} is $0.99$.
+    \item In $k$ runs, the probability of not seeing \W{} is $\left(\frac{99}{100}\right)^{k}$
     \item The probability of measuring \W{} sometime in $k$ runs is then \( 1-\left(\frac{99}{100}\right)^{k} \)
-    \item If we perform $110$~runs then we measure \W{} with approximate probability~$\frac{2}{3}$
+    \item If we perform $110$~runs then we measure \W{} with probability~$\approx\frac{2}{3}$
+    \item In practice, we would keep running until we find \W{}, with high confidence it will show up in hundreds of tries.
 \end{itemize}
 \end{frame}
 
 }
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Grover's algorithm is astounding in that it can find a secret element among $2^{n}=N$ possibilities.
+    \item Performing that task classically would require looking at \emph{all} elements, taking~$\Theta(N)$ time.
+    \item Grover can perform this task in~$\Theta(\sqrt{N})$ time.
+    \item While this is not an exponential improvement, it has prompted cryptographic systems to use longer keys.
+    \item Executing Grover on actual hardware yields surprisingly poor results, as of this writing.
+\end{itemize}
+\end{frame}
