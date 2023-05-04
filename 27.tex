@@ -231,6 +231,7 @@ Given a sufficiently large problem, $N\geq 16$:
 \Reason{16}{From hypothesis: $-\A_{i}\geq -\frac{1}{2}$}%
 \Reason{24}{Hypothesis $\Implies{N\geq 4}{\sqrt{3N-3}-1 \geq \sqrt{N}}$; they are equal when $N=4$}%
 \Reason{30}{QED}%
+\Reason{32-33}{Corollary for $t$ iterations}%
 \end{Reasoning}
 \ScrollProof{1}{5}{%
 \Next{\Four}{\Square{\A_{i}} + (N-1)\Square{\B_{i}} &= 1\\}
@@ -264,11 +265,16 @@ Given a sufficiently large problem, $N\geq 16$:
 \Next{\Two}{& \geq \frac{1}{2}\frac{\sqrt{N}}{N} \\}
 \Last{& \geq \frac{1}{2}\RootN{N}}
 }%
-\ScrollProof{27}{30}{%
+\ScrollProof{27}{31}{%
 \Next{\Four}{\mu_{i} & \geq \frac{1}{2}\RootN{N}\\}
 \Next{\Three}{\A_{i+1} &= 2\mu_{i} + \A_{i} \\}
 \Next{\Two}{ & \geq 2\left(\frac{1}{2}\RootN{N}\right) + \A_{i} \\[1.2em]}
-\Next{\One}{\A_{i+1} &\geq \A_{i} + \RootN{N}}
+\Last{\A_{i+1} &\geq \A_{i} + \RootN{N}}
+}%
+\ScrollProof{32}{33}{%
+\Next{\Two}{\A_{i+1} &\geq \A_{i} + \RootN{N} \\}
+\Next{\One}{\A_{t} &\geq \A_{0} + \RootN{N}t\\
+  & \geq \RootN{N} + \RootN{N}t\\&\geq \RootUN{t+1}{N}}
 }
 \end{frame}
 
