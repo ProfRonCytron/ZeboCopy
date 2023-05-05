@@ -124,12 +124,12 @@
 
 \subsection*{Recurrence}
 
-\begin{frame}{Recurrence defining the state at the end of iteration $i+1$}{Valid for $i\geq 0$}
+\begin{frame}{Recurrence defining the state at the end of iteration $i+1$}{Valid for $i\geq 0$;  We need the formula for $\A_{i+1}$ later}
 \Vskip{-3em}\[ \D_{i+1} = \B_{i+1} \hbox to -1em{\hss}\sum_{\AllBits{x}{n},\ x\neq w} \hbox to -2em{\hss}\ket{x} + \A_{i+1} \W\]
 where \visible<2->{\alert<2-3>{(approximations are for large $N$)}}
 \begin{align*}
     \B_{i+1} &= \B_{i}\,\left(1-\frac{2}{\alert<2>{N}}\right)-\frac{2\A_{i}}{\alert<2>{N}} && \alert<3>{\visible<3->{\approx \B_{i}}} \\
-    \A_{i+1} &= (2\B_{i}+\A_{i})-\frac{2}{\alert<2>{N}}(\A_{i}+\B_{i}) && \alert<1,3>{\only<1>{\mbox{ We need this formula later.}}\only<3->{\approx 2\B_{i}+\A_{i}}}
+    \A_{i+1} &= (2\B_{i}+\A_{i})-\frac{2}{\alert<2>{N}}(\A_{i}+\B_{i}) && \alert{\visible<3->{\approx 2\B_{i}+\A_{i}}}
 \end{align*}
 with
 \Vskip{-3em}\begin{align*}
@@ -170,6 +170,7 @@ with
     
 \end{frame}
 
+\subsection*{Average}
 
 \begin{frame}{Another view of \A{} in terms of the average amplitude}{As measured after reflection and before diffusion}
 \begin{itemize}
@@ -191,7 +192,7 @@ with
 \Reason{3}{Common denominator}%
 \Reason{4}{Rearrange}%
 \Reason{7}{Apply division}%
-\Reason{8}{From before, the formula for $\A_{i+1}$}%
+\Reason{8}{From recurrence presented earlier (see Recurrence): the formula for $\A_{i+1}$}%
 \Reason{9}{QED}%
 \end{Reasoning}
 \ScrollProof{1}{5}{%
