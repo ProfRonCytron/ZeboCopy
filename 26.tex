@@ -144,10 +144,7 @@ We next consider two examples.
     
 \end{frame}
 \section*{Approach}
-{
-\def\S{\ColorOne{\ket{s}}}
-\def\W{\ColorThree{\ket{w}}}
-\def\R{\ColorTwo{\ket{r}}}
+\begin{Grover}
 \begin{frame}{A useful orthogonality for this problem}{For an $n$-qubit instance, from all possible solutions to the one(s) of interest}
 
 \TwoColumns{%
@@ -184,20 +181,12 @@ Grover's algorithm computes vectors in the space spanned by \W{} and \R{}, start
 Note that \W{} and \R{} are conceptual bases used to describe this space.  We cannot create either state \textit{a priori}. Starting at \S{}, we seek \W{} using Grover's algorithm.
 }
 \end{frame}
-}
+\end{Grover}
 
 
 \section*{Example}
 
-{
-\def\A{\ensuremath{\ColorOne{\alpha}}}
-\def\B{\ensuremath{\ColorTwo{\beta}}}
-\def\S{\ColorOne{\ket{s}}}
-\def\W{\ColorThree{\bra{w}}}
-\def\R{\ColorTwo{\bra{r}}}
-\def\RK{\ColorTwo{\ket{r}}}
-\def\WK{\ColorThree{\ket{w}}}
-\def\F{\ColorFour{\QState{f}}}
+\begin{Grover}
 \begin{frame}{A two-qubit example to illustrate Grover's algorithm}{Oracle secret value $w=2$ so $f(x)=1$ only when $x=2$ (using some bras to save space)}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
 \only<1-3>{%
@@ -373,7 +362,7 @@ Expressing \S{} in this basis:
 See \href{https://learn.qiskit.org/course/ch-gates/basic-circuit-identities\#c-from-cnot}{here} for how to implement the multi~control~\PauliZ{} using a multi~control~\PauliX{} and some \Hadamard{} gates.
 \end{itemize}
 \end{frame}
-}
+\end{Grover}
 
 \section*{Circuit}
 
@@ -456,10 +445,7 @@ Perfect 2-qubit problem---strange that the $\Hadamard(\ket{y})=\QOne$ state deco
     
 \end{frame}
 
-{
-\def\S{\ColorOne{\ket{s}}}
-\def\W{\ColorThree{\ket{w}}}
-\def\R{\ColorTwo{\ket{r}}}
+\begin{Grover}
 \begin{frame}{Some notes}{Before the math}
 \Vskip{-4em}\TwoUnequalColumns{0.66\textwidth}{0.33\textwidth}{%
   \TwoColumns{%
@@ -490,14 +476,12 @@ Math
 }
     
 \end{frame}
-}
+\end{Grover}
 
 \section*{Math}
 \subsection*{First iteration}
 
-{
-\def\S{\ColorOne{\ket{s}}}
-\def\W{\ColorThree{\ket{w}}}
+\begin{Grover}
 \begin{frame}{The math}{Of the first iteration}
 
 \begin{Reasoning}
@@ -563,7 +547,7 @@ Recalling that $N=2^{n}$ is large
 \end{itemize}
     
 \end{frame}
-}
+\end{Grover}
 \section*{Summary}
 \begin{frame}{Summary}{So far, more to come}
 \begin{itemize}
