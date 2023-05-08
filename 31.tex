@@ -18,15 +18,29 @@
         \includegraphics[width=0.8\textwidth]{31/instr.jpeg}
     \end{center}
 }{%
+\only<1>{%
 \begin{itemize}
     \item Sine waves are plotted above at frequencies $f$, $2f$, and $1.5f$.
     \item If those frequencies sound at the same time, the red wave shows the resulting signal that reaches our ears:  the summation of the three black waves.
 \end{itemize}
-}
+}%
+\only<2>{%
+Fourier analysis expresses the red wave in terms of the black waves, whose summation equals or approximates the red wave.  In this example, each black wave has the same weight.  In the more general setting, Fourier analysis determines the weight of each sine wave that contributes to the red wave.
+}%
+}%
+%
 \Vskip{-1.5em}\begin{itemize}
     \item Remarkably, our brain performs Fourier analysis on the red signal, informing us that we hear a pitch, an octave above that pitch, and the ``fifth'' in between the other two pitches.
     \item This is how our brain can distinguish the sound of a slide trombone from a pipe organ.
    
-\end{itemize}
+\end{itemize}%
 
+\end{frame}
+
+\begin{frame}{Some videos worth watching}{From Grant Sanderson's \href{https://www.3blue1brown.com/}{3blue1brown}, these nicely illustrate the Fourier transform}
+
+\begin{itemize}
+    \item 
+\end{itemize}
+    
 \end{frame}
