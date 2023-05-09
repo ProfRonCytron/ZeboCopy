@@ -65,6 +65,8 @@ Quantum Fourier takes a basis state \ket{x} and generates the state
 \BigSkip{}
 So, one operation is the reverse of the other.  We will see this clearly when discussing the circuit for QFT.
 \end{frame}
+
+
 {%
 \def\QT#1#2{\ExpPhase{2\pi \alert<#2>{\frac{#1}{2^n} x}} \ket{#1}}
 \def\QTO#1#2{\visible<#2->{\ExpPhase{\frac{2\pi}{2^n}\, \alert<#2>{#1\cdot x}}\ket{#1}}}
@@ -92,8 +94,36 @@ Multiples of $x$:
 }%
 \BigSkip{}
 The $\cdot$ is simple multiplication, and $x$ takes on a value in $[0,1, \ldots, 2^{n}-1]$.
+\end{frame}}
+
+{
+\def\QZ#1{\ExpPhase{\frac{2\pi}{2^n}\,#1\cdot 0}\,\ket{#1}}
+\def\Space{\hbox to 4em{\hss}}
+\begin{frame}{Some observations}{\QFT(\ket{0}) is familiar}
+\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
+\begin{align*}
+      \QFT(\ket{0}) &= \RootTwoN{n}   \left[\  \QZ{0} \right. \\
+         &\Space{}+ \QZ{1} \\
+         &\Space{}+ \QZ{2} \\
+         &\Space{}+ \RVDots{} \\
+         &\Space{}+ \left. \QZ{2^{n-1}} \ \right] 
+\end{align*}
+}{%
+\visible<2->{%
+\begin{align*}
+&= \RootTwoN{n}   \left[\ \ \  \ket{0} \right. \\
+         &\Space{}+ \ket{1} \\
+         &\Space{}+ \ket{2} \\
+         &\Space{}+ \RVDots{} \\
+         &\Space{}+ \left. \ket{2^{n-1}} \ \right]\\
+         &= \Hadamard(\ket{0})
+\end{align*}
+}%
+}
+    
 \end{frame}
 }
+
 
 \begin{frame}{Example}{For $n=2$ qubits, so $x\in [0, 1, 2, 3]$}
 \end{frame}
