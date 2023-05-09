@@ -69,9 +69,10 @@ So, one operation is the reverse of the other.  We will see this clearly when di
 \def\QT#1#2{\ExpPhase{2\pi \alert<#2>{\frac{#1}{2^n} x}} \ket{#1}}
 \def\QTO#1#2{\visible<#2->{\ExpPhase{\frac{2\pi}{2^n}\, \alert<#2>{#1\cdot x}}\ket{#1}}}
 \def\Space{\hbox to 4em{\hss}}
-\begin{frame}{QFT}{The summation}
-\Vskip{-3em}\[ \QFT(\ket{x}) = \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi \frac{y}{2^n} x} \ket{y}\]
-\Vskip{-4em}\TwoColumns{%
+\begin{frame}{The summation in QFT}{Viewed two different ways}
+\Vskip{-3.2em}\[ \QFT(\ket{x}) = \RootTwoN{n}\SumPH{y}{n} \ExpPhase{2\pi \frac{y}{2^n} x} \ket{y}\]
+\Vskip{-2em}\TwoColumns{%
+Fractions of $x$ around the unit circle:
 \begin{align*}
        &= \RootTwoN{n}   \left[\  \QT{0}{2} \right. \\
          &\Space{}+ \QT{1}{3} \\
@@ -80,6 +81,7 @@ So, one operation is the reverse of the other.  We will see this clearly when di
          &\Space{}+ \left. \QT{2^{n-1}}{5} \ \right] 
 \end{align*}
 }{%
+Multiples of $x$:
 \begin{align*}
        &= \RootTwoN{n}   \left[\  \QTO{0}{2} \right. \\
          &\Space{}+ \QTO{1}{3} \\
