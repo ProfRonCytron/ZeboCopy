@@ -1,5 +1,7 @@
 \SetTitle{2}{Reversible computations}{No energy lost or gained}{02}
 
+\section*{Overview}
+
 \begin{frame}{Overview}
 \begin{itemize}
     \item Quantum computations involve gates that are \emph{unitary} and therefore are invertible.
@@ -15,7 +17,7 @@
 \begin{frame}{Reversible computing \LinkArrow{https://en.wikipedia.org/wiki/Reversible_computing}}{A brief history}
 \begin{itemize}[<+->]
     \item A process that is reversible is \href{https://en.wikipedia.org/wiki/Isentropic_process}{isentropic}.
-    \item This means that the system requires no net input of energy, and that it requires no net disposition of energy (such as heat loss).
+    \item This means that the system requires no net input of energy, and that it requires no net dissipation of energy (such as heat loss).
     \item Long ago, such systems were \href{https://en.wikipedia.org/wiki/Charles_H._Bennett_(physicist)}{studied by scientists} because they had the potential to make computations more efficient.
     \item From a practical point of view, the energy lost by non-reversible computing is small compared to other energy losses in a computing system.
     \item However, quantum computing requires reversible gates.
@@ -241,5 +243,17 @@ $a$ & $c$  & $a$ & \Xor{c}{a} \\ \hline
 \Vskip{-4em}\begin{center}
 \begin{Pixture}[width=0.7\textwidth]{02}{kayep14fig1.6.png}
 \end{Pixture}\end{center}
+    
+\end{frame}
+
+\section*{Summary}
+
+\begin{frame}{Summary}{What have we learned?}
+
+\begin{itemize}
+    \item Although reversible computations are no longer an active area of study for classical computing, the computational components of a quantum system must be reversible.
+    \item As we shall see, the \emph{unitary} gates that specify quantum transformations are always (and, easily) invertible.
+    \item Any function $f(x)$ can be reversibly computed by specifying sufficient workspace bits, known as \emph{ancillas}.
+\end{itemize}
     
 \end{frame}
