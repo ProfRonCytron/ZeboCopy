@@ -46,7 +46,7 @@
 \def\EmptyString{\ensuremath{\lambda}}
 \def\Mag#1{%
 \ensuremath{{|\,#1\,|}}}
-\def\PNorm#1#2{\ensuremath{\Mag{\kern-2pt\Mag{#1}\kern-2pt}}_{#2}}
+\def\PNorm#1#2{\ensuremath{\ensuremath{\Mag{\kern-2pt\Mag{#1}\kern-2pt}}_{#2}}}
 \def\Square#1{\ensuremath{{#1}^{2}}}
 \def\Prob#1{%
 \ensuremath{\Square{\Mag{#1}}}}
@@ -1055,4 +1055,45 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 }{%
 }
 \def\QFT{\NamedGate{QFT}}
+\newenvironment{Demo}[2][0em]{%
+\def\GenParam##1{%
+   \mbox{\{##1\}}}%
+\def\GenMacName##1{%
+    \mbox{\textbackslash{}##1}}%
+\def\GenMacCallZero##1{%
+\mbox{\expandafter\csname ##1\endcsname}}
+\def\GenMacCallOne##1##2{%
+\mbox{\expandafter\csname ##1\endcsname{##2}}}
+\def\GenMacCallTwo##1##2##3{%
+\mbox{\expandafter\csname ##1\endcsname{##2}{##3}}}%
+\def\MNone##1{%
+  \MacroRow{%
+    \GenMacName{##1}}{0}{%
+    \GenMacCallZero{##1}}}
+\def\MOneExplicit##1##2{%
+ \MacroRow{%
+   \GenMacName{##1}\GenParam{##2}}{%
+       1}{%
+   \GenMacCallOne{##1}{##2}}%
+}%
+\def\MTwoExplicit##1##2##3{%
+ \MacroRow{%
+   \GenMacName{##1}\GenParam{##2}\GenParam{##3}}{%
+       2}{%
+   \GenMacCallTwo{##1}{##2}{##3}}%
+}%
+\def\MOne##1{\MOneExplicit{##1}{x}}%
+\def\MTwo##1{\MTwoExplicit{##1}{x}{y}}%
+%%
+%%
+\def\MacroRow##1##2##3{%
+##1 & ##2 & ##3\\[#1]
+}%
+\def\MSkip{\MacroRow{\relax}{\relax}{\relax}}%
+\begin{tabular}[t]{lcl}
+\multicolumn{3}{c}{\textbf{#2}} \\
+macro & \#params & example \\
+}{%
+\end{tabular}
+}
 
