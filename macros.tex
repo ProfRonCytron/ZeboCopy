@@ -191,8 +191,8 @@
 \def\POne{\SQB{0}{1}}
 \def\PPlus{\ensuremath{\RootTwo{}\SQB{1}{1}}}
 \def\PMinus{\ensuremath{\RootTwo{}\SQB{1}{-1}}}
-\def\PHad{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{1}}
-\def\PHadm{\ensuremath\frac{1}{\sqrt{2}}\SQB{1}{-1}}
+\def\PHad{\ensuremath{\frac{1}{\sqrt{2}}\SQB{1}{1}}}
+\def\PHadm{\ensuremath{\frac{1}{\sqrt{2}}\SQB{1}{-1}}}
 \def\Intersect#1#2{\ensuremath{#1 \cap #2}}
 \def\Union#1#2{\ensuremath{#1 \cup #2}}
 \def\Set#1{\ensuremath{\left\{\,#1\,\right\}}}
@@ -1059,7 +1059,7 @@ $v$ & \And{v}{#1} & \DotP{v}{#1} &  \multicolumn{1}{|c}{Term} \\ \hline}{%
 \def\GenParam##1{%
    \mbox{\{##1\}}}%
 \def\GenMacName##1{%
-    \mbox{\textbackslash{}##1}}%
+    \mbox{\textbackslash{}{\small\tt ##1}}}%
 \def\GenMacCallZero##1{%
 \mbox{\expandafter\csname ##1\endcsname}}
 \def\GenMacCallOne##1##2{%
