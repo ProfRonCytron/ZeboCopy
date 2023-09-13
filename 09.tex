@@ -131,7 +131,7 @@ The resulting state is
     \begin{align*}
     \QState{x} = \PZero{} &
     \QState{y} = \POne{} \\
-    \QState{z} = & \PHad{}
+    \QState{z} = & \PPlus{}
     \end{align*}
 \end{itemize}
 \only<3-10>{%
@@ -147,7 +147,7 @@ Counting down a column $(0, 1, 2, \ldots)$, we include the binary encoding of ea
 }{%
 \only<3->{%
 \begin{align*}
-    & \TensProd{\TensProd{\PZero{}}{\POne{}}}{\PHad{}} \\
+    & \TensProd{\TensProd{\PZero{}}{\POne{}}}{\PPlus{}} \\
     = & \TensProd{\DQB{\alert<3-4>{0}}{\alert<5-6>{1}}{\alert<7-8>{0}}{\alert<9-10>{0}}}{\frac{1}{\sqrt{2}}\SQB{\alert<3,5,7,9>{1}}{\alert<4,6,8,10>{1}}}
     = \frac{1}{\sqrt{2}}\QQB{%
     \alert<3>{0}}{%
