@@ -1,0 +1,22 @@
+z = [1 0]'
+o = [0 1]'
+s = 1/sqrt(2)
+p = s*[1 1]'
+m = s*[1 -1]'
+H = s*[1 1; 1 -1]
+Z = [1 0; 0 -1]
+I = [1 0; 0 1]
+X = [ 0 1; 1 0]
+b000 = kron(kron(z,z),z)
+b001 = kron(kron(z,z),o)
+b010 = kron(kron(z,o),z)
+b011 = kron(kron(z,o),o)
+b100 = kron(kron(o,z),z)
+b101 = kron(kron(o,z),o)
+b110 = kron(kron(o,o),z)
+b111 = kron(kron(o,o),o)
+syms a b
+pp = kron(p,p)
+ppp = kron(pp,p)
+mm = kron(m,m)
+mmm = kron(mm,m)
