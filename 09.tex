@@ -279,7 +279,33 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 \section{Entanglement}
 
 %%
-%% ToDo:  Make a bigger deal introducing CNOT
+\begin{frame}{The \CNOT{x}{y} gate}{Quantum's \texttt{if then else}}
+\TwoColumns{%
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\ket{x}}  & \ctrl{1} & \qw \\
+\lstick{\ket{y}}  & \targ{} &\qw
+\end{quantikz}}
+
+\begin{itemize}[<+->]
+\item If $\ket{x}=\QOne{}$ then complement \ket{y}, else leave \ket{y} alone.
+\item We first think of \NamedGate{CNOT} in terms of how it transforms each basis vectors~\ket{xy}
+\item $\ket{00} \mapsto \ket{00}$
+\item $\ket{01} \mapsto \ket{01}$
+\item $\ket{10} \mapsto \ket{11}$
+\item $\ket{11} \mapsto \ket{10}$
+\end{itemize}
+}{%
+\Vskip{-3em}{\small\[\CNOTMatrix{}\]}
+
+\visible<7->{%
+The above matrix implement this.
+
+For superpositions such as \[ \TwoSup{00}{10}\]
+use linearity to obtain \[ \TwoSup{00}{11}\]
+}
+}
+    
+\end{frame}
 %%
 \begin{frame}{Entangling two qubits}{We use gates we have studied to create an interesting quantum state}
 
