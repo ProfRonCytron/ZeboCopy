@@ -289,18 +289,24 @@ Computing the tensor product of two matrices is similar to computing the tensor 
 \begin{itemize}[<+->]
 \item If $\ket{x}=\QOne{}$ then complement \ket{y}, else leave \ket{y} alone.
 \item We first think of \NamedGate{CNOT} in terms of how it transforms each basis vectors~\ket{xy}
-\item $\ket{00} \mapsto \ket{00}$
-\item $\ket{01} \mapsto \ket{01}$
-\item $\ket{10} \mapsto \ket{11}$
-\item $\ket{11} \mapsto \ket{10}$
+\item \ColorOne{$\ket{00} \mapsto \ket{00}$}
+\item \ColorTwo{$\ket{01} \mapsto \ket{01}$}
+\item \ColorThree{$\ket{10} \mapsto \ket{11}$}
+\item \ColorFour{$\ket{11} \mapsto \ket{10}$}
 \end{itemize}
 }{%
 \Vskip{-3em}{\small\[\CNOTMatrix{}\]}
-
+\begin{TIKZP}[overlay]
+  \draw[white] (0,0) circle(1pt);  % anchor
+  \draw<3-6>[\RCone,thick] (2.35,1.1) ellipse(0.25 and 0.95);
+  \draw<4-6>[\RCtwo,thick] (2.95, 1.1) ellipse (0.25 and 0.95);
+  \draw<5-6>[\RCthree,thick] (3.5, 1.1) ellipse (0.25 and 0.95);
+  \draw<6>[\RCfour,thick] (4.05, 1.1) ellipse (0.25 and 0.95);
+\end{TIKZP}
 \visible<7->{%
 The above matrix implement this.
 
-For superpositions such as \[ \TwoSup{00}{10}\]
+For superpositions such as \[ \NamedGate{CNOT}\left(\TwoSup{00}{10}\right)\]
 use linearity to obtain \[ \TwoSup{00}{11}\]
 }
 }
