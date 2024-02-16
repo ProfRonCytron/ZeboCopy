@@ -1,0 +1,11 @@
+s = 1/sqrt(2)
+Ze = [1;0]
+On  = [0;1]
+ZeZe = kron(Ze,Ze)
+ZeOn = kron(Ze,On)
+Pl = s*[1;  1]
+Mi = s*[1; -1]
+PlPl = kron(Pl,Pl)
+MiMi = kron(Mi,Mi)
+Bell = s*[1;0;0;1]
+AlsoBell = s*(kron(Pl,Pl) + kron(Mi,Mi))
