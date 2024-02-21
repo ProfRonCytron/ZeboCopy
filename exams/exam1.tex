@@ -163,12 +163,13 @@ the circuit above.  Please factor out a coefficient where possible, in
 the space provided,  so that
 the matrix entries are mostly $0$ or $1$.
 
+{\small
 \[
 U = \Blank[3em] \times \begin{pmatrix}
- \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
- \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
- \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
- \Blank{} & \Blank{} & \Blank{} & \Blank{}\end{pmatrix}\] 
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix}\] }
 If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$
 
 \item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
@@ -274,8 +275,14 @@ Complete the table below, \textbf{providing support on the next page}, indicatin
 \end{itemize}
 \end{itemize}
 
-\end{enumerate}
 
+\clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbtirary phase~$\phi$ of
+a quantum state, then
+\[  U\begin{pmatrix*}[r] \cos{\theta} \\ e^{i\phi}\sin{\theta}\end{pmatrix*} = \begin{pmatrix*}[r] \cos{\theta} \\ e^{-i\phi}\sin{\theta}\end{pmatrix*} \]
+Arbitrary phase means we do not the value of $\phi$.  Prove that no such
+gate $U$ can exist without knowing $\phi$.
+
+\end{enumerate}
 \end{assignment}
 \Bpage{}
 
