@@ -56,26 +56,31 @@ What is the contradiction, if any?
 
 \begin{document}
 
-\begin{assignment}{Exam I}{8 March 2023}{End of class}
+\begin{assignment}{Exam I}{6 March 2024}{In GradesScope by 22 March 2024, 9 AM CDT}
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
 work on your own without contact or conversations with any person.
-Because this exam is given in a somewhat distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on us to be fair and flexible, especially if we have been unclear.
+Because this exam is given in a distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on us to be fair and flexible, especially if we have been unclear.
 
 
 Your work must be legible.  Work that is
 difficult to read will receive no credit.  There is a blank page at the end
-if you want to show extra work there.
+if you want to show extra work there.  To assure no problems with GradeScope,
+you should
+print out this exam, complete it on paper, and scan it in with a full-page
+scanner.  You can be more creative but if you do not properly register the
+pages with GradeScope, credit will not be given.
 
-There are 118 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+There are ??? points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
 actions
 may be taken.
 
-You must fill in your identifying information correctly.  
+You must fill in your identifying information correctly.  You must upload this
+completed exam to GradeScope properly by the due date and time.
 }
 
 \begin{center}\large
@@ -143,39 +148,35 @@ Each response is worth~2 points, and there are 2 points of extra credit here.
     \]
 
 \end{itemize}
-\clearpage\item\Points{30}
-%%%
-%%%
-\long\def\CircProb#1{%
-    \item\Points{15} Consider this circuit:
+
+\clearpage\item\Points{15} Consider the standard circuit we have used for
+entanglement:
 \begin{center}   
     \adjustbox{valign=t,scale=1.5}{\begin{quantikz}
-#1
+\qw &\gate{H} & \ctrl{1} & \qw \\
+\qw &\qw & \targ{} &   \qw
 \end{quantikz}}\end{center}
+\begin{enumerate}
+\item\Points{5}
+Below, specify the single, two-qubit matrix that has the same effect as
+the circuit above.  Please factor out a coefficient where possible, in
+the space provided,  so that
+the matrix entries are mostly $0$ or $1$.
 
-Fill in the column vectors to show your analysis of the states at the indicated positions of the circuit.  The rest of this page is scratch space, but you are \textbf{not required} to show work for this problem.  \textbf{The parts to fill in are on the next page}.
-\Continued{}
-\Points{3} each:\\
-$\ket{\QState{0}}=\DQBB{}$  $\ket{\QState{1}}=\DQBB{}$  $\ket{\QState{2}}=\DQBB{}$
+\[
+U = \Blank[3em] \times \begin{pmatrix}
+ \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
+ \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
+ \Blank{} & \Blank{} & \Blank{} & \Blank{} \\
+ \Blank{} & \Blank{} & \Blank{} & \Blank{}\end{pmatrix}\] 
+If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$
 
-\item \Points{6} \textbf{Either} express \ket{\QState{2}} as the product of two 1-quibit states:
+\item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
+\item\Points{2} $U\ket{10}=\frac{\Blank{}}{\sqrt{2}}$
+\item\Points{2} $U\ket{11}=\frac{\Blank{}}{\sqrt{2}}$
+\item\Points{4} If $U$ can be tensor-factored, show the resulting $2\times 2$ matrices below. Otherwise, prove that it cannot be tensor factored.
+\end{enumerate}
 
-\[\ket{\QState{2}} = \SQBB \otimes \SQBB \]
-\textbf{or} complete the proof below to show that it cannot be factored:
-\FactorProof{}
-}
-%%%
-%%%
-\begin{itemize}
-
-
-\CircProb{
-\lstick{\QZero{}}&\gate{H}\slice{\ket{\QState{0}}} & \ctrl{1}\slice{\ket{\QState{1}}} & \gate{H}\slice{\ket{\QState{2}}}  & \qw\\
-\lstick{\QZero{}} &\qw & \targ{} &  \qw    &  \qw}
-
-\CircProb{\lstick{\QZero{}}&\gate{X}\slice{\ket{\QState{0}}} & \ctrl{1}\slice{\ket{\QState{1}}} & \gate{Z}\slice{\ket{\QState{2}}}  & \qw\\
-\lstick{\QZero{}} &\gate{Z} & \targ{} &  \gate{X}    &  \qw}
-\end{itemize}
 
 
 
