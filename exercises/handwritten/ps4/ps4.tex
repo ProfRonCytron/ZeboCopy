@@ -24,15 +24,20 @@
 
 \assignment{Problem Set 4}
 
-\textbf{Note: solution to this set was published March 2023, so we should change it}
+%% \textbf{Note: solution to this set was published March 2023, so we should change it}
 
 \noindent Name:\NameBlank{}  Student ID:\NameBlank{} \newline
 \textbf{Note:} You may discuss these problems with other students, but you must write your own solutions. If you run out of space for any question, please use the additional page and clearly indicate which question you are answering.
+\begin{quote}
+    As for all written assignments, you must complete the work on these pages, and upload your completed pages to GradeScope.  Do not simply submit a page with the answers, as we cannot grade your work that way.  GradeScope will allow you to submit separate images for reach response, but it's on you to submit those properly.
+
+    Work submitted improperly will receive no credit.
+\end{quote}
 \begin{enumerate}[font=\bfseries]
     \item (10 points) Give the unitary matrix that describes the circuit below. Note the second gate is the controlled $\mathbf{Z}$ gate with $q_0$ as the control bit and $q_1$ as the target bit. Is the state at the end of this circuit entangled? Why or why not?
     \[\includegraphics[scale=0.8]{cz-gate}\]
     \LeaveSpace[2.0in]
-    \item (5 points) Can the controlled $\mathbf{Z}$ gate matrix be written as the tensor product of two matrices? Prove or disprove. \LeaveSpace[2.5in]    \item (15 points) Consider standard quantum teleportation. Imagine Alice has the incredible power to transmit exactly one bit to Bob instantaneously (faster than the speed of light whoa). Let's investigate how this changes Bob's situation.
+    \item (5 points) Can the controlled $\mathbf{Z}$ gate matrix be written as the tensor product of two matrices? Prove or disprove. \LeaveSpace[2.5in]    \item (15 points) Consider standard quantum teleportation (slide 11 and following in 10.pdf). Imagine Alice has the incredible power to transmit exactly one bit to Bob instantaneously (faster than the speed of light: sus, no cap). Let's investigate how this changes Bob's situation.
     \begin{enumerate}
         \item Say Alice sends one bit to Bob. \textbf{Note:} Bob does \underline{not} know if Alice sent her left or right qubit. What is the probability that Bob obtains the correct state? \Blank{}
         \item What does Bob know about his state if Alice tells him the left qubit's value of her system? \LeaveSpace{}
@@ -40,9 +45,7 @@
         \item If Bob only cares about getting the probabilities of his basis states right and doesn't care about the phase of his system, which qubit would he want Alice to send? \Blank{}
     \end{enumerate}
     \item (5 points) Explain why using just a single EPR pair, Bob cannot obtain Alice's state any more than 50\% of the time without communication and ignoring phase differences. \LeaveSpace{}
-    \item (10 points) Consider the entangled state: 
-    \[\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{00}+\ket{11})\]
-    Show that applying a general U gate to the first qubit still results in an entangled state. \LeaveSpace[2.5in]
+
     \item (10 points) Recreate the table on slide 11 in Lecture 10 (i.e. what action Bob should take for each measurement outcome Alice could observe) if Alice and Bob used the below EPR pair to accomplish quantum teleportation.
     \[\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})\]
     \LeaveSpace[2.25in]
@@ -54,8 +57,7 @@
                     \alpha_6\ket{110} + \alpha_7\ket{111}
     \end{multline}
     Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Blank{}
-    \newpage
-    \item (Bonus, up to 3 points) Write one interesting question related to the content of this homework, and indicate the correct answer. The question can be multiple-choice or free-response.  Interesting questions get credit here;  sufficiently good questions might appear on an exam.
+
 \end{enumerate}
 
 \end{document}
