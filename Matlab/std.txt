@@ -1,0 +1,27 @@
+%%
+%% s is needed often
+%%
+s = 1/sqrt(2)
+%%
+%% Pauli matrices
+%%
+I = [1 0; 0 1]
+X = [0 1; 1 0]
+Z = [1 0; 0 -1]
+Y = i*X*Z
+%%
+%% Hadamard
+%%
+H = s*[1 1; 1 -1]
+%%
+%% standard kets
+%%
+kzero = [1;0]
+kone  = [0;1]
+kplus = H*kzero
+kminus = H*kone
+%%
+%%
+CNOT = [ 1 0 0 0; 0 1 0 0; 0 0 0 1; 0 0 1 0 ]
+%%
+
