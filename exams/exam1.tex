@@ -23,6 +23,7 @@
 \def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
 \def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
 \def\TF{\TFMarked{\relax}{\relax}}
+\def\TFH{\Obox{\relax}~\textbf{true}~~~\Obox{\relax}~\textbf{false}}
 \def\exp#1{\ensuremath{e^{#1}}}
 \newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
 \def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
@@ -121,6 +122,76 @@ sure you filled in your information in the box above!)
 
 \end{itemize}
 
+\long\def\GenTable#1#2{%
+\GenTableDiff{#1}{#2}{#1}{#2}}%
+\long\def\GenTableDiff#1#2#3#4{%
+\begin{center}
+\begin{tabular}{ccc}
+Alice & Bob & Possible Outcome? \\
+\ensuremath{#1}    & \ensuremath{#3}  & \TFH \\[0.5em]
+\ensuremath{#1}    & \ensuremath{#4}  & \TFH \\[0.5em]
+\ensuremath{#2}    & \ensuremath{#3}  & \TFH \\[0.5em]
+\ensuremath{#2}    & \ensuremath{#4}  & \TFH
+\end{tabular}
+\end{center}
+}
+\def\EmptyFour{%
+\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em]
+    \end{pmatrix*}
+}
+\clearpage\item\Points{20} Alice and Bob prepare to participate in one of the
+many schemes we've studied this semester in which they begin with the 
+Bell (also called an EPR) state:
+\[ \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
+When they separate, Alice takes the left qubit and Bob takes the right qubit.
+They each then measure their qubit in a basis as described below.
+
+\begin{enumerate}
+\item Suppose they each measure $\ket{\psi}$ in the computational (\textbf{Z})
+basis.
+Which measurement outcomes are possible for this state?
+\GenTable{0}{1}
+
+\item
+In class it was shown that
+\[
+\frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{\ket{++}+\ket{--}}{\sqrt{2}}
+\]
+by showing the expressions are mathematically equal:
+\[
+\frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}
+= \frac{1}{\sqrt{2}} \left[ \frac{1}{2}\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
++  \frac{1}{2}\begin{pmatrix*}[r]1 \\-1\\-1\\1\end{pmatrix*}\right]
+\]
+After separation, if they each measure their qubit in the
+\textbf{X} basis, which measurement outcomes are possible?
+\GenTable{+}{-}
+\Continued{}
+
+\item This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
+but Bob measures his in the computational basis.  
+This is achieved by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
+to the state $\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
+In other words, Alice applied \textbf{H} to her qubit while Bob does nothing
+to his.
+The state resulting from that operation is:
+
+\[ \ket{\psi_{2}} = \EmptyFour{} \]
+
+Alice and Bob each measure their qubit of $\ket{\psi_{2}}$ in the computational
+basis.  Which outcomes are possible?
+\GenTable{0}{1}
+Finally, they undo their work by reapplying
+$\textbf{H}\otimes\textbf{I}$ to the measured outcome.
+
+Which of the following states are possible now?
+\GenTableDiff{+}{-}{0}{1}
+\end{enumerate}
+
 \clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
 Each response is worth~2 points, and there are 2 points of extra credit here.
@@ -139,12 +210,7 @@ Each response is worth~2 points, and there are 2 points of extra credit here.
         \end{tabular}
     \end{center}
     \item Fill in the blanks below to show the result of the tensor product: \[
-    \ket{+}\otimes\ket{+} = \frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em]
-    \end{pmatrix*}
+    \ket{+}\otimes\ket{+} = \EmptyFour{}
     \]
 
 \end{itemize}
