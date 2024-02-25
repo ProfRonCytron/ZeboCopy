@@ -143,15 +143,26 @@ Alice & Bob & Possible Outcome? \\
       \Blank[1.5em]
     \end{pmatrix*}
 }
-\clearpage\item\Points{20} Alice and Bob prepare to participate in one of the
+\def\EmptyFourByFour{%
+\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix*}}
+\def\Bell{%
+\BellTwo{00}{11}}
+\def\BellTwo#1#2{%
+\ensuremath{\frac{\ket{#1}+\ket{#2}}{\sqrt{2}}}}
+
+\clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
 many schemes we've studied this semester in which they begin with the 
 Bell (also called an EPR) state:
-\[ \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
+\[ \ket{\psi_{1}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
 When they separate, Alice takes the left qubit and Bob takes the right qubit.
 They each then measure their qubit in a basis as described below.
 
 \begin{enumerate}
-\item Suppose they each measure $\ket{\psi}$ in the computational (\textbf{Z})
+\item Suppose they each measure $\ket{\psi_{1}}$ in the computational (\textbf{Z})
 basis.
 Which measurement outcomes are possible for this state?
 \GenTable{0}{1}
@@ -159,38 +170,117 @@ Which measurement outcomes are possible for this state?
 \item
 In class it was shown that
 \[
-\frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{\ket{++}+\ket{--}}{\sqrt{2}}
+\ket{\psi_{1}} = \Bell{} = \frac{\ket{++}+\ket{--}}{\sqrt{2}}
 \]
-by showing the expressions are mathematically equal:
+by showing the associated column vectors are mathematically equal:
 \[
-\frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}
+\ket{\psi_{1}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}
 = \frac{1}{\sqrt{2}} \left[ \frac{1}{2}\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
 +  \frac{1}{2}\begin{pmatrix*}[r]1 \\-1\\-1\\1\end{pmatrix*}\right]
 \]
-After separation, if they each measure their qubit in the
-\textbf{X} basis, which measurement outcomes are possible?
+After separation, they each measure their qubit of $\ket{\psi_{1}}$ in the
+\textbf{X} basis, each using a magical \textbf{X}-basis measuring device.  
+
+Which measurement outcomes are possible?
 \GenTable{+}{-}
 \Continued{}
 
 \item This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
 but Bob measures his in the computational basis.  
 This is achieved by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
-to the state $\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
-In other words, Alice applied \textbf{H} to her qubit while Bob does nothing
+to the state $\ket{\psi_{1}}=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
+In other words, Alice applies \textbf{H} to her qubit while Bob does nothing
 to his.
+\[ \textbf{H}\otimes\textbf{I} = \EmptyFourByFour{} \]
 The state resulting from that operation is:
 
-\[ \ket{\psi_{2}} = \EmptyFour{} \]
+\[ \ket{\psi_{2}} = \left(\textbf{H}\otimes\textbf{I}\right)\ket{\psi_{1}} = \EmptyFour{} \]
 
 Alice and Bob each measure their qubit of $\ket{\psi_{2}}$ in the computational
-basis.  Which outcomes are possible?
+basis.  Which of the following measurement outcomes are possible?
 \GenTable{0}{1}
-Finally, they undo their work by reapplying
+Finally, they repply
 $\textbf{H}\otimes\textbf{I}$ to the measured outcome.
 
-Which of the following states are possible now?
+In which of the following states could the quantum system be now?
 \GenTableDiff{+}{-}{0}{1}
 \end{enumerate}
+
+\clearpage\item\Points{20}
+We next explore the strength of commitment Alice and Bob bring to their
+entanglement, as Eve enters the picture and seeks to become just as entangled
+with Alice and Bob as they are with each other.
+
+Alice and Bob share the left and right qubits respectively of $\ket{\psi_{1}}=\Bell{}$.
+We have seen in class and in exam problem~\ref{prob:follow} that entanglement of those bits follows into the 
+\textbf{X} basis.  If they both measure their qubits in the \textbf{X} basis,
+the outcomes are just as correlated as they would be in the computational
+basis.
+
+As shown in class, Eve now joins them in such a way as to create the state
+\[
+\ket{\psi_{abe}} = \BellTwo{000}{111}
+\]
+where Alice, Bob, and Eve are assigned the left, middle, and right qubits,
+respectively.
+
+\begin{enumerate}
+\item\Points{5} If $\ket{\psi_{abe}}$ is measured in the computational basis, what possible outcomes are there
+for Alice, Bob, and Eve at this point?
+\LeaveSpace{0.5in}
+\item\Points{5} Suppose Alice and Bob prepare to measure $\ket{\psi_{abe}}$ in the \textbf{X} basis
+by each applying the Hadamard gate to their qubits, but Eve does nothing to her qubit.  The names of the gates under tensor
+product that model this are:
+\[ \Blank{} \otimes \Blank{} \otimes \Blank{} \]
+\item\Points{5} 
+Applying the tensored gates to $\ket{\psi_{abe}}$ obtains the following 
+state:
+\[
+\ket{\psi_{xxz}} = \frac{1}{\Blank[2em]}\begin{pmatrix*}
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] 
+\end{pmatrix*}
+\]
+\Continued{}
+\item\Points{5} If $\ket{\psi_{xxz}}$ is measured now, just as it is, in
+the computational basis, what outcomes are possible for Alice and Bob?
+\GenTable{0}{1}
+\item\Points{5} How does this differ from the situation when Eve was absent?
+\LeaveSpace{1in}
+\item\Points{5} How could you use this information to tell that Eve
+was present from the beginning, in state $\ket{\psi_{abe}}$?
+\LeaveSpace{1in}
+\item\Points{5} Suppose that instead of doing nothing, Eve is sufficiently clever to impose
+a Hadamard gate on her qubit just as Alice and Bob do that to their qubits.
+
+Applying a Hadamard to each state of $\ket{\psi_{abe}}$ produces:
+\[
+\ket{\psi_{xxx}} = \frac{1}{\Blank[2em]}\begin{pmatrix*}
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] \\
+\Blank[2em] 
+\end{pmatrix*}
+\]
+\item\Points{5} What are the possible
+outcomes for Alice's and Bob's measurements of $\ket{\psi_{xxx}}$ in
+the computational basis?
+\GenTable{0}{1}
+
+\item\Points{5} How can Alice and Bob catch Eve's presence in
+$\ket{\psi_{abe}}$ now?
+\end{enumerate}
+
 
 \clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
@@ -231,11 +321,7 @@ the matrix entries are mostly $0$ or $1$.
 
 {\small
 \[
-U = \Blank[3em] \times \begin{pmatrix}
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix}\] }
+U = \EmptyFourByFour{} \]}
 If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$
 
 \item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
