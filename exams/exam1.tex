@@ -87,8 +87,8 @@ completed exam to GradeScope properly by the due date and time.
 \begin{center}\large
 \begin{tabular}{|c|c|c|} \hline
 \multicolumn{3}{|c|}{{\bf Print  clearly} the following information:}  \\ \hline
-\multicolumn{3}{|l|}{Name (print clearly):\Tall{}\hbox to 3in{\hss}}  \\ \hline
-\multicolumn{3}{|l|}{Student 6-digit ID (print {\it really} clearly):\Tall{}\hbox to 3in{\hss}} \\ \hline
+\multicolumn{3}{|l|}{Name (print clearly):\Tall{}\hbox to 2.5in{\hss}}  \\ \hline
+\multicolumn{3}{|l|}{Student 6-digit ID (print {\it really} clearly):\Tall{}\hbox to 2.5in{\hss}} \\ \hline
 \end{tabular}
 \end{center}
 
@@ -102,7 +102,7 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{20+4} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\item\Points{10} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  Each is worth 2 points, so there are 4 points of extra credit here. \textbf{Remember that $\equiv$ means equal up to a global phase.}
 
 
@@ -152,7 +152,11 @@ Alice & Bob & Possible Outcome? \\
 \def\Bell{%
 \BellTwo{00}{11}}
 \def\BellTwo#1#2{%
-\ensuremath{\frac{\ket{#1}+\ket{#2}}{\sqrt{2}}}}
+\BellTwoSign{#1}{#2}{+}}
+\def\BellTwoSign#1#2#3{%
+\ensuremath{\frac{\ket{#1} #3 \ket{#2}}{\sqrt{2}}}}
+\def\BellM{\BellTwoSign{01}{10}{-}}
+
 
 \clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
 many schemes we've studied this semester in which they begin with the 
@@ -170,7 +174,7 @@ Which measurement outcomes are possible for this state?
 \item
 In class it was shown that
 \[
-\ket{\psi_{1}} = \Bell{} = \frac{\ket{++}+\ket{--}}{\sqrt{2}}
+\ket{\psi_{1}} = \Bell{} \longleftrightarrow \ket{\psi_{1}}= \frac{\ket{++}+\ket{--}}{\sqrt{2}}
 \]
 by showing the associated column vectors are mathematically equal:
 \[
@@ -178,7 +182,7 @@ by showing the associated column vectors are mathematically equal:
 = \frac{1}{\sqrt{2}} \left[ \frac{1}{2}\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
 +  \frac{1}{2}\begin{pmatrix*}[r]1 \\-1\\-1\\1\end{pmatrix*}\right]
 \]
-After separation, they each measure their qubit of $\ket{\psi_{1}}$ in the
+After separation, Alice and Bob each measure their qubit of $\ket{\psi_{1}}$ in the
 \textbf{X} basis, each using a magical \textbf{X}-basis measuring device.  
 
 Which measurement outcomes are possible?
@@ -187,10 +191,10 @@ Which measurement outcomes are possible?
 
 \item This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
 but Bob measures his in the computational basis.  
-This is achieved by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
+This is modeled by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
 to the state $\ket{\psi_{1}}=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
 In other words, Alice applies \textbf{H} to her qubit while Bob does nothing
-to his.
+to his.  Fill in the matrix below:
 \[ \textbf{H}\otimes\textbf{I} = \EmptyFourByFour{} \]
 The state resulting from that operation is:
 
@@ -199,13 +203,55 @@ The state resulting from that operation is:
 Alice and Bob each measure their qubit of $\ket{\psi_{2}}$ in the computational
 basis.  Which of the following measurement outcomes are possible?
 \GenTable{0}{1}
-Finally, they repply
+After that measurement, they reapply
 $\textbf{H}\otimes\textbf{I}$ to the measured outcome.
 
 In which of the following states could the quantum system be now?
 \GenTableDiff{+}{-}{0}{1}
 \end{enumerate}
+\clearpage\item\Points{10}
+In class we saw that if Alice and Bob each take a qubit of \Bell{}, then if they each apply gate $U$ (limited to real values in class) to their respective qubits, the resulting state is still \Bell{}. This means that if they each apply the same gate $U$ to their separate but entangled qubits, they will measure the same results consistently. The \texttt{Matlab} script \texttt{bellstatepersists.txt}  from class is posted on piazza for this exam.
 
+In this problem we look at another of Bell's states, namely
+\[\ket{\psi_{1}} = \BellM{}\]
+Alice takes the left qubit and Bob takes the right qubit, as usual.
+
+Here, Alice and Bob expect to see opposite measurement results.  Specifically, basis state \ket{01} means that if Alice sees a~\Blank{} then Bob sees a \Blank{}.  Similarly, basis state \ket{10} means that if Alice sees a \Blank{} then Bob sees a~\Blank{}.
+
+Referring to state~\ket{\psi_{1}} above, the minus sign between the two basis vectors is important for this problem, but doesn't change the expectations from measurement, because:
+\begin{itemize}
+    \item The amplitude on \ket{01} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}. 
+    \item The amplitude on \ket{10} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}.
+\item The amplitude on basis states \ket{00} and \ket{11} are each \Blank[3em]{}.
+\end{itemize}
+
+In \texttt{bellstatepersists.txt} we define the gate \[U = \begin{pmatrix*}[r] a & b \\ c & d\end{pmatrix*}\]
+with $a, b, c, d$ all real-valued, to make matters
+simple.  You can keep those values real for the rest of this problem as well.
+\Continued{}
+With \texttt{Matlab} as your (perhaps recent) faithful friend, complete the equation below to show what happens if Alice and Bob each apply $U$ (as defined above) to \ket{\psi_{1}} (be sure to represent the sign on \ket{10} properly for \ket{\psi_{1}}):
+\[
+\ket{\psi_{2}} = (U\otimes U)\ket{\psi_{1}} = \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
+\Blank[3em]{} \\
+\Blank[7em]{} \\
+\Blank[7em]{} \\
+\Blank[3em]{} 
+\end{pmatrix*}
+\]
+%\Continued{}
+
+Here is a useful fact (mention this in passing at your next party):  
+\[ \mbox{If $U$ is unitary then }\left|\mbox{det}(U)\right| =  1 \]
+
+That is, the determinant of a unitary matrix has magnitude~$1$.
+
+Equipped, aware, and fascinated by that useful fact, prove that
+\[ \ket{\psi_{2}} \equiv \BellM{}\]
+In other words, Alice and Bob can apply $U$ to this other Bell state \ket{\psi_{1}} and they still have (up to a global phase) state \ket{\psi_{1}}.  
+
+Your proof below:
+\LeaveSpace{2in}
+If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them after any $U$ is applied to each qubit, so that their measurements consistently disagree?\Blank{}
 \clearpage\item\Points{20}
 We next explore the strength of commitment Alice and Bob bring to their
 entanglement, as Eve enters the picture and seeks to become just as entangled
