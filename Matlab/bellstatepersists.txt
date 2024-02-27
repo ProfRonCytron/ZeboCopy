@@ -1,0 +1,22 @@
+syms a b c d
+%%
+%%  Here we interpret a, b, c, d as reals to make things simple
+%%
+U = [a b; c d]
+%%
+%% The usual Bell state
+%% I'm dropping the 1/sqrt(2) to keep things clean
+%%
+b = [1;0;0;1]
+%%
+%%
+%% Alice and Bob both apply U to the Bell state
+%%
+kron(U,U)*b
+%%
+%% a^2 + b^2 = 1 because normality
+%% c^2 + d^2 = 1 same reason
+%% a*c + b*d = 0 because orthogonality
+%%
+%% So the bell state persists if both Alice and Bob apply U
+%%
