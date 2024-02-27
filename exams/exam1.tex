@@ -135,49 +135,33 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{10} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
-\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  Each is worth 2 points, so there are 4 points of extra credit here. \textbf{Remember that $\equiv$ means equal up to a global phase.}
+\item\Points{6} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.   
 
-
+\textbf{Remember that $\equiv$ means equal up to a global phase.}
+Boldface gates are the usual Pauli gates, and \Gate{H} is the Hadamard gate.
 \begin{itemize}
-    \item When an unpolarized photon hits a polarizing filter, that constitutes a measurement of a photon's polarization.~\TF{}
-    \item Each of the Pauli matrices (\X, \Y, and \Z) is its own inverse.~\TF{}
-    \item The states $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ and $\ket{-}=\frac{1}{\sqrt{2}}\SQB{1}{-1}$ differ only by a global phase.~\TF{}
-    \item The states $i\SQB{0}{1}$ and $\SQB{0}{-1}$ differ only by a global phase.~\TF{}
-    \item The conjugate transpose of \SQB{1}{i} is $\left(-1\ \  -i\right)$.~\TF{}
-    \item For \emph{all} values of $\theta$, $|e^{i\,\theta}|=1$.\TF{}
-    \item For the Pauli matrices, $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}\equiv\Gate{X}$~\TF{}
-    \item The state \[\frac{\ket{10}+\ket{11}}{\sqrt{2}}\] is an entangled state.~\TF{}
-    \item The state obtained after measuring the left qubit of \[\frac{\ket{00}+\ket{11}}{\sqrt{2}}\] is an entangled state.~\TF{}
-    \item The state \[\Gate{CNOT}\left(\frac{\ket{00}+\ket{11}}{\sqrt{2}}\right)\] is an entangled state.~\TF{}
-    \item For all states $\ket{\psi}$, $\Gate{X}\Gate{Z}\ket{\psi}\equiv\Gate{Z}\Gate{X}\ket{\psi}$~\TF{}
-       \item Following the measurement of a single qubit in the standard basis, the number of possible states of that qubit is uncountably infinite.~\TF{}
-
-\end{itemize}
-
-
-\clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
-
-Each response is worth~2 points, and there are 2 points of extra credit here.
-\begin{itemize}
-    \item When a qubit is measured in the \X{} basis, it collapses to an \Blank{}state of the Pauli \X{} matrix. Those states are \Blank{} and \Blank{}.
-    \item After a quantum bit is measured in the \X{} basis, suppose it is then measured in the standard (\Z{}) basis. The probability of measuring \ket{0} is \Blank[3.5em]{}\% and the probability of measuring \ket{1} is \Blank[3.5em]{}\%.
-    \item Recall that the formula for a state $\ket{\psi}$  on the Bloch sphere is
-    \[ \ket{\psi} = \cos(\theta/2) + e^{i\,\phi}sin(\theta/2)\]
-    Fill in the table using radians for angles:
+    \item $\Gate{X}\ket{0}=\Gate{H}\ket{-}$~\TF{}
+    \item For $k>0$, $\Gate{CNOT}^{k}\left(\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{10}\right)\right)$ is an entangled state if and only if $k$ is odd.~\TF{}
+    \item After a qubit has been measured, it cannot be subjected to subsequent unitary gates.~\TF{}
+    \item All superpositions of two qubits are entangled states.~\TF{}
+    \item $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}\equiv\Gate{Y}\Gate{Z}$~\TF{}
+     \item The state obtained after measuring the left qubit of \BellM{} is an entangled state.~\TF{}
+    \item The $i$ present in the \Gate{Y} gate can be factored out as a global phase.~\TF{}
+    \item The $i$ present in the \Gate{Y} gate can be factored out as a global phase for the controlled-\Gate{Y} gate that you developed in homework.~\TF{}
+ 
+    \item At the end of teleportation, Alice tells Bob that she measured \ket{11} for her
+    two qubits.  Which of the following gates will \textbf{by itself} recover Alice's original state? (circle only one gate)
     \begin{center}
-        \begin{tabular}{ccc}
-        State & $\theta$ & $\phi$ \\
-        \ket{0} & \Blank & \Blank \\
-        \ket{+}=\ket{+x} &\Blank & \Blank \\
-        \ket{+y} & \Blank & \Blank
-        \end{tabular}
+    \mbox{}\\
+    Gate \Gate{X}~~~~~~~Gate \Gate{Y}~~~~~~~Gate \Gate{Z}\\ \mbox{}
     \end{center}
-    \item Fill in the blanks below to show the result of the tensor product: \[
-    \ket{+}\otimes\ket{+} = \EmptyFour{}
-    \]
-
+   \item Suppose you are told that measurement of a given state \ket{\psi} is more likely to yield \ket{0} than \ket{1}.  What is the most precise statement you can make about \ket{\psi}'s location on the Bloch sphere?
+    \LeaveSpace{0.5in}
 \end{itemize}
+
+
+
 
 \clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
 many schemes studied this semester in which they begin with the 
@@ -203,6 +187,8 @@ by showing the associated column vectors are mathematically equal:
 = \frac{1}{\sqrt{2}} \left[ \frac{1}{2}\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
 +  \frac{1}{2}\begin{pmatrix*}[r]1 \\-1\\-1\\1\end{pmatrix*}\right]
 \]
+The \texttt{Matlab} file is \texttt{bellstate2ways.txt}.
+
 After separation, Alice and Bob each measure their qubit of $\ket{\psi_{1}}$ in the
 \textbf{X} basis, each using a magical \textbf{X}-basis measuring device.  
 
@@ -396,40 +382,6 @@ Each response is worth 1 point.
     \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
 \end{itemize}
 
-
-\clearpage\item\Points{12}
-Bob was not paying attention during the lecture on quantum teleportation.  After he separated from Alice, he forgot which bit from Alice would require imposition of an \X{} gate on his qubit, and which would require a \Z{} gate.
-
-So consider the classical, 3-qubit teleportation setup, but where Bob is exactly wrong concerning which qubit controls his \X{} gate and which controls his \Z{} gate.  That resulting, incorrect circuit is:
-
-\includegraphics[scale=0.25]{tportwrong.png}
-
-\begin{itemize}
-    \item\Points{4}
-Complete the table below, \textbf{providing support on the next page}, indicating for which measurements of Alice's qubits, Bob still obtains the correct state on his qubit (\texttt{bell\_bob\_0}).
-\begin{center}\Large
-\begin{tabular}{ccc}
-\multicolumn{2}{c}{Alice's qubit} & Bob obtains the  \\
-\texttt{$\mbox{alice}_0$} & \texttt{bell\_alice\_0} & correct state?\\[1em]
-0 & 0 & \TF \\[2em]
-0 & 1 & \TF \\[2em] 
-1 & 0 & \TF \\[2em]
-1 & 1 & \TF \\
-\end{tabular}
-\end{center}
-\Continued{}
-\item \Points{8} Provide support for your answers here:
-\begin{itemize}
-    \item \Points{2} Case 00:
-    \LeaveSpace{1.5in}
-   \item \Points{2} Case 01:
-    \LeaveSpace{1.5in}
-       \item \Points{2} Case 10:
-    \LeaveSpace{1.5in}
-       \item \Points{2} Case 11:
-    \LeaveSpace{1.5in}
-\end{itemize}
-\end{itemize}
 
 
 \clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbitrary relative phase~$\phi$ of
