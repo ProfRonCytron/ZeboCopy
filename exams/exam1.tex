@@ -54,7 +54,40 @@ b\cdot d &= \Blank[3em]
 What is the contradiction, if any?
 \LeaveSpace{2in}
 }
-
+\long\def\GenTable#1#2{%
+\GenTableDiff{#1}{#2}{#1}{#2}}%
+\long\def\GenTableDiff#1#2#3#4{%
+\begin{center}
+\begin{tabular}{ccc}
+Alice & Bob & Possible Outcome? \\
+\ensuremath{#1}    & \ensuremath{#3}  & \TFH \\[0.5em]
+\ensuremath{#1}    & \ensuremath{#4}  & \TFH \\[0.5em]
+\ensuremath{#2}    & \ensuremath{#3}  & \TFH \\[0.5em]
+\ensuremath{#2}    & \ensuremath{#4}  & \TFH
+\end{tabular}
+\end{center}
+}
+\def\EmptyFour{%
+\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em] \\
+      \Blank[1.5em]
+    \end{pmatrix*}
+}
+\def\EmptyFourByFour{%
+\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
+ \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix*}}
+\def\Bell{%
+\BellTwo{00}{11}}
+\def\BellTwo#1#2{%
+\BellTwoSign{#1}{#2}{+}}
+\def\BellTwoSign#1#2#3{%
+\ensuremath{\frac{\ket{#1} #3 \ket{#2}}{\sqrt{2}}}}
+\def\BellM{\BellTwoSign{01}{10}{-}}
 \begin{document}
 
 \begin{assignment}{Exam I}{6 March 2024}{In GradesScope by 22 March 2024, 9 AM CDT}
@@ -122,44 +155,32 @@ sure you filled in your information in the box above!)
 
 \end{itemize}
 
-\long\def\GenTable#1#2{%
-\GenTableDiff{#1}{#2}{#1}{#2}}%
-\long\def\GenTableDiff#1#2#3#4{%
-\begin{center}
-\begin{tabular}{ccc}
-Alice & Bob & Possible Outcome? \\
-\ensuremath{#1}    & \ensuremath{#3}  & \TFH \\[0.5em]
-\ensuremath{#1}    & \ensuremath{#4}  & \TFH \\[0.5em]
-\ensuremath{#2}    & \ensuremath{#3}  & \TFH \\[0.5em]
-\ensuremath{#2}    & \ensuremath{#4}  & \TFH
-\end{tabular}
-\end{center}
-}
-\def\EmptyFour{%
-\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em]
-    \end{pmatrix*}
-}
-\def\EmptyFourByFour{%
-\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix*}}
-\def\Bell{%
-\BellTwo{00}{11}}
-\def\BellTwo#1#2{%
-\BellTwoSign{#1}{#2}{+}}
-\def\BellTwoSign#1#2#3{%
-\ensuremath{\frac{\ket{#1} #3 \ket{#2}}{\sqrt{2}}}}
-\def\BellM{\BellTwoSign{01}{10}{-}}
 
+\clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
+
+Each response is worth~2 points, and there are 2 points of extra credit here.
+\begin{itemize}
+    \item When a qubit is measured in the \X{} basis, it collapses to an \Blank{}state of the Pauli \X{} matrix. Those states are \Blank{} and \Blank{}.
+    \item After a quantum bit is measured in the \X{} basis, suppose it is then measured in the standard (\Z{}) basis. The probability of measuring \ket{0} is \Blank[3.5em]{}\% and the probability of measuring \ket{1} is \Blank[3.5em]{}\%.
+    \item Recall that the formula for a state $\ket{\psi}$  on the Bloch sphere is
+    \[ \ket{\psi} = \cos(\theta/2) + e^{i\,\phi}sin(\theta/2)\]
+    Fill in the table using radians for angles:
+    \begin{center}
+        \begin{tabular}{ccc}
+        State & $\theta$ & $\phi$ \\
+        \ket{0} & \Blank & \Blank \\
+        \ket{+}=\ket{+x} &\Blank & \Blank \\
+        \ket{+y} & \Blank & \Blank
+        \end{tabular}
+    \end{center}
+    \item Fill in the blanks below to show the result of the tensor product: \[
+    \ket{+}\otimes\ket{+} = \EmptyFour{}
+    \]
+
+\end{itemize}
 
 \clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
-many schemes we've studied this semester in which they begin with the 
+many schemes studied this semester in which they begin with the 
 Bell (also called an EPR) state:
 \[ \ket{\psi_{1}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
 When they separate, Alice takes the left qubit and Bob takes the right qubit.
@@ -328,28 +349,7 @@ $\ket{\psi_{abe}}$ now?
 \end{enumerate}
 
 
-\clearpage\item\Points{30+2} For each question below, fill in the blank.  Your answer must appear in the provided blank for proper credit.  Write each response in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.  
 
-Each response is worth~2 points, and there are 2 points of extra credit here.
-\begin{itemize}
-    \item When a qubit is measured in the \X{} basis, it collapses to an \Blank{}state of the Pauli \X{} matrix. Those states are \Blank{} and \Blank{}.
-    \item After a quantum bit is measured in the \X{} basis, suppose it is then measured in the standard (\Z{}) basis. The probability of measuring \ket{0} is \Blank[3.5em]{}\% and the probability of measuring \ket{1} is \Blank[3.5em]{}\%.
-    \item Recall that the formula for a state $\ket{\psi}$  on the Bloch sphere is
-    \[ \ket{\psi} = \cos(\theta/2) + e^{i\,\phi}sin(\theta/2)\]
-    Fill in the table using radians for angles:
-    \begin{center}
-        \begin{tabular}{ccc}
-        State & $\theta$ & $\phi$ \\
-        \ket{0} & \Blank & \Blank \\
-        \ket{+}=\ket{+x} &\Blank & \Blank \\
-        \ket{+y} & \Blank & \Blank
-        \end{tabular}
-    \end{center}
-    \item Fill in the blanks below to show the result of the tensor product: \[
-    \ket{+}\otimes\ket{+} = \EmptyFour{}
-    \]
-
-\end{itemize}
 
 \clearpage\item\Points{15} Consider the standard circuit we have used for
 entanglement:
@@ -368,7 +368,7 @@ the matrix entries are mostly $0$ or $1$.
 {\small
 \[
 U = \EmptyFourByFour{} \]}
-If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$
+If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.  Complete the results of $U$ on the other basis vectors similarly, below:
 
 \item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
 \item\Points{2} $U\ket{10}=\frac{\Blank{}}{\sqrt{2}}$
@@ -395,49 +395,7 @@ Each response is worth 1 point.
     \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
     \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
 \end{itemize}
-\LeaveSpace{1in}
-\item\Points{10}  Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
-\begin{BBKey}
-\begin{center}
-\BBBasis{}
-\end{center}
-\end{BBKey}
-\def\RowU#1#2#3#4{%
-\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & & & {\vrule width 0pt depth 13pt\small\TF{}}  \\ \hline}
-\def\Row#1#2#3{%
-\RowU{\STD}{#1}{#2}{#3}}
-\def\RowX#1#2#3{%
-\RowU{\HDM}{#1}{#2}{#3}}
-\Continued{}
-Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note the following:
-\begin{description}
-  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), \textbf{IF ANY}, would Alice and Bob each believe they share, assuming they do not believe Eve is present. Leave these boxes blank if they do not believe they share a common bit based on their published bases.
-  \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
-\end{description}
 
-\begin{BBKey}
-\begin{center}\Large
-\begin{tabular}{c|c||c|c||c|c||c}
-\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
-Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
-\RowX{\BBNe}{\HDM}{\BBNe}
-\Row{\BBUp}{\STD}{\BBUp}
-\RowX{\BBNe}{\HDM}{\BBSe}
-\Row{\BBRt}{\STD}{\BBRt}
-\Row{\BBUp}{\HDM}{\BBNe}
-\Row{\BBUp}{\STD}{\BBUp}\Row{\BBRt}{\HDM}{\BBSe}
-\RowX{\BBSe}{\HDM}{\BBSe}
-\Row{\BBRt}{\STD}{\BBUp}
-\RowX{\BBNe}{\HDM}{\BBNe}
-
-\end{tabular}
-\end{center}
-\end{BBKey}
-\begin{itemize}
-    \item Alice believes the shared key is~\Blank[4in]{}
-    \item Bob believes the shared key is\ \ ~\Blank[4in]{}
-    \item Eve could have been detected in how many rows of your table?~\Blank{}
-\end{itemize}
 
 \clearpage\item\Points{12}
 Bob was not paying attention during the lecture on quantum teleportation.  After he separated from Alice, he forgot which bit from Alice would require imposition of an \X{} gate on his qubit, and which would require a \Z{} gate.
