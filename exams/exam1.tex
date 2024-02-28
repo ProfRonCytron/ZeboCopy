@@ -106,7 +106,7 @@ print out this exam, complete it on paper, and scan it in with a full-page
 scanner.  You can be more creative but if you do not properly register the
 pages with GradeScope, credit will not be given.
 
-There are ??? points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+There are 105 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -135,7 +135,7 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{6} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\item\Points{10} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.   
 
 \textbf{Remember that $\equiv$ means equal up to a global phase.}
@@ -171,12 +171,12 @@ When they separate, Alice takes the left qubit and Bob takes the right qubit.
 They each then measure their qubit in a basis as described below.
 
 \begin{enumerate}
-\item Suppose they each measure $\ket{\psi_{1}}$ in the computational (\textbf{Z})
+\item\Points{4} Suppose they each measure $\ket{\psi_{1}}$ in the computational (\textbf{Z})
 basis.
 Which measurement outcomes are possible for this state?
 \GenTable{0}{1}
 
-\item
+\item\Points{4}
 In class it was shown that
 \[
 \ket{\psi_{1}} = \Bell{} \longleftrightarrow \ket{\psi_{1}}= \frac{\ket{++}+\ket{--}}{\sqrt{2}}
@@ -196,7 +196,7 @@ Which measurement outcomes are possible?
 \GenTable{+}{-}
 \Continued{}
 
-\item This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
+\item\Points{12} This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
 but Bob measures his in the computational basis.  
 This is modeled by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
 to the state $\ket{\psi_{1}}=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
@@ -216,23 +216,28 @@ $\textbf{H}\otimes\textbf{I}$ to the measured outcome.
 In which of the following states could the quantum system be now?
 \GenTableDiff{+}{-}{0}{1}
 \end{enumerate}
-\clearpage\item\Points{10}
+
+\clearpage\item\Points{20}
 In class we saw that if Alice and Bob each take a qubit of \Bell{}, then if they each apply gate $U$ (limited to real values in class) to their respective qubits, the resulting state is still \Bell{}. This means that if they each apply the same gate $U$ to their separate but entangled qubits, they will measure the same results consistently. The \texttt{Matlab} script \texttt{bellstatepersists.txt}  from class is posted on piazza for this exam.
 
 In this problem we look at another of Bell's states, namely
 \[\ket{\psi_{1}} = \BellM{}\]
 Alice takes the left qubit and Bob takes the right qubit, as usual.
 
-Here, Alice and Bob expect to see opposite measurement results.  Specifically, basis state \ket{01} means that if Alice sees a~\Blank{} then Bob sees a \Blank{}.  Similarly, basis state \ket{10} means that if Alice sees a \Blank{} then Bob sees a~\Blank{}.
 
-Referring to state~\ket{\psi_{1}} above, the minus sign between the two basis vectors is important for this problem, but doesn't change the expectations from measurement, because:
+\begin{enumerate}
+    \item\Points{4} When measuring \ket{\psi_{1}}, Alice and Bob expect to see opposite outcomes. 
+    
+    Specifically, basis state \ket{01} means that if Alice sees a~\Blank[3em]{} then Bob sees a \Blank[3em]{}.  Similarly, basis state \ket{10} means that if Alice sees a \Blank[3em]{} then Bob sees a~\Blank[3em]{}.
+
+\item\Points{5} Referring to state~\ket{\psi_{1}} above, the minus sign between the two basis vectors is important for this problem, but doesn't change the expectations from measurement, because:
 \begin{itemize}
     \item The amplitude on \ket{01} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}. 
     \item The amplitude on \ket{10} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}.
 \item The amplitude on basis states \ket{00} and \ket{11} are each \Blank[3em]{}.
 \end{itemize}
 
-In \texttt{bellstatepersists.txt} we define the gate \[U = \begin{pmatrix*}[r] a & b \\ c & d\end{pmatrix*}\]
+\item\Points{4} In \texttt{bellstatepersists.txt} we define the gate \[U = \begin{pmatrix*}[r] a & b \\ c & d\end{pmatrix*}\]
 with $a, b, c, d$ all real-valued, to make matters
 simple.  You can keep those values real for the rest of this problem as well.
 \Continued{}
@@ -247,7 +252,7 @@ With \texttt{Matlab} as your (perhaps recent) faithful friend, complete the equa
 \]
 %\Continued{}
 
-Here is a useful fact (mention this in passing at your next social gathering):  
+\item\Points{6} Here is a useful fact (mention this in passing at your next social gathering):  
 \[ \mbox{If $U$ is unitary then }\left|\mbox{det}(U)\right| =  1 \]
 
 That is, the determinant of a unitary matrix has magnitude~$1$.
@@ -258,8 +263,9 @@ In other words, Alice and Bob can apply $U$ to this other Bell state \ket{\psi_{
 
 Your proof below:
 \LeaveSpace{2in}
-If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them into \ket{\psi_{2}}, after any unitary~$U$ is applied to each qubit, so that their measurements consistently and perfectly disagree?\Blank{}
-\clearpage\item\Points{20}
+\item\Points{1} If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them into \ket{\psi_{2}}, after any unitary~$U$ is applied to each qubit, so that their measurements consistently and perfectly disagree?\Blank{}
+\end{enumerate}
+\clearpage\item\Points{30}
 We next explore the strength of commitment Alice and Bob bring to their
 entanglement, as Eve enters the picture and seeks to become just as entangled
 with Alice and Bob as they are with each other.
@@ -278,14 +284,14 @@ where Alice, Bob, and Eve are assigned the left, middle, and right qubits,
 respectively.
 
 \begin{enumerate}
-\item\Points{5} If $\ket{\psi_{abe}}$ is measured in the computational basis, what possible outcomes are there
+\item\Points{4} If $\ket{\psi_{abe}}$ is measured in the computational basis, what possible outcomes are there
 for Alice, Bob, and Eve at this point?
 \LeaveSpace{0.5in}
-\item\Points{5} Suppose Alice and Bob prepare to measure $\ket{\psi_{abe}}$ in the \textbf{X} basis
+\item\Points{3} Suppose Alice and Bob prepare to measure $\ket{\psi_{abe}}$ in the \textbf{X} basis
 by each applying the Hadamard gate to their qubits, but Eve does nothing to her qubit.  The names of the gates under tensor
 product that model this are:
 \[ \Blank{} \otimes \Blank{} \otimes \Blank{} \]
-\item\Points{5} 
+\item\Points{2} 
 Applying the above-tensored gates to $\ket{\psi_{abe}}$ obtains the following 
 state:
 \[
@@ -301,16 +307,16 @@ state:
 \end{pmatrix*}
 \]
 \Continued{}
-\item\Points{5} If $\ket{\psi_{xxz}}$ is measured now, just as it is, in
+\item\Points{4} If $\ket{\psi_{xxz}}$ is measured now, just as it is, in
 the computational basis, what outcomes are possible for Alice and Bob?
 \GenTable{0}{1}
-\item\Points{5} How does this differ from the situation in \ket{\psi_{1}}, before Eve joined?
+\item\Points{1} How does this differ from the situation in \ket{\psi_{1}}, before Eve joined?
 \LeaveSpace{0.5in}
 \item\Points{5} How could Alice and Bob use this information to tell that Eve
 was present from the beginning, in state $\ket{\psi_{abe}}$?  For full credit, try for the simplest possible approach and be specific about the steps they would take and their chances of catching Eve.
 \LeaveSpace{2.5in}
 \Continued{}
-\item\Points{5} Suppose that instead of doing nothing, Eve is sufficiently clever to impose
+\item\Points{4} Suppose that instead of doing nothing, Eve is sufficiently clever to impose
 a Hadamard gate on her qubit just as Alice and Bob do that to their qubits.
 
 Applying a Hadamard to each state of $\ket{\psi_{abe}}$ produces:
@@ -326,19 +332,19 @@ Applying a Hadamard to each state of $\ket{\psi_{abe}}$ produces:
 \Blank[2em] 
 \end{pmatrix*}
 \]
-\item\Points{5} What are the possible
+\item\Points{4} What are the possible
 outcomes for Alice's and Bob's measurements of $\ket{\psi_{xxx}}$ in
 the computational basis?
 \GenTable{0}{1}
 
-\item\Points{5} How can Alice and Bob catch Eve's presence in
+\item\Points{3} How can Alice and Bob catch Eve's presence in
 $\ket{\psi_{abe}}$ now?
 \end{enumerate}
 
 
 
 
-\clearpage\item\Points{15} Consider the standard circuit we have used for
+\clearpage\item\Points{20} Consider the standard circuit we have used for
 entanglement:
 \begin{center}   
     \adjustbox{valign=t,scale=1.5}{\begin{quantikz}
@@ -346,49 +352,35 @@ entanglement:
 \qw &\qw & \targ{} &   \qw
 \end{quantikz}}\end{center}
 \begin{enumerate}
-\item\Points{5}
+\item\Points{4}
 Below, specify the single, two-qubit matrix that has the same effect as
 the circuit above.  Please factor out a coefficient where possible, in
 the space provided,  so that
-the matrix entries are mostly $0$ or $1$.
+the matrix entries are mostly $0$, $1$, or $-1$.
 
 {\small
 \[
 U = \EmptyFourByFour{} \]}
+
 If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.  Complete the results of $U$ on the other basis vectors similarly, below:
 
 \item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
 \item\Points{2} $U\ket{10}=\frac{\Blank{}}{\sqrt{2}}$
 \item\Points{2} $U\ket{11}=\frac{\Blank{}}{\sqrt{2}}$
-\item\Points{4} If $U$ can be tensor-factored, show the resulting $2\times 2$ matrices below. Otherwise, prove that it cannot be tensor factored.
+\item\Points{10} If $U$ can be tensor-factored, show the resulting $2\times 2$ matrices below. Otherwise, prove that it cannot be tensor factored. There is a blank page at the end if you need more room.
 \end{enumerate}
 
 
 
 
 
-\clearpage\item\Points{10} Bloch Sphere Orienteering:  all answers are in the standard basis.  Write each amplitude in the provided blank space, fully above the dark line.  For example, to express $\frac{i}{\sqrt{3}}$ you would write \Blank{}\hbox to 0pt{\hskip -4em\raisebox{4pt}{$i/\sqrt{3}$}\hss}.
-
-Each response is worth 1 point.
-
-
-
-\begin{itemize}
-    \item We begin at the North pole of the Bloch sphere.
-    \item We are in state \BlQb{}.
-    \item We rotate about the \Z{} axis $\pi/4$ radians.  We are now at \BlQb{}.
-    \item \vline height 2em width0pt We begin again at the North pole.
-    \item We experience a \Y{} gate.  We are now at \BlQb{}.
-    \item We then experience a \Z{} gate.  We are now at state \BlQb{}.
-    \item We finally experience an \H{} gate.  We are now at state \BlQb{}.
-\end{itemize}
 
 
 
 \clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbitrary relative phase~$\phi$ of
 a quantum state, then
 \[  U\begin{pmatrix*}[r] \cos{\theta} \\ e^{i\phi}\sin{\theta}\end{pmatrix*} = \begin{pmatrix*}[r] \cos{\theta} \\ e^{-i\phi}\sin{\theta}\end{pmatrix*} \]
-There is such a gate when $\phi=-\pi$ and that is the \Blank{} gate.  But Arbitrary phase means we do not the value of $\phi$.  
+Arbitrary phase means we do not know the value of $\phi$.  
 
 If such a gate $U$ existed, then
 \begin{itemize}
