@@ -164,7 +164,7 @@ Boldface gates are the usual Pauli gates, and \Gate{H} is the Hadamard gate.
 
 
 \clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
-many schemes studied this semester in which they begin with the 
+many schemes studied this semester in which they begin with the usual
 Bell (also called an EPR) state:
 \[ \ket{\psi_{1}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
 When they separate, Alice takes the left qubit and Bob takes the right qubit.
@@ -247,24 +247,24 @@ With \texttt{Matlab} as your (perhaps recent) faithful friend, complete the equa
 \]
 %\Continued{}
 
-Here is a useful fact (mention this in passing at your next party):  
+Here is a useful fact (mention this in passing at your next social gathering):  
 \[ \mbox{If $U$ is unitary then }\left|\mbox{det}(U)\right| =  1 \]
 
 That is, the determinant of a unitary matrix has magnitude~$1$.
 
-Equipped, aware, and fascinated by that useful fact, prove that
+Equipped with, aware of, and fascinated by that useful fact, prove that
 \[ \ket{\psi_{2}} \equiv \BellM{}\]
 In other words, Alice and Bob can apply $U$ to this other Bell state \ket{\psi_{1}} and they still have (up to a global phase) state \ket{\psi_{1}}.  
 
 Your proof below:
 \LeaveSpace{2in}
-If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them after any $U$ is applied to each qubit, so that their measurements consistently disagree?\Blank{}
+If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them into \ket{\psi_{2}}, after any unitary~$U$ is applied to each qubit, so that their measurements consistently and perfectly disagree?\Blank{}
 \clearpage\item\Points{20}
 We next explore the strength of commitment Alice and Bob bring to their
 entanglement, as Eve enters the picture and seeks to become just as entangled
 with Alice and Bob as they are with each other.
 
-Alice and Bob share the left and right qubits respectively of $\ket{\psi_{1}}=\Bell{}$.
+As usual, Alice and Bob take the left and right qubits respectively of $\ket{\psi_{1}}=\Bell{}$.
 We have seen in class and in exam problem~\ref{prob:follow} that entanglement of those bits follows into the 
 \textbf{X} basis.  If they both measure their qubits in the \textbf{X} basis,
 the outcomes are just as correlated as they would be in the computational
@@ -286,7 +286,7 @@ by each applying the Hadamard gate to their qubits, but Eve does nothing to her 
 product that model this are:
 \[ \Blank{} \otimes \Blank{} \otimes \Blank{} \]
 \item\Points{5} 
-Applying the tensored gates to $\ket{\psi_{abe}}$ obtains the following 
+Applying the above-tensored gates to $\ket{\psi_{abe}}$ obtains the following 
 state:
 \[
 \ket{\psi_{xxz}} = \frac{1}{\Blank[2em]}\begin{pmatrix*}
@@ -304,11 +304,12 @@ state:
 \item\Points{5} If $\ket{\psi_{xxz}}$ is measured now, just as it is, in
 the computational basis, what outcomes are possible for Alice and Bob?
 \GenTable{0}{1}
-\item\Points{5} How does this differ from the situation when Eve was absent?
-\LeaveSpace{1in}
-\item\Points{5} How could you use this information to tell that Eve
-was present from the beginning, in state $\ket{\psi_{abe}}$?
-\LeaveSpace{1in}
+\item\Points{5} How does this differ from the situation in \ket{\psi_{1}}, before Eve joined?
+\LeaveSpace{0.5in}
+\item\Points{5} How could Alice and Bob use this information to tell that Eve
+was present from the beginning, in state $\ket{\psi_{abe}}$?  For full credit, try for the simplest possible approach and be specific about the steps they would take and their chances of catching Eve.
+\LeaveSpace{2.5in}
+\Continued{}
 \item\Points{5} Suppose that instead of doing nothing, Eve is sufficiently clever to impose
 a Hadamard gate on her qubit just as Alice and Bob do that to their qubits.
 
