@@ -94,8 +94,8 @@ Alice & Bob & Possible Outcome? \\
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
-work on your own without contact or conversations with any person.
-Because this exam is given in a distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on us to be fair and flexible, especially if we have been unclear.
+work on your own \textbf{without contact or conversations with any person, except Ron}.  
+Because this exam is given in a distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on grading to be fair, especially if something is unclear or ambiguous.
 
 
 Your work must be legible.  Work that is
@@ -106,7 +106,7 @@ print out this exam, complete it on paper, and scan it in with a full-page
 scanner.  You can be more creative but if you do not properly register the
 pages with GradeScope, credit will not be given.
 
-There are 105 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, including Exam~II.
+There are 106 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, which then adds into your overall semester score.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -114,7 +114,7 @@ actions
 may be taken.
 
 You must fill in your identifying information correctly.  You must upload this
-completed exam to GradeScope properly by the due date and time.
+completed exam to GradeScope properly by the due date and time.  \textbf{Late work will not be accepted.}
 }
 
 \begin{center}\large
@@ -135,7 +135,7 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{10} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\item\Points{11} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
 \TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.   
 
 \textbf{Remember that $\equiv$ means equal up to a global phase.}
@@ -151,13 +151,19 @@ Boldface gates are the usual Pauli gates, and \Gate{H} is the Hadamard gate.
     \item The $i$ present in the \Gate{Y} gate can be factored out as a global phase for the controlled-\Gate{Y} gate that you developed in homework.~\TF{}
  
     \item At the end of teleportation, Alice tells Bob that she measured \ket{11} for her
-    two qubits.  Which of the following gates will \textbf{by itself} recover Alice's original state? (circle only one gate)
+    two qubits.  Which of the following gates will \textbf{by itself} recover Alice's original state? (circle only one gate, or leave blank if none of the listed gates will work)
     \begin{center}
     \mbox{}\\
     Gate \Gate{X}~~~~~~~Gate \Gate{Y}~~~~~~~Gate \Gate{Z}\\ \mbox{}
     \end{center}
-   \item Suppose you are told that measurement of a given state \ket{\psi} is more likely to yield \ket{0} than \ket{1}.  What is the most precise statement you can make about \ket{\psi}'s location on the Bloch sphere?
-    \LeaveSpace{0.5in}
+   \item For each scenario below, what is the most precise statement you can make about \ket{\psi}'s location on the Bloch sphere?
+   \begin{itemize}
+       \item 
+   \ket{\psi} is more likely to yield \ket{0} than \ket{1}. 
+    \LeaveSpace{0.255in}
+    \item \ket{\psi} is equally likely to measure \ket{0} as \ket{1}. 
+    \LeaveSpace{0.255in}
+    \end{itemize}
 \end{itemize}
 
 
@@ -375,24 +381,51 @@ If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sq
 
 
 
-
-
-\clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbitrary relative phase~$\phi$ of
-a quantum state, then
-\[  U\begin{pmatrix*}[r] \cos{\theta} \\ e^{i\phi}\sin{\theta}\end{pmatrix*} = \begin{pmatrix*}[r] \cos{\theta} \\ e^{-i\phi}\sin{\theta}\end{pmatrix*} \]
-Arbitrary phase means we do not know the value of $\phi$.  
-
-If such a gate $U$ existed, then
+\clearpage\item\Points{5 extra credit}
+We can measure quantum states in any basis we choose.  In this problem, we measure the state of a 2-qubit quantum system in the \Gate{Bell} basis.  That basis is named and defined below:
+\begin{center}
+    \begin{tabular}{ccc}
+    Name & State & Column Vector \\ \hline
+    $b_0$ & \BellTwoSign{00}{11}{+} & $\frac{1}{\sqrt{2}}\DQB{1}{0}{0}{1}$ \\[2.5em]
+    $b_1$ & \BellTwoSign{00}{11}{-} & $\frac{1}{\sqrt{2}}\DQB{1}{0}{0}{-1}$ \\[2.5em]
+    $b_2$ & \BellTwoSign{01}{10}{+} & $\frac{1}{\sqrt{2}}\DQB{0}{1}{1}{0}$ \\[2.5em]
+    $b_3$ & \BellTwoSign{01}{10}{-} & $\frac{1}{\sqrt{2}}\DQB{0}{1}{-1}{0}$ 
+    \end{tabular}
+\end{center}
+The most common state is $b_0$ in our studies, but we have seen $b_3$ on this exam.
 \begin{itemize}
-    \item $U\SQB{1}{0} = \raisebox{-1.5em}{\Blank{}}$
-    \item $U\SQB{0}{1} = \raisebox{-1.5em}{\Blank{}}$
-\end{itemize}
+\item Pick some $b_i$ and some $b_j$, $i \neq j$, and show below that they are orthogonal.
+\LeaveSpace{1.0in}
+\item Below, show the 2-qubit gate that sends a state in the \Gate{Z} basis into the \Gate{Bell} basis, with 
+$\ket{00}\mapsto b_{0}$,
+$\ket{01}\mapsto b_{1}$,
+$\ket{10}\mapsto b_{2}$,
+$\ket{11}\mapsto b_{3}$.
 
-Below, provide gate $U$ or prove that no such
-gate $U$ can exist without knowing $\phi$.
+{\small \[ \EmptyFourByFour{} \]}
+\Continued{}
+\item What 2-qubit gate sends the \Gate{Bell} basis into the \Gate{Z} basis?
+{\small \[ \EmptyFourByFour{} \]}
+\item The above matrix tensor-factorable~\TF{}. 
+\item Proof:
+\end{itemize}
+% \clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbitrary relative phase~$\phi$ of
+% a quantum state, then
+% \[  U\begin{pmatrix*}[r] \cos{\theta} \\ e^{i\phi}\sin{\theta}\end{pmatrix*} = \begin{pmatrix*}[r] \cos{\theta} \\ e^{-i\phi}\sin{\theta}\end{pmatrix*} \]
+% Arbitrary phase means we do not know the value of $\phi$.  
+
+% If such a gate $U$ existed, then
+% \begin{itemize}
+%     \item $U\SQB{1}{0} = \raisebox{-1.5em}{\Blank{}}$
+%     \item $U\SQB{0}{1} = \raisebox{-1.5em}{\Blank{}}$
+% \end{itemize}
+
+% Below, provide gate $U$ or prove that no such
+% gate $U$ can exist without knowing $\phi$.
 
 \end{enumerate}
-\end{assignment}
-\Bpage{}
 
+\Bpage{}
+\Bpage{}
+\end{assignment}
 \end{document}
