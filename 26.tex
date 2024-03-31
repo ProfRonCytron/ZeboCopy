@@ -216,7 +216,7 @@ Expressing \S{} in this basis:
 \Vskip{-3em}\begin{itemize}
 \item The first step of the algorithm reflects the current state \S{} around the horizontal axis \R{} to obtain \ColorFour{\QState{f}}.
 \item This is accomplished using the familiar phase-kickback trick, which \alert<6>{flips the sign of the component \ket{x} iff $f(x)=1$}.
-\item<7-> The second step reflects the current state \ColorFour{\QState{f}} around \S{} to obtain \ColorFive{\BState{d}}.
+\item<7-> The second step reflects the current state \ColorFour{\QState{f}} around \S{} to obtain \ColorFive{\QState{d}}.
 \item<7-> In this example, we obtain \W{} exactly.  Typically we must repeat the two steps of the algorithm to get close to \W.
 \end{itemize}
 }%
@@ -227,16 +227,16 @@ Expressing \S{} in this basis:
     \( \RootTwoN{2}\DQB{1}{-1}{1}{1} \)
     \item Sign change except \ket{00}: 
     \ColorSix{\(t=\RootTwoN{2}{\DQB{1}{1}{-1}{-1}} \)}
-    \item $\TensSupProd{\Hadamard}{2}\ColorSix{(t)}$ yields $\W=\CDQB{0}{0}{1}{0}\ColorFive{=\BState{d}}$
+    \item $\TensSupProd{\Hadamard}{2}\ColorSix{(t)}$ yields $\W=\Conj{\CDQB{0}{0}{1}{0}}\ColorFive{=\QState{d}}$
 \end{itemize}
 }
 }{%
-\Vskip{-5em}\hskip -3em\begin{center}
+\Vskip{-4.8em}\hskip -3em\begin{center}
 \begin{TIKZP}[scale=2.4]
     \visible<1->{\draw[->,thick,\RCone] (0,0) -- (30:1) node[right]{$\S = \RootTwoN{2}\DQB{1}{1}{1}{1}$};} 
-    \visible<2-6>{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
-    \visible<7->{\draw[->,thick,\RCfive] (0,0) -- (0,1) node[above right]{$\W=\CDQB{0}{0}{1}{0}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
-    \visible<3->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {$\R=\RootN{3}\CDQB{1}{1}{0}{1}$};}
+    \visible<2-6>{\draw[->,thick,\RCthree] (0,0) -- (0,1) node[above right]{$\W=\Conj{\CDQB{0}{0}{1}{0}}\visible<7->{\ColorFive{=\BState{d}}}$} ;}
+    \visible<7->{\draw[->,thick,\RCfive] (0,0) -- (0,1) node[above right]{$\W=\Conj{\CDQB{0}{0}{1}{0}}\visible<7->{\ColorFive{=\QState{d}}}$} ;}
+    \visible<3->{\draw[->,thick,\RCtwo] (0,0) -- (1,0) node[right] {$\R=\RootN{3}\Conj{\CDQB{1}{1}{0}{1}}$};}
     \visible<4->{
      \draw[->,thick] (1,0) arc (0:30:1) coordinate(zz);
      \draw (0.7,0.17) node {$\theta=\frac{\pi}{6}$};
