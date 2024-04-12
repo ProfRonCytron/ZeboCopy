@@ -90,7 +90,47 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
-\item\Points{10} Fill in the box for a distributed key choosing the basis to get the desired key.
+\item\Points{10} 
+Change this so they fill in the bases given the bits.
+
+Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases they will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
+\begin{BBKey}
+\begin{center}
+\BBBasis{}
+\end{center}
+\end{BBKey}
+\def\RowU#1#2#3#4{%
+\vrule width 0pt depth 0.5em height 1.2em#1 &#2 & #3 & #4 & & & {\vrule width 0pt depth 13pt\small\TF{}}  \\ \hline}
+\def\Row#1#2#3{%
+\RowU{\STD}{#1}{#2}{#3}}
+\def\RowX#1#2#3{%
+\RowU{\HDM}{#1}{#2}{#3}}
+
+Fill in the table below and be sure to put your final answer for grading in the space provided at the bottom of this page.  Note the following:
+\begin{description}
+  \item[Agreed Bit?]  After publishing their list of bases, what bit (0 or 1), \textbf{IF ANY}, would Alice and Bob each believe they share, assuming they do not believe Eve is present. Leave these boxes blank if they do not believe they share a common bit based on their published bases.
+  \item[Eve Detected?] Does this particular row allow detection of Eve if Alice's and Bob's bits from this row are published?
+\end{description}
+
+\begin{BBKey}
+\begin{center}\Large
+\begin{tabular}{c|c||c|c||c|c||c}
+\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{2}{c||}{Agreed bit?}&Eve \\
+Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
+\RowX{\BBNe}{\HDM}{\BBNe}
+\Row{\BBUp}{\STD}{\BBUp}
+\RowX{\BBNe}{\HDM}{\BBSe}
+\Row{\BBRt}{\STD}{\BBRt}
+\Row{\BBUp}{\HDM}{\BBNe}
+\Row{\BBUp}{\STD}{\BBUp}\Row{\BBRt}{\HDM}{\BBSe}
+\RowX{\BBSe}{\HDM}{\BBSe}
+\Row{\BBRt}{\STD}{\BBUp}
+\RowX{\BBNe}{\HDM}{\BBNe}
+
+\end{tabular}
+\end{center}
+\end{BBKey}
+
 
 \item\Points{10} Grover where you are told there is one solution but 
 \begin{enumerate}
