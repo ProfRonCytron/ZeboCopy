@@ -20,6 +20,7 @@
 \def\QZero{\ket{0}}
 \def\QState#1{\ensuremath{\psi_{#1}}}
 
+
 \def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
 \def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
 \def\TF{\TFMarked{\relax}{\relax}}
@@ -132,7 +133,39 @@ Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
 \end{BBKey}
 
 
-\item\Points{10} Grover where you are told there is one solution but 
+\item\Points{10} The analysis of Grover's algorithm in class assumed that there was exactly one input for which our oracle returned~$1$; on all other inputs, the oracle returned~$0$.  We can describe that succinctly by saying the oracle \emph{yields} exactly one solution.   
+
+A more generous oracle might yield $k$ solutions, meaning that there are exactly $k$ distinct inputs for which the oracle returns~$1$;  on all other inputs, the oracle returns~$0$.
+
+In the example starting on 26.pdf, slide 8, page 26, we examined how to compute the angle~$\theta$ for $n=2$ qubits when the oracle yields one solution.  The result was
+\[ \cos{\theta} = \braket{s}{r} = \frac{\sqrt{3}}{2} = \sqrt\frac{2^{n}-1}{2^{n}} \]
+where the rightmost term is the general solution for Grover as described above running on $n$ qubits, when the oracle yields one solution.
+\begin{enumerate}
+    \item Consider the expression  \[ \sqrt\frac{2^{n}-1}{2^{n}}\]
+     We hope to run Grover's algorithm on large problems.  As $n$ grows large, to what value does the expression converge?~\Blank{}
+     
+     True or false: It is appropriate to use that convergence value for Grover's algorithm to compute~$\theta$~\TF{}
+     \item Explain your reasoning for choosing true or false:
+     \LeaveSpace{0.75in}
+     \item To make these answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  Examples:
+     \begin{itemize}
+         \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all $1$s''.  
+         \item The state $\ket{0} = \SQB{1}{0}$ can be described as: $\frac{1}{2}$ $0$s and $\frac{1}{2}$ $1$s.
+         \item The result of an $n$-way Hadamard transform on $n$~qubits that are all $0$ can be described: ``$2^{n}$~$1$s''.
+    \end{itemize}
+  For an $n$-qubit instance of Grover, describe the state \ket{s} when 
+         \begin{enumerate} 
+           \item the oracle yields one solution~\Blank[2.5in]{}
+           \item The oracle yields $k$ solutions~\Blank[2.5in]{}
+        \end{enumerate}
+    Now consider the ket \ket{r} from the slides.  Be sure you are using \ket{r}, the horizontal axis, and not \ket{w}, the vertical axis.  In the same style with which you should have characterized \ket{s}, now describe \ket{r} for an $n$~qubit instance of Grover when
+        \begin{enumerate} 
+           \item the oracle yields one solution~\Blank[2.5in]{}
+           \item The oracle yields $k$ solutions~\Blank[2.5in]{}
+        \end{enumerate}
+         
+     
+\end{enumerate}
 \begin{enumerate}
     \item the function never produces a 1.
     \item the function always produces a 1. How can you tell the difference between this and the one above?  Does phase kickback do anything?
