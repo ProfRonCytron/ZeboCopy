@@ -7,6 +7,7 @@
 \usepackage{fancybox}
 \usepackage{adjustbox}
 \usepackage{quantikz}
+\usepackage{bm}
 \usepackage{../bbkey}
 \def\SquareOutline{%
 \path (0,0) rectangle (1,1);%
@@ -25,7 +26,7 @@
 \def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
 \def\TF{\TFMarked{\relax}{\relax}}
 \def\exp#1{\ensuremath{e^{#1}}}
-\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.2em}
 \def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
 \newcommand{\Blanket}[1][3em]{%
 \mbox{\ensuremath{|\,\Blank[#1]\,\rangle}}}
@@ -43,10 +44,16 @@
 \begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
 \def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
 
-
+\def\NiceI{\kern 0.5pt\ensuremath{\mathfrak{i}}}
 \begin{document}
+\def\TensOp{\ensuremath{\bm{\otimes}}}
+\def\TensProd#1#2{\ensuremath{#1 \TensOp{} #2}}
+\def\RootN#1{\RootUN{1}{#1}}
+\def\RootUN#1#2{\ensuremath{\frac{#1}{\sqrt{#2}}}}
+\def\RootTwo{\RootN{2}}
+\def\ExpVal#1#2{\ensuremath{\bra{#2}#1\ket{#2}}}
 
-\begin{assignment}{Exam II}{22 April 2024}{In GradeScope by 3 May 2024, 9 AM CDT}
+\begin{assignment}{Exam II}{24 April 2024}{In GradeScope by 6 May 2024, 9 AM CDT}
 
 {\small {\large \fbox{READ THIS before starting!}}
 This exam is open-book, open-notes, open-Internet, but you must do this
@@ -91,6 +98,100 @@ sure you filled in your information in the box above!)
 %
 \clearpage
 \begin{enumerate}
+
+\item\Points{10}
+Throughout this problem let the quantum state
+\( \ket{\psi} = \SQB{\alpha}{\beta} \).
+
+Recall (from VQE and other studies) that the expected value of a measurement operator $M$ in a given quantum state $\ket{\psi}$ is given by
+\( \ExpVal{M}{\psi} \).
+
+\begin{enumerate}
+    \item With $\Z{}=\begin{pmatrix*}[r]
+    1 & 0 \\ 0 & -1
+\end{pmatrix*}$,  prove \(
+\ExpVal{\Z}{\psi} = \left|\alpha\right|^{2} - \left|\beta\right|^{2} \):
+\LeaveSpace{1in}
+ \item What property of quantum states allows us to eliminate $\left|\beta\right|^{2}$ from
+ \[
+ \ExpVal{\Z}{\psi} = \left|\alpha\right|^{2} - \left|\beta\right|^{2}\mbox{ ?}
+ \]\Blank[3in]{}
+ \item Using that property, express 
+ $\ExpVal{\Z}{\psi}$ only in terms of $\alpha$:\Blank[1.5in]{}
+ \item With $\X{}=\begin{pmatrix*}[r]
+    0 & 1 \\ 1 & 0
+\end{pmatrix*}$, $\ExpVal{\X}{\psi}=\Blank[1.5in]{}$. Show your work below:
+\LeaveSpace{1in}
+\item Fill in the table with the values of the following expressions:
+\begin{center}\begin{tabular}{rl}
+\ExpVal{\Z\TensOp\Z}{00} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{01} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{10} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{11} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z}{010101} = & \Blank{}
+\end{tabular}\end{center}
+\end{enumerate}
+\item\Points{10}
+Consider the quantum state
+\[ \ket{\psi} = \frac{1}{2}\DQB{1}{-\NiceI{}}{-1}{\NiceI} \]
+\begin{enumerate}
+    \item Show the tensor factoring of this state into two qubits:
+    \[
+    \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB}
+    \]
+    \item Below draw the quantum circuit that creates the above state, using only Hadamard and Pauli gates.  Assume the qubits are initially each $\ket{0}$.  Draw your gates on top of the wires below:
+    
+    \bigskip
+    
+    \begin{center}
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$q_0$} &  \qw & \qw & \qw & \qw & \qw & \qw  \\[2em]
+\lstick{$q_1$} &   \qw & \qw &\qw & \qw & \qw & \qw \\
+\end{quantikz}}\end{center}
+\item If the circuit above ended in measurement, complete the table below for the likelihood of seeing each observable in the computational basis:
+\begin{center}\begin{tabular}{r|l}
+$\ket{q_{0}q_{1}}$ & Probability \\\hline
+$\ket{00}$ & \Blank{} \\
+$\ket{01}$ & \Blank{} \\
+$\ket{10}$ & \Blank{} \\
+$\ket{11}$ & \Blank{} \\
+\end{tabular}\end{center}
+
+    \item If we perform phase estimation as taught in class (slide deck 30, ``Inverse Fourier Transform''), what value will we obtain for~$w$ as a binary fraction?{\Huge \ .\ }\Blank[1.7em]\ \Blank[1.7em]{}
+\item Suppose that prior to performing phase estimation, we suspect that the top qubit may have suffered a phase error, as if a \Z{} gate had been applied.
+If the error occurs, what is the resulting tensor-factored state?
+    \[
+    \ket{\psi_{e}} = \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB}
+    \]
+\item If we perform phase estimation on $\ket{\psi_{e}}$, what will the result be? Show your work for full credit.
+\LeaveSpace{1in}
+\item Let's equip $q_0$ with one ancillary qubit, which will be utilized for error correction, similar to Shor's error correction scheme.
+
+    \begin{center}
+\adjustbox{valign=t,scale=1.5}{\begin{quantikz}
+\lstick{$q_0\mbox{ in state }\ket{\psi}$}& \qw& \qw & \gate[2]{E} & \qw & \qw & \qw & \qw  & \qw & \qw & \qw & \qw \\[0.5em]
+\lstick{$a$} & \qw &\qw & \qw& \qw & \qw & \qw & \qw  & \qw & \qw & \qw & \qw  
+\end{quantikz}}\end{center}
+\begin{itemize}
+\item Prior to $E$, the state of our system is
+\[
+\ket{q_{0}ab} = \alpha\ket{00} + \beta\ket{11}
+\]
+\item Gate $E$ either does nothing to the quantum state, or it might (accidentally, at will)
+introduce a phase flip, \emph{but only on the top qubit} $q_0$.  When this happens, it is as if $q_0$  encountered a \Z{} gate inside $E$.
+\item Your task here is to deploy syndrome measurements to detect if the phase flip happened, and then create quantum logic to repair the problem when it happens.
+\end{itemize}
+\begin{enumerate}
+    \item If $E$ acts as identity on all qubits and doesn't impose a \Z{} gate on $q_0$, what is the state of the system after~$E$?
+    \[
+    \Blank{}\ket{00} + \Blank{}\ket{11}
+    \]
+    \item If $E$ does impose the phase flip on the top qubit, what is the state of the system after~$E$?
+        \[
+    \Blank{}\ket{00} + \Blank{}\ket{11}
+    \]
+\end{enumerate}
+\end{enumerate}
 \item\Points{10} 
 Change this so they fill in the bases given the bits.
 
@@ -133,7 +234,7 @@ Basis & Obs & Basis & Obs & Alice & Bob & Detected?\\\hline
 \end{BBKey}
 
 
-\item\Points{10} The analysis of Grover's algorithm in class assumed that there was exactly one input for which our oracle returned~$1$; on all other inputs, the oracle returned~$0$.  We can describe that succinctly by saying the oracle \emph{yields} exactly one solution.   
+\item\Points{10} The analysis of Grover's algorithm in class assumed that there was exactly one input for which our oracle returned~$1$; on all other inputs, the oracle returned~$0$.  Succinctly described, we say the oracle \emph{yields} exactly one solution.   
 
 A more generous oracle might yield $k$ solutions, meaning that there are exactly $k$ distinct inputs for which the oracle returns~$1$;  on all other inputs, the oracle returns~$0$.
 
@@ -147,7 +248,7 @@ where the rightmost term is the general solution for Grover as described above r
      True or false: It is appropriate to use that convergence value for Grover's algorithm to compute~$\theta$~\TF{}
      \item Explain your reasoning for choosing true or false:
      \LeaveSpace{0.75in}
-     \item To make these answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  Examples:
+     \item To make the following answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  For example:
      \begin{itemize}
          \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all $1$s''.  
          \item The state $\ket{0} = \SQB{1}{0}$ can be described as: $\frac{1}{2}$ $0$s and $\frac{1}{2}$ $1$s.
@@ -156,21 +257,58 @@ where the rightmost term is the general solution for Grover as described above r
   For an $n$-qubit instance of Grover, describe the state \ket{s} when 
          \begin{enumerate} 
            \item the oracle yields one solution~\Blank[2.5in]{}
-           \item The oracle yields $k$ solutions~\Blank[2.5in]{}
+           \item the oracle yields $k$ solutions~\Blank[2.5in]{}
         \end{enumerate}
     Now consider the ket \ket{r} from the slides.  Be sure you are using \ket{r}, the horizontal axis, and not \ket{w}, the vertical axis.  In the same style with which you should have characterized \ket{s}, now describe \ket{r} for an $n$~qubit instance of Grover when
         \begin{enumerate} 
            \item the oracle yields one solution~\Blank[2.5in]{}
-           \item The oracle yields $k$ solutions~\Blank[2.5in]{}
+           \item the oracle yields $k$ solutions~\Blank[2.5in]{}
         \end{enumerate}
-         
-     
+       \item In a world where Grover meets Deutsch--Jozsa (this is possible: both algorithms are from the 1990s), consider the use of an oracle that promises that exactly one of the following is true of its function $f(x)$ where $x$ is $n$-qubits wide:
+       \begin{description}
+           \item[all] For all inputs $x$, $f(x)=1$.  Such an oracle yields \Blank{} solutions.
+           \item[none] For all inputs $x$, $f(x)=0$.  Such an oracle yields \Blank{} solutions.
+           \item[half] Function $f(x)$ is balanced in the Deutsch--Jozsa sense.  Such an oracle yields \Blank{} solutions.
+       \end{description}
+       \item For a Grover instance where $x$ is $n$-qubits wide, and for which $f(x)$ yields $k$~solutions
+       \LeaveSpace{0.2in}\[ \cos{\theta} = \braket{s}{r} = \Blank[2in]{} \]
+       Show your work below, but be sure to fill in the answer clearly in the blank above!
+       \Continued{}
+       \item Now let's apply your formula to the promises articulated above.  Throughout, assume the function input $x$ is $n$~qubits.
+       
+       Show your work to get full credit.
+     \begin{description}
+         \item[all]  
+         \LeaveSpace{1in}
+         \[ \theta = \Blank[3in]{}\]
+         \item[none]\LeaveSpace{1in}
+                  \[ \theta = \Blank[3in]{}\]
+         \item[half] \LeaveSpace{1in}
+         \[ \theta = \Blank[3in]{}\]
+     \end{description}
+     \item In the \textbf{half} case the complexity of Grover's algorithm becomes (in terms of $n$):
+     \LeaveSpace{1in}
+     \Blank[2in]{}
+     \Continued{}
+     \item Let's consider a search of $N=2^{n}$ items under the possible promises.  First, how could you use a quantum computer to distinguish the \textbf{half} promise from the other two, using a single instance of the oracle?  This means that the oracle executes only one query, but that input could be any superposition of states.
+     \LeaveSpace{0.5in}
+
+     \item Next, how can you distinguish \textbf{all} from \textbf{none} on a quantum computer, using a single instance of the oracle?
+     \LeaveSpace{0.5in}
 \end{enumerate}
+
+\item\Points{10}
+Consider the circuit below, which tests whether the input $x$ is the binary string ``00111'', each 5 bits wide.  Suppose we have reason to believe that the top qubit is faulty in the sense that it behaves as if it were subjected to an \X{}~gate, just prior to being used as a control bit for the multi-controlled \X{} gate.
+
 \begin{enumerate}
-    \item the function never produces a 1.
-    \item the function always produces a 1. How can you tell the difference between this and the one above?  Does phase kickback do anything?
-    \item the function produces a 1 exactly half of the time.  What is theta for this?
+\item If the circuit is viewed as implementing an oracle, for what input string will the oracle return $1$?\Blank[3in]{}
 \end{enumerate}
+\item Show how we can use Shor's 3~qubit error correction scheme to address this problem only for the top qubit.
+\LeaveSpace{3in}
+\item Complete the circuit below so that each $c_i$ qubit is 0 if and only if $a_i$ has the same value as $b_i$.
+\LeaveSpace{3in}
+
+\item\Points{10}
 
 
 
