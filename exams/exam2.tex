@@ -69,7 +69,7 @@ print out this exam, complete it on paper, and scan it in with a full-page
 scanner.}  You can be more creative but if you do not properly register the
 pages with GradeScope, credit will not be given.
 
-There are 103 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, which then adds into your overall semester score.
+There are 105 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, which then adds into your overall semester score.
 
 You must sign the pledge below for your exam to count.  Any cheating will
 cause the students involved to receive an F for this course. Other unpleasant
@@ -175,7 +175,8 @@ Recall (from VQE and other studies) that the expected value of a measurement ope
 \ExpVal{\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z}{010101} = & \Blank{}
 \end{tabular}\end{center}
 \end{enumerate}
-\item\Points{18}
+
+\item\Points{20}
 Consider the quantum state
 \[ \ket{\psi} = \frac{1}{2}\DQB{1}{-\NiceI{}}{-1}{\NiceI} \]
 \begin{enumerate}
@@ -183,7 +184,7 @@ Consider the quantum state
     \[
     \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB}
     \]
-    \item\Points{3} Below draw the quantum circuit that creates the above state, using only Hadamard and Pauli gates.  As usual, the left qubit is $q_0$ and the right qubit is $q_1$. 
+    \item\Points{5} Below draw the quantum circuit that creates the above state, using only Hadamard, Pauli, and $S$ gates.  As usual, the left qubit is $q_0$ and the right qubit is $q_1$. 
  Assume the qubits are initially each $\ket{0}$.  Draw your gates on top of the wires below:
     
     \bigskip
@@ -202,13 +203,19 @@ $\ket{10}$ & \Blank{} \\
 $\ket{11}$ & \Blank{} \\
 \end{tabular}\end{center}
 
-    \item\Points{2} If we perform phase estimation as taught in class (slide deck 30, ``Inverse Fourier Transform''), what value will we obtain for~$w$ as a binary fraction?{\Huge \ .\ }\Blank[1.7em]\ \Blank[1.7em]{}
+    \item\Points{2} If we perform phase estimation as taught in class (slide deck 30, ``Inverse Fourier Transform''), what value will we obtain for~$w$ as a binary fraction?
+ \begin{center}   
+    {\Huge \ .\ }\Blank[1.7em]\ \Blank[1.7em]{}
+\end{center}
 \item\Points{2} Suppose that prior to performing phase estimation, we suspect that the top qubit may have suffered a phase error, as if a \Z{} gate had been applied.
 If the error occurs, what is the resulting tensor-factored state?
     \[
-    \ket{\psi_{e}} = \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB} = \TensProd{\ket{\psi_{top}}}{\ket{\psi_{bot}}}
+    \ket{\psi_{e}} = \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB} 
     \]
-\item\Points{5} If we perform phase estimation on $\ket{\psi_{e}}$, what will the result be? Show and explain your work clearly and carefully for full credit.
+\item\Points{5} If we now perform phase estimation on $\ket{\psi_{e}}$, what will the result be? 
+\[  w = \Blank[3in]{}
+\]
+Show and explain your work clearly and carefully for full credit below.
 \LeaveSpace{1in}
 % \item Let's equip $q_0$ with one ancillary qubit, which will be utilized for error correction, similar to Shor's error correction scheme.
 
@@ -252,7 +259,11 @@ Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The 
 \def\RowX#1#2{%
 \RowU{\HDM}{#1}{#2}}
 
-Fill in the table below to show the bases Bob must have used and the observations Bob must have seen, where that observation is relevant to finding the shared key.  You should have an entry for each row for Bob's \emph{Basis}.  However, where Bob's observation is irrelevant, leave that entry blank.
+Fill in the table below to show the bases Bob must have used and the observations Bob must have seen, where that observation is relevant to finding the shared key.  
+\begin{itemize}
+\item You should have an entry in each row for Bob's \emph{Basis}.
+\item However, in the Bob's \emph{Obs} column, leave that blank if his observation is irrelevant to obtaining the shared key.
+\end{itemize}
 
 If the entry in the rightmost column, \emph{Agreed Bit} is blank, then Alice and Bob could not agree on a bit given their bases.
 
@@ -293,9 +304,9 @@ where the rightmost term is the general solution for Grover as described above r
      \LeaveSpace{0.75in}
      \item\Points{4} To make the following answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  For example:
      \begin{itemize}
-         \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all $1$s''.  
-         \item The state $\ket{0} = \SQB{1}{0}$ can be described as: $\frac{1}{2}$ $0$s and $\frac{1}{2}$ $1$s.
-         \item The result of an $n$-way Hadamard transform on $n$~qubits that are all $0$ can be described: ``$2^{n}$~$1$s''.
+         \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all ones''.  
+         \item The state $\ket{0} = \SQB{1}{0}$ can be described as: ``$\frac{1}{2}$ zeros and $\frac{1}{2}$ ones''
+         \item The result of an $n$-way Hadamard transform on $n$~qubits that are in state $\ket{0^{\TensOp n}}$ can be described: ``$2^{n}$~ones''
     \end{itemize}
   \Continued{}
   For an $n$-qubit instance of Grover, describe the state \ket{s} when 
@@ -303,11 +314,12 @@ where the rightmost term is the general solution for Grover as described above r
            \item the oracle yields one solution~\Blank[2.5in]{}
            \item the oracle yields $k>1$ solutions~\Blank[2.5in]{}
         \end{enumerate}
-    Now consider the ket \ket{r} from the slides.  Be sure you are using \ket{r}, the horizontal axis, and not \ket{w}, the vertical axis.  In the same way you should have characterized \ket{s}, now describe \ket{r} for an $n$~qubit instance of Grover when
+    Now consider the ket \ket{r} from the slides.  Be sure you are using \ket{r}, the horizontal axis, and not \ket{w}, the vertical axis.  In the same way you should have characterized \ket{s}, now describe \ket{r} for an $n$-qubit instance of Grover when
         \begin{enumerate} 
            \item the oracle yields one solution~\Blank[2.5in]{}
-           \item the oracle yields $k$ solutions~\Blank[2.5in]{}
+           \item the oracle yields $k>1$ solutions~\Blank[2.5in]{}
         \end{enumerate}
+        For the rest of this problem, precise mathematical answers and formulas are required. The informal descriptions were only for the above questions in this part of the problem.
        \item\Points{6} In a world where Grover meets Deutsch--Jozsa (this is possible: both algorithms are from the 1990s), consider the use of an oracle that promises that exactly one of the following is true of its function $f(x)$ where $x$ is $n$-qubits wide:
        \begin{description}
            \item[all] For all inputs $x$, $f(x)=1$.  Such an oracle yields \Blank{} solutions.
@@ -315,8 +327,8 @@ where the rightmost term is the general solution for Grover as described above r
            \item[half] Function $f(x)$ is balanced in the Deutsch--Jozsa sense.  Such an oracle yields \Blank{} solutions.
        \end{description}
        \item\Points{4} For a Grover instance where $x$ is $n$-qubits wide, and for which $f(x)$ yields $k$~solutions
-       \LeaveSpace{0.2in}\[ \cos{\theta} = \braket{s}{r} = \Blank[2in]{} \]
-       Show your work below, but be sure to fill in the answer clearly in the blank above!
+       \[ \cos{\theta} = \braket{s}{r} = \Blank[2in]{} \]
+       Show your work below or on the last page, but be sure to fill in the above blank.
        \Continued{}
        \item\Points{6} Now let's apply your formula to the promises articulated above.  Throughout, assume the function input $x$ is $n$~qubits.
        
