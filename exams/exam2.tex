@@ -112,7 +112,14 @@ sure you filled in your information in the box above!)
     \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
     \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani with secret $s$, then the circuit's measurements will yield a unique result (depends only on $s$) in the computational basis.~\TF{}
     \item If the entangled qubits for the CHSH game fail (they decohere and collapse into random values), Alice and Bob can at best win 75\% of the time.~\TF{}
-    \item Grover's algorithm can solve the factoring problem as quickly as Shor's algorithm.~\TF{}
+    \item Suppose a unitary matrix $U$ models the effects of a quantum circuit $C$.  
+    \begin{itemize}
+    \item What circuit corresponds always to the inverse of $U$?
+    
+    \Blank[3in]{}
+
+    \item If $U$ is also its own conjugate transpose ($U=U^\star$), what circuit also corresponds to the inverse of $U$?\Blank[3in]{}
+    \end{itemize}
 \end{itemize}
 
 \clearpage\item\Points{10}
@@ -302,14 +309,14 @@ where the rightmost term is the general solution for Grover as described above r
     \item\Points{3} True or false: It is appropriate to use that convergence value for Grover's algorithm to compute~$\theta$~\TF{}.
      Explain your reasoning for choosing true or false:
      \LeaveSpace{0.75in}
-     \item\Points{4} To make the following answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  For example:
+     \item\Points{4} To make the following answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its ones and zeros.  For example:
      \begin{itemize}
          \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all ones''.  
          \item The state $\ket{0} = \SQB{1}{0}$ can be described as: ``$\frac{1}{2}$ zeros and $\frac{1}{2}$ ones''
          \item The result of an $n$-way Hadamard transform on $n$~qubits that are in state $\ket{0^{\TensOp n}}$ can be described: ``$2^{n}$~ones''
     \end{itemize}
   \Continued{}
-  For an $n$-qubit instance of Grover, describe the state \ket{s} when 
+  For an $n$-qubit instance of Grover, describe as above the state \ket{s} when 
          \begin{enumerate} 
            \item the oracle yields one solution~\Blank[2.5in]{}
            \item the oracle yields $k>1$ solutions~\Blank[2.5in]{}
@@ -319,7 +326,7 @@ where the rightmost term is the general solution for Grover as described above r
            \item the oracle yields one solution~\Blank[2.5in]{}
            \item the oracle yields $k>1$ solutions~\Blank[2.5in]{}
         \end{enumerate}
-        For the rest of this problem, precise mathematical answers and formulas are required. The informal descriptions were only for the above questions in this part of the problem.
+        \textbf{For the rest of this problem, precise mathematical answers and formulas are required.} The informal descriptions were only for the above questions in this part of the problem.
        \item\Points{6} In a world where Grover meets Deutsch--Jozsa (this is possible: both algorithms are from the 1990s), consider the use of an oracle that promises that exactly one of the following is true of its function $f(x)$ where $x$ is $n$-qubits wide:
        \begin{description}
            \item[all] For all inputs $x$, $f(x)=1$.  Such an oracle yields \Blank{} solutions.
@@ -342,15 +349,15 @@ where the rightmost term is the general solution for Grover as described above r
          \item[half] \LeaveSpace{1in}
          \[ \theta = \Blank[3in]{}\]
      \end{description}
-     \item\Points{2} In the \textbf{half} case the complexity of Grover's algorithm becomes (in terms of $n$):
+     \item\Points{2} In the \textbf{half} case, the complexity of Grover's algorithm becomes (in terms of $n$):
      \LeaveSpace{1in}
      \Blank[2in]{}
      \Continued{}
-     \item\Points{2} Let's consider a search of $N=2^{n}$ items under the possible promises.  First, how could you use a quantum computer to distinguish the \textbf{half} promise from the other two, using a single instance of the oracle?  This means that the oracle executes only one query, but that input could be any superposition of states.
-     \LeaveSpace{0.5in}
+     \item\Points{2} Let's consider a search of $N=2^{n}$ items under the possible promises.  First, how could you use a quantum computer to distinguish the \textbf{half} promise from the other two, using a single query of the oracle?  
+     \LeaveSpace{1in}
 
      \item\Points{2} Next, how can you distinguish \textbf{all} from \textbf{none} on a quantum computer, using a single instance of the oracle?
-     \LeaveSpace{0.5in}
+     \LeaveSpace{1in}
 \end{enumerate}
 
 
