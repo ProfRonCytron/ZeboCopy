@@ -1,1 +1,355 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage{course}
+\usepackage{cse468-Spring24}
+\usepackage{program}
+\usepackage{fancybox}
+\usepackage{adjustbox}
+\usepackage{quantikz}
+\usepackage{bm}
+\usepackage{../bbkey}
+\def\SquareOutline{%
+\path (0,0) rectangle (1,1);%
+}%
+\def\Gate#1{\mbox{\textbf{#1}}}
+\def\X{\Gate{X}}
+\def\Y{\Gate{Y}}
+\def\Z{\Gate{Z}}
+\def\I{\Gate{I}}
+\def\H{\Gate{H}}
+\def\QZero{\ket{0}}
+\def\QState#1{\ensuremath{\psi_{#1}}}
 
+
+\def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
+\def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
+\def\TF{\TFMarked{\relax}{\relax}}
+\def\exp#1{\ensuremath{e^{#1}}}
+\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.2em}
+\def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
+\newcommand{\Blanket}[1][3em]{%
+\mbox{\ensuremath{|\,\Blank[#1]\,\rangle}}}
+
+\def\Tall{\vrule width 0pt height 2em depth 0.5em}
+
+\def\SQB#1#2{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
+
+\def\SQBB{\SQB{\Blank[2em]}{\Blank[2em]}}
+
+\def\DQB#1#2#3#4{%
+\ensuremath{%
+\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
+\def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
+
+\def\NiceI{\kern 0.5pt\ensuremath{\mathfrak{i}}}
+\begin{document}
+\def\TensOp{\ensuremath{\bm{\otimes}}}
+\def\TensProd#1#2{\ensuremath{#1 \TensOp{} #2}}
+\def\RootN#1{\RootUN{1}{#1}}
+\def\RootUN#1#2{\ensuremath{\frac{#1}{\sqrt{#2}}}}
+\def\RootTwo{\RootN{2}}
+\def\ExpVal#1#2{\ensuremath{\bra{#2}#1\ket{#2}}}
+
+\begin{assignment}{Exam II}{24 April 2024}{In GradeScope by 6 May 2024, 9 AM CDT}
+
+{\small {\large \fbox{READ THIS before starting!}}
+This exam is open-book, open-notes, open-Internet, but you must do this
+work on your own \textbf{without contact or conversations with any person, except Ron}.  
+Because this exam is given in a distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on grading to be fair, especially if something is unclear or ambiguous.
+
+
+\textbf{Your work must be legible.  Work that is
+difficult to read will receive no credit, and you will have no recourse to address the illegibility.}  There is a blank page at the end
+if you want to show extra work there.  \textbf{To assure no problems with GradeScope,
+you should
+print out this exam, complete it on paper, and scan it in with a full-page
+scanner.}  You can be more creative but if you do not properly register the
+pages with GradeScope, credit will not be given.
+
+There are 103 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, which then adds into your overall semester score.
+
+You must sign the pledge below for your exam to count.  Any cheating will
+cause the students involved to receive an F for this course. Other unpleasant
+actions
+may be taken.
+
+You must fill in your identifying information correctly.  You must upload this
+completed exam to GradeScope properly by the due date and time.  \textbf{Late work will not be accepted.}
+}
+
+\begin{center}\large
+\begin{tabular}{|c|c|c|} \hline
+\multicolumn{3}{|c|}{{\bf Print  clearly} the following information:}  \\ \hline
+\multicolumn{3}{|l|}{Name (print clearly):\Tall{}\hbox to 3in{\hss}}  \\ \hline
+\multicolumn{3}{|l|}{Student 6-digit ID (print {\it really} clearly):\Tall{}\hbox to 3in{\hss}} \\ \hline
+\end{tabular}
+\end{center}
+
+{\bf Pledge:} On my honor, I have neither
+given nor received any unauthorized aid on this exam.
+
+Signed:  \Blank\Blank\Blank\Blank \\ \hbox to 5em{\hss}(Be 
+sure you filled in your information in the box above!)
+%
+%
+%
+\clearpage
+\begin{enumerate}
+\item\Points{10} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
+\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.  
+
+
+\begin{itemize}
+     \item The university course evaluation for this course is worth one of the five points for participation in this class. By turning in this exam, I acknowledge that the due date for the course evaluation is Friday, 3 May 2024, 9 AM, and that the course evaluation participation credit is unavailable to me after that time.~\Obox{\textbf{x}}~\textbf{true}
+    \item Shor's algorithm provides exponential speedup over the best-known approach for factoring large integers.~\TF{}
+    \item With a single query, a classical computer has at least a 50\% chance of determining the correct solution to a Deutsch--Jozsa problem.~\TF{}
+   \item Deutsch--Jozsa solves a problem in polynomial time on a quantum computer that takes worst-case exponential time on a classical computer.~\TF{}
+    \item An $n$-bit instance of Bernstein--Vazirani can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
+    \item An $n$-bit instance of Simon's problem can take $\Theta(2^{n})$ time on a classical computer to solve exactly.~\TF{}
+    \item Grover's algorithm provides exponential speedup over classical algorithms that solve the same problem.~\TF{}
+    \item If the Deutsch--Jozsa quantum algorithm is presented with an oracle from Bernstein--Vazirani with secret $s$, then the circuit's measurements will yield a unique result (depends only on $s$) in the computational basis.~\TF{}
+    \item If the entangled qubits for the CHSH game fail (they decohere and collapse into random values), Alice and Bob can at best win 75\% of the time.~\TF{}
+    \item Grover's algorithm can solve the factoring problem as quickly as Shor's algorithm.~\TF{}
+\end{itemize}
+
+\clearpage\item\Points{10}
+Concerning Shor's error correction scheme, assume $\ket{q_{0}q_{1}q_{2}}=\ket{000}$ initially.
+\begin{center}
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$q_0$} & \gate{H} &  \ctrl{1} & \gate[3]{E}  & \ctrl{2} & \qw&\qw \\
+\lstick{$q_1$} & \qw & \targ{} &  & \qw & \ctrl{1} &\qw \\
+\lstick{$q_2$} & \qw &\qw  & & \targ{} & \targ{} & \qw \rstick{$\ket{\psi}$}
+\end{quantikz}}\end{center}
+
+\begin{enumerate}
+    \item\Points{5} If gate $E$ does nothing to the change the circuit, then
+    \[
+    \ket{\psi} = \Blank{}
+    \]
+    Explanation:
+    \LeaveSpace{1in}
+    \item\Points{5} Suppose $E$ causes qubit $q_0$ to flip, resulting in
+    \[
+    \ket{q_{0}q_{1}} = \frac{\ket{10}+\ket{01}}{\sqrt{2}}
+    \]
+    just after gate $E$.  Then
+        \[
+    \ket{\psi} = \Blank{}
+    \]
+    Explanation:
+    \LeaveSpace{1in}
+\end{enumerate}
+
+\clearpage\item\Points{25}
+Throughout this problem let the quantum state
+\( \ket{\psi} = \SQB{\alpha}{\beta} \).
+
+Recall (from VQE and other studies) that the expected value of a measurement operator $M$ in a given quantum state $\ket{\psi}$ is given by
+\( \ExpVal{M}{\psi} \).
+
+\begin{enumerate}
+    \item\Points{6} With $\Z{}=\begin{pmatrix*}[r]
+    1 & 0 \\ 0 & -1
+\end{pmatrix*}$,  prove \(
+\ExpVal{\Z}{\psi} = \left|\alpha\right|^{2} - \left|\beta\right|^{2} \):
+\LeaveSpace{1.2in}
+ \item\Points{2} What property of quantum states allows us to eliminate $\left|\beta\right|^{2}$ from
+ \(
+ \ExpVal{\Z}{\psi} = \left|\alpha\right|^{2} - \left|\beta\right|^{2}\mbox{ ?}
+ \)\Blank[3in]{}
+ \item\Points{4} Express 
+ $\ExpVal{\Z}{\psi}$ only in terms of $\alpha$:\Blank[2in]{}
+ \item\Points{5} With $\X{}=\begin{pmatrix*}[r]
+    0 & 1 \\ 1 & 0
+\end{pmatrix*}$, $\ExpVal{\X}{\psi}=\Blank[1.5in]{}$. Show your work below:
+\LeaveSpace{1in}
+\item\Points{8} Fill in the table with the values of the following expressions:
+\begin{center}\begin{tabular}{rl}
+\ExpVal{\Z\TensOp\Z}{00} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{01} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{10} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z}{11} = & \Blank{} \\
+\ExpVal{\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z\TensOp\Z}{010101} = & \Blank{}
+\end{tabular}\end{center}
+\end{enumerate}
+\item\Points{18}
+Consider the quantum state
+\[ \ket{\psi} = \frac{1}{2}\DQB{1}{-\NiceI{}}{-1}{\NiceI} \]
+\begin{enumerate}
+    \item \Points{2}Show the tensor factoring of this state into two qubits:
+    \[
+    \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB}
+    \]
+    \item\Points{3} Below draw the quantum circuit that creates the above state, using only Hadamard and Pauli gates.  As usual, the left qubit is $q_0$ and the right qubit is $q_1$. 
+ Assume the qubits are initially each $\ket{0}$.  Draw your gates on top of the wires below:
+    
+    \bigskip
+    
+    \begin{center}
+\adjustbox{valign=t,scale=2.0}{\begin{quantikz}
+\lstick{$q_0$} &  \qw & \qw & \qw & \qw & \qw & \qw  \\[0.5em]
+\lstick{$q_1$} &   \qw & \qw &\qw & \qw & \qw & \qw \\
+\end{quantikz}}\end{center}
+\item\Points{4} If the circuit above ended in measurement, complete the table below for the likelihood of seeing each observable in the computational basis:
+\begin{center}\begin{tabular}{r|l}
+$\ket{q_{0}q_{1}}$ & Probability \\\hline
+$\ket{00}$ & \Blank{} \\
+$\ket{01}$ & \Blank{} \\
+$\ket{10}$ & \Blank{} \\
+$\ket{11}$ & \Blank{} \\
+\end{tabular}\end{center}
+
+    \item\Points{2} If we perform phase estimation as taught in class (slide deck 30, ``Inverse Fourier Transform''), what value will we obtain for~$w$ as a binary fraction?{\Huge \ .\ }\Blank[1.7em]\ \Blank[1.7em]{}
+\item\Points{2} Suppose that prior to performing phase estimation, we suspect that the top qubit may have suffered a phase error, as if a \Z{} gate had been applied.
+If the error occurs, what is the resulting tensor-factored state?
+    \[
+    \ket{\psi_{e}} = \TensProd{\RootTwo{}\SQBB}{\RootTwo{}\SQBB} = \TensProd{\ket{\psi_{top}}}{\ket{\psi_{bot}}}
+    \]
+\item\Points{5} If we perform phase estimation on $\ket{\psi_{e}}$, what will the result be? Show and explain your work clearly and carefully for full credit.
+\LeaveSpace{1in}
+% \item Let's equip $q_0$ with one ancillary qubit, which will be utilized for error correction, similar to Shor's error correction scheme.
+
+%     \begin{center}
+% \adjustbox{valign=t,scale=1.5}{\begin{quantikz}
+% \lstick{$q_0\mbox{ in state }\ket{\psi_{top}}$}& \qw& \qw & \gate[2]{E} & \qw & \qw & \qw & \qw  & \qw & \qw & \qw & \qw \\[0.5em]
+% \lstick{$a$} & \qw &\qw & \qw& \qw & \qw & \qw & \qw  & \qw & \qw & \qw & \qw  
+% \end{quantikz}}\end{center}
+% \begin{itemize}
+% \item Prior to $E$, the state of our system is
+% \[
+% \ket{q_{0}ab} = \alpha\ket{00} + \beta\ket{11}
+% \]
+% \item Gate $E$ either does nothing to the quantum state, or it might (accidentally, at will)
+% introduce a phase flip, \emph{but only on the top qubit} $q_0$.  When this happens, it is as if $q_0$  encountered a \Z{} gate inside $E$.
+% \item Your task here is to deploy syndrome measurements to detect if the phase flip happened, and then create quantum logic to repair the problem when it happens.
+% \end{itemize}
+% \begin{enumerate}
+%     \item If $E$ acts as identity on all qubits and doesn't impose a \Z{} gate on $q_0$, what is the state of the system after~$E$?
+%     \[
+%     \Blank{}\ket{00} + \Blank{}\ket{11}
+%     \]
+%     \item If $E$ does impose the phase flip on the top qubit, what is the state of the system after~$E$?
+%         \[
+%     \Blank{}\ket{00} + \Blank{}\ket{11}
+%     \]
+% \end{enumerate}
+\end{enumerate}
+\clearpage
+\item\Points{10} 
+Suppose Alice and Bob decide to form a shared key using the BB84 protocol.  The table below shows the bases Alice will publish along with their observed results.   Recall the correspondence between observed quantum state and bit values:
+\begin{BBKey}
+\begin{center}
+\BBBasis{}
+\end{center}
+\end{BBKey}
+\def\RowU#1#2#3{%
+\vrule width 0pt depth 0.5em height 1.2em#1 &#2 &  &  &  #3  \\ \hline}
+\def\Row#1#2{%
+\RowU{\STD}{#1}{#2}}
+\def\RowX#1#2{%
+\RowU{\HDM}{#1}{#2}}
+
+Fill in the table below to show the bases Bob must have used and the observations Bob must have seen, where that observation is relevant to finding the shared key.  You should have an entry for each row for Bob's \emph{Basis}.  However, where Bob's observation is irrelevant, leave that entry blank.
+
+If the entry in the rightmost column, \emph{Agreed Bit} is blank, then Alice and Bob could not agree on a bit given their bases.
+
+
+\begin{BBKey}
+\begin{center}\Large
+\begin{tabular}{c|c||c|c||c}
+\multicolumn{2}{c||}{Alice Sends} & \multicolumn{2}{c||}{Bob Receives}& \multicolumn{1}{c}{Agreed} \\
+Basis & Obs & Basis & Obs & Bit\\\hline
+\RowX{\BBNe}{0}
+\Row{\BBUp}{ }
+\RowX{\BBNe}{ }
+\Row{\BBRt}{1}
+\Row{\BBUp}{0}
+\Row{\BBUp}{ }
+\Row{\BBRt}{ }
+\RowX{\BBSe}{ 1}
+\Row{\BBRt}{1}
+\RowX{\BBNe}{0}
+\end{tabular}
+\end{center}
+\end{BBKey}
+
+\clearpage
+\item\Points{30} The analysis of Grover's algorithm in class assumed that there was exactly one input for which our oracle returned~$1$; on all other inputs, the oracle returned~$0$.  Succinctly described, we say the oracle \emph{yields} exactly one solution.   
+
+A more generous oracle might yield $k$ solutions, meaning that there are exactly $k$ distinct inputs for which the oracle returns~$1$;  on all other inputs, the oracle returns~$0$.
+
+In the example starting on 26.pdf, slide 8, page 26, we examined how to compute the angle~$\theta$ for $n=2$ qubits when the oracle yields one solution.  The result was
+\[ \cos{\theta} = \braket{s}{r} = \frac{\sqrt{3}}{2} = \sqrt\frac{2^{n}-1}{2^{n}} \]
+where the rightmost term is the general solution for Grover as described above running on $n$ qubits, when the oracle yields one solution.
+\begin{enumerate}
+    \item\Points{1} Consider the expression  \[ \sqrt\frac{2^{n}-1}{2^{n}}\]
+     We hope to run Grover's algorithm on large problems.  As $n$ grows large, to what value does the expression converge?~\Blank{}
+     
+    \item\Points{3} True or false: It is appropriate to use that convergence value for Grover's algorithm to compute~$\theta$~\TF{}.
+     Explain your reasoning for choosing true or false:
+     \LeaveSpace{0.75in}
+     \item\Points{4} To make the following answers easier to write and grade, assume a suitable scaling factor has been pulled out of a quantum state, so that the resulting ket can be described in terms of only its $1$s and $0$s.  For example:
+     \begin{itemize}
+         \item The state $\ket{+}=\frac{1}{\sqrt{2}}\SQB{1}{1}$ could be described as:  ``all $1$s''.  
+         \item The state $\ket{0} = \SQB{1}{0}$ can be described as: $\frac{1}{2}$ $0$s and $\frac{1}{2}$ $1$s.
+         \item The result of an $n$-way Hadamard transform on $n$~qubits that are all $0$ can be described: ``$2^{n}$~$1$s''.
+    \end{itemize}
+  \Continued{}
+  For an $n$-qubit instance of Grover, describe the state \ket{s} when 
+         \begin{enumerate} 
+           \item the oracle yields one solution~\Blank[2.5in]{}
+           \item the oracle yields $k>1$ solutions~\Blank[2.5in]{}
+        \end{enumerate}
+    Now consider the ket \ket{r} from the slides.  Be sure you are using \ket{r}, the horizontal axis, and not \ket{w}, the vertical axis.  In the same way you should have characterized \ket{s}, now describe \ket{r} for an $n$~qubit instance of Grover when
+        \begin{enumerate} 
+           \item the oracle yields one solution~\Blank[2.5in]{}
+           \item the oracle yields $k$ solutions~\Blank[2.5in]{}
+        \end{enumerate}
+       \item\Points{6} In a world where Grover meets Deutsch--Jozsa (this is possible: both algorithms are from the 1990s), consider the use of an oracle that promises that exactly one of the following is true of its function $f(x)$ where $x$ is $n$-qubits wide:
+       \begin{description}
+           \item[all] For all inputs $x$, $f(x)=1$.  Such an oracle yields \Blank{} solutions.
+           \item[none] For all inputs $x$, $f(x)=0$.  Such an oracle yields \Blank{} solutions.
+           \item[half] Function $f(x)$ is balanced in the Deutsch--Jozsa sense.  Such an oracle yields \Blank{} solutions.
+       \end{description}
+       \item\Points{4} For a Grover instance where $x$ is $n$-qubits wide, and for which $f(x)$ yields $k$~solutions
+       \LeaveSpace{0.2in}\[ \cos{\theta} = \braket{s}{r} = \Blank[2in]{} \]
+       Show your work below, but be sure to fill in the answer clearly in the blank above!
+       \Continued{}
+       \item\Points{6} Now let's apply your formula to the promises articulated above.  Throughout, assume the function input $x$ is $n$~qubits.
+       
+       Show your work to get full credit.
+     \begin{description}
+         \item[all]  
+         \LeaveSpace{1in}
+         \[ \theta = \Blank[3in]{}\]
+         \item[none]\LeaveSpace{1in}
+                  \[ \theta = \Blank[3in]{}\]
+         \item[half] \LeaveSpace{1in}
+         \[ \theta = \Blank[3in]{}\]
+     \end{description}
+     \item\Points{2} In the \textbf{half} case the complexity of Grover's algorithm becomes (in terms of $n$):
+     \LeaveSpace{1in}
+     \Blank[2in]{}
+     \Continued{}
+     \item\Points{2} Let's consider a search of $N=2^{n}$ items under the possible promises.  First, how could you use a quantum computer to distinguish the \textbf{half} promise from the other two, using a single instance of the oracle?  This means that the oracle executes only one query, but that input could be any superposition of states.
+     \LeaveSpace{0.5in}
+
+     \item\Points{2} Next, how can you distinguish \textbf{all} from \textbf{none} on a quantum computer, using a single instance of the oracle?
+     \LeaveSpace{0.5in}
+\end{enumerate}
+
+
+
+
+
+
+
+\end{enumerate}
+
+\end{assignment}
+\Bpage{}
+
+\end{document}
