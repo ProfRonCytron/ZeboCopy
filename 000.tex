@@ -266,8 +266,10 @@ This course counts for the ESE \ColorOne{minor} and \ColorTwo{graduate} program.
 \end{center}
 \end{frame}
 
-\begin{frame}{Typesetting of proofs}{Full-screen viewing \emph{really does} work best.  This example is courtesy of \href{https://chat.openai.com/}{ChatGPT}}
-Theorem:  \[ \sum_{k=1}^{n} k = \frac{n\times(n+1)}{2}\]
+\begin{frame}{Typesetting of proofs}{Full-screen viewing \emph{really does} work best.}
+
+This example is courtesy of \href{https://chat.openai.com/}{ChatGPT}: I asked for a theorem with a 7-line proof.
+\Vskip{0.5em}Theorem:  \[ \sum_{k=1}^{n} k = \frac{n\times(n+1)}{2}\]
 \begin{Reasoning}
 \Reason{1}{Proofs will be presented like this. This area features explanatory remarks.}%
 \Reason{2}{$S$ can also be written as the reverse sum of its addends}%
@@ -276,6 +278,7 @@ Theorem:  \[ \sum_{k=1}^{n} k = \frac{n\times(n+1)}{2}\]
 \Reason{5}{This symbol means the line will move up to make more room for the proof}%
 \Reason{7}{There are $n$ terms, each $n+1$}
 \end{Reasoning}
+
 \ScrollProof{1}{5}{%
 \Next{\Four}{S &= \ColorOne{1 + 2 + 3 + \ldots + n} \\}
 \Next{\Three}{S &=  \ColorTwo{n+(n-1) + (n-2)\ldots 1 }\\}
@@ -584,7 +587,7 @@ The information is contained on this semester's \href{https://wustl.instructure.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Course outline}{Subject to change: topics in \alert{red} are likely pushed to the advanced course}
+\begin{frame}{Course outline}{Subject to change}
 \Vskip{-4em}\TwoColumns{%
 \begin{enumerate}
     \item Introduction and background
@@ -594,23 +597,23 @@ The information is contained on this semester's \href{https://wustl.instructure.
     \item Quantum systems
     \item Single qubit
     \item Universal quantum gates
+    \item Measurement of quantum states
     \item Elitzur--Vaidman bomb
     \item Beyond one qubit
     \item No-cloning theorem
-    \item Quantum teleportation
 \end{enumerate}
 }{%
 \begin{enumerate}
     \setcounter{enumi}{11}
-    \item Quantum advantage
+    \item Quantum teleportation
     \item Deutsch's problem
     \item Phase kickback trick
     \item Deutsch--Jozsa problem
     \item Simon's problem
     \item Bernstein--Vazirani problem
-    \alert{\item Circuit compilation}
-    \alert{\item Phase estimation}
-    \alert{\item Quantum Fourier}
+    \item Oracle implementation
+    \item Phase estimation
+    \item Quantum Fourier
     \item Shor's algorithm
     \item Grover's algorithm
 \end{enumerate}
