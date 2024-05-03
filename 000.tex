@@ -266,18 +266,29 @@ This course counts for the ESE \ColorOne{minor} and \ColorTwo{graduate} program.
 \end{center}
 \end{frame}
 
-\begin{frame}{Typesetting of proofs}{Full-screen viewing \emph{really does} work best}
+\begin{frame}{Typesetting of proofs}{Full-screen viewing \emph{really does} work best.  This example is courtesy of \href{https://chat.openai.com/}{ChatGPT}}
+Theorem:  \[ \sum_{k=1}^{n} k = \frac{n\times(n+1)}{2}\]
 \begin{Reasoning}
-\Reason{1}{Explanatory notes appear here}%
-\Reason{2}{Just because}
+\Reason{1}{Proofs will be presented like this. This area features explanatory remarks.}%
+\Reason{2}{$S$ can also be written as the reverse sum of its addends}%
+\Reason{3}{We add the two expressions for $S$ grouping the RHS term-by-term}%
+\Reason{4}{Each term sums to $n+1$}%
+\Reason{5}{This symbol means the line will move up to make more room for the proof}%
+\Reason{7}{There are $n$ terms, each $n+1$}
 \end{Reasoning}
 \ScrollProof{1}{5}{%
-\Next{\Four}{4 &= 3 + 1 \\}
-\Next{\Three}{1+4 &= 1+3+1\\}
-\Next{\Two}{a &= b \\}
-\Last{c &= b}
+\Next{\Four}{S &= \ColorOne{1 + 2 + 3 + \ldots + n} \\}
+\Next{\Three}{S &=  \ColorTwo{n+(n-1) + (n-2)\ldots 1 }\\}
+\Next{\Two}{ S+S &= (\ColorTwo{n}+\ColorOne{1}) + (\ColorTwo{n-1}+\ColorOne{2}) + \ldots + (\ColorTwo{1}+\ColorOne{n}) \\}
+\Last{ 2\times S& =(n+1) + (n+1) + \ldots (n+1)}
+}%
+\ScrollProof{6}{9}{%
+\Next{\Four}{2\times S &= (n+1) + (n+1) + \ldots (n+1)\\}
+\Next{\Three}{2\times S&= \overbrace{(n+1) + (n+1) + \ldots (n+1)}^{n}\\}
+\Next{\Two}{2\times S &= n \times (n+1) \\}
+\Next{\One}{S &=  \frac{n\times(n+1)}{2}}
 }
-    
+\visible<9>{\Vskip{-5em}\QED{}}
 \end{frame}
 
 \section{Computation}
