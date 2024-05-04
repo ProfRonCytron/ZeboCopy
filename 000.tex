@@ -280,9 +280,9 @@ This example is courtesy of \href{https://chat.openai.com/}{ChatGPT}: I asked fo
 \end{Reasoning}
 
 \ScrollProof{1}{5}{%
-\Next{\Four}{S &= \ColorOne{1 + 2 + 3 + \ldots + n} \\}
-\Next{\Three}{S &=  \ColorTwo{n+(n-1) + (n-2)\ldots 1 }\\}
-\Next{\Two}{ S+S &= (\ColorTwo{n}+\ColorOne{1}) + (\ColorTwo{n-1}+\ColorOne{2}) + \ldots + (\ColorTwo{1}+\ColorOne{n}) \\}
+\Next{\Four}{S &= \ColorOne{\textcolor<3>{\RCthree}{1} + \textcolor<3>{\RCfour}{2}  + \ldots + \textcolor<3>{\RCfive}{n}} \\}
+\Next{\Three}{S &=  \ColorTwo{\textcolor<3>{\RCthree}{n}+\textcolor<3>{\RCfour}{(n-1)} + \ldots + \textcolor<3>{\RCfive}{1} }\\}
+\Next{\Two}{ S+S &= (\ColorThree{n+1}) + (\ColorFour{n-1+2}) + \ldots + (\ColorFive{1+n}) \\}
 \Last{ 2\times S& =(n+1) + (n+1) + \ldots (n+1)}
 }%
 \ScrollProof{6}{9}{%
