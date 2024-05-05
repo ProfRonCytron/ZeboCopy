@@ -176,11 +176,11 @@ We can thus achieve universality with only a Nand gate.
 \begin{frame}{Comments on universality}{Especially for quantum computing}
 
 \begin{itemize}
-    \item \href{https://en.wikipedia.org/wiki/Logic_gate\#Universal_logic_gates}{Universality} is a \emph{theoretical} concept, examining the interesting question of how to minimize the components needed to construct an arbitrary circuit.
-    \item The difference between theory and practice is that in theory, there is no difference, but in practice, there is. [\,\href{https://www.cse.wustl.edu/~cdgill/}{Prof. Chris Gill}\,]
-    \item In quantum computing, we shall see that the \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Toffoli gate} is universal in quantum computing, because it can realize the Nand function.
-    \item However, gratuitous application of Nand to create arbitrary circuits is inefficient, wasting both qubits and gates.
-    \item Notably, the \href{https://en.wikipedia.org/wiki/Exclusive_or}{exclusive-or} function can be realized directly in a quantum circuit, otherwise consuming some 10 gates and 6 temporary qubits to implement via the Toffoli gate. Qubits are especially precious resources and must be conserved, and every gate operation can introduce noise.
+    \item<1-> \href{https://en.wikipedia.org/wiki/Logic_gate\#Universal_logic_gates}{Universality} is a \emph{theoretical} concept, examining the interesting question of how to minimize the components needed to construct an arbitrary circuit.
+    \item<2-> The difference between theory and practice is that in theory, there is no difference, but in practice, there is. [\,\href{https://www.cse.wustl.edu/~cdgill/}{Prof. Chris Gill}\,]
+    \item<3-> In quantum computing, we shall see that the \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Toffoli gate} is universal in quantum computing, because it can realize the Nand function.
+    \item<3-> However, gratuitous application of Nand to create arbitrary circuits is inefficient, wasting both qubits and gates.
+    \item<3-> Notably, the \href{https://en.wikipedia.org/wiki/Exclusive_or}{exclusive-or} function can be realized directly in a quantum circuit, otherwise consuming some 10 gates and 6 temporary qubits to implement via the Toffoli gate. Qubits are especially precious resources and must be conserved, and every gate operation can introduce noise.
 \end{itemize}
     
 \end{frame}
@@ -245,7 +245,7 @@ We can thus achieve universality with only a Nand gate.
 
 \TwoColumns{%
  \begin{itemize}
-     \item<1-> The unit circle has radius~$1$.
+     \item<1-> The complex unit circle has radius~$1$.
      \item<2-> On the real axis, the circle has intercepts at~\only<2->{$+1$} \only<3->{and~$-1$.}
      \item<4-> On the imaginary axis, the circle has intercepts at~\only<4->{$+\NiceI$} \only<5->{and~$-\NiceI$.}
  \end{itemize}
