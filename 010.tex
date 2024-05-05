@@ -173,6 +173,18 @@ We can thus achieve universality with only a Nand gate.
 
 \end{frame}
 
+\begin{frame}{Comments on universality}{Especially for quantum computing}
+
+\begin{itemize}
+    \item \href{https://en.wikipedia.org/wiki/Logic_gate\#Universal_logic_gates}{Universality} is a \emph{theoretical} concept, examining the interesting question of how to minimize the components needed to construct an arbitrary circuit.
+    \item The difference between theory and practice is that in theory, there is none, but in practice, there is. [\,\href{https://www.cse.wustl.edu/~cdgill/}{Prof. Chris Gill}\,]
+    \item In quantum computing, we shall see that the \href{https://en.wikipedia.org/wiki/Toffoli_gate}{Toffoli gate} is universal in quantum computing, because it can realize the Nand function.
+    \item However, gratuitous application of Nand to create arbitrary circuits is inefficient, wasting both qubits and gates.
+    \item Notably, the \href{https://en.wikipedia.org/wiki/Exclusive_or}{exclusive-or} function can be realized directly in a quantum circuit, otherwise consuming some 10 gates and 6 temporary qubits to implement via the Toffoli gate. Qubits are especially precious resources and must be conserved, and every gate operation can introduce noise.
+\end{itemize}
+    
+\end{frame}
+
 \section{Complex arithmetic}
 
 \begin{frame}{Overview of complex arithmetic}
@@ -281,6 +293,7 @@ traversing a distance of \ColorTwo{$\theta$} radians along the circle.}
 \end{frame}
 
 \begin{frame}{Complex numbers in polar coordinates}{Useful properties}
+\ToDo{separate slides using scrollproofs}
 \TwoColumns{%
 Multiplication and Conjugation
 \begin{itemize}
@@ -305,6 +318,8 @@ Magnitude
 }
     
 \end{frame}
+
+
 
 \section{Linear algebra}
 
@@ -344,7 +359,7 @@ Quantum computing borrows notation from physics in using \href{https://en.wikipe
 .578\\ .408\NiceI \\ .319+.253\NiceI \\ -.578
 
 \end{pmatrix}
-\]
+\]%
 \visible<3->{The letter \alert{$\psi$} is typically used in quantum computing to represent \alert{p}state, and especially \alert{p}superpositions.}
 }
 
@@ -418,6 +433,28 @@ The complete bra--ket of a state \QState{} is the inner product of its bra with 
 For a state~\QState{} that arises in a quantum system,  the above expression is expected to be~$1$.}\visible<8->{  The magnitude-squared of each component is the probability of observing its corresponding bit pattern on measurement.}\visible<9->{  In this example, we would see~\ColorOne{\ket{00}} or~\ColorFour{\ket{11}} with probability $\frac{1}{3}$}\visible<10->{, and see~\ColorTwo{\ket{01}} or~\ColorThree{\ket{10}} with probability $\frac{1}{6}$.}
 \end{frame}
 
+\section{Binary notation}
+
+\begin{frame}{Binary integers}{We use bit strings and integers interchangeably}
+\begin{itemize}
+    \item Although you have seen the notation in your previous studies, good advice is to review \href{https://en.wikipedia.org/wiki/Binary_number}{binary numbers}.
+    \item The \emph{computational basis} of quantum computing for an $n$~qubit system consists of states denoted by every binary string (bit string) of $n$ bits.
+    \item In quantum computing, these basis states are written as kets as seen above.  Thus, a $3$-qubit system has the computational basis:
+    \[ \ket{000}, \ket{001}, \ket{010}, \ket{011}, \ket{100}, \ket{101}, \ket{110}, \ket{111} \]
+    which can also be expressed with decimal numerals:
+    \[ \ket{0}, \ket{1}, \ket{2}, \ket{3}, \ket{4}, \ket{5}, \ket{6}, \ket{7} \]
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Binary fractions}{We need these as well}
+\begin{itemize}
+    \item When studying \href{https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm}{phase estimation}, we will make use of \emph{binary fractions}.
+    \item These follow the \href{https://en.wikipedia.org/wiki/Positional_notation}{positional number system}, but using bits after a \emph{binary point}.
+    \item If the bit string after the integer is $k$ long, we can multiply the value by~$2^k$ and divide by~$2^k$ to interpret the string as its integer value divided by $2^k$.
+    \item For example, with $k=3$, the binary fraction $.101$ is $\frac{5}{8}$.
+\end{itemize}
+\end{frame}
 
 \section*{Outer products}
 
