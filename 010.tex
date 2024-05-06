@@ -292,32 +292,45 @@ We can thus achieve universality with only a Nand gate.
 traversing a distance of \ColorTwo{$\theta$} radians along the circle.}
 \end{frame}
 
-\begin{frame}{Complex numbers in polar coordinates}{Useful properties}
-\ToDo{separate slides using scrollproofs}
-\TwoColumns{%
-Multiplication and Conjugation
+\begin{frame}{Useful properties of complex numbers}{Multiplication}
+
+Given 
 \begin{itemize}
-    \item<1-> Given $z_{1}=\Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_{1}}}$ and $z_{2}=\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_{2}}}$
-    \item<2-> $z_{1}z_{2} = \Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_1}}\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_2}}$
-    \item<3-> $z_1z_2 = \Polar{\ColorOne{r_{1}}\ColorThree{r_{2}}}{(\ColorTwo{\theta_1}+\ColorFour{\theta_2})}$
-    \item<4-> Given $z=\Polar{r}{\theta}$, how do we find $\Conj{z}$?
-    \item<4-> $\Conj{z} = \Conj{(\Polar{r}{\theta})}$
-    \item<4-> $\Conj{z} = \Conj{r(\cos{\theta}+\NiceI\sin{\theta})}$
-    \item<4-> $\Conj{z} = r(\cos{\theta}-\NiceI\sin{\theta})$
-    \item<4-> $\Conj{z} = r(\cos(-\theta)+\NiceI\sin(-\theta))$
-    \item<4-> $\Conj{z} = \Polar{r}{(-\theta)}$
+\item $z_{1}=\Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_{1}}}$  
+\item $z_{2}=\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_{2}}}$
 \end{itemize}
-}{
-Magnitude
+
+The product of these complex numbers is
+\begin{align*}
+z_{1}z_{2} &= \Polar{\ColorOne{r_{1}}}{\ColorTwo{\theta_1}}\Polar{\ColorThree{r_{2}}}{\ColorFour{\theta_2}}  \\
+&= \Polar{\ColorOne{r_{1}}\ColorThree{r_{2}}}{(\ColorTwo{\theta_1}+\ColorFour{\theta_2})}
+\end{align*}
 \begin{itemize}
-    \item<5-> $\Forall{\theta}{\Mag{\ExpPhase{\theta}}=\sin^{2}\theta+\cos^{2}\theta=1}$
-    \item<6-> $\Mag{r\ExpPhase{\theta}}=\Mag{r}\times\Mag{\ExpPhase{\theta}}=r$
-    \item<7-> $\Implies{z=r\ExpPhase{\theta}}{\Mag{z}=\Mag{\Conj{z}}=r}$
-    \item<8-> $\Implies{z=r\ExpPhase{\theta}}{\Mag{z\Conj{z}}=\Mag{\Conj{z}z}=r^{2}}$
+    \item The magnitudes multiply
+    \item The phases add
 \end{itemize}
-}
-    
+
 \end{frame}
+
+\begin{frame}{Useful properties of complex numbers}{Conjugation}
+
+Recall
+\Vskip{-3em}\begin{align*}
+    \cos(-\theta) &= \cos(\theta) \\
+    \sin(-\theta) &= - \sin(\theta)
+\end{align*}
+Given $z=\Polar{r}{\theta}$, the conjugate of $z$, \Conj{z}, is computed as follows:
+\begin{align*}
+    \Conj{z} &= \Conj{(\Polar{r}{\theta})} \\
+    & = \Conj{r(\cos{\theta}+\NiceI\sin{\theta})} \\
+    & = r(\cos{\theta}-\NiceI\sin{\theta}) \\
+    &=  r(\cos(-\theta)+\NiceI\sin(-\theta))\\
+    \Conj{z} &= \Polar{r}{(-\theta)}
+\end{align*}
+Conjugating a complex number yields its reflection about the horizontal axis.
+\end{frame}
+
+
 
 
 
