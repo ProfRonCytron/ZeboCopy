@@ -8,3 +8,7 @@ Slides on
   VQE
 
 Make all assignments within a given category the same number of points.  Better still make them all 100 points each.
+
+Put in some Matlab exercises, early
+
+Hoework every week on the material
