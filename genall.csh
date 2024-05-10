@@ -1,5 +1,5 @@
 #!/bin/csh
-set files=(??.tex)
+set files=(??.tex ???.tex)
 echo $files
 foreach f($files)
    csh ./genone.csh $f
