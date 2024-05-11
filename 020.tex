@@ -239,10 +239,49 @@ $a$ & $c$  & $a$ & \Xor{c}{a} \\ \hline
 }
 \end{frame}
 
-\begin{frame}{Generally reversible computation}{From \Kaye{} page 14}
+\section*{Reversible circuits}
+
+\begin{frame}{Generally reversible computation}{From \Kaye{} page 14, abstract view}
 \Vskip{-4em}\begin{center}
 \begin{Pixture}[width=0.7\textwidth]{020}{kayep14fig1.6.png}
 \end{Pixture}\end{center}
+    
+\end{frame}
+
+
+
+\begin{frame}{Quantum computations are reversible}{Until measurement}
+\Vskip{-3em}\begin{center}
+\begin{quantikz} 
+\alt<1-2>{\lstick{$\rightarrow$}}{\lstick{$\leftarrow$}} &  \gate[3]{\mbox{\alert<2,4>{\alt<1-2>{$U$}{\Conj{U}}}}} & \qw \alt<1-2>{\rstick{$\rightarrow$}}{\rstick{$\leftarrow$}} \\
+\alt<1-2>{\lstick{$\rightarrow$}}{\lstick{$\leftarrow$}} &    & \qw \alt<1-2>{\rstick{$\rightarrow$}}{\rstick{$\leftarrow$}} \\
+\alt<1-2>{\lstick{$\rightarrow$}}{\lstick{$\leftarrow$}} &    & \qw \alt<1-2>{\rstick{$\rightarrow$}}{\rstick{$\leftarrow$}}
+\end{quantikz}
+\end{center}
+\TwoColumns{%
+\begin{itemize}
+    \item In these diagrams, the flow is from right to left.
+    \item<2-> Each transformation within the circuit (that does not perform a measurement) is accomplished via a gate such as \alert<2>{$U$}, which corresponds to a unitary matrix.
+\end{itemize}
+}{%
+\begin{itemize}
+    \item<3-> Quantum circuits are reversible.
+    \item<4-> The inverse of $U$ must be applied, which is formally $U$'s conjugate transposition~\alert<4>{\Conj{U{}}}.
+    \item<5-> This can sometimes by $U$ itself, when $U=\Conj{U}$.
+\end{itemize}
+}
+    
+\end{frame}
+
+\begin{frame}{Measurements}{These are not reversible}
+
+\begin{itemize}
+    \item A measurement of a quantum state yields a result for the measured qubit.
+    \item That result is one of the basis vectors of the measuring device.
+    \item Any superposition of basis vectors collapses into the measured outcome.
+    \item As we study, the likelihood of measuring a result is related to the amplitude on that result's basis vector.
+    \item Because measurements must be repeatable, the state obtained by measurement cannot by reverse computation revert to its value prior to measurement.
+\end{itemize}
     
 \end{frame}
 
