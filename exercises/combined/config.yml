@@ -1,5 +1,6 @@
-requirements: requirements.txt
+requirements: ../requirements.txt
 solutions_pdf: true
+run_tests: false
 export_cell:
     instructions: ""
     pdf: false

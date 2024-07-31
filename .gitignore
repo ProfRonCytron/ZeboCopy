@@ -12,5 +12,6 @@
 /exercises/qiskit/q*/q*-dist
 .ipynb_checkpoints
 **/.DS_Store
+**/dist
 *.OTTER_LOG
 
