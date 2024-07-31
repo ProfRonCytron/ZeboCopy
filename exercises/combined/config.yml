@@ -1,0 +1,12 @@
+requirements: requirements.txt
+solutions_pdf: true
+export_cell:
+    instructions: ""
+    pdf: false
+    filtering: true
+    pagebreaks: true
+    run_tests: false
+generate:
+    filtering: true
+    pagebreaks: true
+    zips: false
