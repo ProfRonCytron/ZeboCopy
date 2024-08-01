@@ -8,6 +8,8 @@ export_cell:
     pagebreaks: true
     run_tests: false
 generate:
+    course_id: 787690
+    token: PSMfidPlA-v_syDz_TAIBg
     filtering: true
     pagebreaks: true
     zips: false
