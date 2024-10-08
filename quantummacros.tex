@@ -569,13 +569,13 @@
 \newenvironment{BlochSphere}[3][scale=1.0]{
     \bgroup%
     \def\BlochSpherePhiTheta{%
-    \tdplotsetrotatedcoords{0}{0}{0};O
+    \tdplotsetrotatedcoords{0}{0}{0}
         \path[tdplot_rotated_coords] (1.0,0,0) arc (0:115:1.0) node(phi) {};
         \draw[tdplot_rotated_coords,thick,\RCone] (0.3,0,0) arc (0:115:0.3);
         \draw[tdplot_rotated_coords,\RCone,thick,dashed] (0,0,0) -- (phi);
         \draw[\RCone] (0.4,0.4,0) node {$\phi$};
         
-        \tdplotsetrotatedcoords{25}{-90}{0};
+        \tdplotsetrotatedcoords{25}{-90}{0}
         \path[tdplot_rotated_coords] (1,0,0) arc (0:45:1) node(theta) {};
         \draw[tdplot_rotated_coords,thick,\RCtwo] (0.4,0,0) arc (0:45:0.4);
         \draw[tdplot_rotated_coords,\RCtwo,thick] (0,0,0) -- (theta);
@@ -596,22 +596,22 @@
         %%
         %% The equator
         %%
-        \tdplotsetrotatedcoords{0}{0}{0};
+        \tdplotsetrotatedcoords{0}{0}{0}
         \draw[dashed, tdplot_rotated_coords, gray] (0,0,0) circle (1);
         
         %%
         %% Arc in the x-z plane
         %%
-        \tdplotsetrotatedcoords{90}{90}{90};
+        \tdplotsetrotatedcoords{90}{90}{90}
         \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
         
         %%
         %% Arc in the y-z plane
         %%
-        \tdplotsetrotatedcoords{0}{90}{90};
+        \tdplotsetrotatedcoords{0}{90}{90}
         \draw[dashed, tdplot_rotated_coords, gray] (1,0,0) arc (0:180:1);
         
-        %\tdplotsetrotatedcoords{90}{90}{90};
+        %\tdplotsetrotatedcoords{90}{90}{90}
        % \draw[dashed, tdplot_rotated_coords, black] (1,0,0) node {{\Large\bf x}} (0,1,0) node {{\Large\bf y}} (0,0,1) node {{\Large\bf z}}; 
         
         \draw[dashed, gray] (0,0,0) -- (-1,0,0);
