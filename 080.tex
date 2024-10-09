@@ -295,11 +295,11 @@ We will properly determine $\theta$ so that after $n$ rotations we either will s
 
 {%
 \def\ShowPhoton#1{%
-\tdplotsetrotatedcoords{90}{90}{90};
+\tdplotsetrotatedcoords{90}{90}{90}
 \path[tdplot_rotated_coords] (1,0,0) arc (0:#1:1) node(end) {};
 % \draw[tdplot_rotated_coords,thick,red] (0,0,0) -- (end);
 \fill[color=red] (end) circle(2pt);
-\tdplotsetrotatedcoords{0}{0}{0};
+\tdplotsetrotatedcoords{0}{0}{0}
 }
 \begin{frame}{How much rotation?}{We need to go from horizontal to vertical if there is no bomb package}
 \TwoUnequalColumns{0.55\textwidth}{0.45\textwidth}{%
