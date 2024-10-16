@@ -57,7 +57,7 @@
 \only<1-6>{%
 \begin{itemize}[<+->]
     \item Before separating, Alice and Bob can agree to respond as shown here.
-    \item We can verify that for the first two rows and columns, they always agree on the common value and the products are correct.
+    \item Let's verify that for the first two rows and columns, they always agree on the common value and the products are correct.
     \item For row or column three, Alice and Bob would have to complete their response in a way that creates the correct product.
     \begin{description}
       \item[\ColorOne{Alice}] must respond \ColorOne{\MM{}} so that her row's product is \PP{}.
@@ -80,12 +80,12 @@
 \end{MPSquareEnv}
 \end{center}
 \visible<6->{%
-\alert{They lose only when \emph{both} the third row and column are designated.  Is there a way to win always?}}
+\alert{They lose only when \emph{both} the third row and column are designated, 1 of 9 possibilities.  Is there a way to win always?}}
 }
     
 \end{frame}
 
-\begin{frame}{Proof of no static solution}{We cannot place values in each cell that always work}
+\begin{frame}{Proof of no static solution}{We cannot predetermine values in each cell that always work}
 
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{MPSquareEnv}
@@ -112,6 +112,8 @@
 }
     
 \end{frame}
+
+\section*{Variations}
 
 \begin{frame}{Variation 1}{All products are the same except one}
 \Vskip{-5em}\TwoUnequalColumns{0.53\textwidth}{0.47\textwidth}{%
@@ -140,7 +142,7 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 \Vskip{-3em}\TwoUnequalColumns{0.6\textwidth}{0.4\textwidth}{%
 \begin{MPSquareEnv}
 \begin{itemize}
-    \item<1-> Here is the original formulation
+    \item<1-> Here is the \href{https://arxiv.org/pdf/1802.10119}{original formulation}, although it was presented using colors instead of bits.
     \item<2-> In this variation, \ColorOne{Alice}'s rows must have even parity, and \ColorTwo{Bob}'s columns must have odd parity.
     \item<3-> The \PP{} and \MM{} of the original version are mapped to $0$ and $1$, respectively.
     \item<4-> Of course there is still no solution classically for every square.
@@ -158,7 +160,7 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 
 \end{frame}
 
-\section*{Examples}
+\section*{Review}
 
 \begin{frame}{What you already know, and must believe}{Be solid on these points and the material will make sense}
 
@@ -203,6 +205,30 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
     \item Practically speaking, there is no reason to consider simultaneous measurement.
 \end{itemize}
     
+\end{frame}
+
+\section*{Approaches}
+
+\begin{frame}{Approaches}{Three ways to understand or prove a quantum solution to this puzzle}
+
+\end{frame}
+
+\section*{Examples}
+\begin{frame}{Examples}{Using the measure-once approach}
+
+\begin{itemize}
+    \item It is helpful to go through a few examples of how this might work.
+    \item Alice and Bob have the solution grid, which tells them the measurements they must perform to provide an answer for a given square.
+    \item In the measure-once approach, they 
+    \item The following slides assume that Alice and Bob each performs a single measurement of the two qubits they possess.  Each performs that measurement in a basis determined by the row (for Alice) and column (for Bob) they are 
+    \item Each qubit collapses into a basis state of the basis of measurement.  For example, a pair of entangled qubits collapses into states as follows:
+    \begin{itemize}
+        \item In the \PauliZ{} basis, both collapse to \QZero{} or \QOne{}.
+        \item In the \PauliX{} basis, both collapse to \ket{+} or \ket{-}.
+    \end{itemize}
+    \item Each qubit is no longer entangled with its counterpart.
+    \item The appropriate row and column is then 
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Scenario with the square: Row 1 and Column 1}{Alice's row number tells her what basis to use for measurement.\\Independently, Bob's column number tells him what basis to use.}
