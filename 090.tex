@@ -610,7 +610,7 @@ This violates belief in locality and realism.}}
     \item In the computational basis, this is either \QZero{} or \QOne{}.  
     \item The associated eigenvalues are $+1$ and $-1$, respectively.
     \end{itemize}
-    \item The system's measurement is an $n$-bit vector.
+    \item The system's measurement is an $n$-bit vector, consistent with any constraints imposed by the computation.
     \item The system's eigenvalue is the \emph{product} of the measured qubits' eigenvalues.  \alert{Why? $\ldots$}
 \end{itemize}}%
 \only<2>{%
@@ -624,7 +624,7 @@ This violates belief in locality and realism.}}
     \left(\lambda_{1} \times \lambda_{2} \times \cdots \times \lambda_{n}\right)
     \ \left( \QState{1} \TensOp{}  \QState{2} \TensOp{} \cdots \TensOp{}  \QState{n}\right)
     \]
-    \item The resulting eigenvalue on the system's state is the product of the individual eigenvalues.
+    \item Thus, the resulting eigenvalue on the system's state is the product of the individual eigenvalues.
     \item Each $\lambda_{i}$ is $\pm 1$, so the resulting eigenvalue is the count of the $-1$ values, mod 2.
 \end{itemize}
 }
