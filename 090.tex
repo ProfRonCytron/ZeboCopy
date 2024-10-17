@@ -598,7 +598,50 @@ This violates belief in locality and realism.}}
     
 \end{frame}
 
-\section{No-cloning theorem}
+\section*{Measurement}
+
+\begin{frame}{Measurement of a multiqubit system}{The measured system's eigenvalue is the product of the states' measured eigenvalues}
+\TwoUnequalColumns{0.7\textwidth}{0.3\textwidth}{%
+\only<1>{
+\Vskip{-3em}\begin{itemize}
+    \item As shown, each qubit is a physical object that is measured separately from the other qubits, even if the qubits are entangled.
+    \item Each measured qubit collapses into an eigenstate of its measurement operator.
+    \begin{itemize}
+    \item In the computational basis, this is either \QZero{} or \QOne{}.  
+    \item The associated eigenvalues are $+1$ and $-1$, respectively.
+    \end{itemize}
+    \item The system's measurement is an $n$-bit vector.
+    \item The system's eigenvalue is the \emph{product} of the measured qubits' eigenvalues.  Why?
+\end{itemize}}%
+\only<2>{%
+\Vskip{-3em}\begin{itemize}
+    \item Suppose the resulting state is 
+    \[
+    \lambda_{1} \QState{1} \TensOp{} \lambda_{2} \QState{2} \TensOp{} \cdots \TensOp{} \lambda_{n} \QState{n}
+    \]
+    \item This equals
+    \[
+    \left(\lambda_{1} \times \lambda_{2} \times \cdots \times \lambda_{n}\right)
+    \ \left( \QState{1} \TensOp{}  \QState{2} \TensOp{} \cdots \TensOp{}  \QState{n}\right)
+    \]
+    \item The resulting eigenvalue on the system's state is the product of the individual eigenvalues.
+    \item Each $\lambda_{i}$ is $\pm 1$, so the resulting eigenvalue is the count of the $-1$ values, mod 2.
+\end{itemize}
+}
+}{%
+\begin{center}
+\adjustbox{scale=1.0,valign=t}{%
+\begin{quantikz}
+\lstick{$q_1$} &\qw & \meter{0/1}\\
+\lstick{$q_2$} & \qw & \meter{0/1} \\
+\lstick{\RVDots}     \\
+\lstick{$q_n$} & \qw & \meter{0/1}
+\end{quantikz}}
+
+\end{center}}
+\end{frame}
+
+\section*{No-cloning theorem}
 
 \begin{frame}{Cloning a state}{What state should we obtain?}
 
