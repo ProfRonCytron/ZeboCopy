@@ -227,22 +227,46 @@ This causes columns~1 and~2 to have product~\MM{}.  The third row still has a po
 
 \section*{Approaches}
 
-\begin{frame}{Approaches}{Three ways to understand or prove a quantum solution to this puzzle}
+\begin{frame}{Square-by-square approach}{Each player performs 3 measurements as prescribed by the solution}
+\begin{MPScene}
 
 \TwoColumns{%
 \Vskip{-3em}\begin{itemize}
 \item The solution is shown the right.  
 \item Rather than providing a direct answer, each square indicates the basis \TensProd{M_{1}}{M_{2}} in which qubits $q_{1}$ and $q_{2}$ should be measured.
-\item Alice uses the squares in her row, performing the measurements on her qubits $a_1$ and $a_2$.
-\item Bob uses the squares in his column, performing the measurements on his qubits $b_1$ and $b_2$.
+\item \ColorOne{Alice} uses the squares in her row, performing the specified measurements on her qubits \Aone{} and~\Atwo.
+\item \ColorTwo{Bob} uses the squares in his column, performing the specified measurements on his qubits \Bone{} and~\Btwo.
 \end{itemize}
 }{%
 \begin{MPSquareEnv}
     \MPSoln{}
 \end{MPSquareEnv}
 }
-
+    
+\end{MPScene}
 \end{frame}
+
+\begin{frame}{Other approaches}{Two other ways to understand or prove a quantum solution to this puzzle}
+\begin{MPScene}
+
+\TwoUnequalColumns{0.65\textwidth}{0.35\textwidth}{%
+\Vskip{-3em}\begin{itemize}
+\item \textbf{Proof:} We can show that the prescribed measurements cause \ColorOne{Alice} to compute $+1$ as the product across any row, regardless of the state of her qubits \Aone{} and \Atwo.  Similarly, \ColorTwo{Bob} obtains $-1$ as the product down any column using \Bone{} and \Btwo.
+
+This approach is non-constructive and does not yield actual answers for any square.
+\item \textbf{Measure once:} Based on her assigned row, \ColorOne{\Alice} can perform a \emph{single measurement} on \Aone{} and \Atwo{}, collapsing each from its entangled partners \Bone{} and \Btwo{}.  The result of that measurement is an eigenstate of each of the squares' measurement operators.
+\end{itemize}
+}{%
+\adjustbox{max width=
+\textwidth}{%
+\begin{MPSquareEnv}
+    \MPSoln{}
+\end{MPSquareEnv}}
+}
+    
+\end{MPScene}
+\end{frame}
+
 
 \section*{Examples}
 \begin{frame}{Examples}{Using the measure-once approach}
