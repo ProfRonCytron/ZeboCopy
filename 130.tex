@@ -270,7 +270,7 @@ This approach is non-constructive and does not yield actual answers for any squa
 
 \section*{Examples}
 
-\begin{frame}{Summary of the measure once approach}{From entanglement to measurement}
+\begin{frame}{Summary of the measure once approach}{From entanglement to measurement, the steps performed in the upcoming examples}
 \begin{MPScene}
 
 \Vskip{-3.5em}\begin{itemize}
@@ -279,11 +279,13 @@ This approach is non-constructive and does not yield actual answers for any squa
     \item The entangled pair pair $(\Atwo,\Btwo)$ is generated  
 \(\ket{\Atwo{}\Btwo{}}=\TwoSup{00}{11}\)
 \item Alice takes \Aone{} and \Atwo{}. Bob takes \Bone{} and \Btwo{}. They separate to play the game.
-\item Alice measures \Aone{} and \Atwo{} based on her assigned row (we study later how to perform that measurement). 
- The qubits are now in some two-qubit state \QState{a} that is necessarily an eigenstate of that measurement operator. 
- Moreover, \QState{a} is also an eigenstate of each two-qubit measurement operator in her assigned row.  Applying any of those measurements will thus preserve \QState{a}.
-\item Bob's qubits \Bone{} and \Btwo{} are also in state \QState{a} due to the entanglement prior to Alice's measurement.
-\item Bob now measures \Bone{} and \Btwo{} based on his assigned column.  The result is some state \QState{b} that is an eigenstate of each two-qubit measurement operator in his assigned column. Applying any of them will preserve \QState{b}.
+\item Alice measures \Aone{} in a basis determined by her assigned row (we study later how to perform that measurement). 
+\item Bob's \Bone{} collapses into the same state as Alice's \Aone{} after her measurement.
+ \item Bob measures \Btwo{} in a basis determined by his assigned column.
+ \item Alice's \Atwo{} is in the same state as Bob's \Btwo{} after his measurement.
+\item When the measurements are complete, we obtain
+\[\QState{a} =\TensProd{\Aone}{\Atwo}=\TensProd{\Bone}{\Btwo}=\QState{b}\]
+\item These resulting states are eigenstates of the measurement operators in Alice's row and in Bob's column.
 \end{itemize}
     
 \end{MPScene}
