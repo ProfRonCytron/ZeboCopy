@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage{exercises/handwritten/handout}
+
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\usepackage{hyperref}
+\input{quantummacros.tex}
+%%
+%%
+\newcommand{\Blank}{\mbox{\hskip 4pt\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+
+\begin{document}
+
+\assignment{Problem Set 010}
+
+\begin{quote}
+    As for all written assignments, you must upload your completed work to GradeScope.
+
+    You are welcome to work collaboratively on solving these problems, but you each must write or type out your own solution, and upload that to GradeScope.
+
+    Work submitted improperly will receive no credit.
+\end{quote}
+
+\def\Ans#1{{\color{blue}\mbox{Answer: }#1}}
+\begin{enumerate}[font=\bfseries]
+    \item For this assignment, I worked with the following people:
+
+    \Ans{Varies}
+    \LeaveSpace{}
+    \item \Points{15} In which quadrant of the complex unit circle do you find $e^{i\frac{3\pi}{4}}$? \Ans{III}
+    \item \Points{25} Let
+    \[ \ket{a} = \SQB{3}{1} \mbox{ and } \ket{b} = \SQB{1}{4} \]
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item $\bra{a}=\Ans{\CQB{3}{1}}$
+        \item $\braket{a|b}=\Ans{7}$
+        \item $\ket{a}\kern-3pt\bra{b}=\Ans{\SQBG{\relax}{3}{12}{1}{4}}$
+        \item $\ket{b}\kern-3pt\bra{a}=\Ans{\SQBG{\relax}{3}{1}{12}{4}}$
+        \item $\Prob{\ket{b}}=\Ans{17}$
+    \end{enumerate}
+
+
+    \item \Points{20} Supply the conjugate transpose expessions below:
+    \begin{enumerate}[label=\theenumi.\arabic*]
+       \item $\Conj{\SQB{3}{i}}=\Ans{\CQB{3}{-\NiceI}}$ 
+       \item $\Conj{\SQB{3}{7}}=\Ans{\CQB{3}{7}}$  
+       \item $\Conj{\CQB{2i}{64}}=\Ans{\SQB{-2\NiceI}{64}}$
+       \item $\Conj{\SQBG{\relax}{2}{i}{3}{i}}=\Ans{\SQBG{\relax}{2}{3}{-\NiceI}{-\NiceI}}$ 
+    \end{enumerate}
+
+    \item \Points{20} Suppose $\ket{a} = \begin{pmatrix}5 \\ i \end{pmatrix}$ and $\ket{b} = \begin{pmatrix}2 \\ 3 \end{pmatrix}$.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item $\braket{a|b} = \Ans{10-3\NiceI}$ 
+        \item $\ket{b}\bra{a} = \Ans{\SQBG{\relax}{10}{-2\NiceI}{15}{-3\NiceI}}$
+        \item $\braket{b|b} = \Ans{13}$ 
+        \item $|\ket{b}|^2 = \Ans{13}$ 
+    \end{enumerate}
+        \item \Points{20} Recall we say a computation (or function) is \emph{reversible} if it is always possible to uniquely recover the input, given the output. Assume $x \in \mathbb{R}$.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item If $f : x \mapsto x^2$, is $f$ a reversible function? \Ans{No, we lose sign information}
+        \item If $f : x \mapsto x^3$, is $f$ a reversible function? \Ans{Yes, the cube root will compute the inverse}
+        \item If $f : x \mapsto (x^2,\textrm{sign}(x))$, is $f$ a reversible function? \Ans{Yes}
+        \item If $f : x \mapsto 0$, is $f$ a reversible function? \Ans{No, we cannot recover $x$}
+    \end{enumerate}
+ 
+    
+\end{enumerate}
+
+
+
+\end{document}
