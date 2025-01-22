@@ -41,7 +41,7 @@
 \begin{enumerate}[font=\bfseries]
     \item With whom did you collaborate on this assignment?
     \LeaveSpace{}
-    \item (20 points) Create the following setup in your own workspace using the \href{https://lab.quantumflytrap.com/lab}{quantum flytrap site}.
+    \item (25 points) Create the following setup in your own workspace using the \href{https://lab.quantumflytrap.com/lab}{quantum flytrap site}.
     \[\includegraphics[scale=0.5]{easyFilter}\]
     \begin{enumerate}[label=\theenumi.\arabic*]
         \item Using only polarizing filters (the second element under the Polarization section) create a configuration such that the detector only detects 6$\%$ of the initial photons. What is the minimum number of polarizing filters required to achieve this? \Blank{}
@@ -55,33 +55,32 @@
         If a photon is polarized with angle $\theta$ off the horizontal axis, then its state can be described as
         \[ \ket{\psi} = \cos{\theta}\ket{0} + \sin{\theta}\ket{1}\] 
         In terms of $\theta$, what is the probability that that photon will be measured as vertical?\Blank{}
-       \item The \PauliX{} gate is
-       \[ \XMatrix{} \]
+       \item Consider the single-qubit gate
+       \[ \PauliX = \XMatrix{} \]
        If the photon in state $\ket{\psi}$ passes through an \PauliX{} filter, then in terms
        of $\theta$, what is the probability it will be measured vertically?\Blank{}
         \item In terms of \QZero{} and \QOne{} defined above, the state of an \emph{unpolarized} photon can be described as:
         \[ \Blank{}\QZero{} + \Blank{}\QOne{} \]
     \end{enumerate}
-    \item (6 points) Create the following setup:
+    \item (25 points) Create the following setup:
     \[\includegraphics[scale=0.8]{beamSplit}\]
     Consider the polarizing beam splitter (the first element under the Polarization section). Be sure to right-click it to learn more about its behavior.
-    \begin{enumerate}[label=\theenumi.\arabic*]
-        \item Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Provide a sketch of your configuration.\LeaveSpace[1.5in]{}
-        \item Using only polarizing beam splitters and polarizing filters, can we ensure that 100\% of photons arrive at either Receiver A or Receiver B, given that the probability of measuring a photon at each must be greater than zero \Blank{}
-    \end{enumerate}
-    \item (9 points) Recreate the initial configuration of Question 2. Consider the sugar solution (the last element under the Polarization section).
-    \begin{enumerate}[label=\theenumi.\arabic*]
-        \item Using only sugar solutions and polarizing beam splitters create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Please sketch your configuration. \LeaveSpace[1.5in]
-        \item Using only sugar solutions and polarizing beam splitters, can we ensure that 100\% of photons arrive at either Receiver A or Receiver B, given that the probability of measuring a photon at each must be greater than zero \Blank{} Briefly explain your reasoning. \LeaveSpace{}
-    \end{enumerate}
+    
+    Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Provide a sketch of your configuration.\LeaveSpace[1.5in]{}
 
-    \item (3 points) Consider the setup below.
+    \item (25 points) Recreate the initial configuration of Question 2. Consider the sugar solution (the last element under the Polarization section).
+    
+     Using only sugar solutions and polarizing beam splitters create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Please sketch your configuration. \LeaveSpace[1.5in]
+        
+
+    \item (25 points) Consider the setup below.
     \[\includegraphics[scale=0.6]{rotate10}\]
-    This website only allows us to rotate polarizing filters in increments of 45 degrees. Let's imagine that we are able to rotate polarizing filters in increments of 10 degrees.
+    This website only allows us to rotate polarizing filters in increments of 45 degrees. Let's imagine that we are able to rotate polarizing filters only in increments of 10 degrees.
 
-  Below we  require that consecutive filters have different rotations, as repeating a filter in the same rotation has no effect.
-  
-   How many polarizing filters could we place between the photon source and receiver and still expect to see at least 50\% of the initial photons in the receiver? \Blank{} 
+    With no two adjacent filters in the same orientation, what is the maximum number of
+    polarizing filters could we place between the photon source and receiver and still expect to see at least 50\% of the initial photons in the receiver? \Blank{}
+    
+    Show your work for full credit.
    
    
     
