@@ -45,20 +45,28 @@
     \[\includegraphics[scale=0.5]{easyFilter}\]
     \begin{enumerate}[label=\theenumi.\arabic*]
         \item Using only polarizing filters (the second element under the Polarization section) create a configuration such that the detector only detects 6$\%$ of the initial photons. What is the minimum number of polarizing filters required to achieve this? \Blank{}
-        \item Describe a general strategy using only polarizing filters that causes the detector to detect only $n\%$ of the initial photons. You may assume $n \leq 100$ and $n = \frac{100}{2^k}$ with $k\in\mathbb{Z}^+$.\LeaveSpace[2.0in]
-        \item There is only one path in this configuration so we can use statevectors to represent the polarization of the photons. Let $\ket{0} = \begin{pmatrix}1 \\ 0 \end{pmatrix}$ represent photons completely oriented in the horizontal direction. Similarly, let $\ket{1} = \begin{pmatrix}0 \\ 1 \end{pmatrix}$ represent photons completely oriented in the vertical direction. Note we can characterize any state of these bases by a single parameter $\theta$ as follows: $\ket{\psi} = \cos{\theta}\ket{0} + \sin{\theta}\ket{1}$. Assume the photon source outputs photons completely oriented in the vertical direction. Suppose the matrix $M$ represents a polarizing filter oriented in the vertical direction. Answer the following questions.
+        \clearpage{}
+        \item Describe a general strategy using only polarizing filters that causes the detector to detect only $n\%$ of the initial photons. You may assume $n \leq 100$ and $n = \frac{100}{2^k}$ with $k\in\mathbb{Z}^+$.\LeaveSpace[2in]{}
+        \item We can use statevectors to represent the polarization of the photons. Let 
         \begin{itemize}
-            \item What does $M\ket{0} = $ \Blank{}
-            \item What does $M\ket{1} = $ \Blank{} Give the matrix for $M = $\Blank{}
+          \item $\ket{0} =\SQB{1}{0}$ represent photons completely oriented according to the horizontal axis
+          \item $\ket{1} = \SQB{0}{1}$ represent photons completely oriented according to the vertical axis
         \end{itemize}
-        \item Given some state $\ket{\psi}$, what is the probability, in terms of $\theta$, that the photon will pass through a vertically oriented filter?\Blank{}
-        \item Does applying a vertical filter, then a horizontal filter, and then a filter oriented 45 degrees from the origin produce the same result as applying a vertical filter, then a filter oriented 45 degrees from the origin, and then a horizontal filter? Why or why not?\LeaveSpace{}
+        If a photon is polarized with angle $\theta$ off the horizontal axis, then its state can be described as
+        \[ \ket{\psi} = \cos{\theta}\ket{0} + \sin{\theta}\ket{1}\] 
+        In terms of $\theta$, what is the probability that that photon will be measured as vertical?\Blank{}
+       \item The \PauliX{} gate is
+       \[ \XMatrix{} \]
+       If the photon in state $\ket{\psi}$ passes through an \PauliX{} filter, then in terms
+       of $\theta$, what is the probability it will be measured vertically?\Blank{}
+        \item In terms of \QZero{} and \QOne{} defined above, the state of an \emph{unpolarized} photon can be described as:
+        \[ \Blank{}\QZero{} + \Blank{}\QOne{} \]
     \end{enumerate}
     \item (6 points) Create the following setup:
     \[\includegraphics[scale=0.8]{beamSplit}\]
     Consider the polarizing beam splitter (the first element under the Polarization section). Be sure to right-click it to learn more about its behavior.
     \begin{enumerate}[label=\theenumi.\arabic*]
-        \item Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Please sketch your configuration.\LeaveSpace[1.5in]
+        \item Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Provide a sketch of your configuration.\LeaveSpace[1.5in]{}
         \item Using only polarizing beam splitters and polarizing filters, can we ensure that 100\% of photons arrive at either Receiver A or Receiver B, given that the probability of measuring a photon at each must be greater than zero \Blank{}
     \end{enumerate}
     \item (9 points) Recreate the initial configuration of Question 2. Consider the sugar solution (the last element under the Polarization section).
