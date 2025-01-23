@@ -1,2 +1,14 @@
-What does a column of H^n represent?
-Something about f(0)=1 for balanced but never B-V
+
+You are given a source of photons, and promised that they are all
+either 
+type A: polarized at 45 degrees or 
+type B: unpolarized.
+
+If you know they are all polarized at 45 degrees, what is the state
+of each photon relative to |0> horizontal and |1> vertical polarization?
+
+If you know the are all unpolarized, what is the stat of each photon
+relative to |0> horizontal and |1> vertical?
+
+Given as many photons as you need from the source, devise an experiment to
+tell whether the source is emitting type A or type B photons.
