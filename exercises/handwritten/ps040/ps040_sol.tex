@@ -40,13 +40,13 @@
 
 \begin{enumerate}[font=\bfseries]
     \item With whom did you collaborate on this assignment?
-    \LeaveSpace{}
+    \LeaveSpace{} \Ans{Varies}
     \item (25 points) Create the following setup in your own workspace using the \href{https://lab.quantumflytrap.com/lab}{quantum flytrap site}.
     \[\includegraphics[scale=0.5]{easyFilter}\]
     \begin{enumerate}[label=\theenumi.\arabic*]
-        \item Using only polarizing filters (the second element under the Polarization section) create a configuration such that the detector only detects 6$\%$ of the initial photons. What is the minimum number of polarizing filters required to achieve this? \Blank{}
+        \item Using only polarizing filters (the second element under the Polarization section) create a configuration such that the detector only detects 6$\%$ of the initial photons. What is the minimum number of polarizing filters required to achieve this? \Ans{4, each 45 degrees away from the next}
         \clearpage{}
-        \item Describe a general strategy using only polarizing filters that causes the detector to detect only $n\%$ of the initial photons. You may assume $n \leq 100$ and $n = \frac{100}{2^k}$ with $k\in\mathbb{Z}^+$.\LeaveSpace[2in]{}
+        \item Describe a general strategy using only polarizing filters that causes the detector to detect only $n\%$ of the initial photons. You may assume $n \leq 100$ and $n = \frac{100}{2^k}$ with $k\in\mathbb{Z}^+$.\Ans{Use a sequence of $k$ filters with the initial filter rotated 45 degrees relative to the photon source and then rotate each additional filter by another 45 degrees.}
         \item We can use statevectors to represent the polarization of the photons. Let 
         \begin{itemize}
           \item $\ket{0} =\SQB{1}{0}$ represent photons completely oriented according to the horizontal axis
@@ -54,24 +54,27 @@
         \end{itemize}
         If a photon is polarized with angle $\theta$ off the horizontal axis, then its state can be described as
         \[ \ket{\psi} = \cos{\theta}\ket{0} + \sin{\theta}\ket{1}\] 
-        In terms of $\theta$, what is the probability that that photon will be measured as vertical?\Blank{}
+        In terms of $\theta$, what is the probability that that photon will be measured as vertical?\Ans{$\sin^{2}{\theta}$}
        \item Consider the single-qubit gate
        \[ \PauliX = \XMatrix{} \]
        If the photon in state $\ket{\psi}$ passes through an \PauliX{} filter, then in terms
-       of $\theta$, what is the probability it will be measured vertically?\Blank{}
+       of $\theta$, what is the probability it will be measured vertically?\Ans{$\cos^{2}{\theta}$}
         \item In terms of \QZero{} and \QOne{} defined above, the state of an \emph{unpolarized} photon can be described as:
-        \[ \Blank{}\QZero{} + \Blank{}\QOne{} \]
+        \[ \Ans{\RootTwo{}}\QZero{} + \Ans{\RootTwo{}}\QOne{} \]
     \end{enumerate}
     \item\label{qu:pbs} (25 points) Create the following setup:
     \[\includegraphics[scale=0.8]{beamSplit}\]
     Consider the polarizing beam splitter (the first element under the Polarization section). Be sure to right-click it to learn more about its behavior.
     
-    Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Provide a sketch of your configuration.\LeaveSpace[1.5in]{}
+    Using only polarizing beam splitters and polarizing filters, create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Provide a sketch of your configuration.
+    
+    \Ans{Varies, but the idea is to change the source from vertically polarized (its natural state) into a superposition of vertical and horizontal, by placing a polarizing filter at 45 degrees prior to the polarizing beam splitter.}
+    \[\includegraphics[scale=0.6]{polarizingbeamsplittersol}\]
 
     \item (25 points) Recreate the initial configuration of Question~\ref{qu:pbs}. Consider the sugar solution (the last element under the Polarization section).
     
-     Using only sugar solutions and polarizing beam splitters create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Please sketch your configuration. \LeaveSpace[1.5in]
-        
+     Using only sugar solutions and polarizing beam splitters create a configuration such that the probability of measuring a photon at Receiver A and the probability of measuring a photon at Receiver B are both greater than zero. Please sketch your configuration. \Ans{Varies, but the sugar solution will place the photons in a 45 degree polarization so the polarizing splitter will send some each way.}
+        \[\includegraphics[scale=0.6]{sugarsol}\]
 
     \item (25 points) Consider the setup below.
     \[\includegraphics[scale=0.6]{rotate10}\]
@@ -81,7 +84,12 @@
     polarizing filters could we place between the photon source and receiver and still expect to see at least 50\% of the initial photons in the receiver? \Blank{}
     
     Show your work for full credit.
-   
+
+   \Ans{We just need to figure out how much light passes through a filter of 10 degree offset.
+    \[\cos^2({10^{\circ}}) \approx .97 \]
+            \[(.97)^x = 0.5\]
+            \[x = 22.75\]
+            Should round down to 22 filters but also accept 22, 23, or 24 filters, because the first filter could be vertical and do nothing.}
    
     
 \end{enumerate}
