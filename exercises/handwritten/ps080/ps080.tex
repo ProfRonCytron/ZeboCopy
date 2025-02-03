@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{exercises/handwritten/handout}
+
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\graphicspath{ {./ps080-assets/} }
+\input{quantummacros.tex}
+%%
+%%
+\newcommand{\Blank}{\mbox{\hskip 4pt\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\BlankLine}{\mbox{\hskip 4pt\vrule width 5.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+
+\begin{document}
+
+\assignment{Problem Set 080}
+
+\begin{quote}
+    As for all written assignments, you must upload your completed work to GradeScope.
+
+    You are welcome to work collaboratively on solving these problems, but you each must write or type out your own solution, and upload that to GradeScope.
+
+    Work submitted improperly will receive no credit.
+\end{quote}
+
+\begin{quote}\bf
+You are encouraged to use Matlab to help solve these problems or to check your solutions.  Where you are asked to show your work, you can paste the Matlab output.
+\end{quote}
+
+\begin{enumerate}[font=\bfseries]
+\item \ %
+\begin{itemize}
+    \item Your name?
+    \item Your student ID?
+    \item With whom did you collaborate?
+    \LeaveSpace{}]
+\end{itemize}
+
+\item 
+    (5 points) Describe this circuit as a single unitary matrix. 
+    \[\includegraphics[scale=1.2]{single-q}\]
+    Be certain of the order in which the operations occur.  Show your work. \LeaveSpace{}
+    \item 
+    (5 points) Describe this  circuit as a single unitary matrix. 
+    \[\includegraphics[scale=1.2]{double-q}\]
+    Show your work. \LeaveSpace[3.0in]
+    \item (3 points) Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its qubit?
+    \LeaveSpace{}
+    \item (5 points) Write the below state as the tensor product of two qubits or prove it is an entangled state.
+    \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} - \frac{i}{\sqrt{2}}\ket{01}\]
+    \LeaveSpace[2.0in]
+    \item (5 points) Write the below state as the tensor product of two qubits or prove it is an entangled state.
+    \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{01} + \frac{1}{\sqrt{2}}\ket{10}\]
+    \LeaveSpace[2.0in] \newpage
+    \item (6 points) For each two-qubit state below, compute and show its corresponding column vector.
+        \begin{enumerate}
+            \item $\ket{10}$ \LeaveSpace[0.3in]
+            \item $\ket{0+}$ \LeaveSpace[0.3in]
+            \item $\ket{+-}$ \LeaveSpace[0.3in]
+        \end{enumerate}
+    \item (12 points) Give the parameters ($\theta,\phi,\lambda$) needed for the \NamedGate{U} gate to specify:
+        \begin{enumerate}
+            \item \PauliX{} \LeaveSpace[0.3in]
+            \item \PauliY{} \LeaveSpace[0.3in]
+            \item \PauliZ{} \LeaveSpace[0.3in]
+            \item \Hadamard{} \LeaveSpace[0.3in]
+        \end{enumerate}
+    \item (8 points) Consider the controlled-Y (CY) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli Y gate to the target bit. 
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Give the matrix that describes the CY gate.\LeaveSpace{} 
+    \item Could we use this gate to create entanglement? 
+    \item Why or why not? \LeaveSpace[2.5in]
+    \end{enumerate}
+    \item (10 points) Show that the formula below  is true.
+    \[\frac{1}{\sqrt{2}}(\ket{01} - \ket{10}) \equiv \frac{1}{\sqrt{2}}(\ket{+-} - \ket{-+})\]
+    Recall $\equiv$ denotes equivalent up to a global phase. \LeaveSpace[2.0in]
+
+    \item (10 points) Consider the circuit below.  
+    \[\includegraphics[scale=1.2]{cz-gate}\]
+    
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Give the unitary matrix that describes the circuit . Note the second gate is the controlled $\mathbf{Z}$ gate with $q_0$ as the control bit and $q_1$ as the target bit. \LeaveSpace{}
+    \item Is the state at the end of this circuit entangled? 
+    \item Prove your claim:\LeaveSpace{}
+    \end{enumerate}
+    
+    \item (5 points) 
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Can the controlled \PauliZ{} gate matrix be written as the tensor product of two matrices?
+    \item Prove or disprove. \LeaveSpace[2.5in]    
+    \end{enumerate}
+
+    \item (5 points) Suppose you have the following state:
+    \begin{align*} \ket{\psi} & = 
+        \alpha_0\ket{000} + \alpha_1\ket{001} +
+                    \alpha_2\ket{010} +  \alpha_3\ket{011}  \\
+                    & + \alpha_4\ket{100} + \alpha_5\ket{101} +
+                    \alpha_6\ket{110} + \alpha_7\ket{111}
+    \end{align*}
+    Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Blank{}
+
+    \item Should I bring in more from ps4?
+\end{enumerate}
+
+\end{document}
