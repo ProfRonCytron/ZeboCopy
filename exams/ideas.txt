@@ -18,3 +18,5 @@ Give the state |psi> and its antipodal state |psi'> as defined in hw 060,
   what is |psi'psi'>
 what is 1/root(2)  |psipsi> + |psi'psi'>
 noting that cos(pi/2 - x) = sin(x) and sin(pi/2 - x) = cos(x)
+
+What measurements are possible and how is this related to the (common) Bell state?
