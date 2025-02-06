@@ -20,3 +20,7 @@ what is 1/root(2)  |psipsi> + |psi'psi'>
 noting that cos(pi/2 - x) = sin(x) and sin(pi/2 - x) = cos(x)
 
 What measurements are possible and how is this related to the (common) Bell state?
+
+
+What state would you need so that no phone call is necessary from Alice to Bob
+to teleport.  Why is such a state infeasible/
