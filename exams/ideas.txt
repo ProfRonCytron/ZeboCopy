@@ -24,3 +24,5 @@ What measurements are possible and how is this related to the (common) Bell stat
 
 What state would you need so that no phone call is necessary from Alice to Bob
 to teleport.  Why is such a state infeasible/
+
+Solve teleportation but where X for 00 XZ for 01 Z for 10 nothing for 11
