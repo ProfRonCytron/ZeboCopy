@@ -12,3 +12,9 @@ relative to |0> horizontal and |1> vertical?
 
 Given as many photons as you need from the source, devise an experiment to
 tell whether the source is emitting type A or type B photons.
+
+Give the state |psi> and its antipodal state |psi'> as defined in hw 060, 
+  what is |psipsi>
+  what is |psi'psi'>
+what is 1/root(2)  |psipsi> + |psi'psi'>
+noting that cos(pi/2 - x) = sin(x) and sin(pi/2 - x) = cos(x)
