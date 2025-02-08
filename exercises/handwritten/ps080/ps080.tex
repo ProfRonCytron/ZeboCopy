@@ -89,6 +89,13 @@ You are encouraged to use Matlab to help solve these problems or to check your s
     \[\includegraphics[scale=1.2]{cz-gate}\]
     
     \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Let's construct the Controlled-\PauliZ{} (\NamedGate{CZ}) gate based on what it does to the computational basis vectors, expressed not as column vectors but as tensor products:
+    \begin{itemize}
+      \item $\NamedGate{CZ}(\ket{00})\mapsto\ket{\Blank[2em]{}}$ 
+      \item $\ket{01}$
+      \item $\ket{10}$
+      \item $\ket{11}$
+    \end{itemize}
     \item Give the unitary matrix that describes the circuit . Note the second gate is the controlled $\mathbf{Z}$ gate with $q_0$ as the control bit and $q_1$ as the target bit. \LeaveSpace{}
     \item Is the state at the end of this circuit entangled? 
     \item Prove your claim:\LeaveSpace{}
