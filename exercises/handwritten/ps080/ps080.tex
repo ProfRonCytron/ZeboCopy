@@ -47,15 +47,20 @@ You are encouraged to use Matlab to help solve these problems or to check your s
 \end{itemize}
 
 \item 
-    (5 points) Describe this circuit as a single unitary matrix. 
+    (5 points) 
+    Describe this circuit as a single unitary matrix. 
     \[\includegraphics[scale=1.2]{single-q}\]
     Be certain of the order in which the operations occur.  Show your work. \LeaveSpace{}
+    \clearpage
     \item 
-    (5 points) Describe this  circuit as a single unitary matrix. 
+    (5 points) 
+        \begin{enumerate}[label=\theenumi.\arabic*]
+        \item Describe this  circuit as a single unitary matrix. 
     \[\includegraphics[scale=1.2]{double-q}\]
     Show your work. \LeaveSpace[3.0in]
-    \item (3 points) Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its incoming qubit?
+    \item Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its incoming qubit?
     \LeaveSpace{}
+    \end{enumerate}
     \item (5 points) Write the below state as the tensor product of two qubits or prove it is an entangled state.
     \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} - \frac{i}{\sqrt{2}}\ket{01}\]
     \LeaveSpace[2.0in]
@@ -79,9 +84,9 @@ You are encouraged to use Matlab to help solve these problems or to check your s
         \F{H}
         \end{tabular}
     \end{center}}
-    \item (8 points) Consider the controlled-Y (CY) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli Y gate to the target bit. 
+    \item (8 points) Consider the controlled-Y (\NamedGate{CY}) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli \PauliY{} gate to the target bit. 
     \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Give the matrix that describes the CY gate.\LeaveSpace{} 
+    \item Give the matrix that describes the \NamedGate{CY} gate.\LeaveSpace{} 
     \item Using the \NamedGate{CY} as your only 2-input gate, provide a circuit that creates entanglement among two qubits, each starting in state \QZero{}.
     \LeaveSpace{}
     \end{enumerate}
@@ -100,7 +105,7 @@ You are encouraged to use Matlab to help solve these problems or to check your s
       \item $\NamedGate{CZ}(\ket{10})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
       \item $\NamedGate{CZ}(\ket{11})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
     \end{itemize}
-    and the matrix for this is then:
+    and the matrix for \NamedGate{CZ} is then:
     \LeaveSpace{}
     \item Give the unitary matrix that describes the complete circuit. \LeaveSpace{}
     \item With each qubit starting in state \QZero{}, is the state at the end of this circuit entangled? \Blank{}
@@ -122,7 +127,39 @@ You are encouraged to use Matlab to help solve these problems or to check your s
     \end{align*}
     Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Blank{}
 
-    \item Should I bring in more from ps4?
+    \item \[\includegraphics[scale=0.8]{bb84_q1}\]
+    Calculate Alice and Bob's shared key based on the table above and the BB84 protocol described in class. 
+    
+    Shared Key: \Blank[12em]{}
+    \item \[\includegraphics[scale=0.8]{bb84_q2}\]
+    Now consider the same table with one additional row, Bob's measurements.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Is there evidence Eve might be present? \Blank{} 
+    \item Explain your answer. \LeaveSpace[1.0in]
+    \end{enumerate}
+    % \item (3 points) Consider the BB84 protocol. Why must Alice wait until after Bob has measured all states before publishing the bases she measured in? \LeaveSpace[1.0in] \newpage
+    % \item (3 points) What is the minimum number of measurements Alice and Bob must publish in order to be at least 90\% confident Eve is not present?
+    % \item (6 points) Suppose you and your friend Bob are trying to decide between using the E91 and BB84 protocols. What factors should you take into account? When would you prefer one protocol over the other? \LeaveSpace[0.5in]
+    % \item (2 points) What is the primary property of quantum mechanics that enables the BB84 protocol?
+    % \item (2 points) What is the primary property of quantum mechanics that enables the E91 protocol?
+    % \item (20 points) Consider a variation on the BB84 protocol. In this protocol, Alice only has two possible states to send to Bob (as opposed to 4 in BB84). Alice will either send $\uparrow$ or $\nearrow$ to Bob. Bob will measure in either the $+$ or $\times$ basis. Let's explore how Alice and Bob can generate a shared key using these constraints.
+    %     \begin{enumerate}
+    %         \item Suppose Alice sends $\uparrow$ and Bob measures in the $+$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\nearrow$ and Bob measures in the $\times$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\uparrow$ and Bob measures in the $\times$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\nearrow$ and Bob measures in the $+$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Regardless of basis, what does Bob know about the initial state Alice sent if he measures $\uparrow$ ? What if he measures $\nearrow$ ? What if he measures  $\rightarrow$ ? What if he measures $\nwarrow$ ?
+    %         \item Describe how Alice and Bob could construct a shared key based on the above observations. You can decide which symbol corresponds to each 0 and 1. 
+    %         \item How could Alice and Bob detect Eve?
+    %     \end{enumerate}
+    \item \[\includegraphics[scale=0.8]{e91_table}\]
+    (5 points) Consider the above example of the E91 protocol. 
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item 
+    Is there evidence Eve might be present? \Blank{}
+    \item 
+    Explain your answer. \LeaveSpace{}
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}
