@@ -10,7 +10,7 @@
 \input{quantummacros.tex}
 %%
 %%
-\newcommand{\Blank}{\mbox{\hskip 4pt\vrule width 1in depth 2pt}\vrule width 0pt height 2.0em}
+
 \newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
 \newcommand{\BlankLine}{\mbox{\hskip 4pt\vrule width 5.5in depth 2pt}\vrule width 0pt height 2.0em}
 %%
@@ -54,7 +54,7 @@ You are encouraged to use Matlab to help solve these problems or to check your s
     (5 points) Describe this  circuit as a single unitary matrix. 
     \[\includegraphics[scale=1.2]{double-q}\]
     Show your work. \LeaveSpace[3.0in]
-    \item (3 points) Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its qubit?
+    \item (3 points) Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its incoming qubit?
     \LeaveSpace{}
     \item (5 points) Write the below state as the tensor product of two qubits or prove it is an entangled state.
     \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} - \frac{i}{\sqrt{2}}\ket{01}\]
@@ -68,18 +68,22 @@ You are encouraged to use Matlab to help solve these problems or to check your s
             \item $\ket{0+}$ \LeaveSpace[0.3in]
             \item $\ket{+-}$ \LeaveSpace[0.3in]
         \end{enumerate}
-    \item (12 points) Give the parameters ($\theta,\phi,\lambda$) needed for the \NamedGate{U} gate to specify:
-        \begin{enumerate}
-            \item \PauliX{} \LeaveSpace[0.3in]
-            \item \PauliY{} \LeaveSpace[0.3in]
-            \item \PauliZ{} \LeaveSpace[0.3in]
-            \item \Hadamard{} \LeaveSpace[0.3in]
-        \end{enumerate}
+    \item (8 points) Give the parameters ($\theta,\phi,\lambda$) needed for the \NamedGate{U} gate to specify each of the following gates by filling in the following table.  If you do this work on your own paper, format your answer exactly in the form of this table.
+    {\def\F#1{\NamedGate{#1} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\\}
+    \begin{center}
+        \begin{tabular}{c||c|c|c}
+        Gate & $\theta$ & $\phi$ & $\lambda$ \\ \hline
+        \F{X}
+        \F{Y}
+        \F{Z}
+        \F{H}
+        \end{tabular}
+    \end{center}}
     \item (8 points) Consider the controlled-Y (CY) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli Y gate to the target bit. 
     \begin{enumerate}[label=\theenumi.\arabic*]
     \item Give the matrix that describes the CY gate.\LeaveSpace{} 
-    \item Could we use this gate to create entanglement? 
-    \item Why or why not? \LeaveSpace[2.5in]
+    \item Using the \NamedGate{CY} as your only 2-input gate, provide a circuit that creates entanglement among two qubits, each starting in state \QZero{}.
+    \LeaveSpace{}
     \end{enumerate}
     \item (10 points) Show that the formula below  is true.
     \[\frac{1}{\sqrt{2}}(\ket{01} - \ket{10}) \equiv \frac{1}{\sqrt{2}}(\ket{+-} - \ket{-+})\]
@@ -89,15 +93,17 @@ You are encouraged to use Matlab to help solve these problems or to check your s
     \[\includegraphics[scale=1.2]{cz-gate}\]
     
     \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Let's construct the Controlled-\PauliZ{} (\NamedGate{CZ}) gate based on what it does to the computational basis vectors, expressed not as column vectors but as tensor products:
+    \item Let's construct the Controlled-\PauliZ{} (\NamedGate{CZ}) gate based on what it does to the computational basis vectors, expressed not as column vectors but as tensor products of $\ket{0}$ and $\ket{1}$.  If the first qubit is $\ket{0}$, \NamedGate{CZ} does nothing but if the first qubit is $\ket{1}$, then \NamedGate{CZ} applies the \PauliZ{} gate to the second qubit.
     \begin{itemize}
-      \item $\NamedGate{CZ}(\ket{00})\mapsto\ket{\Blank[2em]{}}$ 
-      \item $\ket{01}$
-      \item $\ket{10}$
-      \item $\ket{11}$
+      \item $\NamedGate{CZ}(\ket{00})\mapsto\ \ \ \  \ket{\Blank[2em]{}}$ 
+      \item $\NamedGate{CZ}(\ket{01})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$ 
+      \item $\NamedGate{CZ}(\ket{10})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
+      \item $\NamedGate{CZ}(\ket{11})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
     \end{itemize}
-    \item Give the unitary matrix that describes the circuit . Note the second gate is the controlled $\mathbf{Z}$ gate with $q_0$ as the control bit and $q_1$ as the target bit. \LeaveSpace{}
-    \item Is the state at the end of this circuit entangled? 
+    and the matrix for this is then:
+    \LeaveSpace{}
+    \item Give the unitary matrix that describes the complete circuit. \LeaveSpace{}
+    \item With each qubit starting in state \QZero{}, is the state at the end of this circuit entangled? \Blank{}
     \item Prove your claim:\LeaveSpace{}
     \end{enumerate}
     
