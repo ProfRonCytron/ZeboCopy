@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage{exercises/handwritten/handout}
+
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\input{quantummacros.tex}
+%%
+%%
+
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\BlankLine}{\mbox{\hskip 4pt\vrule width 5.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+
+\begin{document}
+
+\assignment{Problem Set 060 Solution}
+
+\begin{quote}
+    As for all written assignments, you must upload your completed work to GradeScope.
+
+    You are welcome to work collaboratively on solving these problems, but you each must write or type out your own solution, and upload that to GradeScope.
+
+    Work submitted improperly will receive no credit.
+\end{quote}
+
+\begin{quote}\bf
+Feel free to use Matlab as you like to help solve these problems.  Where you are asked to show your work, show the Matlab output.
+\end{quote}
+
+\begin{enumerate}[font=\bfseries]
+\item With whom did you collaborate on this assignment?
+    \Ans{Varies}
+    \item (20 points) Let $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$. Throughout this assignment, the {\bf boldface} matrices are the Pauli matrices.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item \Points{3} What is the state of $\ket{\psi_0} = \mathbf{X}\mathbf{Y}\mathbf{Z}\ket{\psi}$? \Ans{$\NiceI\QState{}$ or $\QState{}$}
+        \item \Points{3} Show how you arrived at your answer. \Ans{Pauli identity $\PauliX{}\PauliY{} = \NiceI\PauliZ{}$ and $\PauliZ{}\PauliZ{} =\Identity{}$.  They could also show the output of the matrix computations}
+        \item \Points{3} Describe each of the above operations as rotations on the Bloch sphere in the order they would occur.\Ans{First \PauliZ{} rotates $\pi$ radians about the z axis, then \PauliY{} $\pi$ radians about the y axis, finally \PauliX{} rotates $\pi$ radians about the x axis.}
+        \item \Points{3} What is the state of $\ket{\psi_1} = \mathbf{Z}\mathbf{Y}\mathbf{X}\ket{\psi}$? \Ans{$-\NiceI\QState{}$ or $\QState{}$}
+        \item \Points{2} Show how you arrived at your answer. \Ans{Pauli identity $\PauliZ{}\PauliY{}=-\NiceI\PauliX{}$ and \PauliX{} times itself is \Identity{}. They could also show the output of the matrix computations.}
+        \item \Points{2} Does $\ket{\psi_0} = \ket{\psi_1}$? \Ans{Yes or No, but we need the explanation}  Explain:\Ans{They are not equal, as they differ by a $-$ sign, but they are equivalent up to a global phase.}
+        \item \Points{2} Is the probability of observing $\ket{0}$ when we measure $\ket{\psi_0}$ equal to the probability of observing $\ket{0}$ when we measure $\ket{\psi_1}$?\Ans{yes}
+        \item \Points{2} Why or why not? \Ans{The states are equivalent up to a global phase.}
+    \end{enumerate}
+    \item \Points{10}
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item \Points{5} Provide a unitary matrix $U$ below such that when we apply the operation $\mathbf{Y}U\ket{0}$, this results in a $\frac{3}{4}$ chance of measuring $\ket{1}$. \Ans{Note there are multiple correct answers.\[R_y(\theta) = \begin{pmatrix} \cos{\theta/2} & -\sin{\theta/2} \\
+        \sin{\theta/2} & \cos{\theta/2}
+        \end{pmatrix}\]
+        \[\cos^2{\theta} = \frac{1}{4}, \theta = \frac{\pi}{3}\]
+        \[U = \begin{pmatrix} 
+        \frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+        \frac{1}{2} & \frac{\sqrt{3}}{2}
+            \end{pmatrix}
+        \]}
+    \item \Points{5} Show your work for finding $U$. \Ans{varies}
+    \end{enumerate}
+    \item \Points{10} Consider $\ket{\psi} = \mathbf{X}^a\mathbf{Y}^b\mathbf{Z}^c\ket{0}$.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item \Points{5} If $a,c$ are even and $b$ is odd, what is the probability of observing $\ket{0}$ when we measure $\ket{\psi}$? \Ans{The even \PauliX{} and \PauliZ{} matrices multiply to \Identity{} as do all but one \PauliY{}.  Thus we are left with $\PauliY{}\QZero{}\equiv \QOne{}$ so there is no chance of observing \QZero{}.}
+        \item \Points{5} If $a,b,c$ are all even what is the probability of observing $\ket{1}$ when we measure $\ket{\psi}$? \Ans{We are left with \Identity{} on \QZero{} so there is no chance to observe \QOne{}}
+    \end{enumerate}
+    \item \Points{10}
+    \begin{enumerate}[label=\theenumi.\arabic*] \item \Points{2} If we begin at $\ket{0}$ on the Bloch sphere and can use any number of the Pauli gates (\PauliX{}, \PauliY{}, \PauliZ{}), to which states can we travel on the Bloch sphere? \Ans{Only \QZero{} and \QOne{}}
+    \item \Points{3} Explain your answer. 
+    \Ans{Each rotates halfway around the globe, so starting at \QZero{} can only take us to the north and south poles.}
+    
+    \item (2 points) If we now also allow the use of any number of Hadamard gates (\Hadamard{}), to which states can we travel on the Bloch sphere? \Ans{We can now also get to $\ket{+}$ and $\ket{-}$}
+    \item \Points{3} \Ans{\Hadamard{} takes us to those points as well, and away again.}
+    
+    \end{enumerate}
+    \item \Points{30} Recall two points on the Bloch sphere are antipodal if they determine a line that passes through the center of the sphere. Recall that in polar coordinates, a quantum state $\ket{\psi}$ can be specified on the Bloch sphere using two coordinates, $\theta$ and $\phi$:
+    \[\ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
+    + \ExpPhase{\phi}\sin(\frac{\theta}{2})\ket{1}\]
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item \Points{4} All points on the Bloch sphere denote unique quantum states on rotation by a \PauliZ{} gate except which two points? \Ans{\QZero{}} and \Ans{\QOne{}}
+        \item \Points{1} The number of quantum states on the Bloch sphere is \emph{countably} infinite or \emph{uncountably} infinite? \Ans{Uncountably}
+        \item \Points{25} Given a state $\ket{\psi}$ as defined above, it's \emph{antipodal} state is given by:
+        \[ \ket{\psi'} = \cos({\frac{\pi - \theta}{2})\ket{0}+\ExpPhase{(\phi + \pi)}\sin({\frac{\pi - \theta}{2}})\ket{1}}
+        \]
+        \[
+        = \cos({\frac{\pi - \theta}{2})\ket{0}-\ExpPhase{\phi}\sin({\frac{\pi - \theta}{2}})\ket{1}}
+        \]
+        
+        Prove that $\ket{\psi}$ and $\ket{\psi'}$ are orthogonal by showing their inner product is 0. \textbf{Remember to conjugate appropriately.} This problem is worth more points than the others. 
+ We expect a clear, readable, logical proof! Use a full sheet of paper as necessary. \Ans{Varies, Ron will grade these}
+    \end{enumerate}
+    \newpage
+    % \item (5 points) Your friend, Albert Einstein, has challenged you to a quantum game. The game is played as follows: First, Einstein gives you some state $\ket{\psi}$ and tells you where it is located on the Bloch sphere by telling you $\theta$ and $\phi$. You then can apply any quantum gates you wish to $\ket{\psi}$. Before you make a measurement you tell Einstein what measurement you expect to observe. If you are right Einstein gives you \$100. If you are wrong Einstein zaps you with his many-worlds invention. Do you agree to play Einstein's game? Why or why not? \LeaveSpace{}
+    \item \Points{20} Consider the quantum states
+        \[\ket{+y} = \frac{1}{\sqrt{2}}\ket{0} + \frac{i}{\sqrt{2}}\ket{1}\]
+        and
+        \[\ket{-y} = \frac{1}{\sqrt{2}}\ket{0} - \frac{i}{\sqrt{2}}\ket{1}\]
+        What quantum gate (unitary matrix) $U$ produces those states given the input qubits $\ket{0}$ and $\ket{1}$, respectively?
+        \begin{enumerate}[label=\theenumi.\arabic*]
+            \item \Points{4} Define $U$. 
+            \Ans{\[
+            U = \SQBG{\RootTwo}{1}{1}{\NiceI}{-\NiceI}
+            \]}
+            \item \Points{4} Prove $U$ is unitary. \Ans{
+            \[\SQBG{\RootTwo}{1}{1}{\NiceI}{-\NiceI} \times \SQBG{\RootTwo}{1}{-\NiceI}{1}{\NiceI} = \Identity{} \]
+            }
+            \item \Points{4} Below provide the matrix for $U^{-1}$. \Ans{\[ \SQBG{\RootTwo}{1}{-\NiceI}{1}{\NiceI}  \]}
+            \item \Points{4} Show that $\ket{+y}$ and $\ket{-y}$ are eigenstates of the Pauli $\mathbf{Y}$ gate. \Ans{\[
+            \YMatrix{} \RootTwo{}\SQB{1}{\NiceI} =+1 \SQB{1}{\NiceI} \]\[
+            \YMatrix{} \RootTwo{}\SQB{1}{-\NiceI} =-1 \SQB{1}{-\NiceI}
+            \]}
+            \item \Points{4} More generally, what do the columns of such a 2 × 2 matrix (such as $U$) represent with respect to their inputs in the standard basis ($\ket{0}$ and $\ket{1}$)? \Ans{The left column is where the matrix sends \QZero{} and the right column is where the matrix sends \QOne{}}
+        \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
