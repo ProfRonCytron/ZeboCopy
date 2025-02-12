@@ -102,48 +102,90 @@ You are encouraged to use Matlab to help solve these problems or to check your s
             }
         \end{enumerate}
     \item \Points{8} Give the parameters ($\theta,\phi,\lambda$) needed for the \NamedGate{U} gate to specify each of the following gates by filling in the following table.  If you do this work on your own paper, format your answer exactly in the form of this table.
+    \Ans{Note answers may vary and we have to check the formula for the \NamedGate{U} gate to see it it fits.}
     {\def\F#1{\NamedGate{#1} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\\}
     \begin{center}
         \begin{tabular}{c||c|c|c}
         Gate & $\theta$ & $\phi$ & $\lambda$ \\ \hline
+         & \Ans{$\pi$} & \Ans{0} & \Ans{$\pi$} \\
         \F{X}
+        & \Ans{$\pi$} & \Ans{$\pi/2$} & \Ans{$\pi/2$} \\
         \F{Y}
+                & \Ans{0} & \Ans{$0$} & \Ans{$\pi$} \\
         \F{Z}
+                & \Ans{$\pi/2$} & \Ans{0} & \Ans{$\pi$} \\
         \F{H}
         \end{tabular}
     \end{center}}
     \item \Points{8} Consider the controlled-Y (\NamedGate{CY}) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli \PauliY{} gate to the target bit. 
     \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Give the matrix that describes the \NamedGate{CY} gate.\LeaveSpace{} 
+    \item Give the matrix that describes the \NamedGate{CY} gate.\Ans{%
+    \[
+    \begin{pmatrix*}[r]
+     1 & 0 & 0 & 0 \\
+     0 & 1 & 0 & 0 \\
+     0 & 0 & 0 & -\NiceI \\
+     0 & 0 & \NiceI & 0
+    \end{pmatrix*}
+    \]
+    }
     \item Using the \NamedGate{CY} as your only 2-input gate, provide a circuit that creates entanglement among two qubits, each starting in state \QZero{}.
-    \LeaveSpace{}
+    \Ans{%
+    The circuit realizing  \[\NamedGate{CY}(\TensProd{\Hadamard}{\Identity})\ket{00} \] produces the state \[\RootTwo{}\DQB{1}{0}{0}{\NiceI}\] which measures as the standard Bell state, and is entangled.
+    }
     \end{enumerate}
     \item \Points{5} Show that the formula below  is true.
     \[\frac{1}{\sqrt{2}}(\ket{01} - \ket{10}) \equiv \frac{1}{\sqrt{2}}(\ket{+-} - \ket{-+})\]
-    Recall $\equiv$ denotes equivalent up to a global phase. \LeaveSpace[2.0in]
-
+    Recall $\equiv$ denotes equivalent up to a global phase. \Ans{From Matlab}
+        \[\includegraphics[scale=0.7]{prob9sol}\]
+   \Ans{which is equivalent to the left hand side of the formula up to a global phase of $-1$}
     \item \Points{10} Consider the circuit below.  
     \[\includegraphics[scale=1.2]{cz-gate}\]
     
     \begin{enumerate}[label=\theenumi.\arabic*]
     \item Let's construct the Controlled-\PauliZ{} (\NamedGate{CZ}) gate based on what it does to the computational basis vectors, expressed not as column vectors but as tensor products of $\ket{0}$ and $\ket{1}$.  If the first qubit is $\ket{0}$, \NamedGate{CZ} does nothing but if the first qubit is $\ket{1}$, then \NamedGate{CZ} applies the \PauliZ{} gate to the second qubit.
     \begin{itemize}
-      \item $\NamedGate{CZ}(\ket{00})\mapsto\ \ \ \  \ket{\Blank[2em]{}}$ 
-      \item $\NamedGate{CZ}(\ket{01})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$ 
-      \item $\NamedGate{CZ}(\ket{10})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
-      \item $\NamedGate{CZ}(\ket{11})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
+      \item $\NamedGate{CZ}(\ket{00})\mapsto\ \ \ \ \Ans{ \ket{00}}$ 
+      \item $\NamedGate{CZ}(\ket{01})\mapsto\ \ \ \ \Ans{ \ket{01}}$ 
+      \item $\NamedGate{CZ}(\ket{10})\mapsto\ \ \ \ \Ans{ \ket{10}}$
+      \item $\NamedGate{CZ}(\ket{11})\mapsto\ \ \ \ \Ans{ -\ket{11}}$
     \end{itemize}
     and the matrix for \NamedGate{CZ} is then:
-    \LeaveSpace{}
-    \item Give the unitary matrix that describes the complete circuit. \LeaveSpace{}
-    \item With each qubit starting in state \QZero{}, is the state at the end of this circuit entangled? \Blank{}
-    \item Prove your claim:\LeaveSpace{}
+    \Ans{%
+    \[
+    \begin{pmatrix*}[r]
+     1 & 0 & 0 & 0 \\
+     0 & 1 & 0 & 0 \\
+     0 & 0 & 1 & 0 \\
+     0 & 0 & 0 & -1
+    \end{pmatrix*}
+    \]
+    }
+    \item Give the unitary matrix that describes the complete circuit. \Ans{%
+    \[
+    \NamedGate{CZ}\times(\TensProd{\Hadamard}{\Identity}) = \RootTwo{}\begin{pmatrix*}[r]
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & -1 & 0 \\
+    0 & -1 & 0 & 1
+    \end{pmatrix*}
+    \]
+    }
+    \item With each qubit starting in state \QZero{}, is the state at the end of this circuit entangled? \Ans{No}
+    \item Prove your claim:\Ans{%
+    The state is
+    \[
+    \TwoSup{00}{10} = \ket{+0}
+    \]
+    }
     \end{enumerate}
     
     \item \Points{10}
     \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Can the controlled \PauliZ{} gate matrix be written as the tensor product of two matrices?
-    \item Prove or disprove. \LeaveSpace[2.5in]    
+    \item Can the controlled \PauliZ{} gate matrix be written as the tensor product of two matrices? \Ans{No}
+    \item Prove or disprove. \Ans{%
+    The upper left  2x2 block is $1*\Identity$.  The lower right block must therefore be some constant times \Identity{} but the constant would affect both non-zero entries.
+    }
     \end{enumerate}
 
     \item \Points{5} Suppose you have the following state:
@@ -153,7 +195,9 @@ You are encouraged to use Matlab to help solve these problems or to check your s
                     & + \alpha_4\ket{100} + \alpha_5\ket{101} +
                     \alpha_6\ket{110} + \alpha_7\ket{111}
     \end{align*}
-    Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Blank{}
+    Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Ans{%
+    In the original state, $\alpha_{0}$ is twice more likely to be observed than $\alpha_{1}$.  Thus, once we see $00$ for the first two qubits, and all other options are eliminated, we must see $0$ for the third qubit $\frac{2}{3}$ of the time, twice as often as $\frac{1}{3}$ which is the probability of seeing 1.
+    }
 
     \item \Points{10}
     \[[\includegraphics[scale=0.8]{bb84_q1}\]
