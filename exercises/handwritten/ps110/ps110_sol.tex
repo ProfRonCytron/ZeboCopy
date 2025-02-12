@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+\usepackage{exercises/handwritten/handout}
+
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+\graphicspath{ {./ps110-assets/} }
+\input{quantummacros.tex}
+%%
+%%
+
+\newcommand{\NameBlank}{\mbox{\hskip 4pt\vrule width 2.5in depth 2pt}\vrule width 0pt height 2.0em}
+\newcommand{\BlankLine}{\mbox{\hskip 4pt\vrule width 5.5in depth 2pt}\vrule width 0pt height 2.0em}
+%%
+%% Leave at least #1 space, default to what is below
+%%
+\def\DefaultSpace{1in}
+\newcommand{\LeaveSpace}[1][\DefaultSpace]{%
+\vskip #1 plus 1fil\relax\hbox to 0pt{\hss} %
+}
+
+\begin{document}
+
+\assignment{Problem Set 110 Solution}
+
+\begin{quote}
+    As for all written assignments, you must upload your completed work to GradeScope.
+
+    You are welcome to work collaboratively on solving these problems, but you each must write or type out your own solution, and upload that to GradeScope.
+
+    Work submitted improperly will receive no credit.
+\end{quote}
+
+\begin{quote}\bf
+You are encouraged to use Matlab to help solve these problems or to check your solutions.  Where you are asked to show your work, you can paste the Matlab output.
+\end{quote}
+
+\begin{enumerate}[font=\bfseries]
+\item \Points{0} (negative points if you don't fill this out!)
+\begin{itemize}
+    \item Your name?
+    \item Your student ID?
+    \item With whom did you collaborate?
+    \Ans{Varies}
+\end{itemize}
+
+\item 
+    \Points{5}
+    Describe this circuit as a single unitary matrix. 
+    \[\includegraphics[scale=1.2]{single-q}\]
+    Be certain of the order in which the operations occur.  Show your work. 
+    
+    \Ans{\SQBG{\RootTwo}{1}{1}{-1}{1} Matlab verified}
+
+    \item 
+    \Points{5}
+        \begin{enumerate}[label=\theenumi.\arabic*]
+        \item Describe this  circuit as a single unitary matrix. 
+    \[\includegraphics[scale=1.2]{double-q}\]
+    Show your work. \Ans{%
+    \[(\TensProd{\Identity}{\Hadamard})\times (\TensProd{\PauliX}{\PauliY}) = \RootTwo{}\begin{pmatrix*}[r]
+    0 & 0 & 1 & -1 \\
+    0 & 0 & -1 & -1 \\
+    1 & -1 & 0 & 0 \\
+    -1 & -1 & 0 & 0
+    \end{pmatrix*}\]Matlab verified
+    }
+    \item Under what circumstances must we perform the tensor product of two gates before applying them to a quantum state, as compared with applying each gate separately to its incoming qubit? \Ans{If the state subjected to the gates is an entangled state, then you have to provide both inputs to the tensor product of the gates' matrices.}
+    
+    \end{enumerate}
+    \item \Points{5} Rewrite the state below as the tensor product of two qubits or prove it is an entangled state.
+    \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} - \frac{i}{\sqrt{2}}\ket{01}\]
+    \Ans{%
+    \[
+    \QState{} = \TensProd{\QZero{}}{\RootTwo{}(1\QZero{}-\NiceI\QOne{})} = \TensProd{\PZero}{\RootTwo{}\SQB{1}{-\NiceI}}
+    \]
+    }
+    \item \Points{5} Rewrite the state below as the tensor product of two qubits or prove it is an entangled state.
+    \[\ket{\psi} = \frac{1}{\sqrt{2}}\ket{01} + \frac{1}{\sqrt{2}}\ket{10}\]
+    \Ans{%
+    Setting up \[\TensProd{\SQB{a}{b}}{\SQB{c}{d}}=\RootTwo{}\DQB{0}{1}{1}{0}\]we get $ac=bd=0$ but $bc=ad=1$, so none of the entries can be zero, but one must be, a contradiction.
+    }
+    \item \Points{6} For each two-qubit state below, compute and show its corresponding column vector.
+        \begin{enumerate}
+            \item $\ket{10}$ \Ans{\[ \DQB{0}{0}{1}{0}\]}
+            \item $\ket{0+}$ \Ans{%
+            \[
+            \TensProd{\PZero}{\PPlus}=\RootTwo{}\DQB{1}{1}{0}{0}
+            \]
+            }
+            \item $\ket{+-}$ \Ans{%
+            \[
+            \TensProd{\PPlus}{\PMinus}=\frac{1}{2}\DQB{1}{-1}{1}{-1}
+            \]
+            }
+            \item $\ket{0+}$ \Ans{%
+            \[
+            \TensProd{\PZero}{\PPlus}=\RootTwo{}\DQB{1}{1}{0}{0}
+            \]
+            }
+        \end{enumerate}
+    \item \Points{8} Give the parameters ($\theta,\phi,\lambda$) needed for the \NamedGate{U} gate to specify each of the following gates by filling in the following table.  If you do this work on your own paper, format your answer exactly in the form of this table.
+    {\def\F#1{\NamedGate{#1} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\\}
+    \begin{center}
+        \begin{tabular}{c||c|c|c}
+        Gate & $\theta$ & $\phi$ & $\lambda$ \\ \hline
+        \F{X}
+        \F{Y}
+        \F{Z}
+        \F{H}
+        \end{tabular}
+    \end{center}}
+    \item \Points{8} Consider the controlled-Y (\NamedGate{CY}) gate whose behavior is as follows: if the control bit is 0 it does nothing, if the control bit is 1 it applies the Pauli \PauliY{} gate to the target bit. 
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Give the matrix that describes the \NamedGate{CY} gate.\LeaveSpace{} 
+    \item Using the \NamedGate{CY} as your only 2-input gate, provide a circuit that creates entanglement among two qubits, each starting in state \QZero{}.
+    \LeaveSpace{}
+    \end{enumerate}
+    \item \Points{5} Show that the formula below  is true.
+    \[\frac{1}{\sqrt{2}}(\ket{01} - \ket{10}) \equiv \frac{1}{\sqrt{2}}(\ket{+-} - \ket{-+})\]
+    Recall $\equiv$ denotes equivalent up to a global phase. \LeaveSpace[2.0in]
+
+    \item \Points{10} Consider the circuit below.  
+    \[\includegraphics[scale=1.2]{cz-gate}\]
+    
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Let's construct the Controlled-\PauliZ{} (\NamedGate{CZ}) gate based on what it does to the computational basis vectors, expressed not as column vectors but as tensor products of $\ket{0}$ and $\ket{1}$.  If the first qubit is $\ket{0}$, \NamedGate{CZ} does nothing but if the first qubit is $\ket{1}$, then \NamedGate{CZ} applies the \PauliZ{} gate to the second qubit.
+    \begin{itemize}
+      \item $\NamedGate{CZ}(\ket{00})\mapsto\ \ \ \  \ket{\Blank[2em]{}}$ 
+      \item $\NamedGate{CZ}(\ket{01})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$ 
+      \item $\NamedGate{CZ}(\ket{10})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
+      \item $\NamedGate{CZ}(\ket{11})\mapsto\ \ \ \ \ket{\Blank[2em]{}}$
+    \end{itemize}
+    and the matrix for \NamedGate{CZ} is then:
+    \LeaveSpace{}
+    \item Give the unitary matrix that describes the complete circuit. \LeaveSpace{}
+    \item With each qubit starting in state \QZero{}, is the state at the end of this circuit entangled? \Blank{}
+    \item Prove your claim:\LeaveSpace{}
+    \end{enumerate}
+    
+    \item \Points{10}
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Can the controlled \PauliZ{} gate matrix be written as the tensor product of two matrices?
+    \item Prove or disprove. \LeaveSpace[2.5in]    
+    \end{enumerate}
+
+    \item \Points{5} Suppose you have the following state:
+    \begin{align*} \ket{\psi} & = 
+        \alpha_0\ket{000} + \alpha_1\ket{001} +
+                    \alpha_2\ket{010} +  \alpha_3\ket{011}  \\
+                    & + \alpha_4\ket{100} + \alpha_5\ket{101} +
+                    \alpha_6\ket{110} + \alpha_7\ket{111}
+    \end{align*}
+    Furthermore, suppose $|\alpha_0|^2 = 0.5$, $|\alpha_1|^2 = 0.25$, and $|\alpha_5|^2 = 0.125$. Suppose you measure the first two qubits and see $00$. What is the probability of measuring 0 on the third qubit? \Blank{}
+
+    \item \Points{10}
+    \[[\includegraphics[scale=0.8]{bb84_q1}\]
+    Calculate Alice and Bob's shared key based on the table above and the BB84 protocol described in class. 
+    
+    Shared Key: \Blank[12em]{}
+    \item \Points{9}
+    \[\includegraphics[scale=0.8]{bb84_q2}\]
+    Now consider the same table with one additional row, Bob's measurements.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item Is there evidence Eve might be present? \Blank{} 
+    \item Explain your answer. \LeaveSpace[1.0in]
+    \end{enumerate}
+    % \item (3 points) Consider the BB84 protocol. Why must Alice wait until after Bob has measured all states before publishing the bases she measured in? \LeaveSpace[1.0in] \newpage
+    % \item (3 points) What is the minimum number of measurements Alice and Bob must publish in order to be at least 90\% confident Eve is not present?
+    % \item (6 points) Suppose you and your friend Bob are trying to decide between using the E91 and BB84 protocols. What factors should you take into account? When would you prefer one protocol over the other? \LeaveSpace[0.5in]
+    % \item (2 points) What is the primary property of quantum mechanics that enables the BB84 protocol?
+    % \item (2 points) What is the primary property of quantum mechanics that enables the E91 protocol?
+    % \item (20 points) Consider a variation on the BB84 protocol. In this protocol, Alice only has two possible states to send to Bob (as opposed to 4 in BB84). Alice will either send $\uparrow$ or $\nearrow$ to Bob. Bob will measure in either the $+$ or $\times$ basis. Let's explore how Alice and Bob can generate a shared key using these constraints.
+    %     \begin{enumerate}
+    %         \item Suppose Alice sends $\uparrow$ and Bob measures in the $+$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\nearrow$ and Bob measures in the $\times$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\uparrow$ and Bob measures in the $\times$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Suppose Alice sends $\nearrow$ and Bob measures in the $+$ basis. What are the possible measurement outcomes for Bob?
+    %         \item Regardless of basis, what does Bob know about the initial state Alice sent if he measures $\uparrow$ ? What if he measures $\nearrow$ ? What if he measures  $\rightarrow$ ? What if he measures $\nwarrow$ ?
+    %         \item Describe how Alice and Bob could construct a shared key based on the above observations. You can decide which symbol corresponds to each 0 and 1. 
+    %         \item How could Alice and Bob detect Eve?
+    %     \end{enumerate}
+    \item \Points{9}
+    \[\includegraphics[scale=0.8]{e91_table}\]
+    Consider the above example of the E91 protocol. 
+    \begin{enumerate}[label=\theenumi.\arabic*]
+    \item 
+    Is there evidence Eve might be present? \Blank{}
+    \item 
+    Explain your answer. \LeaveSpace{}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
