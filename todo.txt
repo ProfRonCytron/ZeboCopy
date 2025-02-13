@@ -1,3 +1,5 @@
 090 Slide 19
 100 Slide 10 
 
+110 Show that with 3-way entanglement (GHZ state), Eve's and Bob's qubits do not follow Alice's under H to measure in X.
+
