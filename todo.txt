@@ -3,3 +3,6 @@
 
 110 Show that with 3-way entanglement (GHZ state), Eve's and Bob's qubits do not follow Alice's under H to measure in X.
 
+
+130, slide 15, not really a mess but fix if needed
+130, slide 19, the 2nd and 3rd eigenstates are switched
