@@ -1,15 +1,62 @@
 % \def\OtherAuthors{, Alice, and Bob}
 \SetTitle{0}{Introduction}{Getting Started}{000}
 
-\section{Foreword}
-
 %%
 %% \input{onlineblurb}
 %% 
 
+\section*{Why?}
+
+\begin{frame}{The state of quantum computing}{In \number\year, when this slide was produced}
+\Vskip{-3em}
+\begin{itemize}
+    \item There are frequent and often conflicting communications from companies, universities, and critics concerning the viability and future of quantum computing.
+    \item As we shall see in our studies here, quantum computing can theoretically outperform classical computing.
+    \item The current open issues include:
+    \begin{itemize}
+        \item Can a quantum computer of significant size be constructed, so that it can solve problems at scale?
+        \item Can the computations of a quantum computer be made sufficiently robust so as to yield useful results?
+        \item For what problems of interest to society will quantum computers obtain advantage over classical computers?
+    \end{itemize}
+    \item The subject is nonetheless fascinating, interesting, and fun to study.
+    \item We have the luxury in academia to study this subject.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Some basic terminology}{To allow us to discuss the large picture}
+
+\begin{description}
+    \item[qubit] is the basic unit of information in a quantum system.  Where classical bits have only two values, \True{} and \False{}, (the state of) a qubit can be a \href{https://en.wikipedia.org/wiki/Quantum_superposition}{superposition} of those values.
+    \item[measurement] (or observation) reduces a qubit to a classical bit, yielding one of the two classical outcomes: \True{} or \False{}.
+    \item[entanglement] expresses the idea that two or more qubits' futures are coupled, no matter the distance between them.  For examples, two qubits might randomly yield the same measurement, both \True{} or \False{}, even if separated by very large distances.
+    \item[(unitary) gate] expresses an operation performed on a qubit prior to measurement.
+    \item[quantum algorithms] apply gates to qubits and typically include some measurements.
+    
+\end{description}
+    
+\end{frame}
+
+\begin{frame}{Interesting questions, whose answers might be determined in a lab}{However, our answers come from a mathematical, logical, and computer science point of view}
+
+\begin{itemize}[<+->]
+   \item Do two qubits need to be proximate to achieve entanglement?
+   \item Once entanglement is achieved, is there a gate that can be applied to one qubit to break the entanglement?
+   \item If qubits $a$ and $b$ are entangled, can a third bit $c$ join the entanglement?
+   \item Can $a$ act promiscuously and bring $c$ into the entanglement without $b$'s help?
+   \item Is the entanglement stronger between $a$ and $b$ when they are monogamous?
+   \item Can a qubit be copied?
+   \item Can a qubit be teleported across large distances?
+   \item Can a quantum algorithm solve a problem that cannot be solved on a classical computer, given unlimited time?
+   \item Are there problems for which a quantum computer can find solutions much more efficiently than can a classical computer?
+    
+\end{itemize}
+
+\end{frame}
+\section*{Forward}
+
 \begin{frame}{Some notes about these slides}
 \begin{itemize}[<+->]
-    \item These slides were prepared during my \href{https://en.wikipedia.org/wiki/Sabbatical}{sabbatical} leave in 2021.  I am grateful to Washington University, McKelvey School of Engineering, and the Department of Computer Science and Engineering for sponsoring my sabbatical.
+    \item These slides were prepared during my \href{https://en.wikipedia.org/wiki/Sabbatical}{sabbatical} leave in 2021.  I am grateful to \href{https://washu.edu/}{Washington University}, the \href{https://engineering.washu.edu/}{McKelvey School of Engineering}, and the \href{https://cse.washu.edu/}{Department of Computer Science and Engineering} for sponsoring my sabbatical.
     \item There are some typographical conventions used in these slides, as follows.
     \begin{itemize}
         \item These slides include \href{https://en.wikipedia.org/wiki/Hyperlink}{hyperlinks} (typeset like \href{https://en.wikipedia.org/wiki/Hyperlin}{that}) to material you can find on the Internet.
@@ -593,25 +640,6 @@ The following information is contained on this semester's \href{\CourseWebPage}{
 You are responsible for following \texttt{piazza}, observing assignment due dates and times, and keeping up with class information.
 \end{frame}
 
-% \begin{frame}{Deadlines in this course}{No late work is accepted}
-
-% \begin{itemize}
-%    \item In the first courses in our department, and perhaps in other introductory or lower-level courses at the university, you have probably experienced mechanisms to offer deadline flexibility, such as:
-%    \begin{itemize}
-%       \item Late coupons
-%       \item Penalties for late work that is still accepted
-%       \item Extra credit assignments to remediate missing grades
-%    \end{itemize}
-%    \item This is a senior-level course, closer to the real world than introductory courses
-%    \item In this course, deadlines are firm.  You are given plenty of time to complete the assignments.  It is up to you to 
-%    \begin{itemize}
-%        \item balance your time
-%        \item anticipate problems that may arise, especially as a deadline approaches
-%        \item turn in your assignments following the submission requirements given with each assignment.
-%    \end{itemize} 
-% \end{itemize}
-    
-% \end{frame}
 
 \begin{frame}{Course policies}{Fairness}
 \Vskip{-3.5em}\begin{itemize}
@@ -687,7 +715,7 @@ You are responsible for following \texttt{piazza}, observing assignment due date
 \end{Pixture}\end{center}%
 \end{frame}
 
-\section*{Students' advice}
+\section*{Peers' advice}
 
 \begin{frame}{Pace of the course}{From Spring 2024 course evaluations}
 
