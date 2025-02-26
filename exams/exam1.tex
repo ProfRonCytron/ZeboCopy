@@ -1,431 +1,106 @@
 \documentclass[12pt]{article}
-\usepackage[margin=0.5in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
-\usepackage{course}
-\usepackage{cse468-Spring24}
-\usepackage{program}
-\usepackage{fancybox}
-\usepackage{adjustbox}
-\usepackage{quantikz}
-\usepackage{../bbkey}
-\def\SquareOutline{%
-\path (0,0) rectangle (1,1);%
-}%
-\def\Gate#1{\mbox{\textbf{#1}}}
-\def\X{\Gate{X}}
-\def\Y{\Gate{Y}}
-\def\Z{\Gate{Z}}
-\def\I{\Gate{I}}
-\def\H{\Gate{H}}
-\def\QZero{\ket{0}}
-\def\QState#1{\ensuremath{\psi_{#1}}}
+\usepackage{exercises/handwritten/handout}
 
-\def\Obox#1{\Ovalbox{\hbox to 1ex{\vrule width 0pt height 1ex\hss #1\hss}}}
-\def\TFMarked#1#2{\ \stackbox[l][m]{\Obox{#1}~\textbf{true}\\\Obox{#2}~\textbf{false}}}
-\def\TF{\TFMarked{\relax}{\relax}}
-\def\TFH{\Obox{\relax}~\textbf{true}~~~\Obox{\relax}~\textbf{false}}
-\def\exp#1{\ensuremath{e^{#1}}}
-\newcommand{\Blank}[1][1in]{\mbox{\vrule width #1 depth 2pt}\vrule width 0pt height 2.0em}
-\def\BlQb{\mbox{\ensuremath{\Blank[4em]\ket{0}+\Blank[4em]\ket{1}}}}
-\newcommand{\Blanket}[1][3em]{%
-\mbox{\ensuremath{|\,\Blank[#1]\,\rangle}}}
+\usepackage{amssymb,mathrsfs, amsmath,amsfonts}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{braket}
+%\graphicspath{ {./ps110-assets/} }
 
-\def\Tall{\vrule width 0pt height 2em depth 0.5em}
+\input{quantummacros.tex}
 
-\def\SQB#1#2{%
-\ensuremath{%
-\begin{pmatrix*}[r] #1 \\ #2\end{pmatrix*}}}
-
-\def\SQBB{\SQB{\Blank[2em]}{\Blank[2em]}}
-
-\def\DQB#1#2#3#4{%
-\ensuremath{%
-\begin{pmatrix*}[r] #1 \\ #2 \\ #3 \\ #4\end{pmatrix*}}}
-\def\DQBB{\DQB{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}{\Blank[2em]}}
-
-\def\FactorProof{%
-\begin{align*}
-\SQB{a}{b} \otimes \SQB{c}{d} &= \DQBB{} \mbox{ (copy this from your \QState{2} answer top of page)}\\
-a\cdot c &= \Blank[3em] \\
-a\cdot d &= \Blank[3em] \\
-b\cdot c &= \Blank[3em] \\
-b\cdot d &= \Blank[3em]
-\end{align*}
-What is the contradiction, if any?
-\LeaveSpace{2in}
+\def\TwoQBlank{%
+\DQB{\Blank}{\Blank}{\Blank}{\Blank}%
 }
-\long\def\GenTable#1#2{%
-\GenTableDiff{#1}{#2}{#1}{#2}}%
-\long\def\GenTableDiff#1#2#3#4{%
-\begin{center}
-\begin{tabular}{ccc}
-Alice & Bob & Possible Outcome? \\
-\ensuremath{#1}    & \ensuremath{#3}  & \TFH \\[0.5em]
-\ensuremath{#1}    & \ensuremath{#4}  & \TFH \\[0.5em]
-\ensuremath{#2}    & \ensuremath{#3}  & \TFH \\[0.5em]
-\ensuremath{#2}    & \ensuremath{#4}  & \TFH
-\end{tabular}
-\end{center}
-}
-\def\EmptyFour{%
-\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em] \\
-      \Blank[1.5em]
-    \end{pmatrix*}
-}
-\def\EmptyFourByFour{%
-\frac{1}{\Blank[2em]} \begin{pmatrix*}[r]
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} \\
- \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{} & \Blank[3em]{}\end{pmatrix*}}
-\def\Bell{%
-\BellTwo{00}{11}}
-\def\BellTwo#1#2{%
-\BellTwoSign{#1}{#2}{+}}
-\def\BellTwoSign#1#2#3{%
-\ensuremath{\frac{\ket{#1} #3 \ket{#2}}{\sqrt{2}}}}
-\def\BellM{\BellTwoSign{01}{10}{-}}
 \begin{document}
+\assignment{Exam 1}
 
-\begin{assignment}{Exam I}{6 March 2024}{In GradesScope by 22 March 2024, 9 AM CDT}
-
-{\small {\large \fbox{READ THIS before starting!}}
-This exam is open-book, open-notes, open-Internet, but you must do this
-work on your own \textbf{without contact or conversations with any person, except Ron}.  
-Because this exam is given in a distributed manner, no questions will be answered, and no clarifications will be given.  State your assumptions and count on grading to be fair, especially if something is unclear or ambiguous.
-
-
-Your work must be legible.  Work that is
-difficult to read will receive no credit.  There is a blank page at the end
-if you want to show extra work there.  To assure no problems with GradeScope,
-you should
-print out this exam, complete it on paper, and scan it in with a full-page
-scanner.  You can be more creative but if you do not properly register the
-pages with GradeScope, credit will not be given.
-
-There are 106 points available for this exam, but it will only be scored out of 100.  Extra points earned here will count toward your total exam grade, which then adds into your overall semester score.
-
-You must sign the pledge below for your exam to count.  Any cheating will
-cause the students involved to receive an F for this course. Other unpleasant
-actions
-may be taken.
-
-You must fill in your identifying information correctly.  You must upload this
-completed exam to GradeScope properly by the due date and time.  \textbf{Late work will not be accepted.}
-}
-
-\begin{center}\large
-\begin{tabular}{|c|c|c|} \hline
-\multicolumn{3}{|c|}{{\bf Print  clearly} the following information:}  \\ \hline
-\multicolumn{3}{|l|}{Name (print clearly):\Tall{}\hbox to 2.5in{\hss}}  \\ \hline
-\multicolumn{3}{|l|}{Student 6-digit ID (print {\it really} clearly):\Tall{}\hbox to 2.5in{\hss}} \\ \hline
-\end{tabular}
+\begin{center}\bf
+Due 20 March 2025, 4 PM CDT in GradeScope\\
+No late extensions on this assignment
 \end{center}
 
-{\bf Pledge:} On my honor, I have neither
-given nor received any unauthorized aid on this exam.
-
-Signed:  \Blank\Blank\Blank\Blank \\ \hbox to 5em{\hss}(Be 
-sure you filled in your information in the box above!)
-%
-%
-%
-\clearpage
 \begin{enumerate}
-\item\Points{11} For the \textbf{true}/\textbf{false} questions below, indicate your response by marking an~\textbf{x} in the appropriate box, like this:
-\TFMarked{\textbf{x}}{\relax} or \TFMarked{\relax}{\textbf{x}}.   
-
-\textbf{Remember that $\equiv$ means equal up to a global phase.}
-Boldface gates are the usual Pauli gates, and \Gate{H} is the Hadamard gate.
-\begin{itemize}
-    \item $\Gate{X}\ket{0}=\Gate{H}\ket{-}$~\TF{}
-    \item For $k>0$, $\Gate{CNOT}^{k}\left(\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{10}\right)\right)$ is an entangled state if and only if $k$ is odd.~\TF{}
-    \item After a qubit has been measured, it cannot be subjected to subsequent unitary gates.~\TF{}
-    \item All superpositions of two qubits are entangled states.~\TF{}
-    \item $\Gate{X}\Gate{Y}\Gate{Z}\Gate{Z}\Gate{Y}\equiv\Gate{Y}\Gate{Z}$~\TF{}
-     \item The state obtained after measuring the left qubit of \BellM{} is an entangled state.~\TF{}
-    \item The $i$ present in the \Gate{Y} gate can be factored out as a global phase.~\TF{}
-    \item The $i$ present in the \Gate{Y} gate can be factored out as a global phase for the controlled-\Gate{Y} gate that you developed in homework.~\TF{}
- 
-    \item At the end of teleportation, Alice tells Bob that she measured \ket{11} for her
-    two qubits.  Which of the following gates will \textbf{by itself} recover Alice's original state? (circle only one gate, or leave blank if none of the listed gates will work)
-    \begin{center}
-    \mbox{}\\
-    Gate \Gate{X}~~~~~~~Gate \Gate{Y}~~~~~~~Gate \Gate{Z}\\ \mbox{}
-    \end{center}
-   \item For each scenario below, what is the most precise (and true) statement you can make about \ket{\psi}'s location on the Bloch sphere?
-   \begin{itemize}
-       \item 
-   \ket{\psi} is more likely to yield \ket{0} than \ket{1}. 
-    \LeaveSpace{0.255in}
-    \item \ket{\psi} is equally likely to measure \ket{0} as \ket{1}. 
-    \LeaveSpace{0.255in}
-    \end{itemize}
+    \item \begin{itemize}
+    \item Your name? \Blank[3in]{}
+    \item Your student ID? \Blank[3in]{}
 \end{itemize}
 
+\item \Points{10} Multiple choice
 
+\item Consider the usual polarization basis, where \QZero{} is horizontal at 0 radians, \QOne{} is vertical at $\pi/2$ radians, so there are $\pi/2$ radians between the two basis vectors.
 
-
-\clearpage\item\label{prob:follow}\Points{20} Alice and Bob prepare to participate in one of the
-many schemes studied this semester in which they begin with the usual
-Bell (also called an EPR) state:
-\[ \ket{\psi_{1}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}\]
-When they separate, Alice takes the left qubit and Bob takes the right qubit.
-They each then measure their qubit in a basis as described below.
-
-\begin{enumerate}
-\item\Points{4} Suppose they each measure $\ket{\psi_{1}}$ in the computational (\textbf{Z})
-basis.
-Which measurement outcomes are possible for this state?
-\GenTable{0}{1}
-
-\item\Points{4}
-In class it was shown that
-\[
-\ket{\psi_{1}} = \Bell{} \longleftrightarrow \ket{\psi_{1}}= \frac{\ket{++}+\ket{--}}{\sqrt{2}}
-\]
-by showing the associated column vectors are mathematically equal:
-\[
-\ket{\psi_{1}} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1\\0\\0\\1\end{pmatrix}
-= \frac{1}{\sqrt{2}} \left[ \frac{1}{2}\begin{pmatrix}1\\1\\1\\1\end{pmatrix}
-+  \frac{1}{2}\begin{pmatrix*}[r]1 \\-1\\-1\\1\end{pmatrix*}\right]
-\]
-The \texttt{Matlab} file is \texttt{bellstate2ways.txt}.
-
-After separation, Alice and Bob each measure their qubit of $\ket{\psi_{1}}$ in the
-\textbf{X} basis, each using a magical \textbf{X}-basis measuring device.  
-
-Which measurement outcomes are possible?
-\GenTable{+}{-}
-\Continued{}
-
-\item\Points{12} This time, due to miscommunication, Alice measures her qubit in the \textbf{X} basis
-but Bob measures his in the computational basis.  
-This is modeled by applying the unitary gate $\textbf{H}\otimes\textbf{I}$
-to the state $\ket{\psi_{1}}=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix}$.
-In other words, Alice applies \textbf{H} to her qubit while Bob does nothing
-to his.  Fill in the matrix below:
-\[ \textbf{H}\otimes\textbf{I} = \EmptyFourByFour{} \]
-The state resulting from that operation is:
-
-\[ \ket{\psi_{2}} = \left(\textbf{H}\otimes\textbf{I}\right)\ket{\psi_{1}} = \EmptyFour{} \]
-
-Alice and Bob each measure their qubit of $\ket{\psi_{2}}$ in the computational
-basis.  Which of the following measurement outcomes are possible?
-\GenTable{0}{1}
-After that measurement, they reapply
-$\textbf{H}\otimes\textbf{I}$ to the measured outcome.
-
-In which of the following states could the quantum system be now?
-\GenTableDiff{+}{-}{0}{1}
-\end{enumerate}
-
-\clearpage\item\Points{20}
-In class we saw that if Alice and Bob each take a qubit of \Bell{}, then if they each apply gate $U$ (limited to real values in class) to their respective qubits, the resulting state is still \Bell{}. This means that if they each apply the same gate $U$ to their separate but entangled qubits, they will measure the same results consistently. The \texttt{Matlab} script \texttt{bellstatepersists.txt}  from class is posted on piazza for this exam.
-
-In this problem we look at another of Bell's states, namely
-\[\ket{\psi_{1}} = \BellM{}\]
-Alice takes the left qubit and Bob takes the right qubit, as usual.
-
-
-\begin{enumerate}
-    \item\Points{4} When measuring \ket{\psi_{1}}, Alice and Bob expect to see opposite outcomes. 
+You are given a source of photons along with the promise that exactly one of the following is true:
+\begin{itemize}
+    \item All photons are polarized at $\pi/4$ radians (45 degrees), or
+    \item All photons are unpolarized.
+\end{itemize}
+\begin{enumerate}[label=\theenumi.\arabic*]
+    \item Consider the case where all photons are polarized at $\pi/4$ radians.  In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
     
-    Specifically, basis state \ket{01} means that if Alice sees a~\Blank[3em]{} then Bob sees a \Blank[3em]{}.  Similarly, basis state \ket{10} means that if Alice sees a \Blank[3em]{} then Bob sees a~\Blank[3em]{}.
+    \Blank[5in]{}
+    \item Consider the case where all photons are unpolarized.   In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
 
-\item\Points{5} Referring to state~\ket{\psi_{1}} above, the minus sign between the two basis vectors is important for this problem, but doesn't change the expectations from measurement, because:
+    \Blank[5in]{}
+    \item Assuming you can receive as many photons from the source as you wish, describe an experiment to determine which of the two possible streams of photons you are receiving.  For full credit
+    \begin{itemize}
+        \item Describe the setup in sufficient detail.
+        \item Analyze how certain you are of your determination after $n$ photons have been sent to you. 
+    \end{itemize}
+
+    \LeaveSpace[2in]{}
+\end{enumerate}
+\item Recall from homework that a point on the Bloch sphere
+\[
+\ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
+    + \ExpPhase{\phi}\sin(\frac{\theta}{2})\ket{1}
+\]
+has its antipodal point at
+        \[
+        \ket{\psi'}= \sin({\frac{\theta}{2})\ket{0}-\ExpPhase{\phi}\cos({\frac{\theta}{2}})\ket{1}}
+        \]
+\begin{enumerate}[label=\theenumi.\arabic*]
+\item \[
+\ket{\psi\psi} = \TwoQBlank{}
+\]
+\item \[
+\ket{\psi'\psi'} = \TwoQBlank{}
+\]
+\item\label{prob:fourpointthree}
+\[
+\TwoSup{\psi\psi}{\psi'\psi'} = \RootTwo{}\TwoQBlank{}
+\]
+\item Is this mathematically equal to the Bell State \TwoSup{00}{11}? \Blank{}
+\clearpage\item If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
+\LeaveSpace{}
+\item Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the \TensProd{\PauliZ}{\PauliZ} basis.  Describe the possible outcomes and their probabilities below:
+\begin{description}
+    \item[$\ket{00}$] \Blank[3in]{}
+    \item[$\ket{01}$] \Blank[3in]{}
+    \item[$\ket{10}$] \Blank[3in]{}
+    \item[$\ket{11}$] \Blank[3in]{}
+\end{description}
+\item Returning for a moment to a single qubit, consider $\ket{\psi}$ and $\ket{\psi'}$ described at the beginning of this problem. In homework you showed that $\braket{\psi'|\psi}=0$, which makes them suitable as a measurement basis.
+
+Below specify the matrix that maps
+\begin{align*}
+    \ket{0} &\mapsto \ket{\psi} \\
+    \ket{1} &\mapsto \ket{\psi'}
+\end{align*}
+\[
+T = \begin{pmatrix*}[r]
+\Blank[10em]{} & \Blank[10em]{} \\[4em]
+\Blank[10em]{} & \Blank[10em]{}
+\end{pmatrix*}
+\]
+\item To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order:
 \begin{itemize}
-    \item The amplitude on \ket{01} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}. 
-    \item The amplitude on \ket{10} is \Blank[3em]{} and its magnitude squared is \Blank[3em]{}.
-\item The amplitude on basis states \ket{00} and \ket{11} are each \Blank[3em]{}.
+    \item Apply \Blank{} to a qubit's current state
+    \item Measure in the computational basis
+    \item Apply \Blank{} to the result of the measurement
 \end{itemize}
-
-\item\Points{4} In \texttt{bellstatepersists.txt} we define the gate \[U = \begin{pmatrix*}[r] a & b \\ c & d\end{pmatrix*}\]
-with $a, b, c, d$ all real-valued, to make matters
-simple.  You can keep those values real for the rest of this problem as well.
-\Continued{}
-With \texttt{Matlab} as your (perhaps recent) faithful friend, complete the equation below to show what happens if Alice and Bob each apply $U$ (as defined above) to \ket{\psi_{1}} (be sure to represent the sign on \ket{10} properly for \ket{\psi_{1}}):
-\[
-\ket{\psi_{2}} = (U\otimes U)\ket{\psi_{1}} = \frac{1}{\sqrt{2}}\begin{pmatrix*}[r]
-\Blank[3em]{} \\
-\Blank[7em]{} \\
-\Blank[7em]{} \\
-\Blank[3em]{} 
-\end{pmatrix*}
-\]
-%\Continued{}
-
-\item\Points{6} Here is a useful fact (mention this in passing at your next social gathering):  
-\[ \mbox{If $U$ is unitary then }\left|\mbox{det}(U)\right| =  1 \]
-
-That is, the determinant of a unitary matrix has magnitude~$1$.
-
-Equipped with, aware of, and fascinated by that useful fact, prove that
-\[ \ket{\psi_{2}} \equiv \BellM{}\]
-In other words, Alice and Bob can apply $U$ to this other Bell state \ket{\psi_{1}} and they still have (up to a global phase) state \ket{\psi_{1}}.  
-
-Your proof below:
-\LeaveSpace{2in}
-\item\Points{1} If Alice and Bob begin in state \ket{\psi_{1}}, does that entanglement follow them into \ket{\psi_{2}}, after any unitary~$U$ is applied to each qubit, so that their measurements consistently and perfectly disagree?\Blank{}
+\item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right.
 \end{enumerate}
-\clearpage\item\Points{30}
-We next explore the strength of commitment Alice and Bob bring to their
-entanglement, as Eve enters the picture and seeks to become just as entangled
-with Alice and Bob as they are with each other.
-
-As usual, Alice and Bob take the left and right qubits respectively of $\ket{\psi_{1}}=\Bell{}$.
-We have seen in class and in exam problem~\ref{prob:follow} that entanglement of those bits follows into the 
-\textbf{X} basis.  If they both measure their qubits in the \textbf{X} basis,
-the outcomes are just as correlated as they would be in the computational
-basis.
-
-As shown in class, Eve now joins them in such a way as to create the state
-\[
-\ket{\psi_{abe}} = \BellTwo{000}{111}
-\]
-where Alice, Bob, and Eve are assigned the left, middle, and right qubits,
-respectively.
-
-\begin{enumerate}
-\item\Points{4} If $\ket{\psi_{abe}}$ is measured in the computational basis, what possible outcomes are there
-for Alice, Bob, and Eve at this point?
-\LeaveSpace{0.5in}
-\item\Points{3} Suppose Alice and Bob prepare to measure $\ket{\psi_{abe}}$ in the \textbf{X} basis
-by each applying the Hadamard gate to their qubits, but Eve does nothing to her qubit.  The names of the gates under tensor
-product that model this are:
-\[ \Blank{} \otimes \Blank{} \otimes \Blank{} \]
-\item\Points{2} 
-Applying the above-tensored gates to $\ket{\psi_{abe}}$ obtains the following 
-state:
-\[
-\ket{\psi_{XXZ}} = \frac{1}{\Blank[2em]}\begin{pmatrix*}
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] 
-\end{pmatrix*}
-\]
-\Continued{}
-\item\Points{4} If $\ket{\psi_{XXZ}}$ is measured now, just as it is, in
-the computational basis, what outcomes are possible for Alice and Bob?
-\GenTable{0}{1}
-\item\Points{1} How does this differ from the situation in \ket{\psi_{1}}, before Eve joined?
-\LeaveSpace{0.5in}
-\item\Points{5} How could Alice and Bob use  \ket{\psi_{XXZ}} to tell that Eve
-was present from the beginning, in state $\ket{\psi_{abe}}$?  For full credit, try for the simplest possible approach and be specific about the steps they would take and their chances of catching Eve.
-\LeaveSpace{2.5in}
-\Continued{}
-\item\Points{4} Suppose that instead of doing nothing, Eve is sufficiently clever to impose
-a Hadamard gate on her qubit just as Alice and Bob do that to their qubits.
-
-Applying a Hadamard to each state of $\ket{\psi_{abe}}$ produces:
-\[
-\ket{\psi_{XXX}} = \frac{1}{\Blank[2em]}\begin{pmatrix*}
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] \\
-\Blank[2em] 
-\end{pmatrix*}
-\]
-\item\Points{4} What are the possible
-outcomes for Alice's and Bob's measurements of $\ket{\psi_{XXX}}$ in
-the computational basis?
-\GenTable{0}{1}
-
-\item\Points{3} How can Alice and Bob catch Eve's presence in
-$\ket{\psi_{abe}}$ now?
 \end{enumerate}
-
-
-
-
-\clearpage\item\Points{20} Consider the standard circuit we have used for
-entanglement:
-\begin{center}   
-    \adjustbox{valign=t,scale=1.5}{\begin{quantikz}
-\qw &\gate{H} & \ctrl{1} & \qw \\
-\qw &\qw & \targ{} &   \qw
-\end{quantikz}}\end{center}
-\begin{enumerate}
-\item\Points{4}
-Below, specify the single, two-qubit matrix that has the same effect as
-the circuit above.  Please factor out a coefficient where possible, in
-the space provided,  so that
-the matrix entries are mostly $0$, $1$, or $-1$.
-
-{\small
-\[
-U = \EmptyFourByFour{} \]}
-
-If you have given the right answer, then $U\ket{00}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}$.  Complete the results of $U$ on the other basis vectors similarly, below:
-
-\item\Points{2} $U\ket{01}=\frac{\Blank{}}{\sqrt{2}}$
-\item\Points{2} $U\ket{10}=\frac{\Blank{}}{\sqrt{2}}$
-\item\Points{2} $U\ket{11}=\frac{\Blank{}}{\sqrt{2}}$
-\item\Points{10} If $U$ can be tensor-factored, show the resulting $2\times 2$ matrices below. Otherwise, prove that it cannot be tensor factored. There is a blank page at the end if you need more room.
-\end{enumerate}
-
-
-
-
-
-
-\clearpage\item\Points{5 extra credit}
-We can measure quantum states in any basis we choose.  In this problem, we measure the state of a 2-qubit quantum system in the \Gate{Bell} basis.  That basis is defined below:
-\begin{center}
-    \begin{tabular}{ccc}
-    Name & State & Column Vector \\ \hline
-    $b_0$ & \BellTwoSign{00}{11}{+} & $\frac{1}{\sqrt{2}}\DQB{1}{0}{0}{1}$ \\[2.5em]
-    $b_1$ & \BellTwoSign{00}{11}{-} & $\frac{1}{\sqrt{2}}\DQB{1}{0}{0}{-1}$ \\[2.5em]
-    $b_2$ & \BellTwoSign{01}{10}{+} & $\frac{1}{\sqrt{2}}\DQB{0}{1}{1}{0}$ \\[2.5em]
-    $b_3$ & \BellTwoSign{01}{10}{-} & $\frac{1}{\sqrt{2}}\DQB{0}{1}{-1}{0}$ 
-    \end{tabular}
-\end{center}
-The most common state is $b_0$ in our studies, but we have seen $b_3$ on this exam.
-\begin{itemize}
-\item Pick some $b_i$ and some $b_j$, $i \neq j$, and show below that they are orthogonal.
-\LeaveSpace{1.0in}
-\item Below, show the 2-qubit gate that sends a state in the \Gate{Z} basis into the \Gate{Bell} basis, with 
-$\ket{00}\mapsto b_{0}$,
-$\ket{01}\mapsto b_{1}$,
-$\ket{10}\mapsto b_{2}$,
-$\ket{11}\mapsto b_{3}$.
-
-{\small \[ \EmptyFourByFour{} \]}
-\Continued{}
-\item What 2-qubit gate sends the \Gate{Bell} basis into the \Gate{Z} basis?
-{\small \[ \EmptyFourByFour{} \]}
-\item The above matrix tensor-factorable~\TF{}. 
-\item Proof:
-\end{itemize}
-% \clearpage\item\Points{5 extra credit}  If there were a unitary gate $U$ that could conjugate the arbitrary relative phase~$\phi$ of
-% a quantum state, then
-% \[  U\begin{pmatrix*}[r] \cos{\theta} \\ e^{i\phi}\sin{\theta}\end{pmatrix*} = \begin{pmatrix*}[r] \cos{\theta} \\ e^{-i\phi}\sin{\theta}\end{pmatrix*} \]
-% Arbitrary phase means we do not know the value of $\phi$.  
-
-% If such a gate $U$ existed, then
-% \begin{itemize}
-%     \item $U\SQB{1}{0} = \raisebox{-1.5em}{\Blank{}}$
-%     \item $U\SQB{0}{1} = \raisebox{-1.5em}{\Blank{}}$
-% \end{itemize}
-
-% Below, provide gate $U$ or prove that no such
-% gate $U$ can exist without knowing $\phi$.
-
-\end{enumerate}
-
-\Bpage{}
-\Bpage{}
-\end{assignment}
 \end{document}
