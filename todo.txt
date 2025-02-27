@@ -14,3 +14,5 @@ Where to put in entanglement in any basis persists for two-way
 
 130, slide 15, not really a mess but fix if needed
 220 Slide 8 -- prove the X basis expression
+  and show that in the X measurement basis on the bloch sphere we can figure
+  out the angle!
