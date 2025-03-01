@@ -18,7 +18,7 @@
 
 \begin{center}\bf
 Due 20 March 2025, 4 PM CDT in GradeScope\\
-No late extensions on this assignment
+No late extensions the exam!
 \end{center}
 
 \begin{enumerate}
@@ -33,7 +33,7 @@ No late extensions on this assignment
 
 You are given a source of photons along with the promise that exactly one of the following is true:
 \begin{itemize}
-    \item All photons are polarized at $\pi/4$ radians (45 degrees), or
+    \item All photons are polarized at $\pi/4$ radians (45 degrees), xor
     \item All photons are unpolarized.
 \end{itemize}
 \begin{enumerate}[label=\theenumi.\arabic*]
@@ -73,10 +73,10 @@ has its antipodal point at
         \]
 \begin{enumerate}[label=\theenumi.\arabic*]
 \item \[
-\ket{\psi\psi} = \TwoQBlank{}
+\TensProd{\ket{\psi}}{\ket{\psi}} = \ket{\psi\psi} = \TwoQBlank{}
 \]
 \item \[
-\ket{\psi'\psi'} = \TwoQBlank{}
+\TensProd{\ket{\psi'}}{\ket{\psi'}} = \ket{\psi'\psi'} = \TwoQBlank{}
 \]
 \item\label{prob:fourpointthree}
 \[
@@ -105,7 +105,7 @@ T = \begin{pmatrix*}[r]
 \Blank[10em]{} & \Blank[10em]{}
 \end{pmatrix*}
 \]
-\item To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order, with reference to the matrix $T$ you defined in Problem~\ref{prob:matrix}:
+\item Recall that \Conj{T} is the conjugate transpose of matrix $T$.  To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order, with reference to the matrix $T$ you defined in Problem~\ref{prob:matrix}:
 \begin{itemize}
     \item Apply matrix (circle or indicate one) \hbox to 3em{\hss$T$\hss} or \hbox to 3em{\hss\Conj{T}\hss}  to a qubit's current state
     \item Measure in the computational basis
@@ -116,7 +116,7 @@ T = \begin{pmatrix*}[r]
 \end{enumerate}
 \item Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, show here parameter $x$ so as not to confuse it with the parameters of the universal \NamedGate{U} gate:
 \[
-P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}
+P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \]
 \begin{enumerate}[label=\theenumi.\arabic*]
   \item What is the (simplest) universal gate formulation for $P(x)$?
@@ -165,7 +165,7 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}
       \item \QZero{} 468 times
       \item \QOne{} 532 times
   \end{itemize}
-  What is the approximate value of $x$, based on those measurements?
+  What is the approximate value of $x$, based on your measurements?
   
   \Blank{} radians
 \end{enumerate}
