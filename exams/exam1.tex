@@ -11,7 +11,7 @@
 \input{quantummacros.tex}
 
 \def\TwoQBlank{%
-\DQB{\Blank}{\Blank}{\Blank}{\Blank}%
+\DQB{\Blank[8em]}{\Blank[8em]}{\Blank[8em]}{\Blank[8em]}%
 }
 \begin{document}
 \assignment{Exam 1}
@@ -141,7 +141,7 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
       \item $\ket{\Blank[2em]}$ corresponding to $\ket{+}$ and 
       \item $\ket{\Blank[2em]}$  corresponding to $\ket{-}$.
    \end{itemize}
-  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed.  To answer this, complete the work below concerning the coefficient of \QZero{} in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  
+  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed.  To answer this, complete the work below concerning the coefficient of \QZero{} in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  Each of your responses will be in terms of the paramter~$x$.
   \begin{quote}
   You will likely need \href{https://en.wikipedia.org/wiki/Euler%27s_formula}{Euler's formula} to expand a polar value into its real and imaginary parts. 
   \end{quote} 
@@ -155,12 +155,12 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
   \end{itemize}
   The probability of observing $\ket{0}$ if we measure $\psi$ in the computational basis is therefore:
   \[
-  \Blank[20em]{}
+  \Blank[25em]{}
   \]
   Kindly ensure that your answer above is in the simplest form you can manage.
-  \item How can we use the above result to estimate~$x$, the parameter to the phase gate?
+  \item Given an unlimited supply of qubits in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
   \LeaveSpace{}
-  \item Suppose I have prepared $\ket{\psi}$ with a particular value of~$x$, and after 1000 measurements of~$\ket{\psi}$, you see:
+  \item Suppose I have prepared 1000 qubits, each in state $\ket{\psi}$ with a particular value of~$x$. After measuring those qubits, you observe:
   \begin{itemize}
       \item \QZero{} 468 times
       \item \QOne{} 532 times
