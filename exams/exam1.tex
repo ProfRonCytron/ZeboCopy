@@ -100,7 +100,35 @@ T = \begin{pmatrix*}[r]
     \item Measure in the computational basis
     \item Apply \Blank{} to the result of the measurement
 \end{itemize}
-\item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right.
+\item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right. If Alice applied some unitary operator \NamedGate{U} to her qubit obtaining state $\QState{}$, under what conditions does Bob's state become mathematically $\QState{}$?
+\end{enumerate}
+\item Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, with parameter $x$ so as not to confuse it with the \NamedGate{U} gate:
+\[
+P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}
+\]
+\begin{enumerate}[label=\theenumi.\arabic*]
+  \item What is the (simplest) universal gate formulation for $P(x)$?
+  \[
+  P(x) = \SQBG{\relax}{\cos{\frac{\Blank[2em]}{2}}}{-\ExpPhase{\Blank[2em]}\sin{\frac{\Blank[2em]}{2}}}{\ExpPhase{\Blank[2em]}\sin{\frac{\Blank[2em]}{2}}}{\ExpPhase{\Blank[2em]}\cos{\frac{\Blank[2em]}{2}}}
+  \]
+  Your answers must conform to the specification of the \NamedGate{U} gate.
+  \item Consider the state \[
+  P(x)\PPlus{}= \RootTwo{}\SQB{1}{\ExpPhase{x}} = \TwoSupOp{1\QZero{}}{\ExpPhase{x}\QOne}{+}
+  \]
+  If we measure the above state in the computational (\PauliZ{}) basis, then fill in the probabilities associated with each possible outcome:
+  \begin{itemize}
+      \item \QZero{} \Blank{}\%
+      \item \QOne{} \Blank{}\%
+  \end{itemize}
+  \item Compute the following:
+  \[
+  \Hadamard(P(x)) = \frac{1}{2}\SQB{\Blank[8em]}{\Blank[8em]}
+  \]
+  \item With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
+      \item $\ket{\Blank[2em]}$ corresponding to $\ket{+}$ and 
+      \item $\ket{\Blank[2em]}$  corresponding to $\ket{-}$.
+   \end{itemize}
+  \item How do we measure in X?  Apply H and what do we get?  What is the probability of measuring \QZero{} after H is applied?  And measuring \QOne{}?
 \end{enumerate}
 \end{enumerate}
 \end{document}
