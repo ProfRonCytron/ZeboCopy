@@ -27,7 +27,7 @@ No late extensions on this assignment
     \item Your student ID? \Blank[3in]{}
 \end{itemize}
 
-\item \Points{10} Multiple choice
+\item \Points{10} Multiple choice and true/false
 
 \item Consider the usual polarization basis, where \QZero{} is horizontal at 0 radians, \QOne{} is vertical at $\pi/2$ radians, so there are $\pi/2$ radians between the two basis vectors.
 
@@ -51,6 +51,17 @@ You are given a source of photons along with the promise that exactly one of the
 
     \LeaveSpace[2in]{}
 \end{enumerate}
+\item The questions below refer to the Elitzur--Vaidman bomb, specifically the \Quote{more careful approach} presented on slides 8 and following of slide deck 080.
+\begin{enumerate}[label=\theenumi.\arabic*]
+  \item What angle should be chosen for $\theta$ so that the bomb is
+  \begin{itemize}
+      \item certain to explode?\Blank{}
+      \item predicted to explode with probability~0.5?\Blank{}
+  \item guaranteed \emph{not} to explode?\Blank{}
+  \end{itemize}
+  \item Why will the algorithm fail to work if the bomb is guaranteed never to explode?\LeaveSpace{}
+\end{enumerate}
+
 \item Recall from homework that a point on the Bloch sphere
 \[
 \ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
@@ -72,7 +83,7 @@ has its antipodal point at
 \TwoSup{\psi\psi}{\psi'\psi'} = \RootTwo{}\TwoQBlank{}
 \]
 \item Is this mathematically equal to the Bell State \TwoSup{00}{11}? \Blank{}
-\clearpage\item If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
+\item If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
 \LeaveSpace{}
 \item Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the \TensProd{\PauliZ}{\PauliZ} basis.  Describe the possible outcomes and their probabilities below:
 \begin{description}
@@ -81,7 +92,7 @@ has its antipodal point at
     \item[$\ket{10}$] \Blank[3in]{}
     \item[$\ket{11}$] \Blank[3in]{}
 \end{description}
-\item Returning for a moment to a single qubit, consider $\ket{\psi}$ and $\ket{\psi'}$ described at the beginning of this problem. In homework you showed that $\braket{\psi'|\psi}=0$, which makes them suitable as a measurement basis.
+\item\label{prob:matrix} Returning for a moment to single qubits, consider $\ket{\psi}$ and $\ket{\psi'}$ described at the beginning of this problem. In homework you showed that $\braket{\psi'|\psi}=0$, which makes them suitable as a measurement basis.
 
 Below specify the matrix that maps
 \begin{align*}
@@ -94,15 +105,16 @@ T = \begin{pmatrix*}[r]
 \Blank[10em]{} & \Blank[10em]{}
 \end{pmatrix*}
 \]
-\item To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order:
+\item To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order, with reference to the matrix $T$ you defined in Problem~\ref{prob:matrix}:
 \begin{itemize}
-    \item Apply \Blank{} to a qubit's current state
+    \item Apply matrix (circle or indicate one) \hbox to 3em{\hss$T$\hss} or \hbox to 3em{\hss\Conj{T}\hss}  to a qubit's current state
     \item Measure in the computational basis
-    \item Apply \Blank{} to the result of the measurement
+    \item Apply matrix (circle or indicate one) \hbox to 3em{\hss$T$\hss} or \hbox to 3em{\hss\Conj{T}\hss}  to the result of the measurement
 \end{itemize}
 \item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right. If Alice applied some unitary operator \NamedGate{U} to her qubit obtaining state $\QState{}$, under what conditions does Bob's state become mathematically $\QState{}$?
+\LeaveSpace{}
 \end{enumerate}
-\item Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, with parameter $x$ so as not to confuse it with the \NamedGate{U} gate:
+\item Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, show here parameter $x$ so as not to confuse it with the parameters of the universal \NamedGate{U} gate:
 \[
 P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}
 \]
@@ -113,22 +125,49 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}
   \]
   Your answers must conform to the specification of the \NamedGate{U} gate.
   \item Consider the state \[
-  P(x)\PPlus{}= \RootTwo{}\SQB{1}{\ExpPhase{x}} = \TwoSupOp{1\QZero{}}{\ExpPhase{x}\QOne}{+}
+  P(x)\ket{+} = P(x)\PPlus{}= \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}\PPlus{} =\RootTwo{}\SQB{1}{\ExpPhase{x}} = \TwoSupOp{1\QZero{}}{\ExpPhase{x}\QOne}{+}
   \]
   If we measure the above state in the computational (\PauliZ{}) basis, then fill in the probabilities associated with each possible outcome:
   \begin{itemize}
       \item \QZero{} \Blank{}\%
       \item \QOne{} \Blank{}\%
   \end{itemize}
-  \item Compute the following:
+  \item\label{prob:psi} With \Hadamard{} as our Hadamard gate, compute the state $\ket{\psi}$ below, taking note of the coefficient $\frac{1}{2}$ already provided.
   \[
-  \Hadamard(P(x)) = \frac{1}{2}\SQB{\Blank[8em]}{\Blank[8em]}
+  \ket{\psi} = \Hadamard(P(x)) = \frac{1}{2}\ \SQB{\Blank[8em]}{\Blank[8em]}
   \]
-  \item With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
+  Note that $\ket{\psi}$ is actually also a function of $x$, but the parameter is omitted to avoid clutter.  For the rest of this problem, know that state~$\ket{\psi}$ is dependent on~$x$.
+  \item With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state $\ket{\psi}$ above as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
       \item $\ket{\Blank[2em]}$ corresponding to $\ket{+}$ and 
       \item $\ket{\Blank[2em]}$  corresponding to $\ket{-}$.
    \end{itemize}
-  \item How do we measure in X?  Apply H and what do we get?  What is the probability of measuring \QZero{} after H is applied?  And measuring \QOne{}?
+  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed.  To answer this, complete the work below concerning the coefficient of \QZero{} in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  
+  \begin{quote}
+  You will likely need \href{https://en.wikipedia.org/wiki/Euler%27s_formula}{Euler's formula} to expand a polar value into its real and imaginary parts. 
+  \end{quote} 
+  
+  For the coefficient of $\ket{0}$,
+  \begin{itemize}
+      \item its \emph{real} part is \Blank[10em]{}, and
+      \item its \emph{imaginary} part is \Blank[10em]{}.
+      \item The square of its real part is~\Blank[10em]{}, and
+      \item the square of its imaginary part is~\Blank[10em]{}.
+  \end{itemize}
+  The probability of observing $\ket{0}$ if we measure $\psi$ in the computational basis is therefore:
+  \[
+  \Blank[20em]{}
+  \]
+  Kindly ensure that your answer above is in the simplest form you can manage.
+  \item How can we use the above result to estimate~$x$, the parameter to the phase gate?
+  \LeaveSpace{}
+  \item Suppose I have prepared $\ket{\psi}$ with a particular value of~$x$, and after 1000 measurements of~$\ket{\psi}$, you see:
+  \begin{itemize}
+      \item \QZero{} 468 times
+      \item \QOne{} 532 times
+  \end{itemize}
+  What is the approximate value of $x$, based on those measurements?
+  
+  \Blank{} radians
 \end{enumerate}
 \end{enumerate}
 \end{document}
