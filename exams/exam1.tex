@@ -47,7 +47,7 @@ No late extensions for the exam!
    \item\label{tf:b} Each of the Pauli gates (\PauliX,\PauliY,\PauliZ,\Hadamard) is its own inverse.
    \item\label{tf:c} The Control-\PauliZ{} gate cannot produce an entangled state, unless it is presented with an already entangled state.
    \item\label{tf:d} If the state \TwoSup{00}{01} is presented to gates \TensProd{\Hadamard}{\PauliX}, the tensor product of those gates must be formed to compute the correct resulting state.
-   \item\label{tf:e} The only valid bases in terms of measurement on the Bloch sphere are the PauliZ{} and \PauliX{} bases.
+   \item\label{tf:e} The only valid bases in terms of measurement on the Bloch sphere are the \PauliZ{} and \PauliX{} bases.
    \item\label{tf:f} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is even?
       \item\label{tf:g} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is odd?
     \item\label{tf:h} In teleportation, what gates must Bob apply to his qubit to recover Alice's state if she tells him both of her qubits measured \QOne{}?
@@ -85,7 +85,7 @@ You are given a source of photons along with the promise that exactly one of the
         \item Analyze how certain you are of your determination after $n$ photons have been sent to you. 
     \end{itemize}
 
-    \LeaveSpace[2in]{}
+    \LeaveSpace{}
 \end{enumerate}
 \item\Points{5} The questions below refer to the Elitzur--Vaidman bomb, specifically the \Quote{more careful approach} presented on slides 8 and following of slide deck 080.
 \begin{enumerate}[label=\theenumi.\arabic*]
@@ -100,12 +100,12 @@ You are given a source of photons along with the promise that exactly one of the
 
 \item\label{prob:five}\Points{25} Recall from homework that a point on the Bloch sphere
 \[
-\ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
-    + \ExpPhase{\phi}\sin(\frac{\theta}{2})\ket{1}
+\ket{\psi} = \cos\left(\frac{\theta}{2}\right)\ket{0}
+    + \ExpPhase{\phi}\sin\left(\frac{\theta}{2}\right)\ket{1} = \SQB{\cos(\frac{\theta}{2})}{\ExpPhase{\phi}\sin(\frac{\theta}{2})}
 \]
 has its antipodal point at
         \[
-        \ket{\psi'}= \sin({\frac{\theta}{2})\ket{0}-\ExpPhase{\phi}\cos({\frac{\theta}{2}})\ket{1}}
+        \ket{\psi'}= \sin\left(\frac{\theta}{2}\right)\ket{0}-\ExpPhase{\phi}\cos\left(\frac{\theta}{2}\right)\ket{1} = \SQB{\sin(\frac{\theta}{2})}{-\ExpPhase{\phi}\cos(\frac{\theta}{2})}
         \]
 \begin{enumerate}[label=\theenumi.\arabic*]
 \item \[
@@ -121,7 +121,7 @@ has its antipodal point at
 \item Is this mathematically equal to the Bell State \TwoSup{00}{11}? \Blank{}
 \item If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
 \LeaveSpace{}
-\item Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the \TensProd{\PauliZ}{\PauliZ} basis.  Show the probability associated with each possible outcome below:
+\item Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the usual \TensProd{\PauliZ}{\PauliZ} basis.  Show the probability associated with each possible outcome below:
 \begin{description}
     \item[$\ket{00}$] \Blank[3in]{}
     \item[$\ket{01}$] \Blank[3in]{}
@@ -281,7 +281,7 @@ Let's call this gate \NamedGate{UDCNOT}, and you will define this two-qubit gate
 \NamedGate{SWAP} \times \NamedGate{CNOT} \times \NamedGate{SWAP} = \NamedGate{UDCNOT}
 \]
 \LeaveSpace{}
-\item Compute the states shown in the circuit diagram, filling in your answers below. Observe the common factor pulled out already.  Fill in the blanks with ones and zeros.
+\item Compute the states shown in the circuit diagram, filling in your answers below. Observe the common factor pulled out already, when it is present.  Fill in the blanks with ones and zeros.
 \def\FS#1#2{%
 \QState{#1} = #2\begin{pmatrix*}[r]
 \Blank[2em]{} \\
