@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{braket}
+\usepackage{bbkey}
 %\graphicspath{ {./ps110-assets/} }
 
 \input{quantummacros.tex}
@@ -20,9 +21,18 @@
 Due 20 March 2025, 4 PM CDT in GradeScope\\
 No late extensions for the exam!
 \end{center}
+\begin{quote}
+    This exam has been prepared so that you can write answers in provided spaces.  If you choose to write your answers into some other document, your answers must be formatted in the same manner as the answer spaces provided here. For example, if a column vector with blanks is provided here (as in Problem~\ref{prob:five}), your answer must be a column vector.
+
+    Where you see free-form responses, such as for your name and ID below, you can supply that information however you wish.
+
+    Failure to follow these instructions will cause you to receive no credit for your work.
+
+    If your work is not shown, or the work shown is unclear, hard to read, or messy, you will receive no partial credit.   Where you are asked to show work, your work must be clear, neat, and easy to read to receive any credit.
+\end{quote}
 
 \begin{enumerate}
-    \item \begin{itemize}
+    \item\Points{0} \begin{itemize}
     \item Your name? \Blank[3in]{}
     \item Your student ID? \Blank[3in]{}
 \end{itemize}
@@ -53,7 +63,7 @@ No late extensions for the exam!
 
 \BlankPrompt{f}\BlankPrompt{g}\BlankPrompt{h}\TFPrompt{i}\BlankPrompt{j}
 
-\item Consider the usual polarization basis, where \QZero{} is horizontal at 0 radians, \QOne{} is vertical at $\pi/2$ radians, so there are $\pi/2$ radians between the two basis vectors.
+\item\Points{5} Consider the usual polarization basis, where \QZero{} is horizontal at 0 radians, \QOne{} is vertical at $\pi/2$ radians, so there are $\pi/2$ radians between the two basis vectors.
 
 You are given a source of photons along with the promise that exactly one of the following is true:
 \begin{itemize}
@@ -75,18 +85,18 @@ You are given a source of photons along with the promise that exactly one of the
 
     \LeaveSpace[2in]{}
 \end{enumerate}
-\item The questions below refer to the Elitzur--Vaidman bomb, specifically the \Quote{more careful approach} presented on slides 8 and following of slide deck 080.
+\item\Points{5} The questions below refer to the Elitzur--Vaidman bomb, specifically the \Quote{more careful approach} presented on slides 8 and following of slide deck 080.
 \begin{enumerate}[label=\theenumi.\arabic*]
   \item What angle should be chosen for $\theta$ so that the bomb is
   \begin{itemize}
-      \item certain to explode?\Blank{}
-      \item predicted to explode with probability~0.5?\Blank{}
-  \item guaranteed \emph{not} to explode?\Blank{}
+      \item certain to explode?\Blank{}~radians
+      \item predicted to explode with probability~0.5?\Blank{}~radians
+  \item guaranteed \emph{not} to explode?\Blank{}~radians
   \end{itemize}
   \item Why will the algorithm fail to work if the bomb is guaranteed never to explode?\LeaveSpace{}
 \end{enumerate}
 
-\item Recall from homework that a point on the Bloch sphere
+\item\label{prob:five}\Points{25} Recall from homework that a point on the Bloch sphere
 \[
 \ket{\psi} = \cos(\frac{\theta}{2})\ket{0}
     + \ExpPhase{\phi}\sin(\frac{\theta}{2})\ket{1}
@@ -138,7 +148,7 @@ T = \begin{pmatrix*}[r]
 \item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right. If Alice applied some unitary operator \NamedGate{U} to her qubit obtaining state $\QState{}$, under what conditions does Bob's state become mathematically $\QState{}$?
 \LeaveSpace{}
 \end{enumerate}
-\item Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, show here parameter $x$ so as not to confuse it with the parameters of the universal \NamedGate{U} gate:
+\item\label{prob:phasegate}\Points{25} Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, show here parameter $x$ so as not to confuse it with the parameters of the universal \NamedGate{U} gate:
 \[
 P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \]
@@ -185,7 +195,7 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
   \[
   p(x) = \Prob{\alpha} = \Blank[25em]{}
   \]
-  Kindly ensure that your answer above is in the simplest form you can manage.
+  For full credit, ensure that your answer above is in the simplest form you can manage.
   \item Verify below that for all $x$, $0 \leq p(x) \leq 1$.  (If this verification fails, your answer for $p(x)$ is wrong.)
   \LeaveSpace{}
   \item Given 1,000 qubits, each in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
@@ -201,5 +211,93 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 
   Note: you can verify your answer using the \texttt{PhaseGate} \href{https://piazza.com/class/m5mjpzl3hch1cf/post/76}{notebook} posted to piazza.
 \end{enumerate}
+\item \Points{15} Key Distribution
+\begin{enumerate}[label=\theenumi.\arabic*]
+    \item Consider an instance of Diffie--Hellman as taught in class (slide deck 110), where the base $g$ is 4483, and the modulus $p$ is 1746860020068409.  A calculator to help with this problem can be found \href{https://www.boxentriq.com/code-breaking/modular-exponentiation}{here}.
+    \begin{itemize}
+        \item Bob's secret is 468468
+        \item Alice's secret is 864864
+    \end{itemize}
+    Their shared agreed-upon key is~\Blank[20em]{}.
+    \item Consider the following table using the BB84 protocol taught in class (slide deck 110).
+
+\begin{BBKey}
+\begin{center}
+    \begin{tabular}{c|cccccccc}
+      \href{https://en.wikipedia.org/wiki/Quantum_key_distribution\#BB84_protocol:_Charles_H._Bennett_and_Gilles_Brassard_(1984)}{BB84} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+    Alice's basis   & \STD{} &  \HDM{} & \STD{} & \HDM{} & \STD{} & \HDM{} & \STD{} & \HDM{}  \\
+    Alice sends  & \BBUp{} & \BBNe{} & \BBUp{} & \BBNe{} & \BBUp{} & \BBNe{} & \BBUp{} & \BBNe{}  \\
+    Bob's basis  & \STD{} & \STD{} & \STD{} & \STD{} & \HDM{} & \HDM{} & \HDM{} & \HDM{} 
+    \end{tabular}
+\end{center}
+\end{BBKey}
+Assuming Eve is not present, what shared key will Alice and Bob agree upon?
+
+\Blank[20em]{}
+\item In the table above, in which column(s) would Bob need to disagree with Alice to indicate that Eve might be present?  List all that are applicable.
+
+\Blank[20em]{}
+
+\end{enumerate}
+\clearpage
+\item\Points{15} Consider the quantum circuit shown below:
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{\QZero{}}\slice{$\QState{0}$}&  \gate{H}\slice{$\QState{1}$} & \ctrl{1}\slice{$\QState{2}$} & \qw\slice{$\QState{3}$} & \qw \rstick{$a$}\\
+\lstick{\QZero{}} &   \qw    &  \targ{} & \targ{} & \qw \rstick{$b$} \\
+\lstick{\QZero{}} &   \gate{H}    & \qw & \ctrl{-1} & \qw \rstick{$c$} 
+\end{quantikz}}%
+\end{center}
+We are familiar with the \NamedGate{CNOT} gate from class, but we have not seen that last gate in the circuit, which is an upside-down \NamedGate{CNOT}.  In terms of the diagram, the gate could be stated as follows:
+\begin{itemize}
+    \item If the bottom bit ($c$ in the circuit) is true, then the other bit ($b$ in the circuit) is flipped via an \PauliX{} gate. 
+    \item Otherwise, the other bit is left alone.
+\end{itemize}
+Let's call this gate \NamedGate{UDCNOT}, and you will define this two-qubit gate based on how it should treat basis vectors using the above description:
+\begin{center}
+    \begin{tabular}{cc}
+    $\ket{bc}$  & \NamedGate{UDCNOT}$\ket{bc}$ \\ \hline
+    $\ket{00}$  & $\ket{00}$ \\
+    $\ket{01}$  & $\ket{11}$ \\
+    $\ket{10}$  & $\ket{10}$ \\
+    $\ket{11}$  & $\ket{01}$ 
+    \end{tabular}
+\end{center}
+
+\begin{enumerate}[label=\theenumi.\arabic*]
+\item Expressed as a two-qubit unitary matrix
+\[
+\NamedGate{UDCNOT} = \begin{pmatrix*}[r]
+\Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}\\[0.5em]
+\Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}\\[0.5em]
+\Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}\\[0.5em]
+\Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}
+\end{pmatrix*}
+\]
+\item The \NamedGate{SWAP} gate exchanges the position of two qubits and is described \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.SwapGate}{here}. Prove that 
+\[
+\NamedGate{SWAP} \times \NamedGate{CNOT} \times \NamedGate{SWAP} = \NamedGate{UDCNOT}
+\]
+\LeaveSpace{}
+\item Compute the states shown in the circuit diagram, filling in your answers below. Observe the common factor pulled out already.  Fill in the blanks with ones and zeros.
+\def\FS#1#2{%
+\QState{#1} = #2\begin{pmatrix*}[r]
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{} \\
+\Blank[2em]{}
+\end{pmatrix*}%
+}
+\[ \FS{0}{\relax}\ \ 
+\FS{1}{\frac{1}{2}}\ \ 
+\FS{2}{\frac{1}{2}}\ \ 
+\FS{3}{\frac{1}{2}} \]
+\end{enumerate}
+
+
 \end{enumerate}
 \end{document}
