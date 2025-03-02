@@ -18,7 +18,7 @@
 
 \begin{center}\bf
 Due 20 March 2025, 4 PM CDT in GradeScope\\
-No late extensions the exam!
+No late extensions for the exam!
 \end{center}
 
 \begin{enumerate}
@@ -27,7 +27,31 @@ No late extensions the exam!
     \item Your student ID? \Blank[3in]{}
 \end{itemize}
 
-\item \Points{10} Multiple choice and true/false
+\item \Points{10} To make grading easier please use the format below, or if you write your answers out on your own, please imitate the format of the response section.  The notation $\NamedGate{U}^{n}$ denotes $n$ consecutive applications of \NamedGate{U} on a single qubit, \emph{not} an $n$-way tensor product.
+
+\textbf{Questions (do not respond here)}
+\begin{enumerate}[label=\theenumi.\arabic*]
+   \item\label{tf:a} All states in the $x-z$ plane on the Bloch sphere can be described without using relative phase.
+   \item\label{tf:b} Each of the Pauli gates (\PauliX,\PauliY,\PauliZ,\Hadamard) is its own inverse.
+   \item\label{tf:c} The Control-\PauliZ{} gate cannot produce an entangled state, unless it is presented with an already entangled state.
+   \item\label{tf:d} If the state \TwoSup{00}{01} is presented to gates \TensProd{\Hadamard}{\PauliX}, the tensor product of those gates must be formed to compute the correct resulting state.
+   \item\label{tf:e} The only valid bases in terms of measurement on the Bloch sphere are the PauliZ{} and \PauliX{} bases.
+   \item\label{tf:f} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is even?
+      \item\label{tf:g} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is odd?
+    \item\label{tf:h} In teleportation, what gates must Bob apply to his qubit to recover Alice's state if she tells him both of her qubits measured \QOne{}?
+    \item\label{tf:i} Due to the no cloning theorem, it is not possible to make a copy of a state that is either \QZero{} or \QOne{}.
+    \item\label{tf:j} What is the eigenvalue associated with (eigen)state $\ket{01101010010111110000}$ in the computational basis?
+\end{enumerate}
+
+\def\BlankPrompt#1{\ref{tf:#1}~\Blank{}\hskip 2em plus 1em 
+ minus 1em}
+\def\TFPrompt#1{\ref{tf:#1}~\TF{}\hskip 2em plus 1em 
+ minus 1em}
+\textbf{Responses}
+
+\TFPrompt{a}\TFPrompt{b}\TFPrompt{c}\TFPrompt{d}\TFPrompt{e}
+
+\BlankPrompt{f}\BlankPrompt{g}\BlankPrompt{h}\TFPrompt{i}\BlankPrompt{j}
 
 \item Consider the usual polarization basis, where \QZero{} is horizontal at 0 radians, \QOne{} is vertical at $\pi/2$ radians, so there are $\pi/2$ radians between the two basis vectors.
 
@@ -119,11 +143,11 @@ T = \begin{pmatrix*}[r]
 P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \]
 \begin{enumerate}[label=\theenumi.\arabic*]
-  \item What is the (simplest) universal gate formulation for $P(x)$?
+  \item What is the (simplest) \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.U3Gate}{universal gate} (slide 13 in deck 070) formulation for $P(x)$?
   \[
-  P(x) = \SQBG{\relax}{\cos{\frac{\Blank[2em]}{2}}}{-\ExpPhase{\Blank[2em]}\sin{\frac{\Blank[2em]}{2}}}{\ExpPhase{\Blank[2em]}\sin{\frac{\Blank[2em]}{2}}}{\ExpPhase{\Blank[2em]}\cos{\frac{\Blank[2em]}{2}}}
+  P(x) = \SQBG{\relax}{\cos{\left(\frac{\Blank[2em]}{2}\right)}}{-\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\cos{\left(\frac{\Blank[2em]}{2}\right)}}
   \]
-  Your answers must conform to the specification of the \NamedGate{U} gate.
+  Your answers above must conform to the specification of the \NamedGate{U} gate referenced above.
   \item Consider the state \[
   P(x)\ket{+} = P(x)\PPlus{}= \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}\PPlus{} =\RootTwo{}\SQB{1}{\ExpPhase{x}} = \TwoSupOp{1\QZero{}}{\ExpPhase{x}\QOne}{+}
   \]
@@ -134,40 +158,48 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
   \end{itemize}
   \item\label{prob:psi} With \Hadamard{} as our Hadamard gate, compute the state $\ket{\psi}$ below, taking note of the coefficient $\frac{1}{2}$ already provided.
   \[
-  \ket{\psi} = \Hadamard(P(x)) = \frac{1}{2}\ \SQB{\Blank[8em]}{\Blank[8em]}
+  \ket{\psi} = \Hadamard(P(x)) = \frac{1}{2}\ \SQB{\Blank[8em]}{\Blank[8em]} = \SQB{\alpha}{\beta}
   \]
   Note that $\ket{\psi}$ is actually also a function of $x$, but the parameter is omitted to avoid clutter.  For the rest of this problem, know that state~$\ket{\psi}$ is dependent on~$x$.
   \item With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state $\ket{\psi}$ above as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
       \item $\ket{\Blank[2em]}$ corresponding to $\ket{+}$ and 
       \item $\ket{\Blank[2em]}$  corresponding to $\ket{-}$.
    \end{itemize}
-  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed.  To answer this, complete the work below concerning the coefficient of \QZero{} in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  Each of your responses will be in terms of the paramter~$x$.
-  \begin{quote}
-  You will likely need \href{https://en.wikipedia.org/wiki/Euler%27s_formula}{Euler's formula} to expand a polar value into its real and imaginary parts. 
-  \end{quote} 
+  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed. We must therefore compute $\Prob{\alpha}$. Complete the work below concerning $\alpha$ in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  
+  \begin{itemize} 
+  \item Each of your responses will be in terms of the parameter~$x$.
+  \item Be sure to include the effects of the fraction $1/2$ shown outside the column vector in part~\ref{prob:psi}.
   
-  For the coefficient of $\ket{0}$,
-  \begin{itemize}
-      \item its \emph{real} part is \Blank[10em]{}, and
-      \item its \emph{imaginary} part is \Blank[10em]{}.
-      \item The square of its real part is~\Blank[10em]{}, and
-      \item the square of its imaginary part is~\Blank[10em]{}.
+  
+  \item You will likely need \href{https://en.wikipedia.org/wiki/Euler%27s_formula}{Euler's formula} to expand a polar value into its real and imaginary parts. 
   \end{itemize}
-  The probability of observing $\ket{0}$ if we measure $\psi$ in the computational basis is therefore:
+  
+  For $\alpha$, the coefficient of $\ket{0}$ in Problem~\ref{prob:psi},
+  \begin{itemize}
+      \item its \emph{real} part is \Blank[20em]{}, and
+      \item its \emph{imaginary} part is \Blank[20em]{}.
+      \item The square of its real part is~\Blank[20em]{}, and
+      \item the square of its imaginary part is~\Blank[20em]{}.
+  \end{itemize}
+  \item\label{prob:prob} The probability of observing $\ket{0}$ if we measure $\ket{\psi}$ in the computational basis is therefore:
   \[
-  \Blank[25em]{}
+  p(x) = \Prob{\alpha} = \Blank[25em]{}
   \]
   Kindly ensure that your answer above is in the simplest form you can manage.
-  \item Given an unlimited supply of qubits in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
+  \item Verify below that for all $x$, $0 \leq p(x) \leq 1$.  (If this verification fails, your answer for $p(x)$ is wrong.)
   \LeaveSpace{}
-  \item Suppose I have prepared 1000 qubits, each in state $\ket{\psi}$ with a particular value of~$x$. After measuring those qubits, you observe:
+  \item Given 1,000 qubits, each in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
+  \LeaveSpace{}
+  \item Suppose I have prepared 1,000 qubits, each in state $\ket{\psi}$ with a particular value of~$x$. After measuring those qubits, you observe:
   \begin{itemize}
       \item \QZero{} 468 times
       \item \QOne{} 532 times
   \end{itemize}
-  What is the approximate value of $x$, based on your measurements?
+  What is the approximate value of $x$, with precision of six decimal digits after the decimal point, based on the above measurements?
   
-  \Blank{} radians
+  \Blank[15em]{} radians
+
+  Note: you can verify your answer using the \texttt{PhaseGate} \href{https://piazza.com/class/m5mjpzl3hch1cf/post/76}{notebook} posted to piazza.
 \end{enumerate}
 \end{enumerate}
 \end{document}
