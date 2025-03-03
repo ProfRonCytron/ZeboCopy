@@ -73,13 +73,13 @@ You are given a source of photons along with the promise that exactly one of the
     \item All photons are unpolarized.
 \end{itemize}
 \begin{enumerate}[label=\theenumi.\arabic*]
-    \item\Points{5} Consider the case where all photons are polarized at $\pi/4$ radians.  In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
+    \item\Points{1} Consider the case where all photons are polarized at $\pi/4$ radians.  In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
     
     \Blank[5in]{}
-    \item\Points{5} Consider the case where all photons are unpolarized.   In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
+    \item\Points{1} Consider the case where all photons are unpolarized.   In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
 
     \Blank[5in]{}
-    \item\Points{5} Assuming you can receive as many photons from the source as you wish, describe an experiment to determine which of the two possible streams of photons you are receiving.  For full credit
+    \item\Points{3} Assuming you can receive as many photons from the source as you wish, describe an experiment to determine which of the two possible streams of photons you are receiving.  For full credit
     \begin{itemize}
         \item Describe the setup in sufficient detail.
         \item Analyze how certain you are of your determination after $n$ photons have been sent to you. 
@@ -157,7 +157,7 @@ T = \begin{pmatrix*}[r]
 P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \]
 \begin{enumerate}[label=\theenumi.\arabic*]
-  \item\Points{3} What is the (simplest) \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.U3Gate}{universal gate} (slide 13 in deck 070) formulation for $P(x)$?
+  \item\Points{3} What is the \emph{simplest} (has the fewest non-zero parameters) \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.U3Gate}{universal gate} (slide 13 in deck 070) formulation for $P(x)$?
   \[
   P(x) = \SQBG{\relax}{\cos{\left(\frac{\Blank[2em]}{2}\right)}}{-\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\cos{\left(\frac{\Blank[2em]}{2}\right)}}
   \]
@@ -243,7 +243,7 @@ Assuming Eve is not present, what shared key will Alice and Bob agree upon?
 \Blank[20em]{}
 
 \end{enumerate}
-\clearpage
+
 \item\Points{15} Consider the quantum circuit shown below:
 \begin{center}
 \adjustbox{valign=t}{\begin{quantikz}
