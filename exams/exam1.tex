@@ -73,13 +73,13 @@ You are given a source of photons along with the promise that exactly one of the
     \item All photons are unpolarized.
 \end{itemize}
 \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Consider the case where all photons are polarized at $\pi/4$ radians.  In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
+    \item\Points{5} Consider the case where all photons are polarized at $\pi/4$ radians.  In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
     
     \Blank[5in]{}
-    \item Consider the case where all photons are unpolarized.   In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
+    \item\Points{5} Consider the case where all photons are unpolarized.   In the basis using \QZero{} and \QOne{}, what is the state of each photon? 
 
     \Blank[5in]{}
-    \item Assuming you can receive as many photons from the source as you wish, describe an experiment to determine which of the two possible streams of photons you are receiving.  For full credit
+    \item\Points{5} Assuming you can receive as many photons from the source as you wish, describe an experiment to determine which of the two possible streams of photons you are receiving.  For full credit
     \begin{itemize}
         \item Describe the setup in sufficient detail.
         \item Analyze how certain you are of your determination after $n$ photons have been sent to you. 
@@ -89,13 +89,13 @@ You are given a source of photons along with the promise that exactly one of the
 \end{enumerate}
 \item\Points{5} The questions below refer to the Elitzur--Vaidman bomb, specifically the \Quote{more careful approach} presented on slides 8 and following of slide deck 080.
 \begin{enumerate}[label=\theenumi.\arabic*]
-  \item What angle should be chosen for $\theta$ so that the bomb is
+  \item\Points{3} What angle should be chosen for $\theta$ so that the bomb is
   \begin{itemize}
       \item certain to explode?\Blank{}~radians
       \item predicted to explode with probability~0.5?\Blank{}~radians
   \item guaranteed \emph{not} to explode?\Blank{}~radians
   \end{itemize}
-  \item Why will the algorithm fail to work if the bomb is guaranteed never to explode?\LeaveSpace{}
+  \item\Points{2} Why will the algorithm fail to work if the bomb is guaranteed never to explode?\LeaveSpace{}
 \end{enumerate}
 
 \item\label{prob:five}\Points{25} Recall from homework that a point on the Bloch sphere
@@ -108,27 +108,29 @@ has its antipodal point at
         \ket{\psi'}= \sin\left(\frac{\theta}{2}\right)\ket{0}-\ExpPhase{\phi}\cos\left(\frac{\theta}{2}\right)\ket{1} = \SQB{\sin(\frac{\theta}{2})}{-\ExpPhase{\phi}\cos(\frac{\theta}{2})}
         \]
 \begin{enumerate}[label=\theenumi.\arabic*]
-\item \[
+\item\Points{3} \[
 \TensProd{\ket{\psi}}{\ket{\psi}} = \ket{\psi\psi} = \TwoQBlank{}
 \]
-\item \[
+\item\Points{3} \[
 \TensProd{\ket{\psi'}}{\ket{\psi'}} = \ket{\psi'\psi'} = \TwoQBlank{}
 \]
-\item\label{prob:fourpointthree}
+\item\label{prob:fourpointthree}\Points{3}
+Please simplify your answer below as much as you can.
+
 \[
 \TwoSup{\psi\psi}{\psi'\psi'} = \RootTwo{}\TwoQBlank{}
 \]
-\item Is this mathematically equal to the Bell State \TwoSup{00}{11}? \Blank{}
-\item If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
+\item\Points{1} Is this mathematically equal to the Bell State \TwoSup{00}{11}? \Blank{}
+\item\Points{3} If the states are mathematically equal, show your computation of that below.  If not, then describe how they are different.
 \LeaveSpace{}
-\item Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the usual \TensProd{\PauliZ}{\PauliZ} basis.  Show the probability associated with each possible outcome below:
+\item\Points{2} Suppose the state in Problem~\ref{prob:fourpointthree} is measured in the usual \TensProd{\PauliZ}{\PauliZ} basis.  Show the probability associated with each possible outcome below:
 \begin{description}
     \item[$\ket{00}$] \Blank[3in]{}
     \item[$\ket{01}$] \Blank[3in]{}
     \item[$\ket{10}$] \Blank[3in]{}
     \item[$\ket{11}$] \Blank[3in]{}
 \end{description}
-\item\label{prob:matrix} Returning for a moment to single qubits, consider $\ket{\psi}$ and $\ket{\psi'}$ described at the beginning of this problem. In homework you showed that $\braket{\psi'|\psi}=0$, which makes them suitable as a measurement basis.
+\item\label{prob:matrix}\Points{3} Returning for a moment to single qubits, consider $\ket{\psi}$ and $\ket{\psi'}$ described at the beginning of this problem. In homework you showed that $\braket{\psi'|\psi}=0$, which makes them suitable as a measurement basis.
 
 Below specify the matrix that maps
 \begin{align*}
@@ -141,13 +143,13 @@ T = \begin{pmatrix*}[r]
 \Blank[10em]{} & \Blank[10em]{}
 \end{pmatrix*}
 \]
-\item Recall that \Conj{T} is the conjugate transpose of matrix $T$.  To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order, with reference to the matrix $T$ you defined in Problem~\ref{prob:matrix}:
+\item\Points{4} Recall that \Conj{T} is the conjugate transpose of matrix $T$.  To measure in the basis formed by $\psi$ and $\psi'$ we would perform the following steps in order, with reference to the matrix $T$ you defined in Problem~\ref{prob:matrix}:
 \begin{itemize}
     \item Apply matrix (circle or indicate one) \hbox to 3em{\hss$T$\hss} or \hbox to 3em{\hss\Conj{T}\hss}  to a qubit's current state
     \item Measure in the computational basis
     \item Apply matrix (circle or indicate one) \hbox to 3em{\hss$T$\hss} or \hbox to 3em{\hss\Conj{T}\hss}  to the result of the measurement
 \end{itemize}
-\item Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right. If Alice applied some unitary operator \NamedGate{U} to her qubit obtaining state $\QState{}$, under what conditions does Bob's state become mathematically $\QState{}$?
+\item\Points{3} Suppose Alice and Bob begin with the Bell state \TwoSup{00}{11}. Alice takes the left qubit and Bob takes the right. If Alice applied some unitary operator \NamedGate{U} to her qubit obtaining state $\QState{}$, under what conditions does Bob's state become mathematically $\QState{}$?
 \LeaveSpace{}
 \end{enumerate}
 \item\label{prob:phasegate}\Points{25} Consider the \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.PhaseGate}{Phase Gate}, show here parameter $x$ so as not to confuse it with the parameters of the universal \NamedGate{U} gate:
@@ -155,12 +157,12 @@ T = \begin{pmatrix*}[r]
 P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \]
 \begin{enumerate}[label=\theenumi.\arabic*]
-  \item What is the (simplest) \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.U3Gate}{universal gate} (slide 13 in deck 070) formulation for $P(x)$?
+  \item\Points{3} What is the (simplest) \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.U3Gate}{universal gate} (slide 13 in deck 070) formulation for $P(x)$?
   \[
   P(x) = \SQBG{\relax}{\cos{\left(\frac{\Blank[2em]}{2}\right)}}{-\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\sin{\left(\frac{\Blank[2em]}{2}\right)}}{\ExpPhase{\Blank[2em]}\cos{\left(\frac{\Blank[2em]}{2}\right)}}
   \]
   Your answers above must conform to the specification of the \NamedGate{U} gate referenced above.
-  \item Consider the state \[
+  \item\Points{2} Consider the state \[
   P(x)\ket{+} = P(x)\PPlus{}= \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}\PPlus{} =\RootTwo{}\SQB{1}{\ExpPhase{x}} = \TwoSupOp{1\QZero{}}{\ExpPhase{x}\QOne}{+}
   \]
   If we measure the above state in the computational (\PauliZ{}) basis, then fill in the probabilities associated with each possible outcome:
@@ -168,16 +170,16 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
       \item \QZero{} \Blank{}\%
       \item \QOne{} \Blank{}\%
   \end{itemize}
-  \item\label{prob:psi} With \Hadamard{} as our Hadamard gate, compute the state $\ket{\psi}$ below, taking note of the coefficient $\frac{1}{2}$ already provided.
+  \item\label{prob:psi}\Points{4} With \Hadamard{} as our Hadamard gate, compute the state $\ket{\psi}$ below, taking note of the coefficient $\frac{1}{2}$ already provided.
   \[
   \ket{\psi} = \Hadamard(P(x)) = \frac{1}{2}\ \SQB{\Blank[8em]}{\Blank[8em]} = \SQB{\alpha}{\beta}
   \]
   Note that $\ket{\psi}$ is actually also a function of $x$, but the parameter is omitted to avoid clutter.  For the rest of this problem, know that state~$\ket{\psi}$ is dependent on~$x$.
-  \item With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state $\ket{\psi}$ above as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
+  \item\Points{3} With all measurements actually performed in the computational basis, applying \Hadamard{} as above prepares the state $\ket{\psi}$ above as if it were measured in the \Blank[2em]{} basis, with the result of \begin{itemize}
       \item $\ket{\Blank[2em]}$ corresponding to $\ket{+}$ and 
       \item $\ket{\Blank[2em]}$  corresponding to $\ket{-}$.
    \end{itemize}
-  \item For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed. We must therefore compute $\Prob{\alpha}$. Complete the work below concerning $\alpha$ in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  
+  \item\Points{2} For state $\ket{\psi}$ as defined in Problem~\ref{prob:psi}, we next explore the probability that \QZero{} will be observed. We must therefore compute $\Prob{\alpha}$. Complete the work below concerning $\alpha$ in $\ket{\psi}$ for your answer to part~\ref{prob:psi}.  
   \begin{itemize} 
   \item Each of your responses will be in terms of the parameter~$x$.
   \item Be sure to include the effects of the fraction $1/2$ shown outside the column vector in part~\ref{prob:psi}.
@@ -193,16 +195,16 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
       \item The square of its real part is~\Blank[20em]{}, and
       \item the square of its imaginary part is~\Blank[20em]{}.
   \end{itemize}
-  \item\label{prob:prob} The probability of observing $\ket{0}$ if we measure $\ket{\psi}$ in the computational basis is therefore:
+  \item\label{prob:prob}\Points{2} The probability of observing $\ket{0}$ if we measure $\ket{\psi}$ in the computational basis is therefore:
   \[
   p(x) = \Prob{\alpha} = \Blank[25em]{}
   \]
   For full credit, ensure that your answer above is in the simplest form you can manage.
-  \item Verify below that for all $x$, $0 \leq p(x) \leq 1$.  (If this verification fails, your answer for $p(x)$ is wrong.)
+  \item\Points{2} Verify below that for all $x$, $0 \leq p(x) \leq 1$.  (If this verification fails, your answer for $p(x)$ is wrong.)
   \LeaveSpace{}
-  \item Given 1,000 qubits, each in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
+  \item\Points{3} Given 1,000 qubits, each in state~$\ket{\psi}$, how can we use the above result to estimate~$x$, the parameter to the phase gate?
   \LeaveSpace{}
-  \item Suppose I have prepared 1,000 qubits, each in state $\ket{\psi}$ with a particular value of~$x$. After measuring those qubits, you observe:
+  \item\Points{4} Suppose I have prepared 1,000 qubits, each in state $\ket{\psi}$ with a particular value of~$x$. After measuring those qubits, you observe:
   \begin{itemize}
       \item \QZero{} 468 times
       \item \QOne{} 532 times
@@ -215,13 +217,13 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 \end{enumerate}
 \item \Points{15} Key Distribution
 \begin{enumerate}[label=\theenumi.\arabic*]
-    \item Consider an instance of Diffie--Hellman as taught in class (slide deck 110), where the base $g$ is 4483, and the modulus $p$ is 1746860020068409.  A calculator to help with this problem can be found \href{https://www.boxentriq.com/code-breaking/modular-exponentiation}{here}.
+    \item\Points{5} Consider an instance of Diffie--Hellman as taught in class (slide deck 110), where the base $g$ is 4483, and the modulus $p$ is 1746860020068409.  A calculator to help with this problem can be found \href{https://www.boxentriq.com/code-breaking/modular-exponentiation}{here}.
     \begin{itemize}
         \item Bob's secret is 468468
         \item Alice's secret is 864864
     \end{itemize}
     Their shared agreed-upon key is~\Blank[20em]{}.
-    \item Consider the following table using the BB84 protocol taught in class (slide deck 110).
+    \item\Points{5} Consider the following table using the BB84 protocol taught in class (slide deck 110).
 
 \begin{BBKey}
 \begin{center}
@@ -236,7 +238,7 @@ P(x) = \SQBG{\relax}{1}{0}{0}{\ExpPhase{x}}, 0\leq x < 2\pi
 Assuming Eve is not present, what shared key will Alice and Bob agree upon?
 
 \Blank[20em]{}
-\item In the table above, in which column(s) would Bob need to disagree with Alice to indicate that Eve might be present?  List all that are applicable.
+\item\Points{5} In the table above, in which column(s) would Bob need to disagree with Alice to indicate that Eve might be present?  List all that are applicable.
 
 \Blank[20em]{}
 
@@ -267,7 +269,7 @@ Let's call this gate \NamedGate{UDCNOT}, and you will define this two-qubit gate
 \end{center}
 
 \begin{enumerate}[label=\theenumi.\arabic*]
-\item Expressed as a two-qubit unitary matrix
+\item\Points{4} Expressed as a two-qubit unitary matrix
 \[
 \NamedGate{UDCNOT} = \begin{pmatrix*}[r]
 \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}\\[0.5em]
@@ -276,12 +278,12 @@ Let's call this gate \NamedGate{UDCNOT}, and you will define this two-qubit gate
 \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{} & \Blank[2em]{}
 \end{pmatrix*}
 \]
-\item The \NamedGate{SWAP} gate exchanges the position of two qubits and is described \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.SwapGate}{here}. Prove that 
+\item\Points{3} The \NamedGate{SWAP} gate exchanges the position of two qubits and is described \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.SwapGate}{here}. Prove that 
 \[
 \NamedGate{SWAP} \times \NamedGate{CNOT} \times \NamedGate{SWAP} = \NamedGate{UDCNOT}
 \]
 \LeaveSpace{}
-\item Compute the states shown in the circuit diagram, filling in your answers below. Observe the common factor pulled out already, when it is present.  Fill in the blanks with ones and zeros.
+\item\Points{4} Compute the states shown in the circuit diagram, filling in your answers below. Observe the common factor pulled out already, when it is present.  Fill in the blanks with ones and zeros.
 \def\FS#1#2{%
 \QState{#1} = #2\begin{pmatrix*}[r]
 \Blank[2em]{} \\
@@ -299,7 +301,7 @@ Let's call this gate \NamedGate{UDCNOT}, and you will define this two-qubit gate
 \FS{2}{\frac{1}{2}}\ \ 
 \FS{3}{\frac{1}{2}} \]
 
-\item Below either prove $\QState{3}$ is entangled or show its decomposition.
+\item\Points{4} Below either prove $\QState{3}$ is entangled or show its decomposition.
 \LeaveSpace{|}
 \end{enumerate}
 
