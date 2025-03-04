@@ -58,22 +58,24 @@ Throughout this homework:
     \Ans{\QZero{} or \QOne{}}
     \item \Points{10} And what outcome(s) might he see for his \textbf{X} (second qubit) measurement?
     
-    \Blank[2in]
+    \Ans{\QPlusSym{} or \QMinusSym{}}
     
     \item \Points{10} Are all combinations of outcomes possible?  \Blank{}.  If not, say which are possible below
     
-    \Blank[2in]{}
-    \item \Points{10} Referring to Slide 14, what two possible states ($\psi_{?}$ or $\psi_{?}$) could Bob see when he measures after Alice?
+    \Ans{No, he can only see $\ket{0+}$ or $\ket{1-}$}
+    \item \Points{10} Referring to Slide 14 in deck 140, what two possible states ($\psi_{?}$ or $\psi_{?}$) could Bob see when he measures after Alice?
     
-    \Blank{} or \Blank{}
+    \Ans{$\QState{0}$ or $\QState{3}$}
     \item \Points{30} Assuming Bob measures $\ket{0}$ for his first qubit and $\ket{+}$ for his second qubit, what results ($\pm 1$) does Bob report for his
     \begin{itemize}
-        \item Top square \Blank{}
-        \item Middle square \Blank{}
-        \item Bottom square \Blank{}
+        \item Top square \Ans{$+1$}
+        \item Middle square \Ans{$+1$}
+        \item Bottom square \Ans{$-1$}
     \end{itemize}
-    \item \Points{10} What value must Alice have reported for the first square in her row in this scenario? \Blank{}
+    \item \Points{10} What value must Alice have reported for the first square in her row in this scenario? \Ans{$-1$}
     \item \Points{10} What information on Slide 14 assures us that Bob will report the same result for the square they have in common (bottom left square) when he measures second?
+    
+    \Ans{Alice measures first and her state is (within a constant factor of) $\ket{0+}-\ket{1-}$ then Bob has that state as well. When he measures in the $\mathbf{Z} \otimes \mathbf{X}$ basis, that superposition will collapse to either $\ket{0+}$ or $\ket{1-}$, both of these columns on slide 14 indicate a value for his square of -1, which then agree with Alice.}
     
 \end{enumerate}
 
