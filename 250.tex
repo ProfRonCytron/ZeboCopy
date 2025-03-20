@@ -737,7 +737,7 @@ In Simon's problem, if $T=\Set{w_{1}, w_{2},\ldots,w_{n}}$, where the $w_{i}$ ar
 \begin{frame}{Analysis}{Overview}
 
 \begin{itemize}
-    \item<1-> For an $n$-qubit problem, there are $2^{n-1}$ possible observed measurements, including \TensSupProd{0}{n}.
+    \item<1-> For an $n$-qubit problem, there are $2^{n-1}$ possible observed measurements, including \TensSupProd{0}{n}. This is because $\ket{w}$ is observable iff $\DotP{w}{s}=0$.
     \item<2-> We need $n-1$ linearly independent measurements.  We seek to build the set $T=\Set{w_{1},w_{2},\ldots, w_{n-1}}$.
     \item<3-> When we run the circuit to observe $w_{k}$, we hope it is not among the $2^{k-1}$ (think, poisonous) values spanned by our set~$T$.
     \item<4-> We showed that the number of poisonous values doubles with each addition to~$T$.
