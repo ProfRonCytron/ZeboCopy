@@ -23,3 +23,5 @@ Where to put in entanglement in any basis persists for two-way
    slide 12 has an extra root 2?
 
 Get notebooks for DJA, Simon moved to LinuxLab!
+260  t should be a ket on Slide 8
+
