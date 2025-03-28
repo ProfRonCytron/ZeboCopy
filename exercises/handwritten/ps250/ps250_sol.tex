@@ -17,7 +17,7 @@
 
 \begin{document}
 
-\assignment{Problem Set 250}
+\assignment{Problem Set 250 Solution}
 
 
 \begin{enumerate}[font=\bfseries]
@@ -29,40 +29,49 @@
     \item With whom did you collaborate?
     \LeaveSpace{}
 \end{itemize}
+\Ans{Varies}
 
 \item (20 points) Referencing the material beginning on slide 7 page 51 in 250.pdf, consider an instance of Simon with $n=10$ qubits.  
 
 Using the formula there, how many queries must we issue classically to try to find $x$ and $y$ such that $f(x)=f(y)$ with each of the following probabilities?
 \begin{description}
-    \item[10\%] \Blank{}
-    \item[50\%] \Blank{}
-    \item[90\%] \Blank{}
-    \item[99\%] \Blank{}
-    \item[99.9\%] \Blank{}
+    \item[10\%] \Ans{11}
+    \item[50\%] \Ans{27}
+    \item[90\%] \Ans{49}
+    \item[99\%] \Ans{69}
+    \item[99.9\%] \Ans{85}
 \end{description}
 \item\Points{20} Suppose for an instance of Simon's problem we are incredibly lucky and discover in two queries that \texttt{101101} and \texttt{000111} are mapped to the same value by the oracle.  \begin{enumerate}[label=\theenumi.\arabic*]
-    \item What is the secret $s$?\Blank[1.5in]{}
-    \item How many other inputs will map to the same value as do \texttt{101101} and \texttt{000111}?\Blank{}
+    \item What is the secret $s$?\Ans{\texttt{101010}}
+    \item How many other inputs will map to the same value as do \texttt{101101} and \texttt{000111}?\Ans{None, exactly two and they are given already}
 \end{enumerate}
 
 \item \Points{15} Consider a 3-qubit system in state $\ket{\psi}$.  Suppose \[ \textbf{H}\left(\ket{\psi}\right)=\frac{\ket{001}+\ket{100}}{\sqrt{2}}\] 
 
 What is $\ket{\psi}$? 
 Hint: Hadamard is its own inverse.
-\LeaveSpace{}
+
+\Ans{The answer is \[\frac{\mathbf{H}(\ket{001}) + \mathbf{H}(\ket{100})}{\sqrt{2}}\] which is
+    \[ \frac{1}{2}\left(\ket{000}+\ket{010}-\ket{101}-\ket{111}\right)\]
+    Note: they may express this as a column vector, which is fine:
+    \[
+    \frac{1}{2}\begin{pmatrix*}[r]
+        1 \\ 0 \\ 1 \\ 0 \\ 0 \\ -1 \\ 0 \\ -1
+    \end{pmatrix*}
+    \]}
 
     \item \Points{15} Consider the oracle portion of a circuit below for an $8$-bit instance of the Bernstein--Vazirani problem.  Recall the oracle computes $y=x\oplus s$ for a secret bit vector~$s$.
  \begin{center}   
     \includegraphics[scale=0.45]{ps250-assets/bv.png}
     \end{center}
 \begin{enumerate}[label=\theenumi.\arabic*]
-\item What is the secret $s$ here? \Blank[2in]{}
+\item What is the secret $s$ here? \Ans{01100110}
     \item If this oracle is used in the Deutsch--Jozsa algorithm, what possible amplitude(s) can be measured on $\ket{00000000}$?
     
-    \Blank[4in]{}
+    \Ans{0}
     \item  What other computational basis vector(s), if any, will have non-zero amplitude for Deutsch--Jozsa if the above oracle is used?  
     
-    \Blank[4in]{}
+    \Ans{None}
 \end{enumerate}
 \item\Points{15} The circuit below shows two three-qubit inputs $x$ and $y$ and output $s$.
 \begin{itemize}
@@ -74,19 +83,20 @@ Hint: Hadamard is its own inverse.
     Pauli gates (including \Hadamard{}), the \NamedGate{CNOT} gate, and the \NamedGate{CCNOT} gates.
 \end{itemize}
 \BigSkip{}
+\Ans{Varies, but below is my solution. I saw some students using CCNOT to find when two inputs are both true and another CCNOT to find when they are both false. Make sure they restore any changes they make to $x_i$ or $y_i$.
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.6\textwidth}{\begin{quantikz}
-\lstick{$x_1$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$x_2$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$x_3$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$y_1$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$y_2$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$y_3$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\
-\lstick{$s_1$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$s_2$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$s_3$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\
+\lstick{$x_1$} & \ctrl{6} & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$x_2$} & \qw & \qw  & \ctrl{6} & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$x_3$} & \qw & \qw  & \qw & \qw& \ctrl{6} & \qw  & \qw & \qw\\ 
+\lstick{$y_1$} & \qw & \ctrl{3}  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$y_2$} & \qw & \qw  & \qw & \ctrl{3}& \qw & \qw  & \qw & \qw\\ 
+\lstick{$y_3$} & \qw & \qw  & \qw & \qw& \qw & \ctrl{3}  & \qw & \qw\\
+\lstick{$s_1$} & \targ{} & \targ{}  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$s_2$} & \qw & \qw  & \targ{} & \targ{}& \qw & \qw  & \qw & \qw\\ 
+\lstick{$s_3$} & \qw & \qw  & \qw & \qw& \targ{} & \targ{}  & \qw & \qw\\
 \end{quantikz}}
-\end{center}
+\end{center}}
 
 \item\Points{15} Now consider the following circuit.
 \begin{itemize}
@@ -96,17 +106,18 @@ Hint: Hadamard is its own inverse.
     \item For gates, you are (again) allowed only the
     Pauli gates (including \Hadamard{}), the \NamedGate{CNOT} gate, and the \NamedGate{CCNOT} gates.
 \end{itemize}
+\Ans{Will also vary but here is my solution:
 \begin{center}
 \Vskip{-3em}\adjustbox{valign=t, width=0.6\textwidth}{\begin{quantikz}
-\lstick{$s_1$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$s_2$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$s_3$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\
-\lstick{$a_1$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
-\lstick{$a_2$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$s_1$} & \ctrl{3} & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$s_2$} & \ctrl{2} & \ctrl{3}  & \qw & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$s_3$} & \qw & \ctrl{2}  & \qw & \qw& \qw & \qw  & \qw & \qw\\
+\lstick{$a_1$} & \targ{} & \qw  & \ctrl{3} & \qw& \qw & \qw  & \qw & \qw\\ 
+\lstick{$a_2$} & \qw & \targ{}  & \ctrl{2} & \qw& \qw & \qw  & \qw & \qw\\ 
 \lstick{$a_3$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\
-\lstick{$t$} & \qw & \qw  & \qw & \qw& \qw & \qw  & \qw & \qw\\
+\lstick{$t$} & \qw & \qw  & \targ{} & \qw& \qw & \qw  & \qw & \qw\\
 \end{quantikz}}
-\end{center}
+\end{center}}
 
 
 \end{enumerate}
