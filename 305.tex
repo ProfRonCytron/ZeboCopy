@@ -1,0 +1,184 @@
+\def\OtherAuthors{ and Mitch Oldham}
+\SetTitle{305}{Quantum Counting}{For Grover's Algorithm}{305}
+
+\section*{Basics}
+
+
+
+
+\begin{frame}{Background}{}
+\begin{itemize}
+    \item Created by Gilles Brassard, Peter Høyer, and Alain Tapp in 1998.
+    \item The purpose of this algorithm is to efficiently count the number of solutions for a given search problem. What this means practically  is that it comes before applying the Grover search algorithm as that algorithm requires knowing how many solutions exist
+    \item \textbf{Classically}: Without any prior knowledge of the set of solutions B (or the structure of the function f), a classical deterministic solution cannot perform better than $\Omega(N)$
+
+\end{itemize}
+Wikipedia article is \href{https://en.wikipedia.org/wiki/Quantum_counting_algorithm}{here} and paper \href{https://link.springer.com/chapter/10.1007/BFb0055105}{here}.
+\end{frame}
+
+
+
+\section*{The Algorithm}
+
+
+\begin{frame}{Overview}{Brief description and look at the algorithm}
+\begin{itemize}
+    \item The Quantum counting algorithm itself is just the quantum phase estimation algorithm, the only difference is the unitary operator it uses. In this case that unitary operator is the Grover operator which is the Grover oracle and the diffuser. What this means is that there are two registrars, one that is p large, the first registrar, and one being n large, that being the second registrar. 
+
+    \vspace{1mm}
+
+
+    \begin{center}\begin{Pixture}[width=0.7\textwidth]{305}{counting.png}
+\end{Pixture}\end{center}
+
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Part 1}{Entering the algorithm}
+\begin{itemize}
+    \item We will start by focusing on the bottom register, the one within qubits.
+    \item They are initially in the all 0s state, but like with many algorithms we first apply an n-way Hadamard gate to create the uniform superposition.
+        \item We also apply a p-war Hadamard to the top register at this point
+
+    \item After that we go through the normal steps of quantum phase estimation, only this time the unitary operator is the Grover oracle and then the diffuser.
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quick Review of Grovers}{What do the Grover operator and diffuser do?}
+\begin{itemize}
+    \item The state is initially at $s$ which is the uniform superposition. $s'$ is the all 0 state and $w$ is where we want to get to. The algorithm first reflects its over the $s'$ axis and then back again but adds $\theta$ to the angle. This process is repeated every time you add another Oracle diffuser pair. 
+    \item \textbf{Aside}: This is also the reason you need to know how many solutions exist before applying Grover's algorithm, as you need to know how many times to apply the pair in order to get the highest probability of getting the output you want.
+
+     \begin{center}\begin{Pixture}[width=0.15\textwidth]{305}{grovers.png}
+\end{Pixture}\end{center}
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Part 2}{The Grovers matrix}
+\begin{itemize}
+    \item At this point I will be referring to the combined Grover's oracle and diffusor combination as $G$ just for simplicity
+    \item We know that this matrix $G$ is a rotational operator because it rotates the state by $\theta$ degrees every time it is applied.
+
+    $$\ket{s} = \cos(\theta/2)\ket{s'} + \sin(\theta/2)\ket{w} \mapsto G\ket{s} = \cos(\theta + \theta/2)\ket{s'} + \sin(\theta + \theta/2)\ket{w}$$
+
+    \item At this point we can also prove the matrix representation of $G$
+
+    $$GS = G * S$$
+
+    $$\begin{bmatrix}\cos(\theta + \theta/2)\\\sin(\theta + \theta/2)\\\end{bmatrix} = \begin{bmatrix}\cos(\theta) & -\sin(\theta)\\\sin(\theta) & \cos(\theta)\\\end{bmatrix} \begin{bmatrix}\cos(\theta/2)\\\sin(\theta/2)\\\end{bmatrix}$$
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Part 3}{G and its eigenvalues and vectors}
+\begin{itemize}
+    \item G is its own inverse meaning it is unitary. This means we can do quantum phase estimation which will be very useful because if we can find the phase of an eigenvalue, we can solve for theta and theta can then be used to solve for m (where m is the number of solutions in the space).
+    \item I leave the calculation of these complex eigenvalues and vectors to the reader, but they are pretty simple calculations and result in the following two complex eigenvalues and vectors
+
+    \begin{center}
+
+    Eigenvector 1: $\begin{bmatrix}i\\1\\\end{bmatrix}$ and Eigenvalue 1: $e^{i\theta}$
+
+    Eigenvector 2: $\begin{bmatrix}-i\\1\\\end{bmatrix}$ and Eigenvalue 2: $e^{-i\theta}$
+
+        
+    \end{center}
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Part 4}{Eigenstates of G}
+\begin{itemize}
+    \item Now, if you know anything about Quantum Phase Estimation, you know that the state we initially give to the bottom registrar has to be an eigenstate of the unitary matrix that is going to be repeatedly applied to it. So we can write the state s (the uniform superposition) as a linear combination of the eigenvectors of G.
+
+    $$\ket{s} = \dfrac{1}{2i}e^{i\theta/2}\begin{bmatrix}i\\1\\\end{bmatrix} - \dfrac{1}{2i}e^{-i\theta/2}\begin{bmatrix}-i\\1\\\end{bmatrix}$$
+
+
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Part 5}{Finding $\Theta$}
+\begin{itemize}
+    \item With all of this information, we can now simply run the algorithm to find $\theta$. This involves repeatedly applying the G matrix and then at the end applying an inverse Quantum Fourier Transform. This set of slides will not cover how those things work in detail, and if you want to learn about it there are many resources available to do so. But in the end after doing all of that you will find the value of theta.
+
+
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Part 6}{Using $\Theta$ to Find m}
+\begin{itemize}
+    \item From Grover's Algorithm we know the following:
+
+    $$\sin(\theta/2) = \dfrac{M}{\sqrt{N}}$$
+
+    \item You might have seen this formula but with a 1 on top before. The reason for that is that many times you are working with the special case of only 1 solution, but the general form of it is what is listed.
+    \item This means since we know N to begin with and from the previous analysis we can find $\theta$. If we rearrange and solve we can now find M, the number of solutions in the set.
+
+    $$m = N\sin^2(\theta/2)$$
+
+
+
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Part 7}{The Catch}
+\begin{itemize}
+    \item Because of the way the Grover oracle works (it tags all nonsolutions) the number we get at the end (n) is actually the number of non-solutions. So the number of solutions is N - m.
+
+
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Uses}
+
+\begin{frame}{Applications}{How and when is this algorithm useful?}
+\begin{itemize}
+    \item The primary and most exciting use of this algorithm is speeding up solutions to problems that are NP-complete.
+    \item An example of an NP-complete problem is the Hamiltonian cycle problem, which is the problem of determining whether a graph $G =(V,E)$ has a Hamiltonian cycle. 
+    \item It also solves the quantum existence problem as a bonus, which is where you want to find out if any solutions exist
+
+\end{itemize}
+\end{frame}
