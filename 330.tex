@@ -1,0 +1,318 @@
+\def\OtherAuthors{, Jeffery Chai, and Mitch Oldham}
+\SetTitle{33}{Error Correction}{Using syndrome measurements}{33}
+
+% Slide: Encoding and Decoding with an Error
+\begin{frame}{Encoding and Decoding with an Error}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            Encoding:
+            \begin{align*}
+                \ket{0} &\rightarrow \ket{000} \\
+                \ket{1} &\rightarrow \ket{111}
+            \end{align*}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \centering
+            Decoding with an Error:
+            \begin{quantikz}
+                & \lstick{$\ket{0}$} & \qw & \qw & \qw & \rstick{$\ket{0}$} \qw \\
+                & \lstick{$\ket{0}$} & \qw & \gate{X} & \qw & \rstick{$\ket{1}$} \qw \\ % Middle qubit flip from 0 to 1
+                & \lstick{$\ket{0}$} & \qw & \qw & \qw & \rstick{$\ket{0}$} \qw \\
+            \end{quantikz}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Encoding and Decoding with an Error}
+    \begin{align*}
+        \text{No Error} & : 1-P \\
+        \text{Error} & : P \\
+        \text{No Error} & : (1-P)^3 \\
+        \text{1 Error} & : 3P(1-P)^2 \\
+        \text{2 Error} & : 3P^2(1-P) \\
+        \text{3 Error} & : P^3 \\
+        \text{Majority will get correct (No-1 Error)} & : 1-3P^2 + 2P^3 \\
+        \text{2 Error - 3 Error} & : 3P^2 - 2P^3 \\
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Encoding and Decoding with an Error}
+
+\begin{quantikz}
+    & \lstick{$\alpha\ket{0} + \beta\ket{1}$} & \qw & \ctrl{1} & \qw & \ctrl{2}& \qw& \qw\\
+    & \lstick{$\ket{0}$} & \qw & \targ{} & \qw & \qw & \qw& \qw \\
+    & \lstick{$\ket{0}$} & \qw & \qw & \qw & \targ{}& \qw& \qw \\
+\end{quantikz}
+
+\[ \alpha\ket{10} + \beta\ket{11} \rightarrow \alpha\ket{100} + \beta\ket{111} \]
+This is how we do an encoding from less qubits to more qubits.
+
+\end{frame}
+
+\begin{frame}{shor's three qubit example}
+
+    \begin{quantikz}
+        & \lstick{$\alpha\ket{0} + \beta\ket{1}$} & \qw & \ctrl{1} & \qw & \ctrl{2} & \qw & \gate[wires=3]{Error} & \ctrl{3}  & \qw & \qw & \qw & \qw & \qw\\
+        & \lstick{$|0\rangle$} & \qw & \targ{} & \qw & \qw & \qw & \qw & \qw & \ctrl{2} & \ctrl{3} & \qw & \qw & \qw \\
+        & \lstick{$|0\rangle$} & \qw & \qw & \qw & \targ{} & \qw & \qw & \qw & \qw & \qw & \ctrl{2} & \qw & \qw \\
+        & \lstick{$|0\rangle$} & \qw & \qw & \qw & \qw & \qw & \qw & \targ{} & \targ{} & \qw & \qw & \qw & \meter{} \\
+        & \lstick{$|0\rangle$} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ{} & \targ{} & \qw & \meter{} \\
+    \end{quantikz}
+
+\end{frame}
+
+
+\begin{frame}{Explanation of Shor's Three-Qubit Quantum Error Correction}
+
+\textbf{Objective:} Protect the quantum state \(\alpha\ket{0} + \beta\ket{1}\) from errors by encoding it in a three-qubit system.
+
+\begin{itemize}
+    \item \textbf{Encoding:} The initial state is spread across three qubits using CNOT gates. This creates a form of redundancy.
+    
+    \item \textbf{Error:} Represents any potential error that could occur on the qubits during computation. Could be a bit flip, phase flip, or both.
+    
+    \item \textbf{Correction:} 
+    \begin{itemize}
+        \item If an error occurs on a qubit, it will make the state of that qubit differ from the other two.
+        \item By using two auxiliary qubits (the bottom two lines), we can determine which qubit (if any) has an error.
+        \item The auxiliary qubits, after interacting with the main qubits through CNOT gates, are measured.
+        \item Based on the measurement outcome, we can infer where the error occurred and correct it.
+    \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Phase flip code example}
+    
+\begin{quantikz}
+\lstick{\ket{\psi}} & \ctrl{1} & \ctrl{2} & \gate{H} & \qw & \gate[wires=3]{E_{\text{phase}}} & \qw & \gate{H} & \ctrl{2} & \ctrl{1} & \qw & \rstick{\ket{\psi}} \qw \\
+\lstick{\ket{0}} & \targ{} & \qw & \gate{H} & \qw & & \qw & \gate{H} & \qw & \targ{} & \qw & \rstick{\ket{0}} \qw \\
+\lstick{\ket{0}} & \qw & \targ{} & \gate{H} & \qw & & \qw & \gate{H} & \targ{} & \qw & \qw & \rstick{\ket{0}} \qw \\
+\end{quantikz}
+\end{frame}
+
+
+\begin{frame}{Explanation of Shor's Three-Qubit Quantum Error Correction}
+
+\textbf{Objective:} Protect the quantum state \(\alpha\ket{0} + \beta\ket{1}\) from errors by encoding it in a three-qubit system.
+
+\begin{itemize}
+    \item \textbf{Encoding:} The initial state is spread across three qubits using CNOT gates and Hadamard gates to create an entangled state. This redundancy allows for the detection and correction of phase-flip errors.
+    
+    \item \textbf{Error Channel (E\textsubscript{phase}):} Represents the environment that may introduce phase flip errors, modeled by the Pauli-Z operator. The state of the system could be:
+    \begin{itemize}
+        \item No error: \(\alpha\ket{000} + \beta\ket{111}\)
+        \item 1st qubit flipped: \(\alpha\ket{100} + \beta\ket{011}\)
+    \end{itemize}
+    
+    \item \textbf{Error Detection and Correction:} 
+    \begin{itemize}
+        \item Hadamard gates are applied again to all qubits to facilitate error detection.
+        \item A series of CNOT gates followed by measurements determines if an error occurred.
+        \item If an error is detected, a corrective operation is applied to restore the original state.
+    \end{itemize}
+    
+    \item \textbf{Hadamard Gate on Basis States:} Recall the transformation properties of the Hadamard gate:
+    \begin{itemize}
+        \item \(H \ket{0} = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})\) which is equivalent to \(\ket{+}\)
+        \item \(H \ket{1} = \frac{1}{\sqrt{2}}(\ket{0} - \ket{1})\) which is equivalent to \(\ket{-}\)
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Encoding and Decoding with an Error}
+
+    \begin{align*}
+    E_0 & : I \otimes I \otimes I & \text{No Bit Flip} \\
+    E_1 & : \underline{X} \otimes I \otimes I & \text{Bit flip on 1} \\
+    E_2 & : I \otimes \underline{X} \otimes I & \text{Bit flip on 2} \\
+    E_3 & : I \otimes I \otimes \underline{X} & \text{Bit flip on 3} \\
+    \end{align*}
+    X means an error in the bit.
+
+\end{frame}
+
+
+
+\begin{frame}{Modified 9-qubit Quantum Circuit}
+    \centering
+    \scalebox{0.5}{
+        \begin{quantikz}
+            & \lstick{$\ket{\phi}$} & \gate[wires=9]{Enc} & \qw & \gate[wires=3]{H} & \gate[wires=3]{Enc} & \gate[wires=3]{R} & \gate[wires=3]{H} & \gate[wires=9]{R} & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+            & \lstick{} & \qw & \qw & \gate[wires=3]{H} & \gate[wires=3]{Enc} & \gate[wires=3]{R} & \gate[wires=3]{H} &  & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+            & \lstick{} & \qw & \qw & \gate[wires=3]{H} & \gate[wires=3]{Enc} & \gate[wires=3]{R} & \gate[wires=3]{H} &  & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+            & \lstick{} & \qw & \qw &  &  & \qw &  & \qw & \qw \\
+        \end{quantikz}
+    }
+    \begin{itemize}
+        \item Outer Layer: Corrects phase flips using an encoding (Enc) followed by a Hadamard flip (H).
+        \item Inner Layer: Addresses bit flips through an encoding (Enc), error correction (R), and Hadamard flips (H). This nested structure ensures robust error rectification for both common quantum errors.
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+\subsection*{Magnus and Kaden}
+
+\begin{frame}{Arbitrary CNOT gate}{As a unitary matrix}
+\begin{itemize}
+    \item Background: Two-Qubit Control "U" Gate
+    \item The 2-qubit CU gate is a conditional gate that applies a unitary operation U to the target qubit only if the control qubit is in the state \(|1\rangle\).
+    \only<2>{\item We can express the state of the Qubits as the product of the amplitudes on \(|0\rangle\) and \(|1\rangle\)}
+\end{itemize}
+\begin{center}
+    \begin{quantikz}
+        \lstick{\textcolor{red}{\text{Control}}} & \ctrl{1} & \qw \\
+        \lstick{\text{Target}} & \gate{U} & \qw
+    \end{quantikz}
+\end{center}
+\visible<2-4>{%
+\[
+CU = \textcolor{red}{\underset{\text{Control Bit}}{|0\rangle\langle0|}} \otimes \visible<3->{\underset{\text{Nothing}}{I}} + \textcolor{red}{\underset{\text{Control bit}}{|1\rangle\langle1|}} \otimes \visible<3->{\underset{\text{Apply "U" gate}}{U}}
+\]
+}
+\visible<4>{%
+\begin{itemize}
+    \item The order of the tensor products is reflective of which bit is the control and which bit is the target.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Arbitrary Control Gate}{CU from control bit i to target j}
+\begin{itemize}
+\only<1-3>{%
+\item Both these equations just present the steps to algebraically order the identity matrix \(I\), basis projection \(|0\rangle\langle0|\) or \(|1\rangle\langle1|\), and the arbitrary control matrix \(U\).
+}
+\vspace{0.5cm}
+\only<2-3>{%
+\item if (i \textless\ j)
+\[
+    CU_{i, j} = \left[I\otimes\right]^{(i-1)} |0\rangle\langle0| \left[\otimes I\right]^{(n-i)} + \left[I\otimes\right]^{(i-1)} |1\rangle\langle1| \left[\otimes I\otimes\right]^{(j-i)-1} U \left[\otimes I\right]^{(n-j)}
+\]
+}
+\only<3>{%
+\item if (i \textgreater\ j)
+\[
+    CU_{i, j} = \left[I\otimes\right]^{(i-1)} |0\rangle\langle0| \left[\otimes I\right]^{(n-i)} + \left[I\otimes\right]^{(j-1)} U \left[\otimes I \otimes\right]^{(i-j)-1} |1\rangle\langle1| \left[\otimes I\right]^{(n-i)}
+\]
+}
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Example: \(CX_{3,1}\)}
+\begin{itemize}
+    \only<1-4>{%
+    \item In the case of \(CX_{3,1}\), \(U\) is the \(X\) gate, and the control is on the third qubit. We try to represent this operation algebraically as:
+\[
+CX = \underset{\text{Qubi/t 1}}{|0\rangle\langle0|} \otimes \underset{\text{Qubit 2}}{I} \otimes \underset{\text{Qubit 3}}{I} + \underset{\text{Qubit 1}}{|1\rangle\langle1|} \otimes \underset{\text{Qubit 2}}{I} \otimes \underset{\text{Qubit 3}}{X}
+\]
+}
+    \only<2>{%
+    However, this algebraic representation corresponds to a control on the first qubit, and target on the third qubit.
+
+    \begin{center}
+    \begin{quantikz}
+        \lstick{Control} & \ctrl{2} & \qw \\
+        \lstick{Auxiliary} & \qw & \qw \\
+        \lstick{Target} & \targ{} & \qw
+    \end{quantikz}
+    \end{center}
+    }
+
+    \only<3-4>{\item We must reorder the tensor products to reflect a control on the 3rd qubit and target on the 1st qubit.}
+
+    \only<4>{%
+\[
+CX_{3,1} = \textcolor{red}{\underset{\text{Target}}{I} \otimes \underset{\text{Nothing}}{I} \otimes \underset{\text{Control}}{|0\rangle\langle0|} + \underset{\text{Target}}{X} \otimes \underset{\text{Nothing}}{I} \otimes \underset{\text{Control}}{|1\rangle\langle1|}}
+\]
+}
+\end{itemize}
+    
+\end{frame}
+\begin{frame}{Computed Matrix Representation}
+\vspace{-.8cm}
+\begin{center}
+    \[
+    CX_{3,1} = \textcolor{red}{\underset{\text{Target}}{I} \otimes \underset{\text{Nothing}}{I} \otimes \underset{\text{Control}}{|0\rangle\langle0|} + \underset{\text{Target}}{X} \otimes \underset{\text{Nothing}}{I} \otimes \underset{\text{Control}}{|1\rangle\langle1|}}
+    \]
+    \[
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & \textcolor{red}{1} & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \textcolor{red}{1} \\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & \textcolor{red}{1} & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & \textcolor{red}{1} & 0 & 0 & 0 & 0
+    \end{pmatrix}
+    \]
+\end{center}
+    
+\end{frame}
+
+\begin{frame}{Apply to Three-Qubit State}
+    \begin{itemize}
+    \only<1-2>{%
+        \item Consider a three-qubit system with qubits X, Y, and Z, each in a superposition state:
+    \[
+        \begin{aligned}
+        X &: a_x \ket{0} + b_x \ket{1}, \\
+        Y &: a_y \ket{0} + b_y \ket{1}, \\
+        Z &: a_z \ket{0} + b_z \ket{1}.
+        \end{aligned}
+    \]
+    }
+    \only<2>{%
+        \begin{align*}
+        \ket{\psi_{\text{initial}}} &= (a_x\ket{0} + b_x\ket{1}) \otimes (a_y\ket{0} + b_y\ket{1}) \otimes (a_z\ket{0} + b_z\ket{1}) \\
+        &= a_x a_y a_z \ket{000} + a_x a_y b_z \ket{001} \\
+        &\quad + a_x b_y a_z \ket{010} + a_x b_y b_z \ket{011} \\
+        &\quad + b_x a_y a_z \ket{100} + b_x a_y b_z \ket{101} \\
+        &\quad + b_x b_y a_z \ket{110} + b_x b_y b_z \ket{111}
+        \end{align*}
+    }
+    \only<3->{%
+    \item After applying \(CX_{3,1}\) to \(\ket{\psi_{\text{initial}}}\), the final state \(\ket{\psi_{\text{final}}}\) becomes:
+
+        \[
+    \begin{aligned}
+    \ket{\psi_{\text{final}}} &= a_x a_y a_z \ket{000} + \textcolor{red}{b_x} a_y b_z \ket{001} + a_x b_y a_z \ket{010} + \textcolor{red}{b_x} b_y b_z \ket{011} \\
+    &+ b_x a_y a_z \ket{100} + \textcolor{red}{a_x} a_y b_z \ket{101} + b_x b_y a_z \ket{110} + \textcolor{red}{a_x} b_y b_z \ket{111}.
+    \end{aligned}
+    \]
+
+    \begin{align*}
+    \ket{\psi_{\text{initial}}} &= a_x a_y a_z \ket{000} + \textcolor{red}{a_x} a_y b_z \ket{001} \quad + a_x b_y a_z \ket{010} + \textcolor{red}{a_x} b_y b_z \ket{011} \\
+    & \quad + b_x a_y a_z \ket{100} + \textcolor{red}{b_x} a_y b_z \ket{101} \quad + b_x b_y a_z \ket{110} + \textcolor{red}{b_x} b_y b_z \ket{111}
+    \end{align*}
+
+    \visible<4>{
+    \item The \(CX_{3,1}\) operation flips the first qubit when the third qubit is in the state \(\ket{1}\). This flip is manifested as a change in the amplitude from \(a\) to \(b\) or vice versa. 
+    }
+    }
+    \end{itemize}
+
+\end{frame}
