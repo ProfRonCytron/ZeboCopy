@@ -234,11 +234,13 @@ $f(x)$ induces a signature of signs on the output basis states.}
 \begin{itemize}[<+->]
     \item The top qubit is $\ket{+}=\Hadamard\QZero{}=\TwoSupOp{\ColorOne{\QZero}}{\ColorTwo{\QOne}}{+}$.
     \item The bottom qubit is in state \ColorThree{\QState{}}, which is an eigenstate of the arbitrary unitary gate~\ColorFour{\NamedGate{U}}.
-    \item We thus have
+    \MedSkip{}
+    We thus have
     \(\ColorFour{\NamedGate{U}}\ColorThree{\QState{}} = \lambda \ColorThree{\QState{}} \)
     \item This implies $\Mag{\lambda}=1$ so the result can be written:
     \[ \ColorFour{\NamedGate{U}}\ColorThree{\QState{}} = \ColorFour{\ExpPhase{\theta}}\ColorThree{\QState{}}\]
     with \ColorFour{$\ExpPhase{\theta}$}  as a \emph{global phase} on state~\ColorThree{\QState{}}.
+    \item We return to this setting when we consider the \href{https://en.wikipedia.org/wiki/Quantum_counting_algorithm}{Quantum Counting Algorithm}.
 \end{itemize}}%
 \ScrollProof{5}{8}{%
 \Next{\Four}{\QState{0} &= \TensProd{\ket{+}}{\QState{}}\\
