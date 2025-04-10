@@ -28,3 +28,14 @@ to teleport.  Why is such a state infeasible/
 Solve teleportation but where X for 00 XZ for 01 Z for 10 nothing for 11
 
 The CZ symbol is symmetric.  Prove that CZ(a,b) = CZ(b,a)
+
+
+Exam 2
+
+oracle grover for simon's problem but takes in only one value |x>
+consider fft*n and H*n, for what in state do the two always compute the
+same result?
+So FFT is inverse of phase estimation.  For each unitary component in phase estimation explain what its inverse is for FFT.
+For the input state equating fft*n and H*n, explain why the FFT circuit computes the same result.
+
+Prior to using their entangled states, Alice's and Bob's qubits decohere with the first qubit resolving to |0> and the second qubit to |1>.  What happens in row 1 for alice?  What happens in column 1 for bob?  Specifically, what values do they report for their squares and do they necessarily agree in the top left box?
