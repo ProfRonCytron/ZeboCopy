@@ -45,7 +45,9 @@ No late extensions for the exam!
 
 \textbf{Questions (do not respond here---see response section below)}
 \begin{enumerate}[label=\theenumi.\arabic*]
-   \item\label{tf:a} All states in the $x-z$ plane on the Bloch sphere can be described without using relative phase.
+   \item\label{tf:a} The university course evaluation for this course is worth one of the five points for
+participation in this class. By turning in this exam, I acknowledge that the due
+date for receiving this participation point is Monday May 5, 9 AM.  I understand I will not receive participation credit for my evaluation if it submitted after that time.
    \item\label{tf:b} Each of the Pauli gates (\PauliX,\PauliY,\PauliZ,\Hadamard) is its own inverse.
    \item\label{tf:c} The Control-\PauliZ{} gate cannot produce an entangled state, unless it is presented with an already entangled state.
    \item\label{tf:d} If the state \TwoSup{00}{01} is presented to gates \TensProd{\Hadamard}{\PauliX}, the tensor product of those gates must be formed to compute the correct resulting state.
@@ -67,7 +69,7 @@ No late extensions for the exam!
 
 \BlankPrompt{f}\BlankPrompt{g}\BlankPrompt{h}\TFPrompt{i}\BlankPrompt{j}
 
-\item\Points{5}  We have studied the 3-qubit correction scheme that can correct a single \PauliX{} error on at most one of the 3 entangled qubits.  To achieve this, we conducted \emph{syndrome} measurements on two other qubits.
+\item\Points{10}  We have studied the 3-qubit correction scheme that can correct a single \PauliX{} error on at most one of the 3 entangled qubits.  To achieve this, we conducted \emph{syndrome} measurements on two other qubits.
 
 The qubits receiving the symdrome values are expected to be in state \QZero{} or \QOne{}, and the combined value of the two sydnrome qubits indicates what, if any, corrective action must be taken on the 3 entangled qubits.
 
@@ -87,7 +89,7 @@ Ideally we would like to reset those syndrome qubits to $\ket{00}$ so that they 
     
 \end{enumerate}
 
-\item Recall the Mermin--Peres game. Recall that the following states are generated in support of Alice and Bob [ Slide deck 140, slide 2 ]:
+\item\Points{15} Recall the Mermin--Peres game. Recall that the following states are generated in support of Alice and Bob [ Slide deck 140, slide 2 ]:
 \begin{itemize}
     \item $\ket{a_{1}b_{1}} = \TwoSup{00}{11}$
     \item $\ket{a_{2}b_{2}} = \TwoSup{00}{11}$
@@ -96,35 +98,179 @@ where Alice receives $\ket{a_{1}}$ and $\ket{a_{2}}$ and Bob receives the other 
 
 In class we studied how the initial state of these qubits leads to guranteed success in the Mermin--Peres game, for any row or column assigned to Alice or Bob.
 
-Now suppose that subsequent to qubit generation but prior to playing the game, the above qubits collapse out of superposition, obtaining \[
+Now suppose that, subsequent to qubit generation but prior to playing the game, the above qubits collapse out of superposition, both times favoring $\ket{00}$.  They thus obtain  \[
 \ket{a_1}=\ket{a_2}=\ket{b_1}=\ket{b_2}=\QZero{}
 \]
-With the qubits now in those states, answer the following questions:
+
+Note well:
+\begin{itemize}
+\item For the rest of this problem, all parts, the qubits start in the above states, each \QZero{}.
+\item In playing the Mermin--Peres game, a measurement may be performed on a qubit, which can change its state.  The game is played as usual, as taught in class.
+\item However, at the beginning of the next part to this problem, the qubits are back to their \QZero{} state, as if the collapse had just happened.
+\end{itemize}
+
 \begin{enumerate}[label=\theenumi.\arabic*]
-    \item For which rows and which columns will Alice and Bob report the expected, correct product values ($+1$ for Alice's column, $-1$ for Bob's row)?
+    \item What values can Alice report in the squares for row 1, from left to right?
+{\def\T#1#2#3{%
+$#1$ & $#2$ & $#3$ & {\TF}
+}
+\begin{center}
+    \begin{tabular}{cccc}
+    Left & Center & Right & Possible \\
+    Square & Square & Square & Outcome? \\ \hline
+    \T{+1}{+1}{+1} \\[1.2em]
+    \T{+1}{+1}{-1} \\[1.2em]
+    \T{+1}{-1}{+1} \\[1.2em]
+    \T{+1}{-1}{-1} \\[1.2em]
+    \T{-1}{+1}{+1} \\[1.2em]
+    \T{-1}{+1}{-1} \\[1.2em]
+    \T{-1}{-1}{+1} \\[1.2em]
+    \T{-1}{-1}{-1}
+    \end{tabular}
+    \end{center}}
+    \clearpage\item What values can Bob report for column 1, from top to bottom?
+    {\def\T#1#2#3{%
+$#1$ & $#2$ & $#3$ & {\TF}
+}
+\begin{center}
+    \begin{tabular}{cccc}
+    Top & Middle & Bottom & Possible \\
+    Square & Square & Square & Outcome?\\ \hline
+    \T{+1}{+1}{+1} \\[1.2em]
+    \T{+1}{+1}{-1} \\[1.2em]
+    \T{+1}{-1}{+1} \\[1.2em]
+    \T{+1}{-1}{-1} \\[1.2em]
+    \T{-1}{+1}{+1} \\[1.2em]
+    \T{-1}{+1}{-1} \\[1.2em]
+    \T{-1}{-1}{+1} \\[1.2em]
+    \T{-1}{-1}{-1}
+    \end{tabular}
+    \end{center}}
+    \clearpage\item With the qubits starting again at \QZero{}, for which rows and which columns are Alice and Bob both \emph{certain} to report the expected, correct product values ($+1$ for Alice's row, $-1$ for Bob's column)?  
+    
+    This is one of those problems where you could grind out answers, but with some thought, it is easy to answer.
    
-    Answer this by placing a check mark in the squares below that reflect the row and column assigned to Alice and Bob, respectively.
+    Answer this by choosing \textbf{true} or \textbf{false} for each combination below:
     {%
     \def\B#1{\fbox{\hbox to 3em{\vrule width 0pt height 2em\hss #1\hss}}}
     \begin{center}
         \begin{tabular}{ccc}
-                 Alice's assigned row & Bob's assigned column &  Correct product? \\
-                 1 & 1 & \B{} \\
-                 1 & 2 & \B{} \\
-                 1 & 3 & \B{} \\
-                 2 & 1 & \B{} \\
-                 2 & 2 & \B{} \\
-                 2 & 3 & \B{} \\
-                 3 & 1 & \B{} \\
-                 3 & 2 & \B{} \\
-                 3 & 3 & \B{} \\
+                 When Alice & When Bob &  Do Alice and Bob \\
+                is assigned  & is assigned & report the correct product \\
+                 row number & column number& certainly? \\ \hline \\
+                 1 & 1 & \TF{} \\[1.3em]
+                 1 & 2 & \TF{} \\[1.3em]
+                 1 & 3 & \TF{} \\[1.3em]
+                 2 & 1 & \TF{} \\[1.3em]
+                 2 & 2 & \TF{} \\[1.3em]
+                 2 & 3 & \TF{} \\[1.3em]
+                 3 & 1 & \TF{} \\[1.3em]
+                 3 & 2 & \TF{} \\[1.3em]
+                 3 & 3 & \TF{}
 
         \end{tabular}
     \end{center}}
-    \item Below is a depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it iff when Alice and Bob have that square in common, they are guaranteed to report the same value.
+    \clearpage\item Each qubit starts again at \QZero{}.  Below is a depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they are \emph{guaranteed} to report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
+    \[\includegraphics[scale=0.8]{mp}\]
+        \item Each qubit starts again at \QZero{}. Below is a another depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they \emph{might} (probability greater than zero) report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
     \[\includegraphics[scale=0.8]{mp}\]
     \end{enumerate}
 
+\item\Points{10}  In this problem you will consider solving Simon's problem using Grover's algorithm.  In this problem, the domain values for the Simon function are $n$~qubits.  You are given the following components:
+\begin{itemize}
+    \item A box $U_S$ that accepts $n$ qubits as its input and computes (in a quantum way using unitary gates) $f(x)$ on its $n-1$ outputs, where $f(x)$ behaves according to the properties of Simon's problem:
+    \[
+    f(x) = f(x\oplus s)
+    \]
+    where $s$ is the secret value hidden in box $U_S$.
+    \item A box $C$ that accepts two $k$-qubit values, $v$ and $w$, and outputs \QOne{} if the qubits of $v$ are identical to those in $w$, and \QZero{} if they are not.  In other words $C(v,w)=1$ if and only if
+    \[
+    \forall\ i\ \in [0,k)\ v_{i} = w_{i}
+    \]
+    
+    You can pick values you need for $k$.
+    \begin{enumerate}[label=\theenumi.\arabic*]
+        \item Your first task is to design an oracle that accepts only $n$ qubits (so just one possible input to function $f(x)$) and produces a $1$ if and only if the $n$ qubits are the secret $s$.  You can use the components described above in your oracle, any quantum components studied this semester, and as many ancillas as you need.
+
+        Draw a \emph{clear} picture of your oracle labeling the boxes and showing how many qubits each line in and out requires.
+        \LeaveSpace[4in]{}
+        \item If the quantum counting algorithm were applied to your oracle, for how many inputs would it say the oracle produces $1$?\Blank{}
+        \item Please take a look at slide deck 260, slide number 7.  The slide depicts an angle between states $\ket{s}$ and $\ket{r}$ as taught for Grover's algorithm (this $\ket{s}$ is different from our Simon secret $s$).  For an $n$-qubit secret, what is the angle between $\ket{s}$ and $\ket{r}$?\Blank{}~radians
+        
+        
+    \end{enumerate}
+\end{itemize}
+
+\item\Points{5}  It's been taught in class, and widely published, that the Quantum Fourier Transformation can be implemented as the inverse of the Phase Estimation Algorithm.
+
+Based on this, Pat created a QFT quantum circuit by placing the Phase Estimation circuit components in the reverse order.  But the circuit did not compute the correct answers.
+
+What did Pat do wrong?
+\LeaveSpace{}
+
+\item\Points{10} In this problem you consider the Deutsch--Jozsa algorithm applied to an $n$-qubit function.  For each of the scenarios below, characterize the oracle's function 
+\[ f(x): \BinAlph{n}\mapsto \Set{0,1}
+\]
+as precisely as possible, based on the most likely nature of the function.  Throughout, assume a robust, noiseless quantum computer: in other words, assume that these results come
+from perfect emulation of a quantum computer.
+\begin{itemize}
+    \item In 1000 runs, each run measured $\ket{\TensSupProd{0}{n}}$.
+    \[f(x) = \Blank[10em]{} \]
+    \item In 1000 runs, each run measured $\ket{1\TensSupProd{0}{n-1}}$.
+     \[f(x) = \Blank[10em]{} \]
+     \item In 1000 runs, no measurement of $\ket{\TensSupProd{0}{n}}$ was observed.
+      \[f(x) = \Blank[10em]{} \]
+      \item In 1000 runs, half of them measured $\ket{\TensSupProd{0}{n}}$ and half of them did not.
+       \[f(x) = \Blank[10em]{} \]
+\end{itemize}
+
+\item\Points{10}  In class we experimented with instances of the Bernstein--Vazirani problem with the goal of understanding where noise is present.  Based on the results presented in class, and the published solutions submitted by students, answer the following questions.
+
+Throughout this problem, the following notation is used:
+\begin{quote}
+\begin{description}
+    \item[BV] abbreviates Bernstein--Vazirani
+    \item[$s$] is the secret used in a BV instance
+    \item[$n$] is the number of qubits in $s$
+\end{description}\end{quote}
+
+\begin{enumerate}[label=\theenumi.\arabic*]
+    \item Given a random $s$, we observed that noise increased as $n$ increased. \TF{}
+    \item If we make use of qubits outside those needed for BV, we observed that the noise grew as the number of unrelated qubits increased. \TF{}
+    \item The probability of measuring $s$ as $n$ increased from $1$ to $50$ dropped continuously and linearly.\TF{}
+    \item The probability of measuring values other than $s$ increased with the number of \NamedGate{CNOT} gates present in an instance. \TF{}
+    \item The specific contents of $s$, in terms of its \texttt{1}s and \texttt{0}s, was unrelated to the errors we observed.\TF{}
+    \item\label{prob:trans} IBMs transpilation of a BV instance apparently allocates qubits on the target quantum computer to logoical qubits in a quantum circuit at random, paying no special attention to the circuit.\TF{}
+    \item Elaborate on why you picked the answer you did for question~\ref{prob:trans}.
+    \LeaveSpace{}
+    \item In what ways is the topology of a specific IBM quantum computer related to the errors we saw in a BV instance?  For reference, read about the topological diagram or coupling map \href{https://quantum.cloud.ibm.com/docs/en/guides/qpu-information}{here}.
+    \LeaveSpace{}
+\end{enumerate}
+
+\item\Points{10} The IBM Quantum Computer offers a two-qubit instruction \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.ECRGate}{\NamedGate{ECR}} (Echoed Cross-Resonance) that is defined as follows (there are other definitions, but for the exam, use this one):
+\[
+\NamedGate{ECR} = \RootTwo\left({\TensProd{\Identity}{\PauliX} - \TensProd{\PauliX}{\PauliY}}\right) = \RootTwo{}\begin{pmatrix*}[r]
+0 & 1 & 0 & \NiceI{} \\
+1 & 0 & -\NiceI{} & 0 \\
+0 & \NiceI{} & 0 & 1 \\
+-\NiceI{} & 0 & 1 & 0
+\end{pmatrix*}
+\]
+This is a primitive instruction that IBM's quantum computer can execute on two qubits to create entanglement.  Your goal here is to use this instruction to create the (phase-free) Bell state \TwoSup{00}{11}, beginning with state $\ket{0+}$.  You are urged to use \texttt{Matlab} for this problem!
+\begin{itemize}
+    \item Compute and complete the following:
+    \[ \NamedGate{ECR} \ket{0+} = \ \Blank[4em]{}\TwoQBlank \]
+    \item From this state, describe how to obtain the state \[
+    \RootTwo{}\DQB{1}{0}{0}{-\NiceI}
+    \]
+    using named gates we have studied (for example, \Hadamard{}, \PauliX{}, \PauliZ{}, \PauliY{}), applied only to the second qubit.
+    \LeaveSpace{}
+    \item Finally, let's rotate away the phase on $\ket{11}$.  What gate will do this for you, applied only to the second qubit?  Fill in the contents of the gate below:
+    \[ \TwoU{} \]
+    \LeaveSpace{}
+    \item Below show the math that uses your gate to obtain \TwoSup{00}{11}:
+    \LeaveSpace{}
+\end{itemize}
 
 \end{enumerate}
 \end{document}
