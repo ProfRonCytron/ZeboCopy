@@ -48,15 +48,18 @@ No late extensions for the exam!
    \item\label{tf:a} The university course evaluation for this course is worth one of the five points for
 participation in this class. By turning in this exam, I acknowledge that the due
 date for receiving this participation point is Monday May 5, 9 AM.  I understand I will not receive participation credit for my evaluation if it submitted after that time.
-   \item\label{tf:b} Each of the Pauli gates (\PauliX,\PauliY,\PauliZ,\Hadamard) is its own inverse.
-   \item\label{tf:c} The Control-\PauliZ{} gate cannot produce an entangled state, unless it is presented with an already entangled state.
-   \item\label{tf:d} If the state \TwoSup{00}{01} is presented to gates \TensProd{\Hadamard}{\PauliX}, the tensor product of those gates must be formed to compute the correct resulting state.
-   \item\label{tf:e} The only valid bases in terms of measurement on the Bloch sphere are the \PauliZ{} and \PauliX{} bases.
-   \item\label{tf:f} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is even?
-      \item\label{tf:g} What state is $\PauliX(\Hadamard^{n}(\QZero))$ if $n$ is odd?
-    \item\label{tf:h} In teleportation, what gates must Bob apply to his qubit to recover Alice's state if she tells him both of her qubits measured \QOne{}?
-    \item\label{tf:i} Due to the no cloning theorem, it is not possible to make a copy of a state that is either \QZero{} or \QOne{}.
-    \item\label{tf:j} What is the eigenvalue associated with (eigen)state $\ket{01101010010111110000}$ in the computational basis?
+
+   \item\label{tf:d} An $n$-bit instance of Simon’s problem takes $\Theta(2^{n})$ time on a classical computer to solve exactly.
+   \item\label{tf:e} Deutsch–-Jozsa solves a problem in polynomial time on a quantum computer that
+takes worst-case exponential time on a classical computer.
+   \item\label{tf:f} The 3-qubit error correction scheme works by replicating a qubit's state on two other qubits.
+      \item\label{tf:g} Grover’s algorithm provides exponential speedup over classical algorithms that solve the same problem.
+    \item\label{tf:h} If the entangled qubits for the CHSH game fail (they decohere and collapse into
+random values), Alice and Bob can at best win 75\% of the time.
+    \item\label{tf:i} With a single query, a classical computer has at least a 50\% chance of determining
+the correct solution to a Deutsch–Jozsa problem.
+    \item\label{tf:j} \Points{2} For the work of a Variational Quantum Eigensolver carried out on a quantum computer, why is noise generally considered unproblematic?
+       \item\label{tf:b} How does Shor's algorithm find the period of a function?
 \end{enumerate}
 
 \def\BlankPrompt#1{\ref{tf:#1}~\Blank{}\hskip 2em plus 1em 
@@ -65,9 +68,13 @@ date for receiving this participation point is Monday May 5, 9 AM.  I understand
  minus 1em}
 \textbf{Responses}
 
-\TFPrompt{a}\TFPrompt{b}\TFPrompt{c}\TFPrompt{d}\TFPrompt{e}
+\TFPrompt{a}\BlankPrompt{b}\TFPrompt{d}\TFPrompt{e} \TFPrompt{f}
 
-\BlankPrompt{f}\BlankPrompt{g}\BlankPrompt{h}\TFPrompt{i}\BlankPrompt{j}
+\TFPrompt{g}\TFPrompt{h}\TFPrompt{i} \\[1.2em]
+\ref{tf:j}~\Blank[5in]{} \\[1.2em]
+\ref{tf:b}~\Blank[5.75in]{} \\[1.2em]
+\Blank[6in]{} \\[1.2em]
+\Blank[6in]{}
 
 \item\Points{10}  We have studied the 3-qubit correction scheme that can correct a single \PauliX{} error on at most one of the 3 entangled qubits.  To achieve this, we conducted \emph{syndrome} measurements on two other qubits.
 
@@ -85,8 +92,17 @@ Ideally we would like to reset those syndrome qubits to $\ket{00}$ so that they 
   \]
   \item Prove or disprove that the above matrix is unitary:
   \LeaveSpace{}
-  \item Based on our studies, what is the best way to reset a syndrome qubit back to \QZero{} after its measurement has been taken?  Assume the syndrome qubit is qubit $\ket{s}$ and its measurement has been taken on classical bit $c$.  Below complete the circuit that ensure $\ket{s}$ is \QZero{}.  Do not describe your result in words!  If you are answering this question on a medium other than this exam, replicate the circuit.
-    
+  \item Based on our studies, what is the best way to reset a syndrome qubit back to \QZero{} after its measurement has been taken?  Assume the syndrome qubit is qubit $\ket{s}$ and its measurement has been taken on classical bit $c$ (diagram below).  
+  \begin{itemize}
+      \item Describe your approach:\LeaveSpace{}
+      \item Draw your approach on the circuit below.  The diagram below is intended to show a measurement of qubit $\ket{s}$ onto classical bit $c$, the way \texttt{qiskit} does measurements.  It is \emph{not} a controlled measurement: it is always performed.
+  \end{itemize}
+\begin{center}
+\adjustbox{valign=t}{\begin{quantikz}
+\lstick{$\ket{s}$}&  \qw & \ctrl{1}&\qw & \qw & \qw & \qw & \qw\rstick{should now be \QZero{}} \\[4em]
+\lstick{$c$} &   \qw    &  \meter{}& \qw &\qw & \qw & \qw & \qw
+\end{quantikz}}%
+\end{center}
 \end{enumerate}
 
 \item\Points{15} Recall the Mermin--Peres game. Recall that the following states are generated in support of Alice and Bob [ Slide deck 140, slide 2 ]:
