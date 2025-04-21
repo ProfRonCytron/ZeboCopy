@@ -41,15 +41,15 @@ No late extensions for the exam!
     \item Your student ID? \Blank[3in]{}
 \end{itemize}
 
-\item \Points{10} To make grading easier please use the format below, or if you write your answers out on your own, please imitate the format of the response section.  The notation $\NamedGate{U}^{n}$ denotes $n$ consecutive applications of \NamedGate{U} on a single qubit, \emph{not} an $n$-way tensor product.
+\item \Points{10} To make grading easier please use the format below, or if you write your answers out on your own, please imitate the format of the response section.
 
 \textbf{Questions (do not respond here---see response section below)}
 \begin{enumerate}[label=\theenumi.\arabic*]
-   \item\label{tf:a} The university course evaluation for this course is worth one of the five points for
+   \item\label{tf:a}\Points{0} The university course evaluation for this course is worth one of the five points for
 participation in this class. By turning in this exam, I acknowledge that the due
 date for receiving this participation point is Monday May 5, 9 AM.  I understand I will not receive participation credit for my evaluation if it submitted after that time.
 
-   \item\label{tf:d} An $n$-bit instance of Simon’s problem takes $\Theta(2^{n})$ time on a classical computer to solve exactly.
+   \item\label{tf:d} An $n$-bit instance of Simon’s problem takes $\Theta(2^{n})$ time on a classical computer.
    \item\label{tf:e} Deutsch–-Jozsa solves a problem in polynomial time on a quantum computer that
 takes worst-case exponential time on a classical computer.
    \item\label{tf:f} The 3-qubit error correction scheme works by replicating a qubit's state on two other qubits.
@@ -59,7 +59,7 @@ random values), Alice and Bob can at best win 75\% of the time.
     \item\label{tf:i} With a single query, a classical computer has at least a 50\% chance of determining
 the correct solution to a Deutsch–Jozsa problem.
     \item\label{tf:j} \Points{2} For the work of a Variational Quantum Eigensolver carried out on a quantum computer, why is noise generally considered unproblematic?
-       \item\label{tf:b} How does Shor's algorithm find the period of a function?
+       \item\label{tf:b}\Points{2} How does Shor's algorithm find the period of a function?
 \end{enumerate}
 
 \def\BlankPrompt#1{\ref{tf:#1}~\Blank{}\hskip 2em plus 1em 
@@ -68,7 +68,7 @@ the correct solution to a Deutsch–Jozsa problem.
  minus 1em}
 \textbf{Responses}
 
-\TFPrompt{a}\BlankPrompt{b}\TFPrompt{d}\TFPrompt{e} \TFPrompt{f}
+\ref{tf:a} \textbf{true} \ \ \TFPrompt{d}\TFPrompt{e} \TFPrompt{f}
 
 \TFPrompt{g}\TFPrompt{h}\TFPrompt{i} \\[1.2em]
 \ref{tf:j}~\Blank[5in]{} \\[1.2em]
@@ -76,9 +76,9 @@ the correct solution to a Deutsch–Jozsa problem.
 \Blank[6in]{} \\[1.2em]
 \Blank[6in]{}
 
-\item\Points{10}  We have studied the 3-qubit correction scheme that can correct a single \PauliX{} error on at most one of the 3 entangled qubits.  To achieve this, we conducted \emph{syndrome} measurements on two other qubits.
+\item\Points{15}  We have studied the 3-qubit correction scheme that can correct a single \PauliX{} error on one of 3 entangled qubits.  To achieve this, we conducted \emph{syndrome} measurements of those three qubits onto two other qubits.
 
-The qubits receiving the symdrome values are expected to be in state \QZero{} or \QOne{}, and the combined value of the two sydnrome qubits indicates what, if any, corrective action must be taken on the 3 entangled qubits.
+The qubits receiving the syndrome values are expected to be in state \QZero{} or \QOne{}, and the combined value of the two syndrome qubits indicates what, if any, corrective action must be taken on the 3 entangled qubits.
 
 In this section we explore the life of the syndrome qubits after they have been used once.
 
@@ -114,19 +114,20 @@ where Alice receives $\ket{a_{1}}$ and $\ket{a_{2}}$ and Bob receives the other 
 
 In class we studied how the initial state of these qubits leads to guranteed success in the Mermin--Peres game, for any row or column assigned to Alice or Bob.
 
-Now suppose that, subsequent to qubit generation but prior to playing the game, the above qubits collapse out of superposition, both times favoring $\ket{00}$.  They thus obtain  \[
-\ket{a_1}=\ket{a_2}=\ket{b_1}=\ket{b_2}=\QZero{}
+Now suppose that, subsequent to qubit generation but prior to playing the game, the above qubits collapse out of superposition, both times favoring $\ket{00}$.  The four qubits are therefore in state  \[
+\ket{\psi} = \ket{a_{1}a_{2}b_{1}b_{2}} = \ket{0000} \]
+or in other words \[\ket{a_1}=\ket{a_2}=\ket{b_1}=\ket{b_2}=\QZero{}
 \]
 
 Note well:
 \begin{itemize}
-\item For the rest of this problem, all parts, the qubits start in the above states, each \QZero{}.
+\item For the rest of this problem, all parts, the qubits start in state $\ket{\psi}$, each \QZero{}.
 \item In playing the Mermin--Peres game, a measurement may be performed on a qubit, which can change its state.  The game is played as usual, as taught in class.
-\item However, at the beginning of the next part to this problem, the qubits are back to their \QZero{} state, as if the collapse had just happened.
+\item However, at the beginning of the next part to this problem, the qubits are again in state $\ket{\psi}$, as if the collapse had just happened.
 \end{itemize}
 
 \begin{enumerate}[label=\theenumi.\arabic*]
-    \item What values can Alice report in the squares for row 1, from left to right?
+    \item With the four qubits in state $\ket{\psi}$, what values can Alice report in the squares for row 1, from left to right?
 {\def\T#1#2#3{%
 $#1$ & $#2$ & $#3$ & {\TF}
 }
@@ -144,7 +145,7 @@ $#1$ & $#2$ & $#3$ & {\TF}
     \T{-1}{-1}{-1}
     \end{tabular}
     \end{center}}
-    \clearpage\item What values can Bob report for column 1, from top to bottom?
+    \clearpage\item With the four qubits in state $\ket{\psi}$, what values can Bob report for column 1, from top to bottom?
     {\def\T#1#2#3{%
 $#1$ & $#2$ & $#3$ & {\TF}
 }
@@ -162,7 +163,7 @@ $#1$ & $#2$ & $#3$ & {\TF}
     \T{-1}{-1}{-1}
     \end{tabular}
     \end{center}}
-    \clearpage\item With the qubits starting again at \QZero{}, for which rows and which columns are Alice and Bob both \emph{certain} to report the expected, correct product values ($+1$ for Alice's row, $-1$ for Bob's column)?  
+    \clearpage\item With the qubits starting again in state $\ket{\psi}$, for which rows and which columns are Alice and Bob both \emph{certain} to report the expected, correct product values ($+1$ for Alice's row, $-1$ for Bob's column)?  
     
     This is one of those problems where you could grind out answers, but with some thought, it is easy to answer.
    
@@ -186,9 +187,12 @@ $#1$ & $#2$ & $#3$ & {\TF}
 
         \end{tabular}
     \end{center}}
-    \clearpage\item Each qubit starts again at \QZero{}.  Below is a depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they are \emph{guaranteed} to report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
+    \clearpage\item  The qubits start again in state $\ket{\psi}$.  Below is a depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they are \emph{guaranteed} to report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
+
     \[\includegraphics[scale=0.8]{mp}\]
-        \item Each qubit starts again at \QZero{}. Below is a another depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they \emph{might} (probability greater than zero) report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
+        What is the basis for your agove answers?\LeaveSpace{}
+
+        \item The qubits start again in state $\ket{\psi}$.  Below is a another depiction of the Mermin--Peres square with its measurement operators.  For each square, circle it if, when Alice and Bob have that square in common, they \emph{might} (probability greater than zero) report the same value.  Again, with some thought, this is easily answered, but you can also grind through all nine squares.
     \[\includegraphics[scale=0.8]{mp}\]
     \end{enumerate}
 
@@ -219,7 +223,7 @@ You have implemented the circuit described in class and in the videos, and (usin
 
 \clearpage\item\Points{10}  In this problem you will consider solving Simon's problem using Grover's algorithm.  In this problem, the domain values for the Simon function are $n$~qubits.  You are given the following components:
 \begin{itemize}
-    \item A box $U_S$ that accepts $n$ qubits as its input and computes (in a quantum way using unitary gates) $f(x)$ on its $n-1$ outputs, where $f(x)$ behaves according to the properties of Simon's problem:
+    \item A box $U_S$ that accepts $n$ qubits as its input and computes (in a quantum way using unitary gates) some $f(x)$ onto its $n-1$ outputs, where $f(x)$ behaves according to the properties of Simon's problem:
     \[
     f(x) = f(x\oplus s)
     \]
@@ -265,7 +269,7 @@ from perfect emulation of a quantum computer.
        \[f(x) = \Blank[10em]{} \]
 \end{itemize}
 
-\item\Points{10}  In class we experimented with instances of the Bernstein--Vazirani problem with the goal of understanding where noise is present.  Based on the results presented in class, and the published solutions submitted by students, answer the following questions.
+\item\Points{15}  In class we experimented with instances of the Bernstein--Vazirani problem with the goal of understanding where noise is present.  Based on the results presented in class, and the published solutions submitted by students, answer the following questions.
 
 Throughout this problem, the following notation is used:
 \begin{quote}
@@ -288,7 +292,7 @@ Throughout this problem, the following notation is used:
     \LeaveSpace{}
 \end{enumerate}
 
-\item\Points{10} The IBM Quantum Computer offers a two-qubit instruction \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.ECRGate}{\NamedGate{ECR}} (Echoed Cross-Resonance) that is defined as follows (there are other definitions, but for the exam, use this one):
+\item\Points{15} The IBM Quantum Computer offers a two-qubit instruction \href{https://docs.quantum.ibm.com/api/qiskit/qiskit.circuit.library.ECRGate}{\NamedGate{ECR}} (Echoed Cross-Resonance) that is defined as follows (there are other definitions, but for the exam, use this one):
 \[
 \NamedGate{ECR} = \RootTwo\left({\TensProd{\Identity}{\PauliX} - \TensProd{\PauliX}{\PauliY}}\right) = \RootTwo{}\begin{pmatrix*}[r]
 0 & 1 & 0 & \NiceI{} \\
@@ -298,7 +302,7 @@ Throughout this problem, the following notation is used:
 \end{pmatrix*}
 \]
 This is a primitive instruction that IBM's quantum computer can execute on two qubits to create entanglement.  Your goal here is to use this instruction to create the (phase-free) Bell state \TwoSup{00}{11}, beginning with state $\ket{0+}$.  You are urged to use \texttt{Matlab} for this problem!
-\begin{itemize}
+\begin{enumerate}[label=\theenumi.\arabic*]
     \item Compute and complete the following:
     \[ \NamedGate{ECR} \ket{0+} = \ \Blank[4em]{}\TwoQBlank \]
     \item From this state, describe how to obtain the state \[
@@ -307,11 +311,12 @@ This is a primitive instruction that IBM's quantum computer can execute on two q
     using named gates we have studied (for example, \Hadamard{}, \PauliX{}, \PauliZ{}, \PauliY{}), applied only to the second qubit.
     \LeaveSpace{}
     \item Finally, let's rotate away the phase on $\ket{11}$.  What gate will do this for you, applied only to the second qubit?  Fill in the contents of the gate below:
-    \[ \TwoU{} \]
+    \[ \left(\TensProd{\Identity}{\TwoU{}}\right)\RootTwo{}\DQB{1}{0}{0}{-\NiceI} = \RootTwo{}\DQB{1}{0}{0}{1} \]
+
+    Show the math below for your solution to this part:
     \LeaveSpace{}
-    \item Below show the math that uses your gate to obtain \TwoSup{00}{11}:
-    \LeaveSpace{}
-\end{itemize}
+
+\end{enumerate}
 
 \end{enumerate}
 \end{document}
